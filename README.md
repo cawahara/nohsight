@@ -1,25 +1,18 @@
-# README
+# Noh Event
+Mobile Web App for organize Noh events (and search them)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Get started
 
-Things you may want to cover:
+$ git clone https://github.com/Shantti-Y/Noh-event
+$ cd Noh-app
+$ bundle install --path vendor/bundle
+$ bin/rails db:migrate
+$ bin/rails server
 
-* Ruby version
+## Database & Data
 
-* System dependencies
+to be described...
 
-* Configuration
+## Test
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Noh-event
+$ bin/rails test
