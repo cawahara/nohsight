@@ -7,7 +7,6 @@ end
 
 # デフォルトで配備してあるgem群
 gem 'rails',                   '~> 5.0.2'
-gem 'sqlite3'
 gem 'puma',                    '~> 3.0'
 gem 'sass-rails',              '~> 5.0'
 gem 'uglifier',                '>= 1.3.0'
@@ -23,6 +22,7 @@ gem 'simple_enum',             '~> 2.3'                     # enumを扱うヘ�
 gem 'kaminari'                                              # paginateヘルパー
 gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主にパスワード)のハッシュ化
 gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
+gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
