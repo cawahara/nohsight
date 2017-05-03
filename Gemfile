@@ -22,6 +22,7 @@ gem 'carrierwave',             '~> 0.11.2'                  # 画像アップロ
 gem 'simple_enum',             '~> 2.3'                     # enumを扱うヘルパー
 gem 'kaminari'                                              # paginateヘルパー
 gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主にパスワード)のハッシュ化
+gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
