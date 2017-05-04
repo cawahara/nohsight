@@ -1,1 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+shite:
+   full_name:  市手方　流星
+   last_name:  してかた
+   first_name: りゅうせい
+   style:      シテ方金剛流

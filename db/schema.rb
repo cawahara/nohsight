@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504141211) do
+ActiveRecord::Schema.define(version: 20170504154055) do
+
+  create_table "event_performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_program_id", null: false
+    t.integer  "performer_id",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["event_program_id"], name: "event_program_id_idx", using: :btree
+    t.index ["performer_id"], name: "performer_id_idx", using: :btree
+  end
 
   create_table "event_programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_id",              null: false
@@ -72,6 +81,8 @@ ActiveRecord::Schema.define(version: 20170504141211) do
     t.index ["email"], name: "email_UNIQUE", unique: true, using: :btree
   end
 
+  add_foreign_key "event_performers", "event_programs", name: "event_program_id"
+  add_foreign_key "event_performers", "performers", name: "performer_id"
   add_foreign_key "event_programs", "events", name: "event_id"
   add_foreign_key "event_programs", "programs", name: "program_id"
   add_foreign_key "events", "places", name: "place_id"
