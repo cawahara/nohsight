@@ -1,5 +1,6 @@
 class Performer < ApplicationRecord
-   has_many :event_performers,   dependent: :destroy
+   belongs_to  :style
+   has_many    :event_performers,   dependent: :destroy
    # REVIEW Performerレコードが消えた時の関連EventPerformerの処置(同時に消すべきでしょうか？)
 
    HIRAGANA = /\A\p{Hiragana}+\z/u

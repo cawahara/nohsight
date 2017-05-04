@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504154055) do
+ActiveRecord::Schema.define(version: 20170504160221) do
 
   create_table "event_performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_program_id", null: false
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(version: 20170504154055) do
     t.string   "full_name",  null: false
     t.string   "last_name",  null: false
     t.string   "first_name", null: false
-    t.string   "style",      null: false
+    t.integer  "style_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["style_id"], name: "style_id_idx", using: :btree
   end
 
   create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,6 +69,12 @@ ActiveRecord::Schema.define(version: 20170504154055) do
     t.string   "category",   null: false
     t.boolean  "shimai",     null: false
     t.integer  "duration",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,4 +94,5 @@ ActiveRecord::Schema.define(version: 20170504154055) do
   add_foreign_key "event_programs", "programs", name: "program_id"
   add_foreign_key "events", "places", name: "place_id"
   add_foreign_key "events", "users", name: "user_id"
+  add_foreign_key "performers", "styles", name: "style_id"
 end

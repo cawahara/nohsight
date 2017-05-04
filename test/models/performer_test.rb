@@ -3,16 +3,23 @@ require 'test_helper'
 class PerformerTest < ActiveSupport::TestCase
 
    def setup
+      @style     = styles(:shite_kongou)
       @performer = Performer.new(
                                  full_name:  "例得　常夏",
                                  last_name:  "たとえ",
                                  first_name: "とこなつ",
-                                 style:      "シテ方観世流"
+                                 style_id:      @style.id
                                 )
    end
 
    test "should be valid" do
       assert @performer.valid?
+   end
+
+   test "should be deleted when relative style destroyed" do
+      @performer.save
+      @style.destroy
+      assert_equal @style.performers.count, 0
    end
 
    test "full_name should be present" do
@@ -57,7 +64,7 @@ class PerformerTest < ActiveSupport::TestCase
    end
 
    test "class should be present" do
-      @performer.style = ""
+      @performer.style_id = ""
       assert_not @performer.valid?
    end
 end
