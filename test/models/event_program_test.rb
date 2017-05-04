@@ -4,9 +4,10 @@ class EventProgramTest < ActiveSupport::TestCase
 
    def setup
       @event = events(:spring)
+      @program = programs(:funabenkei)
       @event_program = EventProgram.new(
                                         event_id:    @event.id,
-                                        program_id:  1,      # 仮定義
+                                        program_id:  @program.id,
                                         style:       "金剛流",
                                         genre:       "能"
                                        )
@@ -22,8 +23,19 @@ class EventProgramTest < ActiveSupport::TestCase
       assert_equal @event.event_programs.count, 0
    end
 
+   test "should be deleted when relative program destroyed" do
+      @event_program.save
+      @program.destroy
+      assert_equal @program.event_programs.count, 0
+   end
+
    test "event_id should be present" do
       @event_program.event_id = ""
+      assert_not @event_program.valid?
+   end
+
+   test "program_id should be present" do
+      @event_program.program_id = ""
       assert_not @event_program.valid?
    end
 
