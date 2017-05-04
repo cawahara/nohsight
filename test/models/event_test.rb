@@ -18,9 +18,8 @@ class EventTest < ActiveSupport::TestCase
 
    test "should be deleted when relative user destroyed" do
       @event.save
-      assert_difference 'Event.count', -1 do
-         @user.destroy
-      end
+      @user.destroy
+      assert_equal @user.events.count, 0
    end
 
    test "user_id should be present" do

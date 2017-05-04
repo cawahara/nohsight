@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503065803) do
+ActiveRecord::Schema.define(version: 20170504113841) do
+
+  create_table "event_programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id",              null: false
+    t.integer  "program_id",            null: false
+    t.string   "style",                 null: false
+    t.string   "genre",      limit: 45, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["event_id"], name: "id_idx", using: :btree
+  end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "place_id",                   null: false
@@ -35,5 +45,6 @@ ActiveRecord::Schema.define(version: 20170503065803) do
     t.index ["email"], name: "email_UNIQUE", unique: true, using: :btree
   end
 
-  add_foreign_key "events", "users", name: "id"
+  add_foreign_key "event_programs", "events", name: "event_id"
+  add_foreign_key "events", "users", name: "user_id"
 end

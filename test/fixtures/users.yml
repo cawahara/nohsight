@@ -1,6 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-
 pupil:
    name:             門弟子　太郎
    email:            pupil@yahoo.co.jp
