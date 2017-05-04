@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+   has_many :events,       dependent: :destroy
+
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
    validates :name,        presence: true
