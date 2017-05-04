@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
    belongs_to :user
+   belongs_to :place
    has_many   :event_programs,   dependent: :destroy
 
    # validates :place_id,    presence: true

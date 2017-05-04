@@ -4,10 +4,11 @@ class EventTest < ActiveSupport::TestCase
 
    def setup
       @user = users(:pupil)
+      @place = places(:kongo)
       @event = Event.new(
-                         user_id: @user.id,
-                         place_id: 1,         # 仮番号
-                         title: "例えて習おう能楽の世界",
+                         user_id:    @user.id,
+                         place_id:   @place.id,
+                         title:      "例えて習おう能楽の世界",
                          start_date: Date.today
                         )
    end
@@ -20,6 +21,12 @@ class EventTest < ActiveSupport::TestCase
       @event.save
       @user.destroy
       assert_equal @user.events.count, 0
+   end
+
+   test "should be deleted when relative place destroyed" do
+      @event.save
+      @place.destroy
+      assert_equal @place.events.count, 0
    end
 
    test "user_id should be present" do

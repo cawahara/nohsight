@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504113841) do
+ActiveRecord::Schema.define(version: 20170504121814) do
 
   create_table "event_programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_id",              null: false
@@ -33,7 +33,15 @@ ActiveRecord::Schema.define(version: 20170504113841) do
     t.string   "official_url"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["place_id"], name: "place_id_idx", using: :btree
     t.index ["user_id"], name: "id_idx", using: :btree
+  end
+
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "address",           null: false
+    t.string   "official_site_url", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,5 +54,6 @@ ActiveRecord::Schema.define(version: 20170504113841) do
   end
 
   add_foreign_key "event_programs", "events", name: "event_id"
+  add_foreign_key "events", "places", name: "place_id"
   add_foreign_key "events", "users", name: "user_id"
 end
