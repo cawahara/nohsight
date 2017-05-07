@@ -23,6 +23,7 @@ gem 'kaminari'                                              # paginateヘルパ�
 gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主にパスワード)のハッシュ化
 gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
 gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
+gem 'seed_dump',               '>= 3.2.4'                   # データベース内レコードをseedに移行
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
