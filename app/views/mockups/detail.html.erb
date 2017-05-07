@@ -1,2 +1,55 @@
-<h1>Mockups#detail</h1>
-<p>Find me in app/views/mockups/detail.html.erb</p>
+
+<div id="detail">
+   <div id="detail-header">
+      <h1><%= @event.title%></h1>
+
+      <p><%= @event.start_date.strftime("%Y年%m月%d日") %></p>
+      <p><%= @event.place.title %></p>
+   </div>
+
+   <div id="info-box">
+      <h1>基本情報</h1>
+
+      <ul>
+         <li>
+            <h2>演目</h2>
+            <% @event.event_programs.each do |ev| %>
+               <p>
+                  <%= ev.style %>
+                  「<%= ev.program.title %>」
+                  <% ev.event_performers.each do |ev_p| %>
+                     <%= ev_p.performer.full_name %>
+                  <% end %>
+               </p>
+            <% end %>
+         </li>
+
+         <li>
+            <h2>開催時間</h2>
+            <p><%= @event.start_date.strftime("%H:%M") %></p>
+         </li>
+
+         <li>
+            <h2>チケット料金</h2>
+            <p><%= @event.ticket %></p>
+         </li>
+
+         <li>
+            <h2>会場</h2>
+            <p>会場： <%= @event.place.title %></p>
+            <p>住所： <%= @event.place.address %></p>
+            <p>URL： <%= @event.place.official_url %></p>
+         </li>
+
+         <li>
+            <h2>公演詳細</h2>
+            <p><%= @event.information %></p>
+         </li>
+      </ul>
+
+
+
+
+
+   </div>
+</div>
