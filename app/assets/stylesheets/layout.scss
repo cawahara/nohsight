@@ -59,7 +59,7 @@ header {
       h1 {
          float: left;
          margin: 9px 4px;
-         font-size: 20px;
+         a { font-size: 20px; }
       }
 
       ul {
@@ -179,7 +179,7 @@ footer {
 ********************************************/
 
 #main {
-   padding: 56px 7px 25px 7px;
+   padding: 64px 7px 25px 7px;
    min-height: 500px;
 
    #trend-banners {
