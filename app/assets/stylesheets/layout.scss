@@ -215,6 +215,8 @@ footer {
       overflow: hidden;
 
       a {
+         float: left;
+         width: calc(100% - 55px);
          margin-top: 5px;
          font-size: 19px;
          color: #3d3d3d;

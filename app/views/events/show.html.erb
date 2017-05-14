@@ -1,0 +1,57 @@
+<div id="event-show">
+   <div class="event-overall">
+      <h1><%= @event.title %></h1>
+      <ul>
+         <li><%= @event.place.title %></li>
+         <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+      </ul>
+   </div>
+   <h1 class="section-header">基本情報</h1>
+   <div class="event-content">
+      <h2 class="event-header">演目</h2>
+      <ul class="event-article">
+      <% @event.event_programs.each do |ev_program| %>
+         <li>
+         <%= ev_program.style %>
+         「<%= ev_program.program.title %>」
+         <% ev_program.event_performers.each do |ev_performer| %>
+            <%= ev_performer.performer.full_name %>
+         <% end %>
+         </li>
+      <% end %>
+      </ul>
+   </div>
+   <div class="event-content">
+      <h2 class="event-header">開催時間</h2>
+      <p class="event-article"><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></p>
+   </div>
+   <div class="event-content">
+      <h2 class="event-header">チケット料金</h2>
+      <ul class="event-article">
+         <% @event.tickets.each do |ticket| %>
+            <li><%= ticket.grade %>：<%= ticket.price %></li>
+         <% end %>
+      </ul>
+   </div>
+   <div class="event-content">
+      <h2 class="event-header">公演詳細</h2>
+      <p class="event-article">
+         <%= @event.information %>
+      </p>
+   </div>
+   <div class="event-content">
+      <h2 class="event-header">会場</h2>
+      <ul class="event-article">
+         <li>会場：<%= @event.place.title %></li>
+         <li>住所：<%= @event.place.address %></li>
+         <li>URL：<%= @event.place.official_url %></li>
+      </ul>
+      <!-- TODO: google map APIを使用(会場の位置を地図にして載せる) -->
+   </div>
+
+   <h1 class="section-header">おすすめ観光地</h1>
+   <!-- TODO: google search系統のAPIを使用(タイトルとurlを取得しリストアップ) -->
+   <div class="event-content">
+
+   </div>
+</div>
