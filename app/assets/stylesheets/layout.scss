@@ -35,6 +35,9 @@ html {
    a { text-decoration: none; }
 }
 
+#main{
+   height: 1000px;
+}
 
 /********************************************
 
@@ -43,6 +46,9 @@ html {
 ********************************************/
 
 header {
+   position: fixed;
+   width: 100%;
+
    // Manu bar
    #header-menu {
       overflow: hidden;
@@ -84,6 +90,7 @@ header {
    #dropdown-menu {
 
       .dropdown-lists {
+         display: none;
          width: 90%;
          margin: 0 auto;
          box-shadow: 0 2px 7px #dbdbdb;
