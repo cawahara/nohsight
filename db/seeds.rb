@@ -1,3 +1,42 @@
+Event.create!([
+  {place_id: 1, user_id: 1, title: "第28回　廣田鑑賞会能", start_date: "2017-05-14 13:30:00", end_date: nil, information: "主役を勤める五流派（観世・宝生・金春・喜多・金剛）をシテ方といいます。\n                     そのシテの相手役を務めるワキ方と、笛・小鼓・大鼓・太鼓を演奏する囃子方、\n                     そして狂言方があります。シテとワキに連れられて出てくる役をツレ・ワキツレと呼びます。", official_url: "http://www.example.com/index.html"},
+  {place_id: 2, user_id: 1, title: "京都観世会5月例会", start_date: "2017-05-28 11:00:00", end_date: nil, information: "", official_url: "http://www.kanzei.com/5th-kai.html"},
+  {place_id: 1, user_id: 2, title: "金剛定期能", start_date: "2017-05-31 13:20:00", end_date: nil, information: "平成29年度の金剛定期能は年10回公演となります。\n                     毎月、宗家以下総出演で佳曲を揃えました。 また上演前に演目の解説も行います。\n                     29年度も多くの皆様にご鑑賞願いたく、絶大のご後援を賜ります様宜しくお願い申し上げます。\n                     皆様のご入会を心よりお待ち申し上げております。\n                     なお4月は特別公演として東本願寺能舞台にて開催いたします。", official_url: "http://www.example.com/regular.html"},
+  {place_id: 2, user_id: 3, title: "市民狂言会", start_date: "2017-06-09 19:00:00", end_date: nil, information: "KAC　Performing　Arts　Program　/　Contemporary　Danceでは、\n                     京都芸術センターの創作環境を活かし、コンテンポラリーダンス表現の最前線で活躍する\n                     振付家・ダンサーを迎えて新作の創作・上演および旧作の再創作を行う。", official_url: "http://www.kac.or.jp/program/9443/"},
+  {place_id: 2, user_id: 1, title: "独立25周年記念 第16回 吉浪壽晃 能の会", start_date: "2017-06-11 13:30:00", end_date: nil, information: "", official_url: "http://www.ecample.com/noh-no-kai.html"}
+])
+EventPerformer.create!([
+  {event_program_id: 1, performer_id: 80},
+  {event_program_id: 2, performer_id: 135},
+  {event_program_id: 3, performer_id: 86},
+  {event_program_id: 4, performer_id: 39},
+  {event_program_id: 5, performer_id: 130},
+  {event_program_id: 6, performer_id: 80},
+  {event_program_id: 7, performer_id: 111},
+  {event_program_id: 8, performer_id: 80},
+  {event_program_id: 9, performer_id: 65},
+  {event_program_id: 10, performer_id: 143},
+  {event_program_id: 11, performer_id: 131},
+  {event_program_id: 12, performer_id: 132},
+  {event_program_id: 13, performer_id: 90},
+  {event_program_id: 14, performer_id: 132}
+])
+EventProgram.create!([
+  {event_id: 1, program_id: 1, style: "金剛流", genre: "舞囃子"},
+  {event_id: 1, program_id: 2, style: "大蔵流", genre: "狂言"},
+  {event_id: 1, program_id: 3, style: "金剛流", genre: "能"},
+  {event_id: 2, program_id: 4, style: "観世流", genre: "能"},
+  {event_id: 2, program_id: 2, style: "観世流", genre: "狂言"},
+  {event_id: 2, program_id: 5, style: "金剛流", genre: "能"},
+  {event_id: 3, program_id: 6, style: "金剛流", genre: "能"},
+  {event_id: 3, program_id: 7, style: "金剛流", genre: "狂言"},
+  {event_id: 3, program_id: 8, style: "金剛流", genre: "能"},
+  {event_id: 4, program_id: 9, style: "観世流", genre: "狂言"},
+  {event_id: 4, program_id: 10, style: "大蔵流", genre: "狂言"},
+  {event_id: 4, program_id: 11, style: "観世流", genre: "狂言"},
+  {event_id: 5, program_id: 12, style: "観世流", genre: "能"},
+  {event_id: 5, program_id: 13, style: "観世流", genre: "能"}
+])
 Performer.create!([
   {full_name: "青木 道喜", last_name: "あおき", first_name: "みちよし", style_id: 1},
   {full_name: "浅井 通昭", last_name: "あさい", first_name: "みちあき", style_id: 1},
@@ -144,5 +183,59 @@ Performer.create!([
   {full_name: "松本 薫", last_name: "まつもと", first_name: "かおる", style_id: 11},
   {full_name: "丸石 やすし", last_name: "まるいし", first_name: "やすし", style_id: 11},
   {full_name: "山口 耕道", last_name: "やまぐち", first_name: "こうどう", style_id: 11},
-  {full_name: "山下 守之", last_name: "やました", first_name: "もりゆき", style_id: 11},
+  {full_name: "山下 守之", last_name: "やました", first_name: "もりゆき", style_id: 11}
+])
+Place.create!([
+  {title: "金剛能楽堂", address: "上京区烏丸通一条下る龍前町590", official_url: "http://www.kongou-net.com/"},
+  {title: "京都観世会館", address: "左京区岡崎円勝寺町44", official_url: "http://www.kyoto-kanze.jp/"}
+])
+Program.create!([
+  {title: "船弁慶", category: "五番目", location: nil, shimai: true, duration: 45},
+  {title: "鷺", category: "四番目", location: nil, shimai: true, duration: 20},
+  {title: "卒塔婆小町", category: "三番目", location: nil, shimai: false, duration: 35},
+  {title: "芦刈", category: "二番目", location: nil, shimai: true, duration: 50},
+  {title: "雲林院", category: "四番目", location: nil, shimai: true, duration: 40},
+  {title: "藤", category: "三番目", location: nil, shimai: true, duration: 35},
+  {title: "船橋", category: "二番目", location: nil, shimai: true, duration: 40},
+  {title: "鵜飼", category: "五番目", location: nil, shimai: true, duration: 28},
+  {title: "熊坂", category: "五番目", location: nil, shimai: true, duration: 35},
+  {title: "鶴亀", category: "初番目", location: nil, shimai: true, duration: 9},
+  {title: "求塚", category: "四番目", location: nil, shimai: true, duration: 60},
+  {title: "橋弁慶", category: "四番目", location: nil, shimai: true, duration: 20},
+  {title: "鞍馬天狗", category: "五番目", location: nil, shimai: true, duration: 30}
+])
+Style.create!([
+  {title: "シテ方観世流"},
+  {title: "シテ方金春流"},
+  {title: "シテ方金剛流"},
+  {title: "ワキ方高安流"},
+  {title: "笛方森田流"},
+  {title: "小鼓方幸流"},
+  {title: "小鼓方大倉流"},
+  {title: "大鼓方石井流"},
+  {title: "太鼓方観世流"},
+  {title: "太鼓方金春流"},
+  {title: "狂言方大蔵流"}
+])
+Ticket.create!([
+  {event_id: 1, grade: "正面・脇正面", price: 8000},
+  {event_id: 1, grade: "中正面", price: 5000},
+  {event_id: 1, grade: "学生", price: 2500},
+  {event_id: 2, grade: "SS席", price: 4500},
+  {event_id: 2, grade: "B席", price: 3500},
+  {event_id: 3, grade: "特等席", price: 12500},
+  {event_id: 3, grade: "親子シート", price: 7000},
+  {event_id: 3, grade: "三等席", price: 5000},
+  {event_id: 3, grade: "次世代シート", price: 3000},
+  {event_id: 4, grade: "前売券", price: 2300},
+  {event_id: 4, grade: "当日券", price: 3500},
+  {event_id: 5, grade: "S席(正面)", price: 10000},
+  {event_id: 5, grade: "A席", price: 8000},
+  {event_id: 5, grade: "B席", price: 6000},
+  {event_id: 5, grade: "学生", price: 4000}
+])
+User.create!([
+  {name: "例　学士", email: "example@gmail.com", password_digest: "$2a$10$qvVk.OokG0eZU5XyrOnLz.HEv3wIOTi6Ytet66Dm.2rERHMuXP5aS"},
+  {name: "例　見習", email: "pupil@gmail.com", password_digest: "$2a$10$DykqVtccO/nQs9sEEudsi.3gmtjU3f6cUkbHyTFFq7vx/B4CI9EnO"},
+  {name: "例　師匠", email: "master@gmail.com", password_digest: "$2a$10$vVVfi21agx7wyia39HHGR.pBrRPIZx0eR5RelyyrWOZASv2Z70bUC"}
 ])

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170514013703) do
   create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",      null: false
     t.string   "category",   null: false
+    t.string   "location"
     t.boolean  "shimai",     null: false
     t.integer  "duration",   null: false
     t.datetime "created_at", null: false
