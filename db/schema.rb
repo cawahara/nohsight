@@ -80,11 +80,14 @@ ActiveRecord::Schema.define(version: 20170514013703) do
   end
 
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "event_id"
-    t.string   "grade"
-    t.integer  "price"
+    t.integer  "event_id",   null: false
+    t.string   "grade",      null: false
+    t.integer  "price",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "event_id_", using: :btree
+    t.index ["event_id"], name: "event_id_idx", using: :btree
+    t.index ["event_id"], name: "id_idx", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
