@@ -4,8 +4,9 @@ class PlaceTest < ActiveSupport::TestCase
 
    def setup
       @place = Place.new(
-                         address:            "京都府京都市西京区54321番地",
-                         official_site_url:  "one-place.com"
+                         title:         "京都会館会場",
+                         address:       "京都府京都市西京区54321番地",
+                         official_url:  "one-place.com"
                         )
    end
 

@@ -12,9 +12,9 @@
      <!-- header -->
      <div id="header">
         <div id="header-bar">
-           <h1 id="header-title">Noh-Order(仮)</h1>
+           <h1 id="header-title"><%= link_to "Noh-Order(仮)", dashboard_path %></h1>
            <ul id="header-menus">
-              <li><%= fa_icon "file-text-o" %></li>
+              <li><%= fa_icon"file-text-o" %></li>
               <li><%= fa_icon "search" %></li>
               <li><%= fa_icon "bars" %></li>
            </ul>
@@ -34,7 +34,7 @@
           </div>
           <div id="middle-menus" class="dropdown-menu">
              <ul>
-                <li><a href="#"><%= fa_icon "user" %>プロフィール</a></li>
+                <li><%= link_to profile_path do %><%= fa_icon "user" %>プロフィール<% end %></li>
                 <li><a href="#"><%= fa_icon "calendar" %>カレンダー</a></li>
                 <li><a href="#"><%= fa_icon "home" %>グループ</a></li>
              </ul>

@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 kongo:
-  address:           京都府京都市京都区1234番地
-  official_site_url: kyoto.kongo-ryu.com
+  title:        金剛流の会場
+  address:      京都府京都市京都区1234番地
+  official_url: kyoto.kongo-ryu.com

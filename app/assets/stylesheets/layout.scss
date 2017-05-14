@@ -22,10 +22,6 @@ html {
    a { text-decoration: none; }
 }
 
-body {
-   min-height: 600px;
-}
-
 
 /********************************************
 
@@ -43,10 +39,13 @@ body {
 
       #header-title {
          float: left;
-         font-size: 17px;
-         font-weight: bold;
          margin: 13px;
-         color: #ffffff;
+         a {
+            font-size: 17px;
+            font-weight: bold;
+
+            color: #ffffff;
+         }
       }
       #header-menus {
          float: right;
@@ -137,11 +136,11 @@ body {
 ********************************************/
 
 #footer {
-   min-height: 70px;
+   height: 70px;
    background-color: #556b2f;
    #copyright {
       font-size: 10px;
-      padding: 35px 19px;
+      padding: 35px 19px 0 35px;
       color: #ababab;
    }
 }
@@ -153,7 +152,7 @@ body {
 ********************************************/
 
 #main {
-   min-height: 700px;
+   min-height: 600px;
    padding: 60px 9px 0 9px;
 }
 
@@ -240,6 +239,52 @@ body {
                font-size: 13px;
                margin: 4px 8px;
                line-height: 18px;
+            }
+         }
+      }
+   }
+}
+
+/********************************************
+
+                   Profile
+
+********************************************/
+
+#profile {
+
+   padding-bottom: 29px;
+   border-bottom: 1px solid #cbcbcb;
+
+   h1 {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+   #user-box {
+      overflow: hidden;
+
+      #user-thumbnail {
+         float: left;
+         width: 125px;
+         height: 125px;
+      }
+
+      #user-info {
+         float: left;
+         margin-left: 14px;
+
+         li {
+
+            &:first-child {
+               font-size: 16px;
+               margin-top: 12px;
+            }
+
+            &:nth-child(2) {
+               font-size: 12px;
+               color: #cbcbcb;
+               margin-top: 8px;
             }
          }
       }

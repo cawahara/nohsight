@@ -2,8 +2,9 @@ class Event < ApplicationRecord
    belongs_to :user
    belongs_to :place
    has_many   :event_programs,   dependent: :destroy
+   has_many   :tickets,          dependent: :destroy
 
-   # validates :place_id,    presence: true
+   validates :place_id,    presence: true
    validates :user_id,     presence: true
    validates :title,       presence: true
    validates :start_date,  presence: true

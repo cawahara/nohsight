@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504160221) do
+ActiveRecord::Schema.define(version: 20170514013703) do
 
   create_table "event_performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_program_id", null: false
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170504160221) do
     t.string   "title",                      null: false
     t.datetime "start_date",                 null: false
     t.datetime "end_date"
-    t.string   "ticket"
     t.text     "information",  limit: 65535
     t.string   "official_url"
     t.datetime "created_at",                 null: false
@@ -58,11 +57,11 @@ ActiveRecord::Schema.define(version: 20170504160221) do
   end
 
   create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",             limit: 45, null: false
-    t.string   "address",                      null: false
-    t.string   "official_site_url",            null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "title",        limit: 45, null: false
+    t.string   "address",                 null: false
+    t.string   "official_url",            null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,6 +75,14 @@ ActiveRecord::Schema.define(version: 20170504160221) do
 
   create_table "styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id"
+    t.string   "grade"
+    t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

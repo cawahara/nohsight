@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get '/detail/:id',    to: 'mockups#detail', as: 'detail'
 
+  get '/profile',    to: 'mockups#profile', as: 'profile'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
