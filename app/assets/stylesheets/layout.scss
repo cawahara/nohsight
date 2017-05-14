@@ -147,5 +147,26 @@ header {
 ********************************************/
 
 footer {
+   background-color: #242e2e;
+   padding: 26px 19px;
+   #footer-menu {
+      li {
+            margin-bottom: 9px;
+            a {
+               font-family: sans-serif;
+               color: #a4a4a4;
+               &:hover {
+                  color: #ffffff;
+                  text-decoration: underline;
+               }
+            }
+      }
+   }
 
+   #copyright {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #676767;
+   }
 }
