@@ -10,16 +10,43 @@
 
   <body>
      <!-- header -->
-     <div id="header">
+     <header>
+        <div id="header-menu">
+           <h1>Noh-Event(仮)</h1>
+           <ul>
+              <li><%= fa_icon('file-text-o') %></li>
+              <li><%= fa_icon('search') %></li>
+              <li><%= fa_icon('ellipsis-v') %></li>
+           </ul>
+        </div>
 
-     </div>
+        <div id="dropdown-menu">
+           <ul id="dropdown-request"  class="dropdown-lists">
+             <li><span>公演開催リクエスト(未定、仮)</span></li>
+           </ul>
+           <ul id="dropdown-search" class="dropdown-lists">
+             <li>
+                <form action="#">
+                   <input type="text">
+                   <input type="submit" value="&#xf002;">
+                </form>
+             </li>
+           </ul>
+           <ul id="dropdown-nav"  class="dropdown-lists">
+              <li><%= fa_icon('user') %><span>マイページ</span></li>
+              <li><%= fa_icon('calendar-check-o') %><span>カレンダー</span></li>
+              <li><%= fa_icon('bell-o') %><span>通知</span></li>
+           </ul>
+        </div>
+     </header>
 
     <div id="main">
        <%= yield %>
     </div>
 
-    <div id="footer">
-       
-    </div>
+     <!-- footer -->
+    <footer>
+
+    </footer>
   </body>
 </html>

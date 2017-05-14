@@ -1,12 +1,25 @@
 // Place all the styles related to the Mockups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********************************************
+
+                  Libraries
+
+********************************************/
 @import "font-awesome";
 @font-face {
    font-family: "源ノ明朝";
    src: url("SourceHanSerif-SemiBold.otf");
 }
 
+/********************************************
+
+                  variables
+
+********************************************/
+$font-color: #4a4a4a;
+$main-back:  #5c6700;
 
 /********************************************
 
@@ -29,100 +42,91 @@ html {
 
 ********************************************/
 
-#header {
-   width: 100%;
-   position: fixed;
-
-   #header-bar {
+header {
+   // Manu bar
+   #header-menu {
       overflow: hidden;
-      background-color: #556b2f;
+      background-color: $main-back;
+      padding: 8px 11px;
 
-      #header-title {
+      * { color: #e3e3e3; }
+
+      h1 {
          float: left;
-         margin: 13px;
-         a {
-            font-size: 17px;
-            font-weight: bold;
-
-            color: #ffffff;
-         }
+         margin: 9px 4px;
+         font-size: 20px;
       }
-      #header-menus {
+
+      ul {
          float: right;
+         overflow: hidden;
 
          li {
             display: inline-block;
+            width: 36px;
+            padding: 10px 0;
+            margin-left: 5px;
             text-align: center;
-            padding: 11px 11px;
-            color: #000000;
-            i { font-size: 19px; }
+            * { font-size: 19px; }
 
             &:hover {
-               color: #ffffff;
+               width: 34px;
+               padding: 8px 0;
+               border: 1px solid #ffb366;
+               border-radius: 5px;
+               * { color: #ffb366; }
             }
          }
       }
    }
 
+   // Drop down
+   #dropdown-menu {
 
-   #dropdown-menus {
-      width: 100%;
-      display: block;
+      .dropdown-lists {
+         width: 90%;
+         margin: 0 auto;
+         box-shadow: 0 2px 7px #dbdbdb;
+         li {
+            border-bottom: 1px solid #a4a4a4;
+            border-left: 1px solid #a4a4a4;
+            border-right: 1px solid #a4a4a4;
+            padding: 14px 12px;
 
-      .dropdown-menu {
-         display: none;
-         background-color: #ffffff;
-         border-bottom: 1px solid #dedede;
-         box-shadow: 0 1px 7px -1px #b3b3b3;
-      }
-      #request-form { padding: 14px; }
-
-      #search-form {
-         padding: 14px;
-
-         form {
-            position: relative;
-            input[type=text] {
-               box-sizing: border-box;
-               width: 100%;
-               padding: 5px 7px;
-               border-radius: 4px;
-               border: 1px solid #a9a9a9;
+            * { font-size: 14px }
+            i {
+               width: 16px;
+               text-align: center;
+               margin-right: 8px;
             }
-            input[type=submit] {
-               position: absolute;
-               right: 0;
-               top: 0;
-               box-sizing: border-box;
-               margin-left: -3px;
-               width: 34px;
-               font-family: FontAwesome;
-               padding: 6px 9px;
-               border-right: 1px solid #a9a9a9;
-               border-top: 1px solid #a9a9a9;
-               border-bottom: 1px solid #a9a9a9;
-               border-bottom-right-radius: 4px;
-               border-top-right-radius: 4px;
-               font-size: 15px;
-            }
-         }
-      }
-
-      #middle-menus {
-         ul {
-            li {
-               border-bottom: 1px solid #dedede;
-               padding: 14px;
-               box-shadow: 0 0 0 0;
-               * {
+            form {
+               input[type=text] {
+                  border: 1px solid #989898;
+                  padding: 5px 8px;
+                  border-top-left-radius: 6px;
+                  border-bottom-left-radius: 6px;
                   font-size: 13px;
-                  color: #000000;
-               }
+                  width: calc(100% - 55px);
 
-               i { margin-right: 6px; }
-               &:hover {
-                  background-color: #f1f1f1;
+                  &:hover {
+                     border: 1px solid #ffb366;
+                     box-shadow: -1px 0 3px 2px #ffb366;
+                     outline: none;
+                  }
                }
+               input[type=submit] {
+                  border: 1px solid #989898;
+                  border-top-right-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                  font-family: FontAwesome;
+                  font-size: 18px;
+                  padding: 5px 8px 6px 8px;
+                  margin-left: -5px;
+               }
+            }
+
+            &:hover {
+               background-color: #eeeeee;
             }
          }
       }
@@ -135,158 +139,6 @@ html {
 
 ********************************************/
 
-#footer {
-   height: 70px;
-   background-color: #556b2f;
-   #copyright {
-      font-size: 10px;
-      padding: 35px 19px 0 35px;
-      color: #ababab;
-   }
-}
+footer {
 
-/********************************************
-
-                   Main
-
-********************************************/
-
-#main {
-   min-height: 600px;
-   padding: 60px 9px 0 9px;
-}
-
-
-/********************************************
-
-                   Dashboard
-
-********************************************/
-
-#dashboard {
-
-   #events_all {
-      border: 1px solid #dedede;
-      border-radius: 9px;
-      tr {
-
-         text-align: center;
-         th, td {
-            padding: 4px;
-            border: 1px solid #dedede;
-
-            &:nth-child(1) { width: 60px; }
-            &:nth-child(2) { width: calc(100% - 190px); }
-            &:nth-child(3) { width: 90px; }
-            &:nth-child(4) { width: 40px; }
-         }
-
-         th {
-            min-height: 19px;
-            background-color: #98fb98;
-         }
-         td {
-            padding: 7px 4px;
-         }
-      }
-   }
-}
-
-/********************************************
-
-                   Detail
-
-********************************************/
-
-#detail {
-   #detail-header {
-      h1 {
-         font-size: 22px;
-         font-weight: bold;
-         margin-bottom: 12px;
-      }
-
-      p {
-         font-size: 13px;
-         margin-top: 7px;
-         color: #909090;
-      }
-   }
-
-   #info-box {
-      margin-top: 12px;
-
-      h1 {
-         padding: 5px;
-         font-size: 17px;
-         font-weight: bold;
-         color: #ffffff;
-         background-color: #662200;
-      }
-
-      ul {
-         li {
-            padding: 2px 0 8px 0;
-            border-bottom: 1px solid #e2e2e2;
-
-            h2 {
-               margin: 8px;
-               font-size: 16px;
-               color: #662200;
-            }
-
-            p {
-               font-size: 13px;
-               margin: 4px 8px;
-               line-height: 18px;
-            }
-         }
-      }
-   }
-}
-
-/********************************************
-
-                   Profile
-
-********************************************/
-
-#profile {
-
-   padding-bottom: 29px;
-   border-bottom: 1px solid #cbcbcb;
-
-   h1 {
-      margin-bottom: 16px;
-      font-size: 16px;
-    }
-
-   #user-box {
-      overflow: hidden;
-
-      #user-thumbnail {
-         float: left;
-         width: 125px;
-         height: 125px;
-      }
-
-      #user-info {
-         float: left;
-         margin-left: 14px;
-
-         li {
-
-            &:first-child {
-               font-size: 16px;
-               margin-top: 12px;
-            }
-
-            &:nth-child(2) {
-               font-size: 12px;
-               color: #cbcbcb;
-               margin-top: 8px;
-            }
-         }
-      }
-   }
 }
