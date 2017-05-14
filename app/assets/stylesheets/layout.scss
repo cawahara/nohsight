@@ -29,14 +29,12 @@ $main-back:  #5c6700;
 
 html {
    * {
-      font-size:   12px;
-      font-family: "源ノ明朝"
+      font-size:   13px;
+      font-family: "源ノ明朝";
+      letter-spacing: 1px;
+      line-height: 130%;
    }
    a { text-decoration: none; }
-}
-
-#main{
-   height: 1000px;
 }
 
 /********************************************
@@ -54,6 +52,7 @@ header {
       overflow: hidden;
       background-color: $main-back;
       padding: 8px 11px;
+      box-shadow: 0 2px 7px #dbdbdb;
 
       * { color: #e3e3e3; }
 
@@ -76,6 +75,7 @@ header {
             * { font-size: 19px; }
 
             &:hover {
+               cursor: pointer;
                width: 34px;
                padding: 8px 0;
                border: 1px solid #ffb366;
@@ -93,6 +93,7 @@ header {
          display: none;
          width: 95%;
          margin: 0 auto;
+         background-color: #ffffff;
          box-shadow: 0 2px 7px #dbdbdb;
          li {
             border-bottom: 1px solid #a4a4a4;
@@ -109,7 +110,7 @@ header {
             form {
                input[type=text] {
                   border: 1px solid #989898;
-                  padding: 5px 8px;
+                  padding: 9px 8px;
                   border-top-left-radius: 6px;
                   border-bottom-left-radius: 6px;
                   font-size: 13px;
@@ -176,3 +177,113 @@ footer {
                    Main
 
 ********************************************/
+
+#main {
+   padding: 56px 7px 25px 7px;
+   min-height: 500px;
+
+   #trend-banners {
+      width: 100%;
+      height: 150px;
+      background-color: #565656;
+      text-align: center;
+      p { color :#ffffff; }
+   }
+
+
+}
+
+/********************************************
+
+                   Components
+
+********************************************/
+
+.section-header {
+   background-color: #660000;
+   color: #ffffff;
+   padding: 9px 11px;
+   font-size: 16px;
+}
+
+// Event content
+.event-content {
+   padding: 18px 11px;
+   border-bottom: 1px solid #9d9d9d;
+
+   .content-title {
+      overflow: hidden;
+
+      a {
+         margin-top: 5px;
+         font-size: 19px;
+         color: #3d3d3d;
+         &:hover { text-decoration: underline;; }
+      }
+
+      button {
+         float: right;
+         box-shadow: 0 0 0 0;
+         border: 1px solid #bcbcbc;
+         border-radius: 5px;
+         background-color: #ffffff;
+         padding: 7px 8px;
+         i {
+            color: #9d9d9d;
+            font-size: 17px;
+         }
+
+         &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 0 0;
+            border: 1px solid #ffb366;
+            i { color: #ffb366; }
+         }
+      }
+   }
+
+   .content-info {
+      li {
+         margin-top: 7px;
+         font-size: 14px;
+         color: #8f8f8f;
+      }
+   }
+
+   .content-tickets {
+      margin-top: 7px;
+
+      li {
+         display: inline-block;
+         margin: 8px 16px 0 0;
+      }
+   }
+}
+
+.pager-more {
+   display: block;
+   padding: 19px 0;
+   width: 100%;
+   text-align: center;
+   font-size: 13px;
+   color: #575757;
+   border-bottom: 1px solid #9d9d9d;
+
+   &:hover {
+      background-color: #f0f0f0;
+   }
+}
+
+// News content
+.news-content {
+   padding: 18px 11px;
+   border-bottom: 1px solid #9d9d9d;
+   * { display: block; }
+
+   a {
+      margin-top: 7px;
+      color: #0000e6;
+
+      &:hover { text-decoration: underline; }
+   }
+}
