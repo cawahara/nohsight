@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get '/about'          , to: 'static_pages#about'       , as: 'about'
   get '/help'           , to: 'static_pages#help'        , as: 'help'
   get '/convention'     , to: 'static_pages#convention'  , as: 'convention'
+
+  # Event用ルーティング
+  resources 'events'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
