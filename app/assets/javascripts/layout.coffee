@@ -1,5 +1,4 @@
 $ ->
-
    $(".header-btn").click ->
       drop_num = $(".header-btn").index(this) + 1
       $(".dropdown-lists").hide()
