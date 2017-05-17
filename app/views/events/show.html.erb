@@ -46,7 +46,8 @@
          <li>住所：<%= @event.place.address %></li>
          <li>URL：<%= @event.place.official_url %></li>
       </ul>
-      <!-- TODO: google map APIを使用(会場の位置を地図にして載せる) -->
+      <!-- REVIEW Google Maps Embed APIを使用 -->
+      <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['API_KEY'] %>&q=<%= @event.place.title%>"></iframe>
    </div>
 
    <h1 class="section-header">おすすめ観光地</h1>
