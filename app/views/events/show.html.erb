@@ -40,19 +40,28 @@
       </p>
    </div>
    <div class="event-content">
-      <h2 class="event-header">会場</h2>
+      <h2 class="event-header">会場案内</h2>
+
       <ul class="event-article">
          <li>会場：<%= @event.place.title %></li>
          <li>住所：<%= @event.place.address %></li>
          <li>URL：<%= @event.place.official_url %></li>
       </ul>
-      <!-- REVIEW Google Maps Embed APIを使用 -->
-      <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['API_KEY'] %>&q=<%= @event.place.title%>"></iframe>
+
+      <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
    </div>
 
-   <h1 class="section-header">おすすめ観光地</h1>
-   <!-- TODO: google search系統のAPIを使用(タイトルとurlを取得しリストアップ) -->
+   <h1 class="section-header">演目舞台の関連スポット</h1>
    <div class="event-content">
-
+      <h2 class="event-header"><%= first_program(@event).title %>の周辺スポット</h2>
+      <% get_nearby_locations(@event.place).each do |spot| %>
+      <div class="nearby_location">
+         <%= image_tag "thumbnail.png" %>
+         <ul>
+            <li><%= spot["title"] %></li>
+            <li><%= link_to "サイトURL", spot["official_url"] if !spot["official_url"].nil? %></li>
+         </ul>
+      </div>
+      <% end %>
    </div>
 </div>
