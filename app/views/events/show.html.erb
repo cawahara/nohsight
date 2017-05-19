@@ -56,7 +56,8 @@
       <h2 class="event-header"><%= first_program(@event).title %>の周辺スポット</h2>
       <% get_nearby_locations(@event.place).each do |spot| %>
       <div class="nearby_location">
-         <%= image_tag "thumbnail.png" %>
+         <!-- TODO サムネの表示を可能にするのと、cssをしっかりいじくってレイアウトをとる -->
+         <img src="<%= spot['thumbnail'] %>" >
          <ul>
             <li><%= spot["title"] %></li>
             <li><%= link_to "サイトURL", spot["official_url"] if !spot["official_url"].nil? %></li>
