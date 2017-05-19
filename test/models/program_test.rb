@@ -6,7 +6,6 @@ class ProgramTest < ActiveSupport::TestCase
       @program = Program.new(
                              title:    "例話",
                              category: "一番目",
-                             location: "例得寺",
                              shimai:   true,
                              duration: 40
                             )
@@ -23,11 +22,6 @@ class ProgramTest < ActiveSupport::TestCase
 
    test "category should be present" do
       @program.category = ""
-      assert_not @program.valid?
-   end
-
-   test "location should be present" do
-      @program.location = ""
       assert_not @program.valid?
    end
 

@@ -17,7 +17,7 @@ module EventsHelper
                   }
 
       # 緯度・経度を基に周辺スポットを3つまで取得
-      place_api_uri = URI.parse("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{geo_info['latitude']},#{geo_info['longitude']}&radius=1000&keyword=temple&key=#{ENV['GOOGLE_API_KEY']}")
+      place_api_uri = URI.parse("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{geo_info['latitude']},#{geo_info['longitude']}&radius=700&keyword=temple&key=#{ENV['GOOGLE_API_KEY']}")
       place_json = JSON.parse(Net::HTTP.get(place_api_uri))
 
       # Google Custom Search API でurlを入手

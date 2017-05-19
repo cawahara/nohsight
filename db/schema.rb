@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20170514013703) do
   end
 
   create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "place_id",   null: false
     t.string   "title",      null: false
     t.string   "category",   null: false
-    t.string   "location"
     t.boolean  "shimai",     null: false
     t.integer  "duration",   null: false
     t.datetime "created_at", null: false
@@ -100,11 +100,4 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.index ["email"], name: "email_UNIQUE", unique: true, using: :btree
   end
 
-  add_foreign_key "event_performers", "event_programs", name: "event_program_id"
-  add_foreign_key "event_performers", "performers", name: "performer_id"
-  add_foreign_key "event_programs", "events", name: "event_id"
-  add_foreign_key "event_programs", "programs", name: "program_id"
-  add_foreign_key "events", "places", name: "place_id"
-  add_foreign_key "events", "users", name: "user_id"
-  add_foreign_key "performers", "styles", name: "style_id"
 end
