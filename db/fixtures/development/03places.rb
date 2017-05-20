@@ -1523,3 +1523,158 @@ Place.seed do |s|
 	s.address = 'Japan, 〒518-1417 Mie-ken, Iga-shi, Tominaga, １２３８'
 	s.official_url = 'http://www.shindaibutsu.or.jp/'
 end
+Place.seed do |s|
+	s.id = 231
+	s.title = '"阿漕ヶ浦"'
+	s.address = 'Japan, 〒319-1112 Ibaraki-ken, Naka-gun, Tōkai-mura, Muramatsu, ３１９−１１１２'
+end
+
+Place.seed do |s|
+	s.id = 232
+	s.title = '"摂津国分寺"'
+	s.address = 'Japan, 〒543-0044 Ōsaka-fu, Ōsaka-shi, Tennōji-ku, Kokubuchō, １４ 〒543-0044 国分 公園 内'
+	s.official_url = 'http://www.city.osaka.lg.jp/kensetsu/page/0000009761.html'
+end
+
+Place.seed do |s|
+	s.id = 233
+	s.title = '"飛鳥川"'
+	s.address = 'Asuka River, Nara Prefecture, Japan'
+end
+
+Place.seed do |s|
+	s.id = 234
+	s.title = '"嵐山"'
+	s.address = 'Arashiyama Genrokuzancho, Ukyo Ward, Kyoto, Kyoto Prefecture 616-0007, Japan'
+	s.official_url = 'http://kanko.city.kyoto.lg.jp/detail.php?InforKindCode=4&ManageCode=6000002'
+end
+
+Place.seed do |s|
+	s.id = 235
+	s.title = '"淡路島"'
+	s.address = 'Awaji Island, Hyogo Prefecture, Japan'
+end
+
+Place.seed do |s|
+	s.id = 236
+	s.title = '"延暦寺"'
+	s.address = 'Japan, 〒520-0116 Shiga-ken, Ōtsu-shi, Sakamotohonmachi, ４２２０'
+	s.official_url = 'http://www.hieizan.or.jp/'
+end
+
+Place.seed do |s|
+	s.id = 237
+	s.title = '"雲林院"'
+	s.address = 'Japan, 〒603-8214 Kyōto-fu, Kyōto-shi, Kita-ku, Murasakino Unrininchō, 紫野雲林院町２３'
+end
+
+Place.seed do |s|
+	s.id = 238
+	s.title = '"太宰府天満宮"'
+	s.address = 'Japan, 〒818-0117 Fukuoka-ken, Dazaifu-shi, Saifu, 4 Chome−７−7番1号'
+	s.official_url = 'http://www.dazaifutenmangu.or.jp/'
+end
+
+Place.seed do |s|
+	s.id = 239
+	s.title = '"大江山"'
+	s.address = 'Mt. Oe, Yoza, Yosano, Yosa District, Kyoto Prefecture 629-2423, Japan'
+end
+
+Place.seed do |s|
+	s.id = 240
+	s.title = '"出雲大社"'
+	s.address = 'Japan, 〒699-0701 Shimane-ken, Izumo-shi, Taishachō Kizukihigashi, １９５'
+	s.official_url = 'http://www.izumooyashiro.or.jp/'
+end
+
+Place.seed do |s|
+	s.id = 241
+	s.title = '"善光寺"'
+	s.address = 'Zenkō-ji Temple, Motoyoshichō-４９１ Nagano, Nagano-shi, Nagano-ken 380-0851, Japan'
+end
+
+Place.seed do |s|
+	s.id = 242
+	s.title = '"上賀茂神社"'
+	s.address = 'Japan, 〒603-8047 Kyōto-fu, Kyōto-shi, Kita-ku, Kamigamo Motoyama, ３３９'
+	s.official_url = 'http://www.kamigamojinja.jp/'
+end
+
+Place.seed do |s|
+	s.id = 243
+	s.title = '"祇王寺"'
+	s.address = 'Japan, 〒616-8435 Kyōto-fu, Kyōto-shi, Ukyō-ku, Sagatoriimoto Kozakachō, 32'
+	s.official_url = 'http://www.giouji.or.jp/'
+end
+
+Place.seed do |s|
+	s.id = 244
+	s.title = '"鞍馬山"'
+	s.address = 'Mount Kurama, Sakyo Ward, Kyoto, Kyoto Prefecture, Japan'
+end
+
+Place.seed do |s|
+	s.id = 245
+	s.title = '"善通寺"'
+	s.address = 'Japan, 〒765-0003 Kagawa-ken, Zentsūji-shi, Zentsūjichō, 3 Chome−３−１'
+	s.official_url = 'http://www.zentsuji.com/'
+end
+
+Place.seed do |s|
+	s.id = 246
+	s.title = '"神泉苑"'
+	s.address = 'Shinsenencho, Nakagyo Ward, Kyoto, Kyoto Prefecture 604-8371, Japan'
+end
+
+Place.seed do |s|
+	s.id = 247
+	s.title = '"桜井駅跡"'
+	s.address = 'Japan, 〒618−0022 Ōsaka-fu, Mishima-gun, Shimamoto-chō, Sakurai, 1 Chome−３ 島本町桜井１丁目３'
+	s.official_url = 'http://www.shimamotocho.jp/gyousei/kakuka/tosisouzoubu/nigiwaisouzouka/kankou/midokoro/1404370090814.html'
+end
+
+Place.seed do |s|
+	s.id = 248
+	s.title = '"琵琶湖"'
+	s.address = 'Lake Biwa, Shiga Prefecture, Japan'
+end
+
+Place.seed do |s|
+	s.id = 249
+	s.title = '"嵯峨野"'
+	s.address = 'Japan, 〒616-8385 Kyōto-fu, Kyōto-shi, Ukyō-ku, Sagatenryūji Susukinobabachō, ４５'
+	s.official_url = 'http://www.kyoto-sagano.jp/'
+end
+
+Place.seed do |s|
+	s.id = 250
+	s.title = '"五条"'
+	s.address = 'Gojo, Dazaifu, Fukuoka Prefecture 818-0125, Japan'
+end
+
+Place.seed do |s|
+	s.id = 251
+	s.title = '"岩清水八幡宮"'
+	s.address = 'Japan, 〒614-8005 Kyōto-fu, Yawata-shi, Yawatatakabō, 30'
+	s.official_url = 'http://www.iwashimizu.or.jp/'
+end
+
+Place.seed do |s|
+	s.id = 252
+	s.title = '"比叡山"'
+	s.address = 'Mount Hiei, Yaseakimotocho, Sakyo Ward, Kyoto, Kyoto Prefecture 601-1252, Japan'
+end
+
+Place.seed do |s|
+	s.id = 253
+	s.title = '"竹生島"'
+	s.address = 'Chikubu Island, Hayazakicho, Nagahama, Shiga Prefecture 526-0124, Japan'
+end
+
+Place.seed do |s|
+	s.id = 254
+	s.title = '"二俣城"'
+	s.address = 'Futamatacho Futamata, Tenryu Ward, Hamamatsu, Shizuoka Prefecture 431-3314, Japan'
+	s.official_url = 'http://www.jp-history.info/castle/5969.html'
+end
