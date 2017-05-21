@@ -333,3 +333,15 @@ footer {
    background-color: $box-danger;
    color: $font-danger;
 }
+
+/********************************************
+
+               Error Messages
+
+********************************************/
+.field_with_errors {
+    input {
+      border: 1px solid $font-danger !important;
+      &:focus { border: 1px solid #989898 !important; }
+   }
+}

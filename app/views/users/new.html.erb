@@ -3,7 +3,9 @@
    <div class="event-overall">
       <h1>新規会員登録</h1>
    </div>
-   <%= render '/shared/error_messages' %>
+
+   <%= form_for(@user) do |f| %>
+   <% err_msg = f.object.errors %>
    <div class="form-content">
       <div class="form-header">
          <h2 class="form-header">1.ユーザー情報を入力</h2>
@@ -12,19 +14,19 @@
       <div class="form-section">
          <div class="form-article">
             <label>ユーザー名</label><span>必須</span>
-            <input type="text">
+            <%= f.text_field :name, placeholder: err_msg.full_messages_for(:name)[0] %>
          </div>
          <div class="form-article">
             <label>Eメールアドレス</label><span>必須</span>
-            <input type="text">
+            <%= f.text_field :email, placeholder: err_msg.full_messages_for(:email)[0] %>
          </div>
          <div class="form-article">
             <label>パスワード</label><span>必須</span>
-            <input type="password">
+            <%= f.password_field :password, placeholder: err_msg.full_messages_for(:password)[0] %>
          </div>
          <div class="form-article">
             <label>パスワード(確認)</label><span>必須</span>
-            <input type="password">
+            <%= f.password_field :password_confirmation, placeholder: err_msg.full_messages_for(:password_confirmation)[0] %>
          </div>
       </div>
    </div>
@@ -54,4 +56,5 @@
       </div>
    </div>
    <input class="form-submit" type="submit" value="新規登録する">
+   <% end %>
 </div>
