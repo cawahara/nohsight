@@ -29,7 +29,7 @@
       <h2 class="event-header">チケット料金</h2>
       <ul class="event-article">
          <% @event.tickets.each do |ticket| %>
-            <li><%= ticket.grade %>：<%= ticket.price %></li>
+            <li><%= ticket.grade %>：<%= ticket.price %>円</li>
          <% end %>
       </ul>
    </div>
@@ -41,28 +41,33 @@
    </div>
    <div class="event-content">
       <h2 class="event-header">会場案内</h2>
-
       <ul class="event-article">
          <li>会場：<%= @event.place.title %></li>
          <li>住所：<%= @event.place.address %></li>
-         <li>URL：<%= @event.place.official_url %></li>
+         <li>URL：<%= link_to @event.place.official_url %></li>
       </ul>
-
       <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
    </div>
 
+
    <h1 class="section-header">演目舞台の関連スポット</h1>
+   <% @event.event_programs.each do |ev_program| %>
    <div class="event-content">
-      <h2 class="event-header"><%= first_program(@event).title %>の周辺スポット</h2>
-      <% get_nearby_locations(@event.place).each do |spot| %>
-      <div class="nearby_location">
-         <!-- TODO サムネの表示を可能にするのと、cssをしっかりいじくってレイアウトをとる -->
-         <img src="<%= spot['thumbnail'] %>" >
-         <ul>
-            <li><%= spot["title"] %></li>
-            <li><%= link_to "サイトURL", spot["official_url"] if !spot["official_url"].nil? %></li>
-         </ul>
-      </div>
+      <h2 class="event-header"><%= ev_program.program.title %>の周辺スポット</h2>
+      <% nearby_locations = get_nearby_locations(ev_program.program.place) %>
+      <% if nearby_locations.count > 0 %>
+         <% nearby_locations.each do |spot| %>
+         <div class="nearby_location">
+            <img src="<%= spot['thumbnail'] %>" >
+            <ul>
+               <li><%= spot["title"] %></li>
+               <li><%= link_to spot["official_url"] if !spot["official_url"].nil? %></li>
+            </ul>
+         </div>
+         <% end %>
+      <% else %>
+         <h2>周辺スポットはありません。</h2>
       <% end %>
    </div>
+   <% end %>
 </div>
