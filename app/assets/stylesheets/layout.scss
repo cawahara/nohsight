@@ -340,6 +340,7 @@ footer {
 
 ********************************************/
 .field_with_errors {
+   display: inline;
     input {
       border: 1px solid $font-danger !important;
       &:focus { border: 1px solid #989898 !important; }

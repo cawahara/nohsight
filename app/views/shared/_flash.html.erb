@@ -1,3 +1,5 @@
-<p id="flash" class="flash-success">
-   ようこそ、Noh-Eventへ!
+<% flash.each do |type, msg| %>
+<p id="flash" class="flash-<%= type %>">
+   <%= msg %>
 </p>
+<% end %>

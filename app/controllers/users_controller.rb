@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       if @user.save
          redirect_to(dashboard_url)
       else
+         flash[:danger] = "入力情報に不備があります。"
          render 'users/new'
       end
    end
