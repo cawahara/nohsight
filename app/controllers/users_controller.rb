@@ -5,14 +5,17 @@ class UsersController < ApplicationController
    end
 
    def show
+      @user = User.find(params[:id])
    end
 
    def edit
+      @user = User.find(params[:id])
    end
 
    def create
       @user = User.new(user_params)
       if @user.save
+         flash[:success] = "ユーザー登録が完了しました"
          redirect_to(dashboard_url)
       else
          flash[:danger] = "入力情報に不備があります。"
