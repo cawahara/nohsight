@@ -1,10 +1,5 @@
 module EventsHelper
 
-   def first_program(event)
-      program = event.event_programs.first.program
-      return program
-   end
-
    # Location周辺のスポット情報を取得
    def get_nearby_locations(location)
       begin
