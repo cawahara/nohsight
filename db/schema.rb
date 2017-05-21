@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.integer  "performer_id",     null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["event_program_id"], name: "event_program_id_idx", using: :btree
-    t.index ["performer_id"], name: "performer_id_idx", using: :btree
+    t.index ["event_program_id"], name: "ev_performer_to_ev_program_id_idx", using: :btree
+    t.index ["performer_id"], name: "ev_performer_to_performer_id_idx", using: :btree
   end
 
   create_table "event_programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.string   "genre",      limit: 45, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["event_id"], name: "id_idx", using: :btree
-    t.index ["program_id"], name: "program_id_idx", using: :btree
+    t.index ["event_id"], name: "ev_program_to_event_idx", using: :btree
+    t.index ["program_id"], name: "ev_program_to_program_id_idx", using: :btree
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.string   "official_url"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["place_id"], name: "place_id_idx", using: :btree
-    t.index ["user_id"], name: "id_idx", using: :btree
+    t.index ["place_id"], name: "event_to_place_id_idx", using: :btree
+    t.index ["user_id"], name: "event_to_user_idx", using: :btree
   end
 
   create_table "performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.integer  "style_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["style_id"], name: "style_id_idx", using: :btree
+    t.index ["style_id"], name: "performer_to_style_id_idx", using: :btree
   end
 
   create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.integer  "duration",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "program_to_place_idx", using: :btree
   end
 
   create_table "styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,9 +87,7 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.integer  "price",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "event_id_", using: :btree
-    t.index ["event_id"], name: "event_id_idx", using: :btree
-    t.index ["event_id"], name: "id_idx", using: :btree
+    t.index ["event_id"], name: "ticket_to_event_id_idx", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -100,4 +99,13 @@ ActiveRecord::Schema.define(version: 20170514013703) do
     t.index ["email"], name: "email_UNIQUE", unique: true, using: :btree
   end
 
+  add_foreign_key "event_performers", "event_programs", name: "ev_performer_to_ev_program_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "event_performers", "performers", name: "ev_performer_to_performer_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "event_programs", "events", name: "ev_program_to_event_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "event_programs", "programs", name: "ev_program_to_program_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "events", "places", name: "event_to_place_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "events", "users", name: "event_to_user_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "performers", "styles", name: "performer_to_style_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "programs", "places", name: "program_to_place_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "tickets", "events", name: "ticket_to_event_id", on_update: :cascade, on_delete: :cascade
 end
