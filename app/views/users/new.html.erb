@@ -51,10 +51,10 @@
       </div>
       <div class="form-section">
          <div class="form-article">
-            <input type="checkbox" value="1"><label><%= link_to "利用規約", convention_path, :target => '_blank' %>に同意する</label>
+            <%= f.check_box :agreement, as: :boolean, checked: false %><label><%= link_to "利用規約", convention_path, :target => '_blank' %>に同意する</label>
          </div>
       </div>
    </div>
-   <input class="form-submit" type="submit" value="新規登録する">
+   <%= f.submit "新規登録する", class: 'form-submit' %>
    <% end %>
 </div>
