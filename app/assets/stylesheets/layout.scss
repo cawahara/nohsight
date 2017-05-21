@@ -21,6 +21,16 @@
 $font-color: #4a4a4a;
 $main-back:  #5c6700;
 
+// Component color
+$box-success: #99e699;
+   $font-success: #248f24;
+$box-info: #80dfff;
+   $font-info: #0086b3;
+$box-warning: #ffd480;
+   $font-warning: #b36b00;
+$box-danger: #ff8080;
+   $font-danger: #b30000;
+
 /********************************************
 
                   MainFrame
@@ -288,4 +298,38 @@ footer {
 
       &:hover { text-decoration: underline; }
    }
+}
+
+/********************************************
+
+                   Flash
+
+********************************************/
+#flash {
+   font-family: "ヒラギノ明朝 ProN W6";
+   font-weight: bold;
+   padding: 13px;
+   margin: 12px 0;
+   border-radius: 7px;
+   font-size: 14px;
+   &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+   }
+}
+.flash-success {
+   background-color: $box-success;
+   color: $font-success;
+}
+.flash-info {
+   background-color: $box-info;
+   color: $font-info;
+}
+.flash-warning {
+   background-color: $box-warning;
+   color: $font-warning;
+}
+.flash-danger {
+   background-color: $box-danger;
+   color: $font-danger;
 }
