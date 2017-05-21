@@ -122,6 +122,18 @@
          &:last-child { padding-bottom: 21px; }
       }
    }
+}
 
-
+.form-submit {
+   font-family: "ヒラギノ明朝 ProN W6";
+   font-size: 15px;
+   font-weight: bold;
+   margin: 22px auto;
+   box-sizing: border-box;
+   width: 100%;
+   padding: 6px 25px;
+   border-radius: 6px;
+   border: 1px solid #454545;
+   background-color: #e62e00;
+   color: #ffffff;
 }
