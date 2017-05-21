@@ -2,13 +2,20 @@
 <header>
   <div id="header-menu">
      <h1><%= link_to "Noh-Event(仮)", dashboard_path %></h1>
+     <% if is_logged? %>
      <ul>
          <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('search') %></li>
          <li class="header-btn"><%= fa_icon('ellipsis-v') %></li>
      </ul>
+     <% else %>
+     <ul>
+        <li class="header-btn"><%= link_to fa_icon('sign-in'), login_path %></li>
+     </ul>
+     <% end %>
   </div>
 
+   <% if is_logged? %>
   <div id="dropdown-menu">
      <ul id="dropdown-request"  class="dropdown-lists">
        <li><span>公演開催リクエスト(未定、仮)</span></li>
@@ -27,4 +34,5 @@
          <li><%= fa_icon('bell-o') %><span>通知</span></li>
      </ul>
   </div>
+  <% end %>
 </header>
