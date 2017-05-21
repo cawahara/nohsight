@@ -1,0 +1,41 @@
+<div class="form-content">
+   <div class="form-header">
+      <h2 class="form-header">1.ユーザー情報を入力</h2>
+      <button><%= fa_icon('angle-down') %></button>
+   </div>
+   <div class="form-section">
+      <div class="form-article">
+         <label>ユーザー名</label><span>必須</span>
+         <%= f.text_field :name %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
+      </div>
+      <div class="form-article">
+         <label>Eメールアドレス</label><span>必須</span>
+         <%= f.text_field :email %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+      </div>
+      <div class="form-article">
+         <label>パスワード</label><span>必須</span>
+         <%= f.password_field :password%>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>
+      </div>
+      <div class="form-article">
+         <label>パスワード(確認)</label><span>必須</span>
+         <%= f.password_field :password_confirmation%>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password_confirmation)[0] %></p>
+      </div>
+   </div>
+</div>
+
+<div class="form-content">
+   <div class="form-header">
+      <h2 class="form-header">2.SNSとの連携</h2>
+      <button><%= fa_icon('angle-down') %></button>
+   </div>
+   <!-- TODO: アカウントの連携、メールによるユーザ認証などはある程度開発が進んでから -->
+   <div class="form-section">
+      <div class="form-article">
+         <p>ある程度開発が進んだら製作</p>
+      </div>
+   </div>
+</div>
