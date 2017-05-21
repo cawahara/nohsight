@@ -346,3 +346,9 @@ footer {
       &:focus { border: 1px solid #989898 !important; }
    }
 }
+
+.error-msg {
+   margin-top: 7px;
+   color: $font-danger;
+   text-decoration: underline;
+}
