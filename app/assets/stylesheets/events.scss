@@ -67,7 +67,7 @@
    }
 }
 
-// New
+// Edit
 .form-content {
    background-color: #f5f5ff;
 
@@ -136,4 +136,38 @@
    border: 1px solid #454545;
    background-color: #e62e00;
    color: #ffffff;
+}
+
+
+// New
+#event-new {
+   h1 {
+      font-size: 16px;
+      margin-bottom: 9px;
+   }
+   form {
+      input[type=text] {
+         border: 1px solid #989898;
+         padding: 9px 8px;
+         border-top-left-radius: 6px;
+         border-bottom-left-radius: 6px;
+         font-size: 13px;
+         width: calc(100% - 55px);
+
+         &:hover {
+            border: 1px solid #ffb366;
+            box-shadow: -1px 0 3px 2px #ffb366;
+            outline: none;
+         }
+      }
+      input[type=submit] {
+         border: 1px solid #989898;
+         border-top-right-radius: 5px;
+         border-bottom-right-radius: 5px;
+         font-family: FontAwesome;
+         font-size: 18px;
+         padding: 5px 8px 6px 8px;
+         margin-left: -5px;
+      }
+   }
 }

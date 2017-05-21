@@ -1,0 +1,71 @@
+<div id="event-edit">
+   <div class="event-overall">
+      <h1>公演情報の編集</h1>
+   </div>
+
+
+   <!--<%= form_for(@event) do |f| %> -->
+      <!-- TODO: 暫定ユーザーは入力項目に入れているが、セッション機能を作り、項目を排除する必要あり -->
+      <div class="form-content">
+         <div class="form-header">
+            <h2 class="form-header">基本情報の編集</h2>
+            <button><%= fa_icon('angle-down') %></button>
+         </div>
+
+         <div class="form-section">
+            <div class="form-article">
+               <label>公演名</label><span>必須</span>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>開始時間</label><span>必須</span>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>終了時間</label>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>説明</label>
+               <textarea></textarea>
+            </div>
+         </div>
+
+      </div>
+      <div class="form-content">
+         <div class="form-header">
+            <h2 class="form-header">会場の編集</h2>
+            <button><%= fa_icon('angle-down') %></button>
+         </div>
+         <div class="form-section">
+            <div class="form-article">
+               <label>会場名</label><span>必須</span>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>住所</label>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>サイトURL</label>
+               <input type="text">
+            </div>
+         </div>
+
+      </div>
+      <div class="form-content">
+         <div class="form-header">
+            <h2 class="form-header">演目の編集</h2>
+            <button><%= fa_icon('angle-down') %></button>
+         </div>
+      </div>
+      <div class="form-content">
+         <div class="form-header">
+            <h2 class="form-header">料金の編集</h2>
+            <button><%= fa_icon('angle-down') %></button>
+         </div>
+      </div>
+
+      <input class="form-submit" type="submit" value="保存">
+   <!--<% end %> -->
+</div>
