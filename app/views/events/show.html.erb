@@ -1,4 +1,5 @@
 <div id="event-show">
+   <!-- イベント概要 -->
    <div class="event-overall">
       <h1><%= @event.title %></h1>
       <ul>
@@ -6,6 +7,8 @@
          <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
       </ul>
    </div>
+
+   <!-- イベント基本情報 -->
    <h1 class="section-header">基本情報</h1>
    <div class="event-content">
       <h2 class="event-header">演目</h2>
@@ -46,11 +49,13 @@
          <li>住所：<%= @event.place.address %></li>
          <li>URL：<%= link_to @event.place.official_url %></li>
       </ul>
+
+      <!-- 会場場所の地図 -->
       <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
    </div>
 
-
-   <h1 class="section-header">演目舞台の関連スポット</h1>
+   <!-- 演目舞台の周辺スポット紹介 -->
+   <h1 class="section-header">演目舞台の周辺スポット</h1>
    <% @event.event_programs.each do |ev_program| %>
    <div class="event-content">
       <h2 class="event-header"><%= ev_program.program.title %>の周辺スポット</h2>
@@ -66,7 +71,7 @@
          </div>
          <% end %>
       <% else %>
-         <h2>周辺スポットはありません。</h2>
+         <h2 class="no-event">周辺スポットはありません。</h2>
       <% end %>
    </div>
    <% end %>

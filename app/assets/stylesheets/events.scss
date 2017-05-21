@@ -39,9 +39,16 @@
    min-height: 350px;
 }
 
+.no-event {
+   margin-top: 15px;
+   color: #787878;
+}
+
 .nearby_location {
    overflow: hidden;
-   margin-top: 19px;
+   margin-top: 9px;
+   border: 1px solid #909090;
+   border-radius: 6px;
    img {
       float: left;
       width: 80px;
@@ -50,9 +57,13 @@
 
    ul {
       float: right;
-      width: calc(100% - 100px);
+      width: calc(100% - 95px);
+      padding: 6px;
       li {
+         word-break: break-all;
          margin-bottom: 9px;
       }
    }
+
+
 }

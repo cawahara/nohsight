@@ -32,6 +32,8 @@ module EventsHelper
                             "official_url" => place_url['result']['website']
                            }
                rec_places << rec_place
+            else
+               break
             end
          end
 
