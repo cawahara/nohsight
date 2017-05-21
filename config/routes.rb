@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/help'           , to: 'static_pages#help'        , as: 'help'
   get '/convention'     , to: 'static_pages#convention'  , as: 'convention'
 
+  # User用ルーティング
+  resources 'users'
+
   # Event用ルーティング
   resources 'events'
 

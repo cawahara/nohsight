@@ -1,0 +1,56 @@
+<div id="user-new">
+   <div class="event-overall">
+      <h1>新規会員登録</h1>
+   </div>
+
+   <div class="form-content">
+      <div class="form-header">
+         <h2 class="form-header">1.ユーザー情報を入力</h2>
+         <button><%= fa_icon('angle-down') %></button>
+      </div>
+      <div class="form-section">
+         <div class="form-article">
+            <label>ユーザー名</label><span>必須</span>
+            <input type="text">
+         </div>
+         <div class="form-article">
+            <label>Eメールアドレス</label><span>必須</span>
+            <input type="text">
+         </div>
+         <div class="form-article">
+            <label>パスワード</label><span>必須</span>
+            <input type="password">
+         </div>
+         <div class="form-article">
+            <label>パスワード(確認)</label><span>必須</span>
+            <input type="password">
+         </div>
+      </div>
+   </div>
+
+   <div class="form-content">
+      <div class="form-header">
+         <h2 class="form-header">2.SNSとの連携</h2>
+         <button><%= fa_icon('angle-down') %></button>
+      </div>
+      <!-- TODO: アカウントの連携、メールによるユーザ認証などはある程度開発が進んでから -->
+      <div class="form-section">
+         <div class="form-article">
+            <p>ある程度開発が進んだら製作</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="form-content">
+      <div class="form-header">
+         <h2 class="form-header">3.利用規約</h2>
+         <button><%= fa_icon('angle-down') %></button>
+      </div>
+      <div class="form-section">
+         <div class="form-article">
+            <input type="checkbox" value="1"><label><%= link_to "利用規約", convention_path, :target => '_blank' %>に同意する</label>
+         </div>
+      </div>
+   </div>
+   <input class="form-submit" type="submit" value="新規登録する">
+</div>
