@@ -9,7 +9,8 @@ class EventTest < ActiveSupport::TestCase
                          user_id:    @user.id,
                          place_id:   @place.id,
                          title:      "例えて習おう能楽の世界",
-                         start_date: Date.today
+                         start_date: Date.today,
+                         published:  true
                         )
    end
 
@@ -39,9 +40,8 @@ class EventTest < ActiveSupport::TestCase
       assert_not @event.valid?
    end
 
-   test "start_date should be present" do
-      @event.start_date = ""
+   test "published should be present" do
+      @event.published = ""
       assert_not @event.valid?
    end
-
 end

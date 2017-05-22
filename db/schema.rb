@@ -33,13 +33,14 @@ ActiveRecord::Schema.define(version: 20170514013703) do
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "place_id",                   null: false
+    t.integer  "place_id"
     t.integer  "user_id",                    null: false
     t.string   "title",                      null: false
-    t.datetime "start_date",                 null: false
+    t.datetime "start_date"
     t.datetime "end_date"
     t.text     "information",  limit: 65535
     t.string   "official_url"
+    t.boolean  "published",                  null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["place_id"], name: "event_to_place_id_idx", using: :btree

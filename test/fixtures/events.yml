@@ -5,3 +5,4 @@ spring:
    place_id:      1
    title:      春の能楽公演会
    start_date: <%= Date.today %>
+   published: true

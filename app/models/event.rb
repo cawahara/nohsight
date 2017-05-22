@@ -4,8 +4,9 @@ class Event < ApplicationRecord
    has_many   :event_programs,   dependent: :destroy
    has_many   :tickets,          dependent: :destroy
 
-   validates :place_id,    presence: true
    validates :user_id,     presence: true
    validates :title,       presence: true
-   validates :start_date,  presence: true
+   validates :published,   presence: true
+
+   # TODO: イベント開催時、特定の項目を満たしていないとサイト上に公開できない仕様にする
 end

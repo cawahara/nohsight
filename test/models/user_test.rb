@@ -7,7 +7,8 @@ class UserTest < ActiveSupport::TestCase
                          name:                   "例学　雅人",
                          email:                  "example@gmail.com",
                          password:               "password",
-                         password_confirmation:  "password"
+                         password_confirmation:  "password",
+                         agreement:              true
                         )
    end
 
@@ -56,5 +57,10 @@ class UserTest < ActiveSupport::TestCase
        assert @user.valid?
        @user.password = @user.password_confirmation = "p" * 3
        assert_not @user.valid?
+    end
+
+    test "should agree when creating a new user" do
+      @user.agreement = false
+      assert_not @user.valid?
     end
 end
