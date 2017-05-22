@@ -8,6 +8,7 @@ Event.seed do |s|
                      そのシテの相手役を務めるワキ方と、笛・小鼓・大鼓・太鼓を演奏する囃子方、
                      そして狂言方があります。シテとワキに連れられて出てくる役をツレ・ワキツレと呼びます。"
    s.official_url = "http://www.example.com/index.html"
+   s.published    = true
 end
 
 Event.seed do |s|
@@ -18,6 +19,7 @@ Event.seed do |s|
    s.start_date   = DateTime.new(2017, 5, 28, 11, 00)
    s.information  = ""
    s.official_url = "http://www.kanzei.com/5th-kai.html"
+   s.published    = true
 end
 
 Event.seed do |s|
@@ -32,6 +34,7 @@ Event.seed do |s|
                      皆様のご入会を心よりお待ち申し上げております。
                      なお4月は特別公演として東本願寺能舞台にて開催いたします。"
    s.official_url = "http://www.example.com/regular.html"
+   s.published    = true
 end
 
 Event.seed do |s|
@@ -44,6 +47,7 @@ Event.seed do |s|
                      京都芸術センターの創作環境を活かし、コンテンポラリーダンス表現の最前線で活躍する
                      振付家・ダンサーを迎えて新作の創作・上演および旧作の再創作を行う。"
    s.official_url = "http://www.kac.or.jp/program/9443/"
+   s.published    = true
 end
 
 Event.seed do |s|
@@ -54,4 +58,5 @@ Event.seed do |s|
    s.start_date   = DateTime.new(2017, 6, 11, 13, 30)
    s.information  = ""
    s.official_url = "http://www.ecample.com/noh-no-kai.html"
+   s.published    = true
 end

@@ -40,7 +40,9 @@ class EventTest < ActiveSupport::TestCase
       assert_not @event.valid?
    end
 
-   test "published should be present" do
+   test "published should be boolean" do
+      @event.published = false
+      assert @event.valid?
       @event.published = ""
       assert_not @event.valid?
    end

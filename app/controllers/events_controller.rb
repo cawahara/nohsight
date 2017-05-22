@@ -13,6 +13,15 @@ class EventsController < ApplicationController
    end
 
    def create
+      @event = current_user.events.build(event_params)
+      @event.published = false
+      if @event.save
+         flash[:success] = "新しいイベントを記録しました。編集して開催しましょう。"
+         redirect_to(edit_event_url(@event))
+      else
+         flash[:danger] = "公演名が入力されていません"
+         render 'events/new'
+      end
    end
 
    def update
@@ -28,7 +37,8 @@ class EventsController < ApplicationController
                                        :start_date,
                                        :end_date,
                                        :information,
-                                       :official_url
+                                       :official_url,
+                                       :published
                                        )
       end
 end

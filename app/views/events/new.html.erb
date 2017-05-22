@@ -1,7 +1,9 @@
 <div id="event-new">
    <h1>新しい公演を主催</h1>
-   <form action="#">
-      <input type="text" placeholder="公演名を入力">
-      <input type="submit" value="&#xf067;">
-   </form>
+   <%= form_for(@event) do |f| %>
+      <%= f.text_field :title, placeholder: "公演名を入力" %>
+      <%= button_tag(class: "event-new-submit") do %>
+        <%= content_tag :i, nil, class: "fa fa-plus" %>
+      <% end %>
+   <% end %>
 </div>
