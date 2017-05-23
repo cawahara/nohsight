@@ -24,6 +24,7 @@ gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主に�
 gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
 gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 gem 'seed_dump',               '>= 3.2.4'                   # データベース内レコードをseedに移行
+gem 'momentjs-rails'                                        # 日付入力を手軽に行うライブラリ
 gem 'bootstrap-datetimepicker-rails'                        # カレンダー型のDatetime入力フォーム(日時も同時に入力可能)
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby

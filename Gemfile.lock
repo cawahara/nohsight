@@ -113,6 +113,8 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     mysql2 (0.4.6)
     nio4r (2.0.0)
@@ -235,6 +237,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.0.5)
   minitest-reporters (~> 1.1.9)
+  momentjs-rails
   mysql2 (~> 0.4.4)
   pry-byebug
   pry-rails

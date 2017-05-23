@@ -15,7 +15,9 @@
       <ul class="event-article">
       <% @event.event_programs.each do |ev_program| %>
          <li>
+            <!-- TODO: tableタグに変えて各項目の表示位置を整えたい -->
          <%= ev_program.style %>
+         <%= ev_program.genre %>
          「<%= ev_program.program.title %>」
          <% ev_program.event_performers.each do |ev_performer| %>
             <%= ev_performer.performer.full_name %>
