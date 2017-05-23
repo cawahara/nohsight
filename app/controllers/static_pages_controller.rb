@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def dashboard
-     @events = Event.all
+     @events = public_events
   end
 
   def about
@@ -12,5 +12,5 @@ class StaticPagesController < ApplicationController
 
   def convention
   end
-  
+
 end
