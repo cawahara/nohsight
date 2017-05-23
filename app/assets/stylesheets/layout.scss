@@ -8,7 +8,6 @@
 
 ********************************************/
 @import "font-awesome";
-@import 'bootstrap-datetimepicker';
 @font-face {
    font-family: "源ノ明朝";
    src: url("SourceHanSerif-SemiBold.otf");
@@ -55,6 +54,7 @@ html {
 ********************************************/
 
 header {
+   z-index: 2;
    position: fixed;
    width: 100%;
 
@@ -190,7 +190,8 @@ footer {
 ********************************************/
 
 #main {
-   padding: 74px 7px 25px 7px;
+   z-index: 1;
+   padding: 62px 7px 25px 7px;
    min-height: 500px;
 
    #trend-banners {
@@ -202,6 +203,10 @@ footer {
    }
 
 
+}
+
+.bootstrap-datetimepicker-widget {
+   z-index: 1;
 }
 
 /********************************************

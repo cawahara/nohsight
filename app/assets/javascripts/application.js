@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
+//= require moment/ja.js
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
 
-var data = {'data-format': 'yyyy-MM-dd hh:mm:ss' };
 $(function(){
-    $('.datepicker').attr(data);
-    $('.datepicker').datetimepicker();
+    $('.datepicker').datetimepicker({
+      format: 'YYYY年MM月DD日  ahh時mm分'
+   });
 });
