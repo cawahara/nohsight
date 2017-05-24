@@ -1,0 +1,133 @@
+
+/********************************************
+
+                  Libraries
+
+********************************************/
+@import './layout';
+
+/********************************************
+
+                  Icon
+
+********************************************/
+button {
+   i {}
+}
+
+/********************************************
+
+                  Articles
+
+********************************************/
+div.headline {
+   margin: 14px 0;
+   h1 {
+      font-size: 22px;
+      color: #575757;
+   }
+   ul {
+      li {
+         margin-top: 7px;
+         color: #8f8f8f;
+      }
+   }
+}
+
+div.section {
+   h1.section-header {
+      background-color: #660000;
+      color: #ffffff;
+      padding: 9px 11px;
+      font-size: 18px;
+   }
+
+   div.article {
+      padding: 18px 11px;
+      border-bottom: 1px solid #9d9d9d;
+
+      h2.article-header {
+         font-size: 16px;
+         border-left: 3px solid #660000;
+         padding: 6px 7px;
+      }
+   }
+}
+
+/********************************************
+
+                  Forms
+
+********************************************/
+
+div.form-section {
+   div.form-header {
+      overflow: hidden;
+      background-color: #222f3e;
+      padding: 3px;
+      h1 {
+         float: left;
+         font-size: 14px;
+         color: #efefef;
+      }
+   }
+
+   label, span { display: inline; }
+   span {
+      font-size: 11px;
+      margin-left: 7px;
+      padding: 1px 6px 3px 6px;
+      border-radius: 7px;
+      background-color: #e62e00;
+      color: #ffffff;
+   }
+
+   input, textarea {
+      margin-top: 9px;
+      box-sizing: border-box;
+      border: 1px solid #989898;
+      padding: 4px 6px;
+      display: block;
+      border-radius: 4px;
+   }
+   textarea { height: calc((14px * 5) + (3px * 4)); }
+
+   div.lg-form {
+      width: 100%;
+      label {}
+      input, textarea {}
+   }
+   div.md-form {
+      width: 100%;
+      * { display: inline-block; }
+      label {  }
+      input, textarea { width: 70%; }
+   }
+   div.sm-form {
+      width: 50%;
+      label {}
+      input, textarea {}
+   }
+
+   input[type=submit] {
+      font-family: "ヒラギノ明朝 ProN W6";
+      font-size: 15px;
+      font-weight: bold;
+      margin: 22px auto;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 6px 25px;
+      border-radius: 6px;
+      border: 1px solid #454545;
+      background-color: #e62e00;
+      color: #ffffff;
+   }
+
+   ul.form-summary {
+      li {}
+   }
+
+   p.command {
+
+   }
+}

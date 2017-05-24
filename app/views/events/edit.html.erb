@@ -59,25 +59,46 @@
             <button><%= fa_icon('angle-down') %></button>
          </div>
          <div class="form-section">
-            <div class="form-article">
-               <label>会場名</label><span>必須</span>
+            <div class="form-article short-article">
+               <label>流派</label>
                <input type="text">
             </div>
-            <div class="form-article">
-               <label>住所</label>
+            <div class="form-article short-article">
+               <label>ジャンル</label>
                <input type="text">
             </div>
-            <div class="form-article">
-               <label>サイトURL</label>
+            <div class="form-article short-article">
+               <label>演目</label>
                <input type="text">
             </div>
+            <div class="form-article short-article">
+               <label>演者</label>
+               <input type="text">
+            </div>
+         </div>
+         <div class="form-section command-section">
+            <p class="plus-item">演目の追加</p>
+            <ul class="item-icons">
+               <li><%= fa_icon('plus') %></li>
+            </ul>
          </div>
       </div>
       <div class="form-content">
          <div class="form-header">
-            <h2 class="form-header">料金の編集</h2>
+            <h2 class="form-header">チケットの編集</h2>
             <button><%= fa_icon('angle-down') %></button>
          </div>
+         <div class="form-section">
+            <div class="form-article">
+               <label>席</label>
+               <input type="text">
+            </div>
+            <div class="form-article">
+               <label>料金</label>
+               <input type="text">
+            </div>
+         </div>
+
       </div>
 
       <input class="form-submit" type="submit" value="保存">
