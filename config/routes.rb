@@ -9,8 +9,15 @@ Rails.application.routes.draw do
   # User用ルーティング
   resources 'users'
 
+  # TODO: 必要なアクションのみ設定する予定
   # Event用ルーティング
   resources 'events'
+
+  # EventProgram用ルーテイング
+  resources 'event_programs'
+
+  # Ticket用ルーティング
+  resoureces 'tickets'
 
   # Sessions用ルーティング
   get     '/login',        to: 'sessions#new'

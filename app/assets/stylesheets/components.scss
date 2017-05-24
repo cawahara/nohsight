@@ -70,6 +70,8 @@ div.section {
 
 div.form-section {
    background-color: #f5f5ff;
+   overflow: hidden;
+   position: relative;
 
    h1.form-header {
       font-size: 14px;
@@ -120,9 +122,13 @@ div.form-section {
       }
    }
    div.sm-form {
+      float: left;
+      box-sizing: border-box;
       width: 50%;
       label {}
-      input, textarea {}
+      input {
+         width: 50%;
+      }
    }
 
    ul.form-summary {
