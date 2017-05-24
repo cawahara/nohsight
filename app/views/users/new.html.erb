@@ -1,64 +1,51 @@
-<div id="user-new">
-   <div class="event-overall">
+<div id="users-new">
+   <div class="headline">
       <h1>新規会員登録</h1>
    </div>
 
    <%= form_for(@user) do |f| %>
    <% err_msg = f.object.errors %>
-   <div class="form-content">
-      <div class="form-header">
-         <h2 class="form-header">1.ユーザー情報を入力</h2>
-         <button><%= fa_icon('angle-down') %></button>
+   <div class="form-section">
+      <h1 class="form-header">1.ユーザー情報を入力</h1>
+
+      <div class="lg-form">
+         <label>ユーザー名</label><span>必須</span>
+         <%= f.text_field :name %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
       </div>
-      <div class="form-section">
-         <div class="form-article">
-            <label>ユーザー名</label><span>必須</span>
-            <%= f.text_field :name %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>Eメールアドレス</label><span>必須</span>
-            <%= f.text_field :email %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>パスワード</label><span>必須</span>
-            <%= f.password_field :password %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>パスワード(確認)</label><span>必須</span>
-            <%= f.password_field :password_confirmation %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:password_confirmation)[0] %></p>
-         </div>
+      <div class="lg-form">
+         <label>Eメールアドレス</label><span>必須</span>
+         <%= f.text_field :email %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+      </div>
+      <div class="lg-form">
+         <label>パスワード</label><span>必須</span>
+         <%= f.password_field :password %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>
+      </div>
+      <div class="lg-form">
+         <label>パスワード(確認)</label><span>必須</span>
+         <%= f.password_field :password_confirmation %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password_confirmation)[0] %></p>
       </div>
    </div>
 
-   <div class="form-content">
-      <div class="form-header">
-         <h2 class="form-header">2.SNSとの連携</h2>
-         <button><%= fa_icon('angle-down') %></button>
-      </div>
+   <div class="form-section">
+      <h1 class="form-header">2.SNSとの連携</h1>
       <!-- TODO: アカウントの連携、メールによるユーザ認証などはある程度開発が進んでから -->
-      <div class="form-section">
-         <div class="form-article">
-            <p>ある程度開発が進んだら製作</p>
-         </div>
+      <div class="lg-form">
+         <p>ある程度開発が進んだら製作</p>
       </div>
    </div>
 
-   <div class="form-content">
-      <div class="form-header">
-         <h2 class="form-header">3.利用規約</h2>
-         <button><%= fa_icon('angle-down') %></button>
-      </div>
-      <div class="form-section">
-         <div class="form-article">
-            <%= f.check_box :agreement, as: :boolean, checked: false %><label><%= link_to "利用規約", convention_path, :target => '_blank' %>に同意する</label>
-            <p class="error-msg"><%= err_msg.full_messages_for(:agreement)[0] %></p>
-         </div>
+   <div class="form-section">
+      <h1 class="form-header">3.利用規約</h1>
+      <div class="lg-form">
+         <%= f.check_box :agreement, as: :boolean, checked: false %><label><%= link_to "利用規約", convention_path, :target => '_blank' %>に同意する</label>
+         <p class="error-msg"><%= err_msg.full_messages_for(:agreement)[0] %></p>
       </div>
    </div>
+
    <%= f.submit "新規登録する", class: 'form-submit' %>
 
    <% end %>

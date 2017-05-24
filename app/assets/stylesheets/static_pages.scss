@@ -1,40 +1,84 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 /********************************************
 
-                   About
+                  Dashboard
 
 ********************************************/
-
-/********************************************
-
-                   Covention
-
-********************************************/
-.static-pages {
-
-   h1 {
-      font-size: 19px;
-      padding: 9px;
-      border-bottom: 2px solid #660000;
-      border-top: 2px solid #660000;
+#dashboard {
+   div.news {
+      padding: 16px 8px !important;
+      span { margin-right: 9px; }
    }
 
-   p { margin: 25px 0; }
+   div.event-summary {
+      div.header {
+         overflow: hidden;
+         margin-bottom: 5px;
+         h1 {
+            float: left;
+            width: calc(100% - 46px);
+            a {
+               font-size: 19px;
+               color: #464646;
+               &:hover { text-decoration: underline; }
+            }
+         }
+         button {
+            float: right;
+         }
+      }
 
-   h2 {
-      border-left: 3px solid #660000;
-      padding: 6px 7px;
+      ul {
+         li {
+            margin-top: 5px;
+         }
+      }
+
+      ul.info {
+         li { color: #a3a3a3;}
+      }
+      ul.tickets {
+         li {
+            display: inline-block;
+            margin-right: 16px;
+         }
+      }
+
    }
 
-   ol {
-      margin: 18px 15px 17px 20px;
-      padding-bottom: 9px;
-      list-style-type: decimal;
+   .pager-more {
+      display: block;
+      width: 100%;
+      font-size: 15px;
+      padding: 22px 0;
+      text-align: center;
       border-bottom: 1px solid #9d9d9d;
 
-      li { margin-bottom: 6px; }
+      &:hover {
+         background-color: #ededed;
+         text-decoration: none;
+      }
+   }
+}
+
+
+/********************************************
+
+                   Convention
+
+********************************************/
+
+#convention {
+   ol {
+      margin-left: 20px;
+      list-style-type: decimal;
+      li {
+         margin-bottom: 15px;
+         &:last-child {
+            margin-bottom: 0;
+         }
+      }
    }
 }

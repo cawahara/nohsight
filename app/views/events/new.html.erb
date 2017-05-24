@@ -1,9 +1,13 @@
-<div id="event-new">
-   <h1>新しい公演を主催</h1>
+<div id="events-new">
+   <div class="headline">
+      <h1>新しい公演を主催</h1>
+   </div>
+
    <%= form_for(@event) do |f| %>
-      <%= f.text_field :title, placeholder: "公演名を入力" %>
-      <%= button_tag(class: "event-new-submit") do %>
-        <%= content_tag :i, nil, class: "fa fa-plus" %>
-      <% end %>
+         <%= f.text_field :title, placeholder: "公演名を入力" %>
+         <%= button_tag(class: "event-new-submit") do %>
+           <%= content_tag :i, nil, class: "fa fa-plus" %>
+         <% end %>
    <% end %>
+
 </div>

@@ -1,6 +1,6 @@
 <div id="event-show">
    <!-- イベント概要 -->
-   <div class="event-overall">
+   <div class="headline">
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title %></li>
@@ -9,72 +9,80 @@
    </div>
 
    <!-- イベント基本情報 -->
-   <h1 class="section-header">基本情報</h1>
-   <div class="event-content">
-      <h2 class="event-header">演目</h2>
-      <ul class="event-article">
-      <% @event.event_programs.each do |ev_program| %>
-         <li>
-            <!-- TODO: tableタグに変えて各項目の表示位置を整えたい -->
-         <%= ev_program.style %>
-         <%= ev_program.genre %>
-         「<%= ev_program.program.title %>」
-         <% ev_program.event_performers.each do |ev_performer| %>
-            <%= ev_performer.performer.full_name %>
-         <% end %>
-         </li>
-      <% end %>
-      </ul>
-   </div>
-   <div class="event-content">
-      <h2 class="event-header">開催時間</h2>
-      <p class="event-article"><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></p>
-   </div>
-   <div class="event-content">
-      <h2 class="event-header">チケット料金</h2>
-      <ul class="event-article">
-         <% @event.tickets.each do |ticket| %>
-            <li><%= ticket.grade %>：<%= ticket.price %>円</li>
-         <% end %>
-      </ul>
-   </div>
-   <div class="event-content">
-      <h2 class="event-header">公演詳細</h2>
-      <p class="event-article">
-         <%= @event.information %>
-      </p>
-   </div>
-   <div class="event-content">
-      <h2 class="event-header">会場案内</h2>
-      <ul class="event-article">
-         <li>会場：<%= @event.place.title %></li>
-         <li>住所：<%= @event.place.address %></li>
-         <li>URL：<%= link_to @event.place.official_url %></li>
-      </ul>
+   <div class="section">
+      <h1 class="section-header">基本情報</h1>
+      <div class="article">
+         <h2 class="article-header">演目</h2>
 
-      <!-- 会場場所の地図 -->
-      <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+         <ul>
+         <% @event.event_programs.each do |ev_program| %>
+            <li>
+               <!-- TODO: tableタグに変えて各項目の表示位置を整えたい -->
+            <%= ev_program.style %>
+            <%= ev_program.genre %>
+            「<%= ev_program.program.title %>」
+            <% ev_program.event_performers.each do |ev_performer| %>
+               <%= ev_performer.performer.full_name %>
+            <% end %>
+            </li>
+         <% end %>
+         </ul>
+      </div>
+
+      <div class="article">
+         <h2 class="article-header">開催時間</h2>
+         <p><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></p>
+      </div>
+
+      <div class="article">
+         <h2 class="article-header">チケット料金</h2>
+         <ul class="event-article">
+            <% @event.tickets.each do |ticket| %>
+               <li><%= ticket.grade %>：<%= ticket.price %>円</li>
+            <% end %>
+         </ul>
+      </div>
+
+      <div class="article">
+         <h2 class="article-header">公演詳細</h2>
+         <p><%= @event.information %></p>
+      </div>
+
+      <div class="article">
+         <h2 class="article-header">会場案内</h2>
+         <ul>
+            <li>会場：<%= @event.place.title %></li>
+            <li>住所：<%= @event.place.address %></li>
+            <li>URL：<%= link_to @event.place.official_url %></li>
+         </ul>
+
+         <!-- 会場場所の地図 -->
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+      </div>
    </div>
 
    <!-- 演目舞台の周辺スポット紹介 -->
-   <h1 class="section-header">演目舞台の周辺スポット</h1>
-   <% @event.event_programs.each do |ev_program| %>
-   <div class="event-content">
-      <h2 class="event-header"><%= ev_program.program.title %>の周辺スポット</h2>
-      <% nearby_locations = get_nearby_locations(ev_program.program.place) %>
-      <% if nearby_locations.count > 0 %>
-         <% nearby_locations.each do |spot| %>
-         <div class="nearby_location">
-            <img src="<%= spot['thumbnail'] %>" >
-            <ul>
-               <li><%= spot["title"] %></li>
-               <li><%= link_to spot["official_url"], spot["official_url"], :target => "_new" if !spot["official_url"].nil? %></li>
-            </ul>
-         </div>
+   <div class="section">
+      <h1 class="section-header">演目舞台の周辺スポット</h1>
+      <% @event.event_programs.each do |ev_program| %>
+      <div class="article">
+         <h2 class="article-header"><%= ev_program.program.title %>の周辺スポット</h2>
+         <% nearby_locations = get_nearby_locations(ev_program.program.place) %>
+         <% if nearby_locations.count > 0 %>
+            <% nearby_locations.each do |spot| %>
+            <div class="nearby_location">
+               <img src="<%= spot['thumbnail'] %>" >
+               <ul>
+                  <li><%= spot["title"] %></li>
+                  <li><%= link_to spot["official_url"], spot["official_url"], :target => "_new" if !spot["official_url"].nil? %></li>
+               </ul>
+            </div>
+            <% end %>
+         <% else %>
+            <h2 class="no-event">周辺スポットはありません。</h2>
          <% end %>
-      <% else %>
-         <h2 class="no-event">周辺スポットはありません。</h2>
+      </div>
       <% end %>
    </div>
-   <% end %>
+
 </div>

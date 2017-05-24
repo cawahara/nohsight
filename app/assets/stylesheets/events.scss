@@ -8,30 +8,6 @@
 
 ********************************************/
 // Show
-.event-overall {
-   margin-bottom: 14px;
-   h1 {
-      font-size: 22px;
-      color: #575757;
-   }
-
-   ul {
-      li {
-         margin-top: 7px;
-         color: #8f8f8f;
-      }
-   }
-}
-
-.event-header {
-   font-size: 15px;
-   border-left: 3px solid #660000;
-   padding: 6px 7px;
-}
-
-.event-article {
-   margin-top: 14px;
-}
 
 .event-location {
    margin-top: 26px;
@@ -67,118 +43,8 @@
    }
 }
 
-// Edit
-.form-content {
-   background-color: #f5f5ff;
-
-   .form-header {
-      overflow: hidden;
-      color: #efefef;
-      background-color: #222f3e;
-      padding: 3px;
-      h2 {
-         float: left;
-         font-size: 14px;
-      }
-      button {
-         margin-right: 4px;
-         float: right;
-         border: 1px solid #cce6ff;
-         background-color: inherit;
-         color: #cce6ff;
-         padding: 0 6px;
-         font-size: 16px;
-         border-radius: 5px;
-      }
-   }
-
-   .form-section {
-      .form-article {
-         padding: 7px 10px;
-         position: relative;
-
-         label, span { display: inline; }
-         span {
-            font-size: 11px;
-            margin-left: 7px;
-            padding: 1px 6px 3px 6px;
-            border-radius: 7px;
-            background-color: #e62e00;
-            color: #ffffff;
-         }
-         input[type=text], input[type=password], textarea {
-            margin-top: 9px;
-            box-sizing: border-box;
-            border: 1px solid #989898;
-            padding: 4px 6px;
-            display: block;
-            width: 100%;
-            border-radius: 4px;
-         }
-         textarea { height: calc((14px * 5) + (3px * 4)); }
-
-         &:first-child { padding-top: 17px; }
-         &:last-child { padding-bottom: 21px; }
-      }
-
-      .short-article {
-         * {
-            display: block;
-         }
-         input[type=text] {
-            width: calc(100% - 80px);
-         }
-      }
-   }
-
-   .command-section {
-      margin: 10px;
-      overflow: hidden;
-      padding: 12px 8px;
-      border-top: 1px solid #c1c1c1;
-      border-bottom: 1px solid #c1c1c1;
-      .plus-item {
-         display: block;
-         float: left;
-         margin-top: 5px;
-         font-size: 14px
-      }
-      .item-icons {
-         float: right;
-         li {
-            font-size: 13px;
-            padding: 5px 8px;
-            border: 1px solid #c1c1c1;
-            border-radius: 8px;
-            display: inline-block;
-         }
-      }
-   }
-}
-
-.form-submit {
-   font-family: "ヒラギノ明朝 ProN W6";
-   font-size: 15px;
-   font-weight: bold;
-   margin: 22px auto;
-   box-sizing: border-box;
-   width: 100%;
-   padding: 6px 25px;
-   border-radius: 6px;
-   border: 1px solid #454545;
-   background-color: #e62e00;
-   color: #ffffff;
-}
-
-
-
-
 // New
-#event-new {
-   h1 {
-      font-size: 16px;
-      margin-bottom: 9px;
-   }
+#events-new {
    form {
       input[type=text] {
          border: 1px solid #989898;
@@ -186,7 +52,7 @@
          border-top-left-radius: 6px;
          border-bottom-left-radius: 6px;
          font-size: 13px;
-         width: calc(100% - 55px);
+         width: calc(100% - 37px);
 
          &:hover {
             border: 1px solid #ffb366;
@@ -195,15 +61,16 @@
          }
       }
 
-      .event-new-submit {
-         border: 1px solid #989898;
-         border-top-right-radius: 5px;
-         border-bottom-right-radius: 5px;
-         font-family: FontAwesome;
-         font-size: 18px;
-         padding: 5px 8px 6px 8px;
-         margin-left: -5px;
-      }
-
+   }
+   .event-new-submit {
+      border: 1px solid #989898;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      font-family: FontAwesome;
+      font-size: 18px;
+      padding: 2px 8px 4px 8px;
+      margin-left: -6px;
    }
 }
