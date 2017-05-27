@@ -74,3 +74,41 @@
       margin-left: -6px;
    }
 }
+
+// Edit_port
+#events-edit-port{
+   div.port-section {
+      h1.port-header {
+         font-size: 16px;
+         color: #efefef;
+         background-color: #222f3e;
+         padding: 8px;
+      }
+
+      div.port-info {
+         border-bottom: 1px solid #ababab;
+         padding: 15px 8px;
+         p {
+            font-size: 14px;
+            margin-bottom: 7px;
+            &:last-child { margin-bottom: 0; }
+         }
+      }
+
+      a.port-link {
+         border-bottom: 1px solid #ababab;
+         padding: 8px 12px;
+         display: block;
+         text-align: right;
+         i {
+            margin-left: 6px;
+            font-size: 15px;
+         }
+
+         &:hover {
+            background-color: #f5f5f5;
+            text-decoration: none;
+         }
+      }
+   }
+}

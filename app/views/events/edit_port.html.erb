@@ -1,89 +1,47 @@
-<div id="events-edit">
+<div id="events-edit-port">
    <div class="headline">
       <h1>公演情報の編集</h1>
    </div>
 
-
-   <%= form_for(@event) do |f| %>
-   <div class="form-section">
-      <h1 class="form-header">基本情報の編集</h1>
-
-      <div class="lg-form">
-         <label>公演名</label><span>必須</span>
-         <input type="text">
+   <div class="port-section">
+      <h1 class="port-header">基本情報</h1>
+      <div class="port-info">
+         <p><%= @event.title %></p>
       </div>
-      <div class="lg-form">
-         <label>開始時間</label><span>必須</span>
-         <%= f.text_field :start_date, class: 'datepicker', id: "start-date" %>
-      </div>
-      <div class="lg-form">
-         <label>終了時間</label>
-         <%= f.text_field :end_date, class: 'datepicker', id: "end-date" %>
-      </div>
-      <div class="lg-form">
-         <label>説明</label>
-         <textarea></textarea>
-      </div>
+      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
    </div>
 
-   <div class="form-section">
-      <h1 class="form-header">会場の編集</h1>
-
-      <div class="lg-form">
-         <label>会場名</label><span>必須</span>
-         <input type="text">
+   <div class="port-section">
+      <h1 class="port-header">会場</h1>
+      <div class="port-info">
+         <p><%= @event.place.title %></p>
       </div>
-      <div class="lg-form">
-         <label>住所</label>
-         <input type="text">
-      </div>
-      <div class="lg-form">
-         <label>サイトURL</label>
-         <input type="text">
-      </div>
+      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
    </div>
 
-   <div class="form-section">
-      <h1 class="form-header">演目の編集</h1>
-
-      <div class="sm-form">
-         <label>流派</label>
-         <input type="text">
+   <div class="port-section">
+      <h1 class="port-header">演目</h1>
+      <% @event.event_programs.each do |ev_program| %>
+      <div class="port-info">
+         <p>
+            <%= ev_program.style %>
+            <%= ev_program.genre %>
+            「<%= ev_program.program.title %>」
+            <!-- REVIEW: イベント編集概要に各演目の演者を載せるべきか検討中 -->
+         </p>
       </div>
-      <div class="sm-form">
-         <label>ジャンル</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>演目</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>演者</label>
-         <input type="text">
-      </div>
-   </div>
-   <div class="form-section command-section">
-      <p class="plus-item">演目の追加</p>
-      <ul class="item-icons">
-         <li><%= fa_icon('plus') %></li>
-      </ul>
+      <% end %>
+      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
    </div>
 
-   <div class="form-section">
-      <h1 class="form-header">チケットの編集</h1>
-
-      <div class="sm-form">
-         <label>席</label>
-         <input type="text">
+   <div class="port-section">
+      <h1 class="port-header">料金</h1>
+      <% @event.tickets.each do |ticket| %>
+      <div class="port-info">
+         <p><%= ticket.grade %>： <%= ticket.price %>円</p>
       </div>
-      <div class="sm-form">
-         <label>料金</label>
-         <input type="text">
-      </div>
-
+      <% end %>
+      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
    </div>
 
-   <input class="form-submit" type="submit" value="保存">
-   <% end %>
 </div>
