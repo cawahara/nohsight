@@ -12,12 +12,16 @@ Rails.application.routes.draw do
   # TODO: 必要なアクションのみ設定する予定
   # Event用ルーティング
   resources 'events'
+  get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_port_event'
 
   # EventProgram用ルーテイング
   resources 'event_programs'
 
   # Ticket用ルーティング
-  resoureces 'tickets'
+  resources 'tickets'
+
+  # Place用ルーティング
+  resources 'places'
 
   # Sessions用ルーティング
   get     '/login',        to: 'sessions#new'

@@ -1,2 +1,32 @@
-<h1>EventPrograms#edit</h1>
-<p>Find me in app/views/event_programs/edit.html.erb</p>
+<!-- TODO: ルーティングをindexアクション(追加)に変えるかもしれない -->
+<div id="event-programs-edit">
+   <div class="headline">
+      <h1>演目の編集</h1>
+   </div>
+
+   <div class="form-section">
+      <h1 class="form-header">演目の編集</h1>
+      <div class="sm-form">
+         <label>流派</label>
+         <input type="text">
+      </div>
+      <div class="sm-form">
+         <label>ジャンル</label>
+         <input type="text">
+      </div>
+      <div class="sm-form">
+         <label>演目</label>
+         <input type="text">
+      </div>
+      <div class="sm-form">
+         <label>演者</label>
+         <input type="text">
+      </div>
+   </div>
+   <div class="command-section">
+      <p class="plus-item">演目の追加</p>
+      <ul class="item-icons">
+         <li><%= fa_icon('plus') %></li>
+      </ul>
+   </div>
+</div>
