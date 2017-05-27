@@ -8,7 +8,7 @@
       <div class="port-info">
          <p><%= @event.title %></p>
       </div>
-      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
+      <%= link_to edit_event_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
    <div class="port-section">
@@ -16,7 +16,7 @@
       <div class="port-info">
          <p><%= @event.place.title %></p>
       </div>
-      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
+      <%= link_to edit_place_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
    <div class="port-section">
@@ -31,7 +31,7 @@
          </p>
       </div>
       <% end %>
-      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
+      <%= link_to edit_event_program_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
    <div class="port-section">
@@ -41,7 +41,7 @@
          <p><%= ticket.grade %>： <%= ticket.price %>円</p>
       </div>
       <% end %>
-      <a href="#" class="port-link">編集する<%= fa_icon('angle-right') %></a>
+      <%= link_to edit_ticket_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
 </div>
