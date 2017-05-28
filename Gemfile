@@ -27,6 +27,7 @@ gem 'seed_dump',               '>= 3.2.4'                   # データベース
 gem 'bootstrap-sass'                                        # bootstrap
 gem 'momentjs-rails'                                        # 日付入力を手軽に行うライブラリ
 gem 'bootstrap3-datetimepicker-rails'                       # カレンダー型のDatetime入力フォーム(日時も同時に入力可能)
+gem 'vuejs-rails',             '>= 2.3.2'                   # Vue.jsをRailsで
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
