@@ -1,7 +1,4 @@
 <div id="events-edit">
-   <div class="headline">
-      <h1>基本情報の編集</h1>
-   </div>
 
    <%= form_for(@event) do |f| %>
    <div class="form-section">
@@ -9,7 +6,7 @@
 
       <div class="lg-form">
          <label>公演名</label><span>必須</span>
-         <input type="text">
+         <%= f.text_field :title %>
       </div>
       <div class="lg-form">
          <label>開始時間</label><span>必須</span>
@@ -21,7 +18,11 @@
       </div>
       <div class="lg-form">
          <label>説明</label>
-         <textarea></textarea>
+         <%= f.text_area :information %>
+      </div>
+      <div class="lg-form">
+         <label>サイトURL</label>
+         <%= f.text_field :official_url %>
       </div>
    </div>
 

@@ -12,13 +12,14 @@
 
 ********************************************/
 button {
+   width: 28px;
+   text-align: center;
    background-color: inherit;
    border: 1px solid #a6a6a6;
    border-radius: 6px;
-   font-size: 17px;
-   i {
-      padding: 6px 2px;
-   }
+   font-size: 14px;
+
+   i { padding: 5px 0; }
 }
 
 /********************************************
@@ -78,7 +79,14 @@ div.form-section {
       color: #efefef;
       background-color: #222f3e;
       padding: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
+   }
+   h2.form-header {
+      border-left: 4px solid #222f3e;
+      border-bottom: 1px solid #222f3e;
+      font-size: 14px;
+      margin: 14px 9px 8px 4px;
+      padding: 0 0 3px 5px;
    }
 
    label, span { display: inline; }
@@ -99,7 +107,7 @@ div.form-section {
       display: block;
       border-radius: 4px;
    }
-   textarea { height: calc((14px * 5) + (3px * 4)); }
+   textarea { height: calc((14px * 7) + (3px * 6)); }
 
    div.lg-form {
       width: 100%;
@@ -124,10 +132,12 @@ div.form-section {
    div.sm-form {
       float: left;
       box-sizing: border-box;
+      margin-bottom: 8px;
       width: 50%;
-      label {}
+      label {  margin-left: 9px;}
       input {
-         width: 50%;
+         margin-left: 9px;
+         width: 85%;
       }
    }
 
@@ -137,6 +147,28 @@ div.form-section {
 
    p.command {
 
+   }
+
+   div.added-item {
+      padding: 12px 4px;
+      border-bottom: 1px solid #909090;
+      p.item-info {
+
+      }
+
+      ul.item-performers {
+         margin-top: 8px;
+         li { display: inline;}
+      }
+   }
+
+   ul.item-icons {
+      text-align: right;
+      li {
+         display: inline-block;
+         margin-left: 14px;
+         button { margin-left: 6px; }
+      }
    }
 }
 

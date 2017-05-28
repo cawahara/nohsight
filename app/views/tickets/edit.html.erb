@@ -1,10 +1,22 @@
 <div id="tickets-edit">
-   <div class="headline">
-      <h1>料金の編集</h1>
-   </div>
    <div class="form-section">
       <h1 class="form-header">チケットの編集</h1>
+      <h2 class="form-header">現在設定されている料金</h2>
 
+      <% @event.tickets.each do |ticket| %>
+      <div class="added-item">
+         <p class="item-info">
+            <%= ticket.grade %>：
+            <%= ticket.price %>
+         </p>
+         <ul class="item-icons">
+            <li>編集<button><%= fa_icon('pencil') %></button></li>
+            <li>削除<button><%= fa_icon('trash-o') %></button></li>
+         </ul>
+      </div>
+      <% end %>
+
+      <h2 class="form-header">料金設定の追加</h2>
       <div class="sm-form">
          <label>席</label>
          <input type="text">
@@ -13,6 +25,10 @@
          <label>料金</label>
          <input type="text">
       </div>
+
+      <ul class="item-icons">
+         <li>チケットの追加<button><%= fa_icon('plus') %></button></li>
+      </ul>
 
    </div>
 

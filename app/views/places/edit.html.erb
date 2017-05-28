@@ -1,24 +1,23 @@
 <div id="places-edit">
-   <div class="headline">
-      <h1>会場の編集</h1>
-   </div>
 
+   <%= form_for(@event.place) do |f| %>
    <div class="form-section">
       <h1 class="form-header">会場の編集</h1>
 
       <div class="lg-form">
          <label>会場名</label><span>必須</span>
-         <input type="text">
+         <%= f.text_field :title %>
       </div>
       <div class="lg-form">
          <label>住所</label>
-         <input type="text">
+         <%= f.text_field :address %>
       </div>
       <div class="lg-form">
          <label>サイトURL</label>
-         <input type="text">
+         <%= f.text_field :official_url %>
       </div>
    </div>
 
    <input class="form-submit" type="submit" value="保存">
+   <% end %>
 </div>

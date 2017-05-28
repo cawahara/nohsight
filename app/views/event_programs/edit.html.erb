@@ -1,13 +1,30 @@
-<!-- TODO: ルーティングをindexアクション(追加)に変えるかもしれない -->
 <div id="event-programs-edit">
-   <div class="headline">
-      <h1>演目の編集</h1>
-   </div>
 
    <div class="form-section">
       <h1 class="form-header">演目の編集</h1>
+      <h2 class="form-header">現在設定されている演目</h2>
+      <% @event.event_programs.each do |ev_program| %>
+      <div class="added-item">
+         <p class="item-info">
+            <%= ev_program.style %>
+            <%= ev_program.genre %>
+            「<%= ev_program.program.title %>」
+         </p>
+         <ul class="item-performers">
+            <li>演者： </li>
+            <% ev_program.event_performers.each do |ev_performer| %>
+               <li><%= ev_performer.performer.full_name %></li>
+            <% end %>
+         </ul>
+         <ul class="item-icons">
+            <li>編集<button><%= fa_icon('pencil') %></button></li>
+            <li>削除<button><%= fa_icon('trash-o') %></button></li>
+         </ul>
+      </div>
+      <% end %>
+      <h2 class="form-header">演目の新規追加</h2>
       <div class="sm-form">
-         <label>流派</label>
+         <label>演目</label>
          <input type="text">
       </div>
       <div class="sm-form">
@@ -15,7 +32,7 @@
          <input type="text">
       </div>
       <div class="sm-form">
-         <label>演目</label>
+         <label>流派</label>
          <input type="text">
       </div>
       <div class="sm-form">
@@ -23,12 +40,9 @@
          <input type="text">
       </div>
    </div>
-   <div class="command-section">
-      <p class="plus-item">演目の追加</p>
-      <ul class="item-icons">
-         <li><%= fa_icon('plus') %></li>
-      </ul>
-   </div>
+   <ul class="item-icons">
+      <li>演目の追加<button><%= fa_icon('plus') %></button></li>
+   </ul>
 
    <input class="form-submit" type="submit" value="保存">
 </div>

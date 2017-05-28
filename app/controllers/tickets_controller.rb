@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   def edit
+     @event = Event.find(params[:id])
   end
 
   def create
