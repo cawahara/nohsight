@@ -44,5 +44,10 @@
       <li>演目の追加<button><%= fa_icon('plus') %></button></li>
    </ul>
 
+   <ul id="event-programs-plus" class="item-icons">
+      <my-component></my-component>
+      <li v-on:click="update()">演目の追加<button><%= fa_icon('plus') %></button></li>
+   </ul>
+
    <input class="form-submit" type="submit" value="保存">
 </div>
