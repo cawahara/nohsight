@@ -18,7 +18,7 @@ gem 'seed-fu',                 '~> 2.3'                     # seed.rbをより�
 gem 'font-awesome-rails',      '~> 4.7'                     # font-awesomeを扱うヘルパー
 gem 'css3-progress-bar-rails', '~> 0.5.1'                   # プログレスバーを表示、扱うヘルパー
 gem 'carrierwave',             '~> 0.11.2'                  # 画像アップロード用ヘルパー
-gem 'simple_enum',             '~> 2.3'                     # enumを扱うヘルパー
+gem 'simple_enum',             '~> 2.3'                     # enumqを扱うヘルパー
 gem 'kaminari'                                              # paginateヘルパー
 gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主にパスワード)のハッシュ化
 gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
@@ -27,8 +27,7 @@ gem 'seed_dump',               '>= 3.2.4'                   # データベース
 gem 'bootstrap-sass'                                        # bootstrap
 gem 'momentjs-rails'                                        # 日付入力を手軽に行うライブラリ
 gem 'bootstrap3-datetimepicker-rails'                       # カレンダー型のDatetime入力フォーム(日時も同時に入力可能)
-gem 'webpack-rails', '~> 0.9.10'                            # WebPackをRailsで
-gem 'vuejs-rails',             '>= 2.3.2'                   # Vue.jsをRailsで
+gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
