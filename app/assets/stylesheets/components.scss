@@ -150,7 +150,6 @@ div.form-section {
    }
 
    div.added-item {
-      padding: 12px 4px;
       border-bottom: 1px solid #909090;
       p.item-info {
 
@@ -168,6 +167,41 @@ div.form-section {
          display: inline-block;
          margin-left: 14px;
          button { margin-left: 6px; }
+      }
+   }
+
+// Vue Component
+   div.item-component {
+      padding: 12px 4px;
+   }
+   div.update {
+      background-color: #ffffcc;
+      ul.item-icons {
+         li {
+            &:first-child {
+               color: #b38600;
+               text-decoration: underline;
+               button {
+                  border-color: #b38600;
+                  i { color: #b38600; }
+               }
+            }
+         }
+      }
+   }
+   div.destroy {
+      background-color: #ffe6e6;
+      ul.item-icons {
+         li {
+            &:last-child {
+               color: #ff3333;
+               text-decoration: underline;
+               button {
+                  border-color: #ff3333;
+                  i { color: #ff3333; }
+               }
+            }
+         }
       }
    }
 }

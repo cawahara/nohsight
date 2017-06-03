@@ -7,7 +7,7 @@
       </p>
       <ul class="item-performers">
          <li>演者： </li>
-         <li v-for="ev_performer in ev_performers">{{ ev_performer.full_name }}</li>
+         <li v-for="ev_performer in ev_performers">{{ ev_performer.full_name }} </li>
       </ul>
       <ul class="item-icons">
          <li v-on:click="changeClass('update')">編集<button><i class="fa fa-pencil"></i></button></li>
@@ -21,16 +21,18 @@
       props: [ 'values' ],
       data: function(){
          return {
-            ev_program: this.values.ev_program,
+            ev_program:    this.values.ev_program,
             ev_performers: this.values.ev_performers,
             program:       this.values.program,
-            mode:       ''
-
+            mode:          ''
          }
       },
       methods: {
          changeClass: function(mode){
-            this.mode = mode
+            if(this.mode == mode)
+               this.mode = ""
+            else
+               this.mode = mode
          }
       }
    }
