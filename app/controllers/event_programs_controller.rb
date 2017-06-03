@@ -1,6 +1,6 @@
 class EventProgramsController < ApplicationController
   def edit
-     @event = Event.find(params[:id])
+     @event_programs = Event.find(params[:id]).event_programs
   end
 
   def create

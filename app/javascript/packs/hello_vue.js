@@ -9,7 +9,7 @@ import App from './app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
+  const app = new Vue(App).$mount('#vue')
 
   console.log(app)
 })

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require vue
 //= require moment
 //= require moment/ja.js
 //= require bootstrap-datetimepicker
