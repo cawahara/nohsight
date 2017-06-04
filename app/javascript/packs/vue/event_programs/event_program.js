@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
    var new_item = new Vue({
       el: '#event-programs-new',
       render(h){
-         return h(New, { props: {  } })
+         return h(New)
       }
    })
 })

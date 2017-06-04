@@ -40,7 +40,6 @@
 </template>
 
 <script>
-
    export default {
       props: [ 'values' ],
       data: function(){

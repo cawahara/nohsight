@@ -14,10 +14,9 @@
    import render_form from './_form.vue'
 
    export default {
-      props: [ 'values' ],
       data: function(){
          return {
-
+            values: { id: 0 }
          }
       },
       components: {
@@ -27,11 +26,13 @@
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
-               render(h){ return h(render_form) }
+               data: { values: { id: this.values.id } },
+               render(h){ return h(render_form, { props: { values: this.values }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
+            this.values.id += 1
          }
       }
    }

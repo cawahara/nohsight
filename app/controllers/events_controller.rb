@@ -18,7 +18,6 @@ class EventsController < ApplicationController
 
    def create
       @event = current_user.events.build(event_params)
-      binding.pry
       @event.published = false
       if @event.save
          flash[:success] = "新しいイベントを記録しました。編集して開催しましょう。"
