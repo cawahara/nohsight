@@ -1,5 +1,5 @@
 <div id="event-programs-edit">
-
+   <%= form_for(:event, url: event_program_path(@event), method: 'patch') do |f| %>
    <div class="form-section">
       <h1 class="form-header">演目の編集</h1>
       <h2 class="form-header">現在設定されている演目</h2>
@@ -33,9 +33,8 @@
    </ul>
 
    <ul id="event-programs-plus" class="item-icons">
-      <my-component></my-component>
       <li v-on:click="update()">演目の追加<button><%= fa_icon('plus') %></button></li>
    </ul>
-
-   <input class="form-submit" type="submit" value="保存">
+   <%= f.submit('保存', class: 'form-submit') %>
+   <% end %>
 </div>
