@@ -55,15 +55,15 @@ class EventProgramsController < ApplicationController
       end
 
       def event_program_valid?(ev_programs)
-         ev_programs.each do |ev_program|
-            if Program.find_by(title: ev_program['title']).nil?
+         ev_programs.each do |event_params|
+            if Program.find_by(title: event_params['title']).nil?
                return false
-            elsif Performer.find_by(full_name: ev_program['performer']).nil?
+            elsif Performer.find_by(full_name: event_params['performer']).nil?
                return false
-            elsif ev_program['genre'].empty? || ev_program['style'].empty?
+            elsif event_params['genre'].empty? || event_params['style'].empty?
                return false
             end
-            ev_program['title'] = Program.find_by(title: ev_program['title']).id
+            event_params['title'] = Program.find_by(title: event_params['title']).id
             # TODO: Event Performerの追加
             return true
          end

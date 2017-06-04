@@ -2,10 +2,9 @@
 
 import Vue from 'vue'
 import ListItem from './list-items.vue'
-import Edit from './edit.vue'
+import New from './new.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-
    // ListItem Vue instance
    const added_items = document.getElementsByClassName('added-item');
    for(var i = 0; i < added_items.length; i++){
@@ -30,11 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
          render(h){
             return h(ListItem, { props: { values: this.values } })
          }
-      });
+      })
    }
 
-
-
-   // Edit Vue instance
-
-});
+   // New Vue instance
+   var new_item = new Vue({
+      el: '#event-programs-new',
+      render(h){
+         return h(New, { props: {  } })
+      }
+   })
+})

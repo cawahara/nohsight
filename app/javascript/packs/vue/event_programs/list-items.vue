@@ -41,7 +41,7 @@
 
 <script>
 
-   module.exports = {
+   export default {
       props: [ 'values' ],
       data: function(){
          return {

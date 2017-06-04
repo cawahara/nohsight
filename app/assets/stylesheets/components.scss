@@ -18,7 +18,7 @@ span.btn {
    border: 1px solid #a6a6a6;
    border-radius: 6px;
    margin-left: 8px;
-   padding: 5px 7px;
+   padding: 3px 7px;
 
    i { font-size: 14px;}
 }
@@ -150,10 +150,16 @@ div.form-section {
 
    }
 
-   div.added-item {
+   div.added-item, div.new-item {
       border-bottom: 1px solid #909090;
-      p.item-info {
+      margin-bottom: 12px;
 
+      .edit-item { overflow: hidden; }
+
+      h3 {
+         font-size: 13px;
+         margin: 0 0 11px 9px;
+         text-decoration: underline;
       }
 
       ul.item-performers {

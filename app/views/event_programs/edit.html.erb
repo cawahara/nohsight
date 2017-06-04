@@ -1,4 +1,5 @@
 <div id="event-programs-edit">
+
    <%= form_for(:event, url: event_program_path(@event), method: 'patch') do |f| %>
    <div class="form-section">
       <h1 class="form-header">演目の編集</h1>
@@ -11,30 +12,10 @@
       <% end %>
       <% end %>
       <h2 class="form-header">演目の新規追加</h2>
-      <div class="sm-form">
-         <label>演目</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>ジャンル</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>流派</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>演者</label>
-         <input type="text">
-      </div>
+
+      <div id="event-programs-new"></div>
    </div>
-   <ul class="item-icons">
-      <li>演目の追加<button><%= fa_icon('plus') %></button></li>
-   </ul>
-
-   <ul id="event-programs-plus" class="item-icons">
-      <li v-on:click="update()">演目の追加<button><%= fa_icon('plus') %></button></li>
-   </ul>
-
+   <%= f.submit('保存', class: 'form-submit') %>
    <% end %>
+
 </div>
