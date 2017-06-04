@@ -4,11 +4,11 @@
       <h1 class="form-header">基本情報の編集</h1>
 
       <div class="lg-form">
-         <label>公演名</label><span>必須</span>
+         <label>公演名</label><span class="required">必須</span>
          <%= f.text_field :title %>
       </div>
       <div class="lg-form">
-         <label>開始時間</label><span>必須</span>
+         <label>開始時間</label><span class="required">必須</span>
          <%= f.text_field :start_date, class: 'datepicker', id: "start-date" %>
       </div>
       <div class="lg-form">

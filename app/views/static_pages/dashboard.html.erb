@@ -32,7 +32,7 @@
       <div class="article event-summary">
          <div class="header">
             <h1><%= link_to event.title, event_path(event) %></h1>
-            <button><%= fa_icon('check-square-o')%></button><!-- TODO Userがクリップする機能 -->
+            <span class="btn"><%= fa_icon('check-square-o')%></span><!-- TODO Userがクリップする機能 -->
          </div>
          <ul class="info">
             <li class="place"><%= event.place.title %></li>

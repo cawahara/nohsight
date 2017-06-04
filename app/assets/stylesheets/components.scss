@@ -11,15 +11,16 @@
                   Icon
 
 ********************************************/
-button {
-   width: 28px;
+span.btn {
+   display: inline-block;
    text-align: center;
    background-color: inherit;
    border: 1px solid #a6a6a6;
    border-radius: 6px;
-   font-size: 14px;
+   margin-left: 8px;
+   padding: 5px 7px;
 
-   i { padding: 5px 0; }
+   i { font-size: 14px;}
 }
 
 /********************************************
@@ -89,8 +90,8 @@ div.form-section {
       padding: 0 0 3px 5px;
    }
 
-   label, span { display: inline; }
-   span {
+   label, span.required { display: inline; }
+   span.required {
       font-size: 11px;
       margin-left: 7px;
       padding: 1px 6px 3px 6px;
@@ -181,7 +182,7 @@ div.form-section {
             &:first-child {
                color: #b38600;
                text-decoration: underline;
-               button {
+               span.btn {
                   border-color: #b38600;
                   i { color: #b38600; }
                }
@@ -196,7 +197,7 @@ div.form-section {
             &:last-child {
                color: #ff3333;
                text-decoration: underline;
-               button {
+               span.btn {
                   border-color: #ff3333;
                   i { color: #ff3333; }
                }
