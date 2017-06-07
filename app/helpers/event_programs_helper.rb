@@ -7,7 +7,7 @@ module EventProgramsHelper
       end
       program = ev_program.program
       return {
-         ev_program: ev_program,
+         ev_program:    ev_program,
          ev_performers: ev_performers,
          program:       program
       }

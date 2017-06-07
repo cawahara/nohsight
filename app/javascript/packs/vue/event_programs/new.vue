@@ -14,6 +14,7 @@
    import render_form from './_form.vue'
 
    export default {
+      props: [ 'programs' ],
       data: function(){
          return {
             values: { id: 0 }
@@ -27,7 +28,7 @@
             new Vue({
                el: '.form-for-mount',
                data: { values: { id: this.values.id } },
-               render(h){ return h(render_form, { props: { values: this.values }}) }
+               render(h){ return h(render_form, { props: { values: this.values, programs: this.programs }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"

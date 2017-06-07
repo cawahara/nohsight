@@ -110,11 +110,15 @@ div.form-section {
    }
    textarea { height: calc((14px * 7) + (3px * 6)); }
 
+   div.lg-form, div.md-form, div.sm-form {
+      position: relative;
+   }
+
    div.lg-form {
       width: 100%;
       padding: 0 10px 12px 10px;
       label {}
-      input, textarea { width: 100%; }
+      input, textarea, .search-records { width: 100%; }
    }
    div.md-form {
       width: 100%;
@@ -125,7 +129,7 @@ div.form-section {
          display: block;
          margin-top: 10px;
       }
-      input {
+      input, .search-records {
          float: right;
          width: 60%;
       }
@@ -136,7 +140,7 @@ div.form-section {
       margin-bottom: 8px;
       width: 50%;
       label {  margin-left: 9px;}
-      input {
+      input, .search-records {
          margin-left: 9px;
          width: 85%;
       }
@@ -153,7 +157,10 @@ div.form-section {
    div.added-item, div.new-item {
       border-bottom: 1px solid #909090;
 
-      .edit-item { overflow: hidden; }
+      .edit-item {
+         overflow: hidden;
+         padding-top: 5px;
+      }
 
       h3 {
          font-size: 13px;
@@ -182,7 +189,7 @@ div.form-section {
       padding: 2px 4px;
    }
    div.update {
-      background-color: #ffffcc;
+      background-color: #ffffe6;
       ul.item-icons {
          li {
             &:first-child {
@@ -227,5 +234,32 @@ input[type=submit].form-submit {
 
    &:hover {
       background-color: #ff704d;
+   }
+}
+
+/********************************************
+
+               Vue Components
+
+********************************************/
+
+// ./programs/_index.vue
+.search-records {
+   position: absolute;
+   z-index: 1;
+   top: 54px;
+   width: 100%;
+   border: 1px solid #222f3e;
+   ul {
+      li {
+         background-color: #f5f5ff;
+         padding: 5px 4px;
+         border: 2px solid #ffffff;
+         &:hover {
+            background-color: #222f3e;
+            color : #ffffff;
+            cursor: pointer;
+         }
+      }
    }
 }

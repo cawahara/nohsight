@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def is_logged_in?
      unless is_logged?
-        redirect_t(login_url)
+        redirect_to(login_url)
      end
   end
 end

@@ -1,7 +1,7 @@
 <template>
    <div class="item-component" v-bind:class="mode">
-      <input v-bind:name="getItemId(id, 'type')" type="hidden" v-bind:value="mode">
-      <input v-bind:name="getItemId(id, 'id')" type="hidden" v-bind:value="ev_program.id">
+      <input v-bind:name="getColumn(id, 'type')" type="hidden" v-bind:value="mode">
+      <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ev_program.id">
       <div class="show-item" v-show="mode != 'update'">
          <p class="item-info">
             {{ ev_program.style }}
@@ -17,19 +17,24 @@
       <div class="edit-item" v-show="mode == 'update'">
          <div class="sm-form">
             <label>演目</label>
-            <input v-bind:name="getItemId(id, 'title')" type="text" v-bind:value="program.title">
+            <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_program.query">
+            <program-index
+               v-show="search_program.query"
+               :search_query="search_program.query"
+               @return-value="setSearchValue"
+            ></program-index>
          </div>
          <div class="sm-form">
             <label>ジャンル</label>
-            <input v-bind:name="getItemId(id, 'genre')" type="text" v-bind:value="ev_program.genre">
+            <input v-bind:name="getColumn(id, 'genre')" type="text" v-bind:value="ev_program.genre">
          </div>
          <div class="sm-form">
             <label>流派</label>
-            <input v-bind:name="getItemId(id, 'style')" type="text" v-bind:value="ev_program.style">
+            <input v-bind:name="getColumn(id, 'style')" type="text" v-bind:value="ev_program.style">
          </div>
          <div class="sm-form">
             <label>演者</label>
-            <input v-bind:name="getItemId(id, 'performer')" type="text" v-bind:value="ev_performers[0].full_name">
+            <input v-bind:name="getColumn(id, 'performer')" type="text" v-bind:value="ev_performers[0].full_name">
          </div>
       </div>
       <ul class="item-icons">
@@ -40,26 +45,34 @@
 </template>
 
 <script>
+   import program_index from '../programs/_index.vue'
    export default {
       props: [ 'values' ],
       data: function(){
          return {
-            id:            this.values.id,
-            ev_program:    this.values.ev_program,
-            ev_performers: this.values.ev_performers,
-            program:       this.values.program,
-            mode:          ''
+            id:               this.values.id,
+            ev_program:       this.values.ev_program,
+            ev_performers:    this.values.ev_performers,
+            program:          this.values.program,
+            mode:             '',
+            search_program:   { query: this.values.program.title, focus: false },   // 初期値を「演目」にすることで編集と演目候補の検索を併用
          }
       },
+      components: { 'program-index': program_index },
       methods: {
-         getItemId: function(id, name){
+         getColumn: function(id, name){
             return 'ev_program[' + id + '][' + name + ']'
          },
          changeClass: function(mode){
-            if(this.mode == mode)
+            if(this.mode == mode){
                this.mode = ""
-            else
+            }else{
                this.mode = mode
+            }
+            this.search_program.query = this.values.program.title
+         },
+         setSearchValue: function(return_msg){
+            this.search_program.query = return_msg
          }
       }
    }

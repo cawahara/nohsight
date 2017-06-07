@@ -6,6 +6,10 @@
          <div class="sm-form">
             <label>演目</label>
             <input v-bind:name="getItemId(id, 'title')" type="text">
+            <program-index
+               :result="search_program"
+               :programs="programs"
+            ></program-index>
          </div>
          <div class="sm-form">
             <label>ジャンル</label>
@@ -28,13 +32,17 @@
 </template>
 
 <script>
+   import program_index from '../programs/_index.vue'
    export default {
-      props: [ 'values' ],
+      props: [ 'values', 'programs' ],
       data: function(){
          return {
-            id: this.values.id
+            id: this.values.id,
+            programs: this.programs,
+            search_program: ''
          }
       },
+      components: { 'program-index': program_index },
       methods: {
          getTagId: function(id){
             return 'ev_program-new-' + id

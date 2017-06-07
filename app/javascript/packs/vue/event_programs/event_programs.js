@@ -5,8 +5,13 @@ import ListItem from './list-items.vue'
 import New from './new.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
+   // FIXME: ページの種類にかかわらずHTMLパースをかけてデータをとろうとしてしまうため、
+   //        下記の対象タグ要素がないページにアクセスするとコンソール上に[Vue Warn]が発生する
+   //        ページそのものに影響はないがエラーが表示されないようにしたい
+
    // ListItem Vue instance
-   const added_items = document.getElementsByClassName('added-item');
+   const added_items = document.getElementsByClassName('added-item')
+
    for(var i = 0; i < added_items.length; i++){
       const ev_program = JSON.parse(added_items[i].getAttribute('data-ev-program'))
       const ev_performers = JSON.parse(added_items[i].getAttribute('data-ev-performers'))
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
          },
          // REVIEW: componentsからrender属性に変更したら、Vueインスタンス中の
-         //         データをコンポーネント上に渡すことができた。なぜ？
+         //         データを子コンポーネント上に渡すことができた。なぜ？
          render(h){
             return h(ListItem, { props: { values: this.values } })
          }
