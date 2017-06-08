@@ -13,28 +13,41 @@
             <li v-for="ev_performer in ev_performers">{{ ev_performer.full_name }} </li>
          </ul>
       </div>
-
-      <div class="edit-item" v-show="mode == 'update'">
-         <div class="sm-form">
-            <label>演目</label>
-            <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_program.query">
-            <program-index
-               v-show="search_program.query"
+            <!--<program-index
+               v-show="search_program.focus"
                :search_query="search_program.query"
                @return-value="setSearchValue"
-            ></program-index>
+            ></program-index> -->
+
+      <div class="edit-item" v-show="mode == 'update'">
+         <div class="program-form">
+            <label>演目</label>
+            <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_program.query"
+            v-focus="search_program.focus" v-focus.lazy="true" @focus="search_program.focus = true">
+            <span class="btn"><i class="fa fa-bars"></i></span>
          </div>
-         <div class="sm-form">
-            <label>ジャンル</label>
+
+         <div class="program-sm-form">
+            <label>種類</label>
             <input v-bind:name="getColumn(id, 'genre')" type="text" v-bind:value="ev_program.genre">
          </div>
-         <div class="sm-form">
+         <div class="program-sm-form">
             <label>流派</label>
             <input v-bind:name="getColumn(id, 'style')" type="text" v-bind:value="ev_program.style">
          </div>
-         <div class="sm-form">
+
+         <!-- TODO: Event-performerディレクトリを作成 => 編集用Vueコンポーネントを作成 -->
+         <div class="performer-form">
             <label>演者</label>
-            <input v-bind:name="getColumn(id, 'performer')" type="text" v-bind:value="ev_performers[0].full_name">
+            <div class="performer-form-content">
+               <div class="performer-form-header">
+                  <input v-bind:name="getColumn(id, 'performer')" type="text" v-bind:value="ev_performers[0].full_name">
+                  <ul class="item-icons">
+                     <li><span class="btn"><i class="fa fa-pencil"></i></span></li>
+                     <li><span class="btn"><i class="fa fa-trash"></i></span></li>
+                  </ul>
+               </div>
+            </div>
          </div>
       </div>
       <ul class="item-icons">
@@ -45,7 +58,9 @@
 </template>
 
 <script>
+   import Vue from 'vue'
    import program_index from '../programs/_index.vue'
+   import { focus } from 'vue-focus'
    export default {
       props: [ 'values' ],
       data: function(){
@@ -59,6 +74,7 @@
          }
       },
       components: { 'program-index': program_index },
+      directives: { 'focus': focus },
       methods: {
          getColumn: function(id, name){
             return 'ev_program[' + id + '][' + name + ']'
@@ -72,10 +88,13 @@
             this.search_program.query = this.values.program.title
          },
          setSearchValue: function(return_msg){
-            this.search_program.query = return_msg
+               this.search_program.query = return_msg
+               this.search_program.focus = false
          }
       }
    }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

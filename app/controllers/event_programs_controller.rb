@@ -5,9 +5,6 @@ class EventProgramsController < ApplicationController
      @programs = Program.all
   end
 
-  def create
-  end
-
   def update
      @event = Event.find(params[:id])
      @event_programs = event_program_params
@@ -45,9 +42,6 @@ class EventProgramsController < ApplicationController
      flash[:success] = "演目を変更しました"
      redirect_to(edit_port_event_url(@event))
 
-  end
-
-  def destroy
   end
 
   private

@@ -23,15 +23,23 @@
       <h1 class="port-header">演目</h1>
       <% @event.event_programs.each do |ev_program| %>
       <div class="port-info">
-         <p>
-            <%= ev_program.style %>
-            <%= ev_program.genre %>
-            「<%= ev_program.program.title %>」
-            <!-- REVIEW: イベント編集概要に各演目の演者を載せるべきか検討中 -->
-         </p>
+         <ul>
+            <li>
+               <%= ev_program.style %>
+               <%= ev_program.genre %>
+               「<%= ev_program.program.title %>」
+            </li>
+            <li>
+               演者：
+               <% ev_program.event_performers.each do |ev_performer| %>
+                  <%= ev_performer.performer.full_name %>
+               <% end %>
+            </li>
+         </ul>
       </div>
       <% end %>
-      <%= link_to edit_event_program_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
+      <%= link_to edit_event_program_path(@event), class: 'port-link' do %>演目を編集する<%= fa_icon('angle-right') %><% end %>
+      <%= link_to edit_event_performer_path(@event), class: 'port-link' do %>演者を編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
    <div class="port-section">

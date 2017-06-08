@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # EventProgram用ルーテイング
   resources 'event_programs'
 
+  # EventPerformer用ルーティング
+  resources 'event_performers'
+
   # Ticket用ルーティング
   resources 'tickets'
 

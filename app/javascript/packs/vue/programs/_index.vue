@@ -1,7 +1,7 @@
 <template>
    <div class="search-records">
       <ul>
-         <li v-for="record in getSearchResponse(search_query)" v-on:click="setValue(record)">{{ record }}</li>
+         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record }}</li>
       </ul>
    </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
    export default {
       props: {
-         search_query:　String
+         search_query: String
       },
       data: function(){
          return {
@@ -39,9 +39,6 @@
          },
          setSearchValue: function(value){
             this.$emit('return-value', value)
-         },
-         getProgramInfo: function(){
-
          }
       }
 

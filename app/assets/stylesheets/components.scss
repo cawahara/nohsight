@@ -243,6 +243,82 @@ input[type=submit].form-submit {
 
 ********************************************/
 
+// ./event_programs/list-items.Vue
+.program-form {
+   overflow: hidden;
+   margin-bottom: 14px;
+
+   * {
+      display: inline-block;
+      float: left;
+   }
+   label { margin: 13px 8px 0 8px; }
+
+   input {
+      width: calc(100% - 92px);
+      margin-right: 3px;
+   }
+
+   span.btn {
+      padding: 7px 8px 6px 8px;
+      margin-top: 8px;
+   }
+}
+
+.program-sm-form {
+   float: left;
+   overflow: hidden;
+   margin-bottom: 14px;
+   width: 50%;
+
+   * {
+      display: inline-block;
+      float: left;
+   }
+   label {
+      margin: 13px 8px 0 8px;
+   }
+
+   input {
+      width: calc(100% - 60px);
+      margin-right: 3px;
+   }
+}
+
+.performer-form {
+   overflow: hidden;
+   width: 100%;
+
+   label {
+      float: left;
+      display: inline-block;
+      margin: 13px 8px 0 8px;
+   }
+
+   .performer-form-content {
+      float: left;
+      width:  calc(100% - 46px);
+      .performer-form-header {
+         width: 100%;
+         overflow: hidden;
+         input {
+            float: left;
+            width: calc(100% - 100px);
+         }
+         .item-icons {
+            float: left;
+            width: 90px;
+            margin: 9px 0;
+            li { margin-left: 5px; }
+         }
+      }
+      .performer-form-detail {
+
+      }
+   }
+}
+
+
 // ./programs/_index.vue
 .search-records {
    position: absolute;

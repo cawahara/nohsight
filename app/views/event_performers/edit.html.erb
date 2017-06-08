@@ -1,0 +1,16 @@
+<div id="event-performers-edit">
+
+   <%= form_for(:event, url: event_performer_path(@event), method: 'patch') do |f| %>
+   <div class="form-section">
+      <h1 class="form-header">演者の編集</h1>
+      <h2 class="form-header">現在設定されている演目</h2>
+      <% @event_programs.each do |ev_program| %>
+      <!-- TODO: 専用のVueコンポーネントを配置 -->
+      <% end %>
+      <h2 class="form-header">演目の新規追加</h2>
+
+      <div id="event-performers-new"></div>
+   </div>
+   <%= f.submit('保存', class: 'form-submit') %>
+   <% end %>
+</div>
