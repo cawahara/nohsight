@@ -6,7 +6,7 @@
       <h2 class="form-header">現在設定されている演目</h2>
       <% @event_programs.each do |ev_program| %>
       <%= content_tag :div,
-            class: 'added-item',
+            class: 'event-program-added-item',
             data: ev_program_for_vue_attr(ev_program) do %>
          <div id="ev_program-<%= ev_program.id %>"></div>
       <% end %>
