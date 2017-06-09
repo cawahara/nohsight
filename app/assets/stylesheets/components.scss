@@ -119,6 +119,12 @@ div.form-section {
       padding: 0 10px 12px 10px;
       label {}
       input, textarea, .search-records { width: 100%; }
+
+      .input-with-btn {
+         * { display: inline-block; }
+         input { width: calc(100% - 42px); }
+         span.btn { margin-bottom: 2px; }
+      }
    }
    div.md-form {
       width: 100%;
@@ -244,98 +250,3 @@ input[type=submit].form-submit {
 ********************************************/
 
 // ./event_programs/list-items.Vue
-.program-form {
-   overflow: hidden;
-   margin-bottom: 14px;
-
-   * {
-      display: inline-block;
-      float: left;
-   }
-   label { margin: 13px 8px 0 8px; }
-
-   input {
-      width: calc(100% - 92px);
-      margin-right: 3px;
-   }
-
-   span.btn {
-      padding: 7px 8px 6px 8px;
-      margin-top: 8px;
-   }
-}
-
-.program-sm-form {
-   float: left;
-   overflow: hidden;
-   margin-bottom: 14px;
-   width: 50%;
-
-   * {
-      display: inline-block;
-      float: left;
-   }
-   label {
-      margin: 13px 8px 0 8px;
-   }
-
-   input {
-      width: calc(100% - 60px);
-      margin-right: 3px;
-   }
-}
-
-.performer-form {
-   overflow: hidden;
-   width: 100%;
-
-   label {
-      float: left;
-      display: inline-block;
-      margin: 13px 8px 0 8px;
-   }
-
-   .performer-form-content {
-      float: left;
-      width:  calc(100% - 46px);
-      .performer-form-header {
-         width: 100%;
-         overflow: hidden;
-         input {
-            float: left;
-            width: calc(100% - 100px);
-         }
-         .item-icons {
-            float: left;
-            width: 90px;
-            margin: 9px 0;
-            li { margin-left: 5px; }
-         }
-      }
-      .performer-form-detail {
-
-      }
-   }
-}
-
-
-// ./programs/_index.vue
-.search-records {
-   position: absolute;
-   z-index: 1;
-   top: 54px;
-   width: 100%;
-   border: 1px solid #222f3e;
-   ul {
-      li {
-         background-color: #f5f5ff;
-         padding: 5px 4px;
-         border: 2px solid #ffffff;
-         &:hover {
-            background-color: #222f3e;
-            color : #ffffff;
-            cursor: pointer;
-         }
-      }
-   }
-}
