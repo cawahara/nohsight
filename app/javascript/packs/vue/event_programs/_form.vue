@@ -1,59 +1,64 @@
 <template>
-   <div v-bind:id="getTagId(id)" class="new-item">
-      <input v-bind:name="getItemId(id, 'type')" type="hidden" value="create">
-      <h3>新規追加演目</h3>
-      <div class="edit-item">
-         <div class="sm-form">
-            <label>演目</label>
-            <input v-bind:name="getItemId(id, 'title')" type="text">
-            <program-index
-               :result="search_program"
-               :programs="programs"
-            ></program-index>
-         </div>
-         <div class="sm-form">
-            <label>ジャンル</label>
-            <input v-bind:name="getItemId(id, 'genre')" type="text">
-         </div>
-         <div class="sm-form">
-            <label>流派</label>
-            <input v-bind:name="getItemId(id, 'style')" type="text">
-         </div>
-         <div class="sm-form">
-            <label>演者</label>
-            <input v-bind:name="getItemId(id, 'performer')" type="text">
+   <div class="form-item">
+      <div class="lg-form">
+         <label>演目</label>
+         <div class="input-with-btn">
+            <input v-bind:name="getColumn(id, 'title')" type="text" v-bind:value="program.title">
+            <span v-bind:class="{ active: programs_edit_component }" class="btn" v-on:click="toggleComponent()"><i class="fa fa-bars"></i></span>
          </div>
       </div>
-      <ul class="item-icons">
-         <li v-on:click="removeItem(id)">取消<span class="btn"><i class="fa fa-minus"></i></span></li>
-      </ul>
+
+      <programs-edit
+         v-show="programs_edit_component == true"
+         :inherit_id="id"
+         :inherit_program="program"
+         :inherit_place="place"
+      ></programs-edit>
+
+      <div class="sm-form">
+         <label>種類</label>
+         <input v-bind:name="getColumn(id, 'genre')" type="text" v-bind:value="ev_program.genre">
+      </div>
+
+      <div class="sm-form">
+         <label>流派</label>
+         <input v-bind:name="getColumn(id, 'style')" type="text" v-bind:value="ev_program.style">
+      </div>
+
    </div>
 
 </template>
 
 <script>
-   import program_index from '../programs/_index.vue'
+   import mixins from './mixins.js'
+   import programs_edit from '../programs/_form.vue'
    export default {
-      props: [ 'values', 'programs' ],
+      mixins: [ mixins ],
+      props: {
+         inherit_id:         Number,
+         inherit_ev_program: Object,
+         inherit_program:    Object,
+         inherit_place:      Object
+      },
       data: function(){
          return {
-            id: this.values.id,
-            programs: this.programs,
-            search_program: ''
+            id:                       this.inherit_id,
+            ev_program:               this.inherit_ev_program,
+            program:                  this.inherit_program,
+            place:                    this.inherit_place,
+            programs_edit_component:   false
          }
       },
-      components: { 'program-index': program_index },
+      components: { 'programs-edit': programs_edit },
       methods: {
-         getTagId: function(id){
-            return 'ev_program-new-' + id
+         toggleComponent: function(){
+            if(this.programs_edit_component == false){
+               this.programs_edit_component = true
+            }else{
+               this.programs_edit_component = false
+            }
          },
-         getItemId: function(id, name){
-            return 'ev_program[new-' + id + '][' + name + ']'
-         },
-         removeItem: function(id){
-            var el = document.getElementById('ev_program-new-' + id)
-            el.parentNode.removeChild(el)
-         }
+         getColumn: mixins.getColumn
       }
    }
 </script>

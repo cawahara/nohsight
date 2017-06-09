@@ -1,3 +1,57 @@
 // Place all the styles related to the EventPrograms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#event-programs-edit {
+   div.form-section {
+
+      div.lg-form, div.md-form, div.sm-form {
+         margin-bottom: -7px;
+         label {
+            display: block;
+            margin-bottom: -3px;
+         }
+         span.active {
+            border-color: #b35900;
+            color: #b35900;
+         }
+      }
+
+      div.lg-form {
+      }
+      div.md-form {
+      }
+      div.sm-form {
+         margin-bottom: 8px;
+      }
+
+      ul.list-form {
+         margin-bottom: 11px;
+         li {
+            display: inline-block;
+            width: 35%;
+            * { display: inline-block; }
+         }
+
+         li.with-category {
+            margin-left: 11px;
+            input { width: calc(100% - 45px); }
+         }
+
+         li.with-duration {
+            input { width: calc(100% - 63px); }
+         }
+
+         li.with-shimai {
+            width: 20%;
+            margin-left: 15px;
+            label { padding: 3px; }
+         }
+      }
+   }
+
+   .program-form {
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #dedede;
+   }
+}

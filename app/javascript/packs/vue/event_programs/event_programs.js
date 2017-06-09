@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const ev_program = JSON.parse(added_items[i].getAttribute('data-ev-program'))
       const ev_performers = JSON.parse(added_items[i].getAttribute('data-ev-performers'))
       const program = JSON.parse(added_items[i].getAttribute('data-program'))
+      const place = JSON.parse(added_items[i].getAttribute('data-place'))
 
       var list_items = new Vue({
          el: '#' + added_items[i].children[0].id,
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   id:            i,
                   ev_program:    ev_program,
                   ev_performers: ev_performers,
-                  program:       program
+                  program:       program,
+                  place:         place
                }
             }
          },

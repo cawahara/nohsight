@@ -13,31 +13,14 @@
             <li v-for="ev_performer in ev_performers">{{ ev_performer.full_name }} </li>
          </ul>
       </div>
-            <!--<program-index
-               v-show="search_program.focus"
-               :search_query="search_program.query"
-               @return-value="setSearchValue"
-            ></program-index> -->
-      <div class="edit-item" v-show="mode == 'update'">
-         <div class="lg-form">
-            <label>演目</label>
-            <div class="input-with-btn">
-               <input v-bind:name="getColumn(id, 'title')" type="text" v-bind:value="program.title">
-               <span class="btn"><i class="fa fa-bars"></i></span>
-            </div>
-         </div>
 
-         <div class="sm-form">
-            <label>種類</label>
-            <input v-bind:name="getColumn(id, 'genre')" type="text" v-bind:value="ev_program.genre">
-         </div>
-
-         <div class="sm-form">
-            <label>流派</label>
-            <input v-bind:name="getColumn(id, 'style')" type="text" v-bind:value="ev_program.style">
-         </div>
-
-      </div>
+      <event-programs-form
+         v-show="mode == 'update'"
+         :inherit_id="id"
+         :inherit_ev_program="ev_program"
+         :inherit_program="program"
+         :inherit_place="place"
+      ></event-programs-form>
 
       <ul class="item-icons">
          <li v-on:click="changeClass('update')">編集<span class="btn"><i class="fa fa-pencil"></i></span></li>
@@ -47,29 +30,32 @@
 </template>
 
 <script>
-   import Vue from 'vue'
+   import mixins from './mixins.js'
+   import event_programs_form from './_form.vue'
    export default {
       props: [ 'values' ],
+      mixins: [ mixins ],
       data: function(){
          return {
             id:               this.values.id,
             ev_program:       this.values.ev_program,
             ev_performers:    this.values.ev_performers,
             program:          this.values.program,
+            place:            this.values.place,
             mode:             ''
          }
       },
+      components: { 'event-programs-form': event_programs_form },
       methods: {
-         getColumn: function(id, name){
-            return 'ev_program[' + id + '][' + name + ']'
-         },
          changeClass: function(mode){
             if(this.mode == mode){
                this.mode = ""
             }else{
                this.mode = mode
             }
-         }
+         },
+
+         getColumn: mixins.getColumn
       }
    }
 </script>

@@ -6,10 +6,12 @@ module EventProgramsHelper
          ev_performers << ev_performer.performer
       end
       program = ev_program.program
+      place = program.place
       return {
          ev_program:    ev_program,
          ev_performers: ev_performers,
-         program:       program
+         program:       program,
+         place:         place
       }
    end
 end
