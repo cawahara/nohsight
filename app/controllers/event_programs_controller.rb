@@ -3,6 +3,7 @@ class EventProgramsController < ApplicationController
      @event = Event.find(params[:id])
      @event_programs = @event.event_programs
      @programs = Program.all
+     @places = Place.all
   end
 
   def update

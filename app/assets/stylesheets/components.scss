@@ -132,8 +132,9 @@ div.form-section {
 
       .input-with-btn {
          * { display: inline-block; }
-         input { width: calc(100% - 42px); }
+         input { width: calc(100% - 42px) }
          span.btn { margin-bottom: 2px; }
+         .search-records { width: calc(100% - 62px); }
       }
    }
    div.md-form {
@@ -191,16 +192,19 @@ div.form-section {
    }
 
    div.form-pointer {
-      float: right;
-      margin-right: 12px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 13.5px 14px 13.5px;
-      border-color: transparent transparent #222f3e transparent;
+      overflow: hidden;
+      div {
+         float: right;
+         margin-right: 12px;
+         width: 0;
+         height: 0;
+         border-style: solid;
+         border-width: 0 13.5px 14px 13.5px;
+         border-color: transparent transparent #222f3e transparent;
+      }
    }
    div.sub-form {
-      overflow: hidden;
+      overflow: visible;
       width: 100%;
       border-top: 2px solid #222f3e;
    }
@@ -274,4 +278,24 @@ input[type=submit].form-submit {
 
 ********************************************/
 
-// ./event_programs/list-items.Vue
+// ./prgograms/_index.vue
+.search-records {
+   z-index: 1;
+   position: absolute;
+   margin-top: -3px;
+   ul {
+      width: 100%;
+      li {
+         display: inline-block;
+         padding: 9px 12px;
+         width: inherit;
+         border: 1px solid #989898;
+         background-color: #ffffff;
+         &:hover {
+            background-color: #222f3e;
+            color: #ffffff;
+            cursor: pointer;
+         }
+      }
+   }
+}

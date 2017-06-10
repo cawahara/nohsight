@@ -6,8 +6,14 @@
          <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
          <label>演目</label>
          <div class="input-with-btn">
-            <input v-bind:name="getColumn(id, 'title')" type="text" v-bind:value="program.title">
+            <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_query.word"
+            v-focus="search_query.focus" @focus="search_query.focus = true">
             <span v-bind:class="{ active: programs_edit_component }" class="btn" v-on:click="toggleComponent()"><i class="fa fa-bars"></i></span>
+            <programs-index
+               v-show="search_query.focus == true"
+               :search_query="search_query.word"
+               @return-value="setSearchValue"
+            ></programs-index>
          </div>
       </div>
 
@@ -38,7 +44,9 @@
 
 <script>
    import mixins from './mixins.js'
+   import { focus } from 'vue-focus'
    import programs_edit from '../programs/_form.vue'
+   import programs_index from '../programs/_index.vue'
    export default {
       mixins: [ mixins ],
       props: {
@@ -54,10 +62,15 @@
             ev_program:               this.inherit_ev_program,
             program:                  this.inherit_program,
             place:                    this.inherit_place,
-            programs_edit_component:  false
+            programs_edit_component:  false,
+            search_query:              { word: this.inherit_program.title, focus: false }
          }
       },
-      components: { 'programs-edit': programs_edit },
+      directives: { 'focus': focus },
+      components: {
+         'programs-edit': programs_edit,
+         'programs-index': programs_index
+      },
       methods: {
          toggleComponent: function(){
             if(this.programs_edit_component == false){
@@ -72,6 +85,10 @@
          deleteNewItem: function(id){
             var el = document.getElementById('create-' + id)
             el.parentNode.removeChild(el)
+         },
+         setSearchValue: function(return_msg){
+            this.search_query.word = return_msg
+            this.search_query.focus = false
          },
          getColumn: mixins.getColumn
       }

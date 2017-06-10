@@ -18,5 +18,8 @@
    <%= f.submit('保存', class: 'form-submit') %>
    <% end %>
 
-   <%= content_tag :div, id: 'program-items', data: { programs: @programs } do %><% end %>
+   <%= content_tag :div, id: 'program-items', data: {
+                                                      programs: @programs,
+                                                      places:   @places
+                                                    } do %><% end %>
 </div>
