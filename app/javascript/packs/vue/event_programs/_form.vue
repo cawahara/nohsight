@@ -1,5 +1,5 @@
 <template>
-   <div class="form-item">
+   <div v-bind:id="getTagId(inherit_mode, id)" class="form-item">
       <input v-bind:name="getColumn(id, 'type')" type="hidden" v-model:value="inherit_mode">
       <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ev_program.id">
       <div class="lg-form">
@@ -27,6 +27,10 @@
          <label>流派</label>
          <input v-bind:name="getColumn(id, 'style')" type="text" v-bind:value="ev_program.style">
       </div>
+
+      <ul v-if=" inherit_mode == 'create' " class="item-icons">
+         <li v-on:click="deleteNewItem(id)">取消<span class="btn"><i class="fa fa-times"></i></span></li>
+      </ul>
 
    </div>
 
@@ -61,6 +65,13 @@
             }else{
                this.programs_edit_component = false
             }
+         },
+         getTagId: function(mode, id){
+            return mode + '-' + id
+         },
+         deleteNewItem: function(id){
+            var el = document.getElementById('create-' + id)
+            el.parentNode.removeChild(el)
          },
          getColumn: mixins.getColumn
       }

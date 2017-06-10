@@ -15,10 +15,10 @@
    import event_programs_form from './_form.vue'
 
    export default {
-      props: [ 'programs' ],
+      props: { id_num: Number },
       data: function(){
          return {
-            values: { id: 0 }
+            values: { id: this.id_num }
          }
       },
       components: { 'evetn-programs-form': event_programs_form },
@@ -26,7 +26,7 @@
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
-               data: { values: { id: this.values.id } },
+               data: { id: this.values.id },
                render(h){ return h(event_programs_form, { props: {
                                                                   inherit_id:         this.id,
                                                                   inherit_ev_program: {},
