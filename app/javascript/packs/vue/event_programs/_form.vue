@@ -87,7 +87,8 @@
             el.parentNode.removeChild(el)
          },
          setSearchValue: function(return_msg){
-            this.search_query.word = return_msg
+            this.search_query.word = return_msg.title
+            this.program = return_msg
             this.search_query.focus = false
          },
          getColumn: mixins.getColumn

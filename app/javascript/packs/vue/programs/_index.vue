@@ -1,7 +1,7 @@
 <template>
    <div class="search-records">
       <ul>
-         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record }}</li>
+         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record.title }}</li>
       </ul>
    </div>
 </template>
@@ -31,8 +31,8 @@
             var reg_query = new RegExp(query)
             for(var i = 0; i < datas.length; i++){
                var data = datas[i]
-               if( query.length > 0 && reg_query.test(data.title)){
-                  arr.push(data.title)
+               if(query.length > 0 && reg_query.test(data.title)){
+                  arr.push(data)
                }
             }
             return arr

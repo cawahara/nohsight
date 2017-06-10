@@ -6,15 +6,15 @@
          <ul class="list-form">
             <li class="with-category">
                <label>曲目</label>
-               <input v-bind:name="getColumn(id, 'category')" type="text" v-bind:value="program.category">
+               <input v-bind:name="getColumn(id, 'category')" type="text" v-bind:value="inherit_program.category">
             </li>
             <li class="with-duration">
                <label>公演時間</label>
-               <input v-bind:name="getColumn(id, 'duration')" type="text" v-bind:value="program.duration">
+               <input v-bind:name="getColumn(id, 'duration')" type="text" v-bind:value="inherit_program.duration">
             </li>
             <li class="with-shimai">
                <label>仕舞</label>
-               <input v-bind:name="getColumn(id, 'shimai')" type="checkbox" v-bind:value="program.shimai"
+               <input v-bind:name="getColumn(id, 'shimai')" type="checkbox" v-bind:value="inherit_program.shimai"
                 v-bind:true-value="true" v-bind:false-value="false">
             </li>
          </ul>
@@ -22,7 +22,7 @@
          <div class="lg-form">
             <label>舞台</label>
             <div class="input-with-btn">
-               <input v-bind:name="getColumn(id, 'place')" type="text" v-bind:value="place.title"
+               <input v-bind:name="getColumn(id, 'place')" type="text" v-model:value="search_query.word"
                v-focus="search_query.focus" @focus="search_query.focus = true">
                <span v-bind:class="{ active: places_edit_component }" class="btn" v-on:click="toggleComponent()"><i class="fa fa-map-marker"></i></span>
                <places-index
@@ -78,7 +78,8 @@
             }
          },
          setSearchValue: function(return_msg){
-            this.search_query.word = return_msg
+            this.search_query.word = return_msg.title
+            this.place = return_msg
             this.search_query.focus = false
          },
          getColumn: mixins.getColumn

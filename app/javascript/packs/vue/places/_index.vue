@@ -1,7 +1,7 @@
 <template>
    <div class="search-records">
       <ul>
-         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record }}</li>
+         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record.title }}</li>
       </ul>
    </div>
 </template>
@@ -20,9 +20,9 @@
          // REVIEW: 主に子コンポーネントとして使われる為、親から連続してpropsを受け取らず、
          //         直接DOMを参照してデータを引き取る方法をとった
          var data_container = document.getElementById('program-items')
-         var programs = JSON.parse(data_container.getAttribute('data-places'))
+         var places = JSON.parse(data_container.getAttribute('data-places'))
 
-         this.grid_data = programs
+         this.grid_data = places
       },
       methods: {
          getSearchResponse: function(query){
@@ -31,8 +31,8 @@
             var reg_query = new RegExp(query)
             for(var i = 0; i < datas.length; i++){
                var data = datas[i]
-               if( query.length > 0 && reg_query.test(data.title)){
-                  arr.push(data.title)
+               if(query.length > 0 && reg_query.test(data.title)){
+                  arr.push(data)
                }
             }
             return arr

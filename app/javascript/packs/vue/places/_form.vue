@@ -5,12 +5,12 @@
          <h3 class="form-header">■演目舞台の詳細情報</h3>
          <div class="lg-form">
             <label>住所</label>
-            <input v-bind:name="getColumn(id, 'address')" type="text" v-bind:value="place.address">
+            <input v-bind:name="getColumn(id, 'address')" type="text" v-bind:value="inherit_place.address">
          </div>
 
          <div class="lg-form">
             <label>サイトURL</label>
-            <input v-bind:name="getColumn(id, 'official_url')" type="text" v-bind:value="place.official_url">
+            <input v-bind:name="getColumn(id, 'official_url')" type="text" v-bind:value="inherit_place.official_url">
          </div>
 
       </div>
