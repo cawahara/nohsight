@@ -11,7 +11,8 @@
 
 <script>
    import Vue from 'vue'
-   import render_form from './_form.vue'
+   import mixins from './mixins.js'
+   import event_programs_form from './_form.vue'
 
    export default {
       props: [ 'programs' ],
@@ -20,15 +21,19 @@
             values: { id: 0 }
          }
       },
-      components: {
-         'render-form': render_form
-      },
+      components: { 'evetn-programs-form': event_programs_form },
       methods: {
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
                data: { values: { id: this.values.id } },
-               render(h){ return h(render_form, { props: { values: this.values, programs: this.programs }}) }
+               render(h){ return h(event_programs_form, { props: {
+                                                                  inherit_id:         this.id,
+                                                                  inherit_ev_program: {},
+                                                                  inherit_program:    {},
+                                                                  inherit_place:      {},
+                                                                  inherit_mode:       'create'
+                                                                  }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"

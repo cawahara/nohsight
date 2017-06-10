@@ -1,7 +1,5 @@
 <template>
    <div class="item-component" v-bind:class="mode">
-      <input v-bind:name="getColumn(id, 'type')" type="hidden" v-bind:value="mode">
-      <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ev_program.id">
       <div class="show-item" v-show="mode != 'update'">
          <p class="item-info">
             {{ ev_program.style }}
@@ -20,6 +18,7 @@
          :inherit_ev_program="ev_program"
          :inherit_program="program"
          :inherit_place="place"
+         :inherit_mode="mode"
       ></event-programs-form>
 
       <ul class="item-icons">

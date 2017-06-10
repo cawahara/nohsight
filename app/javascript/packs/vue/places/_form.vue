@@ -21,8 +21,8 @@
    import mixins from '../event_programs/mixins.js'
    export default {
       props: {
-         inherit_id:         Number,
-         inherit_place:      Object
+         inherit_id:      Number,
+         inherit_place:   Object
       },
       data: function(){
          return {
@@ -34,7 +34,6 @@
          getColumn: mixins.getColumn
       }
    }
-
 </script>
 
 <style scoped></style>

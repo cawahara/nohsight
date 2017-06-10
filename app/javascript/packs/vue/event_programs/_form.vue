@@ -1,6 +1,9 @@
 <template>
    <div class="form-item">
+      <input v-bind:name="getColumn(id, 'type')" type="hidden" v-model:value="inherit_mode">
+      <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ev_program.id">
       <div class="lg-form">
+         <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
          <label>演目</label>
          <div class="input-with-btn">
             <input v-bind:name="getColumn(id, 'title')" type="text" v-bind:value="program.title">
@@ -38,7 +41,8 @@
          inherit_id:         Number,
          inherit_ev_program: Object,
          inherit_program:    Object,
-         inherit_place:      Object
+         inherit_place:      Object,
+         inherit_mode:       String
       },
       data: function(){
          return {
@@ -46,7 +50,7 @@
             ev_program:               this.inherit_ev_program,
             program:                  this.inherit_program,
             place:                    this.inherit_place,
-            programs_edit_component:   false
+            programs_edit_component:  false
          }
       },
       components: { 'programs-edit': programs_edit },
