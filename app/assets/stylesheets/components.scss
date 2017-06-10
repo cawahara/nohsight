@@ -91,6 +91,15 @@ div.form-section {
       padding: 0 0 3px 5px;
    }
 
+   h3.form-header {
+      margin: 9px;
+      border-bottom: 1px solid #ababab;
+      display: inline-block;
+      width: auto;
+      text-decoration: none;
+      padding: 2px 5px;
+   }
+
    label, span.required { display: inline; }
    span.required {
       font-size: 11px;
@@ -169,7 +178,7 @@ div.form-section {
          padding-top: 5px;
       }
 
-      h3 {
+      h3.item-header {
          font-size: 13px;
          margin: 0 0 11px 9px;
          text-decoration: underline;
@@ -179,6 +188,21 @@ div.form-section {
          margin-top: 8px;
          li { display: inline;}
       }
+   }
+
+   div.form-pointer {
+      float: right;
+      margin-right: 12px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 13.5px 14px 13.5px;
+      border-color: transparent transparent #222f3e transparent;
+   }
+   div.sub-form {
+      overflow: hidden;
+      width: 100%;
+      border-top: 2px solid #222f3e;
    }
 
    ul.item-icons {
