@@ -5,11 +5,7 @@
       <h1 class="form-header">演目の編集</h1>
       <h2 class="form-header">現在設定されている演目</h2>
       <% @event_programs.each do |ev_program| %>
-      <%= content_tag :div,
-            class: 'added-item event-program-added-item',
-            data: ev_program_for_vue_attr(ev_program) do %>
          <div id="event-program-<%= ev_program.id %>"></div>
-      <% end %>
       <% end %>
       <h2 class="form-header">演目の新規追加</h2>
 
@@ -17,9 +13,4 @@
    </div>
    <%= f.submit('保存', class: 'form-submit') %>
    <% end %>
-
-   <%= content_tag :div, id: 'program-items', data: {
-                                                      programs: @programs,
-                                                      places:   @places
-                                                    } do %><% end %>
 </div>

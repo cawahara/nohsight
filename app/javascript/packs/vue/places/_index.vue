@@ -7,6 +7,7 @@
 </template>
 
 <script>
+   import * as $ from 'jquery'
    export default {
       props: {
          search_query: String
@@ -17,12 +18,18 @@
          }
       },
       created: function(){
-         // REVIEW: 主に子コンポーネントとして使われる為、親から連続してpropsを受け取らず、
-         //         直接DOMを参照してデータを引き取る方法をとった
-         var data_container = document.getElementById('program-items')
-         var places = JSON.parse(data_container.getAttribute('data-places'))
+         $.ajax({
+            url: '',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+               this.grid_data = data.places
+            },
+            error: function(data){
+               console.log("An error occured")
+            }
+         })
 
-         this.grid_data = places
       },
       methods: {
          getSearchResponse: function(query){

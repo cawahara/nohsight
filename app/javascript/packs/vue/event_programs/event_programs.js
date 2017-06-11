@@ -1,6 +1,8 @@
 // "vue" folder including this file has all vue components.
 
 import Vue from 'vue'
+import * as $ from 'jquery'
+import mixins from './mixins.js'
 import ListItem from './list_items.vue'
 import New from './new.vue'
 
@@ -10,42 +12,68 @@ document.addEventListener('DOMContentLoaded', () => {
    //        ページそのものに影響はないがエラーが表示されないようにしたい
 
    // ListItem Vue instance
-   const added_items = document.getElementsByClassName('event-program-added-item')
 
-   var id_num = 0
-   while(id_num < added_items.length){
-      const ev_program = JSON.parse(added_items[id_num].getAttribute('data-ev-program'))
-      const ev_performers = JSON.parse(added_items[id_num].getAttribute('data-ev-performers'))
-      const program = JSON.parse(added_items[id_num].getAttribute('data-program'))
-      const place = JSON.parse(added_items[id_num].getAttribute('data-place'))
+   const target_content = document.getElementById('event-programs-edit')
+   if(target_content != null){
 
-      var list_items = new Vue({
-         el: '#' + added_items[id_num].children[0].id,
-         data: function() {
-            return {
-               values: {
-                  id:            id_num,
-                  ev_program:    ev_program,
-                  ev_performers: ev_performers,
-                  program:       program,
-                  place:         place
+      $.ajax({
+         url: '',
+         type: 'GET',
+         dataType: 'json',
+         success: function(data){
+
+            var id_num = 0
+            var data_ev_programs = data.event_programs
+
+            while(id_num < data_ev_programs.length){
+
+               var data_ev_program     = data.event_programs[id_num]
+               var data_performers     = []
+               for(var key in data.event_performers){
+                  if(data.event_performers[key].event_program_id == data_ev_program.id){
+                     var tmp_performer = data.event_performers[key]
+                     data_performers.push(mixins.forInsert(data.performers, tmp_performer.performer_id))
+                  }
                }
+               var data_program        = mixins.forInsert(data.programs, data_ev_program.program_id)
+               var data_place          = mixins.forInsert(data.places, data_program.place_id)
+
+               var list_items = new Vue({
+                  el: '#event-program-' + data_ev_program.id,
+                  data: function() {
+                     return {
+                        values: {
+                           id:             id_num,
+                           ev_program:     data_ev_program,
+                           ev_performers:  data_performers,
+                           program:        data_program,
+                           place:          data_place
+                        }
+                     }
+                  },
+                  // REVIEW: componentsからrender属性に変更したら、Vueインスタンス中の
+                  //         データを子コンポーネント上に渡すことができた。なぜ？
+                  render(h){
+                     return h(ListItem, { props: { values: this.values } })
+                  }
+
+               })
+               id_num += 1
             }
+
+            // New Vue instance
+            var new_item = new Vue({
+               el: '#event-programs-new',
+               render(h){
+                  return h(New, { props: { id_num: id_num } })
+               }
+            })
+
          },
-         // REVIEW: componentsからrender属性に変更したら、Vueインスタンス中の
-         //         データを子コンポーネント上に渡すことができた。なぜ？
-         render(h){
-            return h(ListItem, { props: { values: this.values } })
+         error: function(data){
+            console.log("An error occured")
          }
       })
-      id_num += 1
    }
 
-   // New Vue instance
-   var new_item = new Vue({
-      el: '#event-programs-new',
-      render(h){
-         return h(New, { props: { id_num: id_num } })
-      }
-   })
 })

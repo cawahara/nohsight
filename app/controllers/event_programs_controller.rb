@@ -2,8 +2,28 @@ class EventProgramsController < ApplicationController
   def edit
      @event = Event.find(params[:id])
      @event_programs = @event.event_programs
+     @performers = Performer.all
      @programs = Program.all
      @places = Place.all
+
+     @event_performers = []
+     @event_programs.each do |ev_program|
+        ev_program.event_performers.each do |ev_performer|
+          @event_performers << ev_performer
+        end
+     end
+
+     respond_to do |format|
+        format.html
+        format.json { render json: {
+                                    event:            @event,
+                                    event_programs:   @event_programs,
+                                    event_performers: @event_performers,
+                                    performers:       @performers,
+                                    programs:         @programs,
+                                    places:           @places
+                                    } }
+     end
   end
 
   def update
@@ -50,7 +70,7 @@ class EventProgramsController < ApplicationController
       # paramsをarrayに変換
       def event_program_params
          # FIXME permit!をパラメータを指定したpermitメソッドに置き換えるべき
-         ev_programs_hash = params.require(:ev_program).permit!
+         ev_programs_hash = params.require(:event_program).permit!
          ev_programs_array = []
          ev_programs_hash.each do |key, value|
             ev_programs_array << value
