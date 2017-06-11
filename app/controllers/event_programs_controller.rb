@@ -84,9 +84,7 @@ class EventProgramsController < ApplicationController
             return true
          end
 
-         if Place.find_by(title: event_params['place']).nil?
-            return false
-         elsif Program.find_by(title: event_params['title']).nil?
+         if Program.find_by(title: event_params['title']).nil?
             return false
          elsif event_params['genre'].empty? || event_params['style'].empty?
             return false

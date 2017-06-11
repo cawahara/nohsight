@@ -3,27 +3,16 @@
       <input v-bind:name="getColumn(id, 'type')" type="hidden" v-model:value="inherit_mode">
       <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ev_program.id">
       <div class="lg-form">
-         <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
+      <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
          <label>演目</label>
-         <div class="input-with-btn">
-            <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_query.word"
-            v-focus="search_query.focus" @focus="search_query.focus = true">
-            <span v-bind:class="{ active: programs_edit_component }" class="btn" v-on:click="toggleComponent()"><i class="fa fa-bars"></i></span>
-            <programs-index
-               v-show="search_query.focus == true"
-               :search_query="search_query.word"
-               @return-value="setSearchValue"
-            ></programs-index>
-         </div>
+         <input v-bind:name="getColumn(id, 'title')" type="text" v-model:value="search_query.word"
+         v-focus="search_query.focus" @focus="search_query.focus = true">
+         <programs-index
+            v-show="search_query.focus == true"
+            :search_query="search_query.word"
+            @return-value="setSearchValue"
+         ></programs-index>
       </div>
-
-      <programs-edit
-         v-show="programs_edit_component == true"
-         :inherit_id="id"
-         :inherit_program="program"
-         :inherit_place="place"
-      ></programs-edit>
-
       <div class="sm-form">
          <label>種類</label>
          <input v-bind:name="getColumn(id, 'genre')" type="text" v-bind:value="ev_program.genre">
@@ -45,7 +34,6 @@
 <script>
    import mixins from './mixins.js'
    import { focus } from 'vue-focus'
-   import programs_edit from '../programs/_form.vue'
    import programs_index from '../programs/_index.vue'
    export default {
       mixins: [ mixins ],
@@ -67,18 +55,8 @@
          }
       },
       directives: { 'focus': focus },
-      components: {
-         'programs-edit': programs_edit,
-         'programs-index': programs_index
-      },
+      components: { 'programs-index': programs_index },
       methods: {
-         toggleComponent: function(){
-            if(this.programs_edit_component == false){
-               this.programs_edit_component = true
-            }else{
-               this.programs_edit_component = false
-            }
-         },
          getTagId: function(mode, id){
             return mode + '-' + id
          },

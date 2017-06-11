@@ -125,8 +125,10 @@ div.form-section {
    }
 
    div.lg-form {
-      width: 100%;
-      padding: 0 10px 12px 10px;
+      box-sizing: border-box;
+      width: calc(100% - 24px);
+      margin: 0 12px;
+      padding-bottom: 12px;
       label {}
       input, textarea, .search-records { width: 100%; }
 
@@ -138,7 +140,8 @@ div.form-section {
       }
    }
    div.md-form {
-      width: 100%;
+      width: calc(100% - 24px);
+      margin: 0 12px;
       padding: 0 10px 10px 10px;
       overflow: hidden;
       label {
@@ -171,26 +174,6 @@ div.form-section {
 
    }
 
-   div.added-item, div.new-item {
-      border-bottom: 1px solid #909090;
-
-      .edit-item {
-         overflow: hidden;
-         padding-top: 5px;
-      }
-
-      h3.item-header {
-         font-size: 13px;
-         margin: 0 0 11px 9px;
-         text-decoration: underline;
-      }
-
-      ul.item-performers {
-         margin-top: 8px;
-         li { display: inline;}
-      }
-   }
-
    div.form-pointer {
       overflow: hidden;
       div {
@@ -220,8 +203,25 @@ div.form-section {
    }
 
 // Vue Component
-   div.item-component {
+   div.item-component, div.new-item {
+      border-bottom: 1px solid #909090;
       padding: 7px 4px;
+
+      .edit-item {
+         overflow: hidden;
+         padding-top: 5px;
+      }
+
+      h3.item-header {
+         font-size: 13px;
+         margin: 0 0 11px 9px;
+         text-decoration: underline;
+      }
+
+      ul.item-performers {
+         margin-top: 8px;
+         li { display: inline;}
+      }
    }
    div.update {
       background-color: #ffffe6;
@@ -284,11 +284,11 @@ input[type=submit].form-submit {
    position: absolute;
    margin-top: -3px;
    ul {
-      width: 100%;
+      width: inherit;
       li {
-         display: inline-block;
-         padding: 9px 12px;
          width: inherit;
+         display: inline-block;
+         padding: 6px 9px;
          border: 1px solid #989898;
          background-color: #ffffff;
          &:hover {
