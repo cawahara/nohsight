@@ -131,13 +131,6 @@ div.form-section {
       padding-bottom: 12px;
       label {}
       input, textarea, .search-records { width: 100%; }
-
-      .input-with-btn {
-         * { display: inline-block; }
-         input { width: calc(100% - 42px) }
-         span.btn { margin-bottom: 2px; }
-         .search-records { width: calc(100% - 62px); }
-      }
    }
    div.md-form {
       width: calc(100% - 24px);
@@ -164,6 +157,32 @@ div.form-section {
          margin-left: 9px;
          width: 85%;
       }
+   }
+
+   .vertical-division {
+      margin-top: 6px;
+      border-top: 1px solid #b3b3b3;
+      overflow: hidden;
+      label {
+         float: left;
+          display: inline-block;
+          margin: 14px 8px 0 0;
+      }
+      ul {
+         li { margin-top: 5px; }
+      }
+      span.btn { margin-bottom: 2px; }
+      div.vertical-section {
+         float: left;
+         width: calc(100% - 60px);
+         div {
+            overflow: hidden;
+            * { display: inline-block; }
+            input { width: calc(100% - 125px) }
+            ul { margin-left: -1px; }
+         }
+      }
+      .search-records { width: calc(100% - 62px); }
    }
 
    ul.form-summary {
@@ -225,6 +244,7 @@ div.form-section {
    }
    div.update {
       background-color: #ffffe6;
+      p.item-info { font-size: 15px; }
       ul.item-icons {
          li {
             &:first-child {

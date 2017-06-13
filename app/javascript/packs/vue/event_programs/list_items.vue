@@ -17,7 +17,6 @@
          :inherit_id="id"
          :inherit_ev_program="ev_program"
          :inherit_program="program"
-         :inherit_place="place"
          :inherit_mode="mode"
       ></event-programs-form>
 
@@ -40,7 +39,6 @@
             ev_program:       this.values.ev_program,
             ev_performers:    this.values.ev_performers,
             program:          this.values.program,
-            place:            this.values.place,
             mode:             ''
          }
       },

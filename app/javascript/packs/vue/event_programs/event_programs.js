@@ -7,10 +7,6 @@ import ListItem from './list_items.vue'
 import New from './new.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-   // FIXME: ページの種類にかかわらずHTMLパースをかけてデータをとろうとしてしまうため、
-   //        下記の対象タグ要素がないページにアクセスするとコンソール上に[Vue Warn]が発生する
-   //        ページそのものに影響はないがエラーが表示されないようにしたい
-
    // ListItem Vue instance
 
    const target_content = document.getElementById('event-programs-edit')
@@ -36,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   }
                }
                var data_program        = mixins.forInsert(data.programs, data_ev_program.program_id)
-               var data_place          = mixins.forInsert(data.places, data_program.place_id)
 
                var list_items = new Vue({
                   el: '#event-program-' + data_ev_program.id,
@@ -46,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                            id:             id_num,
                            ev_program:     data_ev_program,
                            ev_performers:  data_performers,
-                           program:        data_program,
-                           place:          data_place
+                           program:        data_program
                         }
                      }
                   },
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   render(h){
                      return h(ListItem, { props: { values: this.values } })
                   }
-
                })
                id_num += 1
             }

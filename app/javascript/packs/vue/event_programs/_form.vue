@@ -41,7 +41,6 @@
          inherit_id:         Number,
          inherit_ev_program: Object,
          inherit_program:    Object,
-         inherit_place:      Object,
          inherit_mode:       String
       },
       data: function(){
@@ -49,7 +48,6 @@
             id:                       this.inherit_id,
             ev_program:               this.inherit_ev_program,
             program:                  this.inherit_program,
-            place:                    this.inherit_place,
             programs_edit_component:  false,
             search_query:              { word: this.inherit_program.title, focus: false }
          }

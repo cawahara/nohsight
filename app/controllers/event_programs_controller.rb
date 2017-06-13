@@ -4,7 +4,6 @@ class EventProgramsController < ApplicationController
      @event_programs = @event.event_programs
      @performers = Performer.all
      @programs = Program.all
-     @places = Place.all
 
      @event_performers = []
      @event_programs.each do |ev_program|
@@ -20,8 +19,7 @@ class EventProgramsController < ApplicationController
                                     event_programs:   @event_programs,
                                     event_performers: @event_performers,
                                     performers:       @performers,
-                                    programs:         @programs,
-                                    places:           @places
+                                    programs:         @programs
                                     } }
      end
   end
@@ -30,7 +28,7 @@ class EventProgramsController < ApplicationController
      @event = Event.find(params[:id])
      @event_programs = @event.event_programs
      event_program_input = event_program_params
-
+     binding.pry
      event_program_input.each do |event_params|
         event_params = event_program_valid?(event_params)
         if event_params == false
@@ -93,22 +91,4 @@ class EventProgramsController < ApplicationController
          event_params['title'] = Program.find_by(title: event_params['title']).id
          return event_params
       end
-=begin
- {  "type"=>"",
-    "id"=>"2",
-    "genre"=>"狂言",
-    "style"=>"大蔵流"
-    "title"=>"芦刈",
-    "category"=>"二番目",
-    "duration"=>"50",
-    "place"=>"摂津国分寺",
-    "address"=>"Japan, 〒543-0044 Ōsaka-fu, Ōsaka-shi, Tennōji-ku, Kokubuchō, １４ 〒543-0044 国分 公園 内",
-    "official_url"=>"http://www.city.osaka.lg.jp/kensetsu/page/0000009761.html",}
-
-    REVIEW: Place => Program => EventProgramの順にレコードを操作するが、
-            入力内容がPlace, Programテーブルに存在しない場合、どう処理するべき？
-            1. renderしてエラーを出力　　2.新たにレコードに加える
-                                          => いくつかのフィールドにあるバリデを消さないと入力がスムーズに進まない
-                                          => 能楽師や開発サイドで未入力項目を定期的に探り、保管する必要あり？
-=end
 end
