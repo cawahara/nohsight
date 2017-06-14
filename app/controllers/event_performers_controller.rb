@@ -98,40 +98,4 @@ class EventPerformersController < ApplicationController
          performer_params['name'] = Performer.find_by(full_name: performer_params['name']).id
          return performer_params
       end
-=begin
-{  "utf8"=>"✓",
-   "authenticity_token"=>"/zxm9RjJeZmAOPAEeWr7tguem3mfgmrGDXsZrpEG4K7bq71yFpAh3xEvQO5rsKYKYem/C8V6j7tEH/vmAwyTgw==",
-   "event_program"=>{
-                     "0"=>{
-                           "id"=>"2",
-                           "type"=>"update"
-                           },
-                     "1"=>{
-                           "id"=>"19",
-                           "type"=>"update"
-                           }
-                     },
-   "event_performer"=>{
-                        "0"=>{
-                              "id"=>"135",
-                              "ev_program_id"=>"2",
-                              "type"=>"update",
-                              "name"=>"茂山 千三郎"
-                              },
-                        "1"=>{
-                              "id"=>"122",
-                              "ev_program_id"=>"2",
-                              "type"=>"update",
-                              "name"=>"前川 光長"
-                              },
-                        "2"=>{
-                              id"=>"23",
-                              "ev_program_id"=>"19",
-                              "type"=>"update",
-                              "name"=>"河村 博重"
-                              }
-                           },
-   "commit"=>"保存", "id"=>"1"}
-
-=end
 end

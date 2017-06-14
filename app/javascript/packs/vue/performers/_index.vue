@@ -18,6 +18,7 @@
          }
       },
       created: function(){
+
          var self = this
          $.ajax({
             url: '',
@@ -40,6 +41,9 @@
                var data = datas[i]
                if(query.length > 0 && reg_query.test(data.full_name)){
                   arr.push(data)
+                  if(arr.length >= 2){
+                     break
+                  }
                }
             }
             return arr

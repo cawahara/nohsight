@@ -129,6 +129,7 @@ div.form-section {
       width: calc(100% - 24px);
       margin: 0 12px;
       padding-bottom: 12px;
+      overflow: visible;
       label {}
       input, textarea, .search-records { width: 100%; }
    }
@@ -162,7 +163,6 @@ div.form-section {
    .vertical-division {
       margin-top: 6px;
       border-top: 1px solid #b3b3b3;
-      overflow: hidden;
       label {
          float: left;
           display: inline-block;
@@ -175,11 +175,31 @@ div.form-section {
       div.vertical-section {
          float: left;
          width: calc(100% - 60px);
-         div {
-            overflow: hidden;
+         div.vertical-form {
+            z-index: 0;
+            div {
+               overflow: hidden;
+               input, { width: calc(100% - 125px) }
+               ul.item-icons {
+                  float: right;
+                  margin-left: -1px;
+               }
+            }
             * { display: inline-block; }
-            input { width: calc(100% - 125px) }
-            ul { margin-left: -1px; }
+
+            .search-records {
+               position: absolute;
+               overflow: visible;
+               left: 50px;
+               margin-top: -20px;
+               z-index: 1;
+               width: calc(100% - 61px);
+
+               ul {
+                  overflow: visible;
+                  li { margin: -1px; }
+               }
+            }
          }
       }
       .search-records { width: calc(100% - 62px); }
