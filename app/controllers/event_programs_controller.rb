@@ -28,12 +28,12 @@ class EventProgramsController < ApplicationController
      @event = Event.find(params[:id])
      @event_programs = @event.event_programs
      event_program_input = event_program_params
-     binding.pry
      event_program_input.each do |event_params|
         event_params = event_program_valid?(event_params)
         if event_params == false
            flash['danger'] = "入力情報に不備があります"
-           render 'edit' and return
+           # FIXME renderアクションに変え、どの箇所に不備があるかを表示できるようにする
+           redirect_to(edit_event_program_url(@event)) and return
         end
      end
 

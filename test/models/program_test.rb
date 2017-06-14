@@ -23,24 +23,8 @@ class ProgramTest < ActiveSupport::TestCase
       assert_equal @place.programs.count, 0
    end
 
-
-   test "place_id should be present" do
-      @program.place_id = ""
-      assert_not @program.valid?
-   end
-
    test "title should be present" do
       @program.title = ""
-      assert_not @program.valid?
-   end
-
-   test "category should be present" do
-      @program.category = ""
-      assert_not @program.valid?
-   end
-
-   test "duration should be present" do
-      @program.duration = ""
       assert_not @program.valid?
    end
 

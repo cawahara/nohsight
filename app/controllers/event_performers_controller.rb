@@ -38,7 +38,8 @@ class EventPerformersController < ApplicationController
 
                   if event_performer_valid?(ev_performer_param) == false
                     flash['danger'] = "入力情報に不備があります"
-                    render 'edit' and return
+                    # FIXME renderアクションに変え、どの箇所に不備があるかを表示できるようにする
+                    redirect_to(edit_event_performer_url(@event)) and return
                   end
 
                   case ev_performer_param['type']
