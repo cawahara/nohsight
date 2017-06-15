@@ -79,7 +79,7 @@ class EventProgramsController < ApplicationController
 
       def event_program_valid?(event_params)
          if event_params['type'] == 'destroy'
-            return true
+            return event_params
          end
 
          if Program.find_by(title: event_params['title']).nil?

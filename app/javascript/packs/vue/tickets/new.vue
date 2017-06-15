@@ -4,7 +4,7 @@
          <div class="form-for-mount"></div>
       </div>
       <ul class="item-icons">
-         <li v-on:click="addNewItem()">演目の追加<span class="btn"><i class="fa fa-plus"></i></span></li>
+         <li v-on:click="addNewItem()">チケットの追加<span class="btn"><i class="fa fa-plus"></i></span></li>
       </ul>
    </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
    import Vue from 'vue'
    import mixins from './mixins.js'
-   import event_programs_form from './_form.vue'
+   import tickets_form from './_form.vue'
 
    export default {
       props: { id_num: Number },
@@ -21,18 +21,16 @@
             values: { id: this.id_num }
          }
       },
-      components: { 'event-programs-form': event_programs_form },
+      components: { 'tickets-form': tickets_form },
       methods: {
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
                data: { id: this.values.id },
-               render(h){ return h(event_programs_form, { props: {
-                                                                  inherit_id:         this.id,
-                                                                  inherit_ev_program: {},
-                                                                  inherit_program:    {},
-                                                                  inherit_place:      {},
-                                                                  inherit_mode:       'create'
+               render(h){ return h(tickets_form, { props: {
+                                                            inherit_mode: 'create',
+                                                            inherit_id:    this.id,
+                                                            inherit_ticket:   {}
                                                                   }}) }
             })
             var node = document.createElement('div')

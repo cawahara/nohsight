@@ -1,36 +1,16 @@
 <div id="tickets-edit">
+
+   <%= form_for(:event, url: ticket_path(@event), method: 'patch') do |f| %>
    <div class="form-section">
       <h1 class="form-header">チケットの編集</h1>
-      <h2 class="form-header">現在設定されている料金</h2>
-
-      <% @event.tickets.each do |ticket| %>
-      <div class="added-item">
-         <p class="item-info">
-            <%= ticket.grade %>：
-            <%= ticket.price %>
-         </p>
-         <ul class="item-icons">
-            <li>編集<button><%= fa_icon('pencil') %></button></li>
-            <li>削除<button><%= fa_icon('trash-o') %></button></li>
-         </ul>
-      </div>
+      <h2 class="form-header">料金一覧</h2>
+      <% @tickets.each do |ticket| %>
+         <div id="ticket-<%= ticket.id %>"></div>
       <% end %>
+      <h2 class="form-header">チケットの新規追加</h2>
 
-      <h2 class="form-header">料金設定の追加</h2>
-      <div class="sm-form">
-         <label>席</label>
-         <input type="text">
-      </div>
-      <div class="sm-form">
-         <label>料金</label>
-         <input type="text">
-      </div>
-
-      <ul class="item-icons">
-         <li>チケットの追加<button><%= fa_icon('plus') %></button></li>
-      </ul>
-
+      <div id="tickets-new"></div>
    </div>
-
-   <input class="form-submit" type="submit" value="保存">
+   <%= f.submit('保存', class: 'form-submit') %>
+   <% end %>
 </div>
