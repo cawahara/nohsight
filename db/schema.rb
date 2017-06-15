@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 20170514013703) do
 
   create_table "performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "full_name",  null: false
-    t.string   "last_name",  null: false
-    t.string   "first_name", null: false
-    t.integer  "style_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "last_name"
+    t.string   "first_name"
+    t.integer  "style_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["style_id"], name: "performer_to_style_id_idx", using: :btree
   end
 
@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 20170514013703) do
   end
 
   create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "place_id",   null: false
+    t.integer  "place_id"
     t.string   "title",      null: false
-    t.string   "category",   null: false
-    t.boolean  "shimai",     null: false
-    t.integer  "duration",   null: false
+    t.string   "category"
+    t.boolean  "shimai"
+    t.integer  "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "program_to_place_idx", using: :btree

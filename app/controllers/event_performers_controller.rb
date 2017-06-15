@@ -30,18 +30,18 @@ class EventPerformersController < ApplicationController
       ev_programs_input = event_performers_params[0]
       ev_performers_input = event_performers_params[1]
 
-
       ev_programs_input.each_index do |ev_program_idx|
          if ev_programs_input[ev_program_idx]['type'] == 'update'
             input_key = ev_program_idx
             ev_performers_input[input_key].each do |ev_performer_param|
 
-                  if event_performer_valid?(ev_performer_param) == false
+
+                  ev_performer_param = event_performer_valid?(ev_performer_param)
+                  if ev_performer_param == false
                     flash['danger'] = "入力情報に不備があります"
                     # FIXME renderアクションに変え、どの箇所に不備があるかを表示できるようにする
                     redirect_to(edit_event_performer_url(@event)) and return
                   end
-
                   case ev_performer_param['type']
                   when 'update'
                      event_performer = EventPerformer.find(ev_performer_param['id'])
@@ -88,15 +88,20 @@ class EventPerformersController < ApplicationController
          return [ev_programs_array, ev_performers_array]
       end
 
+
       def event_performer_valid?(performer_params)
          if performer_params['type'] == 'destroy'
-            return true
+            return performer_params
          end
 
          if Performer.find_by(full_name: performer_params['name']).nil?
-            return false
+            new_event_performer = Performer.new(full_name: performer_params['name'])
+            new_event_performer.save
+            performer_params['name'] = new_event_performer.id
+         else
+            performer_params['name'] = Performer.find_by(full_name: performer_params['name']).id
          end
-         performer_params['name'] = Performer.find_by(full_name: performer_params['name']).id
+
          return performer_params
       end
 end

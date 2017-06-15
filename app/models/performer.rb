@@ -6,6 +6,8 @@ class Performer < ApplicationRecord
    HIRAGANA = /\A\p{Hiragana}+\z/u
 
    validates :full_name,      presence: true
-   validates :last_name,      format:   { with: HIRAGANA }
-   validates :first_name,     format:   { with: HIRAGANA }
+   validates :last_name,      format:   { with: HIRAGANA },
+                              allow_nil: true
+   validates :first_name,     format:   { with: HIRAGANA },
+                              allow_nil: true
 end

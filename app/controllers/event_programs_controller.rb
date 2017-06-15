@@ -83,7 +83,8 @@ class EventProgramsController < ApplicationController
          end
 
          if Program.find_by(title: event_params['title']).nil?
-            return false
+            new_event_program = Program.new(title: event_params['title'])
+            new_event_program.save
          elsif event_params['genre'].empty? || event_params['style'].empty?
             return false
          end

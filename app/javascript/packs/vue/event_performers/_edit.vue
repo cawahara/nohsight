@@ -54,7 +54,7 @@
                      pro_idx:          this.inherit_pro_idx,
                      ev_program:       this.inherit_ev_program,
                      ev_performers:    this.inherit_ev_performers,
-                     new_idx:          this.inherit_ev_performers.length,
+                     new_idx:          this.new_idx,
                      mode:             "update"
                      },
                render(h){ return h(event_performers_form, { props: {
