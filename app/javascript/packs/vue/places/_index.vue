@@ -18,12 +18,13 @@
          }
       },
       created: function(){
+         var self = this
          $.ajax({
             url: '',
             type: 'GET',
             dataType: 'json',
             success: function(data){
-               this.grid_data = data.places
+               self.grid_data = data.places
             },
             error: function(data){
                console.log("An error occured")

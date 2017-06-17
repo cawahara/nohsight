@@ -14,9 +14,11 @@
    <div class="port-section">
       <h1 class="port-header">会場</h1>
       <div class="port-info">
+         <% if @event.place %>
          <p><%= @event.place.title %></p>
+         <% end %>
       </div>
-      <%= link_to edit_place_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
+      <%= link_to edit_event_place_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>
 
    <div class="port-section">

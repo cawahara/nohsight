@@ -1,6 +1,6 @@
 <div id="places-edit">
 
-   <%= form_for(@event.place) do |f| %>
+   <%= form_for(:event, url: event_program_path(@event), method: 'patch') do |f| %>
    <div class="form-section">
       <h1 class="form-header">会場の編集</h1>
 

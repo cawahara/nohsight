@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # Event用ルーティング
   resources 'events'
   get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_port_event'
+  get '/events/:id/edit_place', to: 'events#edit_place', as: 'edit_event_place'
+  patch '/events/:id/edit_place', to: 'events#update_place', as: 'event_place'
 
   # EventProgram用ルーテイング
   resources 'event_programs'
