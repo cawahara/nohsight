@@ -171,7 +171,7 @@ div.form-section {
       ul {
          li { margin-top: 5px; }
       }
-      span.btn { margin-bottom: 2px; }
+      .btn { margin-bottom: 2px; }
       div.vertical-section {
          float: left;
          width: calc(100% - 60px);
@@ -270,7 +270,7 @@ div.form-section {
             &:first-child {
                color: #b38600;
                text-decoration: underline;
-               span.btn {
+               .btn {
                   border-color: #b38600;
                   i { color: #b38600; }
                }
@@ -285,7 +285,7 @@ div.form-section {
             &:last-child {
                color: #ff3333;
                text-decoration: underline;
-               span.btn {
+               .btn {
                   border-color: #ff3333;
                   i { color: #ff3333; }
                }

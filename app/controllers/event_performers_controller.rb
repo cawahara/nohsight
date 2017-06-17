@@ -1,4 +1,5 @@
 class EventPerformersController < ApplicationController
+   before_action :is_logged_in?
 
    def edit
       @event = Event.find(params[:id])
@@ -61,7 +62,7 @@ class EventPerformersController < ApplicationController
 
 
       flash[:success] = "演目を変更しました"
-      redirect_to(edit_port_event_url(@event))
+      redirect_to(edit_event_port_url(@event))
    end
 
    private

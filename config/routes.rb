@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   # TODO: 必要なアクションのみ設定する予定
   # Event用ルーティング
   resources 'events'
-  get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_port_event'
+  get '/edit_manage', to: 'events#edit_manage', as: 'edit_event_manage'
+  get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_event_port'
   get '/events/:id/edit_place', to: 'events#edit_place', as: 'edit_event_place'
   patch '/events/:id/edit_place', to: 'events#update_place', as: 'event_place'
 

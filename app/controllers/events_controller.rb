@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+   before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :edit_place, :create, :update, :destroy, :update_place]
 
    def new
       @event = Event.new()
@@ -8,30 +9,17 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
    end
 
+   def edit_manage
+      @user = current_user
+      @events = Event.where(user_id: @user.id)
+   end
+
    def edit_port
       @event = Event.find(params[:id])
    end
 
    def edit
       @event = Event.find(params[:id])
-   end
-
-   def create
-      @event = current_user.events.build(event_params)
-      @event.published = false
-      if @event.save
-         flash[:success] = "新しいイベントを記録しました。編集して開催しましょう。"
-         redirect_to(edit_event_url(@event))
-      else
-         flash[:danger] = "公演名が入力されていません"
-         render 'events/new'
-      end
-   end
-
-   def update
-   end
-
-   def destroy
    end
 
    def edit_place
@@ -45,6 +33,40 @@ class EventsController < ApplicationController
                                      place:     @place,
                                      places:    @places
                                      } }
+      end
+   end
+
+   def create
+      @event = current_user.events.build(event_params)
+      @event.published = false
+      if @event.save
+         flash[:success] = "新しい公演を作成しました。編集して開催しましょう。"
+         redirect_to(edit_event_port_url(@event))
+      else
+         flash[:danger] = "公演名が入力されていません"
+         render 'events/new'
+      end
+   end
+
+   def update
+      @event = Event.find(params[:id])
+      if @event.update_attributes(event_params)
+         flash[:success] = "公演情報を更新しました"
+         redirect_to(edit_event_port_url(@event))
+      else
+         flash[:danger] = "入力情報に不備があります"
+         render 'events/edit'
+      end
+   end
+
+   def destroy
+      @event = Event.find(params[:id])
+      if @event.destroy
+         flash[:warning] = "公演を削除しました"
+         redirect_to(edit_event_manage_url)
+      else
+         flash[:danger] = "公演の削除に失敗しました"
+         redirect_to(edit_event_manage_url)
       end
    end
 
@@ -70,7 +92,7 @@ class EventsController < ApplicationController
          @event.update_attributes(place_id: @event_place.id)
       end
       flash[:success] = "会場を変更しました"
-      redirect_to(edit_port_event_url(@event))
+      redirect_to(edit_event_port_url(@event))
    end
 
    private
