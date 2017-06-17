@@ -7,6 +7,18 @@ class EventsController < ApplicationController
 
    def show
       @event = Event.find(params[:id])
+      locations = []
+      @event.event_programs.each do |ev_program|
+         locations << ev_program.program.place
+      end
+
+      respond_to do |format|
+         format.html
+         format.json { render json: {
+                                    event:      @event,
+                                    locations:  locations
+                                    } }
+      end
    end
 
    def edit_manage

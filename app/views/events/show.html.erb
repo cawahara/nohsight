@@ -67,20 +67,11 @@
       <% @event.event_programs.each do |ev_program| %>
       <div class="article">
          <h2 class="article-header"><%= ev_program.program.title %>の周辺スポット</h2>
-         <% nearby_locations = get_nearby_locations(ev_program.program.place) %>
-         <% if nearby_locations.count > 0 %>
-            <% nearby_locations.each do |spot| %>
-            <div class="nearby_location">
-               <img src="<%= spot['thumbnail'] %>" >
-               <ul>
-                  <li><%= spot["title"] %></li>
-                  <li><%= link_to spot["official_url"], spot["official_url"], :target => "_new" if !spot["official_url"].nil? %></li>
-               </ul>
-            </div>
-            <% end %>
-         <% else %>
-            <h2 class="no-event">周辺スポットはありません。</h2>
-         <% end %>
+         <div id="nearby-location-<%= ev_program.id %>" class="nearby-item">
+            <ul class="item-icons">
+               <li>表示<span class="btn"><i class="fa fa-angle-double-down"></i></span></li>
+            </ul>
+         </div>
       </div>
       <% end %>
    </div>
