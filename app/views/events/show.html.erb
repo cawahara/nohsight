@@ -58,6 +58,7 @@
 
          <!-- 会場場所の地図 -->
          <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+         <div id="map"></div>
       </div>
    </div>
 

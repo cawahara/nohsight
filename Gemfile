@@ -37,6 +37,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails',            '>= 2.2.1'                 # rails内に環境変数導入
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
 group :development do

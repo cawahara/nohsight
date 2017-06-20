@@ -10,6 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const extname = require('path-complete-extname')
 const { env, settings, output, loadersDir } = require('./configuration.js')
+const Dotenv = require('dotenv-webpack')
 
 const extensionGlob = `**/*{${settings.extensions.join(',')}}*`
 const entryPath = join(settings.source_path, settings.source_entry_path)
@@ -41,6 +42,10 @@ module.exports = {
     new ManifestPlugin({
       publicPath: output.publicPath,
       writeToFileEmit: true
+   }),
+   new Dotenv({
+      path: './.env',
+      safe: false
     })
   ],
 
@@ -54,5 +59,5 @@ module.exports = {
 
   resolveLoader: {
     modules: ['node_modules']
-  }
+}
 }

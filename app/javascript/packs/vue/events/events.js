@@ -43,20 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
             dataType: 'json',
             success: function(data){
                var data_location = data.locations[i]
-
-               var nearby_location = new Vue({
-                  el: '#' + id + '> ul',
-                  data: function(){
-                     return {
-                        values: {
-                           ev_location: data_location
+               var address
+               if(data_location == null){
+                  address = "fake address"
+               }else{
+                  address = data_location.address
+               }
+                  var nearby_location = new Vue({
+                     el: '#' + id + '> ul',
+                     data: function(){
+                        return {
+                           values: {
+                              ev_location: address
+                           }
                         }
+                     },
+                     render(h){
+                        return h(ShowLocations, { props: { values: this.values } })
                      }
-                  },
-                  render(h){
-                     return h(ShowLocations, { props: { values: this.values } })
-                  }
-               })
+                  })
             },
             error: function(data){
                console.log("An error occured")
@@ -74,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
                createNearbyElement(ev_nearby_locations[i].id, i)
                clicked[i] = true
             }
-
          })
       }
    }
