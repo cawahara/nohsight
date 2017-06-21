@@ -2,7 +2,7 @@ class EventsController < ApplicationController
    before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :edit_place, :create, :update, :destroy, :update_place]
 
    def index
-      query = params[:event][:search_query]
+      query = params[:search][:search_query]
       @events = Event.where("title LIKE ?", "%#{query}%")
    end
 

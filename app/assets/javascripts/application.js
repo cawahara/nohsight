@@ -17,9 +17,3 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
-
-$(function(){
-    $('.datepicker').datetimepicker({
-      format: 'YYYY年MM月DD日  ahh時mm分'
-   });
-});

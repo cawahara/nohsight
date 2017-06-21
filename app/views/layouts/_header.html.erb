@@ -22,7 +22,7 @@
      </ul>
      <ul id="dropdown-search" class="dropdown-lists">
        <li>
-          <%= form_for(:event, url: events_path, method: :get) do |f| %>
+          <%= form_for(:search, url: events_path, method: :get) do |f| %>
              <%= f.text_field :search_query %>
              <%= button_tag(type: 'submit') do %>
                 <i class="fa fa-search"></i>
