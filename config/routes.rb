@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
  # StaticPage用ルーティング
   get '/dashboard',       to: 'static_pages#dashboard',   as: 'dashboard'
+  get '/search',          to: 'static_pages#search',      as: 'search'
   get '/about',           to: 'static_pages#about',       as: 'about'
   get '/help',            to: 'static_pages#help',        as: 'help'
   get '/convention',      to: 'static_pages#convention',  as: 'convention'
@@ -18,13 +19,13 @@ Rails.application.routes.draw do
   patch '/events/:id/edit_place', to: 'events#update_place', as: 'event_place'
 
   # EventProgram用ルーテイング
-  resources 'event_programs'
+  resources 'event_programs', only: [:edit, :update]
 
   # EventPerformer用ルーティング
-  resources 'event_performers'
+  resources 'event_performers', only: [:edit, :update]
 
   # Ticket用ルーティング
-  resources 'tickets'
+  resources 'tickets', only: [:edit, :update]
 
   # Place用ルーティング
   resources 'places'

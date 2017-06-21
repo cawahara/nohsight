@@ -4,6 +4,10 @@ class StaticPagesController < ApplicationController
      @events = public_events
   end
 
+  def search
+     
+  end
+
   def about
   end
 

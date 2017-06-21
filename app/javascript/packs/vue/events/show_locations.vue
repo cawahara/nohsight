@@ -28,19 +28,21 @@
          }
 
       },
-      created: function(){
+      mounted: function(){
          var self = this
          function failedMsg(msg){
             self.failed_msg = msg
          }
             // REVIEW: リクエストパラメータが適切でないとき対策： 建前は整っているが正規の方法とは言えない(例外処理の仕方がわからない)
             // TODO: 観光地のカテゴリ限定
+            // TODO: ローディング時のメッセ表示
 
             var map = new google.maps.Map(document.getElementById('map'), {})
             var service = new google.maps.places.PlacesService(map)
 
             function getDetailInfo(result, status){
                if(status == google.maps.places.PlacesServiceStatus.OK){
+                  self.failed_msg = ''
                   var title         = result.name
                   var thumbnail
                   if(result.hasOwnProperty('photos') == false){
@@ -112,6 +114,8 @@
                      }
                   })
             }
+            this.failed_msg = "読み込み中..."
+
             sendGeoReq(this.address, this.api_key)
          }
       }
