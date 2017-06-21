@@ -8,3 +8,4 @@
 // layout file, like app/views/layouts/application.html.erb
 
 require("./vue/bundle.js")
+require("./rails_assets/bundle.js")
