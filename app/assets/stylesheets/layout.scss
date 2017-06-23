@@ -133,16 +133,26 @@ header {
                      border: 1px solid #ffb366;
                      box-shadow: -1px 0 3px 2px #ffb366;
                      outline: none;
+
+                      + button {
+                        border-top: 1px solid #ffb366;
+                        border-right: 1px solid #ffb366;
+                        border-bottom: 1px solid #ffb366;
+                        box-shadow: 1px 0 3px 2px #ffb366;
+                        outline: none;
+                     }
                   }
                }
-               input[type=submit] {
+               button {
                   border: 1px solid #989898;
                   border-top-right-radius: 5px;
                   border-bottom-right-radius: 5px;
                   font-family: FontAwesome;
-                  font-size: 18px;
-                  padding: 5px 8px 6px 8px;
+                  padding: 8px 5px 8px 11px;
                   margin-left: -5px;
+                  i {
+                     font-size: 18px;
+                  }
                }
             }
 

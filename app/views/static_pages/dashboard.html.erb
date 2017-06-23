@@ -37,7 +37,14 @@
          <ul class="info">
             <li class="place"><%= event.place.title %></li>
             <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+            <li class="organizer">
+               <%= link_to user_path(event.user) do %>
+                  <%= image_tag 'thumbnail.png' %>
+                  <span><%= event.user.name %></span>
+               <% end %>
+            </li>
          </ul>
+
          <ul class="tickets">
             <% event.tickets.each do |ticket| %>
             <li><%= ticket.grade %>：<%= ticket.price %></li>

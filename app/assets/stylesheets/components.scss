@@ -65,6 +65,34 @@ div.section {
    }
 }
 
+li.organizer {
+   margin: 10px 0 3px 3px !important;
+   a {
+      display: inline-block;
+      padding: 3px 10px 3px 4px;
+      border: 1px solid #dedede;
+      border-radius: 6px;
+      background-color: #f3f3f3;
+      * { float: left; }
+      img {
+         width: 29px;
+         height: 29px;
+         border: 1px solid #8a8a8a;
+      }
+      span {
+         margin: 6px 0 0 9px;
+         display: block;
+         color: #565656
+      }
+
+      &:hover {
+         span {
+            color: #898989;
+            text-decoration: underline;
+         }
+      }
+   }
+}
 /********************************************
 
                   Forms
