@@ -53,6 +53,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+    # TODO: 必要なくなったので消します
   config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
      allow do
        origins '*'

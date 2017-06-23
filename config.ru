@@ -6,7 +6,7 @@ run Rails.application
 require 'rack/cors'
 
 use Rack::Cors do
-
+   # TODO: 必要なくなったので消します
   # allow all origins in development
   allow do
     origins '*'

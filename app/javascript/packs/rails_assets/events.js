@@ -1,10 +1,13 @@
 import * as $ from 'jquery'
+require('jquery-datetimepicker/build/jquery.datetimepicker.full.min')
 
 document.addEventListener('DOMContentLoaded', () => {
 
-   $(function(){
-       $('.datepicker').datetimepicker({
-         format: 'YYYY年MM月DD日  ahh時mm分'
-      });
-   });
+   $('.datepicker').datetimepicker({
+      minDate: '0',
+      formatDate: 'Y年m月d日',
+      formatTime: 'H:i',
+      format: 'Y年m月d日 H:i'
+   })
+   $.datetimepicker.setLocale('ja')
 })

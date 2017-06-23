@@ -54,7 +54,10 @@ module.exports = {
     modules: [
       resolve(settings.source_path),
       'node_modules'
-    ]
+   ],
+   alias: {
+      'picker': 'pickadate/lib/picker'
+   }
   },
 
   resolveLoader: {

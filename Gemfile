@@ -24,8 +24,6 @@ gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレ
 gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 gem 'seed_dump',               '>= 3.2.4'                   # データベース内レコードをseedに移行
 gem 'bootstrap-sass'                                        # bootstrap
-gem 'momentjs-rails'                                        # 日付入力を手軽に行うライブラリ
-gem 'bootstrap3-datetimepicker-rails'                       # カレンダー型のDatetime入力フォーム(日時も同時に入力可能)
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
 # gem 'redis', '~> 3.0'
 # gem 'therubyracer', platforms: :ruby

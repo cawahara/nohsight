@@ -8,11 +8,14 @@ Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
 
+
+
 module NohEvent
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    # TODO: 必要なくなったので消します
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
@@ -24,4 +27,10 @@ module NohEvent
         'Access-Control-Request-Method' => 'GET, PATCH, PUT, POST, OPTIONS, DELETE'
     }
   end
+
+  Rails.application.configure do
+     config.assets.paths <<  config.root.join("node_modules")
+  end
+
+
 end
