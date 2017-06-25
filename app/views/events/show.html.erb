@@ -5,13 +5,13 @@
       <ul>
          <li><%= @event.place.title %></li>
          <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
-         <li class="organizer">
-            <%= link_to user_path(@event.user) do %>
-               <%= image_tag 'thumbnail.png' %>
-               <span><%= @event.user.name %></span>
-            <% end %>
-         </li>
       </ul>
+      <div class="organizer">
+         <%= link_to user_path(@event.user) do %>
+            <%= image_tag 'thumbnail.png' %>
+            <span><%= @event.user.name %></span>
+         <% end %>
+      </div>
    </div>
 
    <!-- イベント基本情報 -->

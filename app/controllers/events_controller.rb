@@ -3,7 +3,8 @@ class EventsController < ApplicationController
 
    def index
       query = params[:search][:search_query]
-      @events = Event.where("title LIKE ?", "%#{query}%")
+      query_events = Event.where("title LIKE ?", "%#{query}%")
+      @events = upcoming_events(query_events).page(params[:page]).per(5)
    end
 
    def new

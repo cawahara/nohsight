@@ -38,27 +38,13 @@
       ul.info {
          li { color: #a3a3a3;}
       }
+
       ul.tickets {
          li {
             display: inline-block;
             margin-right: 16px;
          }
       }
-
-
-   .pager-more {
-      display: block;
-      width: 100%;
-      font-size: 15px;
-      padding: 22px 0;
-      text-align: center;
-      border-bottom: 1px solid #9d9d9d;
-
-      &:hover {
-         background-color: #ededed;
-         text-decoration: none;
-      }
-   }
 }
 
 

@@ -1,11 +1,12 @@
 class StaticPagesController < ApplicationController
 
   def dashboard
-     @events = public_events
+
+     @events = upcoming_events(Event.all).page(params[:page]).per(5)
   end
 
   def search
-     
+
   end
 
   def about

@@ -65,11 +65,11 @@ div.section {
    }
 }
 
-li.organizer {
+div.organizer {
    margin: 10px 0 3px 3px !important;
    a {
       display: inline-block;
-      padding: 3px 10px 3px 4px;
+      padding: 0 10px 0 4px;
       border: 1px solid #dedede;
       border-radius: 6px;
       background-color: #f3f3f3;
@@ -338,6 +338,35 @@ input[type=submit].form-submit {
    &:hover {
       background-color: #ff704d;
    }
+}
+
+/********************************************
+
+               Kaminari
+
+********************************************/
+nav.pagination {
+   width: 100%;
+   text-align: center;
+
+   span {
+      display: inline-block;
+      min-width: 27px;
+      margin: 0 2px;
+      padding: 5px 5px 6px 5px;
+      border: 1px solid #353535;
+      * {
+         font-size: 15px;
+      }
+   }
+
+   span.current {
+      margin-top: -1px;
+      padding: 7px 5px;
+      background-color: #222f3e;
+      color: #ffffff;
+   }
+
 }
 
 /********************************************
