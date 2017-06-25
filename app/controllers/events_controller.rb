@@ -2,11 +2,8 @@ class EventsController < ApplicationController
    before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :edit_place, :create, :update, :destroy, :update_place]
 
    def index
-      query = params[:search][:search_query]
-      query_events = Event.where("title LIKE ?", "%#{query}%")
-      @events = upcoming_events(query_events).page(params[:page]).per(5)
+      @events = search_result.page(params[:id]).per(5)
    end
-
    def new
       @event = Event.new()
    end
@@ -131,5 +128,92 @@ class EventsController < ApplicationController
                                        :address,
                                        :official_url
                                        )
+      end
+
+      # 疑似検索エンジン
+      def search_result
+         search_query = {
+            start_date: params[:search][:start_date],
+            address: params[:search][:address],
+            keywd:   params[:search][:keywd]
+         }
+         events = public_events(Event.all)
+
+         # 日付フィルター
+         date_filter = events.where('start_date >= ?', search_query[:start_date])
+
+         # 開催地フィルター
+         ev_places = Place.where("address LIKE ? OR title LIKE ?", "%#{search_query[:address]}%", "%#{search_query[:address]}%")
+         address_query = ''
+         ev_places.each do |ev_place|
+            address_query += "place_id = #{ev_place.id} OR "
+         end
+         if ev_places.count > 0
+            address_query_count = address_query.length - 4
+            address_query = address_query[0..address_query_count]
+         end
+         address_filter = date_filter.where(address_query)
+
+         # 関連キーワードフィルター
+         if Performer.where("full_name LIKE ?", "%#{search_query[:keywd]}%").count > 0
+            # 1.出演者
+            performers = Performer.where("full_name LIKE ?", "%#{search_query[:keywd]}%")
+            performer_query = ''
+            performers.each do |performer|
+               performer_query += "performer_id = #{performer.id} OR "
+            end
+            if performers.count > 0
+               performer_query_count = performer_query.length - 4
+               performer_query = performer_query[0..performer_query_count]
+            end
+
+            ev_performers = EventPerformer.where(performer_query)
+            ev_performer_query = ''
+            ev_performers.each do |ev_performer|
+               ev_performer_query += "id = #{ev_performer.event_program_id} OR "
+            end
+            if ev_performers.count > 0
+               ev_performer_query_count = ev_performer_query.length - 4
+               ev_performer_query = ev_performer_query[0..ev_performer_query_count]
+            end
+            ev_programs = EventProgram.where(ev_performer_query)
+
+            ev_program_query = ''
+            ev_programs.each do |ev_program|
+               ev_program_query += "id = #{ev_program.event_id} OR "
+            end
+            if ev_programs.count > 0
+               ev_program_query_count = ev_program_query.length - 4
+               ev_program_query = ev_program_query[0..ev_program_query_count]
+            end
+
+            query_events = address_filter.where(ev_program_query)
+         elsif Program.where("title LIKE ?", "%#{search_query[:keywd]}%").count > 0
+            # 2.演目
+            programs = Program.where("title LIKE ?", "%#{search_query[:keywd]}%")
+            program_query = ''
+            programs.each do |program|
+               program_query += "program_id = #{program.id} OR "
+            end
+            if programs.count > 0
+               program_query_count = program_query.length - 4
+               program_query = program_query[0..program_query_count]
+            end
+
+            ev_programs = EventProgram.where(program_query)
+            ev_program_query = ''
+            ev_programs.each do |ev_program|
+               ev_program_query += "id = #{ev_program.event_id} OR "
+            end
+            if ev_programs.count > 0
+               ev_program_query_count = ev_program_query.length - 4
+               ev_program_query = ev_program_query[0..ev_program_query_count]
+            end
+            query_events = address_filter.where(ev_program_query)
+         else
+            # 3. 公演名
+            query_events = address_filter.where("title LIKE ?", "%#{search_query[:keywd]}%")
+         end
+         return query_events
       end
 end

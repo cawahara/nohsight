@@ -3,11 +3,9 @@ require('jquery-datetimepicker/build/jquery.datetimepicker.full.min')
 
 document.addEventListener('DOMContentLoaded', () => {
 
-   $('.datepicker-for-edit').datetimepicker({
-      minDate: '0',
-      formatDate: 'Y/m/d',
-      formatTime: 'H:i',
-      format: 'Y/m/d H:i'
+   $('.datepicker-for-search').datetimepicker({
+      format: 'Y/m/d',
+      timepicker: false
    })
    $.datetimepicker.setLocale('ja')
 })

@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
 
   def dashboard
-
      @events = upcoming_events(Event.all).page(params[:page]).per(5)
   end
 

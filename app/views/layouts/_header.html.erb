@@ -23,11 +23,12 @@
      <ul id="dropdown-search" class="dropdown-lists">
        <li>
           <%= form_for(:search, url: events_path, method: :get) do |f| %>
-             <%= f.text_field :search_query %>
+             <%= f.text_field :keywd %>
              <%= button_tag(type: 'submit') do %>
                 <i class="fa fa-search"></i>
              <% end %>
           <% end %>
+          <%= link_to '条件付きイベント検索へ(仮)', search_path %>
        </li>
      </ul>
      <ul id="dropdown-nav" class="dropdown-lists">

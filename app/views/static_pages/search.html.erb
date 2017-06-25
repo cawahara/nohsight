@@ -1,8 +1,24 @@
 <div id="search">
-   <%= form_for(:event, url: events_path, method: :get) do |f| %>
-      <%= f.text_field :search_query %>
-      <%= button_tag(type: 'submit') do %>
-         <i class="fa fa-search"></i>
+   <div class="headline">
+      <h1>公演検索</h1>
+   </div>
+   <div class="form-section">
+      <h1 class="form-header">検索条件の設定</h1>
+      <%= form_for(:search, url: events_path, method: :get) do |f| %>
+         <dl>
+            <dt>キーワード</dt>
+            <dd><%= f.text_field :keywd %></dd>
+         </dl>
+         <dl>
+            <dt>エリア</dt>
+            <dd><%= f.text_field :address %></dd>
+         </dl>
+         <dl>
+            <dt>開催地</dt>
+            <dd><%= f.text_field :start_date, class: 'datepicker-for-search', id: "start-date" %></dd>
+         </dl>
+         <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>
-   <% end %>
+   </div>
+
 </div>
