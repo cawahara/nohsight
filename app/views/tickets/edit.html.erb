@@ -4,10 +4,7 @@
    <div class="form-section">
       <h1 class="form-header">チケットの編集</h1>
       <h2 class="form-header">料金一覧</h2>
-      <!--
-      <% @tickets.each do |ticket| %>
-         <div id="ticket-<%= ticket.id %>"></div>
-      <% end %> -->
+      
       <%= content_tag :div,
          id: 'tickets-edit-vue',
          data: {

@@ -1,6 +1,12 @@
 <div id="events-edit-port">
    <div class="headline">
       <h1>公演情報の編集</h1>
+      <%= form_for(@event) do |f| %>
+         <!-- REVIEW: Event公開後に編集したらそのままデータが変わってしまう。
+                  　公開した後はEvent内容を変更できないようにすべきか -->
+         <%= f.hidden_field :published, value: true %>
+         <%= f.submit('公開', class: 'form-submit') %>
+      <% end %>
    </div>
 
    <div class="port-section">
