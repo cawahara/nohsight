@@ -4,13 +4,6 @@ class TicketsController < ApplicationController
   def edit
      @event = Event.find(params[:id])
      @tickets = @event.tickets
-     respond_to do |format|
-        format.html
-        format.json { render json: {
-                                    event:     @event,
-                                    tickets:   @tickets
-                                    } }
-     end
   end
 
 

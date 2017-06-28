@@ -15,10 +15,11 @@
    import event_programs_form from './_form.vue'
 
    export default {
-      props: { id_num: Number },
+      props: [ 'values' ],
       data: function(){
          return {
-            values: { id: this.id_num }
+               programs: this.values.programs,
+               element_id: this.values.id_num
          }
       },
       components: { 'event-programs-form': event_programs_form },
@@ -26,19 +27,26 @@
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
-               data: { id: this.values.id },
-               render(h){ return h(event_programs_form, { props: {
-                                                                  inherit_id:         this.id,
-                                                                  inherit_ev_program: {},
-                                                                  inherit_program:    {},
-                                                                  inherit_place:      {},
-                                                                  inherit_mode:       'create'
-                                                                  }}) }
+               data: {ev_program: {
+                        style: '',
+                        genre: '',
+                        mode: 'create',
+                        element_id: this.element_id,
+                        program: { title: '' }
+                     },
+                      programs: this.values.programs
+                  },
+               render(h){
+                  return h(event_programs_form, { props: {
+                                                            ih_ev_program:   this.ev_program,
+                                                            ih_programs:     this.programs
+                                                         }}) }
             })
+
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
-            this.values.id += 1
+            this.element_id += 1
          }
       }
    }

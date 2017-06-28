@@ -18,7 +18,7 @@
       props: { id_num: Number },
       data: function(){
          return {
-            values: { id: this.id_num }
+            values: { element_id: this.id_num }
          }
       },
       components: { 'tickets-form': tickets_form },
@@ -26,17 +26,20 @@
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
-               data: { id: this.values.id },
-               render(h){ return h(tickets_form, { props: {
-                                                            inherit_mode: 'create',
-                                                            inherit_id:    this.id,
-                                                            inherit_ticket:   {}
-                                                                  }}) }
+               data: {
+                  ticket: {
+                     grade: '',
+                     price: '',
+                     mode: 'create',
+                     element_id: this.element_id
+                  }
+               },
+               render(h){ return h(tickets_form, { props: { ih_ticket: this.ticket }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
-            this.values.id += 1
+            this.element_id += 1
          }
       }
    }

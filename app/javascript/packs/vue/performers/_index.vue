@@ -10,27 +10,13 @@
    import * as $ from 'jquery'
    export default {
       props: {
-         search_query: String
+         search_query: String,
+         ih_performers: Array
       },
       data: function(){
          return {
-            grid_data: []
+            grid_data: this.ih_performers
          }
-      },
-      created: function(){
-
-         var self = this
-         $.ajax({
-            url: '',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data){
-               self.grid_data = data.performers
-            },
-            error: function(data){
-               console.log('An error occured')
-            }
-         })
       },
       methods: {
          getSearchResponse: function(query){

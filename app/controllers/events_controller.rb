@@ -41,14 +41,6 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
       @place = @event.place
       @places = Place.all
-      respond_to do |format|
-         format.html
-         format.json { render json: {
-                                     event:     @event,
-                                     place:     @place,
-                                     places:    @places
-                                     } }
-      end
    end
 
    def create

@@ -1,3 +1,4 @@
+# FIXME: 重複データの削除、idの欠番を抑える
 Program.seed do |s|
 	s.id = 1
 	s.title = '藍染川'
@@ -1950,4 +1951,3 @@ Program.seed do |s|
 	s.shimai = true
 	s.duration = 45
 end
-

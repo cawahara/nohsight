@@ -2,13 +2,14 @@
    <div class="form-item">
       <input v-bind:name="getColumn('id')" type="hidden" v-bind:value="noh_event.id">
       <div class="lg-form">
-         
+
          <label>演目</label>
          <input v-bind:name="getColumn('title')" type="text" v-model:value="search_query.word"
          v-focus="search_query.focus" @focus="search_query.focus = true">
          <places-index
             v-show="search_query.focus == true"
             :search_query="search_query.word"
+            :pa_places="values.places"
             @return-value="setSearchValue"
          ></places-index>
       </div>
@@ -30,12 +31,12 @@
    import { focus } from 'vue-focus'
    import places_index from '../places/_index.vue'
    export default {
-      props: [ 'values'],
+      props: [ 'values' ],
       data: function(){
          return {
-            noh_event:        this.values.noh_event,
-            place:            this.values.place,
-            search_query:     { word: this.values.place.title, focus: false }
+            noh_event:     this.values.event,
+            place:         this.values.place,
+            search_query:  { word: this.values.place.title, focus: false }
          }
       },
       directives: { 'focus': focus },

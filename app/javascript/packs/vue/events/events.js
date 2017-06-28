@@ -2,36 +2,16 @@ import Vue from 'vue'
 import * as $ from 'jquery'
 import EditPlace from './edit_place.vue'
 import ShowLocations from './show_locations.vue'
-
 document.addEventListener('DOMContentLoaded', () => {
 
    const target_content = document.getElementById('main').children[0]
    if(target_content == document.getElementById('event-place-edit')){
-      $.ajax({
-         url: '',
-         type: 'GET',
-         dataType: 'json',
-         success: function(data){
-            var data_event = data.event
-            var data_place = data.place
-
-            var edit = new Vue({
-               el: '#event-place-' + data_event.id,
-               data: function(){
-                  return {
-                     values: {
-                        noh_event:  data_event,
-                        place:      data_place
-                     }
-                  }
-               },
-               render(h){
-                  return h(EditPlace, { props: { values: this.values } })
-               }
-            })
-         },
-         error: function(data){
-            console.log("An error occured")
+      const node = document.getElementById('event-place-edit-vue')
+      const values = JSON.parse(node.getAttribute('data'))
+      var edit = new Vue({
+         el: '#' + node.id,
+         render(h){
+            return h(EditPlace, { props: { values: values } })
          }
       })
    }else if(target_content == document.getElementById('event-show')){

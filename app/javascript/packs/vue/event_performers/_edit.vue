@@ -4,14 +4,13 @@
          <label>演者：</label>
          <div class="vertical-section">
             <event-performers-form
-               v-for="(ev_performer, per_idx) in ev_performers"
-               :inherit_per_idx="per_idx"
-               :inherit_pro_idx="pro_idx"
-               :inherit_event_program="ev_program"
-               :inherit_performer="ev_performer"
-               :inherit_mode="mode"
+               v-for="(ev_performer, ev_performer_idx) in ev_performers"
+               :ih_ev_program="ev_program"
+               :ih_ev_performer="ev_performer"
+               :ih_performers="performers"
             ></event-performers-form>
-            <div v-bind:id="getTagId(ev_program.id)">
+
+            <div v-bind:id="getTagId(ev_program.element_id)">
                <div class="form-for-mount"></div>
             </div>
          </div>
@@ -29,46 +28,46 @@
    export default {
       mixins: [ mixins ],
       props: {
-         inherit_pro_idx:             Number,
-         inherit_ev_program:          Object,
-         inherit_ev_performers:       Array,
+         ih_ev_program:    Object,
+         ih_ev_performers: Array,
+         ih_performers:    Array
       },
       data: function(){
          return {
-            pro_idx:          this.inherit_pro_idx,
-            ev_program:       this.inherit_ev_program,
-            ev_performers:    this.inherit_ev_performers,
-            new_idx:          this.inherit_ev_performers.length,
-            mode:             "update"
+            ev_program:    this.ih_ev_program,
+            ev_performers: this.ih_ev_performers,
+            performers:    this.ih_performers,
+            element_id:    this.ih_ev_performers.length
          }
       },
       components: { 'event-performers-form': event_performers_form },
       methods: {
          getTagId: function(id){
-            return 'new-' + id
+            return 'new-items-' + id
          },
+
          addNewItem: function(){
             new Vue({
-               el: '#new-' + this.ev_program.id + ' > .form-for-mount',
+               el: '#new-items-' + this.ev_program.element_id + ' > .form-for-mount',
                data: {
-                     pro_idx:          this.inherit_pro_idx,
-                     ev_program:       this.inherit_ev_program,
-                     ev_performers:    this.inherit_ev_performers,
-                     new_idx:          this.new_idx,
-                     mode:             "update"
+                     ev_program: this.ev_program,
+                     ev_performer: {
+                           performer: { full_name: '' },
+                           element_id: this.element_id,
+                           mode: 'create'
+                        },
+                     performers: this.performers
                      },
                render(h){ return h(event_performers_form, { props: {
-                                                                  inherit_per_idx: this.new_idx,
-                                                                  inherit_pro_idx: this.pro_idx,
-                                                                  inherit_event_program: this.ev_program,
-                                                                  inherit_performer: { id: this.new_idx, ev_program_id: this.ev_program.id, full_name: '' },
-                                                                  inherit_mode: 'create'
+                                                                  ih_ev_program: this.ev_program,
+                                                                  ih_ev_performer: this.ev_performer,
+                                                                  ih_performers: this.performers
                                                                   }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"
-            document.getElementById('new-' + this.ev_program.id).appendChild(node)
-            this.new_idx += 1
+            document.getElementById('new-items-' + this.ev_program.element_id).appendChild(node)
+            this.element_id += 1
          },
          getColumn: mixins.getColumn
       }

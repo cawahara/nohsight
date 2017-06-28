@@ -4,25 +4,13 @@ class EventPerformersController < ApplicationController
    def edit
       @event = Event.find(params[:id])
       @event_programs = @event.event_programs
-      @performers = Performer.all
-      @programs = Program.all
-
       @event_performers = []
       @event_programs.each do |ev_program|
          @event_performers << ev_program.event_performers
       end
-      @event_performers.flatten!
 
-      respond_to do |format|
-         format.html
-         format.json { render json: {
-                                     event:            @event,
-                                     event_programs:   @event_programs,
-                                     event_performers: @event_performers,
-                                     performers:       @performers,
-                                     programs:         @programs
-                                     } }
-      end
+      @performers = Performer.all
+      @programs = Program.all
    end
 
    def update

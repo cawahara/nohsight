@@ -1,7 +1,7 @@
 <template>
    <div class="search-records">
       <ul>
-         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record)">{{ record.title }}</li>
+         <li v-for="record in getSearchResponse(search_query)" v-on:click="setSearchValue(record.title)">{{ record.title }}</li>
       </ul>
    </div>
 </template>
@@ -10,26 +10,13 @@
    import * as $ from 'jquery'
    export default {
       props: {
+         ih_programs:  Array,
          search_query: String
       },
       data: function(){
          return {
-            grid_data: []
+            grid_data: this.ih_programs
          }
-      },
-      created: function(){
-         var self = this
-         $.ajax({
-            url: '',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data){
-               self.grid_data = data.programs
-            },
-            error: function(data){
-               console.log('An error occured')
-            }
-         })
       },
       methods: {
          getSearchResponse: function(query){
@@ -48,10 +35,7 @@
             this.$emit('return-value', value)
          }
       }
-
    }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

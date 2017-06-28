@@ -1,20 +1,20 @@
 <template>
-   <div v-bind:id="getTagId(inherit_mode, id)" class="form-item">
-      <input v-bind:name="getColumn(id, 'type')" type="hidden" v-model:value="inherit_mode">
-      <input v-bind:name="getColumn(id, 'id')" type="hidden" v-bind:value="ticket.id">
+   <div v-bind:id="getTagId(ticket.mode, ticket.element_id)" class="form-item">
+      <input v-bind:name="getColumn(ticket.element_id, 'type')" type="hidden" v-model:value="ticket.mode">
+      <input v-bind:name="getColumn(ticket.element_id, 'id')" type="hidden" v-bind:value="ticket.id">
       <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
       <div class="sm-form">
          <label>客席</label>
-         <input v-bind:name="getColumn(id, 'grade')" type="text" v-bind:value="ticket.grade">
+         <input v-bind:name="getColumn(ticket.element_id, 'grade')" type="text" v-bind:value="ticket.grade">
       </div>
 
       <div class="sm-form">
          <label>料金</label>
-         <input v-bind:name="getColumn(id, 'price')" type="text" v-bind:value="ticket.price">
+         <input v-bind:name="getColumn(ticket.element_id, 'price')" type="text" v-bind:value="ticket.price">
       </div>
 
-      <ul v-if=" inherit_mode == 'create' " class="item-icons">
-         <li v-on:click="deleteNewItem(id)">取消<span class="btn"><i class="fa fa-times"></i></span></li>
+      <ul v-if=" ticket.mode == 'create' " class="item-icons">
+         <li v-on:click="deleteNewItem(ticket.element_id)">取消<span class="btn"><i class="fa fa-times"></i></span></li>
       </ul>
 
    </div>
@@ -26,14 +26,11 @@
    export default {
       mixins: [ mixins ],
       props: {
-         inherit_mode:     String,
-         inherit_id:       Number,
-         inherit_ticket:   Object,
+         ih_ticket:   Object,
       },
       data: function(){
          return {
-            id:          this.inherit_id,
-            ticket:      this.inherit_ticket
+            ticket:  this.ih_ticket
          }
       },
       methods: {

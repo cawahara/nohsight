@@ -4,7 +4,14 @@
    <div class="form-section">
       <h1 class="form-header">会場の編集</h1>
 
-      <div id="event-place-<%= @event.id %>"></div>
+      <%= content_tag :div,
+         id: "event-place-edit-vue",
+         data: {
+            event:   @event,
+            place:   @place,
+            places:  @places
+         }.to_json do %>
+      <% end %>
    </div>
 
    <input class="form-submit" type="submit" value="保存">

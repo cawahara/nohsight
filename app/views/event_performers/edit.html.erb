@@ -4,8 +4,20 @@
    <div class="form-section">
       <h1 class="form-header">演者の編集</h1>
       <h2 class="form-header">演目の一覧</h2>
+      <!--
       <% @event_programs.each do |ev_program| %>
          <div id="event-performer-<%= ev_program.id %>"></div>
+      <% end %> -->
+
+      <%= content_tag :div,
+         id: 'event-performers-edit-vue',
+         data: {
+            event:            @event,
+            event_programs:   @event_programs,
+            event_performers: @event_performers,
+            performers:       @performers,
+            programs:         @programs
+         }.to_json do %>
       <% end %>
    </div>
    <%= f.submit('保存', class: 'form-submit') %>

@@ -1,19 +1,20 @@
 <template>
-   <div v-bind:id="getTagId(ev_program.id, inherit_per_idx)" v-bind:class="mode" class="vertical-form">
+   <div v-bind:id="getTagId(ev_program.id, ev_performer.element_id)" v-bind:class="ev_performer.mode" class="vertical-form">
       <div>
-         <input v-bind:name="getColumn('event_performer[' + inherit_pro_idx + ']', inherit_per_idx, 'id')" type="hidden" v-bind:value="ev_performer.id">
-         <input v-bind:name="getColumn('event_performer[' + inherit_pro_idx + ']', inherit_per_idx, 'ev_program_id')" type="hidden" v-bind:value="ev_program.id">
-         <input v-bind:name="getColumn('event_performer[' + inherit_pro_idx + ']', inherit_per_idx, 'type')" type="hidden" v-model:value="mode">
-         <input v-bind:name="getColumn('event_performer[' + inherit_pro_idx + ']', inherit_per_idx, 'name')" type="text" v-model:value="search_performer.query"
+         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'id')" type="hidden" v-bind:value="ev_performer.id">
+         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'ev_program_id')" type="hidden" v-bind:value="ev_program.id">
+         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'type')" type="hidden" v-model:value="ev_performer.mode">
+         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'name')" type="text" v-model:value="search_performer.query"
          v-focus="search_performer.focus" @focus=" search_performer.focus = true ">
          <ul class="item-icons">
-            <li v-on:click="switchMode()" v-if="inherit_mode != 'create'">削除<span class="btn"><i class="fa fa-minus"></i></span></li>
-            <li v-on:click="deleteNewItem(ev_program.id, inherit_per_idx)" v-if="inherit_mode == 'create'">取消<span class="btn"><i class="fa fa-minus"></i></span></li>
+            <li v-on:click="switchMode()" v-if="ev_performer.mode != 'create'">削除<span class="btn"><i class="fa fa-minus"></i></span></li>
+            <li v-on:click="deleteNewItem(ev_program.id, ih_ev_performer.element_id)" v-if="ev_performer.mode == 'create'">取消<span class="btn"><i class="fa fa-minus"></i></span></li>
          </ul>
       </div>
       <performers-index
          v-show="search_performer.focus == true"
          :search_query="search_performer.query"
+         :ih_performers="performers"
          @return-value="setSearchValue"
       ></performers-index>
    </div>
@@ -27,18 +28,16 @@
    export default {
       mixins: [ mixins ],
       props: {
-         inherit_per_idx:           Number,
-         inherit_pro_idx:           Number,
-         inherit_event_program:     Object,
-         inherit_performer:         Object,
-         inherit_mode:              String
+         ih_ev_program: Object,
+         ih_ev_performer: Object,
+         ih_performers: Array
       },
       data: function(){
          return {
-            ev_performer: this.inherit_performer,
-            ev_program:   this.inherit_event_program,
-            mode: this.inherit_mode,
-            search_performer: { query: this.inherit_performer.full_name, focus: false }
+            ev_program:   this.ih_ev_program,
+            ev_performer: this.ih_ev_performer,
+            performers:   this.ih_performers,
+            search_performer: { query: this.ih_ev_performer.performer.full_name, focus: false }
          }
       },
       directives: { 'focus': focus },
@@ -46,14 +45,13 @@
       methods: {
          setSearchValue: function(return_msg){
             this.search_performer.query = return_msg.full_name
-            this.program = return_msg
             this.search_performer.focus = false
          },
          switchMode: function(){
-            if(this.mode == 'update'){
-               this.mode = 'destroy'
-            }else if(this.mode == 'destroy'){
-               this.mode = 'update'
+            if(this.ev_performer.mode == 'update'){
+               this.ev_performer.mode = 'destroy'
+            }else if(this.ev_performer.mode == 'destroy'){
+               this.ev_performer.mode = 'update'
             }
          },
          getTagId: function(ev_program_id, id){

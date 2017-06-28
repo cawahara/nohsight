@@ -4,8 +4,16 @@
    <div class="form-section">
       <h1 class="form-header">演目の編集</h1>
       <h2 class="form-header">現在設定されている演目</h2>
-      <% @event_programs.each do |ev_program| %>
-         <div id="event-program-<%= ev_program.id %>"></div>
+
+      <%= content_tag :div,
+         id: 'event-programs-edit-vue',
+         data: {
+            event:            @event,
+            event_programs:   @event_programs,
+            event_performers: @event_performers,
+            performers:       @performers,
+            programs:         @programs
+         }.to_json do %>
       <% end %>
       <h2 class="form-header">演目の新規追加</h2>
 
