@@ -52,4 +52,6 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  pool: 5
+  database: noh-eventDB_dev
+  username: sample
+  password: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>
