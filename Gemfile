@@ -25,6 +25,7 @@ gem 'seed_dump',               '>= 3.2.4'                   # データベース
 gem 'bootstrap-sass'                                        # bootstrap
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
 gem 'dotenv-rails',            '>= 2.2.1'                   # rails内に環境変数導入
+gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 # gem 'redis', '~> 3.0'
 gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
@@ -34,7 +35,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rack-cors', :require => 'rack/cors'
-  gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 end
 
 group :development do
@@ -50,10 +50,6 @@ group :test do
    gem 'rails-controller-testing',    '0.1.1'            # assigns関数の追加
    gem 'minitest-reporters',          '~> 1.1.9'         # テスト結果をプログレスバーで表示
    gem 'timecop'                                         # テスト環境で時間操作
-end
-
-group :production do
-   gem 'pg', '~> 0.21.0'
 end
 
 # デフォルトで配備
