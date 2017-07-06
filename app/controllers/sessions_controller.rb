@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
      if is_logged?
-        user = currrent_user
+        user = current_user
         logout
      end
   end
@@ -25,5 +25,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+     logout
+     redirect_to login_path
   end
 end

@@ -32,9 +32,9 @@
        </li>
      </ul>
      <ul id="dropdown-nav" class="dropdown-lists">
-         <li><%= fa_icon('user') %><span>マイページ</span></li>
-         <li><%= fa_icon('calendar-check-o') %><span>カレンダー</span></li>
-         <li><%= fa_icon('bell-o') %><span>通知</span></li>
+        <li><%= link_to edit_event_manage_path do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
+        <li><%= link_to new_event_path do %><%= fa_icon('file-text-o') %><span>新しい公演作成</span><% end %></li>
+        <li><%= link_to logout_path(current_user) do %><%= fa_icon('sign-out') %><span>ログアウト</span><% end %></li>
      </ul>
   </div>
   <% end %>

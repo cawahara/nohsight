@@ -11,8 +11,10 @@ class EventsController < ApplicationController
    def show
       @event = Event.find(params[:id])
       locations = []
-      @event.event_programs.each do |ev_program|
-         locations << ev_program.program.place
+      if @event.event_programs.count > 0
+         @event.event_programs.each do |ev_program|
+            locations << ev_program.program.place
+         end
       end
 
       respond_to do |format|

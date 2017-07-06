@@ -59,7 +59,7 @@
          <ul>
             <li>会場：<%= @event.place.title %></li>
             <li>住所：<%= @event.place.address %></li>
-            <li>URL：<%= link_to @event.place.official_url %></li>
+            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank' %></li>
          </ul>
 
          <!-- 会場場所の地図 -->

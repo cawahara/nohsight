@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/help',            to: 'static_pages#help',        as: 'help'
   get '/convention',      to: 'static_pages#convention',  as: 'convention'
 
+  # rooting
+  root to: 'static_pages#dashboard'
+
   # User用ルーティング
   resources 'users'
 
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
   # Sessions用ルーティング
   get     '/login',        to: 'sessions#new'
   post    '/login',        to: 'sessions#create'
-  delete  '/logout/:id',   to: 'sessions#destroy'
+  get     '/logout/:id',   to: 'sessions#destroy', as: 'logout'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

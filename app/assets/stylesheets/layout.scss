@@ -211,7 +211,31 @@ footer {
       height: 150px;
       background-color: #565656;
       text-align: center;
-      p { color :#ffffff; }
+      position: relative;
+      img {
+         position: absolute;
+         top: 0;
+         left: 15%;
+         z-index: 0;
+         height: inherit;
+         width: 70%;
+      }
+      #trend-cover {
+         padding: 9px;
+         width: 70%;
+         position: absolute;
+         bottom: 0;
+         left: 15%;
+         z-index: 1;
+         background-color: #2a2a2a;
+         opacity: 0.7;
+         text-align: left;
+         a {
+            color: #e1e1e1;
+            font-size: 19px;
+         }
+      }
+
    }
 
 
