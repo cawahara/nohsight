@@ -22,7 +22,7 @@
       data: function(){
          return {
             address:       this.values.ev_location,
-            api_key:       ENV['GOOGLE_API_KEY'], //process.env.GOOGLE_API_KEY,
+            api_key:       process.env.GOOGLE_API_KEY,
             locations:     [],
             failed_msg:    ""
          }
