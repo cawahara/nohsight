@@ -7,5 +7,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << Emoji.images_path
 
 # include font assets
-Rails .application.config.assets.precompile << /\.(?:svg|otf|woff|ttf)$/
+Rails.application.config.assets.precompile << /\.(?:svg|otf|woff|ttf)$/
 |
