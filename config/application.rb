@@ -19,7 +19,6 @@ module NohEvent
 
   Rails.application.configure do
      config.assets.paths <<  config.root.join("node_modules")
-     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
   end
 
 
