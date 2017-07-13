@@ -81,19 +81,33 @@ header {
 
          li {
             display: inline-block;
-            width: 36px;
-            padding: 10px 0;
+            padding: 10px 2px;
             margin-left: 5px;
             text-align: center;
-            * { font-size: 19px; }
+            width: 36px;
+            i { font-size: 19px; }
 
             &:hover {
+               margin-top: 1px;
                cursor: pointer;
-               width: 34px;
                padding: 8px 0;
                border: 1px solid #ffb366;
                border-radius: 5px;
-               * { color: #ffb366; }
+            }
+         }
+
+         li#login-btn {
+            width: auto;
+            padding: 10px 7px;
+            a {
+               font-size: 12px;
+            }
+            &:hover {
+               padding: 10px 6px;
+               a {
+                  color: #ffb366;
+                  text-decoration: none;
+               }
             }
          }
       }

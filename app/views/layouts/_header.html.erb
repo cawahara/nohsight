@@ -2,26 +2,23 @@
 <header>
   <div id="header-menu">
      <h1><%= link_to "Noh-Event(仮)", dashboard_path %></h1>
-     <% if is_logged? %>
+
      <ul>
-         <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('search') %></li>
+         <% if is_logged? %>
+         <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('ellipsis-v') %></li>
+         <% else %>
+        <li id="login-btn" class="header-btn"><%= link_to 'ログイン', login_path %></li>
+        <% end %>
      </ul>
-     <% else %>
-     <ul>
-        <li class="header-btn"><%= link_to fa_icon('sign-in'), login_path %></li>
-     </ul>
-     <% end %>
+
   </div>
 
-   <% if is_logged? %>
+
   <div id="dropdown-menu">
-     <ul id="dropdown-request"  class="dropdown-lists">
-       <li><span>公演開催リクエスト(未定、仮)</span></li>
-     </ul>
      <ul id="dropdown-search" class="dropdown-lists">
-       <li>
+      <li>
           <%= form_for(:search, url: events_path, method: :get) do |f| %>
              <%= f.text_field :keywd %>
              <%= button_tag(type: 'submit') do %>
@@ -29,13 +26,18 @@
              <% end %>
           <% end %>
           <%= link_to '条件付きイベント検索へ(仮)', search_path %>
-       </li>
+      </li>
+     </ul>
+     <% if is_logged? %>
+     <ul id="dropdown-request"  class="dropdown-lists">
+       <li><span>公演開催リクエスト(未定、仮)</span></li>
      </ul>
      <ul id="dropdown-nav" class="dropdown-lists">
         <li><%= link_to edit_event_manage_path do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
         <li><%= link_to new_event_path do %><%= fa_icon('file-text-o') %><span>新しい公演作成</span><% end %></li>
         <li><%= link_to logout_path(current_user) do %><%= fa_icon('sign-out') %><span>ログアウト</span><% end %></li>
      </ul>
+     <% end %>
   </div>
-  <% end %>
+
 </header>
