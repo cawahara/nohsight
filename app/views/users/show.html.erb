@@ -1,1 +1,66 @@
-<p>実装内容未定</p>
+<div id="users-show">
+   <div class="user-info">
+      <%= image_tag 'thumbnail.png' %>
+      <ul>
+         <li class="name"><%= @user.name %></li>
+         <li class="email"><%= @user.email %></li>
+         <li class="created-at">利用開始日：<%= @user.created_at.strftime("%Y/%m/%d")%></li>
+      </ul>
+   </div>
+
+   <div class="user-snss">
+      <!--  TODO: SNS連携(技術的に可能かついいねという反応が亜ttら導入) -->
+      <ul>
+         <li><%= link_to '#' do %><%= fa_icon('twitter-square', class: 'twitter') %><% end %></li>
+         <li><%= link_to '#' do %><%= fa_icon('facebook-square', class: 'facebook') %><% end %></li>
+         <li><%= link_to '#' do %><%= fa_icon('instagram', class: 'instagram') %><% end %></li>
+         <li><%= link_to '#' do %><%= fa_icon('tumblr-square', class: 'disconnected tumblr') %><% end %></li>
+      </ul>
+   </div>
+
+   <div class="user-description">
+      <p>{一言コメント}はじめまして。能楽初心者です。よろしくお願いします。</p>
+   </div>
+
+   <div class="user-command">
+      <% if current_user == @user %>
+      <%= link_to 'プロフィール設定', edit_user_path(@user) %>
+      <!-- TODO: カレンダーコンポーネント追加 -->
+      <%= link_to '公演の編集', edit_event_manage_path %>
+      <% end %>
+   </div>
+
+   <ul class="category-tabs">
+      <li class="selected">参加予定<br><span>4</span></li>
+      <li>参加済み<br><span>5</span></li>
+      <li>編集、主催<br><span>2</span></li>
+      <li>お気に入り<br><span>10</span></li>
+   </ul>
+
+   <div class="section">
+      <h1 class="section-header">参加予定</h1>
+
+      <% @events.limit(3).each do |event| %>
+      <div class="article event-summary">
+         <div class="header">
+            <h1><%= link_to event.title, event_path(event) %></h1>
+            <span class="btn"><%= fa_icon('check-square-o')%></span><!-- TODO Userがクリップする機能 -->
+         </div>
+         <ul class="info">
+            <li class="place"><%= event.place.title %></li>
+            <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+         </ul>
+         <ul class="tickets">
+            <% event.tickets.each do |ticket| %>
+            <li><%= ticket.grade %>：<%= ticket.price %></li>
+            <% end %>
+         </ul>
+      </div>
+      <% end %>
+
+      <%= link_to edit_event_path(@events.first), class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %><% end %>
+   </div>
+
+
+
+</div>

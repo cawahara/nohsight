@@ -17,3 +17,98 @@
       }
    }
 }
+
+#users-show {
+   .user-info {
+      overflow: hidden;
+      margin-top: 12px;
+
+      img {
+         float: left;
+         border: 1px solid #ababab;
+         width: 77px;
+         height: 77px;
+      }
+
+      ul {
+         float: left;
+         margin-left: 9px;
+         li { margin-bottom: 4px; }
+
+         .name { font-size: 17px; }
+         .email, .created-at { font-size: 12px; }
+
+      }
+   }
+
+   .user-snss {
+      margin: 12px 0;
+      border: 1px solid #cdcdcd;
+      padding: 5px;
+
+      ul {
+         li {
+            display: inline-block;
+            margin-right: 4px;
+            a {
+               i { font-size: 23px; }
+               .twitter { color: #33bbff; }
+               .facebook { color: #0040ff; }
+               .instagram { color: #ff5500; }
+               .tumblr { color: #002966; }
+               .disconnected { color: #acacac; }
+            }
+         }
+      }
+
+   }
+
+   .user-command {
+      margin: 12px 0;
+      a {
+         width: auto;
+         background-color: #e9e9e9;
+         border-radius: 5px;
+         border: 1px solid #dedede;
+         display: inline-block;
+         padding: 7px 9px;
+         color: #454545;
+      }
+   }
+
+   .category-tabs {
+      width: 100%;
+      overflow: hidden;
+      border-left: 2px solid #dedede;
+      li {
+         text-align: center;
+         display: block;
+         float: left;
+         padding: 5px;
+         width: 25%;
+         border-right: 2px solid #dedede;
+         border-top: 2px solid #dedede;
+         border-bottom: 2px solid #dedede;
+         span {
+            line-height: 28px;
+            background-color: #660000;
+            color: #ffffff;
+            font-size: 11px;
+            padding: 1px 5px;
+            border-radius: 9px;
+         }
+      }
+
+      .selected { border: 2px solid #660000; }
+   }
+
+   .port-link {
+      display: block;
+      width: 100%;
+      padding: 6px;
+      text-align: right;
+      margin-right: 8px;
+      border-bottom: 1px solid #acacac;
+      i { margin-left: 5px; }
+   }
+}

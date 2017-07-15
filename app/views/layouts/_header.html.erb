@@ -33,7 +33,7 @@
        <li><span>公演開催リクエスト(未定、仮)</span></li>
      </ul>
      <ul id="dropdown-nav" class="dropdown-lists">
-        <li><%= link_to edit_event_manage_path do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
+        <li><%= link_to user_path(current_user) do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
         <li><%= link_to new_event_path do %><%= fa_icon('file-text-o') %><span>新しい公演作成</span><% end %></li>
         <li><%= link_to logout_path(current_user) do %><%= fa_icon('sign-out') %><span>ログアウト</span><% end %></li>
      </ul>
