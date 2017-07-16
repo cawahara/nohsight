@@ -19,6 +19,11 @@
          <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
       </div>
       <div class="lg-form">
+         <label>自己紹介</label>
+         <%= f.text_field :information %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:information)[0] %></p>
+      </div>
+      <div class="lg-form">
          <label>パスワード</label><span class="required">必須</span>
          <%= f.password_field :password %>
          <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>

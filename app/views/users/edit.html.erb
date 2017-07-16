@@ -1,52 +1,49 @@
 <div id="user-new">
-   <div class="event-overall">
+   <div class="headline">
       <h1><%= @user.name %>の会員情報編集</h1>
    </div>
 
    <%= form_for(@user) do |f| %>
    <% err_msg = f.object.errors %>
    <div class="form-section">
-      <div class="form-header">
-         <h2 class="form-header">ユーザー情報</h2>
-         <button><%= fa_icon('angle-down') %></button>
+      <h1 class="form-header">1.ユーザー情報を入力</h1>
+
+      <div class="lg-form">
+         <label>ユーザー名</label><span class="required">必須</span>
+         <%= f.text_field :name %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
       </div>
-      <div class="form-section">
-         <div class="form-article">
-            <label>ユーザー名</label>
-            <%= f.text_field :name %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>Eメールアドレス</label>
-            <%= f.text_field :email %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>パスワード</label>
-            <%= f.password_field :password %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>
-         </div>
-         <div class="form-article">
-            <label>パスワード(確認)</label>
-            <%= f.password_field :password_confirmation %>
-            <p class="error-msg"><%= err_msg.full_messages_for(:password_confirmation)[0] %></p>
-         </div>
+      <div class="lg-form">
+         <label>Eメールアドレス</label><span class="required">必須</span>
+         <%= f.text_field :email %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+      </div>
+      <div class="lg-form">
+         <label>自己紹介</label>
+         <%= f.text_field :information %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:information)[0] %></p>
+      </div>
+      <div class="lg-form">
+         <label>パスワード</label><span class="required">必須</span>
+         <%= f.password_field :password %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password)[0] %></p>
+      </div>
+      <div class="lg-form">
+         <label>パスワード(確認)</label><span class="required">必須</span>
+         <%= f.password_field :password_confirmation %>
+         <p class="error-msg"><%= err_msg.full_messages_for(:password_confirmation)[0] %></p>
       </div>
    </div>
 
-   <div class="form-content">
-      <div class="form-header">
-         <h2 class="form-header">SNSとの連携</h2>
-         <button><%= fa_icon('angle-down') %></button>
-      </div>
+   <div class="form-section">
+      <h1 class="form-header">2.SNSとの連携</h1>
       <!-- TODO: アカウントの連携、メールによるユーザ認証などはある程度開発が進んでから -->
-      <div class="form-section">
-         <div class="form-article">
-            <p>ある程度開発が進んだら製作</p>
-         </div>
+      <div class="lg-form">
+         <p>ある程度開発が進んだら製作</p>
       </div>
    </div>
-      <%= f.submit "保存する", class: 'form-submit' %>
+
+   <%= f.submit "変更内容を保存する", class: 'form-submit' %>
 
    <% end %>
 </div>

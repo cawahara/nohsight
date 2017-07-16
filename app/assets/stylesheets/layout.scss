@@ -118,7 +118,6 @@ header {
 
       .dropdown-lists {
          display: none;
-         width: 95%;
          margin: 0 auto;
          background-color: #ffffff;
          box-shadow: 0 2px 7px #dbdbdb;
@@ -128,7 +127,11 @@ header {
             border-right: 1px solid #a4a4a4;
             padding: 14px 12px;
 
-            * { font-size: 14px }
+            a {
+               display: block;
+               width: 100%;
+               font-size: 14px;
+            }
             i {
                width: 16px;
                text-align: center;

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :is_logged_in?, only: [:edit, :update, :destroy]
 
    def new
       @user = User.new()
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
    end
 
    def edit
+      # FIXME: 自分自身しか編集できないようにする(update, destroyも同様)
       @user = User.find(params[:id])
    end
 
@@ -27,8 +29,10 @@ class UsersController < ApplicationController
    def update
       @user = User.find(params[:id])
       if @user.update_attributes(user_params)
+         binding.pry
+
          flash['success'] = "ユーザー情報を更新しました"
-         redirect_to(dashboard_url)
+         redirect_to(user_url(current_user))
       else
          flash['danger'] = "入力情報不備があります"
          render 'users/edit'
@@ -47,7 +51,7 @@ class UsersController < ApplicationController
 
    private
       def user_params
-         params.require(:user).permit(:name, :email, :password, :password_confirmation, :agreement)
+         params.require(:user).permit(:name, :email, :information, :password, :password_confirmation, :agreement)
       end
 
 end

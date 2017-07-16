@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
-   before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :edit_place, :create, :update, :destroy, :update_place]
+   before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :create, :update, :destroy, :edit_place, :update_place]
 
    def index
       @events = search_result.page(params[:id]).per(5)
    end
+
    def new
       @event = Event.new()
    end
@@ -39,12 +40,6 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
    end
 
-   def edit_place
-      @event = Event.find(params[:id])
-      @place = @event.place
-      @places = Place.all
-   end
-
    def create
       @event = current_user.events.build(event_params)
       @event.published = false
@@ -77,6 +72,12 @@ class EventsController < ApplicationController
          flash[:danger] = "公演の削除に失敗しました"
          redirect_to(edit_event_manage_url)
       end
+   end
+
+   def edit_place
+      @event = Event.find(params[:id])
+      @place = @event.place
+      @places = Place.all
    end
 
    def update_place
