@@ -83,4 +83,10 @@
       <% end %>
    </div>
 
+   <div class="user-command">
+      <% if is_logged? %>
+      <%= button_to '公演の編集', user_events_path(@event), method: :post %>
+      <p>押した瞬間に公演の編集者になる(恐らく後に主催その他関係者にリクエストを送る形式に変更する)</p>
+      <% end %>
+   </div>
 </div>

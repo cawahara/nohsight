@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   # Place用ルーティング
   resources 'places'
 
+  # UserEvent洋ルーティング
+  post '/user_events/:id', to: 'user_events#create', as: 'user_events'
+  delete '/user_events/:id', to: 'user_events#destroy', as: 'user_event'
+
   # Sessions用ルーティング
   get     '/login',        to: 'sessions#new'
   post    '/login',        to: 'sessions#create'
