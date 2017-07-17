@@ -1,8 +1,8 @@
 <template>
    <dd>
-      <input class="location-selection" readonly type="text" v-model:value="text_values">
+      <input class="location-selection" readonly type="text" v-model:value="text_values" >
       <input name="search[locations]" type="hidden" v-model:value="hidden_values">
-      <div class="search-location" v-show="selector_activated" v-focus="selector_activated" v-on:blur="selector_activated = false">
+      <div class="search-location" v-show="selector_activated">
          <dl v-for="prefecture in prefectures">
             <dt>
                <input type="checkbox" v-bind:id="prefecture.tag_id" v-bind:value="prefecture.value" v-on:click="validateValue(prefecture)">
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-   import { focus } from 'vue-focus'
    export default {
       props: ['values'],
       data: function(){
@@ -30,11 +29,10 @@
             selector_activated: false
          }
       },
-      directives: { 'focus': focus },
       methods: {
          toggleSelector: function(event){
-            var selector_tag = document.getElementsByClassName('search-location')[0]
             var input_tag = document.getElementsByClassName('location-selection')[0]
+            var selector_tag = document.getElementsByClassName('search-location')[0]
             if(event.target == input_tag){
                this.selector_activated = !this.selector_activated
             }else if(!selector_tag.contains(event.target)){
