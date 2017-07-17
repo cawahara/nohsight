@@ -4,6 +4,7 @@ class Event < ApplicationRecord
    belongs_to :place
    has_many   :event_programs,   dependent: :destroy
    has_many   :tickets,          dependent: :destroy
+   has_many   :user_events,      dependent: :destroy
 
    validates :user_id,     presence: true
    validates :title,       presence: true

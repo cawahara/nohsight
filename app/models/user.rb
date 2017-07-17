@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+
    has_many :events,       dependent: :destroy
+   has_many :user_events,   dependent: :destroy
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
