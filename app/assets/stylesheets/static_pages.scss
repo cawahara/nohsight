@@ -54,27 +54,78 @@
 ********************************************/
 #search {
       dl {
-         overflow: hidden;
          margin-top: 17px;
          text-align: center;
+         display: block;
          dt {
-            float: left;
-            width: 100px;
+            display: inline-block;
+            width: 90px;
             line-height: 32px;
             font-size: 14px;
          }
          dd {
-            float: right;
+            display: inline-block;
+            position: relative;
+            text-align: left;
             width: calc(100% - 100px);
             input {
                padding: 4px 7px !important;
                border-radius: 0 !important;
                width: calc(100% - 22px) !important;
+               x-overflow: scroll;
                &:hover {
                   border: 1px solid #ffb366 !important;
                   box-shadow: 0 0 0 0 !important;
                }
             }
+
+            input.date-selection {
+               display: inline-block;
+               margin-left: 0 !important;
+               width: calc(50% - 23px) !important;
+            }
+
+            input.location-selection {
+               &:hover {
+                  cursor: text; 
+               }
+            }
+
+            div.search-location {
+               position: absolute;
+               width: calc(100% - 22px);
+               top: 35px;
+               border: 1px solid #909090;
+               border-radius: 4px;
+               padding: 9px;
+               background-color: #ffffff;
+               height: 160px;
+               overflow: scroll;
+
+               dl {
+                  width: 100%;
+                  margin: 0 0 6px 0;
+                  text-align: left;
+                  dt, dd {
+                     * { display: inline; }
+                     input { width: auto !important;}
+                  }
+                  dt {
+                     width: 100%;
+                     margin: 0;
+                     text-align: left;
+                      label { font-size: 14px; }
+                  }
+                  dd {
+                     width:  auto;
+                     margin: 0 5px;
+                  }
+               }
+            }
+         }
+
+         dd.date-selection {
+            width: 40%;
          }
       }
       input.form-submit {

@@ -127,88 +127,104 @@ class EventsController < ApplicationController
 
       # 疑似検索エンジン
       def search_result
-         search_query = {
+         search_params = {
             start_date: params[:search][:start_date],
-            address: params[:search][:address],
-            keywd:   params[:search][:keywd]
+            end_date: params[:search][:end_date],
+            keywd:   params[:search][:keywd],
+            locations: params[:search][:locations]
          }
-         events = public_events(Event.all)
 
+         search_result = public_events(Event.all.order(start_date: :desc))
          # 日付フィルター
-         date_filter = events.where('start_date >= ?', search_query[:start_date])
+            # 範囲(from)
+            if search_params[:start_date] != ""
+               start_query = "start_date >= '#{search_params[:start_date]}'"
+               search_result = search_result.where(start_query)
+            end
+            # 範囲(to)
+            if search_params[:end_date] != ""
+               end_query = "start_date <= '#{search_params[:end_date]}'"
+               search_result = search_result.where(end_query)
+            end
 
          # 開催地フィルター
-         ev_places = Place.where("address LIKE ? OR title LIKE ?", "%#{search_query[:address]}%", "%#{search_query[:address]}%")
-         address_query = ''
-         ev_places.each do |ev_place|
-            address_query += "place_id = #{ev_place.id} OR "
-         end
-         if ev_places.count > 0
-            address_query_count = address_query.length - 4
-            address_query = address_query[0..address_query_count]
-         end
-         address_filter = date_filter.where(address_query)
+            if search_params[:locations] != ""
+               locations = search_params[:locations].split(',')
+               query_for_places = ""
+               locations.each do |location|
+                  query_for_places += "address LIKE '%#{location}%' OR "
+               end
+               query_for_places = query_for_places[0..(query_for_places.length - 5)]
+               relative_places = Place.where(query_for_places)
 
-         # 関連キーワードフィルター
-         if Performer.where("full_name LIKE ?", "%#{search_query[:keywd]}%").count > 0
-            # 1.出演者
-            performers = Performer.where("full_name LIKE ?", "%#{search_query[:keywd]}%")
-            performer_query = ''
-            performers.each do |performer|
-               performer_query += "performer_id = #{performer.id} OR "
-            end
-            if performers.count > 0
-               performer_query_count = performer_query.length - 4
-               performer_query = performer_query[0..performer_query_count]
+               locations_query = ""
+               relative_places.each do |place|
+                  locations_query += "place_id = #{place.id} OR "
+               end
+               locations_query = locations_query[0..(locations_query.length - 5)]
+               search_result = search_result.where(locations_query)
             end
 
-            ev_performers = EventPerformer.where(performer_query)
-            ev_performer_query = ''
-            ev_performers.each do |ev_performer|
-               ev_performer_query += "id = #{ev_performer.event_program_id} OR "
-            end
-            if ev_performers.count > 0
-               ev_performer_query_count = ev_performer_query.length - 4
-               ev_performer_query = ev_performer_query[0..ev_performer_query_count]
-            end
-            ev_programs = EventProgram.where(ev_performer_query)
+         # キーワードフィルター
+            if search_params[:keywd] != ""
+               keywds = search_params[:keywd].split(/\s/)
+               keywd_query = ""
 
-            ev_program_query = ''
-            ev_programs.each do |ev_program|
-               ev_program_query += "id = #{ev_program.event_id} OR "
-            end
-            if ev_programs.count > 0
-               ev_program_query_count = ev_program_query.length - 4
-               ev_program_query = ev_program_query[0..ev_program_query_count]
-            end
+               # 出演者
+               query_for_performers = ""
+               keywds.each do |keywd|
+                  query_for_performers += "full_name LIKE '%#{keywd}%' OR "
+               end
+               query_for_performers = query_for_performers[0..(query_for_performers.length - 5)]
+               relative_performers = Performer.where(query_for_performers)
 
-            query_events = address_filter.where(ev_program_query)
-         elsif Program.where("title LIKE ?", "%#{search_query[:keywd]}%").count > 0
-            # 2.演目
-            programs = Program.where("title LIKE ?", "%#{search_query[:keywd]}%")
-            program_query = ''
-            programs.each do |program|
-               program_query += "program_id = #{program.id} OR "
-            end
-            if programs.count > 0
-               program_query_count = program_query.length - 4
-               program_query = program_query[0..program_query_count]
-            end
+               event_performers = []
+               relative_performers.each do |performer|
+                  event_performers << EventPerformer.where("performer_id = #{performer.id}")
+               end
+               event_performers = event_performers.flatten
 
-            ev_programs = EventProgram.where(program_query)
-            ev_program_query = ''
-            ev_programs.each do |ev_program|
-               ev_program_query += "id = #{ev_program.event_id} OR "
+               event_programs = []
+               event_performers.each do |ev_performer|
+                  event_programs << EventProgram.find(ev_performer.event_program_id)
+               end
+               event_programs = event_programs.uniq
+
+               performers_query = ""
+               event_programs.each do |ev_program|
+                  performers_query += "id = #{ev_program.event_id} OR "
+               end
+               keywd_query += performers_query
+
+               # 演目
+               query_for_programs = ""
+               keywds.each do |keywd|
+                  query_for_programs += "title LIKE '%#{keywd}%' OR "
+               end
+               query_for_programs = query_for_programs[0..(query_for_programs.length - 5)]
+               relative_programs = Program.where(query_for_programs)
+
+               event_programs = []
+               relative_programs.each do |program|
+                  event_programs << EventProgram.where("program_id = #{program.id}")
+               end
+               event_programs = event_programs.flatten
+
+               programs_query = ""
+               event_programs.each do |ev_program|
+                  programs_query += "id = #{ev_program.event_id} OR "
+               end
+               keywd_query +=  programs_query
+
+               # 公演名
+               events_query = ""
+               keywds.each do |keywd|
+                  events_query += "title LIKE '%#{keywd}%' OR "
+               end
+               keywd_query += events_query
+               keywd_query = keywd_query[0..(keywd_query.length - 5)]
+               search_result = search_result.where(keywd_query)
             end
-            if ev_programs.count > 0
-               ev_program_query_count = ev_program_query.length - 4
-               ev_program_query = ev_program_query[0..ev_program_query_count]
-            end
-            query_events = address_filter.where(ev_program_query)
-         else
-            # 3. 公演名
-            query_events = address_filter.where("title LIKE ?", "%#{search_query[:keywd]}%")
-         end
-         return query_events
+            return search_result
       end
 end

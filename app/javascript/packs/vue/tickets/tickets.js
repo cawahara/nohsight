@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    const target_content = document.getElementById('tickets-edit')
    if(target_content != null){
-      /*
+      /* TODO: 消す
       $.ajax({
          url: '',
          type: 'GET',
@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const values = JSON.parse(node.getAttribute('data'))
       var id_num = 0
       for(var i = 0; i < values.tickets.length; i++){
-
          values.tickets[i].mode = ''
          values.tickets[i].element_id = id_num
 
@@ -75,9 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
          }
       })
 
-      var new_values = {
-                        id_num: id_num
-                       }
+      var new_values = { id_num: id_num }
       var new_item = new Vue({
          el: '#tickets-new',
          render(h){
