@@ -4,8 +4,8 @@
    </div>
 
    <div class="section">
-      <h1 class="section-header"><%= @user.name %>主催の公演情報</h1>
-      <!-- TODO: 未編集、担当能楽師からの承認待ち、もしくは開催予定の演目のみ載せる -->
+      <h1 class="section-header">主催の公演情報</h1>
+         <!-- TODO:　主催、編集としての参加、終了した公演という種類分けをする -->
       <% @events.each do |event| %>
       <div class="article">
          <h2 class="article-header"><%= event.title %></h2>
@@ -32,4 +32,33 @@
       </div>
       <% end %>
    </div>
+   <div class="section">
+      <h1 class="section-header">編集に参加した公演情報</h1>
+      <% @user_events.each do |user_event| %>
+      <div class="article">
+         <h2 class="article-header"><%= user_event.event.title %></h2>
+         <ul class="article-info">
+            <li>会場：<%= user_event.event.place.title if user_event.event.place_id %></li>
+            <li>日時：<%= user_event.event.start_date.strftime("%Y年%m月%d日 %H:%M") if user_event.event.start_date %></li>
+         </ul>
+
+         <div class="article-items">
+            <% if user_event.event.published? %>
+            <span class="btn publish">公開中</span>
+            <% else %>
+            <span class="btn unpublish">未公開</span>
+            <% end %>
+
+            <ul class="item-icons">
+               <li class="icon-edit"><%= link_to edit_event_port_path(user_event.event), class: 'btn' do %><span>編集</span><% end %></li>
+               <!-- TODO: confirmオプションが作動しない -->
+               <li class="icon-destroy"><%= button_to event_path(user_event.event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
+            </ul>
+         </div>
+
+
+      </div>
+      <% end %>
+   </div>
+
 </div>

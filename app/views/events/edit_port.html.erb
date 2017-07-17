@@ -1,6 +1,18 @@
 <div id="events-edit-port">
    <div class="headline">
       <h1>公演情報の編集</h1>
+      <div class="organizer">
+         <%= link_to user_path(@event.user) do %>
+            <%= image_tag 'thumbnail.png' %>
+            <span><%= @event.user.name %>(主催者)</span>
+         <% end %>
+         <% @event.user_events.each do |user_event| %>
+            <%= link_to user_path(user_event.user) do %>
+               <%= image_tag 'thumbnail.png' %>
+               <span><%= user_event.user.name %></span>
+            <% end %>
+         <% end %>
+      </div>
       <%= form_for(@event) do |f| %>
          <!-- REVIEW: Event公開後に編集したらそのままデータが変わってしまう。
                   　公開した後はEvent内容を変更できないようにすべきか -->

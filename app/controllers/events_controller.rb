@@ -11,6 +11,8 @@ class EventsController < ApplicationController
 
    def show
       @event = Event.find(params[:id])
+      @user_events = UserEvent.where(event_id: @event.id)
+
       locations = []
       if @event.event_programs.count > 0
          @event.event_programs.each do |ev_program|
@@ -30,6 +32,7 @@ class EventsController < ApplicationController
    def edit_manage
       @user = current_user
       @events = Event.where(user_id: @user.id)
+      @user_events = UserEvent.where(user_id: @user.id)
    end
 
    def edit_port
