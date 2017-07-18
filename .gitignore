@@ -25,7 +25,6 @@
 
 # Ignore setting ENV variables files.
 /.env
-/public/packs
 /node_modules
 
 # Ignore node modules (packages)
