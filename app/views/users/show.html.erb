@@ -47,8 +47,8 @@
             <span class="btn"><%= fa_icon('check-square-o')%></span><!-- TODO Userがクリップする機能 -->
          </div>
          <ul class="info">
-            <li class="place"><%= event.place.title %></li>
-            <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+            <li class="place"><%= event.place.title if event.place %></li>
+            <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M") if event.start_date %></li>
          </ul>
          <ul class="tickets">
             <% event.tickets.each do |ticket| %>
@@ -58,7 +58,9 @@
       </div>
       <% end %>
 
+      <% if @events.count > 0 %>
       <%= link_to edit_event_path(@events.first), class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %><% end %>
+      <% end %>
    </div>
 
 

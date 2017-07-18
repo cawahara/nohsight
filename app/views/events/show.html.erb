@@ -1,10 +1,11 @@
 <div id="event-show">
    <!-- イベント概要 -->
+   <!-- FIXME: erbタグ内のif句をなくす方法 -->
    <div class="headline">
       <h1><%= @event.title %></h1>
       <ul>
-         <li><%= @event.place.title %></li>
-         <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+         <li><%= @event.place.title if @event.place %></li>
+         <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M") if @event.start_date %></li>
       </ul>
       <div class="organizer">
          <%= link_to user_path(@event.user) do %>
@@ -43,7 +44,7 @@
 
       <div class="article">
          <h2 class="article-header">開催時間</h2>
-         <p><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M")%></p>
+         <p><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M") if @event.start_date %></p>
       </div>
 
       <div class="article">
@@ -62,6 +63,7 @@
 
       <div class="article">
          <h2 class="article-header">会場案内</h2>
+         <% if @event.place %>
          <ul>
             <li>会場：<%= @event.place.title %></li>
             <li>住所：<%= @event.place.address %></li>
@@ -69,7 +71,9 @@
          </ul>
 
          <!-- 会場場所の地図 -->
+         <%%>
          <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+         <% end %>
          <div id="map"></div>
       </div>
    </div>
