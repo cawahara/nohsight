@@ -1,96 +1,92 @@
-class EventPerformersController < ApplicationController
+# frozen_string_literal: true
+
+class EventperfsController < ApplicationController
    before_action :is_logged_in?
 
    def edit
       @event = Event.find(params[:id])
-      @event_programs = @event.event_programs
-      @event_performers = []
-      @event_programs.each do |ev_program|
-         @event_performers << ev_program.event_performers
+      @ev_progs = @event.event_programs
+      @ev_perfs = []
+      @ev_progs.each do |ev_prog|
+         @ev_perfs << ev_prog.event_performers
       end
 
-      @performers = Performer.all
+      @performers = perf.all
       @programs = Program.all
    end
 
    def update
+      # Update relative event perfs in all methods
       @event = Event.find(params[:id])
 
-      ev_programs_input = event_performers_params[0]
-      ev_performers_input = event_performers_params[1]
+      ev_progs_input = ev_perf_params[0]
+      ev_perfs_input = ev_perf_params[1]
 
-      ev_programs_input.each_index do |ev_program_idx|
-         if ev_programs_input[ev_program_idx]['type'] == 'update'
-            input_key = ev_program_idx
-            ev_performers_input[input_key].each do |ev_performer_param|
-
-
-                  ev_performer_param = event_performer_valid?(ev_performer_param)
-                  if ev_performer_param == false
-                    flash['danger'] = "入力情報に不備があります"
-                    # FIXME renderアクションに変え、どの箇所に不備があるかを表示できるようにする
-                    redirect_to(edit_event_performer_url(@event)) and return
-                  end
-                  case ev_performer_param['type']
-                  when 'update'
-                     event_performer = EventPerformer.find(ev_performer_param['id'])
-                     event_performer.update_attributes(performer_id: ev_performer_param['name'])
-                  when 'destroy'
-                     event_performer = EventPerformer.find(ev_performer_param['id'])
-                     event_performer.destroy
-                  when 'create'
-                     @event_program = EventProgram.find(ev_performer_param['ev_program_id'])
-                     event_performer = @event_program.event_performers.build(performer_id: ev_performer_param['name'])
-                     event_performer.save
-                  end
+      ev_progs_input.each_index do |ev_prog_idx|
+         next if ev_progs_input[ev_prog_idx]['type'] != 'update'
+         input_key = ev_prog_idx
+         ev_perfs_input[input_key].each do |ev_perf_param|
+            ev_perf_param = ev_perf_valid?(ev_perf_param)
+            if ev_perf_param == false
+               flash['danger'] = '入力情報に不備があります'
+              # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
+              redirect_to(edit_ev_perf_url(@event)) && return
+            end
+            case ev_perf_param['type']
+            when 'update'
+               ev_perf = EventPerformer.find(ev_perf_param['id'])
+               ev_perf.update_attributes(perf_id: ev_perf_param['name'])
+            when 'destroy'
+               ev_perf = EventPerformer.find(ev_perf_param['id'])
+               ev_perf.destroy
+            when 'create'
+               @ev_prog = EventProgram.find(ev_perf_param['ev_prog_id'])
+               ev_perf = @ev_prog.ev_perfs.build(perf_id: ev_perf_param['name'])
+               ev_perf.save
             end
          end
       end
 
-
-
-      flash[:success] = "演目を変更しました"
+      flash[:success] = '演目を変更しました'
       redirect_to(edit_event_port_url(@event))
    end
 
    private
-      def event_performers_params
-         # FIXME: permit!をなくし、受け取れるパラメータを限定する
-         # Fetching Event Programs Hash
-         ev_programs_req = params.require(:event_program).permit!
-         ev_programs_array = []
-         ev_programs_req.each do |key, value|
-            ev_programs_array << value
-         end
 
-         # Fetching Event Performers Hash
-         ev_performers_req = params.require(:event_performer).permit!
-         ev_performers_array = []
-         ev_performers_req.each do |parent_key, parent_value|
-            ev_performers_child_array = []
-            parent_value.each do |child_key, child_value|
-               ev_performers_child_array << child_value
-            end
-            ev_performers_array << ev_performers_child_array
-         end
-
-         return [ev_programs_array, ev_performers_array]
+   def ev_perf_params
+      # FIXME: permit!をなくし、受け取れるパラメータを限定する
+      # Fetching Event Programs Hash
+      ev_progs_req = params.require(:event_program).permit!
+      ev_progs_array = []
+      ev_progs_req.each do |key, value|
+         ev_progs_array << value
       end
 
-
-      def event_performer_valid?(performer_params)
-         if performer_params['type'] == 'destroy'
-            return performer_params
+      # Fetching Event perfs Hash
+      ev_perfs_req = params.require(:event_peromer).permit!
+      ev_perfs_array = []
+      ev_perfs_req.each do |parent_key, parent_value|
+         ev_perfs_child_array = []
+         parent_value.each do |child_key, child_value|
+            ev_perfs_child_array << child_value
          end
-
-         if Performer.find_by(full_name: performer_params['name']).nil?
-            new_event_performer = Performer.new(full_name: performer_params['name'])
-            new_event_performer.save
-            performer_params['name'] = new_event_performer.id
-         else
-            performer_params['name'] = Performer.find_by(full_name: performer_params['name']).id
-         end
-
-         return performer_params
+         ev_perfs_array << ev_perfs_child_array
       end
+
+      return [ev_progs_array, ev_perfs_array]
+   end
+
+   def ev_perf_valid?(perf_params)
+      return perf_params if perf_params['type'] == 'destroy'
+
+      if perf.find_by(full_name: perf_params['name']).nil?
+         new_ev_perf = perf.new(full_name: perf_params['name'])
+         new_ev_perf.save
+         perf_params['name'] = new_ev_perf.id
+      else
+         perf_params['name'] = perf.find_by(full_name: perf_params['name']).id
+      end
+
+      return perf_params
+   end
 end

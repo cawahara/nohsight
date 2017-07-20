@@ -1,20 +1,19 @@
+# frozen_string_literal: true
+
 class StaticPagesController < ApplicationController
+   def dashboard
+      @events = upcoming_events(Event.all).page(params[:page]).per(5)
+   end
 
-  def dashboard
-     @events = upcoming_events(Event.all).page(params[:page]).per(5)
-  end
+   def search
+   end
 
-  def search
+   def about
+   end
 
-  end
+   def help
+   end
 
-  def about
-  end
-
-  def help
-  end
-
-  def convention
-  end
-
+   def convention
+   end
 end
