@@ -36,6 +36,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rack-cors', :require => 'rack/cors'
   gem 'rubocop', '~> 0.47.1'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
