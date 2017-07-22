@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
       end
    end
 
-   describe "assocation dependency for destroying" do
+   describe "assocation dependency for destroy" do
       let(:user)  { build(:model_user) }
       let(:place)  { build(:model_place) }
       let(:event)  { build(:model_event) }
@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
    describe "validation" do
       let(:user) { build(:model_user) }
 
-      it "is valid with a name, email, information, and password" do
+      it "is valid with name, email, information, and password" do
          expect(user).to be_valid
       end
 

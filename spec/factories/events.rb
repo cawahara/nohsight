@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  factory :model_event, class: Event do
+   factory :model_event, class: Event do
       association :user, factory: :model_user
       association :place, factory: :model_place
 
@@ -13,5 +13,5 @@ FactoryGirl.define do
       published      true
 
       initialize_with { Event.find_or_create_by(title: title) }
-  end
+   end
 end

@@ -10,4 +10,5 @@ class Performer < ApplicationRecord
                               allow_nil: true
    validates :first_name,     format:   { with: HIRAGANA },
                               allow_nil: true
+   validates :style_id,       presence: true 
 end
