@@ -10,8 +10,13 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def is_logged_in?
-     unless is_logged?
-        redirect_to(login_url)
+     redirect_to(login_url) unless is_logged?
+  end
+
+  def is_logged_user?
+     unless params[:id].to_i == current_user.id
+        flash['danger'] = '他ユーザの編集は制限されています'
+        redirect_back_or(root_url)
      end
   end
 end

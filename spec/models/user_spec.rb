@@ -19,6 +19,7 @@ RSpec.describe User, type: :model do
       let(:place)  { build(:model_place) }
       let(:event)  { build(:model_event) }
       let(:usr_ev)  { build(:model_user_event) }
+
       it "destroys associated events" do
          user.destroy
          expect(Event.where(id: event.id)).to be_empty
@@ -95,13 +96,5 @@ RSpec.describe User, type: :model do
          end
       end
 
-      describe "agreement" do
-         it "is created when a new user agreed a terms and service" do
-            user.destroy
-            user = User.new(agreement: false)
-            user.valid?
-            expect(user.errors[:agreement]).to include('must be accepted')
-         end
-      end
    end
 end

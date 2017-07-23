@@ -1,9 +1,8 @@
 module SessionsHelper
 
    def current_user
-      if user_id = session[:user_id]
-         @current_user || User.find_by(id: session['user_id'])
-      end
+      return unless session[:user_id]
+      @current_user ||= User.find(session[:user_id])
    end
 
    def is_logged?
@@ -19,5 +18,16 @@ module SessionsHelper
       session.delete(:user_id)
       @current_user = nil
    end
+
+   def store_location
+      session.delete(:forward_url)
+      session[:forward_url] = request.original_url if request.get?
+   end
+
+   def redirect_back_or(default)
+      redirect_to session[:forward_url] || default
+      session.delete(:forward_url)
+   end
+
    # TODO cookie機能の実装
 end

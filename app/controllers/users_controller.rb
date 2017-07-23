@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-   before_action :is_logged_in?, only: [:edit, :update, :destroy]
+   before_action :is_logged_in?,   only: [:edit, :update, :destroy]
+   before_action :is_logged_user?, only: [:edit, :update, :destroy]
 
    def new
       @user = User.new
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
    def edit
       # FIXME: 自分自身しか編集できないようにする(update, destroyも同様)
       @user = User.find(params[:id])
+
    end
 
    def create

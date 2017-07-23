@@ -14,7 +14,7 @@ class User < ApplicationRecord
                            length: { minimum: 4 }
    has_secure_password
    # 利用規約に従う
-   validates_acceptance_of :agreement, allow_nil: false, on: :create
+   validates_acceptance_of :agreement, accpet: true, allow_nil: false, on: :create
 
    def User.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
