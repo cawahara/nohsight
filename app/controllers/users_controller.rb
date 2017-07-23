@@ -14,7 +14,6 @@ class UsersController < ApplicationController
    end
 
    def edit
-      # FIXME: 自分自身しか編集できないようにする(update, destroyも同様)
       @user = User.find(params[:id])
 
    end
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
          flash['success'] = 'ユーザー登録が完了しました'
-         redirect_to(dashboard_url)
+         redirect_to(root_url)
       else
          flash['danger'] = '入力情報に不備があります'
          render 'users/new'
@@ -48,7 +47,7 @@ class UsersController < ApplicationController
       else
          flash['danger'] = 'ユーザー情報を削除できません'
       end
-      redirect_to(dashboard_url)
+      redirect_to(root_url)
    end
 
    private
