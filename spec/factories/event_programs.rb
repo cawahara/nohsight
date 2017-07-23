@@ -8,4 +8,12 @@ FactoryGirl.define do
       style 'Simple'
       genre 'Sample'
    end
+
+   factory :diff_event_program, class: EventProgram do
+      association :event, factory: :diff_event
+      association :program, factory: :diff_program
+
+      style 'Simple'
+      genre 'Sample'
+   end
 end

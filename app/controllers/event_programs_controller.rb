@@ -24,7 +24,7 @@ class EventProgramsController < ApplicationController
          # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
          redirect_to(edit_event_program_url(@event)) and return
       end
-
+      
       event_program_input.each do |event_params|
          case event_params['type']
          when 'update'
