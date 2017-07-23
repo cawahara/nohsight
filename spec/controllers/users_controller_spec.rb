@@ -14,9 +14,8 @@ RSpec.describe UsersController, type: :controller do
    end
 
    describe 'GET #show' do
-      let(:user) { create(:model_user) }
-
       context 'with user param' do
+         let(:user) { create(:model_user) }
          before(:each) do
             get :show, id: user
          end
@@ -39,7 +38,6 @@ RSpec.describe UsersController, type: :controller do
 
    describe 'GET #edit' do
       let(:user) { create(:model_user) }
-
       context 'with user param' do
          before(:each) do
             login_as(user)
@@ -80,7 +78,7 @@ RSpec.describe UsersController, type: :controller do
             pending 'failure caused by request header not including agreement param'
          end
 
-         it 'saves a new user into the database' do
+         it 'creates a new user into the database' do
             expect{ post :create, user: user_params }.to change(User, :count).by(1)
          end
 

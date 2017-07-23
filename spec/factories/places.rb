@@ -8,4 +8,12 @@ FactoryGirl.define do
 
       initialize_with { Place.find_or_create_by(title: title) }
    end
+
+   factory :admin_place, class: Place do
+      title        'Ad_shrine'
+      address      'kyoto'
+      official_url 'http://www.ad_shrine.com'
+
+      initialize_with { Place.find_or_create_by(title: title) }
+   end
 end

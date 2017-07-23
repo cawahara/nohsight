@@ -41,9 +41,6 @@ class EventsController < ApplicationController
 
    def edit_port
       @event = Event.find(params[:id])
-      if @event.user_events.find_by(user_id: current_user.id).nil?
-         redirect_to(dashboard_url)
-      end
    end
 
    def edit

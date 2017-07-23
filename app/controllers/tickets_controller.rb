@@ -13,8 +13,7 @@ class TicketsController < ApplicationController
       @tickets = @event.tickets
       ticket_input = ticket_params
       ticket_input.each do |ticket_param|
-         ticket_param = ticket_valid?(ticket_param)
-         next if ticket_param == false
+         next if ticket_valid?(ticket_param) != false
          flash['danger'] = '入力情報に不備があります'
          # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
          redirect_to(edit_ticket_url(@event)) && return
@@ -45,14 +44,14 @@ class TicketsController < ApplicationController
    def ticket_params
       tickets_hash = params.require(:ticket).permit!
       tickets_array = []
-      tickets_hash.each do |value|
+      tickets_hash.each do |key, value|
          tickets_array << value
       end
-
       return tickets_array
    end
 
    def ticket_valid?(ticket_param)
+      return false if ticket_param['type'].empty?
       if ticket_param['type'] == 'create' || ticket_param['type'] == 'update'
          return false if ticket_param['grade'].empty? || ticket_param['price'].empty?
          return false if /[^0-9]+/.match?(ticket_param['price'])
