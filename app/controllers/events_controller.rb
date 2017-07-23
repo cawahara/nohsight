@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-   before_action :is_logged_in?, only: [:new, :edit_manage, :edit_port, :edit, :create, :update, :destroy, :edit_place, :update_place]
+   before_action :is_logged_in?, only: [:new, :edit, :create, :update, :destroy, :edit_manage, :edit_port, :edit_place, :update_place]
+   before_action :is_event_editor?, only: [:edit, :update, :destroy, :edit_port, :edit_place, :update_place]
 
    def index
-      @events = search_result.page(params[:id]).per(5)
+      @events = search_result.page().per(5)
    end
 
    def new
@@ -31,16 +32,6 @@ class EventsController < ApplicationController
             }
          end
       end
-   end
-
-   def edit_manage
-      @user = current_user
-      @events = Event.where(user_id: @user.id)
-      @user_events = UserEvent.where(user_id: @user.id)
-   end
-
-   def edit_port
-      @event = Event.find(params[:id])
    end
 
    def edit
@@ -80,6 +71,16 @@ class EventsController < ApplicationController
       redirect_to(edit_event_manage_url)
    end
 
+   def edit_manage
+      @user = current_user
+      @events = Event.where(user_id: @user.id)
+      @user_events = UserEvent.where(user_id: @user.id)
+   end
+
+   def edit_port
+      @event = Event.find(params[:id])
+   end
+
    def edit_place
       @event = Event.find(params[:id])
       @place = @event.place
@@ -94,7 +95,6 @@ class EventsController < ApplicationController
          redirect_to(edit_event_place_url(@event)) && return
       end
       @event_place = Place.find_by(title: place_param['title'])
-
       if @event_place
          @event.update_attributes(place_id: @event_place.id)
       else

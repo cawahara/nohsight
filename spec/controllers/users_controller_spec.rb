@@ -4,8 +4,8 @@ RSpec.describe UsersController, type: :controller do
    include SpecTesthelper
 
    describe 'GET #new' do
-      context 'access' do
-         it "assigns new action" do
+      context 'with no specific status' do
+         it "returns response status with 200" do
             get :new
             # REVIEW: statusコードの検証でもっと良い表現がないか模索
             expect(response.status).to eq(200)
@@ -44,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
             get :edit, id: user
          end
 
-         it 'assigns edit action' do
+         it 'assigns edit user' do
             expect(assigns(:user)).to eq(user)
          end
 
@@ -63,7 +63,7 @@ RSpec.describe UsersController, type: :controller do
       context 'without user param' do
          it 'occurs an error' do
             login_as(user)
-            expect{get :edit}.to raise_error(ActionController::UrlGenerationError)
+            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
          end
       end
    end

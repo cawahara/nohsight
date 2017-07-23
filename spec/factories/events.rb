@@ -15,6 +15,20 @@ FactoryGirl.define do
       initialize_with { Event.find_or_create_by(title: title) }
    end
 
+   factory :diff_event, class: Event do
+      association :user, factory: :diff_user
+      association :place, factory: :model_place
+
+      title          'Different Event'
+      start_date     Date.today
+      end_date       Date.today + 1
+      information    'It will be the best event for you!'
+      official_url   'http//www.differentevent.com'
+      published      true
+
+      initialize_with { Event.find_or_create_by(title: title) }
+   end
+
    factory :admin_event, class: Event do
       association :user, factory: :admin_user
       association :place, factory: :admin_place
@@ -23,7 +37,7 @@ FactoryGirl.define do
       start_date     Date.today
       end_date       Date.today + 1
       information    'It will be the best event for you!'
-      official_url   'http//www.firstevent.com'
+      official_url   'http//www.adminevent.com'
       published      true
 
       initialize_with { Event.find_or_create_by(title: title) }

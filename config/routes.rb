@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources 'events'
   get '/edit_manage', to: 'events#edit_manage', as: 'edit_event_manage'
   get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_event_port'
-  get '/events/:id/edit_place', to: 'events#edit_place', as: 'edit_event_place'
-  patch '/events/:id/edit_place', to: 'events#update_place', as: 'event_place'
+  get '/event_places/:id/edit', to: 'events#edit_place', as: 'edit_event_place'
+  patch '/event_places/:id', to: 'events#update_place', as: 'event_place'
 
   # EventProgram用ルーテイング
   resources 'event_programs', only: [:edit, :update]
