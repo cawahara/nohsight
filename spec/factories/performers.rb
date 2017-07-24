@@ -9,4 +9,13 @@ FactoryGirl.define do
       first_name  'ゆきひろ'
 
    end
+
+   factory :diff_performer, class: Performer do
+      association :style, factory: :model_style
+
+      full_name   '田中 光圀'
+      last_name   'たなか'
+      first_name  'みつくに'
+
+   end
 end

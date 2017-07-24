@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EventperfsController < ApplicationController
+class EventPerformersController < ApplicationController
    before_action :is_logged_in?
 
    def edit
@@ -11,7 +11,7 @@ class EventperfsController < ApplicationController
          @ev_perfs << ev_prog.event_performers
       end
 
-      @performers = perf.all
+      @performers = Performer.all
       @programs = Program.all
    end
 
@@ -21,7 +21,6 @@ class EventperfsController < ApplicationController
 
       ev_progs_input = ev_perf_params[0]
       ev_perfs_input = ev_perf_params[1]
-
       ev_progs_input.each_index do |ev_prog_idx|
          next if ev_progs_input[ev_prog_idx]['type'] != 'update'
          input_key = ev_prog_idx
@@ -30,18 +29,18 @@ class EventperfsController < ApplicationController
             if ev_perf_param == false
                flash['danger'] = '入力情報に不備があります'
               # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
-              redirect_to(edit_ev_perf_url(@event)) && return
+              redirect_to(edit_event_performer_url(@event)) && return
             end
             case ev_perf_param['type']
             when 'update'
                ev_perf = EventPerformer.find(ev_perf_param['id'])
-               ev_perf.update_attributes(perf_id: ev_perf_param['name'])
+               ev_perf.update_attributes(performer_id: ev_perf_param['name'])
             when 'destroy'
                ev_perf = EventPerformer.find(ev_perf_param['id'])
                ev_perf.destroy
             when 'create'
-               @ev_prog = EventProgram.find(ev_perf_param['ev_prog_id'])
-               ev_perf = @ev_prog.ev_perfs.build(perf_id: ev_perf_param['name'])
+               @ev_prog = EventProgram.find(ev_perf_param['ev_program_id'])
+               ev_perf = @ev_prog.event_performers.build(performer_id: ev_perf_param['name'])
                ev_perf.save
             end
          end
@@ -63,7 +62,7 @@ class EventperfsController < ApplicationController
       end
 
       # Fetching Event perfs Hash
-      ev_perfs_req = params.require(:event_peromer).permit!
+      ev_perfs_req = params.require(:event_performer).permit!
       ev_perfs_array = []
       ev_perfs_req.each do |parent_key, parent_value|
          ev_perfs_child_array = []
@@ -78,15 +77,17 @@ class EventperfsController < ApplicationController
 
    def ev_perf_valid?(perf_params)
       return perf_params if perf_params['type'] == 'destroy'
-
-      if perf.find_by(full_name: perf_params['name']).nil?
-         new_ev_perf = perf.new(full_name: perf_params['name'])
-         new_ev_perf.save
-         perf_params['name'] = new_ev_perf.id
-      else
-         perf_params['name'] = perf.find_by(full_name: perf_params['name']).id
+      
+      if perf_params['name'].empty?
+         return false
       end
 
+      if Performer.find_by(full_name: perf_params['name']).nil?
+         new_ev_perf = Performer.new(full_name: perf_params['name'], first_name: nil, last_name: nil, style_id: 1)
+         new_ev_perf.save
+      end
+
+      perf_params['name'] = Performer.find_by(full_name: perf_params['name']).id
       return perf_params
    end
 end

@@ -24,7 +24,7 @@ class EventProgramsController < ApplicationController
          # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
          redirect_to(edit_event_program_url(@event)) and return
       end
-      
+
       event_program_input.each do |event_params|
          case event_params['type']
          when 'update'
@@ -60,15 +60,15 @@ class EventProgramsController < ApplicationController
    end
 
    def event_program_valid?(event_params)
-      if event_params['type'] == 'destroy'
-         return event_params
+      return event_params if event_params['type'] == 'destroy'
+
+      if event_params['genre'].empty? || event_params['style'].empty?
+         return false
       end
 
       if Program.find_by(title: event_params['title']).nil?
          new_event_program = Program.new(title: event_params['title'])
          new_event_program.save
-      elsif event_params['genre'].empty? || event_params['style'].empty?
-         return false
       end
 
       event_params['title'] = Program.find_by(title: event_params['title']).id

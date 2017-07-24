@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe EventProgramsController, type: :controller do
+   include SpecTesthelper
+   
    describe 'GET #edit' do
       let(:user) { create(:model_user) }
       let(:event) { create(:model_event) }
