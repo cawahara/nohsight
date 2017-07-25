@@ -1,11 +1,11 @@
 <template>
    <div v-bind:id="getTagId(ev_program.id, ev_performer.element_id)" v-bind:class="ev_performer.mode" class="vertical-form">
       <div>
-         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'id')" type="hidden" v-bind:value="ev_performer.id">
-         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'ev_program_id')" type="hidden" v-bind:value="ev_program.id">
-         <input v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'type')" type="hidden" v-model:value="ev_performer.mode">
-         <input v-bind:id="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'name')"
-          v-bind:name="getColumn('event_performer[' + ev_program.element_id + ']', ev_performer.element_id, 'name')" type="text" v-model:value="search_performer.query">
+         <input v-bind:name="getColumn('event_performer-' + ev_program.element_id, ev_performer.element_id, 'id')" type="hidden" v-bind:value="ev_performer.id">
+         <input v-bind:name="getColumn('event_performer-' + ev_program.element_id, ev_performer.element_id, 'event_program_id')" type="hidden" v-bind:value="ev_program.id">
+         <input v-bind:name="getColumn('event_performer-' + ev_program.element_id, ev_performer.element_id, 'type')" type="hidden" v-model:value="ev_performer.mode">
+         <input v-bind:id="getColumn('event_performer-' + ev_program.element_id, ev_performer.element_id, 'full_name')"
+          v-bind:name="getColumn('event_performer-' + ev_program.element_id, ev_performer.element_id, 'full_name')" type="text" v-model:value="search_performer.query">
          <ul class="item-icons">
             <li v-on:click="switchMode()" v-if="ev_performer.mode != 'create'">削除<span class="btn"><i class="fa fa-minus"></i></span></li>
             <li v-on:click="deleteNewItem(ev_program.id, ih_ev_performer.element_id)" v-if="ev_performer.mode == 'create'">取消<span class="btn"><i class="fa fa-minus"></i></span></li>

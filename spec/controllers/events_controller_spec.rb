@@ -22,6 +22,7 @@ RSpec.describe EventsController, type: :controller do
          let!(:event) { create(:model_event) }
          let!(:place) { create(:model_place) }
          let!(:program) { create(:model_program) }
+         let!(:style) { create(:model_style) }
          let!(:performer) { create(:model_performer) }
          let!(:event_program) { create(:model_event_program) }
          let!(:event_performer) { create(:model_event_performer) }

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EventPerformer, type: :model do
    describe "relative associations" do
+
       it "belongs to event_program" do
          assc_ev_pro = described_class.reflect_on_association(:event_program)
          expect(assc_ev_pro.macro).to eq(:belongs_to)
@@ -14,6 +15,7 @@ RSpec.describe EventPerformer, type: :model do
    end
 
    describe "validation" do
+      let!(:style) { create(:model_style) }
       let(:ev_per) { build(:model_event_performer) }
 
       it "is valid with event_program_id and performer_id" do

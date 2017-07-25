@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EventProgramsController, type: :controller do
    include SpecTesthelper
-   
+
    describe 'GET #edit' do
       let(:user) { create(:model_user) }
       let(:event) { create(:model_event) }
@@ -96,7 +96,7 @@ RSpec.describe EventProgramsController, type: :controller do
       end
 
       context 'with valid param in destroy action' do
-
+         let!(:event_program) { create(:model_event_program) }
          before(:each) do
             login_as(user)
             @ev_pro_params = {'0': { type: 'destroy', id: event_program.id }}

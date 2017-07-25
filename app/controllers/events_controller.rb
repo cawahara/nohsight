@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-   before_action :is_logged_in?, only: [:new, :edit, :create, :update, :destroy, :edit_manage, :edit_port, :edit_place, :update_place]
-   before_action :is_event_editor?, only: [:edit, :update, :destroy, :edit_port, :edit_place, :update_place]
+   before_action :is_logged_in?, except: [:index, :show]
+   before_action :is_event_editor?, except: [:index, :new, :show, :create, :edit_manage]
 
    def index
-      @events = search_result.page().per(5)
+      @events = search_result.page.per(5)
    end
 
    def new
@@ -95,16 +95,14 @@ class EventsController < ApplicationController
          redirect_to(edit_event_place_url(@event)) && return
       end
       @event_place = Place.find_by(title: place_param['title'])
-      if @event_place
-         @event.update_attributes(place_id: @event_place.id)
-      else
+      if @event_place.nil?
          new_event_place = Place.new(title: place_param['title'],
                                      address: place_param['address'],
                                      official_url: place_param['official_url'])
          new_event_place.save
          @event_place = Place.find_by(title: place_param['title'])
-         @event.update_attributes(place_id: @event_place.id)
       end
+      @event.update_attributes(place_id: @event_place.id)
       flash[:success] = '会場を変更しました'
       redirect_to(edit_event_port_url(@event))
    end

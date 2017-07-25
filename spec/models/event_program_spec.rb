@@ -19,6 +19,7 @@ RSpec.describe EventProgram, type: :model do
    end
 
    describe "assocation dependency for destroy" do
+      let!(:style) { create(:model_style) }
       let(:ev_pro) { build(:model_event_program) }
       let(:ev_per) { build(:model_event_performer) }
 

@@ -44,7 +44,7 @@ RSpec.describe TicketsController, type: :controller do
       context 'with valid param in create action' do
          before(:each) do
             login_as(user)
-            @ticket_params = {'0': { type: 'create', id: '', grade: 'Sample', price: 1000 }}
+            @ticket_params = {'0': { type: 'create', id: '', grade: 'Sample', price: '1000' }}
          end
 
          it 'creates a new ticket' do
@@ -61,7 +61,7 @@ RSpec.describe TicketsController, type: :controller do
          let(:ticket) { create(:model_ticket) }
          before(:each) do
             login_as(user)
-            patch :update, id: event, ticket: {'0': { type: 'update', id: ticket.id, grade: 'Hyper', price: ticket.price }}
+            patch :update, id: event, ticket: {'0': { type: 'update', id: ticket.id, grade: 'Hyper', price: 10000 }}
          end
 
          it 'updates ticket attributes' do
@@ -135,7 +135,7 @@ RSpec.describe TicketsController, type: :controller do
          end
 
          it 'is redirected to edit action' do
-            ticket_params = {'0': { type: '', id: ticket.id, grade: ticket.grade, price: ticket.price }}
+            ticket_params = {'0': { type: 'create', id: ticket.id, grade: '', price: ticket.price }}
             patch :update, id: event, ticket: ticket_params
             expect(response).to redirect_to(edit_ticket_url(event))
          end
