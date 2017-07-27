@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
-   before_action :is_logged_in?
+   before_action :logged_in?
 
    def edit
    end

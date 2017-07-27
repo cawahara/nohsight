@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-   before_action :is_logged_in?,   only: [:edit, :update, :destroy]
-   before_action :is_logged_user?, only: [:edit, :update, :destroy]
+   before_action :logged_in?,   only: [:edit, :update, :destroy]
+   before_action :logged_user?, only: [:edit, :update, :destroy]
 
    def new
       @user = User.new

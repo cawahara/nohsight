@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-   before_action :is_logged_in?, only: [:destroy]
+   before_action :logged_in?, only: [:destroy]
 
    def new
       return false if is_logged?

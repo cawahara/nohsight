@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-   before_action :is_logged_in?, except: [:index, :show]
-   before_action :is_event_editor?, except: [:index, :new, :show, :create, :edit_manage]
+   before_action :logged_in?, except: [:index, :show]
+   before_action :event_editor?, except: [:index, :new, :show, :create, :edit_manage]
 
    def index
       @events = search_result.page.per(5)

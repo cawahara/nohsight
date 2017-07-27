@@ -2,6 +2,7 @@
    <div v-bind:id="getTagId(ev_program.mode)" class="form-item">
       <input v-bind:name="getColumn(ev_program.element_id, 'type')" type="hidden" v-model:value="ev_program.mode">
       <input v-bind:name="getColumn(ev_program.element_id, 'id')" type="hidden" v-bind:value="ev_program.id">
+      <input v-bind:name="getColumn(ev_program.element_id, 'event_id')" type="hidden" v-bind:value="ev_program.event_id">
       <div class="lg-form">
       <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
          <label>演目</label>

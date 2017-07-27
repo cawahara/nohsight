@@ -1,7 +1,8 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
-   has_many :events,       dependent: :destroy
-   has_many :user_events,   dependent: :destroy
+class User < ApplicationRecord
+   has_many :events, dependent: :destroy
+   has_many :user_events, dependent: :destroy
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
@@ -14,12 +15,16 @@ class User < ApplicationRecord
                            length: { minimum: 4 }
    has_secure_password
    # 利用規約に従う
-   validates_acceptance_of :agreement, accpet: true, allow_nil: false, on: :create
+   validates_acceptance_of :agreement, accpet: true,
+                                       allow_nil: false,
+                                       on: :create
 
-   def User.digest(string)
-      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                    BCrypt::Engine.cost
+   def self.digest(string)
+      if cost == ActiveModel::SecurePassword.min_cost
+         BCrypt::Engine::MIN_COST
+      else
+         BCrypt::Engine.cost
+      end
       BCrypt::Password.create(string, cost: cost)
    end
-
 end

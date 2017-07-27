@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventProgram < ApplicationRecord
    belongs_to :event
    belongs_to :program
@@ -6,10 +8,14 @@ class EventProgram < ApplicationRecord
    validates :program_id,    presence: true
    validates :event_id,      presence: true
    validates :style,         presence: true
-      # TODO   styleは流儀カラムですが、Classモデルとリレーションをかけられれば
-      # =>     アソシエートできるようにしようと考えております
+   # TODO:   styleは流儀カラムですが、Classモデルとリレーションをかけられれば
+   #         アソシエートできるようにしようと考えております
 
    validates :genre,         presence: true
-      # TODO   genreは「能、仕舞、歌舞伎」などの演芸の種類を入れるカラムです
-      # =>     (styleと同じくアソシエートできれば変更します)
+   # TODO: genreは「能、仕舞、歌舞伎」などの演芸の種類を入れるカラムです
+   #       (styleと同じくアソシエートできれば変更します)
+
+   def self.required_columns
+      return ['event_id', 'program_id', 'genre', 'style']
+   end
 end

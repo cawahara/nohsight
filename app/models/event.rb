@@ -1,5 +1,6 @@
-class Event < ApplicationRecord
+# frozen_string_literal: true
 
+class Event < ApplicationRecord
    belongs_to :user
    belongs_to :place
    has_many   :event_programs,   dependent: :destroy
@@ -8,7 +9,7 @@ class Event < ApplicationRecord
 
    validates :user_id,     presence: true
    validates :title,       presence: true
-   validates :published,   inclusion: {in: [true, false]}
+   validates :published,   inclusion: { in: [true, false] }
 
    # TODO: イベント開催時、特定の項目を満たしていないとサイト上に公開できない仕様にする
 end

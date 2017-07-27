@@ -2,6 +2,7 @@
    <div v-bind:id="getTagId(ticket.mode, ticket.element_id)" class="form-item">
       <input v-bind:name="getColumn(ticket.element_id, 'type')" type="hidden" v-model:value="ticket.mode">
       <input v-bind:name="getColumn(ticket.element_id, 'id')" type="hidden" v-bind:value="ticket.id">
+      <input v-bind:name="getColumn(ticket.element_id, 'event_id')" type="hidden" v-bind:value="ticket.event_id">
       <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
       <div class="sm-form">
          <label>客席</label>
