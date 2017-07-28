@@ -9,8 +9,12 @@
 ********************************************/
 @import "font-awesome";
 @font-face {
-   font-family: "源ノ明朝";
+   font-family: "hans-serif-semibold";
    src: font-url("SourceHanSerif-SemiBold.otf");
+}
+@font-face {
+   font-family: "hans-serif-bold";
+   src: font-url("SourceHanSerif-Bold.otf");
 }
 
 /********************************************
@@ -40,7 +44,7 @@ $box-danger: #ff8080;
 html {
    * {
       font-size:   13px;
-      font-family: "源ノ明朝";
+      font-family: "hans-serif-semibold";
       letter-spacing: 1px;
       line-height: 140%;
    }

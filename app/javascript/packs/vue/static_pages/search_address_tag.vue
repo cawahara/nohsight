@@ -1,16 +1,15 @@
 <template>
    <dd>
-      <input class="location-selection" readonly type="text" v-model:value="text_values" >
-      <input name="search[locations]" type="hidden" v-model:value="hidden_values">
+      <input class="location-selection" readonly type="text" name="search[locations]" v-model:value="text_values" >
       <div class="search-location" v-show="selector_activated">
-         <dl v-for="prefecture in prefectures">
+         <dl v-for="area in areas">
             <dt>
-               <input type="checkbox" v-bind:id="prefecture.tag_id" v-bind:value="prefecture.value" v-on:click="validateValue(prefecture)">
-               <label v-bind:for="prefecture.tag_id">{{ prefecture.value }}</label>
-            </dt>
-            <dd v-for="area in areas[prefecture.tag_id]">
-               <input type="checkbox" v-bind:id="area.tag_id" v-bind:class="prefecture.tag_id" v-bind:value="area.value" v-on:click="validateValue(area)">
+               <input type="checkbox" v-bind:id="area.tag_id" v-bind:value="area.value" v-on:click="checkValue(area)">
                <label v-bind:for="area.tag_id">{{ area.value }}</label>
+            </dt>
+            <dd v-for="pref in prefs[area.tag_id]">
+               <input type="checkbox" v-bind:id="pref.tag_id" v-bind:class="area.tag_id" v-bind:value="pref.value" v-on:click="checkValue(pref)">
+               <label v-bind:for="pref.tag_id">{{ pref.value }}</label>
             </dd>
          </dl>
       </div>
@@ -22,16 +21,13 @@
       props: ['values'],
       data: function(){
          return {
-            prefectures: this.values.prefecture_values,
-            areas: this.values.area_values,
+            areas: this.values.areas,
+            prefs: this.values.prefectures,
             text_values: [],
-            hidden_values: [],
             selector_activated: false
          }
       },
       methods: {
-
-
          toggleSelector: function(event){
             var input_tag = document.getElementsByClassName('location-selection')[0]
             var selector_tag = document.getElementsByClassName('search-location')[0]
@@ -41,72 +37,39 @@
                this.selector_activated = false
             }
          },
-         isParent: function(location){
-            if(location.constructor.name == "Prefecture"){
-               return [location.value]
-            }else{
-               return location.cities
-            }
-         },
-         writeValuesOnForms: function(location){
-            this.text_values.push(location.value)
-            this.hidden_values.push(this.isParent(location))
-            this.hidden_values = Array.prototype.concat.apply([], this.hidden_values)
-         },
-         eraseValuesOnForms: function(location){
-            var delete_idx = this.text_values.indexOf(location.value)
-            if(delete_idx >= 0){
-               this.text_values.splice(delete_idx, 1)
-               if(location.constructor.name == "Prefecture"){
-                  var delete_target = this.hidden_values.indexOf(location.value)
-                  this.hidden_values.splice(delete_target, 1)
-               }else{
-                  var delete_target = this.hidden_values.indexOf(location.cities[0])
-                  this.hidden_values.splice(delete_target, location.cities.length)
-               }
-
-            }
-         },
-         checkAllChildren: function(location, location_tag){
-            if(location_tag.checked == true){
-               for(var i = 0; i < this.areas[location.tag_id].length; i++){
-                  this.eraseValuesOnForms(this.areas[location.tag_id][i])
-               }
-            }
-            var children_tags = document.getElementsByClassName(location.tag_id)
-            for(var i = 0; i < children_tags.length; i++){
-               children_tags[i].checked = location_tag.checked
-            }
-         },
-         checkRelatives: function(location, location_tag){
-            if(location_tag.checked == false){
-               var location_tag = document.getElementById(location.tag_id)
-               var parent_tag = document.getElementById(location_tag.className)
-               var delete_idx = this.text_values.indexOf(this.prefectures[parent_tag.id].value)
-               this.eraseValuesOnForms(this.prefectures[parent_tag.id])
-               if(delete_idx >= 0){
-                  parent_tag.checked = false
-                  for(var i = 0; i < this.areas[parent_tag.id].length; i++){
-                     this.writeValuesOnForms(this.areas[parent_tag.id][i])
-                  }
-               }
-            }
-         },
-         validateValue: function(location){
+         checkValue: function(location){
             var location_tag = document.getElementById(location.tag_id)
 
-            if(location.constructor.name == "Prefecture"){
-               this.checkAllChildren(location, location_tag)
+            if(location.constructor.name == "Area"){
+               this.checkAllChildren(location_tag)
             }else{
-               this.checkRelatives(location, location_tag)
+               this.validateAreaValue(location_tag)
+               this.attrTextValue(location_tag)
             }
-
+         },
+         checkAllChildren: function(location_tag){
+            var command = location_tag.checked
+            var children_tags = document.getElementsByClassName(location_tag.id)
+            for(var i = 0; i < children_tags.length; i++){
+               children_tags[i].checked = command
+               this.attrTextValue(children_tags[i])
+            }
+         },
+         attrTextValue: function(location_tag){
+            var delete_idx = this.text_values.indexOf(location_tag.value)
+            if(delete_idx >= 0){
+               this.text_values.splice(delete_idx, 1)
+            }
             if(location_tag.checked == true){
-               this.writeValuesOnForms(location)
-            }else{
-               this.eraseValuesOnForms(location)
+               this.text_values.push(location_tag.value)
             }
-         } 
+         },
+         validateAreaValue: function(location_tag){
+            if (location_tag.checked == false){
+               var parent_tag = document.getElementById(location_tag.className)
+               parent_tag.checked = false
+            }
+         }
       },
       created: function(){
          window.addEventListener('click', this.toggleSelector)

@@ -1,6 +1,10 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********************************************
+
+                  Libraries
+
+********************************************/
+@import './layout';
 /********************************************
 
                   Dashboard
@@ -87,7 +91,7 @@
 
             input.location-selection {
                &:hover {
-                  cursor: text; 
+                  cursor: text;
                }
             }
 
@@ -114,7 +118,10 @@
                      width: 100%;
                      margin: 0;
                      text-align: left;
-                      label { font-size: 14px; }
+                      label {
+                              font-family: 'hans-serif-bold';
+                              font-size: 15px;
+                     }
                   }
                   dd {
                      width:  auto;

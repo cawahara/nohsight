@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
    const target_content = document.getElementById('search')
    if(target_content != null){
 
-      var prefecture_values = SelectorStorage.prefecture_values
-      var area_values = SelectorStorage.area_values
+      var areas = SelectorStorage.areas
+      var prefs = SelectorStorage.prefs
 
       const node = document.getElementById('search-address-vue')
-      var search_values = { prefecture_values: prefecture_values, area_values: area_values }
+      var search_values = { areas: areas, prefectures: prefs }
       var seatch_address_item = new Vue({
          el: '#search-address-vue',
          render(h){
