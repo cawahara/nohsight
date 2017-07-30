@@ -112,10 +112,8 @@ module SearchEngine
          keywd_query = ''
          # 出演者
          keywd_query += performer_query_in_keywd(keywds)
-
          # 演目
          keywd_query += program_query_in_keywd(keywds)
-
          # 公演名
          keywd_query += ev_query_in_keywd(keywds)
          results = omit_excessed_or_query(keywd_query, results)

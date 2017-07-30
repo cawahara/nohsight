@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
    include SessionsHelper
 
    def logged_in?
-      redirect_to(login_url) unless is_logged?
+      redirect_to(login_url) unless logged?
    end
 
    def logged_user?
