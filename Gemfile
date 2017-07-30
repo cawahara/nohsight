@@ -20,7 +20,7 @@ gem 'carrierwave',             '~> 0.11.2'                  # 画像アップロ
 gem 'simple_enum',             '~> 2.3'                     # enumqを扱うヘルパー
 gem 'kaminari'                                              # paginateヘルパー
 gem 'bcrypt',                  '~> 3.1.7'                   # 文字列(主にパスワード)のハッシュ化
-gem 'ransack',                 '~> 1.8'                     # ActiveREcordのレコード検索用ヘルパー
+gem 'ransack',                 '~> 1.8'                     # ActiveRecordのレコード検索用ヘルパー
 gem 'seed_dump',               '>= 3.2.4'                   # データベース内レコードをseedに移行
 gem 'bootstrap-sass'                                        # bootstrap
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで

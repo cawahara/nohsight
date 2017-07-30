@@ -14,7 +14,7 @@ module UpdateEventAssociations
 
    # first required key must be the value for updating class model
    # TODO: RSpecにtypeキーが空の時のテスト記入
-   def params_valid?(params, foreign_key, required_key, model)
+   def params_valid?(params, foreign_key, required_keys, model)
       params.each do |param|
          next if param['type'] == 'destroy' || param['type'].empty?
          return false if keys_valid?(param, foreign_key) == false
@@ -23,7 +23,7 @@ module UpdateEventAssociations
             return false if ticket_valid?(param) == false
             next
          end
-         param[foreign_key] = create_foreign_key(param, required_key, model)
+         param[foreign_key] = create_foreign_key(param, required_keys, model)
       end
       return params
    end
@@ -53,10 +53,14 @@ module UpdateEventAssociations
       return false if /[^0-9]+/.match?(ticket_param['price'])
    end
 
-   def create_foreign_key(param, required_key, model)
-      instance = model.find_by("#{required_key}": param[required_key])
+   def create_foreign_key(param, required_keys, model)
+      instance = model.find_by("#{required_keys[0]}": param[required_keys[0]])
       if instance.nil?
-         instance = model.create("#{required_key}": param[required_key])
+         create_params = {}
+         required_keys.each do |required_key|
+            create_params[required_key] = param[required_key]
+         end
+         instance = model.create(create_params)
          instance.save
       end
       return instance.id

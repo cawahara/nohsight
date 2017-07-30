@@ -48,7 +48,7 @@
             this.search_query.focus = false
          },
          getColumn: function(name){
-            return 'event_place[' + name + ']'
+            return 'event_place[0][' + name + ']'
          }
       }
    }

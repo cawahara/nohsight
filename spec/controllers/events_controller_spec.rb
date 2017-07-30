@@ -278,9 +278,9 @@ RSpec.describe EventsController, type: :controller do
             expect{ delete :destroy, id: event }.to change(Event, :count).by(-1)
          end
 
-         it "is redirected to edit_manage action" do
+         it "is redirected to manage action" do
             delete :destroy, id: event
-            expect(response).to redirect_to(edit_event_manage_url)
+            expect(response).to redirect_to(event_manage_url)
          end
       end
 
@@ -312,16 +312,16 @@ RSpec.describe EventsController, type: :controller do
       end
    end
 
-   describe 'GET #edit_manage' do
+   describe 'GET #manage' do
       let!(:user) { create(:model_user) }
 
       context 'with event param' do
          before(:each) do
             login_as(user)
-            get :edit_manage
+            get :manage
          end
 
-         it 'assign edit_manage user' do
+         it 'assign manage user' do
             expect(assigns(:user)).to eq(user)
          end
 
@@ -332,7 +332,7 @@ RSpec.describe EventsController, type: :controller do
 
       context 'without login' do
          it 'is redirected to login action' do
-            get :edit_manage
+            get :manage
             expect(response).to redirect_to(login_url)
          end
       end
@@ -432,7 +432,7 @@ RSpec.describe EventsController, type: :controller do
       let(:event) { create(:model_event) }
       let!(:user_event) { create(:model_user_event) }
 
-      context 'with valid event_place param existing in Place' do
+      context 'with valid event_place param existing in Place class' do
          let(:alter_place) { create(:alter_place) }
          before(:each) do
             login_as(user)

@@ -18,7 +18,7 @@ class EventProgramsController < ApplicationController
    def update
       @event = Event.find(params[:id])
       ev_programs = get_params('event_program')
-      ev_programs = params_valid?(ev_programs, 'program_id', 'title', Program)
+      ev_programs = params_valid?(ev_programs, 'program_id', ['title'], Program)
       if ev_programs == false
          flash['danger'] = '入力情報に不備があります'
          # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする

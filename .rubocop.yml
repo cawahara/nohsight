@@ -12,6 +12,7 @@ AllCops:
       - 'db/seeds.rb'
       - 'node_modules/**/*'
    TargetRubyVersion: 2.4
+   DisplayCopNames: true
 
 Style/Documentation:
    Enabled: false
@@ -30,6 +31,9 @@ Style/WordArray:
 
 Style/EmptyMethod:
    Enabled: false
+
+Metrics/LineLength:
+   Max:  90
 
 Metrics/AbcSize:
    Max:  20
