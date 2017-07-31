@@ -7,7 +7,7 @@ class EventsController < ApplicationController
    before_action :event_editor?, except: [:index, :new, :show, :create, :manage]
 
    def index
-      @events = search_result.page.per(5)
+      @events = search_result.page(params[:page]).per(5)
    end
 
    def new

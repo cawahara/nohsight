@@ -67,12 +67,11 @@
          <ul>
             <li>会場：<%= @event.place.title %></li>
             <li>住所：<%= @event.place.address %></li>
-            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank' %></li>
+            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank' if @event.place.official_url %></li>
          </ul>
 
          <!-- 会場場所の地図 -->
-         <%%>
-         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.address %>"></iframe>
          <% end %>
          <div id="map"></div>
       </div>
@@ -94,7 +93,7 @@
    </div>
 
    <div class="user-command">
-      <% if is_logged? %>
+      <% if logged? %>
          <% if @user_events.find_by(user_id: current_user.id) %>
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>

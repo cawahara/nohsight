@@ -34,7 +34,7 @@ class UsersController < ApplicationController
          flash['success'] = 'ユーザー情報を更新しました'
          redirect_to(user_url(current_user))
       else
-         flash['danger'] = '入力情報不備があります'
+         flash['danger'] = '入力情報に不備があります'
          render 'users/edit'
       end
    end

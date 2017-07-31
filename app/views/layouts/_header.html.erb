@@ -5,7 +5,7 @@
 
      <ul>
          <li class="header-btn"><%= fa_icon('search') %></li>
-         <% if is_logged? %>
+         <% if logged? %>
          <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('ellipsis-v') %></li>
          <% else %>
@@ -21,6 +21,9 @@
       <li>
           <%= form_for(:search, url: events_path, method: :get) do |f| %>
              <%= f.text_field :keywd %>
+             <%= f.hidden_field :start_date, value: '' %>
+             <%= f.hidden_field :end_date, value: '' %>
+             <%= f.hidden_field :locations, value: nil %>
              <%= button_tag(type: 'submit') do %>
                 <i class="fa fa-search"></i>
              <% end %>
@@ -28,7 +31,7 @@
           <%= link_to '条件付きイベント検索へ(仮)', search_path %>
       </li>
      </ul>
-     <% if is_logged? %>
+     <% if logged? %>
      <ul id="dropdown-request"  class="dropdown-lists">
        <li><span>公演開催リクエスト(未定、仮)</span></li>
      </ul>

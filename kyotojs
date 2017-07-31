@@ -1,0 +1,84 @@
+// 2017/7/30
+live coding
+   音楽用多数
+      supercollider
+         smalltalk
+         楽器を定義、指定の周波数でならす
+
+      sonic pi
+         in ruby
+         多tutorialsあり
+         minecraftのmodにも
+            (曲をブロックとして配置)
+
+      TidalCycles
+         in Haskell
+   GLSL
+      voic main, returnとか使ったC的な文法
+      GLSL　sandbox
+      shedertoy
+
+   環境は自作が多い
+   atom sandbox作りました(plugin)
+   web audio API, web midi api
+   tidalcycle
+   バグ
+   electron推し
+   autocomplete-plusが重い
+   etchコンポーネント
+      (Reactでatomを書き直せなかった)
+
+Refluxの話
+   https://github.com/reflux/refluxjs
+
+typescript
+   cyclejs
+   node
+   xstream
+   typeで型を定義
+      &, |による条件付けも可能
+
+VisualTesting
+   Enzymeはreact専用？
+      わずかな変更に対して大量にテスト項目を修正する必要あり
+      現実的ではない
+   Snapshot Testing
+      Ava, Jest製
+         renderしたコンポーネントをjsonとして保存
+         前回テスト分との差分を検出
+         見た目のテストができない
+            css側に変更を加えてもその変更点に対して
+            アサーションできない
+   Visual Testing
+      Snapshot Testingで取得したjsonを
+      画像にして保存、
+      見た目の変化に対してアサーションしたい
+      スクショのとりかたを模索
+      環境構築方法
+         S3のバケット作成
+         GitのHash探索方法確定
+         reg-suitが全部やってくれる(上記の環境構築に加えて画像比較とレポートまで)
+      一連のやり方
+         テスト時にスクショ保存
+         gitの履歴から比較対象(expected)とする画像を取得
+            比較対象は任意、自分でベストを選んてキーをダウンロード
+         上記二者の比較を行う
+         両者とdiff画像、htmlレポートcommit hashをキーにS3にpush
+         slackにて通知
+      テスト時のスクショ保存
+         karma-nightmareとavaron
+         electronで描画するよ
+         reg-cliを基にdiffとhtmlレポートを生成
+         pure JS
+      重い
+
+Reason
+   Reason -> OCalmのプリプロセッサ
+      JavaScriptに変換
+   OCalm -> JS or Nativeのためのツール群
+
+   文法
+      おかたい
+      variant -> Cでいうenumの発想
+      型推論
+      ＥＳ寄りの文法

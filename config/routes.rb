@@ -34,6 +34,12 @@ Rails.application.routes.draw do
    # Place用ルーティング
    resources 'places'
 
+   # Program用ルーティング
+   resources 'programs'
+
+   # Performer用ルーティング
+   resources 'performers'
+
    # UserEvent洋ルーティング
    post '/user_events/:id', to: 'user_events#create', as: 'user_events'
    delete '/user_events/:id', to: 'user_events#destroy', as: 'user_event'

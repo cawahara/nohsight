@@ -27,15 +27,12 @@ module SearchEngine
                locations:   params[:search][:locations] }
    end
 
-   def add_iterated_datas(datas, field, clause, result)
-      query_for_add = ''
-      query_clause = ["#{field} = ", '', ' OR ']
-      query_clause = ["#{field} LIKE '%", '', "%' OR "] if clause == 'like'
+   def add_iterated_datas(datas, field, result)
+      query = ''
       datas.each do |data|
-         query_clause[1] = data
-         query_for_add += query_clause.join
+         query += "#{field} LIKE '%#{data}%' OR "
       end
-      return omit_excessed_or_query(query_for_add, result)
+      return result.where(query[0..(query.length - 5)])
    end
 
    def add_iterated_query(datas, field, target)
@@ -44,19 +41,6 @@ module SearchEngine
          query += "#{target} = #{data[field]} OR "
       end
       return query
-   end
-
-   def omit_excessed_or_query(query, result)
-      query = query[0..(query.length - 5)]
-      return result.where(query)
-   end
-
-   def add_find_result(datas, model, field)
-      result = []
-      datas.each do |data|
-         result << model.find(data[field])
-      end
-      return result.uniq
    end
 
    def date_query(term, search_params, results)
@@ -69,33 +53,50 @@ module SearchEngine
    end
 
    def location_query(search_params, results)
-      if search_params[:locations] != ''
-         locations = search_params[:locations].split(',')
-         relative_places = add_iterated_datas(locations, 'address', 'like', Place)
-         results = add_iterated_datas(relative_places, 'address', '=', results)
+      return results if search_params[:locations].nil?
+      locations = search_params[:locations].split(',')
+      relative_places = add_iterated_datas(locations, 'address', Place)
+      query = add_iterated_query(relative_places, 'id', 'place_id')
+      return results.where(query[0..(query.length - 5)])
+   end
+
+   def where_to_array(model, keywds, field)
+      array = []
+      keywds.each do |keywd|
+         array << model.where("#{field} LIKE '%#{keywd}%'")
       end
-      return results
+      array = array.flatten.compact
+      return '' if array.count <= 0
+      return array.uniq
+   end
+
+   def find_to_array(model, datas, field, property)
+      array = []
+      datas.each do |data|
+         array << model.find_by("#{field}": data[property])
+      end
+      array = array.compact
+      return '' if array.count <= 0
+      return array.uniq
    end
 
    def performer_query_in_keywd(keywds)
-      relative_performers = add_iterated_datas(keywds, 'full_name', 'like', Performer)
-      ev_programs = []
-      relative_performers.each do |performer|
-         ev_performers = EventPerformer.where("performer_id = #{performer.id}")
-         ev_programs = add_find_result(ev_performers, EventProgram, 'event_program_id')
-      end
-      return add_iterated_query(ev_programs, 'event_id', 'id')
+      performers = where_to_array(Performer, keywds, 'full_name')
+      return '' if performers == ''
+
+      ev_pers = find_to_array(EventPerformer, performers, 'performer_id', 'id')
+      return '' if ev_pers == ''
+      ev_pros = find_to_array(EventProgram, ev_pers, 'id', 'event_program_id')
+      return '' if ev_pros == ''
+      return add_iterated_query(ev_pros, 'event_id', 'id')
    end
 
    def program_query_in_keywd(keywds)
-      relative_programs = add_iterated_datas(keywds, 'title', 'like', Program)
-
-      ev_programs = []
-      relative_programs.each do |program|
-         ev_programs << EventProgram.where("program_id = #{program.id}")
-      end
-      ev_programs = ev_programs.flatten
-      return add_iterated_query(ev_programs, 'event_id', 'id')
+      programs = where_to_array(Program, keywds, 'title')
+      return '' if programs == ''
+      ev_pros = find_to_array(EventProgram, programs, 'program_id', 'id')
+      return '' if ev_pros == ''
+      return add_iterated_query(ev_pros, 'event_id', 'id')
    end
 
    def ev_query_in_keywd(keywds)
@@ -116,7 +117,7 @@ module SearchEngine
          keywd_query += program_query_in_keywd(keywds)
          # 公演名
          keywd_query += ev_query_in_keywd(keywds)
-         results = omit_excessed_or_query(keywd_query, results)
+         results = results.where(keywd_query[0..(keywd_query.length - 5)])
       end
       return results
    end

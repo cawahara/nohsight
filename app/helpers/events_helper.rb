@@ -9,6 +9,6 @@ module EventsHelper
    # 本日以降の未開催のイベントを表示
    def upcoming_events(events)
       query = 'published = ? AND start_date >= ?'
-      return events.where(query, true, Date.today).order(:start_date, :desc)
+      return events.where(query, true, Date.today).order(:start_date)
    end
 end

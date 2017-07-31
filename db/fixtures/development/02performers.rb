@@ -732,7 +732,7 @@ Performer.seed do |s|
    s.id = 105
    s.full_name	 = '菅 啓好'
    s.last_name	 = 'すが'
-   s.first_name = ''
+   s.first_name = 'ひろよし'
    s.style_id = 6
 end
 Performer.seed do |s|
@@ -823,7 +823,7 @@ Performer.seed do |s|
    s.id = 118
    s.full_name	 = '武重 正律'
    s.last_name	 = 'たけしげ'
-   s.first_name = ''
+   s.first_name = 'まさのり'
    s.style_id = 8
 end
 Performer.seed do |s|
@@ -879,7 +879,7 @@ Performer.seed do |s|
    s.id = 126
    s.full_name	 = '安東 伸元'
    s.last_name	 = 'あんどう'
-   s.first_name = ''
+   s.first_name = 'のぶちか'
    s.style_id = 11
 end
 Performer.seed do |s|
