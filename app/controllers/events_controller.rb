@@ -1,13 +1,20 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-   include SearchEngine
    include UpdateEventAssociations
+   include SearchEngine
    before_action :logged_in?, except: [:index, :show]
    before_action :event_editor?, except: [:index, :new, :show, :create, :manage]
+   before_action :the_event, except: [:index, :new, :create, :manage]
 
    def index
-      @events = search_result.page(params[:page]).per(5)
+      events = []
+      if params[:search].nil?
+         events = upcoming_events(Event.all)
+      else
+         events = search_results
+      end
+      @events = events.page(params[:page]).per(5)
    end
 
    def new
@@ -15,7 +22,6 @@ class EventsController < ApplicationController
    end
 
    def show
-      @event = Event.find(params[:id])
       @user_events = UserEvent.where(event_id: @event.id)
       locations = relative_program_locations(@event)
       respond_to do |format|
@@ -28,7 +34,6 @@ class EventsController < ApplicationController
    end
 
    def edit
-      @event = Event.find(params[:id])
    end
 
    def create
@@ -44,7 +49,6 @@ class EventsController < ApplicationController
    end
 
    def update
-      @event = Event.find(params[:id])
       if @event.update_attributes(event_params)
          flash[:success] = '公演情報を更新しました'
          redirect_to(edit_event_port_url(@event))
@@ -55,7 +59,6 @@ class EventsController < ApplicationController
    end
 
    def destroy
-      @event = Event.find(params[:id])
       if @event.destroy
          flash[:warning] = '公演を削除しました'
       else
@@ -71,17 +74,14 @@ class EventsController < ApplicationController
    end
 
    def edit_port
-      @event = Event.find(params[:id])
    end
 
    def edit_place
-      @event = Event.find(params[:id])
       @place = @event.place
       @places = Place.all
    end
 
    def update_place
-      @event = Event.find(params[:id])
       place_info = event_place_params
       place_info = params_valid?([place_info], 'place_id', ['title', 'address'], Place)
       if place_info == false
@@ -94,6 +94,10 @@ class EventsController < ApplicationController
    end
 
    private
+
+   def the_event
+      @event = Event.find(params[:id])
+   end
 
    def event_params
       params.require(:event).permit!

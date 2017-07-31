@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class StaticPagesController < ApplicationController
+
    def dashboard
-      @events = upcoming_events(Event.all).page(params[:page]).per(5)
+      @events = upcoming_events(Event.all).limit(5)
    end
 
    def search

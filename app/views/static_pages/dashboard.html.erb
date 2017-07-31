@@ -51,6 +51,6 @@
       </div>
       <% end %>
 
-      <%= paginate(@events, outer_window: 3) %>
+      <%= link_to events_path, class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %><% end %>
    </div>
 </div>

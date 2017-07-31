@@ -4,18 +4,18 @@ module SearchEngine
    extend ActiveSupport::Concern
 
    # 疑似検索エンジン
-   def search_result
-      search_result = public_events(Event.all.order(start_date: :desc))
+   def search_results
+      results = public_events(Event.all.order(start_date: :desc))
       # 日付フィルター
       # 範囲(from)
-      search_result = date_query('from', search_params, search_result)
+      results = date_query('from', search_params, results)
       # 範囲(to)
-      search_result = date_query('to', search_params, search_result)
+      results = date_query('to', search_params, results)
       # 開催地フィルター
-      search_result = location_query(search_params, search_result)
+      results = location_query(search_params, results)
       # キーワードフィルター
-      search_result = keywd_query(search_params, search_result)
-      return search_result
+      results = keywd_query(search_params, results)
+      return results
    end
 
    private
