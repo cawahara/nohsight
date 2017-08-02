@@ -43,7 +43,7 @@
       components: { 'performers-index': performers_index },
       methods: {
          toggleSelector: function(event){
-            var input_tag    = document.getElementById(this.getColumn('event_performer[' + this.ev_program.element_id + ']', this.ev_performer.element_id, 'name'))
+            var input_tag    = document.getElementById(this.getColumn('event_performer-' + this.ev_program.element_id, this.ev_performer.element_id, 'full_name'))
             var selector_tag = document.getElementById(this.getTagId('index'))
 
             if(event.target == input_tag){

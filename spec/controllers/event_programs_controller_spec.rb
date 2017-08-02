@@ -5,8 +5,9 @@ RSpec.describe EventProgramsController, type: :controller do
 
    describe 'GET #edit' do
       let(:event) { create(:model_event) }
+      let!(:user_event) { create(:model_user_event) }
       before(:each) do
-         @user = event.user
+         @user = event.user_events.find_by(organizer: true).user
       end
 
       context 'with event param' do
@@ -41,9 +42,10 @@ RSpec.describe EventProgramsController, type: :controller do
 
    describe 'PATCH #update' do
       let(:event_program) { create(:model_event_program) }
+      let!(:user_event) { create(:model_user_event) }
       before(:each) do
          @event = event_program.event
-         @user = @event.user
+         @user = @event.user_events.find_by(organizer: true).user
       end
 
       context 'with valid param in create action' do
@@ -54,7 +56,8 @@ RSpec.describe EventProgramsController, type: :controller do
                                      id: '',
                                      event_id: event_program.event_id,
                                      title: diff_program[:title],
-                                     genre: 'Genre', style: 'Style' }}
+                                     genre: 'Genre',
+                                     style: 'Style' }}
          end
 
          it 'creates a new event program' do

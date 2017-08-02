@@ -5,8 +5,9 @@ RSpec.describe TicketsController, type: :controller do
 
    describe 'GET #edit' do
       let(:event) { create(:model_event) }
+      let!(:user_event) { create(:model_user_event) }
       before(:each) do
-         @user = event.user
+         @user = event.user_events.find_by(organizer: true).user
       end
 
       context 'with event param' do
@@ -41,9 +42,10 @@ RSpec.describe TicketsController, type: :controller do
 
    describe 'PATCH #update' do
       let(:ticket) { create(:model_ticket) }
+      let!(:user_event) { create(:model_user_event) }
       before(:each) do
          @event = ticket.event
-         @user = @event.user
+         @user = @event.user_events.find_by(organizer: true).user
       end
 
       context 'with valid param in create action' do

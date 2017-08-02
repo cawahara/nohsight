@@ -10,12 +10,12 @@
    import * as $ from 'jquery'
    export default {
       props: {
-         ih_programs:  Array,
+         ih_performers:  Array,
          search_query: String
       },
       data: function(){
          return {
-            grid_data: this.ih_programs
+            grid_data: this.ih_performers
          }
       },
       methods: {
@@ -29,6 +29,7 @@
                   arr.push(data)
                }
             }
+            console.log(arr)
             return arr
          },
          setSearchValue: function(value){

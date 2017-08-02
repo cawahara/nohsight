@@ -5,8 +5,7 @@ class UserEventsController < ApplicationController
 
    def create
       @event = Event.find(params[:id])
-      @user_event = current_user.user_events.build(user_id: current_user.id,
-                                                   event_id: @event.id)
+      @user_event = current_user.user_events.build(params_for_create)
       if @user_event.save
          flash[:success] = '新たな公演編集メンバーになりました'
          redirect_to(edit_event_port_url(@event))
@@ -18,5 +17,16 @@ class UserEventsController < ApplicationController
 
    def destroy
       # TODO: 実装未定
+   end
+
+
+   private
+
+   def params_for_create
+      return {
+               user_id: current_user.id,
+               event_id: params[:id],
+               organizer: false
+               }
    end
 end

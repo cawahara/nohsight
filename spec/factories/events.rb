@@ -2,7 +2,6 @@ require 'factory_girl'
 
 FactoryGirl.define do
    factory :model_event, class: Event do
-      association :user, factory: :model_user
       association :place, factory: :model_place
 
       title          'First Event'
@@ -16,7 +15,6 @@ FactoryGirl.define do
    end
 
    factory :diff_event, class: Event do
-      association :user, factory: :diff_user
       association :place, factory: :model_place
 
       title          'Different Event'
@@ -30,7 +28,6 @@ FactoryGirl.define do
    end
 
    factory :admin_event, class: Event do
-      association :user, factory: :admin_user
       association :place, factory: :admin_place
 
       title          'Admin Event'

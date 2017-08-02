@@ -22,7 +22,7 @@ RSpec.describe UserEvent, type: :model do
          expect(usr_ev).to be_valid
       end
 
-      describe 'user_id' do
+      context 'user_id' do
          it 'is invalid without an user_id' do
             usr_ev.user_id = nil
             usr_ev.valid?
@@ -30,11 +30,19 @@ RSpec.describe UserEvent, type: :model do
          end
       end
 
-      describe 'event_id' do
+      context 'event_id' do
          it 'is invalid without an event_id' do
             usr_ev.event_id = nil
             usr_ev.valid?
             expect(usr_ev.errors[:event_id]).to include("can't be blank")
+         end
+      end
+
+      context 'oranizer' do
+         it 'is invalid with improper value' do
+            usr_ev.organizer = nil
+            usr_ev.valid?
+            expect(usr_ev.errors[:organizer]).to include('is not included in the list')
          end
       end
    end

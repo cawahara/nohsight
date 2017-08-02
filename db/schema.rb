@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170717113733) do
   create_table "user_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.boolean  "organizer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

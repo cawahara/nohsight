@@ -5,8 +5,9 @@ RSpec.describe EventPerformersController, type: :controller do
 
    describe 'GET #edit' do
       let(:event) { create(:model_event) }
+      let!(:user_event) { create(:model_user_event) }
       before(:each) do
-         @user = event.user
+         @user = event.user_events.find_by(organizer: true).user
       end
 
       context 'with event param' do
@@ -41,11 +42,12 @@ RSpec.describe EventPerformersController, type: :controller do
 
    describe 'PATCH #update' do
       let(:event_performer) { create(:model_event_performer) }
+      let!(:user_event){ create(:model_user_event) }
       let!(:style) { create(:model_style) }
       before(:each) do
          @event_program = event_performer.event_program
          @event = @event_program.event
-         @user = @event.user
+         @user = @event.user_events.find_by(organizer: true).user
       end
 
       context 'with valid param in create action' do

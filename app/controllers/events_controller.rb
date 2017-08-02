@@ -9,10 +9,15 @@ class EventsController < ApplicationController
 
    def index
       events = []
-      if params[:search].nil?
-         events = upcoming_events(Event.all)
-      else
+      if params[:search]
          events = search_results
+         if events.count > 0
+            flash.now[:info] = "#{events.count}件の公演が見つかりました。"
+         else
+            flash.now[:warning] = '公演は見つかりませんでした。'
+         end
+      else
+         events = upcoming_events(Event.all)
       end
       @events = events.page(params[:page]).per(5)
    end
@@ -69,8 +74,7 @@ class EventsController < ApplicationController
 
    def manage
       @user = current_user
-      @events = Event.where(user_id: @user.id)
-      @user_events = UserEvent.where(user_id: @user.id)
+      @user_events = @user.user_events
    end
 
    def edit_port

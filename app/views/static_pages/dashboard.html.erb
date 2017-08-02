@@ -33,23 +33,7 @@
    <div class="section">
       <h1 class="section-header">最新の公演情報</h1>
 
-      <% @events.each do |event| %>
-      <div class="article event-summary">
-         <div class="header">
-            <h1><%= link_to event.title, event_path(event) %></h1>
-            <span class="btn"><%= fa_icon('check-square-o')%></span><!-- TODO Userがクリップする機能 -->
-         </div>
-         <ul class="info">
-            <li class="place"><%= event.place.title %></li>
-            <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
-         </ul>
-         <ul class="tickets">
-            <% event.tickets.each do |ticket| %>
-            <li><%= ticket.grade %>：<%= ticket.price %></li>
-            <% end %>
-         </ul>
-      </div>
-      <% end %>
+      <%= render 'shared/event_articles' %>
 
       <%= link_to events_path, class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %><% end %>
    </div>

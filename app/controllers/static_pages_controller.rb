@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StaticPagesController < ApplicationController
-
    def dashboard
       @events = upcoming_events(Event.all).limit(5)
    end

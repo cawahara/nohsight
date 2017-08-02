@@ -8,14 +8,11 @@
          <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M") if @event.start_date %></li>
       </ul>
       <div class="organizer">
-         <%= link_to user_path(@event.user) do %>
-            <%= image_tag 'thumbnail.png' %>
-            <span><%= @event.user.name %>(主催者)</span>
-         <% end %>
          <% @user_events.each do |user_event| %>
             <%= link_to user_path(user_event.user) do %>
                <%= image_tag 'thumbnail.png' %>
                <span><%= user_event.user.name %></span>
+               <span><%= '(主催者)' if user_event.organizer? %></span>
             <% end %>
          <% end %>
       </div>
@@ -71,7 +68,7 @@
          </ul>
 
          <!-- 会場場所の地図 -->
-         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.address %>"></iframe>
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
          <% end %>
          <div id="map"></div>
       </div>
@@ -98,7 +95,6 @@
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
          <%= button_to '編集メンバーになる', user_events_path(@event), method: :post %>
-         <p>押した瞬間に公演の編集者になる(恐らく後に主催その他関係者にリクエストを送る形式に変更する)</p>
          <% end %>
       <% end %>
    </div>

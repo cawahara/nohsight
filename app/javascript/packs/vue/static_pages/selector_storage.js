@@ -76,7 +76,7 @@ var shikoku_prefs = [
                      new Prefecture("高知県", "shikoku-kochi")
                     ]
 var kyushu_prefs = [
-                    new Prefecture("福岡圏", "kyushu-fukuoka"),
+                    new Prefecture("福岡県", "kyushu-fukuoka"),
                     new Prefecture("佐賀県", "kyushu-saga"),
                     new Prefecture("長崎県", "kyushu-nagasaki"),
                     new Prefecture("熊本県", "kyushu-kumamoto"),
@@ -93,7 +93,7 @@ var prefs = {
              chubu:     chubu_prefs,
              kinki:     kinki_prefs,
              chugoku:   chugoku_prefs,
-             shukoku:   shikoku_prefs,
+             shikoku:   shikoku_prefs,
              kyushu:    kyushu_prefs
             }
 

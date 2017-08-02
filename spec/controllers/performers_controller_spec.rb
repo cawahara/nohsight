@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PerformersController, type: :controller do
+=begin
    include SpecTesthelper
-
    let(:user) { create(:model_user) }
 
    describe 'GET #index' do
@@ -246,4 +246,5 @@ RSpec.describe PerformersController, type: :controller do
          end
       end
    end
+=end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Ticket.delete_all
 
 grade1 = ['前売券', '割引券', '学生券', '当日券', '正面券']
@@ -9,7 +10,7 @@ grades = [grade1, grade2, grade3]
 
 id_num = 1
 event_id_num = 1
-Event.all.each do |event|
+Event.all.each do |_event|
    timer = rand(1..5)
    grade = grades[rand(0..2)]
    init_price = rand(45..60)

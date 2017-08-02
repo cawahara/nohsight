@@ -7,7 +7,7 @@ class Event < ApplicationRecord
    has_many   :tickets,          dependent: :destroy
    has_many   :user_events,      dependent: :destroy
 
-   validates :user_id,     presence: true
+   # validates :user_id,     presence: true
    validates :title,       presence: true
    validates :published,   inclusion: { in: [true, false] }
 

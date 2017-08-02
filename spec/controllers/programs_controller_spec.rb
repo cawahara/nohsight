@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProgramsController, type: :controller do
    include SpecTesthelper
-
+=begin
    let(:user) { create(:model_user) }
 
    describe 'GET #index' do
@@ -246,4 +246,5 @@ RSpec.describe ProgramsController, type: :controller do
          end
       end
    end
+=end
 end

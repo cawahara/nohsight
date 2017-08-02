@@ -67,14 +67,6 @@ RSpec.describe Event, type: :model do
          end
       end
 
-      describe 'user_id' do
-         it 'is invalid without a user_id' do
-            event.user_id = nil
-            event.valid?
-            expect(event.errors[:user_id]).to include("can't be blank")
-         end
-      end
-
       describe 'published' do
          it 'is invalid with improper value in published field' do
             event.published = nil
