@@ -8,8 +8,8 @@
       </ul>
    </div>
 
+   <!-- TODO: SNS連携(技術的に可能かついいねという反応があったら導入)
    <div class="user-snss">
-      <!--  TODO: SNS連携(技術的に可能かついいねという反応があとから導入) -->
       <ul>
          <li><%= link_to '#' do %><%= fa_icon('twitter-square', class: 'twitter') %><% end %></li>
          <li><%= link_to '#' do %><%= fa_icon('facebook-square', class: 'facebook') %><% end %></li>
@@ -17,6 +17,7 @@
          <li><%= link_to '#' do %><%= fa_icon('tumblr-square', class: 'disconnected tumblr') %><% end %></li>
       </ul>
    </div>
+   -->
 
    <div class="user-description">
       <p><%= @user.information %></p>
@@ -32,15 +33,12 @@
 
    <div class="section">
       <h1 class="section-header">編集した公演</h1>
-
+      <% if @events.count > 0 %>
       <%= render 'shared/event_articles' %>
 
-      <% if @events.count > 0 %>
-      <%= link_to events_path, class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %>
-      <% end %>
+      <%= link_to events_path(user: @user.id), class: 'port-link' do %>もっとみる<%= fa_icon('angle-right') %><% end %>
+      <% else %>
+      <p class="port-link">編集した公演はありません。</p>
       <% end %>
    </div>
-
-
-
 </div>

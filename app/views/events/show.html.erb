@@ -23,7 +23,6 @@
       <h1 class="section-header">基本情報</h1>
       <div class="article">
          <h2 class="article-header">演目</h2>
-
          <ul>
          <% @event.event_programs.each do |ev_program| %>
             <li>
@@ -53,10 +52,19 @@
          </ul>
       </div>
 
+      <% if @event.information != '' %>
       <div class="article">
          <h2 class="article-header">公演詳細</h2>
          <p><%= @event.information %></p>
       </div>
+      <% end %>
+
+      <% if @event.official_url != '' %>
+      <div class="article">
+         <h2 class="article-header">公式サイト</h2>
+         <p><%= link_to @event.official_url, @event.official_url, :target => '_blank' %></p>
+      </div>
+      <% end %>
 
       <div class="article">
          <h2 class="article-header">会場案内</h2>
@@ -94,7 +102,7 @@
          <% if @user_events.find_by(user_id: current_user.id) %>
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
-         <%= button_to '編集メンバーになる', user_events_path(@event), method: :post %>
+         <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
          <% end %>
       <% end %>
    </div>

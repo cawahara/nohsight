@@ -4,11 +4,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
    describe 'relative assocations' do
-      it 'has many events' do
-         assc_event = described_class.reflect_on_association(:events)
-         expect(assc_event.macro).to eq(:has_many)
-      end
-
       it 'has many user_events' do
          assc_usr_ev = described_class.reflect_on_association(:user_events)
          expect(assc_usr_ev.macro).to eq(:has_many)

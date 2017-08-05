@@ -215,7 +215,7 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'in a different user' do
+      context 'to a different user' do
          let!(:diff_user) { create(:diff_user) }
          before(:each) do
             login_as(user)

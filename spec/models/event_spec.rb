@@ -4,10 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
    describe 'relative associations' do
-      it 'belongs to user' do
-         assc_user = described_class.reflect_on_association(:user)
-         expect(assc_user.macro).to eq(:belongs_to)
-      end
 
       it 'belongs to place' do
          assc_place = described_class.reflect_on_association(:place)

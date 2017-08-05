@@ -9,16 +9,16 @@ class EventsController < ApplicationController
 
    def index
       events = []
-      if params[:search]
+      if params[:search] || params[:easy_search]
          events = search_results
-         if events.count > 0
-            flash.now[:info] = "#{events.count}件の公演が見つかりました。"
-         else
-            flash.now[:warning] = '公演は見つかりませんでした。'
-         end
+      elsif params[:user]
+         user = User.find(params[:user])
+         events = public_events(Event.all).where(id: user.user_events.ids)
       else
          events = upcoming_events(Event.all)
       end
+      flash.now[:warning] = '公演は見つかりませんでした。' if events.count == 0
+      @event_count = events.count
       @events = events.page(params[:page]).per(5)
    end
 
@@ -42,9 +42,12 @@ class EventsController < ApplicationController
    end
 
    def create
-      @event = current_user.events.build(event_params)
+      @event = Event.new(event_params)
       @event.published = false
       if @event.save
+         UserEvent.create!(user_id: current_user.id,
+                           event_id: @event.id,
+                           organizer: true)
          flash[:success] = '新しい公演を作成しました。編集して開催しましょう。'
          redirect_to(edit_event_port_url(@event))
       else

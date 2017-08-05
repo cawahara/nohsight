@@ -2,14 +2,11 @@
    <div class="headline">
       <h1>公演情報の編集</h1>
       <div class="organizer">
-         <%= link_to user_path(@event.user) do %>
-            <%= image_tag 'thumbnail.png' %>
-            <span><%= @event.user.name %>(主催者)</span>
-         <% end %>
          <% @event.user_events.each do |user_event| %>
             <%= link_to user_path(user_event.user) do %>
                <%= image_tag 'thumbnail.png' %>
                <span><%= user_event.user.name %></span>
+               <span><%= "(主催者)" if user_event.organizer? %></span>
             <% end %>
          <% end %>
       </div>

@@ -18,26 +18,23 @@
 
   <div id="dropdown-menu">
      <ul id="dropdown-search" class="dropdown-lists">
-      <li>
-          <%= form_for(:search, url: events_path, method: :get) do |f| %>
+      <li id="search-form">
+          <%= form_for(:easy_search, url: events_path, method: :get) do |f| %>
              <%= f.text_field :keywd %>
-             <%= f.hidden_field :start_date, value: '' %>
-             <%= f.hidden_field :end_date, value: '' %>
-             <%= f.hidden_field :locations, value: nil %>
              <%= button_tag(type: 'submit') do %>
                 <i class="fa fa-search"></i>
              <% end %>
           <% end %>
-          <%= link_to '条件付きイベント検索へ(仮)', search_path %>
       </li>
+      <li><%= link_to '公演検索画面へ', search_path %></li>
      </ul>
      <% if logged? %>
      <ul id="dropdown-request"  class="dropdown-lists">
-       <li><span>公演開催リクエスト(未定、仮)</span></li>
+       <li><%= link_to new_event_path do %><%= fa_icon('plus') %><span>新しい公演作成</span><% end %></li>
      </ul>
      <ul id="dropdown-nav" class="dropdown-lists">
         <li><%= link_to user_path(current_user) do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
-        <li><%= link_to new_event_path do %><%= fa_icon('file-text-o') %><span>新しい公演作成</span><% end %></li>
+        <li><%= link_to event_manage_path do %><%= fa_icon('book') %><span>公演の編集</span><% end %></li>
         <li><%= link_to logout_path(current_user) do %><%= fa_icon('sign-out') %><span>ログアウト</span><% end %></li>
      </ul>
      <% end %>

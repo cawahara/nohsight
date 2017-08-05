@@ -36,7 +36,7 @@ end
 
 Place.seed do |s|
    s.id = 6
-   s.title = '安楽寺(長野県)(長野県)'
+   s.title = '安楽寺(長野県)'
    s.address = '長野県上田市別所温泉２３６１'
    s.official_url = 'http://www.anrakuji.com/'
 end
@@ -445,7 +445,7 @@ end
 
 Place.seed do |s|
    s.id = 66
-   s.title = '教王護国寺(京都)'
+   s.title = '教王護国寺(京都府)'
    s.address = '京都府京都市南区九条町１'
    s.official_url = 'http://www.toji.or.jp/'
 end
@@ -465,7 +465,7 @@ end
 
 Place.seed do |s|
    s.id = 69
-   s.title = '清水寺(京都)(京都)(京都)'
+   s.title = '清水寺(京都府)'
    s.address = '京都府京都市東山区清水１丁目２９４'
    s.official_url = 'http://www.kiyomizudera.or.jp/'
 end
@@ -645,7 +645,7 @@ end
 
 Place.seed do |s|
    s.id = 95
-   s.title = '光明寺(京都府)(京都府)(京都府)'
+   s.title = '光明寺(京都府)'
    s.address = '京都府長岡京市粟生西条ノ内26−1'
    s.official_url = 'http://www.komyo-ji.or.jp/'
 end
@@ -1810,7 +1810,7 @@ end
 
 Place.seed do |s|
    s.id = 268
-   s.title = '西本願寺(京都)'
+   s.title = '西本願寺(京都府)'
    s.address = '京都府京都市下京区門前町 本願寺門前町堀川通花屋町下る'
    s.official_url = 'http://www.hongwanji.or.jp/'
 end
@@ -1913,7 +1913,7 @@ end
 
 Place.seed do |s|
    s.id = 283
-   s.title = '東本願寺(京都)'
+   s.title = '東本願寺(京都府)'
    s.address = '京都府京都市下京区常葉町 烏丸通七条上る'
    s.official_url = 'http://www.higashihonganji.or.jp/'
 end
@@ -2090,7 +2090,7 @@ end
 
 Place.seed do |s|
    s.id = 309
-   s.title = '方広寺(京都)'
+   s.title = '方広寺(京都府)'
    s.address = '京都府京都市東山区正面通大和大路東入茶屋町５２７−２'
 end
 
@@ -2185,7 +2185,7 @@ end
 
 Place.seed do |s|
    s.id = 323
-   s.title = '本願寺(京都)'
+   s.title = '本願寺(京都府)'
    s.address = '京都府京都市下京区常葉町 烏丸通七条上る'
    s.official_url = 'http://www.higashihonganji.or.jp/'
 end
@@ -2301,14 +2301,14 @@ end
 
 Place.seed do |s|
    s.id = 340
-   s.title = '壬生寺(京都)'
+   s.title = '壬生寺(京都府)'
    s.address = '京都府京都市中京区中京区壬生梛ノ宮町３１'
    s.official_url = 'http://www.mibudera.com/'
 end
 
 Place.seed do |s|
    s.id = 341
-   s.title = '壬生寺(栃木県下都)'
+   s.title = '壬生寺(栃木県)'
    s.address = '栃木県下都賀郡壬生町大師町１１−１７'
    s.official_url = 'http://www.jikakudaishi.com/'
 end

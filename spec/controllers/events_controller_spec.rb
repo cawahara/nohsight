@@ -154,6 +154,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             login_as(user)
          end
+
          it 'creates a new event to the database' do
             expect{ post :create, event: { title: event[:title] } }.to change(Event, :count).by(1)
          end

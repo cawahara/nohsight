@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
    def show
       @user = User.find(params[:id])
-      @events = @user.events
+      @events = Event.where(id: @user.user_events.ids).limit(3)
    end
 
    def edit

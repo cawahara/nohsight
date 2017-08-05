@@ -6,7 +6,6 @@ FactoryGirl.define do
 
       title          'First Event'
       start_date     Date.today
-      end_date       Date.today + 1
       information    'It will be the best event for you!'
       official_url   'http//www.firstevent.com'
       published      true
@@ -19,7 +18,6 @@ FactoryGirl.define do
 
       title          'Different Event'
       start_date     Date.today
-      end_date       Date.today + 1
       information    'It will be the best event for you!'
       official_url   'http//www.differentevent.com'
       published      true
@@ -32,7 +30,6 @@ FactoryGirl.define do
 
       title          'Admin Event'
       start_date     Date.today
-      end_date       Date.today + 1
       information    'It will be the best event for you!'
       official_url   'http//www.adminevent.com'
       published      true

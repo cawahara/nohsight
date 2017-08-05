@@ -32,11 +32,8 @@ ActiveRecord::Schema.define(version: 20170717113733) do
     t.integer  "place_id"
     t.string   "title"
     t.datetime "start_date"
-    t.datetime "end_date"
-    t.string   "ticket"
     t.text     "information",  limit: 65535
     t.string   "official_url"
-    t.integer  "user_id"
     t.boolean  "published"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

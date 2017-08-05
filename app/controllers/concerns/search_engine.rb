@@ -21,10 +21,14 @@ module SearchEngine
    private
 
    def search_params
-      return { start_date:  params[:search][:start_date],
-               end_date:    params[:search][:end_date],
-               keywd:       params[:search][:keywd],
-               locations:   params[:search][:locations] }
+      if params[:search]
+         return { start_date:  params[:search][:start_date],
+                  end_date:    params[:search][:end_date],
+                  keywd:       params[:search][:keywd],
+                  locations:   params[:search][:locations] }
+      elsif params[:easy_search]
+         return { keywd: params[:easy_search][:keywd] }
+      end
    end
 
    def add_iterated_datas(datas, field, result)
@@ -44,6 +48,7 @@ module SearchEngine
    end
 
    def date_query(term, search_params, results)
+      return results if search_params[:start_date].nil?
       if term == 'from' && search_params[:start_date] != ''
          term_query = "start_date >= '#{search_params[:start_date]}'"
       elsif term == 'to' && search_params[:end_date] != ''

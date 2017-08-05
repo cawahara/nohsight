@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-   belongs_to :user
    belongs_to :place
    has_many   :event_programs,   dependent: :destroy
    has_many   :tickets,          dependent: :destroy

@@ -4,10 +4,10 @@
       <div class="lg-form">
 
          <label>演目</label>
-         <input v-bind:name="getColumn('title')" type="text" v-model:value="search_query.word"
-         v-focus="search_query.focus" @focus="search_query.focus = true">
+         <input v-bind:name="getColumn('title')" v-bind:id="getColumn('title')" type="text" v-model:value="search_query.word">
          <places-index
-            v-show="search_query.focus == true"
+            id="index"
+            v-show="search_query.focus"
             :search_query="search_query.word"
             :pa_places="values.places"
             @return-value="setSearchValue"
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-   import { focus } from 'vue-focus'
    import places_index from '../places/_index.vue'
    export default {
       props: [ 'values' ],
@@ -39,9 +38,17 @@
             search_query:  { word: this.values.place.title, focus: false }
          }
       },
-      directives: { 'focus': focus },
       components: { 'places-index': places_index },
       methods: {
+         toggleSelector: function(event){
+            var input_tag    = document.getElementById(this.getColumn('title'))
+            var selector_tag = document.getElementById('index')
+            if(event.target == input_tag){
+               this.search_query.focus = !this.search_query.focus
+            }else if(!selector_tag.contains(event.target)){
+               this.search_query.focus = false
+            }
+         },
          setSearchValue: function(return_msg){
             this.search_query.word = return_msg.title
             this.place = return_msg
@@ -50,6 +57,9 @@
          getColumn: function(name){
             return 'event_place[0][' + name + ']'
          }
+      },
+      created: function(){
+         window.addEventListener('click', this.toggleSelector)
       }
    }
 </script>
