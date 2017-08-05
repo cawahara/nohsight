@@ -654,7 +654,6 @@ Program.create!([
   {title: "葛城天狗", category: "五番目", shimai: true, duration: 51, place_id: 70},
   {title: "合浦", category: "番目", shimai: true, duration: 59, place_id: 134},
   {title: "鉄輪", category: "四番目", shimai: true, duration: 44, place_id: 114},
-  {title: "", category: "二番目", shimai: true, duration: 5, place_id: 358},
   {title: "賀茂", category: "一番目", shimai: true, duration: 28, place_id: 143},
   {title: "通小町", category: "四番目", shimai: true, duration: 54, place_id: 362},
   {title: "邯鄲", category: "四番目", shimai: true, duration: 35, place_id: 180},
