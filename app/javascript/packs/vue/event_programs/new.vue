@@ -19,7 +19,8 @@
       data: function(){
          return {
                programs: this.values.programs,
-               element_id: this.values.id_num
+               element_id: this.values.id_num,
+               event_id:   this.values.event_id
          }
       },
       components: { 'event-programs-form': event_programs_form },
@@ -28,6 +29,7 @@
             new Vue({
                el: '.form-for-mount',
                data: {ev_program: {
+                        event_id: this.event_id,
                         style: '',
                         genre: '',
                         mode: 'create',

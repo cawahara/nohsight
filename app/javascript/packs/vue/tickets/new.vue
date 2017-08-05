@@ -15,10 +15,11 @@
    import tickets_form from './_form.vue'
 
    export default {
-      props: { id_num: Number },
+      props: [ 'values' ],
       data: function(){
          return {
-            values: { element_id: this.id_num }
+            element_id: this.values.id_num,
+            event_id:  this.values.event_id
          }
       },
       components: { 'tickets-form': tickets_form },
@@ -28,6 +29,7 @@
                el: '.form-for-mount',
                data: {
                   ticket: {
+                     event_id: this.event_id,
                      grade: '',
                      price: '',
                      mode: 'create',

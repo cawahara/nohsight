@@ -3,7 +3,7 @@
       <input v-bind:name="getColumn('id')" type="hidden" v-bind:value="noh_event.id">
       <div class="lg-form">
 
-         <label>演目</label>
+         <label>地名</label>
          <input v-bind:name="getColumn('title')" v-bind:id="getColumn('title')" type="text" v-model:value="search_query.word">
          <places-index
             id="index"
@@ -14,12 +14,12 @@
          ></places-index>
       </div>
       <div class="lg-form">
-         <label>種類</label>
+         <label>住所</label>
          <input v-bind:name="getColumn('address')" type="text" v-model:value="place.address">
       </div>
 
       <div class="lg-form">
-         <label>流派</label>
+         <label>公式サイト</label>
          <input v-bind:name="getColumn('official_url')" type="text" v-model:value="place.official_url">
       </div>
 
@@ -55,7 +55,7 @@
             this.search_query.focus = false
          },
          getColumn: function(name){
-            return 'event_place[0][' + name + ']'
+            return 'event_place[' + name + ']'
          }
       },
       created: function(){

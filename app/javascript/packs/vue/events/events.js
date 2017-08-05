@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
    if(target_content == document.getElementById('event-place-edit')){
       const node = document.getElementById('event-place-edit-vue')
       const values = JSON.parse(node.getAttribute('data'))
+      if(values.place == null){
+         values.place = {title: '', address: '', official_url: ''}
+      }
       var edit = new Vue({
          el: '#' + node.id,
          render(h){

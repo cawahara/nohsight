@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // New Vue instance
       var new_values = {
                         programs: values.programs,
-                        id_num:   id_num
+                        id_num:   id_num,
+                        event_id: values.event.id
                         }
 
       var new_item = new Vue({
