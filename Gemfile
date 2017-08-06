@@ -7,6 +7,8 @@ git_source(:github) do |repo_name|
    "https://github.com/#{repo_name}.git"
 end
 
+ruby '2.4.1'
+
 # デフォルトで配備してあるgem群
 gem 'bcrypt', '~> 3.1.7' # 文字列(主にパスワード)のハッシュ化
 gem 'bootstrap-sass' # bootstrap
