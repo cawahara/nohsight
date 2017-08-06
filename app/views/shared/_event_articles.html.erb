@@ -5,11 +5,13 @@
       <!--<span class="btn"><%= fa_icon('check-square-o')%></span>
       TODO Userがクリップする機能 -->
    </div>
+   <% if event.place %>
    <ul class="info">
       <li class="place"><%= event.place.title %></li>
       <li class="place"><%= event.place.address %></li>
       <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
    </ul>
+   <% end %>
    <ul class="tickets">
       <% event.tickets.each do |ticket| %>
       <li><%= ticket.grade %>：<%= ticket.price %>円</li>

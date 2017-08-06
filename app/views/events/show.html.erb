@@ -59,7 +59,7 @@
       </div>
       <% end %>
 
-      <% if @event.official_url != '' %>
+      <% if @event.official_url %>
       <div class="article">
          <h2 class="article-header">公式サイト</h2>
          <p><%= link_to @event.official_url, @event.official_url, :target => '_blank' %></p>
