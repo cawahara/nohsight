@@ -189,6 +189,7 @@ div.form-section {
    .vertical-division {
       margin-top: 6px;
       border-top: 1px solid #b3b3b3;
+      overflow: visible;
       label {
          float: left;
           display: inline-block;
@@ -202,9 +203,9 @@ div.form-section {
          float: left;
          width: calc(100% - 60px);
          div.vertical-form {
-            z-index: 0;
+            overflow: visible;
+            z-index: 1;
             div {
-               overflow: hidden;
                input { width: calc(100% - 125px); }
                ul.item-icons {
                   float: right;
@@ -214,19 +215,20 @@ div.form-section {
             * { display: inline-block; }
 
             .search-records {
-               width: calc(100% - 60px);
-               overflow: hidden;
+               width: calc(100% - 185px);
                position: absolute;
                left: 50px;
                margin-top: -20px;
                z-index: 1;
                ul {
+                  width: 100%;
                   overflow: scroll;
-                  height: 160px;
+                  max-height: 70px;
+                  display: block;
                   li {
                      display: inline-block;
                      margin-top: 0;
-                     width: calc(100% - 65px);
+                     width: 100%;
                   }
                }
             }
