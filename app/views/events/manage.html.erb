@@ -11,7 +11,7 @@
       <div class="article">
          <h2 class="article-header"><%= event.title %></h2>
          <ul class="article-info">
-            <li>会場：<%= event.place.title if event.place_id %></li>
+            <li>会場：<%= event.place.title if event.place %></li>
             <li>日時：<%= event.start_date.strftime("%Y年%m月%d日 %H:%M") if event.start_date %></li>
          </ul>
 
@@ -40,21 +40,21 @@
       <div class="article">
          <h2 class="article-header"><%= user_event.event.title %></h2>
          <ul class="article-info">
-            <li>会場：<%= user_event.event.place.title if user_event.event.place_id %></li>
-            <li>日時：<%= user_event.event.start_date.strftime("%Y年%m月%d日 %H:%M") if user_event.event.start_date %></li>
+            <li>会場：<%= event.place.title if event.place%></li>
+            <li>日時：<%= event.start_date.strftime("%Y年%m月%d日 %H:%M") if event.start_date %></li>
          </ul>
 
          <div class="article-items">
-            <% if user_event.event.published? %>
+            <% if event.published? %>
             <span class="btn publish">公開中</span>
             <% else %>
             <span class="btn unpublish">未公開</span>
             <% end %>
 
             <ul class="item-icons">
-               <li class="icon-edit"><%= link_to edit_event_port_path(user_event.event), class: 'btn' do %><span>編集</span><% end %></li>
+               <li class="icon-edit"><%= link_to edit_event_port_path(event), class: 'btn' do %><span>編集</span><% end %></li>
                <!-- TODO: confirmオプションが作動しない -->
-               <li class="icon-destroy"><%= button_to event_path(user_event.event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
+               <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
             </ul>
          </div>
 

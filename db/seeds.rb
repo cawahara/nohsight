@@ -2,6 +2,12 @@ Style.delete_all
 Performer.delete_all
 Place.delete_all
 Program.delete_all
+User.delete_all
+Event.delete_all
+EventProgram.delete_all
+EventPerformer.delete_all
+Ticket.delete_all
+UserEvent.delete_all
 
 Style.create!([
   {title: "シテ方観世流"},
