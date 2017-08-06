@@ -22,10 +22,9 @@
          getSearchResponse: function(query){
             var arr = []
             var datas = this.grid_data
-            var reg_query = new RegExp(query)
             for(var i = 0; i < datas.length; i++){
                var data = datas[i]
-               if(query.length > 0 && reg_query.test(data.title)){
+               if(query.length > 0 && data.title.includes(query)){
                   arr.push(data)
                }
             }

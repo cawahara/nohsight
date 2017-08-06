@@ -1,3 +1,8 @@
+Style.delete_all
+Performer.delete_all
+Place.delete_all
+Program.delete_all
+
 Style.create!([
   {title: "シテ方観世流"},
   {title: "シテ方金春流"},
