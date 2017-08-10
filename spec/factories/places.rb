@@ -6,9 +6,27 @@ FactoryGirl.define do
       address      'kyoto'
       official_url 'http://www.temple.com'
 
-      initialize_with { Place.find_or_create_by(title: title) }
+      trait :start_from_this do
+         after(:create) do |place|
+            FactoryGirl.create(:model_event, place: place)
+            FactoryGirl.create(:model_program, place: place)
+         end
+      end
    end
 
+   factory :another_place, class: Place do
+      title        'Shrine'
+      address      'shiga'
+      official_url 'http://www.shrine.com'
+
+      trait :start_from_this do
+         after(:create) do |place|
+            FactoryGirl.create(:another_event, place: place)
+            FactoryGirl.create(:another_program, place: place)
+         end
+      end
+   end
+=begin
    factory :alter_place, class: Place do
       title        'Al_tower'
       address      'kyoto'
@@ -24,4 +42,5 @@ FactoryGirl.define do
 
       initialize_with { Place.find_or_create_by(title: title) }
    end
+=end
 end

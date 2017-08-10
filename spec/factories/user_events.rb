@@ -6,6 +6,13 @@ FactoryGirl.define do
      organizer true
   end
 
+  factory :another_user_event, class: UserEvent do
+     association :user, factory: :another_user
+     association :event, factory: :another_event
+
+     organizer true
+  end
+=begin
   factory :diff_user_event, class: UserEvent do
      association :user, factory: :diff_user
      association :event, factory: :diff_event
@@ -19,4 +26,5 @@ FactoryGirl.define do
 
      organizer true
   end
+=end
 end

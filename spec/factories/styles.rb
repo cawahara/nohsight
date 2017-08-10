@@ -2,6 +2,22 @@ require 'factory_girl'
 
 FactoryGirl.define do
    factory :model_style, class: Style do
-      title   'Sample'   
+      title   'Sample'
+
+      trait :start_from_this do
+         after(:create) do |style|
+            FactoryGirl.create(:model_performer, style: style)
+         end
+      end
+   end
+
+   factory :another_style, class: Style do
+      title   'Another'
+
+      trait :start_from_this do
+         after(:create) do |style|
+            FactoryGirl.create(:another_performer, style: style)
+         end
+      end
    end
 end

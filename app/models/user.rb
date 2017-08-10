@@ -8,7 +8,7 @@ class User < ApplicationRecord
    validates :name,        presence: true
    validates :email,       presence: true,
                            format: { with: VALID_EMAIL_REGEX },
-                           uniqueness: { case_ensitive: false }
+                           uniqueness: { case_sensitive: false }
    validates :password,    presence: true,
                            allow_nil: true,
                            length: { minimum: 4 }

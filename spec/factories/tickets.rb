@@ -8,8 +8,8 @@ FactoryGirl.define do
       price    7000
    end
 
-   factory :diff_ticket, class: Ticket do
-      association :event, factory: :model_event
+   factory :another_ticket, class: Ticket do
+      association :event, factory: :another_event
 
       grade    'Another class'
       price    2500

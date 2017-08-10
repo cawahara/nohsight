@@ -7,13 +7,25 @@ FactoryGirl.define do
 
       style 'Simple'
       genre 'Sample'
+
+      trait :start_from_this do
+         after(:create) do |event_program|
+            FactoryGirl.create(:model_event_performer, event_program: event_program)
+         end
+      end
    end
 
-   factory :diff_event_program, class: EventProgram do
-      association :event, factory: :diff_event
-      association :program, factory: :diff_program
+   factory :another_event_program, class: EventProgram do
+      association :event, factory: :another_event
+      association :program, factory: :another_program
 
-      style 'Simple'
+      style 'Another'
       genre 'Sample'
+
+      trait :start_from_this do
+         after(:create) do |event_program|
+            FactoryGirl.create(:another_event_performer, event_program: event_program)
+         end
+      end
    end
 end
