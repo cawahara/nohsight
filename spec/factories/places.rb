@@ -26,6 +26,19 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :controller_place, class: Place do
+      title        'Ruin'
+      address      'Mie'
+      official_url 'http://www.ruin@www.com'
+
+      trait :start_from_this do
+         after(:create) do |place|
+            FactoryGirl.create(:controller_event, place: place)
+            FactoryGirl.create(:controller_program, place: place)
+         end
+      end
+   end
 =begin
    factory :alter_place, class: Place do
       title        'Al_tower'

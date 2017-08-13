@@ -28,4 +28,18 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :controller_event_program, class: EventProgram do
+      association :event, factory: :controller_event
+      association :program, factory: :controller_program
+
+      style 'Controller'
+      genre 'Sample'
+
+      trait :start_from_this do
+         after(:create) do |event_program|
+            FactoryGirl.create(:controller_event_performer, event_program: event_program)
+         end
+      end
+   end
 end

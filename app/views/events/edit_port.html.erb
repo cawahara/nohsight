@@ -6,7 +6,7 @@
             <%= link_to user_path(user_event.user) do %>
                <%= image_tag 'thumbnail.png' %>
                <span><%= user_event.user.name %></span>
-               <span><%= "(主催者)" if user_event.organizer? %></span>
+               <span><%= "(登録者)" if user_event.organizer? %></span>
             <% end %>
          <% end %>
       </div>

@@ -30,4 +30,19 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :controller_program, class: Program do
+      association :place, factory: :controller_place
+
+      title       'Controller Program'
+      category    '能'
+      shimai      true
+      duration    90
+
+      trait :start_from_this do
+         after(:create) do |program|
+            FactoryGirl.create(:controller_event_program, program: program)
+         end
+      end
+   end
 end

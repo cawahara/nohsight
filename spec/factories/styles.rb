@@ -20,4 +20,14 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :controller_style, class: Style do
+      title   'Controller'
+
+      trait :start_from_this do
+         after(:create) do |style|
+            FactoryGirl.create(:controller_performer, style: style)
+         end
+      end
+   end
 end

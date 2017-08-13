@@ -4,10 +4,16 @@ RSpec.describe UsersController, type: :controller do
    include SpecTesthelper
 
    describe 'GET #new' do
-      context 'with no specific status' do
-         it "returns response status with 200" do
+      context 'accessing normally' do
+         before(:each) do
             get :new
-            # REVIEW: statusコードの検証でもっと良い表現がないか模索
+         end
+
+         it 'assigns @user' do
+            expect(assigns(:user)).to be_truthy
+         end
+
+         it "returns response status 200" do
             expect(response.status).to eq(200)
          end
       end
@@ -15,48 +21,77 @@ RSpec.describe UsersController, type: :controller do
 
    describe 'GET #show' do
       context 'with user param' do
-         let(:user) { create(:model_user) }
+         let(:user) { create(:controller_user, :user_show_action) }
          before(:each) do
+            user_events = []
+            user.user_events.each do |user_event|
+               user_events << user_event.event_id
+            end
+            @events = Event.where(id: user_events, published: true).limit(3)
             get :show, id: user
          end
 
-         it 'assigns show action' do
+         it 'assigns @user' do
             expect(assigns(:user)).to eq(user)
          end
 
-         it 'returns response status with 200' do
+         it 'assigns @events' do
+            expect(assigns(:events)).to eq(@events)
+         end
+
+         it 'gets 3 events' do
+            expect(assigns(:events).count).to eq(3)
+         end
+
+         it 'returns response status 200' do
             expect(response.status).to eq(200)
          end
       end
 
       context 'without user param' do
          it 'occurs an error' do
+            # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
             expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
          end
       end
    end
 
    describe 'GET #edit' do
-      let(:user) { create(:model_user) }
-      context 'with user param' do
+      let(:user) { create(:controller_user) }
+      context 'with user param and login' do
          before(:each) do
             login_as(user)
             get :edit, id: user
          end
 
-         it 'assigns edit user' do
+         it 'assigns @user' do
             expect(assigns(:user)).to eq(user)
          end
 
-         it 'returns response status with 200' do
+         it 'returns response status 200' do
             expect(response.status).to eq(200)
          end
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: user
+         end
+
+         it 'is redirected to login action' do
             expect(response).to redirect_to(login_url)
+         end
+      end
+
+      context 'with different user param from logged one' do
+         let(:diff_user) { create(:different_user) }
+         before(:each) do
+            login_as(user)
+            get :edit, id: diff_user
+         end
+
+         it 'is redirected to root action' do
+            expect(response).to redirect_to(root_url)
          end
       end
 
@@ -69,7 +104,7 @@ RSpec.describe UsersController, type: :controller do
    end
 
    describe 'POST #create' do
-      let(:user_params) { attributes_for(:model_user) }
+      let(:user_params) { attributes_for(:controller_user) }
 
       context 'with valid params' do
          # FIXME: dbにないカラムの:agreementが何らかの関係でreq->headerに記載されておらず、
@@ -80,6 +115,11 @@ RSpec.describe UsersController, type: :controller do
 
          it 'creates a new user into the database' do
             expect{ post :create, user: user_params }.to change(User, :count).by(1)
+         end
+
+         it 'returns response status 302' do
+            post :create, user: user_params
+            expect(response.status).to eq(302)
          end
 
          it 'is redirected to root url' do
@@ -103,7 +143,7 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'without agreed' do
+      context 'without agreed the site convention' do
          before(:each) do
             user_params['agreement'] = false
          end
@@ -111,6 +151,7 @@ RSpec.describe UsersController, type: :controller do
          it "doesn't create a user" do
             expect{ post :create, user: user_params }.to change(User, :count).by(0)
          end
+
          it 'renders new template' do
             post :create, user: user_params
             expect(response).to render_template(:new)
@@ -119,17 +160,21 @@ RSpec.describe UsersController, type: :controller do
    end
 
    describe 'PATCH #update' do
-      let(:user) { create(:model_user) }
+      let(:user) { create(:controller_user) }
 
       context 'with valid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: user, user: attributes_for(:model_user, name: 'Jackson')
+            patch :update, id: user, user: attributes_for(:controller_user, name: 'Jackson')
          end
 
          it 'changes user attributes' do
             user.reload
             expect(user.name).to eq('Jackson')
+         end
+
+         it 'returns response status 302' do
+            expect(response.status).to eq(302)
          end
 
          it 'is redirected to show action' do
@@ -139,10 +184,10 @@ RSpec.describe UsersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            patch :update, id: user, user: attributes_for(:model_user, name: 'Jackson')
+            patch :update, id: user, user: attributes_for(:controller_user, name: 'Jackson')
          end
 
-         it "doesn't change user parameters" do
+         it "doesn't change user attributes" do
             user.reload
             expect(user.name).not_to eq('Jackson')
          end
@@ -152,13 +197,30 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
+      context 'with different user param from logged one' do
+         let(:diff_user) { create(:different_user) }
+         before(:each) do
+            login_as(user)
+            patch :update, id: diff_user, user: attributes_for(:different_user, name: 'Jackson')
+         end
+
+         it "doesn't change user attributes" do
+            diff_user.reload
+            expect(user.name).not_to eq('Jackson')
+         end
+
+         it 'is redirected to root action' do
+            expect(response).to redirect_to(root_url)
+         end
+      end
+
       context 'with invalid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: user, user: attributes_for(:model_user, name: '')
+            patch :update, id: user, user: attributes_for(:controller_user, name: '')
          end
 
-         it "doesn't change user parameters" do
+         it "doesn't change user attributes" do
             user.reload
             expect(user.name).not_to eq('')
          end
@@ -167,29 +229,12 @@ RSpec.describe UsersController, type: :controller do
             expect(response).to render_template(:edit)
          end
       end
-
-      context 'in a different user' do
-         let(:diff_user) { create(:diff_user) }
-         before(:each) do
-            login_as(user)
-            patch :update, id: diff_user, user: attributes_for(:diff_user, name: 'Jackson')
-            diff_user.reload
-         end
-
-         it "doesn't change different user parameters" do
-            expect(user.name).not_to eq('Jackson')
-         end
-
-         it 'is redirected to root action' do
-            expect(response).to redirect_to(root_url)
-         end
-      end
    end
 
    describe 'DELETE #destroy' do
-      let!(:user) { create(:model_user) }
+      let!(:user) { create(:controller_user) }
 
-      context 'in a correct way' do
+      context 'with valid user param' do
          before(:each) do
             login_as(user)
          end
@@ -198,36 +243,41 @@ RSpec.describe UsersController, type: :controller do
             expect{ delete :destroy, id: user }.to change(User, :count).by(-1)
          end
 
+         it 'returns response status 302' do
+            delete :destroy, id: user
+            expect(response.status).to eq(302)
+         end
+
          it "is redirected to root action" do
             delete :destroy, id: user
             expect(response).to redirect_to(root_url)
          end
       end
 
-      context 'without login' do
-         it "doesn't destroy an own user" do
-            expect{ delete :destroy, id: user }.to change(User, :count).by(0)
-         end
-
-         it 'is redirect_to login action' do
-            delete :destroy, id: user
-            expect(response).to redirect_to(login_url)
-         end
-      end
-
-      context 'to a different user' do
-         let!(:diff_user) { create(:diff_user) }
+      context 'with different user param from logged one' do
+         let!(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
          end
 
-         it "doesn't destroy a different user" do
+         it "doesn't destroy user" do
             expect{ delete :destroy, id: diff_user }.to change(User, :count).by(0)
          end
 
          it 'is redirect_to root action' do
             delete :destroy, id: diff_user
             expect(response).to redirect_to(root_url)
+         end
+      end
+
+      context 'without login' do
+         it "doesn't destroy user" do
+            expect{ delete :destroy, id: user }.to change(User, :count).by(0)
+         end
+
+         it 'is redirect_to login action' do
+            delete :destroy, id: user
+            expect(response).to redirect_to(login_url)
          end
       end
    end

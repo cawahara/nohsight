@@ -6,10 +6,6 @@
       <h1 class="form-header">検索条件の設定</h1>
       <%= form_for(:search, url: events_path, method: :get) do |f| %>
          <dl>
-            <dt>キーワード</dt>
-            <dd><%= f.text_field :keywd %></dd>
-         </dl>
-         <dl>
             <dt>開催日</dt>
             <dd>
                <%= f.text_field :start_date, class: 'datepicker-for-search date-selection', id: "start-date" %>
@@ -18,8 +14,12 @@
             </dd>
          </dl>
          <dl>
-            <dt>開催地</dt>
+            <dt>エリア</dt>
             <dd id="search-address-vue"></dd>
+         </dl>
+         <dl>
+            <dt>キーワード</dt>
+            <dd><%= f.text_field :keywd %></dd>
          </dl>
          <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>

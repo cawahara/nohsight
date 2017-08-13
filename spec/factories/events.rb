@@ -36,6 +36,24 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :controller_event, class: Event do
+      association :place, factory: :controller_place
+
+      title          'Controller Event'
+      start_date     Date.today
+      information    'It will be the best event for you!'
+      official_url   'http//www.controllerevent.com'
+      published      true
+
+      trait :start_from_this do
+         after(:create) do |event|
+            FactoryGirl.create(:controller_event_program, event: event)
+            FactoryGirl.create(:controller_ticket, event: event)
+            FactoryGirl.create(:controller_user_event, event: event)
+         end
+      end
+   end
 =begin
    factory :diff_event, class: Event do
       association :place, factory: :model_place

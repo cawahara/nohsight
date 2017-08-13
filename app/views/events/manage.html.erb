@@ -4,7 +4,7 @@
    </div>
 
    <div class="section">
-      <h1 class="section-header">主催の公演情報</h1>
+      <h1 class="section-header">登録した公演情報</h1>
          <!-- TODO:　主催、編集としての参加、終了した公演という種類分けをする -->
       <% @user_events.where(organizer: true).each do |user_event| %>
       <% event = user_event.event %>
@@ -34,7 +34,7 @@
       <% end %>
    </div>
    <div class="section">
-      <h1 class="section-header">編集に参加した公演情報</h1>
+      <h1 class="section-header">編集した公演情報</h1>
       <% @user_events.where(organizer: false).each do |user_event| %>
       <% event = user_event.event %>
       <div class="article">

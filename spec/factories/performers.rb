@@ -29,6 +29,20 @@ FactoryGirl.define do
       end
    end
 
+   factory :controller_performer, class: Performer do
+      association :style, factory: :controller_style
+
+      full_name   '宇津井　薫'
+      last_name   'うつい'
+      first_name  'かおる'
+
+      trait :start_from_this do
+         after(:create) do |performer|
+            FactoryGirl.create(:controller_event_performer, performer: performer)
+         end
+      end
+   end
+
 =begin
    factory :diff_performer, class: Performer do
       association :style, factory: :model_style

@@ -12,7 +12,7 @@
             <%= link_to user_path(user_event.user) do %>
                <%= image_tag 'thumbnail.png' %>
                <span><%= user_event.user.name %></span>
-               <span><%= '(主催者)' if user_event.organizer? %></span>
+               <span><%= '(登録者)' if user_event.organizer? %></span>
             <% end %>
          <% end %>
       </div>
@@ -83,6 +83,7 @@
    </div>
 
    <!-- 演目舞台の周辺スポット紹介 -->
+   <!--
    <div class="section">
       <h1 class="section-header">演目舞台の周辺スポット</h1>
       <% @event.event_programs.each do |ev_program| %>
@@ -96,13 +97,13 @@
       </div>
       <% end %>
    </div>
-
+-->
    <div class="user-command">
       <% if logged? %>
          <% if @user_events.find_by(user_id: current_user.id) %>
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
-         <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
+         <%= button_to '公演編集に参加する', user_events_path(@event), method: :post %>
          <% end %>
       <% end %>
    </div>

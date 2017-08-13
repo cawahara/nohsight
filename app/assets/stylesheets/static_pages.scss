@@ -97,6 +97,7 @@
 
             div.search-location {
                position: absolute;
+               z-index: 2;
                width: calc(100% - 22px);
                top: 35px;
                border: 1px solid #909090;
