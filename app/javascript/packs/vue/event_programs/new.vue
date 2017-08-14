@@ -18,7 +18,7 @@
       props: [ 'values' ],
       data: function(){
          return {
-               programs: this.values.programs,
+               programs:   this.values.programs,
                element_id: this.values.id_num,
                event_id:   this.values.event_id
          }
@@ -44,7 +44,6 @@
                                                             ih_programs:     this.programs
                                                          }}) }
             })
-
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)

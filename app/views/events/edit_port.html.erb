@@ -25,7 +25,8 @@
    <div class="port-section">
       <h1 class="port-header">基本情報</h1>
       <div class="port-info">
-         <p><%= @event.title %></p>
+         <p>公演名：<%= @event.title %></p>
+         <p>開催日程：<%= @event.formatted_date %></p>
       </div>
       <%= link_to edit_event_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>

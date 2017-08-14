@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @user.user_events.each do |user_event|
          user_events << user_event.event_id
       end
-      @events = Event.where(id: user_events, published: true).limit(3)
+      @events = public_events(@user.events).order(start_date: :desc).limit(3)
    end
 
    def edit

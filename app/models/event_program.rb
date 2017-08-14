@@ -4,6 +4,7 @@ class EventProgram < ApplicationRecord
    belongs_to :event
    belongs_to :program
    has_many   :event_performers, dependent: :destroy
+   has_many   :performers,       through:   :event_performers
 
    validates :program_id,    presence: true
    validates :event_id,      presence: true

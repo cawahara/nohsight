@@ -27,6 +27,19 @@ RSpec.describe Program, type: :model do
          end
       end
 
+      context 'related to events through event_programs' do
+         let(:program) { create(:model_program, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:events)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated event from program' do
+            expect(program.events.first).to eq(program.event_programs.first.event)
+         end
+      end
+
       context 'destroying dependency' do
          let(:program) { create(:model_program, :start_from_this) }
          let(:another_program) { create(:another_program, :start_from_this) }

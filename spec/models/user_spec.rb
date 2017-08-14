@@ -18,6 +18,18 @@ RSpec.describe User, type: :model do
          end
       end
 
+      context 'related to events through user_events' do
+         let(:user) { create(:model_user, :start_from_this) }
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:events)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated event from user' do
+            expect(user.events.first).to eq(user.user_events.first.event)
+         end
+      end
+
       context 'destroying dependency' do
          let(:user) { create(:model_user, :start_from_this) }
          let(:another_user) { create(:another_user, :start_from_this) }

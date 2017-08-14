@@ -17,12 +17,12 @@
       </div>
       <div class="sm-form">
          <label>種類</label>
-         <input v-bind:name="getColumn(ev_program.element_id, 'genre')" type="text" v-bind:value="ev_program.genre">
+         <input v-bind:name="getColumn(ev_program.element_id, 'genre')" type="text" v-model:value="genre">
       </div>
 
       <div class="sm-form">
          <label>流派</label>
-         <input v-bind:name="getColumn(ev_program.element_id, 'style')" type="text" v-bind:value="ev_program.style">
+         <input v-bind:name="getColumn(ev_program.element_id, 'style')" type="text" v-model:value="style">
       </div>
 
       <ul v-if=" ev_program.mode == 'create' " class="item-icons">
@@ -45,6 +45,8 @@
       data: function(){
          return {
             ev_program:   this.ih_ev_program,
+            genre:         this.ih_ev_program.genre,
+            style:         this.ih_ev_program.style,
             programs:     this.ih_programs,
             search_query: { word: this.ih_ev_program.program.title, focus: false }
          }
@@ -65,11 +67,13 @@
             return mode + '-' + this.ev_program.element_id
          },
          deleteNewItem: function(id){
+            console.log('deleteNewItem')
             var el = document.getElementById('create-' + id)
             el.parentNode.removeChild(el)
             window.removeEventListener('click', this.toggleSelector)
          },
          setSearchValue: function(return_msg){
+            console.log('setSearchValue')
             this.search_query.word = return_msg
             this.search_query.focus = false
          },

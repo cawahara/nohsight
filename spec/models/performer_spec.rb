@@ -27,6 +27,19 @@ RSpec.describe Performer, type: :model do
          end
       end
 
+      context 'related to event_programs through event_performers' do
+         let(:performer) { create(:model_performer, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:event_programs)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated event_program from performer' do
+            expect(performer.event_programs.first).to eq(performer.event_performers.first.event_program)
+         end
+      end
+
       context 'destroying dependency' do
          let(:performer) { create(:model_performer, :start_from_this) }
          let(:another_performer) { create(:another_performer, :start_from_this) }

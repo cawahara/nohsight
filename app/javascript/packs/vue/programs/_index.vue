@@ -31,6 +31,7 @@
             return arr
          },
          setSearchValue: function(value){
+            console.log('setSearchValueFromProgram')
             this.$emit('return-value', value)
          }
       }

@@ -28,6 +28,19 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to programs through event_programs' do
+         let(:event) { create(:model_event, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:programs)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated program from event' do
+            expect(event.programs.first).to eq(event.event_programs.first.program)
+         end
+      end
+
       context 'related to tickets' do
          it "is 'has many' attribute" do
             association = described_class.reflect_on_association(:tickets)
@@ -47,6 +60,19 @@ RSpec.describe Event, type: :model do
 
          it 'shows that event has many user_events' do
             expect{ create(:model_event, :start_from_this) }.to change(UserEvent, :count).by(1)
+         end
+      end
+
+      context 'related to users through user_events' do
+         let(:event) { create(:model_event, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:users)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated user from event' do
+            expect(event.users.first).to eq(event.user_events.first.user)
          end
       end
 

@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 
    def show
       @user_events = UserEvent.where(event_id: @event.id)
+=begin REVIEW: 非公開に
       locations = relative_program_locations(@event)
       respond_to do |format|
          format.html
@@ -36,6 +37,7 @@ class EventsController < ApplicationController
                            locations: locations }
          end
       end
+=end
    end
 
    def edit
@@ -48,7 +50,7 @@ class EventsController < ApplicationController
          UserEvent.create!(user_id: current_user.id,
                            event_id: @event.id,
                            organizer: true)
-         flash[:success] = '新しい公演を作成しました。編集して開催しましょう。'
+         flash[:success] = '新しい公演を登録しました。編集して公開しましょう。'
          redirect_to(edit_event_port_url(@event))
       else
          flash[:danger] = '公演名が入力されていません'
@@ -77,7 +79,10 @@ class EventsController < ApplicationController
 
    def manage
       @user = current_user
-      @user_events = @user.user_events
+      @events = @user.events
+      user_events = @user.user_events
+      @organizer_ids = user_events.where(organizer: true).pluck(:event_id)
+      @editor_ids = user_events.where(organizer: false).pluck(:event_id)
    end
 
    def edit_port

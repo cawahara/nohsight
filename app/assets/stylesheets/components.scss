@@ -390,7 +390,7 @@ nav.pagination {
 // ./prgograms/_index.vue
 .search-records {
    margin-top: -3px;
-   height: 160px;
+   max-height: 160px;
    z-index: 1;
    position: absolute;
    overflow: scroll;

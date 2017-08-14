@@ -6,8 +6,7 @@
    <div class="section">
       <h1 class="section-header">登録した公演情報</h1>
          <!-- TODO:　主催、編集としての参加、終了した公演という種類分けをする -->
-      <% @user_events.where(organizer: true).each do |user_event| %>
-      <% event = user_event.event %>
+      <% @events.where(id: @organizer_ids).each do |event| %>
       <div class="article">
          <h2 class="article-header"><%= event.title %></h2>
          <ul class="article-info">
@@ -28,17 +27,14 @@
                <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
             </ul>
          </div>
-
-
       </div>
       <% end %>
    </div>
    <div class="section">
       <h1 class="section-header">編集した公演情報</h1>
-      <% @user_events.where(organizer: false).each do |user_event| %>
-      <% event = user_event.event %>
+      <% @events.where(id: @editor_ids).each do |event| %>
       <div class="article">
-         <h2 class="article-header"><%= user_event.event.title %></h2>
+         <h2 class="article-header"><%=event.title %></h2>
          <ul class="article-info">
             <li>会場：<%= event.place.title if event.place%></li>
             <li>日時：<%= event.start_date.strftime("%Y年%m月%d日 %H:%M") if event.start_date %></li>
