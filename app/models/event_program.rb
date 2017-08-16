@@ -6,6 +6,8 @@ class EventProgram < ApplicationRecord
    has_many   :event_performers, dependent: :destroy
    has_many   :performers,       through:   :event_performers
 
+   attr_accessor :title
+
    validates :program_id,    presence: true
    validates :event_id,      presence: true
    validates :style,         presence: true

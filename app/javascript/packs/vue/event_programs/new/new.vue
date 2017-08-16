@@ -11,15 +11,15 @@
 
 <script>
    import Vue from 'vue'
-   import mixins from './mixins.js'
-   import event_programs_form from './_form.vue'
+   import mixins from '../mixins.js'
+   import event_programs_form from '../render/_form.vue'
 
    export default {
       props: [ 'values' ],
       data: function(){
          return {
                programs:   this.values.programs,
-               element_id: this.values.id_num,
+               tag_id:     this.values.id_num,
                event_id:   this.values.event_id
          }
       },
@@ -28,26 +28,27 @@
          addNewItem: function(){
             new Vue({
                el: '.form-for-mount',
-               data: {ev_program: {
-                        event_id: this.event_id,
-                        style: '',
-                        genre: '',
-                        mode: 'create',
-                        element_id: this.element_id,
-                        program: { title: '' }
+               data: {
+                      ev_program: {
+                        event_id:    this.event_id,
+                        tag_id:      this.tag_id,
+                        mode:        'create',
+                        style:       '',
+                        genre:       '',
+                        title:       ''
                      },
                       programs: this.values.programs
                   },
                render(h){
                   return h(event_programs_form, { props: {
-                                                            ih_ev_program:   this.ev_program,
-                                                            ih_programs:     this.programs
+                                                            ev_program:   this.ev_program,
+                                                            programs:     this.programs
                                                          }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
-            this.element_id += 1
+            this.tag_id += 1
          }
       }
    }

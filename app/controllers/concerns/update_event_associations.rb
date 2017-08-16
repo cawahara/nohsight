@@ -13,10 +13,10 @@ module UpdateEventAssociations
    end
 
    # first required key must be the value for updating class model
-   # TODO: RSpecにtypeキーが空の時のテスト記入
+   # TODO: RSpecにmodeキーが空の時のテスト記入
    def params_valid?(params, foreign_key, required_keys, model)
       params.each do |param|
-         next if param['type'] == 'destroy' || param['type'].empty?
+         next if param['mode'] == 'destroy' || param['mode'].empty?
          return false if keys_valid?(param, foreign_key) == false
 
          if foreign_key.empty?
@@ -67,7 +67,7 @@ module UpdateEventAssociations
    end
 
    def query_for_record(model, inputs, params)
-      case inputs['type']
+      case inputs['mode']
       when 'update'
          model.find(inputs['id']).update_attributes(params)
       when 'destroy'

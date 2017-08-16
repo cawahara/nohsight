@@ -6,12 +6,11 @@ class EventPerformersController < ApplicationController
 
    def edit
       @event = Event.find(params[:id])
-      @ev_progs = @event.event_programs
-      @ev_perfs = []
-      @ev_progs.each do |ev_prog|
-         @ev_perfs << ev_prog.event_performers
+      @ev_programs = @event.event_programs
+      @ev_performers = []
+      @ev_programs.each do |ev_program|
+         @ev_performers << ev_program.event_performers
       end
-
       @performers = Performer.all
       @programs = Program.all
    end
@@ -38,7 +37,7 @@ class EventPerformersController < ApplicationController
    def insert_params(ev_pros)
       ev_pers = []
       ev_pros.each_with_index do |ev_pro, key|
-         next if ev_pro['type'] != 'update'
+         next if ev_pro['mode'] != 'update'
          ev_per = get_params("event_performer-#{key}")
          ev_per = params_valid?(ev_per, 'performer_id', ['full_name'], Performer)
          return false if ev_per == false

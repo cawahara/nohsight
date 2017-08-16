@@ -11,14 +11,14 @@
 
 <script>
    import Vue from 'vue'
-   import mixins from './mixins.js'
-   import tickets_form from './_form.vue'
+   import mixins from '../mixins.js'
+   import tickets_form from '../render/_form.vue'
 
    export default {
       props: [ 'values' ],
       data: function(){
          return {
-            element_id: this.values.id_num,
+            tag_id: this.values.id_num,
             event_id:  this.values.event_id
          }
       },
@@ -33,15 +33,15 @@
                      grade: '',
                      price: '',
                      mode: 'create',
-                     element_id: this.element_id
+                     tag_id: this.tag_id
                   }
                },
-               render(h){ return h(tickets_form, { props: { ih_ticket: this.ticket }}) }
+               render(h){ return h(tickets_form, { props: { ticket: this.ticket }}) }
             })
             var node = document.createElement('div')
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
-            this.element_id += 1
+            this.tag_id += 1
          }
       }
    }

@@ -11,11 +11,11 @@
    export default {
       props: {
          search_query: String,
-         ih_performers: Array
+         performers: Array
       },
       data: function(){
          return {
-            grid_data: this.ih_performers
+            grid_data: this.performers
          }
       },
       methods: {
