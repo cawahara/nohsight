@@ -11,9 +11,6 @@ class UsersController < ApplicationController
    def show
       @user = User.find(params[:id])
       user_events = []
-      @user.user_events.each do |user_event|
-         user_events << user_event.event_id
-      end
       @events = public_events(@user.events).order(start_date: :desc).limit(3)
    end
 
