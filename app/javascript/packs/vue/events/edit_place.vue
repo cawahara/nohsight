@@ -1,8 +1,8 @@
 <template>
    <div class="form-item">
       <input v-bind:name="getColumn('id')" type="hidden" v-bind:value="noh_event.id">
+      <input v-bind:name="getColumn('mode')" type="hidden" value="update">
       <div class="lg-form">
-
          <label>地名</label>
          <input v-bind:name="getColumn('title')" v-bind:id="getColumn('title')" type="text" v-model:value="search_query.word">
          <places-index

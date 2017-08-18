@@ -19,6 +19,48 @@ FactoryGirl.define do
 
      organizer true
   end
+
+  factory :different_user_event, class: UserEvent do
+     association :user, factory: :different_user
+     association :event, factory: :different_event
+
+     organizer true
+  end
+
+  factory :first_search_user_event, class: UserEvent do
+     association :user, factory: :search_user
+     association :event, factory: :first_search_event
+
+     organizer true
+  end
+
+  factory :second_search_user_event, class: UserEvent do
+     association :user, factory: :search_user
+     association :event, factory: :second_search_event
+
+     organizer true
+  end
+
+  factory :third_search_user_event, class: UserEvent do
+     association :user, factory: :search_user
+     association :event, factory: :third_search_event
+
+     organizer true
+  end
+
+  factory :fourth_search_user_event, class: UserEvent do
+     association :user, factory: :search_user
+     association :event, factory: :fourth_search_event
+
+     organizer true
+  end
+
+  factory :fifth_search_user_event, class: UserEvent do
+     association :user, factory: :search_user
+     association :event, factory: :fifth_search_event
+
+     organizer true
+  end
 =begin
   factory :diff_user_event, class: UserEvent do
      association :user, factory: :diff_user

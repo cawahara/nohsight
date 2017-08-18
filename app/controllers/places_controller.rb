@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
+=begin
    before_action :logged_in?
 
+   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
    def index
       @places = Place.all
    end
@@ -58,4 +60,5 @@ class PlacesController < ApplicationController
                                     :address,
                                     :official_url)
    end
+=end
 end

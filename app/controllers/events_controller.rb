@@ -3,9 +3,10 @@
 class EventsController < ApplicationController
    include UpdateEventAssociations
    include SearchEngine
+
+   before_action :set_event, except: [:index, :new, :create, :manage]
    before_action :logged_in?, except: [:index, :show]
    before_action :event_editor?, except: [:index, :new, :show, :create, :manage]
-   before_action :the_event, except: [:index, :new, :create, :manage]
 
    def index
       events = []
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
          events = search_results
       elsif params[:user]
          user = User.find(params[:user])
-         events = public_events(Event.all).where(id: user.user_events.ids)
+         events = public_events(user.events)
       else
          events = upcoming_events(Event.all)
       end
@@ -27,7 +28,6 @@ class EventsController < ApplicationController
    end
 
    def show
-      @user_events = UserEvent.where(event_id: @event.id)
 =begin REVIEW: 非公開に
       locations = relative_program_locations(@event)
       respond_to do |format|
@@ -107,7 +107,7 @@ class EventsController < ApplicationController
 
    private
 
-   def the_event
+   def set_event
       @event = Event.find(params[:id])
    end
 
@@ -117,7 +117,7 @@ class EventsController < ApplicationController
 
    def event_place_params
       params.require(:event_place).permit!
-      params[:event_place]['type'] = 'update'
+      params[:event_place]['mode'] = 'update'
       params[:event_place]['id'] = params[:id]
       return params[:event_place]
    end

@@ -1,231 +1,633 @@
 require 'rails_helper'
+# TODO: updateアクションに各パラメータが変更できたかのテストも追加
 
 RSpec.describe EventsController, type: :controller do
    include SpecTesthelper
 
    describe 'GET #index' do
-      before(:each) do
-         @search_params = { search: { start_date: '',
-                                      end_date:   '',
-                                      keywd:      '',
-                                      locations:  '' } }
-      end
+      # 下記ユーザーに関連するイベント群を同時に作成(全5件)
+      let!(:user) { create(:search_user) }
 
-      context 'with no params' do
-         it 'returns response status with 200' do
-            get :index, params: @search_params
-            expect(response.status).to eq(200)
+      context 'without params' do
+         before(:each) do
+            # FIXME: userからリレーションする以外の方法でテストをパスしたい
+            get :index
+         end
+
+         it 'gets specified number of events that separated into 5 per 1 page' do
+            expect(assigns(:events).count).to eq(5)
+         end
+
+         it 'returns response status 200' do
+            expect(response).to have_http_status(200)
          end
       end
 
-      context 'with search params' do
-         let!(:event) { create(:model_event) }
-         let!(:place) { create(:model_place) }
-         let!(:program) { create(:model_program) }
-         let!(:style) { create(:model_style) }
-         let!(:performer) { create(:model_performer) }
-         let!(:event_program) { create(:model_event_program) }
-         let!(:event_performer) { create(:model_event_performer) }
+      context 'with easy search params' do
 
-         it 'returns specified results relative to keywd param connected to event title' do
-            @search_params[:search][:keywd] = event.title
+         context 'with valid keywd params for programs' do
+            let(:program_params) { attributes_for(:first_search_program) }
+            before(:each) do
+               program_title = program_params[:title]
+               programs = Program.where(title: program_title)
+               ev_programs = EventProgram.where(program_id: programs.ids)
+               @events = Event.where(id: ev_programs.pluck(:event_id))
+               get :index, easy_search: { keywd: program_title }
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
          end
 
-         it 'returns specified results relative to keywd param connected to event programs' do
-            @search_params[:search][:keywd] = program.title
+         context 'with valid keywd params for performers' do
+            let(:performer_params) { attributes_for(:first_search_performer) }
+            before(:each) do
+               performer_full_name = performer_params[:full_name]
+               performers = Performer.where(full_name: performer_full_name)
+               ev_performers = EventPerformer.where(performer_id: performers.ids)
+               ev_programs = EventProgram.where(id: ev_performers.pluck(:event_program_id))
+               @events = Event.where(id: ev_programs.ids)
+               get :index, easy_search: { keywd: performer_full_name }
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(3)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
          end
 
-         it 'returns specified results relative to keywd param connected to event performers' do
-            @search_params[:search][:keywd] = performer.full_name
+         context 'with valid keywd params for events' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               event_title = event_params[:title][0..2]
+               @events = Event.where("title LIKE '%#{event_title}%'")
+               get :index, easy_search: { keywd: event_title }
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
          end
 
-         it 'returns specified results relative to start date param ' do
-            @search_params[:search][:start_date] = event.start_date
-         end
+         context 'with unmatched keywd params' do
+            before(:each) do
+               get :index, easy_search: { keywd: '???????' }
+            end
 
-         it 'returns specified results relative to end date param ' do
-            @search_params[:search][:end_date] = event.start_date
-         end
+            it "doesn't get any event" do
+               expect(assigns(:events).count).to eq(0)
+            end
 
-         it 'returns specified results relative to locations param' do
-            @search_params[:search][:locations] = place.title
-         end
-
-         after(:example) do
-            get :index, params: @search_params
-            expect(assigns(:events).first).to eq(event)
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
          end
       end
+
+      context 'with detailed search params' do
+         before(:each) do
+            @search_params = { start_date: '',
+                               end_date: '',
+                               keywd:  '',
+                               locations: '' }
+         end
+
+         context 'with valid start_date params' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               start_date = event_params[:start_date]
+               @events = Event.where(start_date: start_date)
+               @search_params[:start_date] = start_date
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with invalid start_date params' do
+            before(:each) do
+               start_date = '???????'
+               @search_params[:start_date] = start_date
+               get :index, search: @search_params
+            end
+
+            it "doesn't get any event" do
+               expect(assigns(:events).count).to eq(0)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with valid end_date params' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               end_date = event_params[:start_date]
+               @events = Event.where(start_date: end_date)
+               @search_params[:end_date] = end_date
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with invalid end_date params' do
+            before(:each) do
+               end_date = '???????'
+               @search_params[:end_date] = end_date
+               get :index, search: @search_params
+            end
+
+            it "doesn't get any event" do
+               pending 'it gets all event results despite of invalid params'
+               expect(assigns(:events).count).to eq(0)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with valid locations params' do
+            let(:place_params) { attributes_for(:first_search_place) }
+            before(:each) do
+               location_address = place_params[:address]
+               locations = Place.where(address: location_address)
+               @events = Event.where(place_id: locations.ids)
+               @search_params[:locations] = location_address
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with invalid locations params' do
+            before(:each) do
+            locations = '???????'
+               @search_params[:locations] = locations
+               get :index, search: @search_params
+            end
+
+            it "doesn't get any event" do
+               pending 'it gets all event results despite of invalid params'
+               expect(assigns(:events).count).to eq(0)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with valid keywd params for programs' do
+            let(:program_params) { attributes_for(:first_search_program) }
+            before(:each) do
+               program_title = program_params[:title]
+               programs = Program.where(title: program_title)
+               ev_programs = EventProgram.where(program_id: programs.ids)
+               @events = Event.where(id: ev_programs.pluck(:event_id))
+               @search_params[:keywd] = program_title
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with valid keywd params for performers' do
+            let(:performer_params) { attributes_for(:first_search_performer) }
+            before(:each) do
+               performer_full_name = performer_params[:full_name]
+               performers = Performer.where(full_name: performer_full_name)
+               ev_performers = EventPerformer.where(performer_id: performers.ids)
+               ev_programs = EventProgram.where(id: ev_performers.pluck(:event_program_id))
+               @events = Event.where(id: ev_programs.ids)
+               @search_params[:keywd] = performer_full_name
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(3)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with valid keywd params for events' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               event_title = event_params[:title][0..2]
+               @events = Event.where("title LIKE '%#{event_title}%'")
+               @search_params[:keywd] = event_title
+               get :index, search: @search_params
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(@events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with unmatched keywd params' do
+            before(:each) do
+               @search_params[:keywd] = '???????'
+               get :index, search: @search_params
+            end
+
+            it "doesn't get any event" do
+               expect(assigns(:events).count).to eq(0)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+      end
+
+      context 'with user params' do
+         context 'with valid params' do
+            before(:each) do
+               get :index, user: user
+            end
+
+            it 'gets specified number of events' do
+               expect(assigns(:events).count).to eq(user.events.count)
+            end
+
+            it 'returns response status 200' do
+               expect(response).to have_http_status(200)
+            end
+         end
+
+         context 'with invalid params' do
+            it 'occurs an error' do
+               expect{ get :index, user: '???????' }.to raise_error(ActiveRecord::RecordNotFound)
+            end
+
+            it "returns response status 404" do
+               pending "it needs to get response status 404 from its controller and relative view"
+               get :index, user: '???????'
+               expect(response).to have_http_status(404)
+            end
+         end
+      end
+
    end
 
+
    describe 'GET #new' do
-      let(:user) { create(:model_user) }
+      let(:user) { create(:controller_user) }
 
       context 'with login' do
-         it "returns response status with 200" do
+         before(:each) do
             login_as(user)
             get :new
-            expect(response.status).to eq(200)
+         end
+
+         it 'assigns @event as a new' do
+            expect(assigns(:event)).to be_a_new(Event)
+         end
+
+         it "returns response status 200" do
+            expect(response).to have_http_status(200)
          end
       end
 
       context 'without login' do
-         it "is redirected to login action" do
+         before(:each) do
             get :new
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to login action' do
             expect(response).to redirect_to(login_url)
          end
       end
    end
 
    describe 'GET #show' do
-      context 'with event param' do
-         let(:user) { create(:model_user) }
-         let(:event) { create(:model_event) }
+      let(:event) { create(:controller_event) }
+
+      context 'with event params' do
          before(:each) do
-            login_as(user)
             get :show, id: event
          end
 
-         it 'assigns an event' do
+         it 'assigns @event' do
             expect(assigns(:event)).to eq(event)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'returns response status 200' do
+            expect(response).to have_http_status(200)
          end
       end
 
-      context 'without event param' do
+      context 'without event params' do
          it 'occurs an error' do
+            # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
             expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
+         end
+
+         it "returns response status 404" do
+            pending "it needs to get response status 404 from its controller and relative view"
+            get :show
+            expect(response).to have_http_status(404)
          end
       end
    end
 
    describe 'GET #edit' do
-      let!(:user) { create(:model_user) }
-      let!(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:event) { create(:controller_event, :start_from_this) }
 
       context 'with event param' do
          before(:each) do
+            user = event.users.first
             login_as(user)
             get :edit, id: event
          end
 
-         it 'assign edit event' do
+         it 'assigns @event' do
             expect(assigns(:event)).to eq(event)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'returns response status 200' do
+            expect(response).to have_http_status(200)
          end
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: event
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to login action' do
             expect(response).to redirect_to(login_url)
          end
       end
 
       context 'without event param' do
-         it 'occurs an error' do
+         before(:each) do
+            user = event.users.first
             login_as(user)
+         end
+
+         it 'occurs an error' do
+            # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
             expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
+         end
+
+         it "returns response status 404" do
+            pending "it needs to get response status 404 from its controller and relative view"
+            get :edit
+            expect(response).to have_http_status(404)
          end
       end
 
       context 'when not editor of the event' do
-         let(:diff_event) { create(:diff_event) }
-         it 'is redirect_to root action' do
+         let(:diff_event) { create(:different_event) }
+         before(:each) do
+            user = event.users.first
             login_as(user)
             get :edit, id: diff_event
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to root action' do
             expect(response).to redirect_to(root_url)
          end
       end
    end
 
    describe 'POST #create' do
-      let(:user) { create(:model_user) }
+      let(:user) { create(:controller_user) }
+      let(:event_params) { attributes_for(:controller_event) }
 
-      context 'with valid param' do
-         let(:event) { attributes_for(:model_event) }
+      context 'with valid params' do
          before(:each) do
             login_as(user)
          end
 
-         it 'creates a new event to the database' do
-            expect{ post :create, event: { title: event[:title] } }.to change(Event, :count).by(1)
+         it 'assigns @event as a created one' do
+            post :create, event: { title: event_params[:title] }
+            expect(assigns(:event)).to be_persisted
          end
 
-         it 'is redirected to edit_port action' do
-            post :create, event: { title: event[:title] }
-            expect(response).to redirect_to(edit_event_port_url(Event.last))
+         it 'creates a new event into a database' do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(1)
+         end
+
+         it 'creates a new user_event into a datavase' do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(1)
+         end
+
+         it "returns response status 302" do
+            post :create, event: { title: event_params[:title] }
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to edit_event_port action' do
+            post :create, event: { title: event_params[:title] }
+            expect(response).to redirect_to(edit_event_port_url(assigns(:event)))
          end
       end
 
       context 'without login' do
-         let(:event) { attributes_for(:model_event) }
-
-         it "doesn't create a new event" do
-            expect{ post :create, event: { title: event[:title] } }.to change(Event, :count).by(0)
+         it "doesn't create an event" do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(0)
          end
 
-         it 'is redirected to login action' do
-            post :create, event: { title: event[:title] }
+         it "doesn't create a user_event" do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(0)
+         end
+
+         it "returns response status 302" do
+            post :create, event: { title: event_params[:title] }
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to login action' do
+            post :create, event: { title: event_params[:title] }
             expect(response).to redirect_to(login_url)
          end
       end
 
-      context 'with invalid event param' do
+      context 'with invalid params' do
          before(:each) do
             login_as(user)
+            event_params[:title] = nil
          end
 
-         it "doesn't create a new event" do
-            expect{ post :create, event: { title: '' } }.to change(Event, :count).by(0)
+         it "doesn't create an event" do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(0)
          end
 
-         it 'renders edit template' do
-            post :create, event: { title: '' }
+         it "doesn't create a user_event" do
+            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(0)
+         end
+
+         it "returns response status 200" do
+            post :create, event: { title: event_params[:title] }
+            expect(response).to have_http_status(200)
+         end
+
+         it 'renders new template' do
+            post :create, event: { title: event_params[:title] }
             expect(response).to render_template(:new)
          end
       end
    end
 
    describe 'PATCH #update' do
-      let(:user) { create(:model_user) }
-      let(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:user) { create(:controller_user, :start_from_this) }
+      before(:each) do
+         @event = user.events.first
+      end
 
-      context 'with valid param' do
+      context 'with valid title params' do
          before(:each) do
             login_as(user)
-            patch :update, id: event, event: attributes_for(:model_event, title: 'Changed Event')
+            patch :update, id: @event, event: attributes_for(:controller_event, title: 'Changed Event')
          end
 
          it 'changes event attributes' do
-            event.reload
-            expect(event.title).to eq('Changed Event')
+            @event.reload
+            expect(@event.title).to eq('Changed Event')
          end
 
-         it 'is redirected to edit_port action' do
-            expect(response).to redirect_to(edit_event_port_url(event))
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to edit_event_port action' do
+            expect(response).to redirect_to(edit_event_port_url(@event))
+         end
+      end
+
+      context 'with valid start_date params' do
+         before(:each) do
+            login_as(user)
+            patch :update, id: @event, event: attributes_for(:controller_event, start_date: Date.today + 1)
+         end
+
+         it 'changes event attributes' do
+            @event.reload
+            expect(@event.start_date).to eq(Date.today + 1)
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to edit_event_port action' do
+            expect(response).to redirect_to(edit_event_port_url(@event))
+         end
+      end
+
+      context 'with valid information params' do
+         before(:each) do
+            login_as(user)
+            patch :update, id: @event, event: attributes_for(:controller_event, information: 'This event has been changed')
+         end
+
+         it 'changes event attributes' do
+            @event.reload
+            expect(@event.information).to eq('This event has been changed')
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to edit_event_port action' do
+            expect(response).to redirect_to(edit_event_port_url(@event))
+         end
+      end
+
+      context 'with valid official_url params' do
+         before(:each) do
+            login_as(user)
+            patch :update, id: @event, event: attributes_for(:controller_event, official_url: 'http//www.changed.com')
+         end
+
+         it 'changes event attributes' do
+            @event.reload
+            expect(@event.official_url).to eq('http//www.changed.com')
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to edit_event_port action' do
+            expect(response).to redirect_to(edit_event_port_url(@event))
          end
       end
 
       context 'without login' do
          before(:each) do
-            patch :update, id: event, event: attributes_for(:model_event, title: 'Changed Event')
+            patch :update, id: @event, event: attributes_for(:controller_event, title: 'Changed Event')
          end
 
          it "doesn't change event attributes" do
-            event.reload
-            expect(event.title).not_to eq('Changed Event')
+            @event.reload
+            expect(@event.title).not_to eq('Changed Event')
          end
 
-         it 'is redirect_to login action' do
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to login action' do
             expect(response).to redirect_to(login_url)
          end
       end
@@ -233,12 +635,16 @@ RSpec.describe EventsController, type: :controller do
       context 'with invalid param' do
          before(:each) do
             login_as(user)
-            patch :update, id: event, event: attributes_for(:model_event, title: '')
+            patch :update, id: @event, event: attributes_for(:controller_event, title: '')
          end
 
          it "doesn't change event attributes" do
-            event.reload
-            expect(event.title).not_to eq('Changed Event')
+            @event.reload
+            expect(@event.title).not_to eq('Changed Event')
+         end
+
+         it "returns response status 200" do
+            expect(response).to have_http_status(200)
          end
 
          it 'renders edit template' do
@@ -246,11 +652,11 @@ RSpec.describe EventsController, type: :controller do
          end
       end
 
-      context 'when not editor of the event' do
-         let!(:diff_event) { create(:diff_event) }
+      context 'when not editor of this event' do
+         let(:diff_event) { create(:different_event) }
          before(:each) do
             login_as(user)
-            patch :update, id: diff_event, event: attributes_for(:model_event, title: 'Changed Event')
+            patch :update, id: diff_event, event: attributes_for(:different_event, title: 'Changed Event')
          end
 
          it "doesn't change event attributes" do
@@ -258,52 +664,71 @@ RSpec.describe EventsController, type: :controller do
             expect(diff_event.title).not_to eq('Changed Event')
          end
 
-         it 'is redirect_to root action' do
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to root action' do
             expect(response).to redirect_to(root_url)
          end
       end
-
    end
 
    describe 'DELETE #destroy' do
-      let!(:user) { create(:model_user) }
-      let!(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:user) { create(:controller_user, :start_from_this) }
+      before(:each) do
+         @event = user.events.first
+      end
 
-      context 'in a correct way' do
+      context 'with valid event params' do
          before(:each) do
             login_as(user)
          end
 
-         it 'destroys the event' do
-            expect{ delete :destroy, id: event }.to change(Event, :count).by(-1)
+         it 'destroys event' do
+            expect{ delete :destroy, id: @event }.to change(Event, :count).by(-1)
          end
 
-         it "is redirected to manage action" do
-            delete :destroy, id: event
+         it 'returns response status 302' do
+            delete :destroy, id: @event
+            expect(response).to have_http_status(302)
+         end
+
+         it "is redirected to event_manage action" do
+            delete :destroy, id: @event
             expect(response).to redirect_to(event_manage_url)
          end
       end
 
       context 'without login' do
-         it "doesn't destroy the event" do
-            expect{ delete :destroy, id: event }.to change(Event, :count).by(0)
+         it "doesn't destroy event" do
+            expect{ delete :destroy, id: @event }.to change(Event, :count).by(0)
          end
 
-         it 'is redirect_to login action' do
-            delete :destroy, id: event
+         it 'returns response status 302' do
+            delete :destroy, id: @event
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to login action' do
+            delete :destroy, id: @event
             expect(response).to redirect_to(login_url)
          end
       end
 
       context 'when not editor of the event' do
-         let!(:diff_event) { create(:diff_event) }
+         let!(:diff_event) { create(:different_event) }
          before(:each) do
             login_as(user)
          end
 
-         it "doesn't destroy the event" do
+         it "doesn't destroy event" do
             expect{ delete :destroy, id: diff_event }.to change(Event, :count).by(0)
+         end
+
+         it 'returns response status 302' do
+            delete :destroy, id: diff_event
+            expect(response).to have_http_status(302)
          end
 
          it 'is redirect_to root action' do
@@ -314,16 +739,32 @@ RSpec.describe EventsController, type: :controller do
    end
 
    describe 'GET #manage' do
-      let!(:user) { create(:model_user) }
+      let!(:user) { create(:controller_user) }
 
-      context 'with event param' do
+      context 'with valid params' do
          before(:each) do
+            @events = user.events
+            @organizer_ids = user.user_events.where(organizer: true).pluck(:event_id)
+            @editor_ids = user.user_events.where(organizer: false).pluck(:event_id)
+
             login_as(user)
             get :manage
          end
 
-         it 'assign manage user' do
+         it 'assigns @user' do
             expect(assigns(:user)).to eq(user)
+         end
+
+         it 'assigns @events' do
+            expect(assigns(:events)).to eq(@events)
+         end
+
+         it 'assigns @organizer_ids' do
+            expect(assigns(:organizer_ids)).to eq(@organizer_ids)
+         end
+
+         it 'assigns @editor_ids' do
+            expect(assigns(:editor_ids)).to eq(@editor_ids)
          end
 
          it 'returns response status with 200' do
@@ -332,26 +773,32 @@ RSpec.describe EventsController, type: :controller do
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :manage
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to login action' do
             expect(response).to redirect_to(login_url)
          end
       end
    end
 
    describe 'GET edit_port' do
-      let!(:user) { create(:model_user) }
-      let!(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:user) { create(:controller_user, :start_from_this) }
 
-      context 'with event param' do
+      context 'with valid params' do
          before(:each) do
+            @event = user.events.first
             login_as(user)
-            get :edit_port, id: event
+            get :edit_port, id: @event
          end
 
-         it 'assign edit event' do
-            expect(assigns(:event)).to eq(event)
+         it 'assigns @event' do
+            expect(assigns(:event)).to eq(@event)
          end
 
          it 'returns response status with 200' do
@@ -359,43 +806,76 @@ RSpec.describe EventsController, type: :controller do
          end
       end
 
+      context 'without event params' do
+         before(:each) do
+            login_as(user)
+         end
+
+         it 'occurs an error' do
+            expect{ get :edit_port }.to raise_error(ActionController::UrlGenerationError)
+         end
+
+         it "returns response status 404" do
+            pending "it needs to get response status 404 from its controller and relative view"
+            get :edit_port
+            expect(response).to have_http_status(404)
+         end
+      end
+
       context 'without login' do
+         before(:each) do
+            @event = user.events.first
+            get :edit_port, id: @event
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
          it 'is redirected to login action' do
-            get :edit_port, id: event
             expect(response).to redirect_to(login_url)
          end
       end
 
-      context 'without event param' do
-         it 'occurs an error' do
-            login_as(user)
-            expect{ get :edit_port }.to raise_error(ActionController::UrlGenerationError)
-         end
-      end
-
       context 'when not editor of the event' do
-         let(:diff_event) { create(:diff_event) }
-         it 'is redirect_to root action' do
+         let(:diff_event) { create(:different_event) }
+         before(:each) do
             login_as(user)
             get :edit_port, id: diff_event
+         end
+
+         it 'returns response status 302' do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to root action' do
             expect(response).to redirect_to(root_url)
          end
       end
    end
 
    describe 'GET #edit_place' do
-      let!(:user) { create(:model_user) }
-      let!(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:user) { create(:controller_user, :start_from_this) }
 
-      context 'with event param' do
+      context 'with event params' do
          before(:each) do
+            @event = user.events.first
+            @place = @event.place
+            @places = Place.all
             login_as(user)
-            get :edit_place, id: event
+            get :edit_place, id: @event
          end
 
-         it 'assign edit event' do
-            expect(assigns(:event)).to eq(event)
+         it 'assigns @event' do
+            expect(assigns(:event)).to eq(@event)
+         end
+
+         it 'assigns @place' do
+            expect(assigns(:place)).to eq(@place)
+         end
+
+         it 'assigns @places' do
+            expect(assigns(:places)).to eq(@places)
          end
 
          it 'returns response status with 200' do
@@ -403,107 +883,167 @@ RSpec.describe EventsController, type: :controller do
          end
       end
 
+      context 'without event params' do
+         before(:each) do
+            login_as(user)
+         end
+
+         it 'occurs an error' do
+            # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
+            expect{ get :edit_place }.to raise_error(ActionController::UrlGenerationError)
+         end
+
+         it "returns response status 404" do
+            pending "it needs to get response status 404 from its controller and relative view"
+            get :edit_place
+            expect(response).to have_http_status(404)
+         end
+      end
+
       context 'without login' do
+         before(:each) do
+            @event = user.events.first
+            get :edit_place, id: @event
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
          it 'is redirected to login action' do
-            get :edit_place, id: event
             expect(response).to redirect_to(login_url)
          end
       end
 
-      context 'without event param' do
-         it 'occurs an error' do
-            login_as(user)
-            expect{ get :edit_place }.to raise_error(ActionController::UrlGenerationError)
-         end
-      end
-
       context 'when not editor of the event' do
-         let(:diff_event) { create(:diff_event) }
-         it 'is redirect_to root action' do
+         let(:diff_event) { create(:different_event) }
+         before(:each) do
             login_as(user)
             get :edit_place, id: diff_event
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to root action' do
             expect(response).to redirect_to(root_url)
          end
       end
    end
 
    describe 'PATCH #update_place' do
-      let(:user) { create(:model_user) }
-      let(:place) { create(:model_place) }
-      let(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+      let(:user) { create(:controller_user, :start_from_this) }
 
-      context 'with valid event_place param existing in Place class' do
-         let(:alter_place) { create(:alter_place) }
+      context 'with valid title params' do
+         let(:diff_place) { create(:different_place) }
          before(:each) do
+            @event = user.events.first
             login_as(user)
-            patch :update_place, id: event, event_place: { title: alter_place.title }
+            patch :update_place, id: @event, event_place: { title: diff_place.title, mode: 'update' }
          end
 
-         it 'updates event location' do
-            event.reload
-            expect(event.place_id).to eq(alter_place.id)
+         it 'changes event location' do
+            @event.reload
+            expect(@event.place_id).to eq(diff_place.id)
+         end
+
+         it 'returns response status 302' do
+            expect(response).to have_http_status(302)
          end
 
          it 'is redirected to edit_port action' do
-            expect(response).to redirect_to(edit_event_port_url(event))
+            expect(response).to redirect_to(edit_event_port_url(@event))
          end
       end
 
-      context 'with valid event_place param not existing in Place' do
-         let(:alter_place) { attributes_for(:alter_place) }
+      context 'with valid title params that is not existing in Place' do
+         let(:diff_place_params) { attributes_for(:different_place) }
          before(:each) do
+            @event = user.events.first
+            diff_place_params[:mode] = 'update'
             login_as(user)
          end
 
-         it 'creates a new place' do
-            expect{ patch :update_place, id: event, event_place: alter_place }.to change(Place, :count).by(1)
+         it 'creates a new place into a database' do
+            expect{ patch :update_place, id: @event, event_place: diff_place_params }.to change(Place, :count).by(1)
          end
 
-         it 'updates event location' do
-            patch :update_place, id: event, event_place: alter_place
-            event.reload
-            expect(event.place_id).to eq(Place.last.id)
+         it 'changes event location' do
+            patch :update_place, id: @event, event_place: diff_place_params
+            @event.reload
+            expect(@event.place_id).to eq(Place.last.id)
          end
 
          it 'is redirected to edit_port action' do
-            patch :update_place, id: event, event_place: alter_place
-            expect(response).to redirect_to(edit_event_port_url(event))
+            patch :update_place, id: @event, event_place: diff_place_params
+            expect(response).to redirect_to(edit_event_port_url(@event))
          end
       end
 
       context 'without login' do
-         let(:alter_place) { create(:alter_place) }
+         let(:diff_place) { create(:different_place) }
+         before(:each) do
+            @event = user.events.first
+            patch :update_place, id: @event, event_place: { title: diff_place.title, mode: 'update' }
+         end
+
+         it "doesn't change event attributes" do
+            @event.reload
+            expect(@event.title).not_to eq('Changed Event')
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
          it 'is redirected to login action' do
-            patch :update_place, id: event, event_place: { title: alter_place[:title] }
             expect(response).to redirect_to(login_url)
          end
       end
 
       context 'with invalid event_place param' do
-         let(:alter_place) { create(:alter_place) }
+         let(:place_params) { attributes_for(:controller_place) }
          before(:each) do
+            @event = user.events.first
             login_as(user)
-            patch :update_place, id: event, event_place: { title: '' }
+            patch :update_place, id: @event, event_place: { title: '', mode: 'update' }
          end
 
-         it 'updates event location' do
-            event.reload
-            expect(event.place_id).not_to eq(alter_place.id)
+         it "doesn't change event attributes" do
+            @event.reload
+            expect(@event.place.title).to eq(place_params[:title])
          end
 
-         it 'is redirected to edit_place action' do
-            expect(response).to redirect_to(edit_event_place_url(event))
+         # FIXME: renderアクションに変更したい
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to edit_event_place action' do
+            expect(response).to redirect_to(edit_event_place_url(@event))
          end
       end
 
       context 'when not editor of the event' do
-         let(:diff_event) { create(:diff_event) }
-         let(:alter_place) { create(:alter_place) }
-
-         it 'is redirect_to root action' do
+         let(:diff_event) { create(:different_event) }
+         let(:place_params) { attributes_for(:controller_place) }
+         before(:each) do
+            @place = diff_event.place
             login_as(user)
-            patch :update_place, id: diff_event, event_place: { title: alter_place[:title] }
+            patch :update_place, id: diff_event, event_place: { title: place_params[:title], mode: 'update' }
+         end
+
+         it "doesn't change event attributes" do
+            diff_event.reload
+            expect(diff_event.place.title).to eq(@place.title)
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirected to root action' do
             expect(response).to redirect_to(root_url)
          end
       end

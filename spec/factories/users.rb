@@ -53,18 +53,40 @@ FactoryGirl.define do
             5.times do |n|
                FactoryGirl.create(:controller_user_event, user: user)
             end
-
          end
       end
    end
 
    factory :different_user, class: User do
-      name                  'Martin'
-      email                 'martin@gmail.com'
+      name                  'Richie'
+      email                 'richie@gmail.com'
       information           'What if I say loving you?'
       password              'password'
       password_confirmation 'password'
-      agreement true
+      agreement             true
+
+      trait :start_from_this do
+         after(:create) do |user|
+            FactoryGirl.create(:different_user_event, user: user)
+         end
+      end
+   end
+
+   factory :search_user, class: User do
+      name                  'Julia'
+      email                 'julia@gmail.com'
+      information           'All the things she said'
+      password              'password'
+      password_confirmation 'password'
+      agreement             true
+
+      after(:create) do |user|
+         FactoryGirl.create(:first_search_user_event, user: user)
+         FactoryGirl.create(:second_search_user_event, user: user)
+         FactoryGirl.create(:third_search_user_event, user: user)
+         FactoryGirl.create(:fourth_search_user_event, user: user)
+         FactoryGirl.create(:fifth_search_user_event, user: user)
+      end
    end
 =begin
    factory :admin_user, class: User do

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+   before_action :set_user,     only: [:show, :edit, :update, :destroy]
    before_action :logged_in?,   only: [:edit, :update, :destroy]
    before_action :logged_user?, only: [:edit, :update, :destroy]
 
@@ -9,13 +10,10 @@ class UsersController < ApplicationController
    end
 
    def show
-      @user = User.find(params[:id])
-      user_events = []
       @events = public_events(@user.events).order(start_date: :desc).limit(3)
    end
 
    def edit
-      @user = User.find(params[:id])
    end
 
    def create
@@ -31,7 +29,6 @@ class UsersController < ApplicationController
    end
 
    def update
-      @user = User.find(params[:id])
       if @user.update_attributes(user_params)
          flash['success'] = 'ユーザー情報を更新しました'
          redirect_to(user_url(current_user))
@@ -42,7 +39,6 @@ class UsersController < ApplicationController
    end
 
    def destroy
-      @user = User.find(params[:id])
       if @user.destroy
          flash['info'] = 'ユーザー情報を削除しました'
       else
@@ -60,5 +56,9 @@ class UsersController < ApplicationController
                                    :password,
                                    :password_confirmation,
                                    :agreement)
+   end
+
+   def set_user
+      @user = User.find(params[:id])
    end
 end

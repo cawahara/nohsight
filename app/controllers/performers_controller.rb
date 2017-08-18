@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class PerformersController < ApplicationController
+=begin
    before_action :logged_in?
 
+   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
    def index
       @performers = Performer.all
    end
@@ -59,4 +61,5 @@ class PerformersController < ApplicationController
                                         :first_name,
                                         :style_id)
    end
+=end
 end

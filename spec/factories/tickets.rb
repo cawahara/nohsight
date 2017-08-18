@@ -21,4 +21,11 @@ FactoryGirl.define do
       grade    'Controller class'
       price    2500
    end
+
+   factory :different_ticket, class: Ticket do
+      association :event, factory: :different_event
+
+      grade    'Different class'
+      price    2500
+   end
 end

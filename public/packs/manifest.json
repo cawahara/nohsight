@@ -68,6 +68,6 @@
   "vue/tickets/new/new.js": "/packs/vue/tickets/new/new.js",
   "vue/tickets/render/_form.css": "/packs/vue/tickets/render/_form.css",
   "vue/tickets/render/_form.js": "/packs/vue/tickets/render/_form.js",
-  "vue/tickets/tickets.js": "/packs/vue/tickets/tickets.js",
-  "vue/tickets/tickets.css": "/packs/vue/tickets/tickets.css"
+  "vue/tickets/tickets.css": "/packs/vue/tickets/tickets.css",
+  "vue/tickets/tickets.js": "/packs/vue/tickets/tickets.js"
 }

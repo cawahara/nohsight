@@ -30,4 +30,18 @@ FactoryGirl.define do
          end
       end
    end
+
+   factory :different_style, class: Style do
+      title   'Different'
+
+      trait :start_from_this do
+         after(:create) do |style|
+            FactoryGirl.create(:different_performer, style: style)
+         end
+      end
+   end
+
+   factory :search_style, class: Style do
+      title   '検索用'
+   end
 end

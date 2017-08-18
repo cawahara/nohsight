@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ProgramsController < ApplicationController
+=begin
    before_action :logged_in?
 
+   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
    def index
       @programs = Program.all
    end
@@ -60,4 +62,5 @@ class ProgramsController < ApplicationController
                                       :duration,
                                       :place_id)
    end
+=end
 end

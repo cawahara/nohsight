@@ -20,7 +20,7 @@ RSpec.describe UsersController, type: :controller do
    end
 
    describe 'GET #show' do
-      context 'with user param' do
+      context 'with user params' do
          let(:user) { create(:controller_user, :user_show_action) }
          before(:each) do
             @events = user.events.where(published: true).limit(3)
@@ -44,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'without user param' do
+      context 'without user params' do
          it 'occurs an error' do
             # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
             expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
@@ -60,7 +60,7 @@ RSpec.describe UsersController, type: :controller do
 
    describe 'GET #edit' do
       let(:user) { create(:controller_user) }
-      context 'with user param and login' do
+      context 'with user params and login' do
          before(:each) do
             login_as(user)
             get :edit, id: user
@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'with different user param from logged one' do
+      context 'with different user params from logged one' do
          let(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
@@ -105,7 +105,7 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'without user param' do
+      context 'without user params' do
          before(:each) do
             login_as(user)
          end
@@ -126,9 +126,6 @@ RSpec.describe UsersController, type: :controller do
       let(:user_params) { attributes_for(:controller_user) }
 
       context 'with valid params' do
-         # FIXME: dbにないカラムの:agreementが何らかの関係でreq->headerに記載されておらず、
-         # =>     dev上では動作するのにtestが通らない
-
          it 'assigns @user as a created one' do
             post :create, user: user_params
             expect(assigns(:user)).to be_persisted
@@ -159,6 +156,7 @@ RSpec.describe UsersController, type: :controller do
          end
 
          it "returns response status 200" do
+            post :create, user: user_params
             expect(response).to have_http_status(200)
          end
 
@@ -230,7 +228,27 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'with different user param from logged one' do
+      context 'with invalid params' do
+         before(:each) do
+            login_as(user)
+            patch :update, id: user, user: attributes_for(:controller_user, name: '')
+         end
+
+         it "doesn't change user attributes" do
+            user.reload
+            expect(user.name).not_to eq('')
+         end
+
+         it "returns response status 200" do
+            expect(response).to have_http_status(200)
+         end
+
+         it 'renders edit template' do
+            expect(response).to render_template(:edit)
+         end
+      end
+
+      context 'with different user params from logged one' do
          let(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
@@ -250,32 +268,12 @@ RSpec.describe UsersController, type: :controller do
             expect(response).to redirect_to(root_url)
          end
       end
-
-      context 'with invalid params' do
-         before(:each) do
-            login_as(user)
-            patch :update, id: user, user: attributes_for(:controller_user, name: '')
-         end
-
-         it "doesn't change user attributes" do
-            user.reload
-            expect(user.name).not_to eq('')
-         end
-
-         it "returns response status 200" do
-            expect(response).to have_http_status(200)
-         end
-
-         it 'renders to edit template' do
-            expect(response).to render_template(:edit)
-         end
-      end
    end
 
    describe 'DELETE #destroy' do
       let!(:user) { create(:controller_user) }
 
-      context 'with valid user param' do
+      context 'with valid user params' do
          before(:each) do
             login_as(user)
          end
@@ -295,7 +293,23 @@ RSpec.describe UsersController, type: :controller do
          end
       end
 
-      context 'with different user param from logged one' do
+      context 'without login' do
+         it "doesn't destroy user" do
+            expect{ delete :destroy, id: user }.to change(User, :count).by(0)
+         end
+
+         it 'returns response status 302' do
+            delete :destroy, id: user
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to login action' do
+            delete :destroy, id: user
+            expect(response).to redirect_to(login_url)
+         end
+      end
+
+      context 'with different user params from logged one' do
          let!(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
@@ -313,22 +327,6 @@ RSpec.describe UsersController, type: :controller do
          it 'is redirect_to root action' do
             delete :destroy, id: diff_user
             expect(response).to redirect_to(root_url)
-         end
-      end
-
-      context 'without login' do
-         it "doesn't destroy user" do
-            expect{ delete :destroy, id: user }.to change(User, :count).by(0)
-         end
-
-         it 'returns response status 302' do
-            delete :destroy, id: user
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirect_to login action' do
-            delete :destroy, id: user
-            expect(response).to redirect_to(login_url)
          end
       end
    end
