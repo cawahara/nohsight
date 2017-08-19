@@ -46,6 +46,10 @@ FactoryGirl.define do
       official_url   'http//www.controllerevent.com'
       published      true
 
+      trait :invalid_params do
+         title       nil
+      end
+
       trait :start_from_this do
          after(:create) do |event|
             FactoryGirl.create(:controller_event_program, event: event)

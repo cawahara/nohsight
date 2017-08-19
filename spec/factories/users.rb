@@ -47,6 +47,14 @@ FactoryGirl.define do
          end
       end
 
+      trait :invalid_params do
+         name               nil
+      end
+
+      trait :not_agreed do
+         agreement          '0'
+      end
+
       trait :user_show_action do
          after(:create) do |user|
             # TODO: 関連イベントを5個分つくる(create_listでね)

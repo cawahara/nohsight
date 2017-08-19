@@ -3,16 +3,35 @@ require 'rails_helper'
 RSpec.describe EventProgramsController, type: :controller do
    include SpecTesthelper
 
-   describe 'GET #edit' do
-      let(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+   shared_examples 'occurs an error' do |action|
       before(:each) do
-         @user = event.user_events.find_by(organizer: true).user
+         pending "it needs to get response status 404 from its controller and relative view"
+         get :action
       end
+      it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+      it { expect(response).to have_http_status(404) }
+   end
 
-      context 'with event param' do
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
+
+   describe 'GET #edit' do
+      let(:user) { create(:controller_user) }
+      let(:event) { create(:controller_event) }
+      let!(:user_event) { create(:controller_user_event, user: user, event: event) }
+
+      context 'with event params' do
          before(:each) do
-            login_as(@user)
+            login_as(user)
             get :edit, id: event
          end
 
@@ -20,220 +39,228 @@ RSpec.describe EventProgramsController, type: :controller do
             expect(assigns(:event)).to eq(event)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: event
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'without event param' do
-         it 'occurs an error' do
-            login_as(@user)
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
+         before(:each) do
+            login_as(user)
          end
+         it_behaves_like('occurs an error', 'edit')
       end
    end
 
    describe 'PATCH #update' do
-      let(:event_program) { create(:model_event_program) }
-      let!(:user_event) { create(:model_user_event) }
-      before(:each) do
-         @event = event_program.event
-         @user = @event.user_events.find_by(organizer: true).user
-      end
+      let(:user) { create(:controller_user) }
+      let(:event) { create(:controller_event) }
+      let!(:user_event) { create(:controller_user_event, user: user, event: event) }
 
-      context 'with valid param in create action' do
-         let(:diff_program) { create(:diff_program) }
+      context 'in create action' do
+         let(:program_params) { attributes_for(:controller_program) }
          before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'create',
-                                     id: '',
-                                     event_id: event_program.event_id,
-                                     title: diff_program[:title],
-                                     genre: 'Genre',
-                                     style: 'Style' }}
+            @ev_program_params = {'0': { mode:     'create',
+                                         id:       '',
+                                         event_id: event.id,
+                                         title:    program_params[:title],
+                                         genre:    'genre',
+                                         style:    'style' }}
+         end
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
+
+            it 'creates a new event_program', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(EventProgram, :count).by(1)
+            end
+
+            it 'creates a new program when program title is not in a database', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(Program, :count).by(1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to edit_event_port action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it 'creates a new event program' do
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params }.to change(EventProgram, :count).by(1)
+         context 'without login' do
+            before(:each) do |example|
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
+
+            it "doesn't create a new event_program", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'creates a new relationship between event and program' do
-            patch :update, id: @event, event_program: @ev_pro_params
-            @event.reload
-            expect(@event.event_programs.last.program).to eq(diff_program)
-         end
+         context 'with invalid or empty params' do
+            before(:each) do |example|
+               login_as(user)
+               @ev_program_params[:'0'][:title] = nil
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
 
-         it 'creates a new program when a new title is init' do
-            new_ev_pro_params = {'0': { type: 'create',
-                                        id: '',
-                                        event_id: event_program.event_id,
-                                        title: 'New Program',
-                                        genre: 'Genre',
-                                        style: 'Style' }}
-            expect{ patch :update,
-                    id: @event,
-                    event_program: new_ev_pro_params }.to change(Program, :count).by(1)
-         end
+            it "doesn't create a new event_program", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+            end
 
-         it 'is redirected to Event#event_port action' do
-            patch :update, id: @event, event_program: @ev_pro_params
-            expect(response).to redirect_to(edit_event_port_url(@event))
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_program_url(event))
+            end
          end
       end
 
-      context 'with valid param in update action' do
-         let(:diff_program) { create(:diff_program) }
-
+      context 'in update action' do
+         let(:program) { create(:controller_program) }
+         let!(:ev_program) { create(:controller_event_program, event: event, program: program) }
+         let(:program_params) { attributes_for(:different_program) }
          before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: event_program.id,
-                                     event_id: event_program.event_id,
-                                     title: diff_program[:title],
-                                     genre: 'Genre',
-                                     style: 'Style' }}
-            patch :update, id: @event, event_program: @ev_pro_params
+            @ev_program_params = {'0': { mode:     'update',
+                                         id:       ev_program.id,
+                                         event_id: ev_program.event_id,
+                                         title:    program_params[:title],
+                                         genre:    ev_program.genre,
+                                         style:    ev_program.style }}
          end
 
-         it 'changes the program attributes' do
-            @event.reload
-            event_program.reload
-            expect(event_program.program_id).to eq(diff_program.id)
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
+
+            it 'changes the event_program attributes' do
+               ev_program.reload
+               expect(ev_program.program).to eq(Program.find_by(title: program_params[:title]))
+            end
+
+            it 'creates a new program when program title is not in a database', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(Program, :count).by(1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to edit_event_port action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it 'creates a new program when a new title is init' do
-            new_ev_pro_params = {'0': { type: 'update',
-                                        id: event_program.id,
-                                        event_id: event_program.event_id,
-                                        title: 'New Program',
-                                        genre: 'Genre',
-                                        style: 'Style' }}
-            expect{ patch :update,
-                    id: @event,
-                    event_program: new_ev_pro_params }.to change(Program, :count).by(1)
+         context 'without login' do
+            before(:each) do
+               patch :update, id: event, event_program: @ev_program_params
+            end
+
+            it "doesn't change the event_program attributes" do
+               ev_program.reload
+               expect(ev_program.program).not_to eq(Program.find_by(title: program_params[:title]))
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'is redirected to Event#event_port action' do
-            expect(response).to redirect_to(edit_event_port_url(@event))
+         context 'with invalid or empty params' do
+            before(:each) do
+               login_as(user)
+               @ev_program_params[:'0'][:title] = nil
+               patch :update, id: event, event_program: @ev_program_params
+            end
+
+            it "doesn't change the event_program attributes" do
+               ev_program.reload
+               expect(ev_program.program).not_to eq(Program.find_by(title: program_params[:title]))
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_program_url(event))
+            end
          end
       end
 
-      context 'with valid param in destroy action' do
-         let!(:event_program) { create(:model_event_program) }
+      context 'in destroy action' do
+         let(:program) { create(:controller_program) }
+         let!(:ev_program) { create(:controller_event_program, event: event, program: program) }
          before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'destroy',
-                                     id: event_program.id }}
+            @ev_program_params = {'0': { mode: 'destroy',
+                                         id:   ev_program.id }}
          end
 
-         it 'destroys the event program' do
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params }.to change(EventProgram, :count).by(-1)
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
+
+            it 'destroys the event_program', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(EventProgram, :count).by(-1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it 'is redirected to Event#event_port action' do
-            patch :update, id: @event, event_program: @ev_pro_params
-            expect(response).to redirect_to(edit_event_port_url(@event))
-         end
-      end
+         context 'without login' do
+            before(:each) do |example|
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
 
-      context 'without login' do
-         let(:event_program) { create(:model_event_program) }
-         let(:diff_program) { create(:diff_program) }
+            it "doesn't destroy the event_program", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+            end
 
-         it "doesn't create a new event program" do
-            ev_pro_params = {'0': { type: 'create',
-                                    id: event_program.id,
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: 'Genre',
-                                    style: 'Style' }}
-            expect{ patch :update,
-                    id: @event,
-                    event_program: ev_pro_params }.to change(EventProgram, :count).by(0)
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it "doesn't update the event program" do
-            ev_pro_params = {'0': { type: 'update',
-                                    id: '',
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: 'Genre',
-                                    style: 'Style' }}
-            patch :update, id: @event, event_program: ev_pro_params
-            event_program.reload
-            expect(event_program.program_id).not_to eq(diff_program.id)
-         end
-
-         it "doesn't destroy the event program" do
-            ev_pro_params = {'0': { type: 'destroy',
-                                    id: event_program.id }}
-            expect{ patch :update, id: @event,
-                    event_program: ev_pro_params }.to change(EventProgram, :count).by(0)
-         end
-
-         it 'is redirected to login action' do
-            ev_pro_params = {'0': { type: 'create',
-                                    id: '',
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: 'Genre',
-                                    style: 'Style' }}
-            patch :update, id: @event, event_program: ev_pro_params
-            expect(response).to redirect_to(login_url)
-         end
-      end
-
-      context 'with invalid or empty required param' do
-         let(:event_program) { create(:model_event_program) }
-         let(:diff_program) { create(:diff_program) }
-         before(:each) do
-            login_as(@user)
-         end
-
-         it "doesn't create a new event program" do
-            ev_pro_params = {'0': { type: 'create',
-                                    id: '',
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: '',
-                                    style: '' }}
-            expect{ patch :update,
-                    id: @event,
-                    event_program: ev_pro_params }.to change(EventProgram, :count).by(0)
-         end
-
-         it "doesn't update a event program" do
-            ev_pro_params = {'0': { type: 'update',
-                                    id: event_program.id,
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: '',
-                                    style: '' }}
-            patch :update, id: @event, event_program: ev_pro_params
-            event_program.reload
-            expect(event_program.program_id).not_to eq(diff_program.id)
-         end
-
-         it 'is redirected to edit action' do
-            ev_pro_params = {'0': { type: 'create',
-                                    id: '',
-                                    event_id: event_program.event_id,
-                                    title: diff_program[:title],
-                                    genre: '',
-                                    style: '' }}
-            patch :update, id: @event, event_program: ev_pro_params
-            expect(response).to redirect_to(edit_event_program_url(@event))
+         context 'with invalid or empty params' do
+            before(:each) do |example|
+               pending 'trying to build 404 page for activerecord error exception'
+               login_as(user)
+               @ev_program_params[:'0'][:id] = nil
+               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+            end
          end
       end
    end

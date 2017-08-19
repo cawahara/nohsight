@@ -3,16 +3,35 @@ require 'rails_helper'
 RSpec.describe EventPerformersController, type: :controller do
    include SpecTesthelper
 
-   describe 'GET #edit' do
-      let(:event) { create(:model_event) }
-      let!(:user_event) { create(:model_user_event) }
+   shared_examples 'occurs an error' do |action|
       before(:each) do
-         @user = event.user_events.find_by(organizer: true).user
+         pending "it needs to get response status 404 from its controller and relative view"
+         get :action
       end
+      it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+      it { expect(response).to have_http_status(404) }
+   end
 
-      context 'with event param' do
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
+
+   describe 'GET #edit' do
+      let(:user) { create(:controller_user) }
+      let(:event) { create(:controller_event) }
+      let!(:user_event) { create(:controller_user_event, user: user, event: event) }
+
+      context 'with event params' do
          before(:each) do
-            login_as(@user)
+            login_as(user)
             get :edit, id: event
          end
 
@@ -20,218 +39,240 @@ RSpec.describe EventPerformersController, type: :controller do
             expect(assigns(:event)).to eq(event)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: event
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'without event param' do
-         it 'occurs an error' do
-            login_as(@user)
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
+         before(:each) do
+            login_as(user)
          end
+
+         it_behaves_like('occurs an error', 'edit')
       end
    end
 
    describe 'PATCH #update' do
-      let(:event_performer) { create(:model_event_performer) }
-      let!(:user_event){ create(:model_user_event) }
-      let!(:style) { create(:model_style) }
-      before(:each) do
-         @event_program = event_performer.event_program
-         @event = @event_program.event
-         @user = @event.user_events.find_by(organizer: true).user
-      end
+      let(:user) { create(:controller_user) }
+      let(:event) { create(:controller_event) }
+      let!(:user_event) { create(:controller_user_event, user: user, event: event) }
+      let!(:ev_program) { create(:controller_event_program, event: event) }
 
-      context 'with valid param in create action' do
-         let(:diff_performer) { create(:diff_performer) }
+      context 'in create action' do
+         let(:performer_params) { attributes_for(:controller_performer) }
          before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: @event_program.id } }
-            @ev_per_params = {'0': { type: 'create',
-                                     id: '',
-                                     event_program_id: event_performer.event_program_id,
-                                     full_name: diff_performer[:full_name] } }
+            @ev_program_params = {'0': { mode:   'update',
+                                         id:     ev_program.id } }
+            @ev_performer_params = {'0': { mode:             'create',
+                                           id:               '',
+                                           event_program_id: ev_program.id,
+                                           full_name:        performer_params[:full_name] } }
          end
 
-         it 'creates a new event program' do
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": @ev_per_params }.to change(EventPerformer, :count).by(1)
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
+
+            it 'creates a new event_performer', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(1)
+            end
+
+            it 'creates a new performer when performer full_name is not in a database', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(Performer, :count).by(1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to edit_event_port action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it 'creates a new relationship between event and program' do
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": @ev_per_params
-            @event_program.reload
-            expect(@event_program.event_performers.last.performer).to eq(diff_performer)
+         context 'without login' do
+            before(:each) do |example|
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
+
+            it "doesn't create a new event_performer", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'creates a new performer when a new name is init' do
-            new_ev_per_params = {'0': { type: 'create',
-                                        id: '',
-                                        event_program_id: event_performer.event_program_id,
-                                        full_name: 'New Performer' } }
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": new_ev_per_params }.to change(Performer, :count).by(1)
-         end
+         context 'with invalid or empty params' do
+            before(:each) do |example|
+               login_as(user)
+               @ev_performer_params[:'0'][:full_name] = nil
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
 
-         it 'is redirected to Event#event_port action' do
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": @ev_per_params
-            expect(response).to redirect_to(edit_event_port_url(@event))
-         end
-      end
+            it "doesn't create a new event_performer", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+            end
 
-      context 'with valid param in update action' do
-         let(:diff_performer) { create(:diff_performer) }
-         before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: @event_program.id } }
-            @ev_per_params = {'0': { type: 'update',
-                                     id: event_performer.id,
-                                     event_program_id: event_performer.event_program_id,
-                                     full_name: diff_performer[:full_name] } }
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": @ev_per_params
-         end
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
 
-         it 'changes the event performer attributes' do
-            @event.reload
-            event_performer.reload
-            expect(event_performer.performer_id).to eq(diff_performer.id)
-         end
-
-         it 'creates a new performer when a new name is init' do
-            new_ev_per_params = {'0': { type: 'update',
-                                        id: event_performer.id,
-                                        event_program_id: event_performer.event_program_id,
-                                        full_name: 'New Performer' } }
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": new_ev_per_params }.to change(Performer, :count).by(1)
-         end
-
-         it 'is redirected to Event#event_port action' do
-            expect(response).to redirect_to(edit_event_port_url(@event))
-         end
-      end
-
-      context 'with valid param in destroy action' do
-         before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: @event_program.id } }
-            @ev_per_params = {'0': { type: 'destroy',
-                                     id: event_performer.id,
-                                     event_program_id: event_performer.event_program_id } }
-         end
-
-         it 'destroys the event perfomer' do
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": @ev_per_params }.to change(EventPerformer, :count).by(-1)
-         end
-
-         it 'is redirected to Event#event_port action' do
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": @ev_per_params
-            expect(response).to redirect_to(edit_event_port_url(@event))
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_performer_url(event))
+            end
          end
       end
 
-      context 'without login' do
-         let(:diff_performer) { create(:diff_performer) }
+      context 'in update action' do
+         let(:performer) { create(:controller_performer) }
+         let!(:ev_performer) { create(:controller_event_performer, event_program: ev_program, performer: performer) }
+         let(:performer_params) { attributes_for(:different_performer) }
          before(:each) do
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: @event_program.id } }
+            @ev_program_params = {'0': { mode:   'update',
+                                         id:     ev_program.id } }
+            @ev_performer_params = {'0': { mode:             'update',
+                                           id:               ev_performer.id,
+                                           event_program_id: ev_program.id,
+                                           full_name:        performer_params[:full_name] } }
          end
 
-         it "doesn't create a new event performer" do
-            ev_per_params = {'0': { type: 'create',
-                                    id: '',
-                                    event_program_id: event_performer.event_program.id,
-                                    full_name: diff_performer[:full_name] } }
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": ev_per_params }.to change(EventPerformer, :count).by(0)
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
+
+            it 'changes the event_performer attributes' do
+               ev_performer.reload
+               expect(ev_performer.performer).to eq(Performer.find_by(full_name: performer_params[:full_name]))
+            end
+
+            it 'creates a new performer when performer title is not in a database', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(Performer, :count).by(1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to edit_event_port action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it "doesn't update the event performer" do
-            ev_per_params = {'0': { type: 'update',
-                                    id: event_performer.id,
-                                    event_program_id: event_performer.event_program.id,
-                                    full_name: diff_performer[:full_name] } }
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": ev_per_params
-            event_performer.reload
-            expect(event_performer.performer_id).not_to eq(diff_performer.id)
+         context 'without login' do
+            before(:each) do
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+            end
+
+            it "doesn't change the event_performer attributes" do
+               ev_performer.reload
+               expect(ev_performer.performer).not_to eq(Performer.find_by(full_name: performer_params[:full_name]))
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it "doesn't destroy the event performer" do
-            ev_per_params = {'0': { type: 'destroy',
-                                    id: event_performer.id, event_performer: event_performer.event_program.id } }
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": ev_per_params }.to change(EventPerformer, :count).by(0)
-         end
+         context 'with invalid or empty params' do
+            before(:each) do
+               login_as(user)
+               @ev_performer_params[:'0'][:full_name] = nil
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+            end
 
-         it 'is redirected to login action' do
-            ev_per_params = {'0': { type: 'create',
-                                    id: '', event_program_id: event_performer.event_program.id,
-                                    full_name: diff_performer[:full_name] } }
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": ev_per_params
-            expect(response).to redirect_to(login_url)
+            it "doesn't change the event_performer attributes" do
+               ev_performer.reload
+               expect(ev_performer.performer).not_to eq(Performer.find_by(full_name: performer_params[:full_name]))
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_performer_url(event))
+            end
          end
       end
 
-      context 'with invalid or empty required param' do
-         let(:diff_performer) { create(:diff_performer) }
+      context 'in destroy action' do
+         let(:performer) { create(:controller_performer) }
+         let!(:ev_performer) { create(:controller_event_performer, event_program: ev_program, performer: performer) }
          before(:each) do
-            login_as(@user)
-            @ev_pro_params = {'0': { type: 'update',
-                                     id: @event_program.id } }
+            @ev_program_params = {'0': { mode:   'update',
+                                         id:     ev_program.id } }
+            @ev_performer_params = {'0': { mode: 'destroy',
+                                           id:   ev_performer.id } }
          end
 
-         it "doesn't create a new event performer" do
-            ev_per_params = {'0': { type: 'create',
-                                    id: event_performer.id,
-                                    event_program_id: event_performer.event_program.id,
-                                    full_name: '' } }
-            expect{ patch :update,
-                    id: @event,
-                    event_program: @ev_pro_params,
-                    "event_performer-0": ev_per_params }.to change(EventPerformer, :count).by(0)
+         context 'with valid params' do
+            before(:each) do |example|
+               login_as(user)
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
+
+            it 'destroys the event_performer', :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(-1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirected to edit action' do
+               expect(response).to redirect_to(edit_event_port_url(event))
+            end
          end
 
-         it "doesn't update a event performer" do
-            ev_per_params = {'0': { type: 'update',
-                                    id: event_performer.id,
-                                    event_program_id: event_performer.event_program.id,
-                                    full_name: '' } }
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": ev_per_params
-            event_performer.reload
-            expect(event_performer.performer_id).not_to eq(diff_performer.id)
+         context 'without login' do
+            before(:each) do |example|
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+            end
+
+            it "doesn't destroy the event_performer", :skip_before do
+               expect{ patch :update,
+                       id: event,
+                       event_program: @ev_program_params,
+                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'is redirected to edit action' do
-            ev_per_params = {'0': { type: 'create',
-                                    id: event_performer.id,
-                                    event_program_id: event_performer.event_program.id,
-                                    full_name: '' } }
-            patch :update, id: @event, event_program: @ev_pro_params, "event_performer-0": ev_per_params
-            expect(response).to redirect_to(edit_event_performer_url(@event))
+         context 'with invalid or empty params' do
+            before(:each) do |example|
+               pending 'trying to build 404 page for activerecord error exception'
+               login_as(user)
+               @ev_performer_params[:'0'][:id] = nil
+               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+            end
          end
       end
    end

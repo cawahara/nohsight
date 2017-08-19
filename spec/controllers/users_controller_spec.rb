@@ -3,6 +3,27 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
    include SpecTesthelper
 
+   shared_examples 'occurs an error' do |action|
+      before(:each) do
+         pending "it needs to get response status 404 from its controller and relative view"
+         get :action
+      end
+      it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+      it { expect(response).to have_http_status(404) }
+   end
+
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
+
    describe 'GET #new' do
       context 'accessing normally' do
          before(:each) do
@@ -13,9 +34,7 @@ RSpec.describe UsersController, type: :controller do
             expect(assigns(:user)).to be_a_new(User)
          end
 
-         it "returns response status 200" do
-            expect(response).to have_http_status(200)
-         end
+         it_behaves_like('returning success response', false)
       end
    end
 
@@ -39,28 +58,17 @@ RSpec.describe UsersController, type: :controller do
             expect(assigns(:events).count).to eq(3)
          end
 
-         it 'returns response status 200' do
-            expect(response).to have_http_status(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without user params' do
-         it 'occurs an error' do
-            # :TODO: 下記エラー発生時に専用の404ページに飛ぶ
-            expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
-         end
-
-         it "returns response status 404" do
-            pending "it needs to get response status 404 from its controller and relative view"
-            get :show
-            expect(response).to have_http_status(404)
-         end
+         it_behaves_like('occurs an error', 'show')
       end
    end
 
    describe 'GET #edit' do
       let(:user) { create(:controller_user) }
-      context 'with user params and login' do
+      context 'with user params' do
          before(:each) do
             login_as(user)
             get :edit, id: user
@@ -70,9 +78,7 @@ RSpec.describe UsersController, type: :controller do
             expect(assigns(:user)).to eq(user)
          end
 
-         it 'returns response status 200' do
-            expect(response).to have_http_status(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
@@ -80,13 +86,7 @@ RSpec.describe UsersController, type: :controller do
             get :edit, id: user
          end
 
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'with different user params from logged one' do
@@ -96,13 +96,7 @@ RSpec.describe UsersController, type: :controller do
             get :edit, id: diff_user
          end
 
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to root action' do
-            expect(response).to redirect_to(root_url)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
 
       context 'without user params' do
@@ -110,79 +104,53 @@ RSpec.describe UsersController, type: :controller do
             login_as(user)
          end
 
-         it 'occurs an error' do
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
-         end
-
-         it "returns response status 404" do
-            pending "it needs to get response status 404 from its controller and relative view"
-            get :edit
-            expect(response).to have_http_status(404)
-         end
+         it_behaves_like('occurs an error', 'edit')
       end
    end
 
    describe 'POST #create' do
-      let(:user_params) { attributes_for(:controller_user) }
 
       context 'with valid params' do
+         let(:user_params) { attributes_for(:controller_user) }
+         before(:each) do |example|
+            post :create, user: user_params unless example.metadata[:skip_before]
+         end
+
          it 'assigns @user as a created one' do
-            post :create, user: user_params
             expect(assigns(:user)).to be_persisted
          end
 
-         it 'creates a new user into the database' do
+         it 'creates a new user into the database', :skip_before do
             expect{ post :create, user: user_params }.to change(User, :count).by(1)
          end
 
-         it 'returns response status 302' do
-            post :create, user: user_params
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to root url' do
-            post :create, user: user_params
-            expect(response).to redirect_to(root_url)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
 
       context 'with invalid params' do
-         before(:each) do
-            user_params[:name] = nil
+         let(:user_params) { attributes_for(:controller_user, :invalid_params) }
+         before(:each) do |example|
+            post :create, user: user_params unless example.metadata[:skip_before]
          end
 
-         it "doesn't create a user" do
+         it "doesn't create a user", :skip_before do
             expect{ post :create, user: user_params }.to change(User, :count).by(0)
          end
 
-         it "returns response status 200" do
-            post :create, user: user_params
-            expect(response).to have_http_status(200)
-         end
-
-         it 'renders new template' do
-            post :create, user: user_params
-            expect(response).to render_template(:new)
-         end
+         it_behaves_like('returning success response', true, 'new')
       end
 
-      context 'without agreed the site convention' do
+      context 'without agreed the convention' do
+         let(:user_params) { attributes_for(:controller_user, :not_agreed) }
          before(:each) do
-            user_params['agreement'] = false
+            post :create, user: user_params
          end
 
-         it "doesn't create a user" do
+         it "doesn't create a user", :skip_before do
             expect{ post :create, user: user_params }.to change(User, :count).by(0)
          end
 
-         it "returns response status 200" do
-            expect(response).to have_http_status(200)
-         end
-
-         it 'renders new template' do
-            post :create, user: user_params
-            expect(response).to render_template(:new)
-         end
+         it_behaves_like('returning success response', true, 'new')
       end
    end
 
@@ -199,14 +167,20 @@ RSpec.describe UsersController, type: :controller do
             user.reload
             expect(user.name).to eq('Jackson')
          end
+      end
 
-         it 'returns response status 302' do
-            expect(response).to have_http_status(302)
+      context 'with invalid params' do
+         before(:each) do
+            login_as(user)
+            patch :update, id: user, user: attributes_for(:controller_user, :invalid_params)
          end
 
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(user_url(user))
+         it "doesn't change user attributes" do
+            user.reload
+            expect(user.name).not_to eq('')
          end
+
+         it_behaves_like('returning success response', true, 'edit')
       end
 
       context 'without login' do
@@ -219,33 +193,7 @@ RSpec.describe UsersController, type: :controller do
             expect(user.name).not_to eq('Jackson')
          end
 
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
-      end
-
-      context 'with invalid params' do
-         before(:each) do
-            login_as(user)
-            patch :update, id: user, user: attributes_for(:controller_user, name: '')
-         end
-
-         it "doesn't change user attributes" do
-            user.reload
-            expect(user.name).not_to eq('')
-         end
-
-         it "returns response status 200" do
-            expect(response).to have_http_status(200)
-         end
-
-         it 'renders edit template' do
-            expect(response).to render_template(:edit)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'with different user params from logged one' do
@@ -260,13 +208,7 @@ RSpec.describe UsersController, type: :controller do
             expect(diff_user.name).not_to eq('Jackson')
          end
 
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to root action' do
-            expect(response).to redirect_to(root_url)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
    end
 
@@ -274,60 +216,42 @@ RSpec.describe UsersController, type: :controller do
       let!(:user) { create(:controller_user) }
 
       context 'with valid user params' do
-         before(:each) do
+         before(:each) do |example|
             login_as(user)
+            delete :destroy, id: user unless example.metadata[:skip_before]
          end
 
-         it "destroys the logged user" do
+         it "destroys the logged user", :skip_before do
             expect{ delete :destroy, id: user }.to change(User, :count).by(-1)
          end
 
-         it 'returns response status 302' do
-            delete :destroy, id: user
-            expect(response).to have_http_status(302)
-         end
-
-         it "is redirected to root action" do
-            delete :destroy, id: user
-            expect(response).to redirect_to(root_url)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
 
       context 'without login' do
-         it "doesn't destroy user" do
+         before(:each) do |example|
+            delete :destroy, id: user unless example.metadata[:skip_before]
+         end
+
+         it "doesn't destroy user", :skip_before do
             expect{ delete :destroy, id: user }.to change(User, :count).by(0)
          end
 
-         it 'returns response status 302' do
-            delete :destroy, id: user
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirect_to login action' do
-            delete :destroy, id: user
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'with different user params from logged one' do
          let!(:diff_user) { create(:different_user) }
-         before(:each) do
+         before(:each) do |example|
             login_as(user)
+            delete :destroy, id: diff_user unless example.metadata[:skip_before]
          end
 
-         it "doesn't destroy user" do
+         it "doesn't destroy user", :skip_before do
             expect{ delete :destroy, id: diff_user }.to change(User, :count).by(0)
          end
 
-         it 'returns response status 302' do
-            delete :destroy, id: user
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirect_to root action' do
-            delete :destroy, id: diff_user
-            expect(response).to redirect_to(root_url)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
    end
 end
