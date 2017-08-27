@@ -20,6 +20,7 @@ module NohEvent
    Rails.application.configure do
       config.assets.paths << config.root.join('node_modules')
       config.serve_static_assets = true
+      config.assets.initialize_on_precompile = true
 
       config.generators do |g|
          g.test_framework :rspec,
