@@ -125,6 +125,7 @@ RSpec.feature "FirstFunctions", type: :feature do
          create(:controller_user_event, user: @user, event: @event)
          @ev_program = create(:controller_event_program, event: @event)
          @ev_performer = create(:controller_event_performer, event_program: @ev_program, performer: performer)
+         @ticket = create(:controller_ticket, event: @event)
 
          visit '/login'
          fill_in('email',     with: @user.email)
@@ -137,10 +138,14 @@ RSpec.feature "FirstFunctions", type: :feature do
 
          expect(page).to have_selector("#event-#{@event.id}")
          expect(page).to have_content("#{@event.title}")
-         expect(page).to have_selector('.event-program', count: @event.event_programs.count)
-         expect(page).to have_content("#{@ev_program.title}")
-         expect(page).to have_selector('.event-performer', count: EventPerformer.where(event_program_id: @event.event_programs.ids).count)
+         expect(page).to have_selector("#event-#{@event.id} .event-program", count: @event.event_programs.count)
+         expect(page).to have_content("#{@ev_program.genre}")
+         expect(page).to have_content("#{@ev_program.program.title}")
+         expect(page).to have_selector("#event-#{@event.id} .event-performer", count: EventPerformer.where(event_program_id: @event.event_programs.ids).count)
          expect(page).to have_content("#{@ev_performer.performer.full_name}")
+         expect(page).to have_selector("#event-#{@event.id} .ticket", count: @event.tickets.count)
+         expect(page).to have_content("#{@ticket.grade}")
+         expect(page).to have_content("#{@ticket.price}")
       end
 
       scenario 'shows event details' do
@@ -149,7 +154,7 @@ RSpec.feature "FirstFunctions", type: :feature do
          # ヘッドライン
          expect(page).to have_content("#{@event.title}")
          expect(page).to have_content("#{@event.place.title}")
-         expect(page).to have_content("#{@event.formatted_start_date}")
+         expect(page).to have_content("#{@event.start_date.format_with_weekday}")
 
          expect(page).to have_selector('.organizer a', count: 1)
          expect(page).to have_content("#{@user.name} (登録者)")
@@ -159,8 +164,30 @@ RSpec.feature "FirstFunctions", type: :feature do
          expect(page).to have_content('演目と出演者')
          expect(page).to have_selector('.event-program', count: @event.event_programs.count)
          expect(page).to have_content("#{@ev_program.genre}")
+         expect(page).to have_content("#{@ev_program.program.title}")
          expect(page).to have_selector('.event-performer', count: EventPerformer.where(event_program_id: @event.event_programs.ids).count)
          expect(page).to have_content("#{@ev_performer.performer.full_name}")
+
+         expect(page).to have_content('開催時間')
+
+         expect(page).to have_content('チケット料金')
+         expect(page).to have_selector('.ticket', count: @event.tickets.count)
+         expect(page).to have_content("#{@ticket.grade}")
+         expect(page).to have_content("#{@ticket.price}")
+
+         expect(page).to have_content('公演詳細')
+         expect(page).to have_content("#{@event.information}")
+
+         expect(page).to have_content('公式サイト')
+         expect(page).to have_content("#{@event.official_url}")
+
+         expect(page).to have_content('会場案内')
+         expect(page).to have_content("#{@event.place.address}")
+         expect(page).to have_content("#{@event.place.official_url}")
+         expect(page).to have_selector('.event-location')
+
+         expect(page).to have_selector('.user-command')
+         expect(page).to have_content('公演の編集')
       end
    end
 

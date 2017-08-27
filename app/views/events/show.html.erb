@@ -83,14 +83,14 @@
 
          <!-- 会場場所の地図 -->
          <% if @event.place.address %>
-         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event&.place.title %>"></iframe>
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event&.place&.title %>"></iframe>
          <% end %>
       </div>
    </div>
 
    <div class="user-command">
       <% if logged? %>
-         <% if @event.users.exists?(current_user) %>
+         <% if @event.users.find(current_user.id) %>
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
          <%= button_to '公演編集に参加する', user_events_path(@event), method: :post %>
