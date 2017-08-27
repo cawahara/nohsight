@@ -18,8 +18,14 @@ class EventsController < ApplicationController
       else
          events = upcoming_events(Event.all)
       end
-      flash.now[:warning] = '公演は見つかりませんでした。' if events.count == 0
+
       @event_count = events.count
+      if @event_count > 0
+         flash.now[:info] = "#{@event_count}件の公演が見つかりました。"
+      else
+         flash.now[:warning] = '公演は見つかりませんでした。'
+      end
+
       @events = events.page(params[:page]).per(5)
    end
 

@@ -11,7 +11,7 @@
          <h2 class="article-header"><%= event.title %></h2>
          <ul class="article-info">
             <li>会場：<%= event.place.title if event.place %></li>
-            <li>日時：<%= event.formatted_start_date %></li>
+            <li>日時：<%= event&.start_date&.format_with_weekday %></li>
          </ul>
 
          <div class="article-items">
@@ -37,7 +37,7 @@
          <h2 class="article-header"><%= event.title %></h2>
          <ul class="article-info">
             <li>会場：<%= event.place.title if event.place %></li>
-            <li>日時：<%= event.formatted_start_date %></li>
+            <li>日時：<%= event&.start_date&.format_with_weekday %></li>
          </ul>
 
          <div class="article-items">

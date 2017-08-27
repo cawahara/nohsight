@@ -4,14 +4,12 @@
       <h1><%= link_to event.title, event_path(event) %></h1>
    </div>
    <ul class="info">
-      <% if event.place %>
       <li class="place"><%= event.place.title %></li>
       <li class="place"><%= event.place.address %></li>
-      <% end %>
-      <li class="date"><%= event.formatted_start_date %></li>
+      <li class="date"><%= event&.start_date&.format_with_weekday %></li>
    </ul>
 
-   <table id="event-programs-info">
+   <table class="event-programs-info">
       <% event.event_programs.each do |ev_program| %>
       <tr class="event-program">
          <td><%= ev_program.genre %></td>
@@ -21,7 +19,7 @@
       <% ev_program.performers.each do |performer| %>
       <tr class="event-performer">
          <td></td>
-         <td><%= performer.style.role %></td>
+         <td></td>
          <td><%= performer.full_name %></td>
       </tr>
       <% end %>

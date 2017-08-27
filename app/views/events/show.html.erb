@@ -4,7 +4,7 @@
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title if @event.place %></li>
-         <li><%= @event.formatted_start_date %></li>
+         <li><%= @event&.start_date&.format_with_weekday %></li>
       </ul>
       <div class="organizer">
          <% @event.users.each do |user| %>
@@ -32,7 +32,7 @@
             <% ev_program.performers.each do |performer| %>
             <tr class="event-performer">
                <td></td>
-               <td><%= performer.style.role %></td>
+               <td></td>
                <td><%= performer.full_name %></td>
             </tr>
             <% end %>
@@ -42,14 +42,14 @@
 
       <div class="article">
          <h2 class="article-header">開催時間</h2>
-         <p><%= @event.formatted_start_date %></p>
+         <p><%= @event&.start_date&.format_with_weekday %></p>
       </div>
 
       <div class="article">
          <h2 class="article-header">チケット料金</h2>
          <table id="tickets-info">
             <% @event.tickets.each do |ticket| %>
-            <tr>
+            <tr class="ticket">
                <td><%= ticket.grade %></td>
                <td><%= ticket.price %>円</td>
             </tr>
@@ -73,19 +73,18 @@
 
       <div class="article">
          <h2 class="article-header">会場案内</h2>
-         <% if @event.place %>
          <ul>
-            <li>会場：<%= @event.place.title %></li>
-            <li>住所：<%= @event.place.address %></li>
+            <li>会場：<%= @event&.place&.title %></li>
+            <li>住所：<%= @event&.place&.address %></li>
             <% if @event.place.official_url %>
             <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank'%></li>
             <% end %>
          </ul>
 
          <!-- 会場場所の地図 -->
-         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event.place.title %>"></iframe>
+         <% if @event.place.address %>
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event&.place.title %>"></iframe>
          <% end %>
-         <div id="map"></div>
       </div>
    </div>
 

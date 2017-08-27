@@ -85,10 +85,15 @@ module SearchEngine
       return array.uniq
    end
 
+   def stage_query_in_keywd(keywds)
+      stages = where_to_array(Place, keywds, 'title')
+      return '' if stages == ''
+      return add_iterated_query(stages, 'id', 'place_id')
+   end
+
    def performer_query_in_keywd(keywds)
       performers = where_to_array(Performer, keywds, 'full_name')
       return '' if performers == ''
-
       ev_pers = find_to_array(EventPerformer, performers, 'performer_id', 'id')
       return '' if ev_pers == ''
       ev_pros = find_to_array(EventProgram, ev_pers, 'id', 'event_program_id')
@@ -116,6 +121,8 @@ module SearchEngine
       if search_params[:keywd] != ''
          keywds = search_params[:keywd].split(/\s/)
          keywd_query = ''
+         # 出演者
+         keywd_query += stage_query_in_keywd(keywds)
          # 出演者
          keywd_query += performer_query_in_keywd(keywds)
          # 演目

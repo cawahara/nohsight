@@ -11,4 +11,13 @@ module EventsHelper
       query = 'published = ? AND start_date >= ?'
       return events.where(query, true, Date.today).order(start_date: :desc)
    end
+
+   class ActiveSupport::TimeWithZone
+      WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土']
+
+      def format_with_weekday
+         weekday = WEEKDAYS[self.wday]
+         self.strftime("%Y/%m/%d %H:%M (#{weekday}曜日)")
+      end
+   end
 end

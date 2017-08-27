@@ -19,7 +19,7 @@
          </dl>
          <dl>
             <dt>キーワード</dt>
-            <dd><%= f.text_field :keywd, id: 'keywd' %></dd>
+            <dd><%= f.text_field :keywd, id: 'keywd', placeholder: '会場、演目、出演者などを入力' %></dd>
          </dl>
          <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>

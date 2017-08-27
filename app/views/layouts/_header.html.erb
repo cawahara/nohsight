@@ -4,7 +4,7 @@
      <h1><%= link_to "Noh-Event(仮)", dashboard_path %></h1>
 
      <ul>
-         <li class="header-btn"><a href="#"><%= fa_icon('search') %></a></li>
+         <li class="header-btn"><%= fa_icon('search') %></li>
          <% if logged? %>
          <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('ellipsis-v') %></li>
@@ -20,7 +20,7 @@
      <ul id="dropdown-search" class="dropdown-lists">
       <li id="search-form">
           <%= form_for(:easy_search, url: events_path, method: :get) do |f| %>
-             <%= f.text_field :keywd %>
+             <%= f.text_field :keywd, placeholder: '会場、演目、出演者などを入力' %>
              <%= button_tag(type: 'submit') do %>
                 <i class="fa fa-search"></i>
              <% end %>
