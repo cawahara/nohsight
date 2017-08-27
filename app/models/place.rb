@@ -2,7 +2,6 @@
 
 class Place < ApplicationRecord
    has_many :events,       dependent: :destroy
-   has_many :programs,     dependent: :destroy
    # REVIEW: Placeレコードが消えた時の関連Eventの処置(同時に消すべきでしょうか？)
 
    validates :title,       presence: true

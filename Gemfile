@@ -32,11 +32,11 @@ gem 'uglifier',                '~> 2.6.1'
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
 # gem 'redis', '~> 3.0'
 gem 'therubyracer', platforms: :ruby
+gem 'spring-commands-rspec'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
    # Add for debug (change from default gem: byebug)
-   gem 'capybara', '~> 2.7', '>= 2.7.1'
    gem 'factory_girl_rails', '~> 4.5'
    gem 'pry-byebug'
    gem 'pry-rails'
@@ -58,6 +58,10 @@ group :test do
    gem 'minitest-reporters',          '~> 1.1.9'         # テスト結果をプログレスバーで表示
    gem 'rails-controller-testing',    '0.1.1'            # assigns関数の追加
    gem 'timecop'                                         # テスト環境で時間操作
+   gem 'poltergeist', '~> 1.10'
+   gem 'capybara', '~> 2.7', '>= 2.7.1'
+   gem 'database_cleaner'
+   gem 'selenium-webdriver'
 end
 
 # デフォルトで配備

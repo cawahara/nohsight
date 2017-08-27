@@ -5,12 +5,14 @@
       <input v-bind:name="getColumn(tag_id, 'event_id')" type="hidden" v-bind:value="event_id">
       <div class="sm-form">
          <label>客席</label>
-         <input v-bind:name="getColumn(tag_id, 'grade')" type="text" v-bind:value="grade">
+         <input v-bind:id="getColumn(tag_id, 'grade')"
+         v-bind:name="getColumn(tag_id, 'grade')" type="text" v-bind:value="grade">
       </div>
 
       <div class="sm-form">
          <label>料金</label>
-         <input v-bind:name="getColumn(tag_id, 'price')" type="text" v-bind:value="price">
+         <input v-bind:id="getColumn(tag_id, 'price')"
+         v-bind:name="getColumn(tag_id, 'price')" type="text" v-bind:value="price">
       </div>
 
       <ul v-if=" mode == 'create' " class="item-icons">
@@ -46,6 +48,22 @@
             el.parentNode.removeChild(el)
          },
          getColumn: mixins.getColumn
+      },
+      mounted: function(){
+         if(this.ticket.render_params != false){
+            this.grade = this.ticket.render_params.grade
+            this.price = this.ticket.render_params.price
+            var input_columns = { grade: this.ticket.render_params.grade,
+                                  price: this.ticket.render_params.price }
+            for(var key in input_columns){
+               var input_tag = document.getElementById(this.getColumn(this.tag_id, key))
+               if(input_columns[key].length == 0){
+                  input_tag.className = 'field_with_errors'
+               }else if(key == 'price' && /[^0-9]+/.test(input_columns[key]) == true){
+                  input_tag.className = 'field_with_errors'
+               }
+            }
+         }
       }
    }
 </script>

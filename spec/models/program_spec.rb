@@ -4,18 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Program, type: :model do
    describe '#association' do
-      context 'related to place' do
-         it "is 'belongs to' attribute" do
-            association = described_class.reflect_on_association(:place)
-            expect(association.macro).to eq(:belongs_to)
-         end
-
-         it 'shows that program belongs to place' do
-            program = create(:model_program, :start_from_this)
-            expect(program.place).to be_truthy
-         end
-      end
-
       context 'related to event_programs' do
          it "is 'has many' attribute" do
             association = described_class.reflect_on_association(:event_programs)
@@ -47,10 +35,6 @@ RSpec.describe Program, type: :model do
             program.destroy
          end
 
-         it "doesn't delete relative place" do
-            expect(program.place).to be_truthy
-         end
-
          it 'deletes relative event_programs' do
             expect(program.event_programs.count).to eq(0)
          end
@@ -64,7 +48,7 @@ RSpec.describe Program, type: :model do
    describe '#validation' do
       let(:program) { build(:model_program) }
 
-      it 'is valid with title, category, shimai, duration, and place_id' do
+      it 'is valid with title, category, shimai, and duration' do
          expect(program).to be_valid
       end
 

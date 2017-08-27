@@ -19,12 +19,12 @@
       </div>
       <div class="sm-form">
          <label>種類</label>
-         <input v-bind:name="getColumn(tag_id, 'genre')" type="text" v-model:value="genre">
+         <input v-bind:id="getColumn(tag_id, 'genre')" v-bind:name="getColumn(tag_id, 'genre')" type="text" v-model:value="genre">
       </div>
 
       <div class="sm-form">
-         <label>流派</label>
-         <input v-bind:name="getColumn(tag_id, 'style')" type="text" v-model:value="style">
+         <label>種類</label>
+         <input>
       </div>
 
       <ul v-if=" mode == 'create' " class="item-icons">
@@ -51,7 +51,6 @@
             tag_id:       this.ev_program.tag_id,
             event_id:     this.ev_program.event_id,
             genre:        this.ev_program.genre,
-            style:        this.ev_program.style,
             search_query: { word: this.ev_program.title, focus: false }
          }
       },
@@ -80,8 +79,22 @@
          },
          getColumn: mixins.getColumn
       },
-      created: function(){
+      mounted: function(){
          window.addEventListener('click', this.toggleSelector)
+
+         if(this.ev_program.render_params != false){
+            this.genre = this.ev_program.render_params.genre
+            this.search_query.word = this.ev_program.render_params.title
+            var input_columns = { genre: this.ev_program.render_params.genre,
+                                  title: this.ev_program.render_params.title }
+
+            for(var key in input_columns){
+               if(input_columns[key].length == 0){
+                  var input_tag = document.getElementById(this.getColumn(this.tag_id, key))
+                  input_tag.className = 'field_with_errors'
+               }
+            }
+         }
       }
    }
 </script>

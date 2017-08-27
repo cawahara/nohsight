@@ -1,8 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-spring:
-   user:       pupil
-   place_id:      1
-   title:      春の能楽公演会
-   start_date: <%= Date.today %>
-   published: true

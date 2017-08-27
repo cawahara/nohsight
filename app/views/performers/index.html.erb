@@ -1,0 +1,5 @@
+<% @performers.each do |performer| %>
+<ul>
+   <li><%= link_to performer.full_name, performer_path(performer)  %></li>
+</ul>
+<% end %>

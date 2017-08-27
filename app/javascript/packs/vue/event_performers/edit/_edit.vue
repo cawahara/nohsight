@@ -3,18 +3,21 @@
       <div class="lg-form vertical-division">
          <label>演者：</label>
          <div class="vertical-section">
-            <event-performers-form
-               v-for="ev_performer in ev_performers"
-               :ev_program="ev_program"
-               :ev_performer="ev_performer"
-               :performers="performers"
-            ></event-performers-form>
+               <event-performers-form
+                  v-for="ev_performer in ev_performers"
+                  v-if="ev_performer.mode != 'create'"
+                  :ev_program="ev_program"
+                  :ev_performer="ev_performer"
+                  :performers="performers"
+               ></event-performers-form>
 
-            <event-performers-new
-               :ev_program="ev_program"
-               :performers="performers"
-               :inherit_tag_id="tag_id"
-            ></event-performers-new>
+               <event-performers-new
+                  :ev_program="ev_program"
+                  :performers="performers"
+                  :inherit_tag_id="tag_id"
+                  :render_params="render_params"
+               ></event-performers-new>
+            </div>
          </div>
       </div>
    </div>
@@ -34,12 +37,22 @@
       },
       data: function(){
          return {
-            tag_id:  this.ev_performers.length
+            tag_id:  this.ev_performers.length,
+            render_params: []
          }
       },
       components: { 'event-performers-form': event_performers_form,
                     'event-performers-new': event_performers_new },
-      methods: { getColumn: mixins.getColumn }
+      methods: { getColumn: mixins.getColumn },
+      created: function(){
+
+         for(var key in this.ev_performers){
+            if(this.ev_performers[key].mode == 'create'){
+               this.render_params.push(this.ev_performers[key].render_params)
+            }
+
+         }
+      }
    }
 </script>
 

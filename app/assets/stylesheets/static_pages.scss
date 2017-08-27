@@ -89,13 +89,13 @@
                width: calc(50% - 23px) !important;
             }
 
-            input.location-selection {
+            input#locations {
                &:hover {
                   cursor: text;
                }
             }
 
-            div.search-location {
+            div#locations-selection {
                position: absolute;
                z-index: 2;
                width: calc(100% - 22px);

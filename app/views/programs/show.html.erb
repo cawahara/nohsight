@@ -1,0 +1,32 @@
+<div id="programs-show">
+   <div class="program-info">
+
+      <%= content_tag :div,
+         id: 'programs-show-vue',
+         data: { title: @program.title }.to_json do %>
+         </div>
+      <% end %>
+
+      <ul>
+         <li class="title"><%= @program.title %></li>
+         <li class="category"><%= @program.category %></li>
+         <li class="shimai"><%= @program.shimai %></li>
+         <li class="duration"><%= @program.duration %>分</li>
+         <li class="created-at">登録日：<%= @program.created_at.strftime("%Y/%m/%d") %></li>
+      </ul>
+   </div>
+
+   <div class="program-command">
+      <%= link_to '情報の編集', edit_program_path(@program) %>
+   </div>
+
+   <div class="section">
+      <h1 class="section-header"><%= @program.title %>が行われる公演</h1>
+      <% if @events.count > 0 %>
+      <%= render 'shared/event_articles' %>
+
+      <% else %>
+      <p class="port-link">関連する公演はありません</p>
+      <% end %>
+   </div>
+</div>

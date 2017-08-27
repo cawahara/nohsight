@@ -2,8 +2,6 @@ require 'factory_girl'
 
 FactoryGirl.define do
    factory :model_program, class: Program do
-      association :place, factory: :model_place
-
       title       'Sample Program'
       category    '能'
       shimai      true
@@ -17,8 +15,6 @@ FactoryGirl.define do
    end
 
    factory :another_program, class: Program do
-      association :place, factory: :another_place
-
       title       'Another Program'
       category    '能'
       shimai      true
@@ -32,8 +28,6 @@ FactoryGirl.define do
    end
 
    factory :controller_program, class: Program do
-      association :place, factory: :controller_place
-
       title       'Controller Program'
       category    '能'
       shimai      true
@@ -44,11 +38,21 @@ FactoryGirl.define do
             FactoryGirl.create(:controller_event_program, program: program)
          end
       end
+
+      trait :invalid_params do
+         title  nil
+      end
+
+      trait :program_show_action do
+         after(:create) do |program|
+            5.times do |n|
+               FactoryGirl.create(:controller_event_program, program: program)
+            end
+         end
+      end
    end
 
    factory :different_program, class: Program do
-      association :place, factory: :different_place
-
       title       'Different Program'
       category    '能'
       shimai      true
@@ -62,22 +66,23 @@ FactoryGirl.define do
    end
 
    factory :first_search_program, class: Program do
-      association :place, factory: :search_program_place
-
       title       '橋弁慶'
       category    '能'
       shimai      true
       duration    90
-
    end
 
    factory :second_search_program, class: Program do
-      association :place, factory: :search_program_place
-
       title       '隅田川'
       category    '能'
       shimai      true
       duration    90
+   end
 
+   factory :third_search_program, class: Program do
+      title       '殺生積'
+      category    '能'
+      shimai      true
+      duration    90
    end
 end

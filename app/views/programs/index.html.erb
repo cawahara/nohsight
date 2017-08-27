@@ -1,0 +1,5 @@
+<% @programs.each do |program| %>
+<ul>
+   <li><%= link_to program.title, program_path(program)  %></li>
+</ul>
+<% end %>

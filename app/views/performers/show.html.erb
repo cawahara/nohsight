@@ -1,0 +1,32 @@
+<div id="performers-show">
+   <div class="performer-info">
+
+      <%= content_tag :div,
+         id: 'performers-show-vue',
+         data: { title: @performer.full_name }.to_json do %>
+         </div>
+      <% end %>
+
+      <ul>
+         <li class="full_name"><%= @performer.full_name %></li>
+         <li class="last_name"><%= @performer.last_name %></li>
+         <li class="first_name"><%= @performer.first_name %></li>
+         <li class="style"><%= @performer.style.title %>分</li>
+         <li class="created-at">登録日：<%= @performer.created_at.strftime("%Y/%m/%d") %></li>
+      </ul>
+   </div>
+
+   <div class="performer-command">
+      <%= link_to '情報の編集', edit_performer_path(@performer) %>
+   </div>
+
+   <div class="section">
+      <h1 class="section-header"><%= @performer.full_name %>が出演する公演</h1>
+      <% if @events.count > 0 %>
+      <%= render 'shared/event_articles' %>
+
+      <% else %>
+      <p class="port-link">関連する公演はありません</p>
+      <% end %>
+   </div>
+</div>

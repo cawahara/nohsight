@@ -136,29 +136,16 @@ FactoryGirl.define do
          FactoryGirl.create(:fifth_search_event_program, event: event)
       end
    end
-=begin
-   factory :diff_event, class: Event do
-      association :place, factory: :model_place
 
-      title          'Different Event'
+   factory :sixth_search_event, class: Event do
+      association :place, factory: :third_search_place
+
+      title          '某公民館公演その一'
       start_date     Date.today
-      information    'It will be the best event for you!'
-      official_url   'http//www.differentevent.com'
       published      true
 
-      initialize_with { Event.find_or_create_by(title: title) }
+      after(:create) do |event|
+         FactoryGirl.create(:sixth_search_event_program, event: event)
+      end
    end
-
-   factory :admin_event, class: Event do
-      association :place, factory: :admin_place
-
-      title          'Admin Event'
-      start_date     Date.today
-      information    'It will be the best event for you!'
-      official_url   'http//www.adminevent.com'
-      published      true
-
-      initialize_with { Event.find_or_create_by(title: title) }
-   end
-=end
 end

@@ -1,24 +1,28 @@
 # frozen_string_literal: true
 
 class PerformersController < ApplicationController
-=begin
+
    before_action :logged_in?
 
-   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
+   # REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
    def index
       @performers = Performer.all
    end
 
    def show
       @performer = Performer.find(params[:id])
+      ev_programs = @performer.event_programs
+      @events = public_events(Event.where(id: ev_programs.pluck(:event_id))).order(start_date: :desc).limit(3)
    end
 
    def new
       @performer = Performer.new
+      @styles = Style.all
    end
 
    def edit
       @performer = Performer.find(params[:id])
+      @styles = Style.all
    end
 
    def create
@@ -47,10 +51,11 @@ class PerformersController < ApplicationController
       @performer = Performer.find(params[:id])
       if @performer.destroy
          flash['info'] = '演者を削除しました'
+         redirect_to(performers_url)
       else
          flash['danger'] = '演者を削除できません'
+         redirect_to(performer_url(@performer))
       end
-      redirect_to(performers_url)
    end
 
    private
@@ -61,5 +66,4 @@ class PerformersController < ApplicationController
                                         :first_name,
                                         :style_id)
    end
-=end
 end

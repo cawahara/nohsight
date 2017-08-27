@@ -3,43 +3,66 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
    include SpecTesthelper
 
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
+
+   let(:user) { create(:controller_user) }
+
    describe 'GET #new' do
-      context 'access' do
-         it 'returns response status with 200' do
+      context 'accessing normally' do
+         before(:each) do
             get :new
-            expect(response.status).to eq(200)
          end
+
+         it_behaves_like('returning success response', false)
+      end
+
+      context 'with login' do
+         before(:each) do
+            login_as(user)
+            get :new
+         end
+
+         it 'deletes user session' do
+            expect(controller.session[:user_id]).to be_falsey
+         end
+
+         it_behaves_like('returning success response', false)
       end
    end
 
    describe 'POST #create' do
-      let(:user) { create(:model_user) }
-      context 'with valid session param' do
+      context 'with valid params' do
          before(:each) do
             post :create, params: { session: { email: user.email, password: 'password' } }
          end
 
-         it 'gives a session params' do
+         it 'gives a session id' do
             expect(controller.session[:user_id]).to eq(user.id)
          end
 
-         it 'is redirected to dashboard action' do
-            expect(response).to redirect_to(dashboard_url)
-         end
+         it_behaves_like('returning redirection response', '/dashboard')
       end
 
-      context 'with invalid session param' do
+      context 'with invalid params' do
          before(:each) do
             post :create, params: { session: { email: user.email, password: '' } }
          end
 
-         it 'gives a session params' do
-            expect(controller.session[:user_id]).to be_nil
+         it "doesn't give any session id" do
+            expect(controller.session[:user_id]).to be_falsey
          end
 
-         it 'is redirected to dashboard action' do
-            expect(response).to render_template(:new)
-         end
+         it_behaves_like('returning success response', true, 'new')
       end
    end
 
@@ -52,19 +75,18 @@ RSpec.describe SessionsController, type: :controller do
          end
 
          it 'makes a session id empty' do
-            expect(controller.session[:user_id]).to be_nil
+            expect(controller.session[:user_id]).to be_falsey
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :destroy, id: user
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
    end
 end

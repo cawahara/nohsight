@@ -94,18 +94,7 @@ FactoryGirl.define do
          FactoryGirl.create(:third_search_user_event, user: user)
          FactoryGirl.create(:fourth_search_user_event, user: user)
          FactoryGirl.create(:fifth_search_user_event, user: user)
+         FactoryGirl.create(:sixth_search_user_event, user: user)
       end
    end
-=begin
-   factory :admin_user, class: User do
-      name                  'Pat'
-      email                 'pat@gmail.com'
-      information           'Nice to be with you.'
-      password              'password'
-      password_confirmation 'password'
-      agreement true
-
-      initialize_with { User.find_or_create_by(email: email) }
-   end
-=end
 end

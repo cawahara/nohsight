@@ -28,16 +28,6 @@ class EventsController < ApplicationController
    end
 
    def show
-=begin REVIEW: 非公開に
-      locations = relative_program_locations(@event)
-      respond_to do |format|
-         format.html
-         format.json do
-            render json: { event:     @event,
-                           locations: locations }
-         end
-      end
-=end
    end
 
    def edit
@@ -120,15 +110,5 @@ class EventsController < ApplicationController
       params[:event_place]['mode'] = 'update'
       params[:event_place]['id'] = params[:id]
       return params[:event_place]
-   end
-
-   def relative_program_locations(event)
-      locations = []
-      if event.event_programs.count.positive?
-         event.event_programs.each do |ev_program|
-            locations << ev_program.program.place
-         end
-      end
-      return locations
    end
 end

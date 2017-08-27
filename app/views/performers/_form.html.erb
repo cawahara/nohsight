@@ -1,0 +1,30 @@
+<%= form_for(@performer) do |f| %>
+<% err_msg = f.object.errors %>
+<div class="form-section">
+   <h1 class="form-header">情報を入力</h1>
+
+   <div class="lg-form">
+      <label>本名</label><span class="required">必須</span>
+      <%= f.text_field :full_name %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
+   </div>
+   <div class="lg-form">
+      <label>姓名(ひらがな)</label><span class="required">必須</span>
+      <%= f.text_field :last_name %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+   </div>
+   <div class="lg-form">
+      <label>氏名(ひらがな)</label><span class="required">必須</span>
+      <%= f.text_field :first_name %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+   </div>
+
+   <div class="lg-form">
+      <label>流派</label><span class="required">必須</span><br>
+      <%= f.select :style, @styles.map{ |style| [style.title, style.id]}, include_blank: true %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+   </div>
+</div>
+
+<%= f.submit "登録する", class: 'form-submit' %>
+   <% end %>

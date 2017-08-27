@@ -18,24 +18,25 @@
       props: [ 'values' ],
       data: function(){
          return {
-               programs:   this.values.programs,
-               tag_id:     this.values.id_num,
-               event_id:   this.values.event_id
+               programs:      this.values.programs,
+               tag_id:        this.values.tag_id,
+               event_id:      this.values.event_id,
+               render_params: this.values.render_params
          }
       },
       components: { 'event-programs-form': event_programs_form },
       methods: {
-         addNewItem: function(){
+         addNewItem: function(render_params = false){
             new Vue({
                el: '.form-for-mount',
                data: {
                       ev_program: {
-                        event_id:    this.event_id,
-                        tag_id:      this.tag_id,
-                        mode:        'create',
-                        style:       '',
-                        genre:       '',
-                        title:       ''
+                        event_id:      this.event_id,
+                        tag_id:        this.tag_id,
+                        mode:          'create',
+                        genre:         '',
+                        title:         '',
+                        render_params: render_params
                      },
                       programs: this.values.programs
                   },
@@ -49,6 +50,13 @@
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
             this.tag_id += 1
+         }
+      },
+      mounted: function(){
+         if(this.render_params != false){
+            for(var key in this.render_params){
+               this.addNewItem(this.render_params[key])
+            }
          }
       }
    }

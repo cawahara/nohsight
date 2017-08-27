@@ -7,7 +7,7 @@ require 'json'
 class ApplicationController < ActionController::Base
    protect_from_forgery with: :exception
    include EventsHelper
-   include EventProgramsHelper
+   include PerformersHelper
    include SessionsHelper
 
    def logged_in?

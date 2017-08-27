@@ -18,22 +18,24 @@
       props: [ 'values' ],
       data: function(){
          return {
-            tag_id: this.values.id_num,
-            event_id:  this.values.event_id
+            tag_id:           this.values.id_num,
+            event_id:         this.values.event_id,
+            render_params:    this.values.render_params
          }
       },
       components: { 'tickets-form': tickets_form },
       methods: {
-         addNewItem: function(){
+         addNewItem: function(render_params = false){
             new Vue({
                el: '.form-for-mount',
                data: {
                   ticket: {
-                     event_id: this.event_id,
-                     grade: '',
-                     price: '',
-                     mode: 'create',
-                     tag_id: this.tag_id
+                     event_id:      this.event_id,
+                     grade:         '',
+                     price:         '',
+                     mode:          'create',
+                     tag_id:        this.tag_id,
+                     render_params: render_params
                   }
                },
                render(h){ return h(tickets_form, { props: { ticket: this.ticket }}) }
@@ -42,6 +44,13 @@
             node.className = "form-for-mount"
             document.getElementById('new-items').appendChild(node)
             this.tag_id += 1
+         }
+      },
+      mounted: function(){
+         if(this.render_params != false){
+            for(var key in this.render_params){
+               this.addNewItem(this.render_params[key])
+            }
          }
       }
    }

@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class ProgramsController < ApplicationController
-=begin
+
    before_action :logged_in?
 
-   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
+   # REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
    def index
       @programs = Program.all
    end
 
    def show
       @program = Program.find(params[:id])
+      @events = public_events(@program.events).order(start_date: :desc).limit(3)
    end
 
    def new
@@ -47,10 +48,11 @@ class ProgramsController < ApplicationController
       @program = Program.find(params[:id])
       if @program.destroy
          flash['info'] = '演目を削除しました'
+         redirect_to(programs_url)
       else
          flash['danger'] = '演目を削除できません'
+         redirect_to(program_url(@program))
       end
-      redirect_to(programs_url)
    end
 
    private
@@ -62,5 +64,4 @@ class ProgramsController < ApplicationController
                                       :duration,
                                       :place_id)
    end
-=end
 end

@@ -6,11 +6,9 @@
 
       <%= content_tag :div,
          id: "event-place-edit-vue",
-         data: {
-            event:   @event,
-            place:   @place,
-            places:  @places
-         }.to_json do %>
+         data: { event:   @event,
+                 place:   @place,
+                 places:  @places }.to_json do %>
       <% end %>
       <%= f.submit('保存', class: 'form-submit') %>
    </div>

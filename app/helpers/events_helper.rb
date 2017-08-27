@@ -11,5 +11,4 @@ module EventsHelper
       query = 'published = ? AND start_date >= ?'
       return events.where(query, true, Date.today).order(start_date: :desc)
    end
-   
 end

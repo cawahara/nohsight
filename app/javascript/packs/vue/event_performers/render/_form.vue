@@ -59,6 +59,7 @@
          switchMode: function(){
             if(this.mode == 'update'){
                this.mode = 'destroy'
+               this.search_query.word = this.ev_performer.full_name
             }else if(this.mode == 'destroy'){
                this.mode = 'update'
             }
@@ -73,8 +74,17 @@
          },
          getColumn: mixins.getColumn
       },
-      created: function(){
+      mounted: function(){
          window.addEventListener('click', this.toggleSelector)
+
+         if(this.ev_performer.render_params != false){
+            this.search_query.word = this.ev_performer.render_params.full_name
+
+            if(this.ev_performer.render_params.full_name.length == 0){
+               var input_tag = document.getElementById(this.getColumn('event_performer-' + this.ev_program.tag_id, this.tag_id, 'full_name'))
+               input_tag.className = 'field_with_errors'
+            }
+         }
       }
    }
 </script>

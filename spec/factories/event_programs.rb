@@ -5,7 +5,6 @@ FactoryGirl.define do
       association :event, factory: :model_event
       association :program, factory: :model_program
 
-      style 'Simple'
       genre 'Sample'
 
       trait :start_from_this do
@@ -19,7 +18,6 @@ FactoryGirl.define do
       association :event, factory: :another_event
       association :program, factory: :another_program
 
-      style 'Another'
       genre 'Sample'
 
       trait :start_from_this do
@@ -33,7 +31,6 @@ FactoryGirl.define do
       association :event, factory: :controller_event
       association :program, factory: :controller_program
 
-      style 'Controller'
       genre 'Sample'
 
       trait :start_from_this do
@@ -47,7 +44,6 @@ FactoryGirl.define do
       association :event, factory: :different_event
       association :program, factory: :different_program
 
-      style 'Different'
       genre 'Sample'
 
       trait :start_from_this do
@@ -61,7 +57,6 @@ FactoryGirl.define do
       association :event, factory: :first_search_event
       association :program, factory: :first_search_program
 
-      style 'Controller'
       genre 'Sample'
 
       after(:create) do |event_program|
@@ -73,7 +68,6 @@ FactoryGirl.define do
       association :event, factory: :second_search_event
       association :program, factory: :first_search_program
 
-      style 'Controller'
       genre 'Sample'
 
       after(:create) do |event_program|
@@ -85,7 +79,6 @@ FactoryGirl.define do
       association :event, factory: :third_search_event
       association :program, factory: :first_search_program
 
-      style 'Controller'
       genre 'Sample'
 
       after(:create) do |event_program|
@@ -97,7 +90,6 @@ FactoryGirl.define do
       association :event, factory: :fourth_search_event
       association :program, factory: :second_search_program
 
-      style 'Controller'
       genre 'Sample'
 
       after(:create) do |event_program|
@@ -109,11 +101,21 @@ FactoryGirl.define do
       association :event, factory: :fifth_search_event
       association :program, factory: :second_search_program
 
-      style 'Controller'
       genre 'Sample'
 
       after(:create) do |event_program|
          FactoryGirl.create(:fifth_search_event_performer, event_program: event_program)
+      end
+   end
+
+   factory :sixth_search_event_program, class: EventProgram do
+      association :event, factory: :sixth_search_event
+      association :program, factory: :third_search_program
+
+      genre 'Sample'
+
+      after(:create) do |event_program|
+         FactoryGirl.create(:sixth_search_event_performer, event_program: event_program)
       end
    end
 end

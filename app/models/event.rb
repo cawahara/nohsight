@@ -16,8 +16,7 @@ class Event < ApplicationRecord
    validates :published,   inclusion: { in: [true, false] }
 
    # TODO: イベント開催時、特定の項目を満たしていないとサイト上に公開できない仕様にする
-
-   def formatted_date
+   def formatted_start_date
       self.start_date.strftime('%Y/%m/%d %H:%M') if self.start_date
    end
 end

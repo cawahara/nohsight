@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
-=begin
+
    before_action :logged_in?
 
-   REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
+   # REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)
+
    def index
       @places = Place.all
    end
 
    def show
       @place = Place.find(params[:id])
+      @events = public_events(@place.events).order(start_date: :desc).limit(3)
    end
 
    def new
@@ -47,10 +49,12 @@ class PlacesController < ApplicationController
       @place = Place.find(params[:id])
       if @place.destroy
          flash['info'] = 'エリアを削除しました'
+         redirect_to(places_url)
       else
          flash['danger'] = 'エリアを削除できません'
+         redirect_to(place_url(@place))
       end
-      redirect_to(places_url)
+
    end
 
    private
@@ -60,5 +64,5 @@ class PlacesController < ApplicationController
                                     :address,
                                     :official_url)
    end
-=end
+
 end

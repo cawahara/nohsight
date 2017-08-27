@@ -3,33 +3,22 @@
 class EventPerformersController < ApplicationController
    include UpdateEventAssociations
    before_action :logged_in?
+   before_action :set_variables
 
    def edit
-      @event = Event.find(params[:id])
-      @ev_programs = @event.event_programs
-      @ev_performers = []
-      @ev_programs.each do |ev_program|
-         @ev_performers << ev_program.event_performers
-      end
-      @performers = Performer.all
-      @programs = Program.all
    end
 
    def update
-      # Update relative event perfs in all methods
-      @event = Event.find(params[:id])
-      ev_pro_infos = get_params('event_program')
-      ev_per_infos = insert_params(ev_pro_infos)
-      if ev_per_infos == false
-         flash['danger'] = '入力情報に不備があります'
-         # FIXME: renderアクションに変え、どの箇所に不備があるかを表示できるようにする
-         redirect_to(edit_event_performer_url(@event)) && return
+      ev_programs = get_params('event_program')
+      ev_performers = insert_params(ev_programs)
+      if ev_performers != false
+         update_performers(ev_performers)
+         flash[:success] = '演目を変更しました'
+         redirect_to(edit_event_port_url(@event))
+      else
+         flash['danger'] = '赤枠の項目内の入力情報に不備があります'
+         render 'event_performers/edit'
       end
-
-      update_performers(ev_per_infos)
-
-      flash[:success] = '演目を変更しました'
-      redirect_to(edit_event_port_url(@event))
    end
 
    private
@@ -50,5 +39,18 @@ class EventPerformersController < ApplicationController
       ev_per_infos.each do |ev_per_info|
          update_records(ev_per_info, EventPerformer.required_columns, EventPerformer)
       end
+   end
+
+   def set_variables
+      @event = Event.find(params[:id])
+      @ev_programs = @event.event_programs
+      @ev_performers = []
+      @ev_programs.each do |ev_program|
+         @ev_performers << ev_program.event_performers
+      end
+      @performers = Performer.all
+      @programs = Program.all
+
+      @render_params = params if params[:event_program]
    end
 end

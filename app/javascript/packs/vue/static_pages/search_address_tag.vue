@@ -1,7 +1,7 @@
 <template>
    <dd>
-      <input class="location-selection" readonly type="text" name="search[locations]" v-model:value="text_values" >
-      <div class="search-location" v-show="selector_activated">
+      <input id="locations" readonly type="text" name="search[locations]" v-model:value="text_values">
+      <div id="locations-selection" v-show="selector_activated">
          <dl v-for="area in areas">
             <dt>
                <input type="checkbox" v-bind:id="area.tag_id" v-bind:value="area.value" v-on:click="checkValue(area)">
@@ -29,8 +29,8 @@
       },
       methods: {
          toggleSelector: function(event){
-            var input_tag = document.getElementsByClassName('location-selection')[0]
-            var selector_tag = document.getElementsByClassName('search-location')[0]
+            var input_tag = document.getElementById('locations')
+            var selector_tag = document.getElementById('locations-selection')
             if(event.target == input_tag){
                this.selector_activated = !this.selector_activated
             }else if(!selector_tag.contains(event.target)){

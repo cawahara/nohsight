@@ -121,13 +121,7 @@ RSpec.describe TicketsController, type: :controller do
                        ticket: @ticket_params }.to change(Ticket, :count).by(0)
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_ticket_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 
@@ -187,13 +181,7 @@ RSpec.describe TicketsController, type: :controller do
                expect(ticket.grade).not_to eq(ticket_params[:grade])
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_ticket_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 

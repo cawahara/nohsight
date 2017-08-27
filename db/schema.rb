@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20170717113733) do
     t.string   "category"
     t.boolean  "shimai"
     t.integer  "duration"
-    t.integer  "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

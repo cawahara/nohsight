@@ -1,7 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-event_funabenkei:
-   program: funabenkei
-   event:   spring
-   style:   金剛流
-   genre:   能

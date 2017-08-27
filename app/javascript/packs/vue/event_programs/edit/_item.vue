@@ -2,7 +2,6 @@
    <div class="item-component" v-bind:class="ev_program.mode">
       <div class="show-item" v-show="ev_program.mode != 'update'">
          <p class="item-info">
-            {{ ev_program.style }}
             {{ ev_program.genre }}
             「{{ ev_program.title }}」
          </p>

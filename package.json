@@ -17,6 +17,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",
     "fs": "^0.0.1-security",
+    "geckodriver": "^1.8.1",
     "glob": "^7.1.2",
     "jquery": "^3.2.1",
     "jquery-datetimepicker": "^2.5.4",

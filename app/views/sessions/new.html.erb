@@ -1,4 +1,4 @@
-<div id="login">
+<div id="sessions-new">
    <div class="headline">
       <h1>ログイン</h1>
    </div>
@@ -9,11 +9,11 @@
 
       <div class="md-form">
          <label>Eメールアドレス</label>
-         <%= f.text_field :email %>
+         <%= f.text_field :email, id: 'email' %>
       </div>
       <div class="md-form">
          <label>パスワード</label>
-         <%= f.password_field :password %>
+         <%= f.password_field :password, id: 'password' %>
       </div>
    </div>
    <%= f.submit 'ログイン', class: 'form-submit' %>

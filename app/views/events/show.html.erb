@@ -1,11 +1,10 @@
 <div id="event-show">
    <!-- イベント概要 -->
-   <!-- FIXME: erbタグ内のif句をなくす方法 -->
    <div class="headline">
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title if @event.place %></li>
-         <li><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M") if @event.start_date %></li>
+         <li><%= @event.formatted_start_date %></li>
       </ul>
       <div class="organizer">
          <% @event.users.each do |user| %>
@@ -19,37 +18,43 @@
    </div>
 
    <!-- イベント基本情報 -->
-   <div class="section">
+   <div id="basic-info" class="section">
       <h1 class="section-header">基本情報</h1>
       <div class="article">
-         <h2 class="article-header">演目</h2>
-         <ul>
-         <% @event.event_programs.each do |ev_program| %>
-            <li>
-               <!-- TODO: tableタグに変えて各項目の表示位置を整えたい -->
-            <%= ev_program.style %>
-            <%= ev_program.genre %>
-            「<%= ev_program.program.title %>」
-            <% ev_program.event_performers.each do |ev_performer| %>
-               <%= ev_performer.performer.full_name %>
+         <h2 class="article-header">演目と出演者</h2>
+         <table id="event-programs-info">
+            <% @event.event_programs.each do |ev_program| %>
+            <tr class="event-program">
+               <td><%= ev_program.genre %></td>
+               <td>「<%= ev_program.program.title %>」</td>
+               <td></td>
+            </tr>
+            <% ev_program.performers.each do |performer| %>
+            <tr class="event-performer">
+               <td></td>
+               <td><%= performer.style.role %></td>
+               <td><%= performer.full_name %></td>
+            </tr>
             <% end %>
-            </li>
-         <% end %>
-         </ul>
+            <% end %>
+         </table>
       </div>
 
       <div class="article">
          <h2 class="article-header">開催時間</h2>
-         <p><%= @event.start_date.strftime("%Y年%m月%d日 %H:%M") if @event.start_date %></p>
+         <p><%= @event.formatted_start_date %></p>
       </div>
 
       <div class="article">
          <h2 class="article-header">チケット料金</h2>
-         <ul class="event-article">
+         <table id="tickets-info">
             <% @event.tickets.each do |ticket| %>
-               <li><%= ticket.grade %>：<%= ticket.price %>円</li>
+            <tr>
+               <td><%= ticket.grade %></td>
+               <td><%= ticket.price %>円</td>
+            </tr>
             <% end %>
-         </ul>
+         </table>
       </div>
 
       <% if @event.information != '' %>
@@ -72,7 +77,9 @@
          <ul>
             <li>会場：<%= @event.place.title %></li>
             <li>住所：<%= @event.place.address %></li>
-            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank' if @event.place.official_url %></li>
+            <% if @event.place.official_url %>
+            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank'%></li>
+            <% end %>
          </ul>
 
          <!-- 会場場所の地図 -->
@@ -82,25 +89,9 @@
       </div>
    </div>
 
-   <!-- 演目舞台の周辺スポット紹介 -->
-   <!--
-   <div class="section">
-      <h1 class="section-header">演目舞台の周辺スポット</h1>
-      <% @event.event_programs.each do |ev_program| %>
-      <div class="article">
-         <h2 class="article-header"><%= ev_program.program.title %>の周辺スポット</h2>
-         <div id="nearby-location-<%= ev_program.id %>" class="nearby-item">
-            <ul class="item-icons">
-               <li>表示<span class="btn"><i class="fa fa-angle-double-down"></i></span></li>
-            </ul>
-         </div>
-      </div>
-      <% end %>
-   </div>
--->
    <div class="user-command">
       <% if logged? %>
-         <% if @event.users.find(current_user.id) %>
+         <% if @event.users.exists?(current_user) %>
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
          <%= button_to '公演編集に参加する', user_events_path(@event), method: :post %>

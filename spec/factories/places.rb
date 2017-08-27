@@ -9,7 +9,6 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |place|
             FactoryGirl.create(:model_event, place: place)
-            FactoryGirl.create(:model_program, place: place)
          end
       end
    end
@@ -22,7 +21,6 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |place|
             FactoryGirl.create(:another_event, place: place)
-            FactoryGirl.create(:another_program, place: place)
          end
       end
    end
@@ -35,7 +33,18 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |place|
             FactoryGirl.create(:controller_event, place: place)
-            FactoryGirl.create(:controller_program, place: place)
+         end
+      end
+
+      trait :invalid_params do
+         title  nil
+      end
+
+      trait :place_show_action do
+         after(:create) do |place|
+            5.times do |n|
+               FactoryGirl.create(:controller_event, place: place)
+            end
          end
       end
    end
@@ -48,7 +57,6 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |place|
             FactoryGirl.create(:different_event, place: place)
-            FactoryGirl.create(:different_program, place: place)
          end
       end
    end
@@ -65,26 +73,9 @@ FactoryGirl.define do
       official_url 'http://www.butaicenter@www.com'
    end
 
-   factory :search_program_place, class: Place do
-      title        '五条大橋'
-      address      '京都府'
-      official_url 'http://www.gojohashi@www.com'
+   factory :third_search_place, class: Place do
+      title        '某公民館'
+      address      '奈良県'
+      official_url 'http://www.bohkominkan@www.com'
    end
-=begin
-   factory :alter_place, class: Place do
-      title        'Al_tower'
-      address      'kyoto'
-      official_url 'http://www.al_tower.com'
-
-      initialize_with { Place.find_or_create_by(title: title) }
-   end
-
-   factory :admin_place, class: Place do
-      title        'Ad_shrine'
-      address      'kyoto'
-      official_url 'http://www.ad_shrine.com'
-
-      initialize_with { Place.find_or_create_by(title: title) }
-   end
-=end
 end

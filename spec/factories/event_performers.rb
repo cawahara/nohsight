@@ -45,4 +45,9 @@ FactoryGirl.define do
       association :performer, factory: :second_search_performer
       association :event_program, factory: :fifth_search_event_program
    end
+
+   factory :sixth_search_event_performer, class: EventPerformer do
+      association :performer, factory: :third_search_performer
+      association :event_program, factory: :sixth_search_event_program
+   end
 end

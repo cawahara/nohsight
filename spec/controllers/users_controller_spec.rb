@@ -50,10 +50,6 @@ RSpec.describe UsersController, type: :controller do
             expect(assigns(:user)).to eq(user)
          end
 
-         it 'assigns @events' do
-            expect(assigns(:events)).to eq(@events)
-         end
-
          it 'gets 3 events' do
             expect(assigns(:events).count).to eq(3)
          end
@@ -109,7 +105,6 @@ RSpec.describe UsersController, type: :controller do
    end
 
    describe 'POST #create' do
-
       context 'with valid params' do
          let(:user_params) { attributes_for(:controller_user) }
          before(:each) do |example|

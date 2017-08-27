@@ -15,17 +15,6 @@ RSpec.describe Place, type: :model do
          end
       end
 
-      context 'related to programs' do
-         it "is 'has many' attribute" do
-            association = described_class.reflect_on_association(:programs)
-            expect(association.macro).to eq(:has_many)
-         end
-
-         it 'shows that place has many user_events' do
-            expect{ create(:model_place, :start_from_this) }.to change(Program, :count).by(1)
-         end
-      end
-
       context 'destroying dependency' do
          let(:place) { create(:model_place, :start_from_this) }
          let(:another_place) { create(:another_place, :start_from_this) }
@@ -39,14 +28,6 @@ RSpec.describe Place, type: :model do
 
          it "doesn't delete not relative events" do
             expect(another_place.events.count).not_to eq(0)
-         end
-
-         it 'deletes relative programs' do
-            expect(place.programs.count).to eq(0)
-         end
-
-         it "doesn't delete not relative programs" do
-            expect(another_place.programs.count).not_to eq(0)
          end
       end
    end

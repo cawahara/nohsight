@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Program < ApplicationRecord
-   belongs_to  :place
    has_many    :event_programs, dependent: :destroy
    has_many    :events,         through:   :event_programs
    # REVIEW: Programレコードが消えた時の関連EventProgramの処置(同時に消すべきでしょうか？)

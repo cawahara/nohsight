@@ -100,14 +100,6 @@ RSpec.describe EventProgram, type: :model do
          end
       end
 
-      context 'style' do
-         it 'is invalid with empty style' do
-            ev_program.style = nil
-            ev_program.valid?
-            expect(ev_program.errors[:style]).to include("can't be blank")
-         end
-      end
-
       context 'genre' do
          it 'is invalid with empty genre' do
             ev_program.genre = nil
@@ -119,7 +111,7 @@ RSpec.describe EventProgram, type: :model do
 
    context '#method' do
       it 'returns required columns' do
-         expect(EventProgram.required_columns).to eq(['event_id', 'program_id', 'genre', 'style'])
+         expect(EventProgram.required_columns).to eq(['event_id', 'program_id', 'genre'])
       end
    end
 end

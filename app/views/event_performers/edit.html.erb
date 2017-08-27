@@ -7,13 +7,13 @@
 
       <%= content_tag :div,
          id: 'event-performers-edit-vue',
-         data: {
-            event:            @event,
-            event_programs:   @ev_programs,
-            event_performers: @ev_performers,
-            performers:       @performers,
-            programs:         @programs
-         }.to_json do %><% end %>
+         data: { event:             @event,
+                 event_programs:    @ev_programs,
+                 event_performers:  @ev_performers,
+                 performers:        @performers,
+                 programs:          @programs,
+                 render_params:     @render_params }.to_json do %>
+      <% end %>
    </div>
    <%= f.submit('保存', class: 'form-submit') %>
    <% end %>

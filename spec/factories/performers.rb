@@ -41,6 +41,18 @@ FactoryGirl.define do
             FactoryGirl.create(:controller_event_performer, performer: performer)
          end
       end
+
+      trait :invalid_params do
+         full_name  nil
+      end
+
+      trait :performer_show_action do
+         after(:create) do |performer|
+            5.times do |n|
+               FactoryGirl.create(:controller_event_performer, performer: performer)
+            end
+         end
+      end
    end
 
    factory :different_performer, class: Performer do
@@ -73,14 +85,11 @@ FactoryGirl.define do
       first_name  'まさし'
    end
 
-=begin
-   factory :diff_performer, class: Performer do
-      association :style, factory: :model_style
+   factory :third_search_performer, class: Performer do
+      association :style, factory: :search_style
 
-      full_name   '田中 光圀'
-      last_name   'たなか'
-      first_name  'みつくに'
-
+      full_name   '石川 権兵衛'
+      last_name   'いしかわ'
+      first_name  'ごんべえ'
    end
-=end
 end

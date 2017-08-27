@@ -70,8 +70,7 @@ RSpec.describe EventProgramsController, type: :controller do
                                          id:       '',
                                          event_id: event.id,
                                          title:    program_params[:title],
-                                         genre:    'genre',
-                                         style:    'style' }}
+                                         genre:    'genre' }}
          end
          context 'with valid params' do
             before(:each) do |example|
@@ -127,13 +126,7 @@ RSpec.describe EventProgramsController, type: :controller do
                        event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_event_program_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 
@@ -146,8 +139,7 @@ RSpec.describe EventProgramsController, type: :controller do
                                          id:       ev_program.id,
                                          event_id: ev_program.event_id,
                                          title:    program_params[:title],
-                                         genre:    ev_program.genre,
-                                         style:    ev_program.style }}
+                                         genre:    ev_program.genre }}
          end
 
          context 'with valid params' do
@@ -201,13 +193,7 @@ RSpec.describe EventProgramsController, type: :controller do
                expect(ev_program.program).not_to eq(Program.find_by(title: program_params[:title]))
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_event_program_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 

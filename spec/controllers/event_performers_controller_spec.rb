@@ -134,13 +134,7 @@ RSpec.describe EventPerformersController, type: :controller do
                        'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_event_performer_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 
@@ -209,13 +203,7 @@ RSpec.describe EventPerformersController, type: :controller do
                expect(ev_performer.performer).not_to eq(Performer.find_by(full_name: performer_params[:full_name]))
             end
 
-            it "returns response status 302" do
-               expect(response).to have_http_status(302)
-            end
-
-            it 'is redirected to edit action' do
-               expect(response).to redirect_to(edit_event_performer_url(event))
-            end
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 

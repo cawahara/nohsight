@@ -29,11 +29,13 @@ RSpec.describe EventsController, type: :controller do
       # 下記ユーザーに関連するイベント群を同時に作成(全5件)
       let!(:user) { create(:search_user) }
 
-      shared_examples 'returning number of results' do |results|
+      shared_examples 'returning number of results' do
          before(:each) do
-            @results = results.nil? ? @events.count : results
+            @event_count = @events.count
+            @events = @events.limit(5)
          end
-         it { expect(assigns(:events).count).to eq(@results) }
+         it { expect(assigns(:event_count)).to eq(@event_count) }
+         it { expect(assigns(:events).count).to eq(@events.count) }
          it { expect(response).to have_http_status(200) }
       end
 
@@ -41,9 +43,10 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             # FIXME: userからリレーションする以外の方法でテストをパスしたい
             get :index
+            @events = Event.where(published: true)
          end
 
-         it_behaves_like('returning number of results', 5)
+         it_behaves_like('returning number of results')
       end
 
       context 'with easy search params' do
@@ -89,9 +92,10 @@ RSpec.describe EventsController, type: :controller do
          context 'with unmatched keywd params' do
             before(:each) do
                get :index, easy_search: { keywd: '???????' }
+               @events = Event.where("title LIKE '%???????%'")
             end
 
-            it_behaves_like('returning number of results', 0)
+            it_behaves_like('returning number of results')
          end
       end
 
@@ -185,9 +189,10 @@ RSpec.describe EventsController, type: :controller do
             before(:each) do
                @search_params[:keywd] = '???????'
                get :index, search: @search_params
+               @events = Event.where("title LIKE '%#{@search_params[:keywd]}%'")
             end
 
-            it_behaves_like('returning number of results', 0)
+            it_behaves_like('returning number of results')
          end
       end
 

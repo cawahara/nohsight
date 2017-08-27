@@ -1,8 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-funabenkei:
-  place:    gojo 
-  title:    船弁慶
-  category: 五番目
-  shimai:   true
-  duration: 45

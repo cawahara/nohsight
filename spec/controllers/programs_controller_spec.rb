@@ -2,249 +2,260 @@ require 'rails_helper'
 
 RSpec.describe ProgramsController, type: :controller do
    include SpecTesthelper
-=begin
-   let(:user) { create(:model_user) }
+
+   let(:user) { create(:controller_user) }
+
+   shared_examples 'occurs an error' do |action|
+      before(:each) do
+         pending "it needs to get response status 404 from its controller and relative view"
+         get :action
+      end
+      it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+      it { expect(response).to have_http_status(404) }
+   end
+
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
 
    describe 'GET #index' do
       context 'when logged user accesses' do
-         before(:each) do
-            login_as(user)
-            get :index
-         end
-
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
       end
-
       context 'without log in' do
-         it 'is redirected to login action' do
-            get :index
-            expect(response).to redirect_to(login_url)
-         end
       end
    end
 
    describe 'GET #show' do
-      let(:program) { create(:model_program) }
-      context 'when login with program param' do
+      let(:program) { create(:controller_program, :program_show_action) }
+
+      context 'with program params' do
          before(:each) do
             login_as(user)
+            @events = program.events.limit(3)
             get :show, id: program
          end
-         it 'assigns targeted program' do
+
+         it 'assigns @program' do
             expect(assigns(:program)).to eq(program)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'gets 3 events' do
+            expect(assigns(:events).count).to eq(3)
          end
+
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :show, id: program
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without program param' do
-         it 'occurs an error' do
+      context 'without program params' do
+         before(:each) do
             login_as(user)
-            expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
          end
+
+         it_behaves_like('occurs an error', 'show')
       end
    end
 
    describe 'GET #new' do
-      context 'when logged user accesses' do
+      context 'accessing normally' do
          before(:each) do
             login_as(user)
             get :new
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'assigns @program as a new' do
+            expect(assigns(:program)).to be_a_new(Program)
          end
+
+         it_behaves_like('returning success response', false)
       end
 
-      context 'without log in' do
-         it 'is redirected to login action' do
+      context 'without login' do
+         before(:each) do
             get :new
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
    end
 
    describe 'GET #edit' do
-      let(:program) { create(:model_program) }
-      context 'when login with program param' do
+      let(:program) { create(:controller_program) }
+
+      context 'with program params' do
          before(:each) do
             login_as(user)
             get :edit, id: program
          end
-         it 'assigns targeted program' do
+
+         it 'assigns @program' do
             expect(assigns(:program)).to eq(program)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: program
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without program param' do
-         it 'occurs an error' do
+      context 'without program params' do
+         before(:each) do
             login_as(user)
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
          end
+
+         it_behaves_like('occurs an error', 'edit')
       end
    end
 
    describe 'POST #create' do
-      let(:program_params) { attributes_for(:model_program) }
-
-      context 'when login with valid params' do
-         before(:each) do
+      context 'with valid params' do
+         let(:program_params) { attributes_for(:controller_program) }
+         before(:each) do |example|
             login_as(user)
+            post :create, program: program_params unless example.metadata[:skip_before]
          end
 
-         it 'creates a new program into the database' do
+         it 'assigns @program as a created one' do
+            expect(assigns(:program)).to be_persisted
+         end
+
+         it 'creates a new program into the database', :skip_before do
             expect{ post :create, program: program_params }.to change(Program, :count).by(1)
          end
 
-         it 'is redirected to show action' do
-            post :create, program: program_params
-            expect(response).to redirect_to(program_url(program))
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to show action' do
+            expect(response).to redirect_to(program_url(assigns(:program)))
          end
       end
-
       context 'without login' do
-         it "doesn't creates a new program" do
+         let(:program_params) { attributes_for(:controller_program) }
+         before(:each) do |example|
+            post :create, program: program_params unless example.metadata[:skip_before]
+         end
+
+         it "doesn't create a program", :skip_before do
             expect{ post :create, program: program_params }.to change(Program, :count).by(0)
          end
 
-         it 'is redirected to login action' do
-            post :create, program: program_params
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without valid params' do
-         before(:each) do
+      context 'with invalid params' do
+         let(:program_params) { attributes_for(:controller_program, :invalid_params) }
+         before(:each) do |example|
             login_as(user)
-            program_params['title'] = nil
+            post :create, program: program_params unless example.metadata[:skip_before]
          end
 
-         it 'creates a new program into the database' do
+         it "doesn't create a program", :skip_before do
             expect{ post :create, program: program_params }.to change(Program, :count).by(0)
          end
 
-         it 'renders new template' do
-            post :create, program: program_params
-            expect(response).to render_template(:new)
-         end
+         it_behaves_like('returning success response', true, 'new')
       end
    end
 
    describe 'PATCH #update' do
-      let(:program) { create(:model_program) }
-      let(:program_params) { attributes_for(:diff_program) }
+      let(:program) { create(:controller_program) }
 
-      context 'when login with valid params' do
+      context 'with valid params' do
          before(:each) do
             login_as(user)
-            post :update, id: program, program: program_params
+            patch :update, id: program, program: attributes_for(:controller_program, title: 'Changed Title')
          end
 
-         it 'updates program attributes' do
+         it 'changes program attributes' do
             program.reload
-            expect(program.title).to eq('Different Program')
+            expect(program.title).to eq('Changed Title')
          end
 
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(program_url(program))
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to show action' do
+            expect(response).to redirect_to(program_url(assigns(:program)))
          end
       end
 
       context 'without login' do
          before(:each) do
-            post :update, id: program, program: program_params
+            patch :update, id: program, program: attributes_for(:controller_program, title: 'Changed Title')
          end
 
-         it "doesn't update the program" do
+         it "doesn't change program attributes" do
             program.reload
-            expect(program.title).not_to eq('Different Program')
+            expect(program.title).not_to eq('Changed Title')
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without valid params' do
+      context 'with invalid param' do
          before(:each) do
             login_as(user)
-            program_params['title'] = nil
-            post :update, id: program, program: program_params
+            patch :update, id: program, program: attributes_for(:controller_program, title: '')
          end
 
-         it 'creates a new program into the database' do
+         it "doesn't change program attributes" do
             program.reload
-            expect(program.title).not_to eq('Different Program')
+            expect(program.title).not_to eq('')
          end
 
-         it 'renders new template' do
-            expect(response).to render_template(:edit)
-         end
+         it_behaves_like('returning success response', true, 'edit')
       end
    end
 
    describe 'DELETE #destroy' do
-      let!(:program) { create(:model_program) }
-      let!(:diff_program) { create(:diff_program) }
-      context 'when login with valid params' do
-         before(:each) do
+      let!(:program) { create(:controller_program) }
+
+      context 'with valid program params' do
+         before(:each) do |example|
             login_as(user)
+            delete :destroy, id: program unless example.metadata[:skip_before]
          end
 
-         it 'destroys the program' do
-            expect{ delete :create, id: program }.to change(Program, :count).by(-1)
+         it 'destroys program', :skip_before do
+            expect{ delete :destroy, id: program }.to change(Program, :count).by(-1)
          end
 
-         it 'is redirected to index action' do
-            expect(response).to redirect_to(programs_url)
-         end
+         it_behaves_like('returning redirection response', '/programs')
       end
+
       context 'without login' do
-         it "doesn't destroy the program" do
-            expect{ delete :create, id: program }.to change(Program, :count).by(0)
+         before(:each) do |example|
+             delete :destroy, id: program unless example.metadata[:skip_before]
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
-      end
-      context 'when trying to destroy deleted program' do
-         before(:each) do
-            login_as(user)
-            diff_program.destroy
+         it "doesn't destroy program", :skip_before do
+            expect{ delete :destroy, id: program }.to change(Program, :count).by(0)
          end
 
-         it "doesn't destroy the program" do
-            expect{ delete :destroy, id: diff_program }.to change(Program, :count).by(0)
-         end
-
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(program_url(program))
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
    end
-=end
 end

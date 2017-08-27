@@ -23,10 +23,8 @@ class UserEventsController < ApplicationController
    private
 
    def params_for_create
-      return {
-               user_id: current_user.id,
+      return { user_id: current_user.id,
                event_id: params[:id],
-               organizer: false
-               }
+               organizer: false }
    end
 end

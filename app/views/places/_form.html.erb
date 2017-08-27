@@ -1,0 +1,24 @@
+<%= form_for(@place) do |f| %>
+<% err_msg = f.object.errors %>
+<div class="form-section">
+   <h1 class="form-header">情報を入力</h1>
+
+   <div class="lg-form">
+      <label>地名</label><span class="required">必須</span>
+      <%= f.text_field :title %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:name)[0] %></p>
+   </div>
+   <div class="lg-form">
+      <label>住所</label><span class="required">必須</span>
+      <%= f.text_field :address %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+   </div>
+   <div class="lg-form">
+      <label>公式サイトURL</label>
+      <%= f.text_field :official_url %>
+      <p class="error-msg"><%= err_msg.full_messages_for(:email)[0] %></p>
+   </div>
+</div>
+
+<%= f.submit "登録する", class: 'form-submit' %>
+   <% end %>

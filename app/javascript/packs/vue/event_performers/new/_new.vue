@@ -18,7 +18,8 @@
       props: {
          ev_program:        Object,
          performers:        Array,
-         inherit_tag_id:    Number
+         inherit_tag_id:    Number,
+         render_params:     Array
       },
       data: function(){
          return {
@@ -29,15 +30,16 @@
          getTagId: function(id){
             return 'new-items-' + id
          },
-         addNewItem: function(){
+         addNewItem: function(render_params = false){
             new Vue({
                el: '#new-items-' + this.ev_program.tag_id + ' > .form-for-mount',
                data: {
                      ev_program: this.ev_program,
                      ev_performer: {
-                           full_name: '',
-                           tag_id: this.tag_id,
-                           mode: 'create'
+                           full_name:        '',
+                           tag_id:           this.tag_id,
+                           mode:             'create',
+                           render_params:    render_params
                         },
                      performers: this.performers
                      },
@@ -51,6 +53,13 @@
             node.className = "form-for-mount"
             document.getElementById('new-items-' + this.ev_program.tag_id).appendChild(node)
             this.tag_id += 1
+         }
+      },
+      mounted: function(){
+         if(this.render_params.length > 0){
+            for(var key in this.render_params){
+               this.addNewItem(this.render_params[key])
+            }
          }
       }
    }

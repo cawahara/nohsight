@@ -2,249 +2,260 @@ require 'rails_helper'
 
 RSpec.describe PlacesController, type: :controller do
    include SpecTesthelper
-=begin
-   let(:user) { create(:model_user) }
 
-   describe 'GET #index' do
-      context 'when logged user accesses' do
+      let(:user) { create(:controller_user) }
+
+      shared_examples 'occurs an error' do |action|
          before(:each) do
-            login_as(user)
-            get :index
+            pending "it needs to get response status 404 from its controller and relative view"
+            get :action
          end
+         it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+         it { expect(response).to have_http_status(404) }
+      end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+      shared_examples 'returning success response' do |failed, action|
+         it { expect(response).to have_http_status(200) }
+         if failed == true
+            it { expect(response).to render_template("#{action}") }
          end
       end
 
-      context 'without log in' do
-         it 'is redirected to login action' do
-            get :index
-            expect(response).to redirect_to(login_url)
-         end
+      shared_examples 'returning redirection response' do |path|
+         it { expect(response).to have_http_status(302) }
+         it { expect(response).to redirect_to(path) }
       end
-   end
 
-   describe 'GET #show' do
-      let(:place) { create(:model_place) }
-      context 'when login with place param' do
-         before(:each) do
-            login_as(user)
-            get :show, id: place
+      describe 'GET #index' do
+         context 'when logged user accesses' do
          end
-         it 'assigns targeted place' do
-            expect(assigns(:place)).to eq(place)
-         end
-
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         context 'without log in' do
          end
       end
 
-      context 'without login' do
-         it 'is redirected to login action' do
-            get :show, id: place
-            expect(response).to redirect_to(login_url)
+      describe 'GET #show' do
+         let(:place) { create(:controller_place, :place_show_action) }
+
+         context 'with place params' do
+            before(:each) do
+               login_as(user)
+               @events = place.events.limit(3)
+               get :show, id: place
+            end
+
+            it 'assigns @place' do
+               expect(assigns(:place)).to eq(place)
+            end
+
+            it 'gets 3 events' do
+               expect(assigns(:events).count).to eq(3)
+            end
+
+            it_behaves_like('returning success response', false)
+         end
+
+         context 'without login' do
+            before(:each) do
+               get :show, id: place
+            end
+
+            it_behaves_like('returning redirection response', '/login')
+         end
+
+         context 'without place params' do
+            before(:each) do
+               login_as(user)
+            end
+
+            it_behaves_like('occurs an error', 'show')
          end
       end
 
-      context 'without place param' do
-         it 'occurs an error' do
-            login_as(user)
-            expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
-         end
-      end
-   end
+      describe 'GET #new' do
+         context 'accessing normally' do
+            before(:each) do
+               login_as(user)
+               get :new
+            end
 
-   describe 'GET #new' do
-      context 'when logged user accesses' do
-         before(:each) do
-            login_as(user)
-            get :new
-         end
+            it 'assigns @place as a new' do
+               expect(assigns(:place)).to be_a_new(Place)
+            end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
-      end
-
-      context 'without log in' do
-         it 'is redirected to login action' do
-            get :new
-            expect(response).to redirect_to(login_url)
-         end
-      end
-   end
-
-   describe 'GET #edit' do
-      let(:place) { create(:model_place) }
-      context 'when login with place param' do
-         before(:each) do
-            login_as(user)
-            get :edit, id: place
-         end
-         it 'assigns targeted place' do
-            expect(assigns(:place)).to eq(place)
+            it_behaves_like('returning success response', false)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         context 'without login' do
+            before(:each) do
+               get :new
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
       end
 
-      context 'without login' do
-         it 'is redirected to login action' do
-            get :edit, id: place
-            expect(response).to redirect_to(login_url)
+      describe 'GET #edit' do
+         let(:place) { create(:controller_place) }
+
+         context 'with place params' do
+            before(:each) do
+               login_as(user)
+               get :edit, id: place
+            end
+
+            it 'assigns @place' do
+               expect(assigns(:place)).to eq(place)
+            end
+
+            it_behaves_like('returning success response', false)
+         end
+
+         context 'without login' do
+            before(:each) do
+               get :edit, id: place
+            end
+
+            it_behaves_like('returning redirection response', '/login')
+         end
+
+         context 'without place params' do
+            before(:each) do
+               login_as(user)
+            end
+
+            it_behaves_like('occurs an error', 'edit')
          end
       end
 
-      context 'without place param' do
-         it 'occurs an error' do
-            login_as(user)
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
+      describe 'POST #create' do
+         context 'with valid params' do
+            let(:place_params) { attributes_for(:controller_place) }
+            before(:each) do |example|
+               login_as(user)
+               post :create, place: place_params unless example.metadata[:skip_before]
+            end
+
+            it 'assigns @place as a created one' do
+               expect(assigns(:place)).to be_persisted
+            end
+
+            it 'creates a new place into the database', :skip_before do
+               expect{ post :create, place: place_params }.to change(Place, :count).by(1)
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to show action' do
+               expect(response).to redirect_to(place_url(assigns(:place)))
+            end
          end
-      end
-   end
+         context 'without login' do
+            let(:place_params) { attributes_for(:controller_place) }
+            before(:each) do |example|
+               post :create, place: place_params unless example.metadata[:skip_before]
+            end
 
-   describe 'POST #create' do
-      let(:place_params) { attributes_for(:model_place) }
+            it "doesn't create a place", :skip_before do
+               expect{ post :create, place: place_params }.to change(Place, :count).by(0)
+            end
 
-      context 'when login with valid params' do
-         before(:each) do
-            login_as(user)
-         end
-
-         it 'creates a new place into the database' do
-            expect{ post :create, place: place_params }.to change(Place, :count).by(1)
-         end
-
-         it 'is redirected to show action' do
-            post :create, place: place_params
-            expect(response).to redirect_to(place_url(place))
-         end
-      end
-
-      context 'without login' do
-         it "doesn't creates a new place" do
-            expect{ post :create, place: place_params }.to change(Place, :count).by(0)
-         end
-
-         it 'is redirected to login action' do
-            post :create, place: place_params
-            expect(response).to redirect_to(login_url)
-         end
-      end
-
-      context 'without valid params' do
-         before(:each) do
-            login_as(user)
-            place_params['title'] = nil
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'creates a new place into the database' do
-            expect{ post :create, place: place_params }.to change(Place, :count).by(0)
-         end
+         context 'with invalid params' do
+            let(:place_params) { attributes_for(:controller_place, :invalid_params) }
+            before(:each) do |example|
+               login_as(user)
+               post :create, place: place_params unless example.metadata[:skip_before]
+            end
 
-         it 'renders new template' do
-            post :create, place: place_params
-            expect(response).to render_template(:new)
-         end
-      end
-   end
+            it "doesn't create a place", :skip_before do
+               expect{ post :create, place: place_params }.to change(Place, :count).by(0)
+            end
 
-   describe 'PATCH #update' do
-      let(:place) { create(:model_place) }
-      let(:place_params) { attributes_for(:alter_place) }
-
-      context 'when login with valid params' do
-         before(:each) do
-            login_as(user)
-            post :update, id: place, place: place_params
-         end
-
-         it 'updates place attributes' do
-            place.reload
-            expect(place.title).to eq('Al_tower')
-         end
-
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(place_url(place))
+            it_behaves_like('returning success response', true, 'new')
          end
       end
 
-      context 'without login' do
-         before(:each) do
-            post :update, id: place, place: place_params
+      describe 'PATCH #update' do
+         let(:place) { create(:controller_place) }
+
+         context 'with valid params' do
+            before(:each) do
+               login_as(user)
+               patch :update, id: place, place: attributes_for(:controller_place, title: 'Changed Place')
+            end
+
+            it 'changes place attributes' do
+               place.reload
+               expect(place.title).to eq('Changed Place')
+            end
+
+            it "returns response status 302" do
+               expect(response).to have_http_status(302)
+            end
+
+            it 'is redirect_to show action' do
+               expect(response).to redirect_to(place_url(assigns(:place)))
+            end
          end
 
-         it "doesn't update the place" do
-            place.reload
-            expect(place.title).not_to eq('Al_tower')
+         context 'without login' do
+            before(:each) do
+               patch :update, id: place, place: attributes_for(:controller_place, title: 'Changed Place')
+            end
+
+            it "doesn't change place attributes" do
+               place.reload
+               expect(place.title).not_to eq('Changed Place')
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
+         context 'with invalid param' do
+            before(:each) do
+               login_as(user)
+               patch :update, id: place, place: attributes_for(:controller_place, title: '')
+            end
+
+            it "doesn't change place attributes" do
+               place.reload
+               expect(place.title).not_to eq('')
+            end
+
+            it_behaves_like('returning success response', true, 'edit')
          end
       end
 
-      context 'without valid params' do
-         before(:each) do
-            login_as(user)
-            place_params['title'] = nil
-            post :update, id: place, place: place_params
+      describe 'DELETE #destroy' do
+         let!(:place) { create(:controller_place) }
+
+         context 'with valid place params' do
+            before(:each) do |example|
+               login_as(user)
+               delete :destroy, id: place unless example.metadata[:skip_before]
+            end
+
+            it 'destroys place', :skip_before do
+               expect{ delete :destroy, id: place }.to change(Place, :count).by(-1)
+            end
+
+            it_behaves_like('returning redirection response', '/places')
          end
 
-         it 'creates a new place into the database' do
-            place.reload
-            expect(place.title).not_to eq('Al_tower')
-         end
+         context 'without login' do
+            before(:each) do |example|
+                delete :destroy, id: place unless example.metadata[:skip_before]
+            end
 
-         it 'renders new template' do
-            expect(response).to render_template(:edit)
+            it "doesn't destroy place", :skip_before do
+               expect{ delete :destroy, id: place }.to change(Place, :count).by(0)
+            end
+
+            it_behaves_like('returning redirection response', '/login')
          end
       end
-   end
-
-   describe 'DELETE #destroy' do
-      let!(:place) { create(:model_place) }
-      let!(:alter_place) { create(:alter_place) }
-      context 'when login with valid params' do
-         before(:each) do
-            login_as(user)
-         end
-
-         it 'destroys the place' do
-            expect{ delete :create, id: place }.to change(Place, :count).by(-1)
-         end
-
-         it 'is redirected to index action' do
-            expect(response).to redirect_to(places_url)
-         end
-      end
-      context 'without login' do
-         it "doesn't destroy the place" do
-            expect{ delete :create, id: place }.to change(Place, :count).by(0)
-         end
-
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
-      end
-      context 'when trying to destroy deleted place' do
-         before(:each) do
-            login_as(user)
-            alter_place.destroy
-         end
-
-         it "doesn't destroy the place" do
-            expect{ delete :destroy, id: alter_place }.to change(Place, :count).by(0)
-         end
-
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(place_url(place))
-         end
-      end
-   end
-=end
 end

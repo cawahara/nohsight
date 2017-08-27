@@ -2,7 +2,7 @@ require 'factory_girl'
 
 FactoryGirl.define do
    factory :model_style, class: Style do
-      title   'Sample'
+      title   'シテ方観世流'
 
       trait :start_from_this do
          after(:create) do |style|
@@ -12,7 +12,7 @@ FactoryGirl.define do
    end
 
    factory :another_style, class: Style do
-      title   'Another'
+      title   'ワキ方金剛流'
 
       trait :start_from_this do
          after(:create) do |style|
@@ -22,7 +22,7 @@ FactoryGirl.define do
    end
 
    factory :controller_style, class: Style do
-      title   'Controller'
+      title   '小鼓方金春流'
 
       trait :start_from_this do
          after(:create) do |style|
@@ -32,7 +32,7 @@ FactoryGirl.define do
    end
 
    factory :different_style, class: Style do
-      title   'Different'
+      title   '狂言方高安流'
 
       trait :start_from_this do
          after(:create) do |style|
@@ -42,6 +42,6 @@ FactoryGirl.define do
    end
 
    factory :search_style, class: Style do
-      title   '検索用'
+      title   'シテ方大蔵流'
    end
 end

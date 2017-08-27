@@ -1,250 +1,262 @@
 require 'rails_helper'
 
 RSpec.describe PerformersController, type: :controller do
-=begin
    include SpecTesthelper
-   let(:user) { create(:model_user) }
+
+   let(:user) { create(:controller_user) }
+
+   shared_examples 'occurs an error' do |action|
+      before(:each) do
+         pending "it needs to get response status 404 from its controller and relative view"
+         get :action
+      end
+      it { expect { get :action }.to raise_error(ActionController::UrlGenerationError) }
+      it { expect(response).to have_http_status(404) }
+   end
+
+   shared_examples 'returning success response' do |failed, action|
+      it { expect(response).to have_http_status(200) }
+      if failed == true
+         it { expect(response).to render_template("#{action}") }
+      end
+   end
+
+   shared_examples 'returning redirection response' do |path|
+      it { expect(response).to have_http_status(302) }
+      it { expect(response).to redirect_to(path) }
+   end
 
    describe 'GET #index' do
       context 'when logged user accesses' do
-         before(:each) do
-            login_as(user)
-            get :index
-         end
-
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
       end
-
       context 'without log in' do
-         it 'is redirected to login action' do
-            get :index
-            expect(response).to redirect_to(login_url)
-         end
       end
    end
 
    describe 'GET #show' do
-      let(:performer) { create(:model_performer) }
-      context 'when login with performer param' do
+      let(:performer) { create(:controller_performer, :performer_show_action) }
+
+      context 'with performer params' do
          before(:each) do
             login_as(user)
+            ev_programs = performer.event_programs
+            @events = Event.where(id: ev_programs.pluck(:event_id)).limit(3)
             get :show, id: performer
          end
-         it 'assigns targeted performer' do
+
+         it 'assigns @performer' do
             expect(assigns(:performer)).to eq(performer)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'gets 3 events' do
+            expect(assigns(:events).count).to eq(3)
          end
+
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :show, id: performer
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without performer param' do
-         it 'occurs an error' do
+      context 'without performer params' do
+         before(:each) do
             login_as(user)
-            expect{ get :show }.to raise_error(ActionController::UrlGenerationError)
          end
+
+         it_behaves_like('occurs an error', 'show')
       end
    end
 
    describe 'GET #new' do
-      context 'when logged user accesses' do
+      context 'accessing normally' do
          before(:each) do
             login_as(user)
             get :new
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
+         it 'assigns @performer as a new' do
+            expect(assigns(:performer)).to be_a_new(Performer)
          end
+
+         it_behaves_like('returning success response', false)
       end
 
-      context 'without log in' do
-         it 'is redirected to login action' do
+      context 'without login' do
+         before(:each) do
             get :new
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
    end
 
    describe 'GET #edit' do
-      let(:performer) { create(:model_performer) }
-      context 'when login with performer param' do
+      let(:performer) { create(:controller_performer) }
+
+      context 'with performer params' do
          before(:each) do
             login_as(user)
             get :edit, id: performer
          end
-         it 'assigns targeted performer' do
+
+         it 'assigns @performer' do
             expect(assigns(:performer)).to eq(performer)
          end
 
-         it 'returns response status with 200' do
-            expect(response.status).to eq(200)
-         end
+         it_behaves_like('returning success response', false)
       end
 
       context 'without login' do
-         it 'is redirected to login action' do
+         before(:each) do
             get :edit, id: performer
-            expect(response).to redirect_to(login_url)
          end
+
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without performer param' do
-         it 'occurs an error' do
+      context 'without performer params' do
+         before(:each) do
             login_as(user)
-            expect{ get :edit }.to raise_error(ActionController::UrlGenerationError)
          end
+
+         it_behaves_like('occurs an error', 'edit')
       end
    end
 
    describe 'POST #create' do
-      let(:performer_params) { attributes_for(:model_performer) }
-
-      context 'when login with valid params' do
-         before(:each) do
+      context 'with valid params' do
+         let(:performer_params) { attributes_for(:controller_performer) }
+         before(:each) do |example|
             login_as(user)
+            post :create, performer: performer_params unless example.metadata[:skip_before]
          end
 
-         it 'creates a new performer into the database' do
+         it 'assigns @performer as a created one' do
+            expect(assigns(:performer)).to be_persisted
+         end
+
+         it 'creates a new performer into the database', :skip_before do
             expect{ post :create, performer: performer_params }.to change(Performer, :count).by(1)
          end
 
-         it 'is redirected to show action' do
-            post :create, performer: performer_params
-            expect(response).to redirect_to(performer_url(performer))
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to show action' do
+            expect(response).to redirect_to(performer_url(assigns(:performer)))
          end
       end
-
       context 'without login' do
-         it "doesn't creates a new performer" do
+         let(:performer_params) { attributes_for(:controller_performer) }
+         before(:each) do |example|
+            post :create, performer: performer_params unless example.metadata[:skip_before]
+         end
+
+         it "doesn't create a performer", :skip_before do
             expect{ post :create, performer: performer_params }.to change(Performer, :count).by(0)
          end
 
-         it 'is redirected to login action' do
-            post :create, performer: performer_params
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without valid params' do
-         before(:each) do
+      context 'with invalid params' do
+         let(:performer_params) { attributes_for(:controller_performer, :invalid_params) }
+         before(:each) do |example|
             login_as(user)
-            performer_params['title'] = nil
+            post :create, performer: performer_params unless example.metadata[:skip_before]
          end
 
-         it 'creates a new performer into the database' do
+         it "doesn't create a performer", :skip_before do
             expect{ post :create, performer: performer_params }.to change(Performer, :count).by(0)
          end
 
-         it 'renders new template' do
-            post :create, performer: performer_params
-            expect(response).to render_template(:new)
-         end
+         it_behaves_like('returning success response', true, 'new')
       end
    end
 
    describe 'PATCH #update' do
-      let(:performer) { create(:model_performer) }
-      let(:performer_params) { attributes_for(:diff_performer) }
+      let(:performer) { create(:controller_performer) }
 
-      context 'when login with valid params' do
+      context 'with valid params' do
          before(:each) do
             login_as(user)
-            post :update, id: performer, performer: performer_params
+            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後')
          end
 
-         it 'updates performer attributes' do
+         it 'changes performer attributes' do
             performer.reload
-            expect(performer.full_name).to eq('田中 光圀')
+            expect(performer.full_name).to eq('変化 後')
          end
 
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(performer_url(performer))
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'is redirect_to show action' do
+            expect(response).to redirect_to(performer_url(assigns(:performer)))
          end
       end
 
       context 'without login' do
          before(:each) do
-            post :update, id: performer, performer: performer_params
+            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後')
          end
 
-         it "doesn't update the performer" do
+         it "doesn't change performer attributes" do
             performer.reload
-            expect(performer.full_name).not_to eq('田中 光圀')
+            expect(performer.full_name).not_to eq('変化 後')
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
 
-      context 'without valid params' do
+      context 'with invalid param' do
          before(:each) do
             login_as(user)
-            performer_params['title'] = nil
-            post :update, id: performer, performer: performer_params
+            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '')
          end
 
-         it 'creates a new performer into the database' do
+         it "doesn't change performer attributes" do
             performer.reload
-            expect(performer.full_name).not_to eq('田中 光圀')
+            expect(performer.full_name).not_to eq('')
          end
 
-         it 'renders new template' do
-            expect(response).to render_template(:edit)
-         end
+         it_behaves_like('returning success response', true, 'edit')
       end
    end
 
    describe 'DELETE #destroy' do
-      let!(:performer) { create(:model_performer) }
-      let!(:diff_performer) { create(:diff_performer) }
-      context 'when login with valid params' do
-         before(:each) do
+      let!(:performer) { create(:controller_performer) }
+
+      context 'with valid performer params' do
+         before(:each) do |example|
             login_as(user)
+            delete :destroy, id: performer unless example.metadata[:skip_before]
          end
 
-         it 'destroys the performer' do
-            expect{ delete :create, id: performer }.to change(Performer, :count).by(-1)
+         it 'destroys performer', :skip_before do
+            expect{ delete :destroy, id: performer }.to change(Performer, :count).by(-1)
          end
 
-         it 'is redirected to index action' do
-            expect(response).to redirect_to(performers_url)
-         end
+         it_behaves_like('returning redirection response', '/performers')
       end
+
       context 'without login' do
-         it "doesn't destroy the performer" do
-            expect{ delete :create, id: performer }.to change(Performer, :count).by(0)
+         before(:each) do |example|
+             delete :destroy, id: performer unless example.metadata[:skip_before]
          end
 
-         it 'is redirected to login action' do
-            expect(response).to redirect_to(login_url)
-         end
-      end
-      context 'when trying to destroy deleted performer' do
-         before(:each) do
-            login_as(user)
-            diff_performer.destroy
+         it "doesn't destroy performer", :skip_before do
+            expect{ delete :destroy, id: performer }.to change(Performer, :count).by(0)
          end
 
-         it "doesn't destroy the performer" do
-            expect{ delete :destroy, id: diff_performer }.to change(Performer, :count).by(0)
-         end
-
-         it 'is redirected to show action' do
-            expect(response).to redirect_to(performer_url(performer))
-         end
+         it_behaves_like('returning redirection response', '/login')
       end
    end
-=end
 end

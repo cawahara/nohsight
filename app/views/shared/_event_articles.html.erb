@@ -1,17 +1,33 @@
 <% @events.each do |event| %>
-<div class="article event-summary">
+<div id="event-<%= event.id %>" class="article event-summary">
    <div class="header">
       <h1><%= link_to event.title, event_path(event) %></h1>
-      <!--<span class="btn"><%= fa_icon('check-square-o')%></span>
-      TODO Userがクリップする機能 -->
    </div>
-   <% if event.place %>
    <ul class="info">
+      <% if event.place %>
       <li class="place"><%= event.place.title %></li>
       <li class="place"><%= event.place.address %></li>
-      <li class="date"><%= event.start_date.strftime("%Y年%m月%d日 %H:%M")%></li>
+      <% end %>
+      <li class="date"><%= event.formatted_start_date %></li>
    </ul>
-   <% end %>
+
+   <table id="event-programs-info">
+      <% event.event_programs.each do |ev_program| %>
+      <tr class="event-program">
+         <td><%= ev_program.genre %></td>
+         <td>「<%= ev_program.program.title %>」</td>
+         <td></td>
+      </tr>
+      <% ev_program.performers.each do |performer| %>
+      <tr class="event-performer">
+         <td></td>
+         <td><%= performer.style.role %></td>
+         <td><%= performer.full_name %></td>
+      </tr>
+      <% end %>
+      <% end %>
+   </table>
+
    <ul class="tickets">
       <% event.tickets.each do |ticket| %>
       <li><%= ticket.grade %>：<%= ticket.price %>円</li>
