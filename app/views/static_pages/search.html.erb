@@ -17,9 +17,19 @@
             <dt>エリア</dt>
             <dd id="search-address-vue"></dd>
          </dl>
+         <dl id="event-relatives">
+            <dl>
+               <dt>演目</dt>
+               <dd><%= f.text_field :program, id: 'program' %></dd>
+            </dl>
+            <dl>
+               <dt>演者</dt>
+               <dd><%= f.text_field :performer, id: 'performer' %></dd>
+            </dl>
+         </dl>
          <dl>
             <dt>キーワード</dt>
-            <dd><%= f.text_field :keywd, id: 'keywd', placeholder: '会場、演目、出演者などを入力' %></dd>
+            <dd><%= f.text_field :keywd, id: 'keywd' %></dd>
          </dl>
          <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>

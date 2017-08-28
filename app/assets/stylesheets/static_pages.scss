@@ -64,7 +64,7 @@
          display: block;
          dt {
             display: inline-block;
-            width: 90px;
+            width: 85px;
             line-height: 32px;
             font-size: 14px;
          }
@@ -114,7 +114,6 @@
                   text-align: left;
                   dt, dd {
                      * { display: inline; }
-                     input { width: auto !important;}
                   }
                   dt {
                      width: 100%;
@@ -132,6 +131,25 @@
 
          dd.date-selection {
             width: 40%;
+         }
+      }
+
+      dl#event-relatives {
+         dl {
+            margin-top: 0;
+            display: inline-block;
+            width: 48%;
+            dt {
+               width: 43px;
+               margin: 0;
+            }
+            dd {
+               margin: 0;
+               width: calc(100% - 56px);
+               input {
+                  width: 100% !important;
+               }
+            }
          }
       }
       input.form-submit {

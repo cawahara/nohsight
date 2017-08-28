@@ -13,6 +13,14 @@ module SearchEngine
       results = date_query('to', search_params, results)
       # 開催地フィルター
       results = location_query(search_params, results)
+
+      if search_params[:program]
+         # 演目フィルター
+         results = program_query(search_params, results)
+         # 演者フィルター
+         results = performer_query(search_params, results)
+      end
+
       # キーワードフィルター
       results = keywd_query(search_params, results)
       return results
@@ -24,10 +32,12 @@ module SearchEngine
       if params[:search]
          return { start_date:  params[:search][:start_date],
                   end_date:    params[:search][:end_date],
-                  keywd:       params[:search][:keywd],
-                  locations:   params[:search][:locations] }
+                  locations:   params[:search][:locations],
+                  program:     params[:search][:program],
+                  performer:   params[:search][:performer],
+                  keywd:       params[:search][:keywd] }
       elsif params[:easy_search]
-         return { keywd: params[:easy_search][:keywd] }
+         return { keywd:       params[:easy_search][:keywd] }
       end
    end
 
@@ -117,11 +127,31 @@ module SearchEngine
       return events_query
    end
 
+   def program_query(search_params, results)
+      if search_params[:program] != ''
+         keywds = search_params[:program].split(/\s/)
+         keywd_query = ''
+         keywd_query += program_query_in_keywd(keywds)
+         results = results.where(keywd_query[0..(keywd_query.length - 5)])
+      end
+      return results
+   end
+
+   def performer_query(search_params, results)
+      if search_params[:performer] != ''
+         keywds = search_params[:performer].split(/\s/)
+         keywd_query = ''
+         keywd_query += performer_query_in_keywd(keywds)
+         results = results.where(keywd_query[0..(keywd_query.length - 5)])
+      end
+      return results
+   end
+
    def keywd_query(search_params, results)
       if search_params[:keywd] != ''
          keywds = search_params[:keywd].split(/\s/)
          keywd_query = ''
-         # 出演者
+         # 舞台
          keywd_query += stage_query_in_keywd(keywds)
          # 出演者
          keywd_query += performer_query_in_keywd(keywds)

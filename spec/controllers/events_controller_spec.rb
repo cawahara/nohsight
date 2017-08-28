@@ -103,6 +103,8 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             @search_params = { start_date: '',
                                end_date: '',
+                               program: '',
+                               performer: '',
                                keywd:  '',
                                locations: '' }
          end
