@@ -28,7 +28,7 @@
 
    <ul class="tickets">
       <% event.tickets.each do |ticket| %>
-      <li><%= ticket.grade %>：<%= ticket.price %>円</li>
+      <li class="ticket"><%= ticket.grade %>：<%= ticket.price %>円</li>
       <% end %>
    </ul>
 </div>

@@ -29,3 +29,6 @@
 
 # Ignore node modules (packages)
 /node_modules
+
+# Ignore visual testing references
+/test

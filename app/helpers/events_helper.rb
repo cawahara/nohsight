@@ -19,5 +19,9 @@ module EventsHelper
          weekday = WEEKDAYS[self.wday]
          self.strftime("%Y/%m/%d %H:%M (#{weekday}曜日)")
       end
+
+      def format_with_hours
+         self.strftime("%H:%M")
+      end
    end
 end

@@ -114,6 +114,7 @@ RSpec.describe Event, type: :model do
    end
 
    describe '#validation' do
+
       let(:event) { build(:model_event) }
 
       it 'is valid with title, start_date, information, official_url, and published' do
@@ -148,6 +149,14 @@ RSpec.describe Event, type: :model do
             event.published = nil
             event.valid?
             expect(event.errors[:published]).to include('is not included in the list')
+         end
+      end
+
+      context 'open_date' do
+         it 'is invalid when later than start_date' do
+            event.open_date = event.start_date + 2
+            event.valid?
+            expect(event.errors[:open_date]).to include('should be earlier than start_date')
          end
       end
    end

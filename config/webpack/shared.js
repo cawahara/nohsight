@@ -11,6 +11,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const extname = require('path-complete-extname')
 const { env, settings, output, loadersDir } = require('./configuration.js')
 const Dotenv = require('dotenv-webpack')
+const Vue = require('vue')
 
 const extensionGlob = `**/*{${settings.extensions.join(',')}}*`
 const entryPath = join(settings.source_path, settings.source_entry_path)
@@ -46,7 +47,7 @@ module.exports = {
    new Dotenv({
       path: './.env',
       safe: false
-    })
+   }),
   ],
 
   resolve: {

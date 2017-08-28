@@ -10,6 +10,8 @@ FactoryGirl.define do
       official_url   'http//www.firstevent.com'
       published      true
 
+      open_date      Date.today - 1
+
       trait :start_from_this do
          after(:create) do |event|
             FactoryGirl.create(:model_event_program, event: event)
@@ -45,6 +47,8 @@ FactoryGirl.define do
       information    'It will be the best event for you!'
       official_url   'http//www.controllerevent.com'
       published      true
+
+      open_date      Date.today - 1
 
       trait :invalid_params do
          title       nil

@@ -12,10 +12,11 @@
      <%= render('layouts/header') %>
 
 
-    <div id="main">
+    <div id="bodier">
       <%= render '/shared/flash' %>
-       <%= yield %>
-
+      <div id="main">
+         <%= yield %>
+      </div>
     </div>
 
     <%= render('layouts/footer') %>
