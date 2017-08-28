@@ -64,5 +64,9 @@ group :test do
    gem 'selenium-webdriver'
 end
 
+group :production do
+   gem 'rails_12factor'
+end
+
 # デフォルトで配備
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
