@@ -16,6 +16,11 @@
          <%= f.text_field :start_date, class: 'datepicker-for-edit', id: "start-date", value: (@event.start_date.strftime('%Y/%m/%d %H:%M')) %>
       </div>
       <div class="lg-form">
+         <label>公演の種類</label><span class="required">必須</span><br>
+         <%= f.select :category, ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] %>
+      </div>
+
+      <div class="lg-form">
          <label>説明</label>
          <%= f.text_area :information %>
       </div>

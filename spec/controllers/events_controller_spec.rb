@@ -105,6 +105,11 @@ RSpec.describe EventsController, type: :controller do
                                end_date: '',
                                program: '',
                                performer: '',
+                               category_0: "0",
+                               category_1: "0",
+                               category_2: "0",
+                               category_3: "0",
+                               category_4: "0",
                                keywd:  '',
                                locations: '' }
          end

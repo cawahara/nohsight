@@ -11,13 +11,13 @@
          <% end %>
       </div>
       <% if @event.published? %>
-         <p class="form-submit">公開中</p>
+         <p class="form-submit published">公開中</p>
       <% else %>
       <%= form_for(@event) do |f| %>
          <!-- REVIEW: Event公開後に編集したらそのままデータが変わってしまう。
                   　公開した後はEvent内容を変更できないようにすべきか -->
          <%= f.hidden_field :published, value: true %>
-         <%= f.submit('公開', class: 'form-submit') %>
+         <%= f.submit('公開', class: 'form-submit published') %>
       <% end %>
       <% end %>
    </div>
@@ -26,6 +26,7 @@
       <h1 class="port-header">基本情報</h1>
       <div class="port-info">
          <p>公演名：<%= @event.title %></p>
+         <p>公演の種類：<%= @event.category %></p>
          <p>開催日程：<%= @event&.start_date&.format_with_weekday %></p>
       </div>
       <%= link_to edit_event_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
