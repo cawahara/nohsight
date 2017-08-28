@@ -169,11 +169,8 @@ RSpec.feature "FirstFunctions", type: :feature do
          expect(page).to have_content("#{@ev_performer.performer.full_name}")
 
          expect(page).to have_content('開催時間')
-<<<<<<< HEAD
          expect(page).to have_content("#{@event.open_date.format_with_hours}")
          expect(page).to have_content("#{@event.start_date.format_with_hours}")
-=======
->>>>>>> 058d77df84cc9b9f56cf22b571fbb4797714e121
 
          expect(page).to have_content('チケット料金')
          expect(page).to have_selector('.ticket', count: @event.tickets.count)

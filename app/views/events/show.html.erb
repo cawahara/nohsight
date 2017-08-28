@@ -91,11 +91,7 @@
 
    <div class="user-command">
       <% if logged? %>
-<<<<<<< HEAD
          <% if @event.users.exists?(current_user.id) %>
-=======
-         <% if @event.users.find(current_user.id) %>
->>>>>>> 058d77df84cc9b9f56cf22b571fbb4797714e121
          <%= link_to '公演の編集', edit_event_port_path(@event) %>
          <% else %>
          <%= button_to '公演編集に参加する', user_events_path(@event), method: :post %>

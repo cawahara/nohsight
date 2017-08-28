@@ -9,10 +9,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "backstopjs": "^3.0.20",
-<<<<<<< HEAD
     "casperjs": "^1.1.4",
-=======
->>>>>>> 058d77df84cc9b9f56cf22b571fbb4797714e121
     "coffee-loader": "^0.7.3",
     "coffee-script": "^1.12.6",
     "compression-webpack-plugin": "^0.4.0",
