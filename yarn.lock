@@ -1025,7 +1025,11 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
+<<<<<<< HEAD
 casperjs@^1.1.0-beta5, casperjs@^1.1.4:
+=======
+casperjs@^1.1.0-beta5:
+>>>>>>> 058d77df84cc9b9f56cf22b571fbb4797714e121
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/casperjs/-/casperjs-1.1.4.tgz#eb01f4ed85ac520a8f4d932b4daa74d3e77bc746"
 

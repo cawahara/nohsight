@@ -31,4 +31,4 @@
 /node_modules
 
 # Ignore visual testing references
-/test
+/test/visual_regression
