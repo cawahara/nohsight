@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170717113733) do
     t.datetime "start_date"
     t.text     "information",  limit: 65535
     t.string   "official_url"
+    t.string   "category",     limit: 45
     t.boolean  "published"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

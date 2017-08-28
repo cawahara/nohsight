@@ -114,7 +114,6 @@ RSpec.describe Event, type: :model do
    end
 
    describe '#validation' do
-
       let(:event) { build(:model_event) }
 
       it 'is valid with title, start_date, information, official_url, and published' do
@@ -157,6 +156,40 @@ RSpec.describe Event, type: :model do
             event.open_date = event.start_date + 2
             event.valid?
             expect(event.errors[:open_date]).to include('should be earlier than start_date')
+         end
+      end
+
+      context 'category' do
+         it 'is valid with proper values' do
+            valid_categories = ['能楽協会主催',
+                                '能楽堂主催',
+                                '能楽協会員出演',
+                                '教室、セミナー',
+                                'その他']
+            valid_categories.each do |valid_category|
+               event.category = valid_category
+               expect(event).to be_valid
+            end
+         end
+
+         it 'is invalid with improper values' do
+            invalid_categories = ['のうがくきょうかいしゅさい',
+                                  'Noh-gakudo Shusai',
+                                  '$3hg7`@']
+            invalid_categories.each do |invalid_category|
+               event.category = invalid_category
+               event.valid?
+               expect(event.errors[:category]).to include('is not included in the list')
+            end
+         end
+      end
+   end
+
+   describe '#method' do
+      context 'set_value_on_category' do
+         let(:event) { create(:model_event) }
+         it 'gets specified value on category field as default' do
+            expect(event.category).to eq('その他')
          end
       end
    end

@@ -19,6 +19,19 @@
       div.header {
          overflow: hidden;
          margin-bottom: 5px;
+         p {
+            display: block;
+            padding: 8px 12px;
+            width: auto;
+            margin: 0 7px 10px 7px;
+            color: #343434;
+         }
+         p.category-0 { background-color: #e5e5cc; }
+         p.category-1 { background-color: #ffddcc; }
+         p.category-2 { background-color: #ccfff5; }
+         p.category-3 { background-color: #e6f2ff; }
+         p.category-4 { background-color: #dcdcdc; }
+
          h1 {
             float: left;
             width: calc(100% - 46px);
@@ -63,6 +76,7 @@
          text-align: center;
          display: block;
          dt {
+            vertical-align: top;
             display: inline-block;
             width: 85px;
             line-height: 32px;
@@ -73,7 +87,7 @@
             position: relative;
             text-align: left;
             width: calc(100% - 100px);
-            input {
+            input[type="text"] {
                padding: 4px 7px !important;
                border-radius: 0 !important;
                width: calc(100% - 22px) !important;
@@ -93,6 +107,15 @@
             input#locations {
                &:hover {
                   cursor: text;
+               }
+            }
+
+            label {
+               width: 100%;
+               margin-bottom: 4px;
+               display: block;
+               input[type="checkbox"] {
+                  display: inline;
                }
             }
 
@@ -116,6 +139,7 @@
                      * { display: inline; }
                   }
                   dt {
+
                      width: 100%;
                      margin: 0;
                      text-align: left;

@@ -159,6 +159,7 @@ official_urls = [
    'http://yarai-nohgakudo.com/'
 ]
 new_date = Time.now
+categories = ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他']
 
 titles.count.times do |i|
    id = i + 1
@@ -172,19 +173,19 @@ titles.count.times do |i|
                   1.day
                end
    start_date = new_date
-
    information = informations[i]
+   category = categories[rand(0..4)]
    official_url = official_urls[i]
    published = true
 
    Event.seed do |s|
       s.id           = id
       s.place_id     = place_id
-      # s.user_id      = user_id
       s.title        = title
       s.start_date   = start_date
       s.information  = information
       s.official_url = official_url
+      s.category     = category
       s.published    = published
    end
 end

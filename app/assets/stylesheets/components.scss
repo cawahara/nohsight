@@ -36,6 +36,19 @@ div.headline {
       color: #575757;
       margin-bottom: 12px;
    }
+   p {
+      display: block;
+      padding: 8px 12px;
+      width: auto;
+      margin: 11px 7px;
+      color: #343434;
+   }
+   p.category-0 { background-color: #e5e5cc; }
+   p.category-1 { background-color: #ffddcc; }
+   p.category-2 { background-color: #ccfff5; }
+   p.category-3 { background-color: #e6f2ff; }
+   p.category-4 { background-color: #dcdcdc; }
+
    ul {
       li {
          margin-top: 7px;
@@ -53,7 +66,7 @@ div.section {
    }
 
    div.article {
-      padding: 18px 11px;
+      padding: 11px 11px 18px 11px;
       border-bottom: 1px solid #9d9d9d;
 
       h2.article-header {
@@ -77,14 +90,14 @@ div.organizer {
    a {
       display: inline-block;
       padding: 0 10px 0 4px;
-      border: 1px solid #dedede;
+      border: 1px solid #9f9f9f;
       border-radius: 6px;
       background-color: #f3f3f3;
       * { float: left; }
       img {
          width: 29px;
          height: 29px;
-         border: 1px solid #8a8a8a;
+         border: 1px solid #9f9f9f;
       }
       span {
          margin: 6px 0 0 9px;
@@ -145,7 +158,6 @@ div.form-section {
    }
 
    input, textarea {
-      margin-top: 9px;
       box-sizing: border-box;
       border: 1px solid #989898;
       padding: 4px 6px;

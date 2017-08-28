@@ -11,15 +11,14 @@ module SearchEngine
       results = date_query('from', search_params, results)
       # 範囲(to)
       results = date_query('to', search_params, results)
+      #能の規模
+      results = category_query(search_params, results) if search_params[:category]
       # 開催地フィルター
       results = location_query(search_params, results)
-
-      if search_params[:program]
-         # 演目フィルター
-         results = program_query(search_params, results)
-         # 演者フィルター
-         results = performer_query(search_params, results)
-      end
+      # 演目フィルター
+      results = program_query(search_params, results) if search_params[:program]
+      # 演者フィルター
+      results = performer_query(search_params, results) if search_params[:performer]
 
       # キーワードフィルター
       results = keywd_query(search_params, results)
@@ -34,11 +33,20 @@ module SearchEngine
                   end_date:    params[:search][:end_date],
                   locations:   params[:search][:locations],
                   program:     params[:search][:program],
+                  category:    category_params,
                   performer:   params[:search][:performer],
                   keywd:       params[:search][:keywd] }
       elsif params[:easy_search]
          return { keywd:       params[:easy_search][:keywd] }
       end
+   end
+
+   def category_params
+      categories = []
+      for i in 0..4 do
+         categories << params[:search][:"category_#{i}"] if params[:search][:"category_#{i}"] != "0"
+      end
+      return categories
    end
 
    def add_iterated_datas(datas, field, result)
@@ -65,6 +73,14 @@ module SearchEngine
          term_query = "start_date <= '#{search_params[:end_date]}'"
       end
       return results.where(term_query)
+   end
+
+   def category_query(search_params, results)
+      query = ''
+      search_params[:category].each do |category|
+         query += "category = '#{category}' OR "
+      end
+      return results.where(query[0..(query.length - 5)])
    end
 
    def location_query(search_params, results)

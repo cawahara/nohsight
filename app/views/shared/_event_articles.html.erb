@@ -1,6 +1,7 @@
 <% @events.each do |event| %>
 <div id="event-<%= event.id %>" class="article event-summary">
    <div class="header">
+      <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
       <h1><%= link_to event.title, event_path(event) %></h1>
    </div>
    <ul class="info">

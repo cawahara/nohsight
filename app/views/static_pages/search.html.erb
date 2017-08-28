@@ -31,6 +31,16 @@
             <dt>キーワード</dt>
             <dd><%= f.text_field :keywd, id: 'keywd' %></dd>
          </dl>
+         <dl>
+            <dt>カテゴリ</dt>
+            <dd>
+               <label><%= f.check_box :category_0, {}, '能楽協会主催' %>能楽協会主催</label>
+               <label><%= f.check_box :category_1, {}, '能楽堂主催' %>能楽堂主催</label>
+               <label><%= f.check_box :category_2, {}, '能楽協会員出演' %>能楽協会員出演</label>
+               <label><%= f.check_box :category_3, {}, '教室、セミナー' %>教室、セミナー</label>
+               <label><%= f.check_box :category_4, {}, 'その他' %>その他</label>
+            </dd>
+         </dl>
          <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>
    </div>

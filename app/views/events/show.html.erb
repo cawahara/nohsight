@@ -1,6 +1,7 @@
 <div id="event-show">
    <!-- イベント概要 -->
    <div class="headline">
+
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title if @event.place %></li>
@@ -15,6 +16,7 @@
             <% end %>
          <% end %>
       </div>
+      <p class="category-<%= category_number(@event.category) %>"><%= @event.category %></p>
    </div>
 
    <!-- イベント基本情報 -->
@@ -42,8 +44,8 @@
 
       <div class="article">
          <h2 class="article-header">開催時間</h2>
-         <p><%= "会場時間：#{@event&.open_date&.format_with_hours}" if @event.open_date %></p>
-         <p><%= "開催時間：#{@event&.start_date&.format_with_hours}" %></p>
+         <p><%= "会場：#{@event&.open_date&.format_with_hours}" if @event.open_date %></p>
+         <p><%= "開催：#{@event&.start_date&.format_with_hours}" %></p>
       </div>
 
       <div class="article">
