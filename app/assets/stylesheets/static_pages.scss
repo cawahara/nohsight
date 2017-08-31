@@ -19,18 +19,6 @@
       div.header {
          overflow: hidden;
          margin-bottom: 5px;
-         p {
-            display: block;
-            padding: 8px 12px;
-            width: auto;
-            margin: 0 7px 10px 7px;
-            color: #343434;
-         }
-         p.category-0 { background-color: #e5e5cc; }
-         p.category-1 { background-color: #ffddcc; }
-         p.category-2 { background-color: #ccfff5; }
-         p.category-3 { background-color: #e6f2ff; }
-         p.category-4 { background-color: #dcdcdc; }
 
          h1 {
             float: left;
@@ -55,6 +43,19 @@
       ul.info {
          li { color: #6e6e6e;}
       }
+
+      p {
+         display: inline-block;
+         padding: 7px 9px;
+         width: auto;
+         margin: 7px 9px 2px 0;
+         color: #343434;
+      }
+      p.category-0 { background-color: #e5e5cc; }
+      p.category-1 { background-color: #ffddcc; }
+      p.category-2 { background-color: #ccfff5; }
+      p.category-3 { background-color: #e6f2ff; }
+      p.category-4 { background-color: #dcdcdc; }
 
       ul.tickets {
          li {

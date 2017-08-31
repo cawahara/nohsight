@@ -22,6 +22,37 @@
    <!-- イベント基本情報 -->
    <div id="basic-info" class="section">
       <h1 class="section-header">基本情報</h1>
+
+      <% if @event.information != '' %>
+      <div class="article">
+         <h2 class="article-header">公演詳細</h2>
+         <p><%= @event.information %></p>
+      </div>
+      <% end %>
+
+      <div class="article">
+         <h2 class="article-header">会場案内</h2>
+         <ul>
+            <li>会場：<%= @event&.place&.title %></li>
+            <li>住所：<%= @event&.place&.address %></li>
+            <% if @event.place.official_url %>
+            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank'%></li>
+            <% end %>
+         </ul>
+
+         <!-- 会場場所の地図 -->
+         <% if @event.place.address %>
+         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event&.place&.title %>"></iframe>
+         <% end %>
+      </div>
+
+      <div class="article">
+         <h2 class="article-header">開催日程</h2>
+         <p class="start-date"><%= @event&.start_date&.format_with_weekday %></p>
+         <p><%= "開場：#{@event&.open_date&.format_with_hours}" if @event.open_date %></p>
+         <p><%= "開始：#{@event&.start_date&.format_with_hours}" %></p>
+      </div>
+
       <div class="article">
          <h2 class="article-header">演目と出演者</h2>
          <table id="event-programs-info">
@@ -43,12 +74,6 @@
       </div>
 
       <div class="article">
-         <h2 class="article-header">開催時間</h2>
-         <p><%= "会場：#{@event&.open_date&.format_with_hours}" if @event.open_date %></p>
-         <p><%= "開催：#{@event&.start_date&.format_with_hours}" %></p>
-      </div>
-
-      <div class="article">
          <h2 class="article-header">チケット料金</h2>
          <table id="tickets-info">
             <% @event.tickets.each do |ticket| %>
@@ -60,35 +85,12 @@
          </table>
       </div>
 
-      <% if @event.information != '' %>
-      <div class="article">
-         <h2 class="article-header">公演詳細</h2>
-         <p><%= @event.information %></p>
-      </div>
-      <% end %>
-
       <% if @event.official_url %>
       <div class="article">
          <h2 class="article-header">公式サイト</h2>
          <p><%= link_to @event.official_url, @event.official_url, :target => '_blank' %></p>
       </div>
       <% end %>
-
-      <div class="article">
-         <h2 class="article-header">会場案内</h2>
-         <ul>
-            <li>会場：<%= @event&.place&.title %></li>
-            <li>住所：<%= @event&.place&.address %></li>
-            <% if @event.place.official_url %>
-            <li>URL：<%= link_to @event.place.official_url, @event.place.official_url, :target => '_blank'%></li>
-            <% end %>
-         </ul>
-
-         <!-- 会場場所の地図 -->
-         <% if @event.place.address %>
-         <iframe class="event-location" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= @event&.place&.title %>"></iframe>
-         <% end %>
-      </div>
    </div>
 
    <div class="user-command">

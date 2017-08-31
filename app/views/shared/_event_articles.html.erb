@@ -1,29 +1,20 @@
 <% @events.each do |event| %>
 <div id="event-<%= event.id %>" class="article event-summary">
    <div class="header">
-      <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
-      <h1><%= link_to event.title, event_path(event) %></h1>
+      <h1><%= link_to event.title, event_path(event) %></h1><br>
    </div>
    <ul class="info">
       <li class="place"><%= event.place.title %></li>
-      <li class="place"><%= event.place.address %></li>
       <li class="date"><%= event&.start_date&.format_with_weekday %></li>
    </ul>
-
+   <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
    <table class="event-programs-info">
       <% event.event_programs.each do |ev_program| %>
       <tr class="event-program">
          <td><%= ev_program.genre %></td>
          <td>「<%= ev_program.program.title %>」</td>
-         <td></td>
+         <td class="event-performer"><%= ev_program&.performers&.first&.full_name %></td>
       </tr>
-      <% ev_program.performers.each do |performer| %>
-      <tr class="event-performer">
-         <td></td>
-         <td></td>
-         <td><%= performer.full_name %></td>
-      </tr>
-      <% end %>
       <% end %>
    </table>
 

@@ -3,7 +3,7 @@
       <h1>ログイン</h1>
    </div>
 
-   <%= form_for(:session, url: login_path) do |f| %>
+   <%= form_for(:session, url: login_path, html: { id: 'login-form' }) do |f| %>
    <div class="form-section">
       <h1 class="form-header">ログイン情報入力</h1>
 
