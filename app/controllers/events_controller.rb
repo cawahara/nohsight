@@ -90,6 +90,7 @@ class EventsController < ApplicationController
       Place.find_or_create_by(title: event_place_params['title']) do |place|
          place.attributes = event_place_params
       end
+      place = Place.find_by(title: event_place_params['title'])
       if place && @event.update_attribute(:place_id, place.id)
          flash[:success] = '会場を変更しました'
          redirect_to(edit_event_port_url(@event))

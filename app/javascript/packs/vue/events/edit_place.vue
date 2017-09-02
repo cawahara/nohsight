@@ -15,12 +15,12 @@
       </div>
       <div class="lg-form">
          <label>住所</label>
-         <input v-bind:name="getColumn('address')" type="text" v-model:value="place.address">
+         <input v-bind:name="getColumn('address')" v-bind:id="getColumn('address')" type="text" v-model:value="place.address">
       </div>
 
       <div class="lg-form">
          <label>公式サイト</label>
-         <input v-bind:name="getColumn('official_url')" type="text" v-model:value="place.official_url">
+         <input v-bind:name="getColumn('official_url')" v-bind:id="getColumn('official_url')" type="text" v-model:value="place.official_url">
       </div>
 
    </div>
@@ -58,8 +58,23 @@
             return 'event_place[' + name + ']'
          }
       },
-      created: function(){
+      mounted: function(){
          window.addEventListener('click', this.toggleSelector)
+
+         if(this.values.render_params != false){
+            this.search_query.word = this.place.render_params.title
+            this.place.address = this.place.render_params.address
+            this.place.official_url = this.place.render_params.official_url
+
+            var input_columns = { title:   this.place.render_params.title,
+                                  address: this.place.render_params.address }
+            for(var key in input_columns){
+               if(input_columns[key].length == 0){
+                  var input_tag = document.getElementById(this.getColumn(key))
+                  input_tag.className = 'field_with_errors'
+               }
+            }
+         }
       }
    }
 </script>
