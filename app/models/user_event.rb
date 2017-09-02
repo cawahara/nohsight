@@ -6,5 +6,5 @@ class UserEvent < ApplicationRecord
 
    validates :user_id,     presence: true
    validates :event_id,    presence: true
-   validates :organizer,   inclusion: { in: [true, false]}
+   validates :organizer,   inclusion: { in: [true, false] }
 end

@@ -11,8 +11,7 @@ class EventPerformersController < ApplicationController
    def update
       ev_programs = get_params('event_program')
       ev_performers = insert_params(ev_programs)
-      if ev_performers != false
-         update_performers(ev_performers)
+      if ev_performers == true
          flash[:success] = '演目を変更しました'
          redirect_to(edit_event_port_url(@event))
       else
@@ -24,21 +23,13 @@ class EventPerformersController < ApplicationController
    private
 
    def insert_params(ev_pros)
-      ev_pers = []
       ev_pros.each_with_index do |ev_pro, key|
          next if ev_pro['mode'] != 'update'
          ev_per = get_params("event_performer-#{key}")
-         ev_per = params_valid?(ev_per, 'performer_id', ['full_name'], Performer)
+         ev_per = update_bundled_records(ev_per, EventPerformer, 'performer_id', 'full_name', Performer)
          return false if ev_per == false
-         ev_pers << ev_per
       end
-      return ev_pers
-   end
-
-   def update_performers(ev_per_infos)
-      ev_per_infos.each do |ev_per_info|
-         update_records(ev_per_info, EventPerformer.required_columns, EventPerformer)
-      end
+      return true
    end
 
    def set_variables

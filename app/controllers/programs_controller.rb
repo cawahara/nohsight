@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ProgramsController < ApplicationController
-
    before_action :logged_in?
 
    # REVIEW: indexをvueがデータを引き出すためのストレージにすべきか(多分json枠もしくは別actionから引き出す)

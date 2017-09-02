@@ -61,8 +61,15 @@ RSpec.describe Ticket, type: :model do
    end
 
    describe '#method' do
+      let(:ticket) { build(:model_ticket) }
+
       it 'returns required columns' do
          expect(Ticket.required_columns).to eq(['event_id', 'grade', 'price'])
+      end
+
+      it 'chomp_currency removes string around integer on price field' do
+         ticket.price = '3dollers'
+         expect(ticket).to be_valid
       end
    end
 end

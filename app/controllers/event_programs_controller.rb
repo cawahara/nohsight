@@ -10,13 +10,12 @@ class EventProgramsController < ApplicationController
 
    def update
       ev_programs = get_params('event_program')
-      ev_programs = params_valid?(ev_programs, 'program_id', ['title'], Program)
-      if ev_programs != false
-         update_records(ev_programs, EventProgram.required_columns, EventProgram)
+      ev_programs = update_bundled_records(ev_programs, EventProgram, 'program_id', 'title', Program)
+      if ev_programs == true
          flash[:success] = '演目を変更しました'
          redirect_to(edit_event_port_url(@event))
       else
-         flash['danger'] = "赤枠の項目が未入力です"
+         flash['danger'] = '赤枠の項目が未入力です'
          render 'event_programs/edit'
       end
    end
@@ -24,7 +23,6 @@ class EventProgramsController < ApplicationController
    private
 
    def set_variables
-      @event = Event.find(params[:id])
       @event = Event.find(params[:id])
       @event_programs = @event.event_programs
       @event_performers = []

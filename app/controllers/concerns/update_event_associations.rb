@@ -12,68 +12,44 @@ module UpdateEventAssociations
       return array_params
    end
 
-   # first required key must be the value for updating class model
-   # TODO: RSpecにmodeキーが空の時のテスト記入
-   def params_valid?(params, foreign_key, required_keys, model)
+   def create_params_instance(params, model, foreign_key, required_key, refer_model)
+      return true if params['mode'] == 'destroy' || params['mode'].empty?
+      params_for_instance = {}
+      model.required_columns.each do |required_column|
+         params[required_column] = create_foreign_key(params, required_key, refer_model) if required_column == foreign_key
+         params_for_instance[required_column] = params[required_column]
+      end
+      return model.new(params_for_instance).valid? ? params_for_instance : false
+   end
+
+   def execute_crud_actions(params, params_for_instance, model)
+      case params['mode']
+      when 'create'
+         model.create!(params_for_instance)
+      when 'update'
+         model.find(params[:id]).update_attributes(params_for_instance)
+      when 'destroy'
+         model.find(params[:id]).destroy!
+      end
+   end
+
+   def update_bundled_records(params, model, foreign_key, required_key, refer_model)
+      new_params = []
       params.each do |param|
-         next if param['mode'] == 'destroy' || param['mode'].empty?
-         return false if keys_valid?(param, foreign_key) == false
-
-         if foreign_key.empty?
-            return false if ticket_valid?(param) == false
-            next
-         end
-         param[foreign_key] = create_foreign_key(param, required_keys, model)
+         params_for_instance = create_params_instance(param, model, foreign_key, required_key, refer_model)
+         return false if params_for_instance == false
+         new_params << params_for_instance
       end
-      return params
-   end
-
-   def update_records(array_inputs, required_keys, model)
-      array_inputs.each do |inputs|
-         params_for_update = {}
-         required_keys.each do |key|
-            params_for_update[key] = inputs[key]
-         end
-
-         query_for_record(model, inputs, params_for_update)
-      end
-   end
-
-   private
-
-   def keys_valid?(param, foreign_key)
-      param.each_key do |key|
-         next if key == 'id' || key == foreign_key
-         return false if param[key].empty?
+      params.each_with_index do |_val, idx|
+         execute_crud_actions(params[idx], new_params[idx], model)
       end
       return true
    end
 
-   def ticket_valid?(ticket_param)
-      return false if /[^0-9]+/.match?(ticket_param['price'])
-   end
+   private
 
-   def create_foreign_key(param, required_keys, model)
-      instance = model.find_by("#{required_keys[0]}": param[required_keys[0]])
-      if instance.nil?
-         create_params = {}
-         required_keys.each do |required_key|
-            create_params[required_key] = param[required_key]
-         end
-         instance = model.create(create_params)
-         instance.save
-      end
+   def create_foreign_key(param, required_key, model)
+      instance = model.find_or_create_by("#{required_key}": param[required_key])
       return instance.id
-   end
-
-   def query_for_record(model, inputs, params)
-      case inputs['mode']
-      when 'update'
-         model.find(inputs['id']).update_attributes(params)
-      when 'destroy'
-         model.find(inputs['id']).destroy
-      when 'create'
-         model.create(params)
-      end
    end
 end

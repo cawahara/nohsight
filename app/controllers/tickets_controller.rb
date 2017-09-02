@@ -9,9 +9,9 @@ class TicketsController < ApplicationController
    end
 
    def update
-      ticket_input = params_valid?(get_params('ticket'), '', '', '')
-      if ticket_input != false
-         update_records(ticket_input, Ticket.required_columns, Ticket)
+      tickets = get_params('ticket')
+      tickets = update_bundled_records(tickets, Ticket, '', '', '')
+      if tickets == true
          flash[:success] = '演目を変更しました'
          redirect_to(edit_event_port_url(@event))
       else

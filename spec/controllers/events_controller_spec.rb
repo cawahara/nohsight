@@ -720,13 +720,7 @@ RSpec.describe EventsController, type: :controller do
          end
 
          # FIXME: renderアクションに変更したい
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to edit_event_place action' do
-            expect(response).to redirect_to(edit_event_place_url(@event))
-         end
+         it_behaves_like('returning success response', true, 'edit_place')
       end
 
       context 'when not editor of the event' do

@@ -19,7 +19,6 @@ class UserEventsController < ApplicationController
       # TODO: 実装未定
    end
 
-
    private
 
    def params_for_create

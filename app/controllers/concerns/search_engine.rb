@@ -11,7 +11,7 @@ module SearchEngine
       results = date_query('from', search_params, results)
       # 範囲(to)
       results = date_query('to', search_params, results)
-      #能の規模
+      # 能の種類
       results = category_query(search_params, results) if search_params[:category]
       # 開催地フィルター
       results = location_query(search_params, results)
@@ -43,8 +43,8 @@ module SearchEngine
 
    def category_params
       categories = []
-      for i in 0..4 do
-         categories << params[:search][:"category_#{i}"] if params[:search][:"category_#{i}"] != "0"
+      5.times do |i|
+         categories << params[:search][:"category_#{i}"] if params[:search][:"category_#{i}"] != '0'
       end
       return categories
    end
