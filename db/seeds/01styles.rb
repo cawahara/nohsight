@@ -1,13 +1,27 @@
+Style.delete_all()
 Style.create!([
   {title: "シテ方観世流"},
+  {title: "シテ方宝生流"},
   {title: "シテ方金春流"},
   {title: "シテ方金剛流"},
+  {title: "シテ方喜多流"},
   {title: "ワキ方高安流"},
+  {title: "ワキ方福王流"},
+  {title: "ワキ方宝生流"},
+  {title: "狂言方大蔵流"},
+  {title: "狂言方和泉流"},
+  {title: "笛方一噌流"},
   {title: "笛方森田流"},
+  {title: "笛方藤田流"},
   {title: "小鼓方幸流"},
+  {title: "小鼓方幸清流"},
   {title: "小鼓方大倉流"},
+  {title: "小鼓方観世流"},
+  {title: "大鼓方葛野流"},
+  {title: "大鼓方高安流"},
   {title: "大鼓方石井流"},
+  {title: "大鼓方大倉流"},
+  {title: "大鼓方観世流"},
   {title: "太鼓方観世流"},
-  {title: "太鼓方金春流"},
-  {title: "狂言方大蔵流"}
+  {title: "太鼓方金春流"}
 ])
