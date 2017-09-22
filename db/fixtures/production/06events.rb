@@ -40,10 +40,10 @@ Event.seed do |s|
 	s.id = 42
 	s.title = '種田後演会能'
 	s.place_id = 282
-	s.open_date = '2017-10-28 12:30:00"'
-	s.start_date = '2017-10-28 13:30:00'
+	s.open_date = '2017-10-08 12:30:00"'
+	s.start_date = '2017-10-08 13:30:00'
 	s.information = ''
-	s.official_url = 'http://www.kongou-net.com/schedule/20170924.html'
+	s.official_url = ''
 	s.category = 'その他'
 	s.published = true
 end
@@ -62,24 +62,24 @@ end
 
 Event.seed do |s|
 	s.id = 62
-	s.title = '豊春会　秋の能'
-	s.place_id = 282
-	s.open_date = '2017-10-19 12:15:00"'
-	s.start_date = '2017-10-19 13:00:00'
-	s.information = ''
-	s.official_url = ''
-	s.category = '能楽協会主催'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 72
 	s.title = '金沢能楽会定期能'
 	s.place_id = 212
 	s.open_date = nil
 	s.start_date = '2017-10-01 13:00:00'
 	s.information = ''
 	s.official_url = 'http://www.kanazawanohgakukai.jp/pdf/teirei2017_10.pdf'
+	s.category = '能楽堂主催'
+	s.published = true
+end
+
+Event.seed do |s|
+	s.id = 72
+	s.title = '観世会荒磯能'
+	s.place_id = 112
+	s.open_date = '2017-10-12 12:00:00"'
+	s.start_date = '2017-10-12 13:00:00'
+	s.information = ''
+	s.official_url = 'http://kanze.net/publics/index/79/'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -110,30 +110,6 @@ end
 
 Event.seed do |s|
 	s.id = 102
-	s.title = '鷹姫50年　第59回 京都観世能(第1部)'
-	s.place_id = 302
-	s.open_date = '2017-10-22 09:30:00"'
-	s.start_date = '2017-10-22 10:30:00'
-	s.information = '※上演中のお出入りはご遠慮ください\n※事務局で許可した方以外の写真撮影・録音・録画は固くお断りいたします。\n※上演中は、携帯電話の呼出音をお切りください。\n※予告なく出演者が変更になる場合がございます。あらかじめご了承ください'
-	s.official_url = 'http://www.kyoto-kanze.jp/performanceguide/kyoto_kanzenoh_front.jpg'
-	s.category = '能楽協会員出演'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 112
-	s.title = '鷹姫50年　第59回 京都観世能(第2部)'
-	s.place_id = 302
-	s.open_date = '2017-10-22 14:00:00"'
-	s.start_date = '2017-10-22 15:00:00'
-	s.information = '※上演中のお出入りはご遠慮ください\n※事務局で許可した方以外の写真撮影・録音・録画は固くお断りいたします。\n※上演中は、携帯電話の呼出音をお切りください。\n※予告なく出演者が変更になる場合がございます。あらかじめご了承ください'
-	s.official_url = 'http://www.kyoto-kanze.jp/performanceguide/kyoto_kanzenoh_front.jpg'
-	s.category = '能楽協会員出演'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 122
 	s.title = '第３４回　横浜かもんやま能'
 	s.place_id = 172
 	s.open_date = '2017-10-15 13:00:00"'
@@ -145,7 +121,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 132
+	s.id = 112
 	s.title = '能の花　能を彩る花　第１回「菊」'
 	s.place_id = 172
 	s.open_date = '2017-10-28 13:00:00"'
@@ -157,7 +133,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 142
+	s.id = 122
 	s.title = '能の花　能を彩る花　第２回「紅葉」'
 	s.place_id = 172
 	s.open_date = '2017-11-23 13:00:00"'
@@ -169,7 +145,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 152
+	s.id = 132
 	s.title = '能の花　能を彩る花　第３回「牡丹」'
 	s.place_id = 172
 	s.open_date = '2018-01-23 13:00:00"'
@@ -181,7 +157,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 162
+	s.id = 142
 	s.title = '能の花　能を彩る花　第４回「梅」'
 	s.place_id = 172
 	s.open_date = '2018-02-10 13:00:00"'
@@ -193,7 +169,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 172
+	s.id = 152
 	s.title = '能の花　能を彩る花　第５回「桜」'
 	s.place_id = 172
 	s.open_date = '2018-03-10 13:00:00"'
@@ -205,20 +181,8 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 182
-	s.title = '観世会荒磯能'
-	s.place_id = 112
-	s.open_date = '2017-10-12 12:00:00"'
-	s.start_date = '2017-10-12 13:00:00'
-	s.information = ''
-	s.official_url = 'http://kanze.net/publics/index/79/'
-	s.category = '能楽堂主催'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 192
-	s.title = '山本能楽堂90周年記念 とくい能　特別公演 卒塔婆小町'
+	s.id = 162
+	s.title = '山本能楽堂90周年記念 とくい能　特別公演 卒都婆小町'
 	s.place_id = 332
 	s.open_date = '2017-09-18 13:30:00"'
 	s.start_date = '2017-09-18 14:00:00'
@@ -229,43 +193,19 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 202
+	s.id = 172
 	s.title = '一聲能'
 	s.place_id = 332
 	s.open_date = '2017-10-01 13:30:00"'
 	s.start_date = '2017-10-01 14:00:00'
 	s.information = '日本古来の詞章を謡い、美しい日本の伝統、能の楽しさを体感しましょう。'
-	s.official_url = 'http://www.noh-theater.com/nfblog/?p=541'
+	s.official_url = 'http://www.noh-theater.com/nfblog/?p=595'
 	s.category = '能楽堂主催'
 	s.published = true
 end
 
 Event.seed do |s|
-	s.id = 212
-	s.title = '大江定期能'
-	s.place_id = 312
-	s.open_date = nil
-	s.start_date = '2017-09-16 17:30:00'
-	s.information = ''
-	s.official_url = 'http://www.asahi-net.or.jp/~tn4m-ooe/yotei.html'
-	s.category = '能楽堂主催'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 222
-	s.title = '「屋島」 小早川泰輝'
-	s.place_id = 312
-	s.open_date = '2017-09-29 18:30:00"'
-	s.start_date = '2017-09-29 19:00:00'
-	s.information = ''
-	s.official_url = ''
-	s.category = '能楽堂主催'
-	s.published = true
-end
-
-Event.seed do |s|
-	s.id = 232
+	s.id = 182
 	s.title = '10月定例公演　仁王・龍田'
 	s.place_id = 62
 	s.open_date = '2017-10-04 12:00:00"'
@@ -277,7 +217,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 242
+	s.id = 192
 	s.title = '10月普及公演　泣尼・枕慈童'
 	s.place_id = 62
 	s.open_date = '2017-10-14 12:00:00"'
@@ -289,7 +229,7 @@ Event.seed do |s|
 end
 
 Event.seed do |s|
-	s.id = 252
+	s.id = 202
 	s.title = '10月定例公演　御茶の水・養老'
 	s.place_id = 62
 	s.open_date = '2017-10-20 17:30:00"'
