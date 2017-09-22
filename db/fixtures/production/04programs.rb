@@ -9,7 +9,7 @@ Program.seed do |s|
 end
 
 Program.seed do |s|
-	s.id = 22 	
+	s.id = 22
 	s.title = '葵上'
    s.category = '四番目'
    s.shimai = true
@@ -1750,5 +1750,77 @@ Program.seed do |s|
 	s.title = '菊慈童'
    s.category = '四番目'
    s.shimai = true
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2202
+	s.title = '鏡男'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2212
+	s.title = '謀生種'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2222
+	s.title = '柿山伏'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2232
+	s.title = '惣八'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2242
+	s.title = '仏師'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2252
+	s.title = '萩大名'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2262
+	s.title = '仁王'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2272
+	s.title = '泣尼'
+   s.category = '狂言'
+   s.shimai = false
+   s.duration = 0
+end
+
+Program.seed do |s|
+	s.id = 2282
+	s.title = '御茶の水'
+   s.category = '狂言'
+   s.shimai = false
    s.duration = 0
 end
