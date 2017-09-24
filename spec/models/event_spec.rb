@@ -115,6 +115,16 @@ RSpec.describe Event, type: :model do
 
    describe '#validation' do
       let(:event) { build(:model_event) }
+      let(:event_program) { build(:model_event_program, event: event) }
+      let(:event_performer) { build(:model_event_performer, event_program: event_program) }
+      let(:ticket) { build(:model_ticket, event: event) }
+
+      before(:each) do
+         event.save
+         event_program.save
+         event_performer.save
+         ticket.save
+      end
 
       it 'is valid with title, start_date, information, official_url, and published' do
          expect(event).to be_valid
@@ -128,26 +138,11 @@ RSpec.describe Event, type: :model do
          end
       end
 
-      # REVIEW: boolean型の特徴としてなにかしら値があればtrueになるが、
-      # =>      falseの場合は直接falseを入力しないといけない
-      context 'published' do
-         it 'is convert from any words to true value' do
-            words = ['a', 12, true]
-            words.each do |word|
-               event.published = word
-               expect(event.published).to eq(true)
-            end
-         end
-
-         it 'returns false if false is inserted' do
-            event.published = false
-            expect(event.published).to eq(false)
-         end
-
-         it 'is invalid with nil' do
-            event.published = nil
-            event.valid?
-            expect(event.errors[:published]).to include('is not included in the list')
+      context 'place_id' do
+         it 'is invalid with empty place_id when update_publish' do
+            event.place_id = nil
+            event.valid?(:update_publish)
+            expect(event.errors[:place_id]).to include("can't be blank")
          end
       end
 
@@ -156,6 +151,39 @@ RSpec.describe Event, type: :model do
             event.open_date = event.start_date + 2
             event.valid?
             expect(event.errors[:open_date]).to include('should be earlier than start_date')
+         end
+
+         it 'is invalid to define with empty start_date' do
+            event.start_date = nil
+            event.valid?
+            expect(event.errors[:open_date]).to include('should be valid after start_date is defined')
+         end
+      end
+
+      context 'start_date' do
+         it 'is invalid with empty start_date when update_publish' do
+            event.start_date = nil
+            event.valid?(:update_publish)
+            expect(event.errors[:start_date]).to include("can't be blank")
+         end
+      end
+
+      context 'official_url' do
+         it 'is invalid with empty official_url when update_publish' do
+            event.official_url = nil
+            event.valid?(:update_publish)
+            expect(event.errors[:official_url]).to include("can't be blank")
+         end
+
+         it 'is invalid with improper formatted url when update_publish' do
+            invalid_urls = ['htps://',
+                            'ahttps://eventsite.com',
+                            'https:/eventsite.com']
+            invalid_urls.each do |invalid_url|
+               event.official_url = invalid_url
+               event.valid?(:update_publish)
+               expect(event.errors[:official_url]).to include('is invalid')
+            end
          end
       end
 
@@ -181,6 +209,50 @@ RSpec.describe Event, type: :model do
                event.valid?
                expect(event.errors[:category]).to include('is not included in the list')
             end
+         end
+      end
+
+      context 'publishing_status' do
+
+         it 'is valid with proper values' do
+            valid_status = [0, 1, 2, 3, 4]
+            valid_status.each do |status|
+               event.publishing_status = status
+               expect(event).to be_valid
+            end
+         end
+
+         it 'is invalid with improper values' do
+            invalid_status = [12, nil]
+            invalid_status.each do |status|
+               event.publishing_status = status
+               event.valid?
+               expect(event.errors[:publishing_status]).to include('is not included in the list')
+            end
+         end
+      end
+
+      context 'event_programs' do
+         it 'is invalid without any event_program when update_publish' do
+            event.event_programs.delete_all
+            event.valid?(:update_publish)
+            expect(event.errors[:event_programs]).to include('should have at least one event_program')
+         end
+      end
+
+      context 'event_performers' do
+         it 'is invalid without any event_performer when update_publish' do
+            event_program.event_performers.delete_all
+            event.valid?(:update_publish)
+            expect(event.errors[:event_performers]).to include('should have at least one event_performer in each event_program')
+         end
+      end
+
+      context 'tickets' do
+         it 'is invalid without any event_program when update_publish' do
+            event.tickets.delete_all
+            event.valid?(:update_publish)
+            expect(event.errors[:tickets]).to include('should have at least one ticket')
          end
       end
    end

@@ -7,8 +7,8 @@ FactoryGirl.define do
       title          'First Event'
       start_date     Date.today
       information    'It will be the best event for you!'
-      official_url   'http//www.firstevent.com'
-      published      true
+      official_url   'https//www.firstevent.com'
+      publishing_status     3
 
       open_date      Date.today - 1
 
@@ -28,7 +28,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http//www.anotherevent.com'
-      published      true
+      publishing_status      3
 
       trait :start_from_this do
          after(:create) do |event|
@@ -46,7 +46,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http//www.controllerevent.com'
-      published      true
+      publishing_status      3
 
       open_date      Date.today - 1
 
@@ -70,7 +70,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http//www.differentevent.com'
-      published      true
+      publishing_status      3
 
       trait :start_from_this do
          after(:create) do |event|
@@ -86,7 +86,8 @@ FactoryGirl.define do
 
       title          '能楽堂公演その一'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:first_search_event_program, event: event)
@@ -98,7 +99,8 @@ FactoryGirl.define do
 
       title          '能楽堂公演その二'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:second_search_event_program, event: event)
@@ -110,7 +112,8 @@ FactoryGirl.define do
 
       title          '能楽堂公演その三'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:third_search_event_program, event: event)
@@ -122,7 +125,8 @@ FactoryGirl.define do
 
       title          '舞台センター公演その一'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:fourth_search_event_program, event: event)
@@ -134,7 +138,8 @@ FactoryGirl.define do
 
       title          '舞台センター公演その二'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:fifth_search_event_program, event: event)
@@ -146,7 +151,8 @@ FactoryGirl.define do
 
       title          '某公民館公演その一'
       start_date     Date.today
-      published      true
+      official_url   'http//www.searchevent.com'
+      publishing_status      3
 
       after(:create) do |event|
          FactoryGirl.create(:sixth_search_event_program, event: event)
