@@ -76,6 +76,17 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to comment' do
+         it "is 'has one' attribute" do
+            association = described_class.reflect_on_association(:comment)
+            expect(association.macro).to eq(:has_one)
+         end
+
+         it 'shows that event has one comment' do
+            expect{ create(:model_event, :start_from_this) }.to change(Comment, :count).by(1)
+         end
+      end
+
       context 'destroying dependency' do
          let(:event) { create(:model_event, :start_from_this) }
          let(:another_event) { create(:another_event, :start_from_this) }

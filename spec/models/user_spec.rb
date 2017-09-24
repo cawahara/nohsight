@@ -35,8 +35,18 @@ RSpec.describe User, type: :model do
          end
 
          it 'shows that user has many point_records' do
-            # FIXME; 1をuser.user_eventx.countにしたい(createしたuserを変数に格納したい)
             expect{ create(:model_user, :start_from_this) }.to change(PointRecord, :count).by(1)
+         end
+      end
+
+      context 'related to comments' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:comments)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that user has many comments' do
+            expect{ create(:model_user, :start_from_this) }.to change(Comment, :count).by(1)
          end
       end
 
@@ -53,6 +63,14 @@ RSpec.describe User, type: :model do
 
          it "doesn't delete not relative point_records" do
             expect(another_user.point_records.count).not_to eq(0)
+         end
+
+         it 'deletes relative comments' do
+            expect(user.comments.count).to eq(0)
+         end
+
+         it "doesn't delete not relative comments" do
+            expect(another_user.comments.count).not_to eq(0)
          end
       end
    end

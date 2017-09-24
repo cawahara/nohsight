@@ -16,7 +16,8 @@ FactoryGirl.define do
          after(:create) do |event|
             FactoryGirl.create(:model_event_program, event: event)
             FactoryGirl.create(:model_ticket, event: event)
-            FactoryGirl.create(:model_user_event, event: event)
+            user = FactoryGirl.create(:model_user_event, event: event).user
+            FactoryGirl.create(:model_comment, event: event, user: user)
          end
       end
    end
@@ -34,7 +35,8 @@ FactoryGirl.define do
          after(:create) do |event|
             FactoryGirl.create(:another_event_program, event: event)
             FactoryGirl.create(:another_ticket, event: event)
-            FactoryGirl.create(:another_user_event, event: event)
+            user = FactoryGirl.create(:another_user_event, event: event).user
+            FactoryGirl.create(:another_comment, event: event, user: user)
          end
       end
    end
