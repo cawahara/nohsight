@@ -29,15 +29,16 @@ ActiveRecord::Schema.define(version: 20170717113733) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "place_id"
-    t.string   "title",                      null: false
+    t.string   "title",                           null: false
     t.datetime "open_date"
     t.datetime "start_date"
-    t.text     "information",  limit: 65535
+    t.text     "information",       limit: 65535
     t.string   "official_url"
-    t.string   "category",     limit: 45
-    t.boolean  "published"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "category",          limit: 45
+    t.integer  "publishing_status"
+    t.integer  "original_event_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170717113733) do
     t.string   "email"
     t.text     "information",     limit: 65535
     t.string   "password_digest"
+    t.boolean  "is_admin"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
