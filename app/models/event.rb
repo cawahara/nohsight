@@ -9,6 +9,12 @@ class Event < ApplicationRecord
    has_many   :users,            through:   :user_events
    has_one    :comment,          dependent: :destroy
 
+   has_many   :editions,         class_name: 'Event',
+                                 foreign_key: 'original_event_id',
+                                 dependent:  :destroy
+   belongs_to :original,         class_name: 'Event',
+                                 foreign_key: 'original_event_id'
+
    before_validation :set_value_on_category
 
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
@@ -38,7 +44,9 @@ class Event < ApplicationRecord
             errors.add(:open_date, 'should be earlier than start_date')
          end
       else
-         errors.add(:open_date, 'should be valid after start_date is defined')
+         if open_date
+            errors.add(:open_date, 'should be valid after start_date is defined')
+         end
       end
    end
 
