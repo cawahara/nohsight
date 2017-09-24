@@ -9,6 +9,7 @@ FactoryGirl.define do
       information           'Nice to be with you.'
       password              'password'
       password_confirmation 'password'
+      is_admin              false
       agreement             true
 
       trait :start_from_this do
@@ -24,6 +25,7 @@ FactoryGirl.define do
       information           "I'm addicted to that rush"
       password              'password'
       password_confirmation 'password'
+      is_admin              false
       agreement             true
 
       trait :start_from_this do
@@ -39,6 +41,7 @@ FactoryGirl.define do
       information           'I would like to stay together'
       password              'password'
       password_confirmation 'password'
+      is_admin              false
       agreement              '1'       # post時のagreementパラムの値
 
       trait :start_from_this do
@@ -71,6 +74,7 @@ FactoryGirl.define do
       information           'What if I say loving you?'
       password              'password'
       password_confirmation 'password'
+      is_admin              false
       agreement             true
 
       trait :start_from_this do
@@ -86,6 +90,7 @@ FactoryGirl.define do
       information           'All the things she said'
       password              'password'
       password_confirmation 'password'
+      is_admin              false
       agreement             true
 
       after(:create) do |user|

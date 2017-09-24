@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: shared example使ってみる
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -114,6 +112,27 @@ RSpec.describe User, type: :model do
             user.password_confirmation = 'drowssap'
             user.valid?
             expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+         end
+      end
+
+      context 'is_admin' do
+         it 'is convert from any words to true value' do
+            words = ['a', 12, true]
+            words.each do |word|
+               user.is_admin = word
+               expect(user.is_admin).to eq(true)
+            end
+         end
+
+         it 'returns false if false is inserted' do
+            user.is_admin = false
+            expect(user.is_admin).to eq(false)
+         end
+
+         it 'is invalid with nil' do
+            user.is_admin = nil
+            user.valid?
+            expect(user.errors[:is_admin]).to include('is not included in the list')
          end
       end
 
