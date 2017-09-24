@@ -15,6 +15,7 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |user|
             FactoryGirl.create(:model_user_event, user: user)
+            FactoryGirl.create_list :model_point_record, user.events.count, user: user
          end
       end
    end
@@ -31,6 +32,7 @@ FactoryGirl.define do
       trait :start_from_this do
          after(:create) do |user|
             FactoryGirl.create(:another_user_event, user: user)
+            FactoryGirl.create_list :another_point_record, user.events.count, user: user
          end
       end
    end
