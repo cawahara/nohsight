@@ -7,6 +7,7 @@ class Event < ApplicationRecord
    has_many   :tickets,          dependent: :destroy
    has_many   :user_events,      dependent: :destroy
    has_many   :users,            through:   :user_events
+   has_one    :comment,          dependent: :destroy
 
    before_validation :set_value_on_category
 
@@ -30,7 +31,7 @@ class Event < ApplicationRecord
               on: :update_publish
    validate  :own_ticket,
               on: :update_publish
-              
+
    def open_date_earlier_than_start_date
       if start_date
          if open_date && open_date > start_date
