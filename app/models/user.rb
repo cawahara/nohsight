@@ -14,6 +14,7 @@ class User < ApplicationRecord
                            allow_nil: true,
                            length: { minimum: 4 }
    has_secure_password
+   validates :is_admin,    inclusion: { in: [true, false] }
    # 利用規約に従う
    validates_acceptance_of :agreement, accpet: true,
                                        allow_nil: false,
