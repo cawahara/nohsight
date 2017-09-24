@@ -87,6 +87,30 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to editions(itself)' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:editions)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that original has many editions' do
+            # 下記create時にorginalとeditionが同時に生成される
+            expect{ create(:model_event, :original_edition) }.to change(Event, :count).by(2)
+         end
+      end
+
+      context 'related to original(itself)' do
+         it "is 'belongs to' attribute" do
+            association = described_class.reflect_on_association(:original)
+            expect(association.macro).to eq(:belongs_to)
+         end
+
+         it 'shows that edition belongs to original' do
+            event = create(:model_event, :latest_edition)
+            expect(event.original).to be_truthy
+         end
+      end
+
       context 'destroying dependency' do
          let(:event) { create(:model_event, :start_from_this) }
          let(:another_event) { create(:another_event, :start_from_this) }
@@ -120,6 +144,33 @@ RSpec.describe Event, type: :model do
 
          it "doesn't delete not relative user_events" do
             expect(another_event.user_events.count).not_to eq(0)
+         end
+      end
+
+      context 'destroying dependency of original' do
+         let(:event) { create(:model_event, :original_edition) }
+         let(:another_event) { create(:another_event, :original_edition) }
+         before(:each) do
+            event.destroy
+         end
+
+         it 'deletes relative editions' do
+            expect(event.editions.count).to eq(0)
+         end
+
+         it "doesn't delete not relative editions" do
+            expect(another_event.editions.count).not_to eq(0)
+         end
+      end
+
+      context 'destroying dependency of edition' do
+         let(:event) { create(:model_event, :latest_edition) }
+         before(:each) do
+            event.destroy
+         end
+
+         it "doesn't delete relative original" do
+            expect(event.original).to be_truthy
          end
       end
    end
@@ -224,7 +275,6 @@ RSpec.describe Event, type: :model do
       end
 
       context 'publishing_status' do
-
          it 'is valid with proper values' do
             valid_status = [0, 1, 2, 3, 4]
             valid_status.each do |status|

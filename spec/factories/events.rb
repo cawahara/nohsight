@@ -20,6 +20,16 @@ FactoryGirl.define do
             FactoryGirl.create(:model_comment, event: event, user: user)
          end
       end
+
+      trait :original_edition do
+         after(:create) do |event|
+            FactoryGirl.create(:model_event, original: event)
+         end
+      end
+
+      trait :latest_edition do
+         association :original, factory: :model_event
+      end
    end
 
    factory :another_event, class: Event do
@@ -37,6 +47,12 @@ FactoryGirl.define do
             FactoryGirl.create(:another_ticket, event: event)
             user = FactoryGirl.create(:another_user_event, event: event).user
             FactoryGirl.create(:another_comment, event: event, user: user)
+         end
+      end
+
+      trait :original_edition do
+         after(:create) do |event|
+            FactoryGirl.create(:another_event, original: event)
          end
       end
    end
