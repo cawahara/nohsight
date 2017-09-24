@@ -8,17 +8,6 @@
       </ul>
    </div>
 
-   <!-- TODO: SNS連携(技術的に可能かついいねという反応があったら導入)
-   <div class="user-snss">
-      <ul>
-         <li><%= link_to '#' do %><%= fa_icon('twitter-square', class: 'twitter') %><% end %></li>
-         <li><%= link_to '#' do %><%= fa_icon('facebook-square', class: 'facebook') %><% end %></li>
-         <li><%= link_to '#' do %><%= fa_icon('instagram', class: 'instagram') %><% end %></li>
-         <li><%= link_to '#' do %><%= fa_icon('tumblr-square', class: 'disconnected tumblr') %><% end %></li>
-      </ul>
-   </div>
-   -->
-
    <div class="user-description">
       <p><%= @user.information %></p>
    </div>
@@ -26,7 +15,6 @@
    <div class="user-command">
       <% if current_user == @user %>
       <%= link_to 'プロフィール設定', edit_user_path(@user) %>
-      <!-- TODO: カレンダーコンポーネント追加 -->
       <%= link_to '公演の編集', event_manage_path %>
       <% end %>
    </div>
