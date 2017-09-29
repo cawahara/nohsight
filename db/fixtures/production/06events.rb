@@ -31,7 +31,7 @@ Event.seed do |s|
 	s.open_date = nil
 	s.start_date = '2017-11-18 13:30:00'
 	s.information = ''
-	s.official_url = ''
+	s.official_url = 'http://junseikai.or.tv/future/222/'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -43,7 +43,7 @@ Event.seed do |s|
 	s.open_date = '2017-10-08 12:30:00"'
 	s.start_date = '2017-10-08 13:30:00'
 	s.information = ''
-	s.official_url = ''
+	s.official_url = 'http://www.kongou-net.com/schedule/index.html'
 	s.category = 'その他'
 	s.published = true
 end
@@ -115,7 +115,7 @@ Event.seed do |s|
 	s.open_date = '2017-10-15 13:00:00"'
 	s.start_date = '2017-10-15 14:00:00'
 	s.information = '井伊直弼を偲んで毎年開催する「横浜かもんやま能」。第34回を迎える今年は、井伊家お抱えの狂言方だった茂山家の茂山千作が狂言「萩大名」を、能は観世銕之丞が、虚偽の告げ口により勘当されて盲目となった俊徳丸と父との再会を、難波の浦の心象風景とともに美しく描き出した名曲「弱法師」を小書（特殊演出）「盲目之舞」でお送りいたします'
-	s.official_url = ''
+	s.official_url = 'http://www.welcome.city.yokohama.jp/ja/tourism/eventinfo/ev_detail.php?bid=yw3664'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -127,7 +127,7 @@ Event.seed do |s|
 	s.open_date = '2017-10-28 13:00:00"'
 	s.start_date = '2017-10-28 14:00:00'
 	s.information = '２０１７年は、華道・池坊の開祖と呼ばれる池坊専慶がいけばなの名手として文献に登場してから５５５年に当たります。これを記念し、花に関係する５つの能を上演し、次期家元の池坊専好が舞台を花で彩ります。「花」という共通のキーワードを持つ近しい存在でありながらその交流が限られてきた「能」と「いけばな」。両者が競演し、新たな「花」を創造します。'
-	s.official_url = ''
+	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2144'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -139,7 +139,7 @@ Event.seed do |s|
 	s.open_date = '2017-11-23 13:00:00"'
 	s.start_date = '2017-11-23 14:00:00'
 	s.information = '２０１７年は、華道・池坊の開祖と呼ばれる池坊専慶がいけばなの名手として文献に登場してから５５５年に当たります。これを記念し、花に関係する５つの能を上演し、次期家元の池坊専好が舞台を花で彩ります。「花」という共通のキーワードを持つ近しい存在でありながらその交流が限られてきた「能」と「いけばな」。両者が競演し、新たな「花」を創造します。'
-	s.official_url = ''
+	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2149'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -151,7 +151,7 @@ Event.seed do |s|
 	s.open_date = '2018-01-23 13:00:00"'
 	s.start_date = '2018-01-23 14:00:00'
 	s.information = '２０１７年は、華道・池坊の開祖と呼ばれる池坊専慶がいけばなの名手として文献に登場してから５５５年に当たります。これを記念し、花に関係する５つの能を上演し、次期家元の池坊専好が舞台を花で彩ります。「花」という共通のキーワードを持つ近しい存在でありながらその交流が限られてきた「能」と「いけばな」。両者が競演し、新たな「花」を創造します。'
-	s.official_url = ''
+	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2155'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -163,7 +163,7 @@ Event.seed do |s|
 	s.open_date = '2018-02-10 13:00:00"'
 	s.start_date = '2018-02-10 14:00:00'
 	s.information = '２０１７年は、華道・池坊の開祖と呼ばれる池坊専慶がいけばなの名手として文献に登場してから５５５年に当たります。これを記念し、花に関係する５つの能を上演し、次期家元の池坊専好が舞台を花で彩ります。「花」という共通のキーワードを持つ近しい存在でありながらその交流が限られてきた「能」と「いけばな」。両者が競演し、新たな「花」を創造します。'
-	s.official_url = ''
+	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2158'
 	s.category = '能楽堂主催'
 	s.published = true
 end
@@ -175,7 +175,7 @@ Event.seed do |s|
 	s.open_date = '2018-03-10 13:00:00"'
 	s.start_date = '2018-03-10 14:00:00'
 	s.information = '２０１７年は、華道・池坊の開祖と呼ばれる池坊専慶がいけばなの名手として文献に登場してから５５５年に当たります。これを記念し、花に関係する５つの能を上演し、次期家元の池坊専好が舞台を花で彩ります。「花」という共通のキーワードを持つ近しい存在でありながらその交流が限られてきた「能」と「いけばな」。両者が競演し、新たな「花」を創造します。'
-	s.official_url = ''
+	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2161'
 	s.category = '能楽堂主催'
 	s.published = true
 end
