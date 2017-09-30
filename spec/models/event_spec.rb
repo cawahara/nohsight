@@ -201,9 +201,9 @@ RSpec.describe Event, type: :model do
       end
 
       context 'place_id' do
-         it 'is invalid with empty place_id when update_publish' do
+         it 'is invalid with empty place_id when send_request' do
             event.place_id = nil
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:place_id]).to include("can't be blank")
          end
       end
@@ -223,27 +223,27 @@ RSpec.describe Event, type: :model do
       end
 
       context 'start_date' do
-         it 'is invalid with empty start_date when update_publish' do
+         it 'is invalid with empty start_date when send_request' do
             event.start_date = nil
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:start_date]).to include("can't be blank")
          end
       end
 
       context 'official_url' do
-         it 'is invalid with empty official_url when update_publish' do
+         it 'is invalid with empty official_url when send_request' do
             event.official_url = nil
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:official_url]).to include("can't be blank")
          end
 
-         it 'is invalid with improper formatted url when update_publish' do
+         it 'is invalid with improper formatted url when send_request' do
             invalid_urls = ['htps://',
                             'ahttps://eventsite.com',
                             'https:/eventsite.com']
             invalid_urls.each do |invalid_url|
                event.official_url = invalid_url
-               event.valid?(:update_publish)
+               event.valid?(:send_request)
                expect(event.errors[:official_url]).to include('is invalid')
             end
          end
@@ -294,25 +294,25 @@ RSpec.describe Event, type: :model do
       end
 
       context 'event_programs' do
-         it 'is invalid without any event_program when update_publish' do
+         it 'is invalid without any event_program when send_request' do
             event.event_programs.delete_all
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:event_programs]).to include('should have at least one event_program')
          end
       end
 
       context 'event_performers' do
-         it 'is invalid without any event_performer when update_publish' do
+         it 'is invalid without any event_performer when send_request' do
             event_program.event_performers.delete_all
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:event_performers]).to include('should have at least one event_performer in each event_program')
          end
       end
 
       context 'tickets' do
-         it 'is invalid without any event_program when update_publish' do
+         it 'is invalid without any event_program when send_request' do
             event.tickets.delete_all
-            event.valid?(:update_publish)
+            event.valid?(:send_request)
             expect(event.errors[:tickets]).to include('should have at least one ticket')
          end
       end

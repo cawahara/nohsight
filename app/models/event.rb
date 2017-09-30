@@ -20,23 +20,20 @@ class Event < ApplicationRecord
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
    PUBLISHING_STATUS = ['draft', 'requested', 'rejected', 'published', 'merged']
 
-   validates :title, presence: true
-   validates :place_id, presence: true,
-                        on: :update_publish
+   validates :title,                presence: true
+   validates :place_id,             presence: true,
+                                    on: :send_request
    validate  :open_date_earlier_than_start_date
-   validates :start_date,  presence: true,
-                           on: :update_publish
-   validates :official_url, presence: true,
-                            format: { with: VALID_URL_REGEX },
-                            on: :update_publish
-   validates :category, inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
-   validates :publishing_status, inclusion: { in: [0, 1, 2, 3, 4] }
-   validate  :own_event_program,
-              on: :update_publish
-   validate  :own_event_performer,
-              on: :update_publish
-   validate  :own_ticket,
-              on: :update_publish
+   validates :start_date,           presence: true,
+                                    on: :send_request
+   validates :official_url,         presence: true,
+                                    format: { with: VALID_URL_REGEX },
+                                    on: :send_request
+   validates :category,             inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
+   validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
+   validate  :own_event_program,    on: :send_request
+   validate  :own_event_performer,  on: :send_request
+   validate  :own_ticket,           on: :send_request
 
    def open_date_earlier_than_start_date
       if start_date
