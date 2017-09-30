@@ -1,5 +1,6 @@
 <div id="event-show">
-   <!-- イベント概要 -->
+      <!-- イベント概要 -->
+   <% if @event.publishing_status >= 3 %>
    <div class="headline">
 
       <h1><%= @event.title %></h1>
@@ -102,4 +103,105 @@
          <% end %>
       <% end %>
    </div>
+
+
+
+   <!-- リクエスト承認可否 -->
+   <% elsif @event.publishing_status == 1 && admin_user? %>
+   <div id="event_approval">
+      <div id="event-tabs">
+         <div class="event-tab passive"><%= fa_icon('file-text-o') %>リクエスト一覧</div>
+         <div class="event-tab"><%= fa_icon('check-square-o')%>リクエスト承認</div>
+      </div>
+      <div class="headline">
+         <h1>リクエストの確認</h1>
+         <%= link_to 'イベント一覧に戻る >', event_manage_path, class: 'port-link' %>
+      </div>
+
+      <div class="event-contents">
+         <table>
+            <tbody>
+               <tr>
+                  <td class="field">公演名</td>
+                  <td class="item"><%= @event.title %></td>
+               </tr>
+               <tr>
+                  <td class="field">開場時間</td>
+                  <td class="item"><%= @event&.open_date&.format_with_weekday %></td>
+               </tr>
+               <tr>
+                  <td class="field">開催時間</td>
+                  <td class="item"><%= @event.start_date.format_with_weekday %></td>
+               </tr>
+               <tr>
+                  <td class="field">公演の種類</td>
+                  <td class="item"><%= @event.category %></td>
+               </tr>
+               <tr>
+                  <td class="field">公演の説明</td>
+                  <td class="item"><%= @event&.information %></td>
+               </tr>
+               <tr>
+                  <td class="field">サイトURL</td>
+                  <td class="item"><%= link_to @event.official_url, @event.official_url %></td>
+               </tr>
+               <tr class="border"><td colspan="2"></td></tr>
+               <tr>
+                  <td class="field">開催地</td>
+                  <td class="item"><%= @event.place.title %></td>
+               </tr>
+               <tr>
+                  <td class="field">開催地の住所</td>
+                  <td class="item"><%= @event.place.address %></td>
+               </tr>
+               <tr>
+                  <td class="field">開催地のURL</td>
+                  <td class="item"><%= link_to @event&.place&.official_url, @event&.place&.official_url %></td>
+               </tr>
+               <tr class="border"><td colspan="2"></td></tr>
+               <tr>
+                  <td class="field">演目と出演者</td>
+                  <td class="item">
+                     <% @event.event_programs.each do |ev_program| %>
+                        <p class="program"><%= ev_program.genre %><%= ev_program.program.title %></p>
+                        <ul class="performers">
+                           <% ev_program.event_performers.each do |ev_performer| %>
+                           <li><%= ev_performer.performer.full_name %></li>
+                           <% end %>
+                        </ul>
+                     <% end %>
+                  </td>
+               </tr>
+               <tr class="border"><td colspan="2"></td></tr>
+               <tr>
+                  <td class="field">料金</td>
+                  <td class="item">
+                     <% @event.tickets.each do |ticket| %>
+                     <p><span><%= ticket.grade %></span><span><%= ticket.price %>円</span></p>
+                     <% end %>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+
+      <div class="approval-commands">
+         <div class="form-section">
+            <p>この公演情報を承認し、公開しますか？</p>
+            <ul>
+               <li><input class="form-approval approved" type="submit" value="承認"></li>
+               <li><input class="form-approval rejected" type="submit" value="却下"></li>
+            </ul>
+            <p>却下の場合、下記にその理由を記入してください</p>
+
+            <div class="lg-form">
+               <%= text_area_tag :comment %>
+            </div>
+         </div>
+
+      </div>
+   </div>
+   <% else %>
+   <p>このイベントは非公開です</p>
+   <% end %>
 </div>

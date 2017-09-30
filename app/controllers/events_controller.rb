@@ -74,10 +74,12 @@ class EventsController < ApplicationController
 
    def manage
       @user = current_user
-      @events = @user.events
-      user_events = @user.user_events
-      @organizer_ids = user_events.where(organizer: true).pluck(:event_id)
-      @editor_ids = user_events.where(organizer: false).pluck(:event_id)
+      if admin_user?
+         @events = Event.where(publishing_status: 1)
+      else
+         @events = @user.events
+      end
+
    end
 
    def send_request

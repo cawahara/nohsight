@@ -18,7 +18,7 @@ class Event < ApplicationRecord
    before_validation :set_value_on_category
 
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
-   PUBLISHING_STATUS = ['draft', 'requested', 'rejected', 'published', 'merged']
+   PUBLISHING_STATUS = ['下書き', '承認中', '却下', '公開', '訂正']
 
    validates :title,                presence: true
    validates :place_id,             presence: true,
@@ -67,6 +67,16 @@ class Event < ApplicationRecord
       if tickets.count == 0
          errors.add(:tickets, 'should have at least one ticket')
       end
+   end
+
+
+   # view用helper
+   def current_publishing_status
+      return PUBLISHING_STATUS[self.publishing_status]
+   end
+
+   def is_original?
+      return self.original.nil?
    end
 
    private
