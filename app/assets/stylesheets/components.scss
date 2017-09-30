@@ -30,11 +30,19 @@ span.btn {
 
 ********************************************/
 div.headline {
-   margin: 14px 0;
+   margin: 14px 7px;
    h1 {
+      display: inline-block;
       font-size: 22px;
       color: #575757;
       margin-bottom: 12px;
+   }
+   .port-link {
+      width: auto;
+      display: inline-block;
+      float: right;
+      border: none;
+      text-decoration: underline;
    }
 
       p {
@@ -86,6 +94,13 @@ div.section {
 
       .start-date {
          margin-bottom: 14px;
+      }
+   }
+
+   .search {
+      margin-top: 16px;
+      .form-submit {
+         margin-bottom: 0 !important;
       }
    }
 }
@@ -153,7 +168,10 @@ div.form-section {
       padding: 2px 5px;
    }
 
-   label, span.required { display: inline; }
+   label, span.required {
+      display: inline-block;
+      margin-bottom: 5px;
+   }
    span.required {
       font-size: 11px;
       margin-left: 7px;
@@ -190,18 +208,18 @@ div.form-section {
       input, textarea, .search-records { width: 100%; }
    }
    div.md-form {
-      width: calc(100% - 24px);
-      margin: 0 12px;
+      width: calc(100% - 14px);
+      margin: 5px 12px;
       padding: 0 10px 10px 10px;
       overflow: hidden;
       label {
          float: left;
          display: block;
-         margin-top: 10px;
+         margin-left: -10px;
       }
-      input, .search-records {
+      input, select, .search-records {
          float: right;
-         width: 60%;
+         width: 55%;
       }
    }
    div.sm-form {
@@ -213,6 +231,25 @@ div.form-section {
       input, .search-records {
          margin-left: 9px;
          width: 85%;
+      }
+   }
+
+   .form-add {
+      margin-top: 16px;
+      text-align: right;
+      overflow: hidden;
+      button {
+         margin: 0 18px 15px 0;
+         float: right;
+         font-family: "ヒラギノ明朝 ProN W6";
+         font-size: 12px;
+         box-sizing: border-box;
+         border: none;
+         padding: 4px 11px;
+         border-radius: 6px;
+         background-color: #e62e00;
+         color: #ffffff;
+         i { margin-right: 4px; }
       }
    }
 
@@ -358,17 +395,18 @@ div.form-section {
 }
 
 .form-submit {
-   font-family: "ヒラギノ明朝 ProN W6";
+   margin-top: 16px;
    text-align: center;
-   font-size: 14px;
-   margin: 22px auto;
-   box-sizing: border-box;
-   border: none;
-   width: 100%;
-   padding: 7px 25px;
-   border-radius: 6px;
-   background-color: #e62e00;
-   color: #ffffff;
+   input[type=submit] {
+      font-family: "ヒラギノ明朝 ProN W6";
+      font-size: 14px;
+      box-sizing: border-box;
+      border: none;
+      padding: 7px 25px;
+      border-radius: 6px;
+      background-color: #e62e00;
+      color: #ffffff;
+   }
 }
 
 input[type='submit'].form-submit {
