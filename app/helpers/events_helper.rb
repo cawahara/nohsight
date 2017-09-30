@@ -9,15 +9,15 @@ module EventsHelper
       'その他'=>         4
    }
 
-   # PublishedパラメータがtrueのEventのみ取得(不特定多数が公演場を見るときの必須条件)
+   # publishing_statusパラメータが3(published)のEventのみ取得(不特定多数が公演場を見るときの必須条件)
    def public_events(events)
-      return events.where(published: true)
+      return events.where(publishing_status: 3)
    end
 
    # 本日以降の未開催のイベントを表示
    def upcoming_events(events)
-      query = 'published = ? AND start_date >= ?'
-      return events.where(query, true, Date.today).order(start_date: :desc)
+      query = 'publishing_status = ? AND start_date >= ?'
+      return events.where(query, 3, Date.today).order(start_date: :desc)
    end
 
    def category_number(category)

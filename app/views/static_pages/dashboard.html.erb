@@ -1,35 +1,44 @@
 <div id="dashboard">
    <div id="trend-banners">
-      <!-- TODO 規模の大きい公演を4～5個ピックアップ、紹介(スライドショー形式で) -->
       <%= image_tag 'trend_sample.png' %>
    </div>
 
-   <!-- TODO 余裕があれば会員(恐らく能楽師がメインに)がニュースなどイベント以外の投稿を行えるように
-            するためのフォーマットを作りたい -->
    <div class="section">
       <h1 class="section-header">Noh-Eventへようこそ</h1>
-      <div class="article news ">
+      <div class="article news">
          <p>Noh-Event(仮)は規模の大小に関わらず、全国の能楽の催しをみんなで登録して共有することで、能楽のイベントを簡単に探せるサービスです。</p>
          <p>初めての方は<%= link_to 'こちら', about_path %>をお読みください。</p>
       </div>
-      <!-- TODO
-      <h1 class="section-header">お知らせ</h1>
-      <div class="article news">
-         <span>2017年05月17日</span>
-         <a href="#">能楽体験教室「楽しもう！能の世界」のお知らせ</a>
+   </div>
+
+   <div class="section">
+      <h1 class="section-header">公演・能楽イベント検索</h1>
+      <div class="search">
+         <div class="form-section">
+            <h1 class="form-header">検索条件の設定</h1>
+            <%= form_for(:easy_search, url: events_path, method: :get) do |f| %>
+               <dl>
+                  <dt>開催日</dt>
+                  <dd>
+                     <%= f.text_field :start_date, class: 'datepicker-for-search date-selection', id: "start-date" %>
+                     <span>～</span>
+                     <%= f.text_field :end_date, class: 'datepicker-for-search date-selection', id: "end-date" %>
+                  </dd>
+               </dl>
+               <dl>
+                  <dt>エリア</dt>
+                  <dd id="search-address-vue"></dd>
+               </dl>
+               <dl>
+                  <dt>キーワード</dt>
+                  <dd><%= f.text_field :keywd, id: 'keywd' %></dd>
+               </dl>
+               <%= f.submit('検索する', class: 'form-submit') %>
+            <% end %>
+            <%= link_to search_path, class: 'port-link' do %>詳細付き検索<%= fa_icon('angle-right') %><% end %>
+         </div>
       </div>
-      <div class="article news">
-         <span>2017年05月10日</span>
-         <a href="#">作ってみよう！自分だけの能面ワークショップにて登壇者を募集しています。</a>
-      </div>
-      <div class="article news">
-         <span>2017年04月28日</span>
-         <a href="#">熊本自身災害義援金についてのご報告</a>
-      </div>
-      <div class="article news">
-         <span>2017年04月13日</span>
-         <a href="#">Noh-Eventへようこそ</a>
-      </div> -->
+
    </div>
 
    <div class="section">

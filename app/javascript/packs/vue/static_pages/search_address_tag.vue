@@ -1,6 +1,6 @@
 <template>
    <dd>
-      <input id="locations" readonly type="text" name="search[locations]" v-model:value="text_values">
+      <input id="locations" readonly type="text" v-bind:name="search" v-model:value="text_values">
       <div id="locations-selection" v-show="selector_activated">
          <dl v-for="area in areas">
             <dt>
@@ -24,7 +24,8 @@
             areas: this.values.areas,
             prefs: this.values.prefectures,
             text_values: [],
-            selector_activated: false
+            selector_activated: false,
+            search:  this.values.search_type + '[locations]'
          }
       },
       methods: {

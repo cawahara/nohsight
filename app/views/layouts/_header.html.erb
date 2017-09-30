@@ -4,38 +4,22 @@
      <h1><%= link_to "Noh-Event(仮)", dashboard_path %></h1>
 
      <ul>
-         <li class="header-btn"><%= fa_icon('search') %></li>
          <% if logged? %>
-         <li class="header-btn"><%= fa_icon('file-text-o') %></li>
          <li class="header-btn"><%= fa_icon('ellipsis-v') %></li>
          <% else %>
-        <li id="login-btn" class="header-btn"><%= link_to 'ログイン', login_path %></li>
-        <% end %>
+         <li id="login-btn" class="header-btn"><%= link_to 'ログイン', login_path %></li>
+         <% end %>
      </ul>
 
   </div>
 
-
   <div id="dropdown-menu">
-     <ul id="dropdown-search" class="dropdown-lists">
-      <li id="search-form">
-          <%= form_for(:easy_search, url: events_path, method: :get) do |f| %>
-             <%= f.text_field :keywd, placeholder: '会場、演目、出演者などを入力' %>
-             <%= button_tag(type: 'submit') do %>
-                <i class="fa fa-search"></i>
-             <% end %>
-          <% end %>
-      </li>
-      <li><%= link_to '公演検索画面へ', search_path %></li>
-     </ul>
      <% if logged? %>
-     <ul id="dropdown-request"  class="dropdown-lists">
-       <li><%= link_to new_event_path do %><%= fa_icon('plus') %><span>新しい公演登録</span><% end %></li>
-     </ul>
      <ul id="dropdown-nav" class="dropdown-lists">
-        <li><%= link_to user_path(current_user) do %><%= fa_icon('user') %><span>マイページ</span><% end %></li>
-        <li><%= link_to event_manage_path do %><%= fa_icon('book') %><span>公演の編集</span><% end %></li>
-        <li><%= link_to logout_path(current_user) do %><%= fa_icon('sign-out') %><span>ログアウト</span><% end %></li>
+        <li><%= link_to user_path(current_user) do %><%= fa_icon('user') %><span>マイプロファイル</span><% end %></li>
+        <li><a href="#"><%= fa_icon('heart') %>お気に入りイベント</a></li>
+        <li><%= link_to event_manage_path do %><%= fa_icon('file-text-o') %><span>イベント管理</span><% end %></li>
+        <li><%= link_to logout_path(current_user) do %><span>ログアウト</span><% end %></li>
      </ul>
      <% end %>
   </div>
