@@ -1,62 +1,42 @@
-<div id="events-edit-manage">
-   <div class="headline">
-      <h1>公演情報の管理</h1>
+<div id="events-manage">
+
+   <div id="event-tabs">
+      <div class="event-tab passive"><%= fa_icon('heart') %>お気に入り</div>
+      <div class="event-tab"><%= fa_icon('file-text-o')%>イベント管理</div>
    </div>
-
-   <div class="section">
-      <h1 class="section-header">登録した公演情報</h1>
-         <!-- TODO:　主催、編集としての参加、終了した公演という種類分けをする -->
-      <% @events.where(id: @organizer_ids).each do |event| %>
-      <div class="article">
-         <h2 class="article-header"><%= event.title %></h2>
-         <ul class="article-info">
-            <li>会場：<%= event.place.title if event.place %></li>
-            <li>日時：<%= event&.start_date&.format_with_weekday %></li>
-         </ul>
-
-         <div class="article-items">
-            <% if event.published? %>
-            <span class="btn publish">公開中</span>
-            <% else %>
-            <span class="btn unpublish">未公開</span>
-            <% end %>
-
-            <ul class="item-icons">
-               <li class="icon-edit"><%= link_to edit_event_port_path(event), class: 'btn' do %><span>編集</span><% end %></li>
-               <!-- TODO: confirmオプションが作動しない -->
-               <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
-            </ul>
-         </div>
+   <div class="contents">
+      <div class="user-command">
+         <%= link_to '新規イベント登録', new_event_path %>
       </div>
-      <% end %>
-   </div>
-   <div class="section">
-      <h1 class="section-header">編集した公演情報</h1>
-      <% @events.where(id: @editor_ids).each do |event| %>
-      <div class="article">
-         <h2 class="article-header"><%= event.title %></h2>
-         <ul class="article-info">
-            <li>会場：<%= event.place.title if event.place %></li>
-            <li>日時：<%= event&.start_date&.format_with_weekday %></li>
-         </ul>
-
-         <div class="article-items">
-            <% if event.published? %>
-            <span class="btn publish">公開中</span>
-            <% else %>
-            <span class="btn unpublish">未公開</span>
+      <table>
+         <thead>
+            <tr>
+               <th class="point-record">登録</th>
+               <th class="point-record">更新</th>
+               <th class="title">タイトル</th>
+               <th class="status">ステータス</th>
+               <th class="command"></th>
+               <th class="command"></th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @events.each do |event| %>
+            <tr>
+               <td class="point-record">10pt</td>
+               <td class="point-record"></td>
+               <td class="title">
+                  <% if event.publishing_status >= 3 %>
+                  <%= link_to event.title, event_path(event) %>
+                  <% else %>
+                  <%= event.title %>
+                  <% end %>
+               </td>
+               <td class="status"><%= event.current_publishing_status %></td>
+               <td class="command edit"><%= link_to edit_event_path(event) do %><%= fa_icon('pencil-square-o') %><% end %></td>
+               <td class="command destroy"><%= button_to event_path(event), method: :delete do %><%= fa_icon('trash-o') %><% end %></td>
+            </tr>
             <% end %>
-
-            <ul class="item-icons">
-               <li class="icon-edit"><%= link_to edit_event_port_path(event), class: 'btn' do %><span>編集</span><% end %></li>
-               <!-- FIXME: confirmオプションが作動しない -->
-               <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
-            </ul>
-         </div>
-
-
-      </div>
-      <% end %>
+         </tbody>
+      </table>
    </div>
-
 </div>
