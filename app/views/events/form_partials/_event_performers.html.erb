@@ -1,0 +1,31 @@
+<div v-bind:id="'form-event-performers-vue-' + program_key">
+   <h3 class="multi-header">出演者リスト</h3>
+   <div v-pre>
+      <div v-bind:id="'event_program_' + program_key + '_event_performer_' + performer_key" v-bind:class="event_performer.mode" v-for="(event_performer, performer_key) in values">
+         <div class="md-form">
+            <div class="init-area">
+               <ul class="commands" v-if="event_performer.mode == 'create'">
+                  <li class="create" v-on:click="deleteNewComponent(performer_key)"><span>取消</span></li>
+               </ul>
+               <ul class="commands" v-else>
+                  <li class="update" v-on:click="changeMode(performer_key, 'update')"><span>編集</span></li>
+                  <li class="destroy" v-on:click="changeMode(performer_key, 'destroy')"><span>削除</span></li>
+               </ul>
+               <input type="text" v-bind:name="'event_programs[' + program_key + '][event_performers][' + performer_key + '][full_name]'"
+                      v-bind:id="'event_programs_' + program_key + '_event_performers_' + performer_key + '_full_name'" v-model:value="event_performer.full_name">
+            </div>
+            <div class="error-msgs"><span v-if="hasErrorMsgs(program_key, performer_key)">{{ error_msgs[program_key].event_performers[performer_key].full_name }}</span></div>
+            <input type="hidden" v-bind:name="'event_programs[' + program_key + '][event_performers][' + performer_key + '][performer_id]'"
+                   v-bind:id="'event_programs_' + program_key + '_event_performers_' + performer_key + '_performer_id'" v-bind:value="event_performer.performer_id">
+         </div>
+         <input type="hidden" v-bind:name="'event_programs[' + program_key + '][event_performers][' + performer_key + '][id]'"
+                v-bind:id="'event_programs_' + program_key + '_event_performers_' + performer_key + '_id'" v-bind:value="event_performer.id">
+         <input type="hidden" v-bind:name="'event_programs[' + program_key + '][event_performers][' + performer_key + '][mode]'"
+                v-bind:id="'event_programs_' + program_key + '_event_performers_' + performer_key + '_mode'" v-bind:value="event_performer.mode">
+      </div>
+      <div class="form-add">
+         <button v-on:click.prevent="createNewComponent()"><%= fa_icon('plus') %>出演者の追加</button>
+      </div>
+   </div>
+
+</div>

@@ -1,85 +1,26 @@
-<%= form_for(@event) do |f| %>
+
 <div class="form-section">
    <h1 class="form-header">基本情報の編集</h1>
-
-   <div class="md-form">
-      <label>公演名</label><span class="required">必須</span>
-      <%= f.text_field :title %>
-   </div>
-   <div class="md-form">
-      <label>開場時間</label>
-      <%= f.text_field :open_date, class: 'datepicker-for-edit', id: "open-date", value: (@event&.open_date&.strftime('%Y/%m/%d %H:%M')) %>
-   </div>
-   <div class="md-form">
-      <label>開始時間</label><span class="required">必須</span>
-      <%= f.text_field :start_date, class: 'datepicker-for-edit', id: "start-date", value: (@event&.start_date&.strftime('%Y/%m/%d %H:%M')) %>
-   </div>
-   <div class="md-form">
-      <label>公演の種類</label><span class="required">必須</span>
-      <%= f.select :category, ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] %>
-   </div>
-
-   <div class="lg-form">
-      <label>公演の説明</label>
-      <%= f.text_area :information %>
-   </div>
-   <div class="md-form">
-      <label>サイトURL</label><span class="required">必須</span>
-      <%= f.text_field :official_url %>
-   </div>
+   <%= render './events/form_partials/event' %>
 
    <h1 class="form-header">開催地の編集</h1>
-   <div class="md-form">
-      <label>開催地</label>
-      <%= text_field_tag :place_title %>
-   </div>
-   <div class="md-form">
-      <label>住所</label>
-      <%= text_field_tag :place_address %>
-   </div>
-   <div class="md-form">
-      <label>サイトURL</label>
-      <%= text_field_tag :place_official_url %>
-   </div>
+   <%= render './events/form_partials/place' %>
 
-   <h1 class="form-header">演目の編集</h1>
-   <div class="md-form">
-      <label>演目名</label>
-      <%= text_field_tag :ev_program_title %>
-   </div>
-   <div class="md-form">
-      <label>演目の種類</label>
-      <%= text_field_tag :ev_program_type %>
-   </div>
-   <div class="md-form">
-      <label>演者</label>
-      <%= text_field_tag :ev_performer_name %>
-   </div>
-   <div class="form-add">
-      <%= button_tag do %>
-         <%= fa_icon('plus') %>演目を追加
-      <% end %>
-   </div>
+   <h1 class="form-header">演目の編集<span class="required">必須</span></h1>
+   <%= render './events/form_partials/event_programs' %>
 
-   <h1 class="form-header">料金の編集</h1>
-   <div class="md-form">
-      <label>席名</label>
-      <%= text_field_tag :ticket_grade %>
-   </div>
-   <div class="md-form">
-      <label>料金</label>
-      <%= text_field_tag :ticket_price %>
-   </div>
+   <h1 class="form-header">料金の編集<span class="required">必須</span></h1>
+   <%= render './events/form_partials/tickets' %>
 
-   <div class="form-add">
-      <%= button_tag do %>
-         <%= fa_icon('plus') %>料金を追加
-      <% end %>
-   </div>
 </div>
 <div class="form-submit">
-   <%= f.submit '登録申請' %>
+   <%= submit_tag '登録申請' %>
 </div>
 
-
-<% end %>
+<%= content_tag :div,
+   id: 'event-init-form-vue',
+   data: { event:          @event_params,
+           place:          @place_params,
+           event_programs: @event_programs_params,
+           tickets:        @tickets_params,
+           error_msgs:     @error_msgs }.to_json do %><% end %>

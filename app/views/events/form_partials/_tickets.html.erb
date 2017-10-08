@@ -1,0 +1,32 @@
+<div id="form-tickets-vue">
+   <div v-bind:id="'ticket_' + key" v-bind:class="'multi-item ' + ticket.mode" v-for="(ticket, key) in values">
+      <h3 class="multi-header">料金設定</h3>
+      <div class="md-form">
+         <div class="init-area">
+            <label>席名</label>
+            <input type="text" v-bind:name="'tickets[' + key + '][grade]'" v-bind:id="'tickets_' + key + '_grade'" v-model:value="ticket.grade">
+         </div>
+         <div class="error-msgs"><span v-if="hasErrorMsgs(key)">{{ error_msgs[key].grade }}</span></div>
+      </div>
+      <div class="md-form">
+         <div class="init-area">
+            <label>料金</label>
+            <input type="text" v-bind:name="'tickets[' + key + '][price]'" v-bind:id="'tickets_' + key + '_price'" v-model:value="ticket.price">
+         </div>
+         <div class="error-msgs"><span v-if="hasErrorMsgs(key)">{{ error_msgs[key].price }}</span></div>
+      </div>
+      <input type="hidden" v-bind:name="'tickets[' + key + '][id]'" v-bind:id="'tickets_' + key + '_id'" v-bind:value="ticket.id">
+      <input type="hidden" v-bind:name="'tickets[' + key + '][mode]'" v-bind:id="'tickets_' + key + '_mode'" v-bind:value="ticket.mode">
+
+      <ul class="commands" v-if="ticket.mode == 'create'">
+         <li class="create" v-on:click="deleteNewComponent(key)"><%= fa_icon('times') %><span>取消</span></li>
+      </ul>
+      <ul class="commands" v-else>
+         <li class="update" v-on:click="changeMode(key, 'update')"><%= fa_icon('pencil-square-o') %><span>編集</span></li>
+         <li class="destroy" v-on:click="changeMode(key, 'destroy')"><%= fa_icon('trash-o') %><span>削除</span></li>
+      </ul>
+   </div>
+   <div class="form-add">
+      <button v-on:click.prevent="createNewComponent()"><%= fa_icon('plus') %>料金設定の追加</button>
+   </div>
+</div>
