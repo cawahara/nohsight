@@ -57,11 +57,15 @@ module.exports = {
       'node_modules'
    ],
    alias: {
-      'picker': 'pickadate/lib/picker'
+      'picker': 'pickadate/lib/picker',
+      'vue':    'vue/dist/vue.js'
    }
   },
 
   resolveLoader: {
     modules: ['node_modules']
-}
+},
+node: {
+   fs: 'empty',
+   child_process: 'empty' }
 }

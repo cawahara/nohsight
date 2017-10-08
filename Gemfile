@@ -30,6 +30,7 @@ gem 'simple_enum',             '~> 2.3'                     # enumqを扱うヘ�
 gem 'turbolinks',              '~> 5'
 gem 'uglifier',                '~> 2.6.1'
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
+gem 'deep_cloneable', '~> 2.3', '>= 2.3.1'                  # nestedしたassociationsもまとめてrecordをdup
 # gem 'redis', '~> 3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'spring-commands-rspec'
