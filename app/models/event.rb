@@ -21,14 +21,11 @@ class Event < ApplicationRecord
    PUBLISHING_STATUS = ['下書き', '承認中', '却下', '公開', '訂正']
 
    validates :title,                presence: true
-   validates :place_id,             presence: true,
-                                    on: :send_request
+   validates :place_id,             presence: true
    validate  :open_date_earlier_than_start_date
-   validates :start_date,           presence: true,
-                                    on: :send_request
+   validates :start_date,           presence: true
    validates :official_url,         presence: true,
-                                    format: { with: VALID_URL_REGEX },
-                                    on: :send_request
+                                    format: { with: VALID_URL_REGEX }
    validates :category,             inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
    validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
    validate  :own_event_program,    on: :send_request
