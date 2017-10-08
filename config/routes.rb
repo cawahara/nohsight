@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
    # StaticPage用ルーティング
    get '/dashboard', to: 'static_pages#dashboard', as: 'dashboard'
    get '/search',          to: 'static_pages#search',      as: 'search'
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
    get '/events/:id/edit_port', to: 'events#edit_port', as: 'edit_event_port'
    get '/event_places/:id/edit', to: 'events#edit_place', as: 'edit_event_place'
    patch '/event_places/:id', to: 'events#update_place', as: 'event_place'
-   patch '/events/:id/send_request', to: 'events#send_request', as: 'send_request'
 
    # EventProgram用ルーテイング
    resources 'event_programs', only: [:edit, :update]
@@ -49,6 +49,9 @@ Rails.application.routes.draw do
    get     '/login',        to: 'sessions#new'
    post    '/login',        to: 'sessions#create'
    get     '/logout/:id',   to: 'sessions#destroy', as: 'logout'
+
+   # Request用ルーティング
+   resources 'requests', only: [:index, :show, :update]
 
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
