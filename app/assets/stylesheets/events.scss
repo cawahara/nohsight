@@ -92,7 +92,7 @@
 }
 
 // Edit_manage
-#events-manage {
+#events-manage, #requests-index {
    .contents {
       padding: 0 7px;
 
@@ -219,20 +219,21 @@
       }
       ul {
          overflow: hidden;
-         .form-approval {
+         li {
             display: inline-block;
             margin: 0 10px;
-            float: left;
             font-family: "ヒラギノ明朝 ProN W6";
             font-size: 12px;
-            box-sizing: border-box;
             border: none;
-            padding: 4px 25px;
             border-radius: 6px;
-            color: #ffffff;
+            * {
+               display: inline-block;
+               margin-right: 7px;
+            }
+            label { text-decoration: underline; }
+            .approved { color: $font-success; }
+            .rejected { color: $font-danger; }
          }
-         .approved { background-color: $font-success; }
-         .rejected { background-color: $font-danger; }
       }
    }
 

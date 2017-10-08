@@ -209,17 +209,44 @@ div.form-section {
    }
    div.md-form {
       width: calc(100% - 14px);
-      margin: 5px 12px;
-      padding: 0 10px 10px 10px;
-      overflow: hidden;
-      label {
-         float: left;
-         display: block;
-         margin-left: -10px;
+      margin: 0 12px;
+      padding-bottom: 6px;
+
+      div.init-area {
+         padding: 10px 10px 0 10px;
+         overflow: hidden;
+         label {
+            float: left;
+            display: block;
+            margin-left: -10px;
+         }
+         input, select, .search-records {
+            margin: 0 7px;
+            float: right;
+            width: 55%;
+         }
+         input {
+            &:read-only { background-color: #e8e8e8; }
+         }
+
+         ul.commands {
+            display: block;
+            float: left;
+            margin: 4px 0 0 0;
+            li {
+               i { font-size: 15px; }
+               span { font-size: 12px; }
+            }
+         }
       }
-      input, select, .search-records {
-         float: right;
-         width: 55%;
+      div.error-msgs {
+         width: 100%;
+         text-align: right;
+         span {
+            font-size: 13px;
+            color: #ff0000;
+            margin: 4px 15px 0 0;
+         }
       }
    }
    div.sm-form {
@@ -235,11 +262,10 @@ div.form-section {
    }
 
    .form-add {
-      margin-top: 16px;
+      margin: 6px 18px 8px 0;
       text-align: right;
       overflow: hidden;
       button {
-         margin: 0 18px 15px 0;
          float: right;
          font-family: "ヒラギノ明朝 ProN W6";
          font-size: 12px;
@@ -247,7 +273,7 @@ div.form-section {
          border: none;
          padding: 4px 11px;
          border-radius: 6px;
-         background-color: #e62e00;
+         background-color: #257C1F;
          color: #ffffff;
          i { margin-right: 4px; }
       }
@@ -340,6 +366,42 @@ div.form-section {
       }
    }
 
+   div.multi-item {
+         margin: 12px 10px;
+         padding: 10px 0;
+         border: 1px solid #9d9d9d;
+         h3.multi-header {
+            font-size: 14px;
+            margin: 0 0 12px 10px;
+         }
+
+         ul.commands {
+            margin: -10px 0 9px 10px;
+            li {
+               text-decoration: underline;
+               display: inline-block;
+               margin-right: 4px;
+               * { font-size: 14px; }
+               i { margin-right: 4px; }
+            }
+            li.create { color: $font-info; }
+            li.update { color: $font-warning; }
+            li.destroy { color: $font-danger; }
+         }
+
+         div.border-beyond-performers {
+            margin: 13px 18px 15px 18px;
+            border-bottom: 1px solid #9d9d9d;
+         }
+   }
+
+   div.update {
+      background-color: $box-warning;
+   }
+
+   div.destroy{
+      background-color: $box-danger;
+   }
 // Vue Component
    div.item-component, div.new-item {
       border-bottom: 1px solid #909090;
