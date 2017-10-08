@@ -18,7 +18,7 @@
      <ul id="dropdown-nav" class="dropdown-lists">
         <li><%= link_to user_path(current_user) do %><%= fa_icon('user') %><span>マイプロファイル</span><% end %></li>
         <% if admin_user? %>
-        <li><%= link_to event_manage_path do %><%= fa_icon('file-text-o') %><span>リクエスト一覧</span><% end %></li>
+        <li><%= link_to requests_path do %><%= fa_icon('file-text-o') %><span>リクエスト一覧</span><% end %></li>
         <% else %>
         <li><a href="#"><%= fa_icon('heart') %>お気に入りイベント</a></li>
         <li><%= link_to event_manage_path do %><%= fa_icon('file-text-o') %><span>イベント管理</span><% end %></li>

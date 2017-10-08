@@ -1,4 +1,4 @@
-<!-- TODO: events/showアクションのみ表示 -->
+
 <% if /\/events\/[0-9]+\Z/ =~ request.fullpath %>
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&libraries=places"></script>
 <% end %>
