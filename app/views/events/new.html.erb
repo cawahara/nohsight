@@ -7,7 +7,7 @@
       <h1>新規イベント登録</h1>
       <%= link_to 'イベント一覧に戻る >', event_manage_path, class: 'port-link' %>
    </div>
-
-   <%= render('events/form') %>
-
+   <%= form_for(:info, url: events_path, method: :post) do |f| %>
+      <%= render('events/form') %>
+   <% end %>
 </div>
