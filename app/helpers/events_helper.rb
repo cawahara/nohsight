@@ -41,4 +41,14 @@ module EventsHelper
       end
    end
 
+   # on form action (new or edit)
+   def show_errors_on_form(error_msgs)
+      begin
+         error_msgs = error_msgs.map.with_index { |msg, i| msg = i < error_msgs.count - 1 ? msg + ', ' : msg }
+         return error_msgs.join("")
+      rescue NoMethodError
+         return ''
+      end
+   end
+
 end
