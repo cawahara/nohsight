@@ -37,7 +37,10 @@ module SearchEngine
                   performer:   params[:search][:performer],
                   keywd:       params[:search][:keywd] }
       elsif params[:easy_search]
-         return { keywd:       params[:easy_search][:keywd] }
+         return { start_date:  params[:easy_search][:start_date],
+                  end_date:    params[:easy_search][:end_date],
+                  locations:   params[:easy_search][:locations],
+                  keywd:       params[:easy_search][:keywd] }
       end
    end
 

@@ -1,14 +1,13 @@
-
 <div id="events-new">
-   <div class="headline">
-      <h1>新しい公演を登録</h1>
+   <div id="event-tabs">
+      <div class="event-tab passive"><%= fa_icon('heart') %>お気に入り</div>
+      <div class="event-tab"><%= fa_icon('file-text-o')%>イベント管理</div>
    </div>
-
-   <%= form_for(@event) do |f| %>
-         <%= f.text_field :title, placeholder: "公演名を入力" %>
-         <%= button_tag(class: "event-new-submit") do %>
-           <%= content_tag :i, nil, class: "fa fa-plus" %>
-         <% end %>
+   <div class="headline">
+      <h1>新規イベント登録</h1>
+      <%= link_to 'イベント一覧に戻る >', event_manage_path, class: 'port-link' %>
+   </div>
+   <%= form_for(:info, url: events_path, method: :post) do |f| %>
+      <%= render('events/form') %>
    <% end %>
-
 </div>

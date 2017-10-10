@@ -1,0 +1,42 @@
+<div id="requests-index">
+   <div id="event-tabs">
+      <div class="event-tab"><%= fa_icon('file-text-o') %>リクエスト一覧</div>
+      <div class="event-tab passive"><%= fa_icon('check-square-o')%>リクエスト承認</div>
+   </div>
+   <div class="contents">
+      <% if @events.count > 0 %>
+      <table>
+         <thead>
+            <tr>
+               <th class="start-date">開催日程</th>
+               <th class="title">タイトル</th>
+               <th class="status">ステータス</th>
+               <th class="command"></th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @events.each do |event| %>
+            <tr>
+               <td class="start-date"><%= event.start_date.format_with_date %></th>
+
+               <td class="title">
+                  <%= event.title %>
+               </td>
+
+               <% if event.is_original? %>
+               <td class="status">新規</td>
+               <% else %>
+               <td class="status">改訂<br><%= link_to '(元記事)', event_path(event.original) %></td>
+               <% end %>
+
+               <td class="command edit"><%= link_to request_path(event) do %><%= fa_icon('check-square-o') %><% end %></td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+      <% else %>
+         <p class="no-event">現在、リクエストは一件もありません。</p>
+      <% end %>
+   </div>
+
+</div>

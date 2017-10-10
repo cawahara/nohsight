@@ -1,0 +1,39 @@
+<div id="form-event-programs-vue">
+   <div v-bind:id="'event_program_' + program_key" v-bind:class="'multi-item ' + event_program.mode" v-for="(event_program, program_key) in values">
+      <h3 class="multi-header">演目概要</h3>
+      <div class="md-form">
+         <div class="init-area">
+            <label>演目名</label>
+            <input type="text" v-bind:name="'event_programs[' + program_key + '][title]'" v-bind:id="'event_programs_' + program_key + '_title'" v-model:value="event_program.title">
+         </div>
+
+         <div class="error-msgs"><span v-if="hasErrorMsgs(program_key)">{{ error_msgs[program_key].title }}</span></div>
+      </div>
+      <div class="md-form">
+         <div class="init-area">
+            <label>演目の種類</label>
+            <input type="text" v-bind:name="'event_programs[' + program_key + '][genre]'" v-bind:id="'event_programs_' + program_key + '_genre'" v-model:value="event_program.genre">
+         </div>
+         <div class="error-msgs"><span v-if="hasErrorMsgs(program_key)">{{ error_msgs[program_key].genre }}</span></div>
+      </div>
+      <input type="hidden" v-bind:name="'event_programs[' + program_key + '][program_id]'" v-bind:id="'event_programs_' + program_key + '_program_id'" v-bind:value="event_program.program_id">
+      <input type="hidden" v-bind:name="'event_programs[' + program_key + '][id]'" v-bind:id="'event_programs_' + program_key + '_id'" v-bind:value="event_program.id">
+      <input type="hidden" v-bind:name="'event_programs[' + program_key + '][mode]'" v-bind:id="'event_programs_' + program_key + '_mode'" v-bind:value="event_program.mode">
+
+      <ul class="commands" v-if="event_program.mode == 'create'">
+         <li class="create" v-on:click="deleteNewComponent(program_key)"><%= fa_icon('times') %><span>取消</span></li>
+      </ul>
+      <ul class="commands" v-else>
+         <li class="update" v-on:click="changeMode(program_key, 'update')"><%= fa_icon('pencil-square-o') %><span>編集</span></li>
+         <li class="destroy" v-on:click="changeMode(program_key, 'destroy')"><%= fa_icon('trash-o') %><span>削除</span></li>
+      </ul>
+
+      <div class="border-beyond-performers"></div>
+
+      <%= render './events/form_partials/event_performers' %>
+
+   </div>
+   <div class="form-add">
+      <button v-on:click.prevent="createNewComponent()"><%= fa_icon('plus') %>演目の追加</button>
+   </div>
+</div>

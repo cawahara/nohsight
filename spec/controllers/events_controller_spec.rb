@@ -43,13 +43,56 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             # FIXME: userからリレーションする以外の方法でテストをパスしたい
             get :index
-            @events = Event.where(published: true)
+            @events = Event.where(publishing_status: 3)
          end
 
          it_behaves_like('returning number of results')
       end
 
       context 'with easy search params' do
+         before(:each) do
+            @search_params = { start_date: '',
+                               end_date: '',
+                               locations: '',
+                               keywd:  '' }
+         end
+
+         context 'with valid start_date params' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               start_date = event_params[:start_date]
+               @events = Event.where(start_date: start_date)
+               @search_params[:start_date] = start_date
+               get :index, easy_search: @search_params
+            end
+
+            it_behaves_like('returning number of results')
+         end
+
+         context 'with valid end_date params' do
+            let(:event_params) { attributes_for(:first_search_event) }
+            before(:each) do
+               end_date = event_params[:start_date]
+               @events = Event.where(start_date: end_date)
+               @search_params[:end_date] = end_date
+               get :index, easy_search: @search_params
+            end
+
+            it_behaves_like('returning number of results')
+         end
+
+         context 'with valid locations params' do
+            let(:place_params) { attributes_for(:first_search_place) }
+            before(:each) do
+               location_address = place_params[:address]
+               locations = Place.where(address: location_address)
+               @events = Event.where(place_id: locations.ids)
+               @search_params[:locations] = location_address
+               get :index, easy_search: @search_params
+            end
+
+            it_behaves_like('returning number of results')
+         end
 
          context 'with valid keywd params for programs' do
             let(:program_params) { attributes_for(:first_search_program) }
@@ -58,7 +101,8 @@ RSpec.describe EventsController, type: :controller do
                programs = Program.where(title: program_title)
                ev_programs = EventProgram.where(program_id: programs.ids)
                @events = Event.where(id: ev_programs.pluck(:event_id))
-               get :index, easy_search: { keywd: program_title }
+               @search_params[:keywd] = program_title
+               get :index, easy_search: @search_params
             end
 
             it_behaves_like('returning number of results')
@@ -72,7 +116,8 @@ RSpec.describe EventsController, type: :controller do
                ev_performers = EventPerformer.where(performer_id: performers.ids)
                ev_programs = EventProgram.where(id: ev_performers.pluck(:event_program_id))
                @events = Event.where(id: ev_programs.pluck(:event_id))
-               get :index, easy_search: { keywd: performer_full_name }
+               @search_params[:keywd] = performer_full_name
+               get :index, easy_search: @search_params
             end
 
             it_behaves_like('returning number of results')
@@ -83,7 +128,8 @@ RSpec.describe EventsController, type: :controller do
             before(:each) do
                event_title = event_params[:title][0..2]
                @events = Event.where("title LIKE '%#{event_title}%'")
-               get :index, easy_search: { keywd: event_title }
+               @search_params[:keywd] = event_title
+               get :index, easy_search: @search_params
             end
 
             it_behaves_like('returning number of results')
@@ -225,9 +271,7 @@ RSpec.describe EventsController, type: :controller do
             end
          end
       end
-
    end
-
 
    describe 'GET #new' do
       let(:user) { create(:controller_user) }
@@ -257,16 +301,25 @@ RSpec.describe EventsController, type: :controller do
    describe 'GET #show' do
       let(:event) { create(:controller_event) }
 
-      context 'with event params' do
+      context 'with params' do
          before(:each) do
             get :show, id: event
          end
 
-         it 'assigns @event' do
-            expect(assigns(:event)).to eq(event)
+         it 'assigns @event as published' do
+            expect(assigns(:event).publishing_status).to eq(event.publishing_status)
          end
 
          it_behaves_like('returning success response', false)
+      end
+
+      context 'with event params that is not published' do
+         let(:draft) { create(:controller_event, :draft) }
+         before(:each) do
+            get :show, id: draft
+         end
+
+         it_behaves_like('returning redirection response', '/')
       end
 
       context 'without event params' do
@@ -275,7 +328,7 @@ RSpec.describe EventsController, type: :controller do
    end
 
    describe 'GET #edit' do
-      let(:event) { create(:controller_event, :start_from_this) }
+      let(:event) { create(:controller_event, :draft, :start_from_this) }
 
       context 'with event param' do
          before(:each) do
@@ -289,6 +342,17 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it_behaves_like('returning success response', false)
+      end
+
+      context 'with event params that is not published' do
+         let(:published_event) { create(:controller_event, :start_from_this) }
+         before(:each) do
+            user = published_event.users.first
+            login_as(user)
+            get :edit, id: published_event
+         end
+
+         it_behaves_like('returning redirection response', '/manage')
       end
 
       context 'without login' do
@@ -322,12 +386,54 @@ RSpec.describe EventsController, type: :controller do
 
    describe 'POST #create' do
       let(:user) { create(:controller_user) }
+      let(:place) { create(:controller_place) }
+      let(:program) { create(:controller_program) }
+      let(:performer) { create(:controller_performer) }
+      let(:event_params) { attributes_for(:controller_event) }
+      let(:ticket_params) { attributes_for(:controller_ticket) }
+      before(:each) do
+         @event_params = { title:               event_params[:title],
+                           open_date:           event_params[:open_date],
+                           start_date:          event_params[:start_date],
+                           category:            event_params[:category],
+                           information:         event_params[:information],
+                           official_url:        event_params[:official_url],
+                           publishing_status:   0,
+                           place_id:            place.id }
+         @place_params = { title:        place.title,
+                           address:      place.address,
+                           official_url: place.official_url }
+         @ev_performers_params = { '0': { id:           0,
+                                          performer_id: performer.id,
+                                          full_name:    performer.full_name,
+                                          mode:         'create' } }
+         @ev_programs_params = { '0': { id:              0,
+                                        program_id:      program.id,
+                                        title:           program.title,
+                                        genre:           '能',
+                                        event_performers: @ev_performers_params,
+                                        mode:             'create' } }
+         @tickets_params = { '0': { id:    0,
+                                    grade: ticket_params[:grade],
+                                    price: ticket_params[:price],
+                                    mode:  'create' } }
+
+         @request_params = { event:          @event_params,
+                             place:          @place_params,
+                             event_programs: @ev_programs_params,
+                             tickets:        @tickets_params }
+      end
+
+      shared_examples 'not creating a new event' do |model|
+         it { expect { post :create, @request_params }.to change(model, :count).by(0) }
+         it { expect { post :create, @request_params }.to change(model, :count).by(0) } if model
+         # it_behaves_like('returning success response', true, 'new')
+      end
 
       context 'with valid params' do
-         let(:event_params) { attributes_for(:controller_event) }
          before(:each) do |example|
             login_as(user)
-            post :create, event: { title: event_params[:title] } unless example.metadata[:skip_before]
+            post :create, @request_params unless example.metadata[:skip_before]
          end
 
          it 'assigns @event as a created one' do
@@ -335,11 +441,251 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new event into a database', :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(1)
+            expect{ post :create, @request_params }.to change(Event, :count).by(1)
          end
 
-         it 'creates a new user_event into a datavase', :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(1)
+         it 'creates a new event_program into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(EventProgram, :count).by(1)
+         end
+
+         it 'creates a new event_performer into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(EventPerformer, :count).by(1)
+         end
+
+         it 'creates a new ticket into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Ticket, :count).by(1)
+         end
+
+         it 'creates a new user_event into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(UserEvent, :count).by(1)
+         end
+
+         it "returns response status 302" do
+            expect(response).to have_http_status(302)
+         end
+
+         it 'updates a new event as requested for publishing' do
+            expect(assigns(:event).publishing_status).to eq(1)
+         end
+
+         it 'is redirect_to edit_event_port action' do
+            expect(response).to redirect_to(event_manage_url)
+         end
+      end
+
+      context "with params that doesn't exist in master datas" do
+         let(:diff_place) { attributes_for(:different_place) }
+         let(:diff_program) { attributes_for(:different_program) }
+         let(:diff_performer) { attributes_for(:different_performer) }
+         before(:each) do
+            login_as(user)
+            @request_params[:event][:place_id] = 0
+            @request_params[:place][:title] = diff_place[:title]
+            @request_params[:place][:address] = diff_place[:address]
+            @request_params[:event_programs][:'0'][:program_id] = 0
+            @request_params[:event_programs][:'0'][:title] = diff_program[:title]
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = 0
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = diff_performer[:full_name]
+         end
+
+         it 'creates a new place into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Place, :count).by(1)
+         end
+
+         it 'creates a new program into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Program, :count).by(1)
+         end
+
+         it 'creates a new performer into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Performer, :count).by(1)
+         end
+      end
+
+      context 'with original_event_id' do
+         let(:diff_event) { create(:different_event, :start_from_this) }
+         before(:each) do |example|
+            @request_params[:id] = diff_event.id
+            login_as(user)
+            post :create, @request_params unless example.metadata[:skip_before]
+         end
+
+         it 'assigns @event as a created one' do
+            expect(assigns(:event)).to be_persisted
+         end
+
+         it 'creates a new event into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Event, :count).by(1)
+         end
+
+         it 'associates a new event as the edition of original one' do
+            expect(assigns(:event)).to eq(diff_event.editions.first)
+         end
+
+         it "creates a new event as an original's association", :skip_before do
+            expect{ post :create, @request_params }.to change(diff_event.editions, :count).by(1)
+         end
+      end
+
+      context 'in case of params with missing number of keys' do
+         before(:each) do |example|
+            login_as(user)
+            @request_params[:event_programs][:'2'] = @ev_programs_params[:'0']
+            post :create, @request_params unless example.metadata[:skip_before]
+         end
+
+         it 'assigns @event as a created one' do
+            expect(assigns(:event)).to be_persisted
+         end
+
+         it 'creates a new event into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(Event, :count).by(1)
+         end
+
+         it 'creates two new event_programs into a database', :skip_before do
+            expect{ post :create, @request_params }.to change(EventProgram, :count).by(2)
+         end
+      end
+
+      context 'with invalid' do
+         before(:each) do
+            login_as(user)
+         end
+
+         context 'event params' do
+            before(:each) do
+               @request_params[:event][:title] = nil
+            end
+            it_behaves_like('not creating a new event', Event)
+         end
+
+         context 'place params' do
+            before(:each) do
+               @request_params[:event][:place_id] = 0
+               @request_params[:place][:title] = nil
+            end
+            it_behaves_like('not creating a new event', Place)
+         end
+
+         context 'event_program params' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:program_id] = 0
+               @request_params[:event_programs][:'0'][:title] = nil
+            end
+            it_behaves_like('not creating a new event', EventProgram)
+         end
+
+         context 'event_performer params' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = 0
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = nil
+            end
+            it_behaves_like('not creating a new event', EventPerformer)
+         end
+
+         context 'ticket params' do
+            before(:each) do
+               @request_params[:tickets][:'0'][:grade] = nil
+            end
+            it_behaves_like('not creating a new event', Ticket)
+         end
+      end
+
+      context 'without' do
+         before(:each) do
+            login_as(user)
+         end
+
+         context 'event_program params' do
+            before(:each) do
+               @request_params[:event_programs] = {}
+            end
+            it_behaves_like('not creating a new event', Event)
+         end
+
+         context 'event_performer params' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:event_performers] = {}
+            end
+            it_behaves_like('not creating a new event', Event)
+         end
+
+         context 'ticket params' do
+            before(:each) do
+               @request_params[:tickets] = {}
+            end
+            it_behaves_like('not creating a new event', Event)
+         end
+      end
+
+      context 'without login' do
+         before(:each) do |example|
+            post :create, @request_params unless example.metadata[:skip_before]
+         end
+
+         it "doesn't create an event", :skip_before do
+            expect{ post :create, @request_params }.to change(Event, :count).by(0)
+         end
+
+         it "doesn't create a user_event", :skip_before do
+            expect{ post :create, @request_params }.to change(UserEvent, :count).by(0)
+         end
+
+         it_behaves_like('returning redirection response', '/login')
+      end
+   end
+
+   describe 'PATCH #update' do
+      let(:user) { create(:controller_user) }
+      let(:event) { create(:controller_event) }
+      let!(:user_event) { create(:controller_user_event, user: user, event: event) }
+      let(:ev_program) { create(:controller_event_program, event: event) }
+      let(:ev_performer) { create(:controller_event_performer, event_program: ev_program) }
+      let(:ticket) { create(:controller_ticket, event: event) }
+      before(:each) do
+         @event_params = { title:               event.title,
+                           open_date:           event.open_date,
+                           start_date:          event.start_date,
+                           category:            event.category,
+                           information:         event.information,
+                           official_url:        event.official_url,
+                           publishing_status:   event.publishing_status,
+                           place_id:            event.place_id }
+         @place_params = { title:        event.place.title,
+                           address:      event.place.address,
+                           official_url: event.place.official_url }
+         @ev_performers_params = { '0': { id:           ev_performer.id,
+                                          performer_id: ev_performer.performer.id,
+                                          full_name:    ev_performer.performer.full_name,
+                                          mode:         'update' } }
+         @ev_programs_params = { '0': { id:              ev_program.id,
+                                        program_id:      ev_program.program.id,
+                                        title:           ev_program.program.title,
+                                        genre:           ev_program.genre,
+                                        event_performers: @ev_performers_params,
+                                        mode:             'update' } }
+         @tickets_params = { '0': { id:    ticket.id,
+                                    grade: ticket.grade,
+                                    price: ticket.price,
+                                    mode:  'update' } }
+
+         @request_params = { id:             event,
+                             event:          @event_params,
+                             place:          @place_params,
+                             event_programs: @ev_programs_params,
+                             tickets:        @tickets_params }
+      end
+
+      context 'with valid event params' do
+         let(:diff_event) { attributes_for(:different_event) }
+         before(:each) do
+            login_as(user)
+            @request_params[:event][:title] = diff_event[:title]
+            patch :update, @request_params
+         end
+
+         it 'changes event attributes' do
+            event.reload
+            expect(event.title).to eq(diff_event[:title])
          end
 
          it "returns response status 302" do
@@ -347,109 +693,208 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'is redirect_to edit_event_port action' do
-            expect(response).to redirect_to(edit_event_port_url(assigns(:event)))
+            expect(response).to redirect_to(event_manage_url)
+         end
+      end
+
+      context "with valid params that doesn't exist in master datas" do
+         let(:diff_place) { attributes_for(:different_place) }
+         let(:diff_program) { attributes_for(:different_program) }
+         let(:diff_performer) { attributes_for(:different_performer) }
+         before(:each) do
+            login_as(user)
+            @request_params[:event][:place_id] = 0
+            @request_params[:place][:title] = diff_place[:title]
+            @request_params[:place][:address] = diff_place[:address]
+            @request_params[:event_programs][:'0'][:program_id] = 0
+            @request_params[:event_programs][:'0'][:title] = diff_program[:title]
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = 0
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = diff_performer[:full_name]
+         end
+
+         it 'creates a new place into a database' do
+            expect{ patch :update, @request_params }.to change(Place, :count).by(1)
+         end
+
+         it 'creates a new program into a database' do
+            expect{ patch :update, @request_params }.to change(Program, :count).by(1)
+         end
+
+         it 'creates a new performer into a database' do
+            expect{ patch :update, @request_params }.to change(Performer, :count).by(1)
+         end
+      end
+
+      context 'in updating action with valid params' do
+         let(:diff_program) { create(:different_program) }
+         let(:diff_performer) { create(:different_performer) }
+         let(:diff_ticket) { attributes_for(:different_ticket) }
+         before(:each) do
+            login_as(user)
+            @request_params[:event_programs][:'0'][:mode] = 'update'
+            @request_params[:event_programs][:'0'][:program_id] = diff_program.id
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'update'
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = diff_performer.id
+            @request_params[:tickets][:'0'][:mode] = 'update'
+            @request_params[:tickets][:'0'][:grade] = diff_ticket[:grade]
+            patch :update, @request_params
+         end
+
+         it 'changes event_program attributes' do
+            ev_program.reload
+            expect(ev_program.program_id).to eq(diff_program.id)
+         end
+
+         it 'changes event_performer attributes' do
+            ev_performer.reload
+            expect(ev_performer.performer_id).to eq(diff_performer.id)
+         end
+
+         it 'changes ticket attributes' do
+            ticket.reload
+            expect(ticket.grade).to eq(diff_ticket[:grade])
+         end
+      end
+
+      context 'in creating action with valid params' do
+         before(:each) do
+            login_as(user)
+            @request_params[:event_programs][:'0'][:mode] = 'create'
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'create'
+            @request_params[:tickets][:'0'][:mode] = 'create'
+         end
+
+         it 'creates a new event_program into a database' do
+            expect{ patch :update, @request_params }.to change(EventProgram, :count).by(1)
+         end
+
+         it 'creates a new event_performer into a database' do
+            expect{ patch :update, @request_params }.to change(EventPerformer, :count).by(1)
+         end
+
+         it 'creates a new ticket into a database' do
+            expect{ patch :update, @request_params }.to change(Ticket, :count).by(1)
+         end
+      end
+
+      context 'in destroying action' do
+         before(:each) do
+            login_as(user)
+            @request_params[:event_programs][:'0'][:mode] = 'destroy'
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'destroy'
+            @request_params[:tickets][:'0'][:mode] = 'destroy'
+         end
+
+         shared_examples 'destroying associated event items' do
+            it { expect{ patch :update, @request_params }.to change(EventProgram, :count).by(-1) }
+            it { expect{ patch :update, @request_params }.to change(EventPerformer, :count).by(-1) }
+            it { expect{ patch :update, @request_params }.to change(Ticket, :count).by(-1) }
+         end
+
+         it_behaves_like('destroying associated event items')
+
+         context 'with empty params' do
+            before(:each) do
+               login_as(user)
+               @request_params[:event_programs][:'0'][:title] = nil
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = nil
+               @request_params[:tickets][:'0'][:grade] = nil
+            end
+
+            it_behaves_like('destroying associated event items')
+         end
+      end
+
+      context 'with invalid' do
+         before(:each) do
+            login_as(user)
+         end
+
+         context 'event params' do
+            before(:each) do
+               @request_params[:event][:title] = nil
+               patch :update, @request_params
+            end
+            it "doesn't change the event attributes" do
+               event.reload
+               expect(event.title).not_to eq(@request_params[:event][:title])
+            end
+         end
+
+         context 'place params' do
+            before(:each) do
+               @request_params[:event][:place_id] = 0
+               @request_params[:place][:title] = nil
+               patch :update, @request_params
+            end
+            it "doesn't change the place_id" do
+               event.reload
+               expect(event.place_id).not_to eq(@request_params[:event][:place_id])
+            end
+         end
+
+         context 'event_program params' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:program_id] = 0
+               @request_params[:event_programs][:'0'][:title] = nil
+               patch :update, @request_params
+            end
+            it "doesn't change the event_program attributes" do
+               ev_program.reload
+               expect(ev_program.program_id).not_to eq(@request_params[:event_programs][:'0'][:program_id])
+            end
+         end
+
+         context 'event_performer params' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = 0
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = nil
+               patch :update, @request_params
+            end
+            it "doesn't change the event_performer attributes" do
+               ev_performer.reload
+               expect(ev_performer.performer_id).not_to eq(@request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id])
+            end
+         end
+
+         context 'ticket params' do
+            before(:each) do
+               @request_params[:tickets][:'0'][:grade] = nil
+               patch :update, @request_params
+            end
+            it "doesn't change the ticket attributes" do
+               ticket.reload
+               expect(ticket.grade).not_to eq(@request_params[:tickets][:'0'][:grade])
+            end
          end
       end
 
       context 'without login' do
-         let(:event_params) { attributes_for(:controller_event) }
-         before(:each) do |example|
-            post :create, event: { title: event_params[:title] } unless example.metadata[:skip_before]
-         end
-
-         it "doesn't create an event", :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(0)
-         end
-
-         it "doesn't create a user_event", :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(0)
-         end
-
-         it_behaves_like('returning redirection response', '/login')
-      end
-
-      context 'with invalid params' do
-         let(:event_params) { attributes_for(:controller_event, :invalid_params) }
-         before(:each) do |example|
-            login_as(user)
-            post :create, event: { title: event_params[:title] } unless example.metadata[:skip_before]
-         end
-
-         it "doesn't create an event", :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(Event, :count).by(0)
-         end
-
-         it "doesn't create a user_event", :skip_before do
-            expect{ post :create, event: { title: event_params[:title] } }.to change(UserEvent, :count).by(0)
-         end
-
-         it_behaves_like('returning success response', true, 'new')
-      end
-   end
-
-   describe 'PATCH #update' do
-      let(:user) { create(:controller_user, :start_from_this) }
-      before(:each) do
-         @event = user.events.first
-      end
-
-      context 'with valid params' do
+         let(:diff_event) { attributes_for(:different_event) }
          before(:each) do
-            login_as(user)
-            patch :update, id: @event, event: attributes_for(:controller_event, title: 'Changed Event')
-         end
-
-         it 'changes event attributes' do
-            @event.reload
-            expect(@event.title).to eq('Changed Event')
-         end
-
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
-         end
-
-         it 'is redirected to edit_event_port action' do
-            expect(response).to redirect_to(edit_event_port_url(@event))
-         end
-      end
-
-      context 'without login' do
-         before(:each) do
-            patch :update, id: @event, event: attributes_for(:controller_event, title: 'Changed Event')
+            @request_params[:event][:title] = diff_event[:title]
+            patch :update, @request_params
          end
 
          it "doesn't change event attributes" do
-            @event.reload
-            expect(@event.title).not_to eq('Changed Event')
+            event.reload
+            expect(event.title).not_to eq(diff_event[:title])
          end
 
          it_behaves_like('returning redirection response', '/login')
-      end
-
-      context 'with invalid param' do
-         before(:each) do
-            login_as(user)
-            patch :update, id: @event, event: attributes_for(:controller_event, title: '')
-         end
-
-         it "doesn't change event attributes" do
-            @event.reload
-            expect(@event.title).not_to eq('Changed Event')
-         end
-
-         it_behaves_like('returning success response', true, 'edit')
       end
 
       context 'when not editor of this event' do
          let(:diff_event) { create(:different_event) }
          before(:each) do
             login_as(user)
-            patch :update, id: diff_event, event: attributes_for(:different_event, title: 'Changed Event')
+            @request_params[:id] = diff_event
+            patch :update, @request_params
          end
 
          it "doesn't change event attributes" do
             diff_event.reload
-            expect(diff_event.title).not_to eq('Changed Event')
+            expect(diff_event.title).not_to eq(event.title)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -503,32 +948,21 @@ RSpec.describe EventsController, type: :controller do
    end
 
    describe 'GET #manage' do
-      let!(:user) { create(:controller_user) }
+      let!(:user) { create(:controller_user, :start_from_this) }
+      let!(:diff_user) { create(:different_user, :start_from_this) }
 
-      context 'with valid params' do
+      context 'with login' do
          before(:each) do
-            @events = user.events
-            @organizer_ids = user.user_events.where(organizer: true).pluck(:event_id)
-            @editor_ids = user.user_events.where(organizer: false).pluck(:event_id)
-
             login_as(user)
             get :manage
          end
 
-         it 'assigns @user' do
-            expect(assigns(:user)).to eq(user)
+         it 'assigns managed @events from logged user' do
+            expect(assigns(:events)).to eq(user.events)
          end
 
-         it 'assigns @events' do
-            expect(assigns(:events)).to eq(@events)
-         end
-
-         it 'assigns @organizer_ids' do
-            expect(assigns(:organizer_ids)).to eq(@organizer_ids)
-         end
-
-         it 'assigns @editor_ids' do
-            expect(assigns(:editor_ids)).to eq(@editor_ids)
+         it "doesn't assign managed @events from different user" do
+            expect(assigns(:events)).not_to eq(diff_user.events)
          end
 
          it_behaves_like('returning success response', false)

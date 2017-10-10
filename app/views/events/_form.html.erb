@@ -1,0 +1,26 @@
+
+<div class="form-section">
+   <h1 class="form-header">基本情報の編集</h1>
+   <%= render './events/form_partials/event' %>
+
+   <h1 class="form-header">開催地の編集</h1>
+   <%= render './events/form_partials/place' %>
+
+   <h1 class="form-header">演目の編集<span class="required">必須</span></h1>
+   <%= render './events/form_partials/event_programs' %>
+
+   <h1 class="form-header">料金の編集<span class="required">必須</span></h1>
+   <%= render './events/form_partials/tickets' %>
+
+</div>
+<div class="form-submit">
+   <%= submit_tag '登録申請' %>
+</div>
+
+<%= content_tag :div,
+   id: 'event-init-form-vue',
+   data: { event:          @event_params,
+           place:          @place_params,
+           event_programs: @event_programs_params,
+           tickets:        @tickets_params,
+           error_msgs:     @error_msgs }.to_json do %><% end %>

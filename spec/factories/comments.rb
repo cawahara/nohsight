@@ -16,4 +16,18 @@ FactoryGirl.define do
 
      content "Wrong information"
   end
+
+  factory :controller_comment, class: Comment do
+     association :user, factory: :admin_user
+     association :event, factory: :controller_event
+
+     content "It has already been published"
+  end
+
+  factory :different_comment, class: Comment do
+     association :user, factory: :admin_user
+     association :event, factory: :different_event
+
+     content 'This is boring'
+  end
 end

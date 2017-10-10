@@ -26,45 +26,64 @@ RSpec.describe UserEventsController, type: :controller do
 
    describe 'POST #create' do
       let(:user) { create(:controller_user) }
-      let(:diff_event) { create(:different_event) }
+      let(:diff_event) { create(:different_event, :start_from_this) }
 
       context 'with event params' do
-         before(:each) do |example|
+         before(:each) do
             login_as(user)
-            post :create, id: diff_event unless example.metadata[:skip_before]
+            post :create, id: diff_event
+            @event = diff_event
+            @place = diff_event.place
+            @event_program = diff_event.event_programs.first
+            @event_performer = @event_program.event_performers.first
+            @ticket = diff_event.tickets.first
          end
 
-         it 'creates a new user_event into the database', :skip_before do
-            expect{ post :create, id: diff_event }.to change(UserEvent, :count).by(1)
+         it 'assigns @event' do
+            expect(assigns(:event)).to eq(diff_event)
          end
 
-         it 'defines a new user_event as not organizer' do
-            expect(assigns(:user_event).organizer).to be_falsey
+         it 'renders events#new template' do
+            expect(response).to render_template('events/new')
          end
 
-         it "returns response status 302" do
-            expect(response).to have_http_status(302)
+         it 'returns event_params which has values of event' do
+            expect(assigns(:event_params)[:id]).to eq(@event.id)
          end
 
-         it 'is redirected to edit_port action' do
-            expect(response).to redirect_to(edit_event_port_url(diff_event))
+         it 'returns places_params which has values of places' do
+            expect(assigns(:place_params)[:title]).to eq(@place.title)
+         end
+
+         it 'returns event_programs_params which has values of event_program' do
+            expect(assigns(:event_programs_params)[:'0'][:id]).to eq(@event_program.id)
+         end
+
+         it 'returns event_performers_params which has values of event_performer' do
+            expect(assigns(:event_programs_params)[:'0'][:event_performers][:'0'][:id]).to eq(@event_performer.id)
+         end
+
+         it 'returns tickets_params which has values of ticket' do
+            expect(assigns(:tickets_params)[:'0'][:id]).to eq(@ticket.id)
          end
       end
 
       context 'without login' do
-         before(:each) do |example|
-            post :create, id: diff_event unless example.metadata[:skip_before]
-         end
-
-         it "doesn't create a new user_event" do
-            expect{ post :create, id: diff_event }.to change(UserEvent, :count).by(0)
+         before(:each) do
+            post :create, id: diff_event
          end
 
          it_behaves_like('returning redirection response', '/login')
       end
 
-      # TODO: 追加機能に応じてテストを追加する予定
-      # TODO: 編集不可能というときの条件と処理をテスト
+      context 'without event params' do
+         before(:each) do
+            login_as(user)
+            post :create
+         end
+
+         it_behaves_like('occurs an error')
+      end
    end
 
    describe 'DELETE #destroy' do

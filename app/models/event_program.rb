@@ -9,7 +9,7 @@ class EventProgram < ApplicationRecord
    attr_accessor :title
 
    validates :program_id,    presence: true
-   validates :event_id,      presence: true
+   # validates :event_id,      presence: true
 
    validates :genre,         presence: true
    # TODO: genreは「能、仕舞、歌舞伎」などの演芸の種類を入れるカラムです

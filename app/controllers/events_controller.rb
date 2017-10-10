@@ -4,10 +4,13 @@ class EventsController < ApplicationController
    include UpdateEventAssociations
    include SearchEngine
 
-   before_action :set_event, except: [:index, :new, :create, :manage]
+   include CRUDEvent
+   include SetVariablesOnEventsController
+
+   before_action :set_event, except: [:index, :new, :create, :manage, :validation]
    before_action :set_variables_for_event_place, only: [:edit_place, :update_place]
    before_action :logged_in?, except: [:index, :show]
-   before_action :event_editor?, except: [:index, :new, :show, :create, :manage]
+   before_action :event_editor?, except: [:index, :new, :show, :create, :manage, :validation]
 
    def index
       events = []
@@ -32,33 +35,45 @@ class EventsController < ApplicationController
 
    def new
       @event = Event.new
+      values_on_edit('create')
    end
 
    def show
+      if @event.publishing_status < 3
+         flash[:danger] = '公開されていない情報にはアクセスできません。'
+         redirect_to root_url
+      end
    end
 
    def edit
+      values_on_edit('update')
+      if @event.publishing_status != 0 && @event.publishing_status != 2
+         if @event.publishing_status == 1
+            flash.now[:danger] = '承認待ちの情報の編集は禁止されています。'
+         else
+            flash.now[:danger] = '公開中の情報の編集は禁止されています。'
+         end
+         redirect_to event_manage_url
+      end
    end
 
    def create
-      @event = Event.new(event_params)
-      @event.published = false
-      if @event.save
-         UserEvent.create!(user_id: current_user.id, event_id: @event.id, organizer: true)
-         flash[:success] = '新しい公演を登録しました。編集して公開しましょう。'
-         redirect_to(edit_event_port_url(@event))
+      request_params
+      @event = create_event
+      if @event != false
+         send_request
       else
-         flash[:danger] = '公演名が入力されていません'
+         flash.now[:danger] = '入力情報に不備があります。'
          render 'events/new'
       end
    end
 
    def update
-      if @event.update_attributes(event_params)
-         flash[:success] = '公演情報を更新しました'
-         redirect_to(edit_event_port_url(@event))
+      request_params
+      if update_event(@event) != false
+         send_request
       else
-         flash[:danger] = '入力情報に不備があります'
+         flash.now[:danger] = '入力情報に不備があります。'
          render 'events/edit'
       end
    end
@@ -69,18 +84,11 @@ class EventsController < ApplicationController
       else
          flash[:danger] = '公演の削除に失敗しました'
       end
-      redirect_to(event_manage_url)
+      redirect_to event_manage_url
    end
 
    def manage
-      @user = current_user
-      @events = @user.events
-      user_events = @user.user_events
-      @organizer_ids = user_events.where(organizer: true).pluck(:event_id)
-      @editor_ids = user_events.where(organizer: false).pluck(:event_id)
-   end
-
-   def send_request
+      @events = current_user.events
    end
 
    def edit_port
@@ -116,13 +124,23 @@ class EventsController < ApplicationController
       @render_params = params if params[:event_place]
    end
 
-   def event_params
-      params.require(:event).permit!
+   def request_params
+      @event_params = params&.require(:event).permit!
+      @place_params = params&.require(:place).permit!
+      @event_programs_params = params&.require(:event_programs).permit!
+      @tickets_params = params&.require(:tickets).permit!
+      @error_msgs ||= {}
    end
 
    def event_place_params
       params.require(:event_place).permit(:title,
                                           :address,
                                           :official_url)
+   end
+
+   def send_request
+      @event.update_attributes!(publishing_status: 1)
+      flash[:success] = '公演情報を保存し、登録申請しました。'
+      redirect_to event_manage_url
    end
 end

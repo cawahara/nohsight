@@ -88,6 +88,16 @@ FactoryGirl.define do
       end
    end
 
+   factory :admin_user, class: User do
+      name                  'Lena'
+      email                 'lena@gmail.com'
+      information           'They hurt me, too'
+      password              'password'
+      password_confirmation 'password'
+      is_admin              true
+      agreement             true
+   end
+
    factory :search_user, class: User do
       name                  'Julia'
       email                 'julia@gmail.com'

@@ -4,10 +4,11 @@
 // Detail(Events#show)
 /********************************************
 
-                  DateTimePicker
+                  Import
 
 ********************************************/
 
+@import './layout';
 @import './jquery-datetimepicker/build/jquery.datetimepicker.min';
 
 /********************************************
@@ -55,101 +56,85 @@
    margin: 12px 0;
    a, input {
       width: auto;
-      background-color: #e9e9e9;
+      background-color: #208000;
+      color: #ffffff;
       border-radius: 5px;
       border: 1px solid #dedede;
       display: inline-block;
       padding: 7px 9px;
-      color: #454545;
    }
 }
 
 // New
 #events-new {
-   form {
-      input[type=text] {
-         border: 1px solid #989898;
-         padding: 9px 8px;
-         border-top-left-radius: 6px;
-         border-bottom-left-radius: 6px;
-         font-size: 13px;
-         width: calc(100% - 37px);
+}
 
-         &:hover {
-            border: 1px solid #ffb366;
-            box-shadow: -1px 0 3px 2px #ffb366;
-            outline: none;
-         }
+#event-tabs {
+   overflow: hidden;
+
+   div.event-tab {
+      float: left;
+      width: 50%;
+      text-align: center;
+      padding: 10px;
+      i {
+         font-size: 18px;
+         margin-right: 2px;
       }
-
    }
-   .event-new-submit {
-      border: 1px solid #989898;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      font-family: FontAwesome;
-      font-size: 18px;
-      padding: 2px 8px 4px 8px;
-      margin-left: -6px;
+
+   div.passive {
+      background-color: #d1e0e0;
+      border-right: 1px solid #9d9d9d;
+      border-left: 1px solid #9d9d9d;
+      border-bottom: 1px solid #9d9d9d;
    }
 }
 
 // Edit_manage
-#events-edit-manage {
-   div.section {
-      div.article {
+#events-manage, #requests-index {
+   .contents {
+      padding: 0 7px;
 
-         ul.article-info {
-            li {
-               font-size: 13px;
-               margin-top: 8px;
+      p.no-event {
+         text-align: center;
+      }
+   }
+
+   table {
+      margin-top: 12px;
+      thead {
+         border-bottom: 1px solid #9d9d9d;
+      }
+
+      th, td {
+         text-align: center;
+         vertical-align: middle;
+         padding: 7px 0;
+         border-bottom: 1px solid #9d9d9d;
+      }
+      .start-date { width: 26%; }
+      td.start-date { font-size: 12px; }
+      .point-record { width: 11%; }
+      td.point-record { font-size: 11px; }
+      td.title { text-align: left; }
+      .status { width: 23%; }
+      td.command {
+         width: 7%;
+         a, button {
+            border: none;
+            background-color: inherit;
+            padding: 0;
+            i {
+               font-size: 19px;
             }
          }
-
-         div.article-items {
-            margin-top: 21px;
-            overflow: hidden;
-
-            span.publish, span.unpublish {
-               float: left;
-               width: auto;
-               padding: 5px 12px;
-               font-size: 12px;
-               font-family: sans-serif;
-            }
-            span.publish {
-               background-color: #660000;
-               color: #ffffff;
-               text-decoration: underline;
-            }
-            span.unpublish { background-color: #d9d9d9; }
-
-            ul.item-icons {
-               float: right;
-               li {
-                  display: inline-block;
-                  .btn {
-                     width: auto;
-                     border: 1px solid #a6a6a6;
-                     border-radius: 6px;
-                     padding: 4px 12px;
-                     color: #f2f2f2;
-                     font-size: 12px;
-                     * { font-family: sans-serif; }
-                  }
-               }
-               li.icon-edit {
-                  a, button { background-color: #b38600; }
-               }
-               li.icon-destroy {
-                  a, button { background-color: #ff3333; }
-               }
-            }
-         }
-
-
+      }
+      td.edit {
+         i { color: $font-info; }
+      }
+      td.destroy {
+         i { color: $font-danger; }
       }
    }
 }
@@ -190,6 +175,69 @@
          }
       }
    }
+}
+
+#event_approval {
+   .event-contents, .approval-commands {
+      margin: 0 14px;
+   }
+
+   .event-contents {
+      table {
+         td {
+            padding: 9px 0;
+         }
+         td.field { width: 34%; }
+         td.item {
+            p.program {}
+            ul.performers {
+               margin-left: 50px;
+               li { margin: 6px 0; }
+            }
+
+            span { margin-right: 19px; }
+         }
+         tr.border {
+            td {
+               width: 100%;
+               height: 1px;
+               padding: 0;
+               border-bottom: 1px solid #bdbdbd;
+            }
+
+         }
+      }
+      border-bottom: 1px solid #9d9d9d;
+   }
+
+   .approval-commands {
+      .form-section {
+         background-color: #ffffff;
+      }
+      p {
+         margin: 9px 0;
+      }
+      ul {
+         overflow: hidden;
+         li {
+            display: inline-block;
+            margin: 0 10px;
+            font-family: "ヒラギノ明朝 ProN W6";
+            font-size: 12px;
+            border: none;
+            border-radius: 6px;
+            * {
+               display: inline-block;
+               margin-right: 7px;
+            }
+            label { text-decoration: underline; }
+            .approved { color: $font-success; }
+            .rejected { color: $font-danger; }
+         }
+      }
+   }
+
+
 }
 
 

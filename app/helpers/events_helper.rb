@@ -9,15 +9,15 @@ module EventsHelper
       'その他'=>         4
    }
 
-   # PublishedパラメータがtrueのEventのみ取得(不特定多数が公演場を見るときの必須条件)
+   # publishing_statusパラメータが3(published)のEventのみ取得(不特定多数が公演場を見るときの必須条件)
    def public_events(events)
-      return events.where(published: true)
+      return events.where(publishing_status: 3)
    end
 
    # 本日以降の未開催のイベントを表示
    def upcoming_events(events)
-      query = 'published = ? AND start_date >= ?'
-      return events.where(query, true, Date.today).order(start_date: :desc)
+      query = 'publishing_status = ? AND start_date >= ?'
+      return events.where(query, 3, Date.today).order(start_date: :desc)
    end
 
    def category_number(category)
@@ -27,14 +27,28 @@ module EventsHelper
    class ActiveSupport::TimeWithZone
       WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土']
 
-      def format_with_weekday
-
-         weekday = WEEKDAYS[self.wday]
-         self.strftime("%Y/%m/%d %H:%M (#{weekday}曜日)")
+      def format_with_date
+         self.strftime("%Y/%m/%d")
       end
 
       def format_with_hours
          self.strftime("%H:%M")
       end
+
+      def format_with_weekday
+         weekday = WEEKDAYS[self.wday]
+         self.strftime("%Y/%m/%d %H:%M (#{weekday}曜日)")
+      end
    end
+
+   # on form action (new or edit)
+   def show_errors_on_form(error_msgs)
+      begin
+         error_msgs = error_msgs.map.with_index { |msg, i| msg = i < error_msgs.count - 1 ? msg + ', ' : msg }
+         return error_msgs.join("")
+      rescue NoMethodError
+         return ''
+      end
+   end
+
 end

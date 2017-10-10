@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 class UserEventsController < ApplicationController
+   include SetVariablesOnEventsController
+
    before_action :logged_in?
 
    def create
       @event = Event.find(params[:id])
-      @user_event = current_user.user_events.build(params_for_create)
-      if @user_event.save
-         flash[:success] = '新たな公演編集メンバーになりました'
-         redirect_to(edit_event_port_url(@event))
-      else
-         flash[:danger] = '編集不可能です'
-         redirect_to(event_url(@event))
-      end
+      flash[:success] = '新たな公演編集メンバーになりました'
+      values_on_edit('create')
+      render 'events/new'
    end
 
    def destroy

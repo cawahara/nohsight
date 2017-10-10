@@ -1,5 +1,5 @@
-<div id="event-show">
-   <!-- イベント概要 -->
+<div id="events-show">
+      <!-- イベント概要 -->
    <div class="headline">
 
       <h1><%= @event.title %></h1>
@@ -95,11 +95,7 @@
 
    <div class="user-command">
       <% if logged? %>
-         <% if @event.users.exists?(current_user.id) %>
-         <%= link_to '公演の編集', edit_event_port_path(@event) %>
-         <% else %>
-         <%= button_to '公演編集に参加する', user_events_path(@event), method: :post %>
-         <% end %>
+         <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
       <% end %>
    </div>
 </div>
