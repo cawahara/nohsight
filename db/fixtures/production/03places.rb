@@ -166,7 +166,7 @@ Place.seed do |s|
 	s.id = 252
 	s.title = '岡崎城二の丸能楽堂'
    s.address = '愛知県岡崎市康生町５６１−１'
-   s.official_url = 'http://okazakipark.com/nougalkudou/nougakudou.htm'
+   s.official_url = 'http://okazakipark.com/nougalkudou/nougakudou.html'
 end
 
 Place.seed do |s|
