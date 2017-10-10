@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: shared example使ってみる
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -30,6 +28,28 @@ RSpec.describe User, type: :model do
          end
       end
 
+      context 'related to point_records' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:point_records)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that user has many point_records' do
+            expect{ create(:model_user, :start_from_this) }.to change(PointRecord, :count).by(1)
+         end
+      end
+
+      context 'related to comments' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:comments)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that user has many comments' do
+            expect{ create(:model_user, :start_from_this) }.to change(Comment, :count).by(1)
+         end
+      end
+
       context 'destroying dependency' do
          let(:user) { create(:model_user, :start_from_this) }
          let(:another_user) { create(:another_user, :start_from_this) }
@@ -37,12 +57,20 @@ RSpec.describe User, type: :model do
             user.destroy
          end
 
-         it 'deletes relative user_events' do
-            expect(user.user_events.count).to eq(0)
+         it 'deletes relative point_records' do
+            expect(user.point_records.count).to eq(0)
          end
 
-         it "doesn't delete not relative user_events" do
-            expect(another_user.user_events.count).not_to eq(0)
+         it "doesn't delete not relative point_records" do
+            expect(another_user.point_records.count).not_to eq(0)
+         end
+
+         it 'deletes relative comments' do
+            expect(user.comments.count).to eq(0)
+         end
+
+         it "doesn't delete not relative comments" do
+            expect(another_user.comments.count).not_to eq(0)
          end
       end
    end
@@ -114,6 +142,27 @@ RSpec.describe User, type: :model do
             user.password_confirmation = 'drowssap'
             user.valid?
             expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+         end
+      end
+
+      context 'is_admin' do
+         it 'is convert from any words to true value' do
+            words = ['a', 12, true]
+            words.each do |word|
+               user.is_admin = word
+               expect(user.is_admin).to eq(true)
+            end
+         end
+
+         it 'returns false if false is inserted' do
+            user.is_admin = false
+            expect(user.is_admin).to eq(false)
+         end
+
+         it 'is invalid with nil' do
+            user.is_admin = nil
+            user.valid?
+            expect(user.errors[:is_admin]).to include('is not included in the list')
          end
       end
 

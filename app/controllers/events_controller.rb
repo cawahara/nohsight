@@ -80,6 +80,9 @@ class EventsController < ApplicationController
       @editor_ids = user_events.where(organizer: false).pluck(:event_id)
    end
 
+   def send_request
+   end
+
    def edit_port
    end
 

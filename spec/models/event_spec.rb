@@ -76,6 +76,41 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to comment' do
+         it "is 'has one' attribute" do
+            association = described_class.reflect_on_association(:comment)
+            expect(association.macro).to eq(:has_one)
+         end
+
+         it 'shows that event has one comment' do
+            expect{ create(:model_event, :start_from_this) }.to change(Comment, :count).by(1)
+         end
+      end
+
+      context 'related to editions(itself)' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:editions)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that original has many editions' do
+            # 下記create時にorginalとeditionが同時に生成される
+            expect{ create(:model_event, :original_edition) }.to change(Event, :count).by(2)
+         end
+      end
+
+      context 'related to original(itself)' do
+         it "is 'belongs to' attribute" do
+            association = described_class.reflect_on_association(:original)
+            expect(association.macro).to eq(:belongs_to)
+         end
+
+         it 'shows that edition belongs to original' do
+            event = create(:model_event, :latest_edition)
+            expect(event.original).to be_truthy
+         end
+      end
+
       context 'destroying dependency' do
          let(:event) { create(:model_event, :start_from_this) }
          let(:another_event) { create(:another_event, :start_from_this) }
@@ -111,10 +146,47 @@ RSpec.describe Event, type: :model do
             expect(another_event.user_events.count).not_to eq(0)
          end
       end
+
+      context 'destroying dependency of original' do
+         let(:event) { create(:model_event, :original_edition) }
+         let(:another_event) { create(:another_event, :original_edition) }
+         before(:each) do
+            event.destroy
+         end
+
+         it 'deletes relative editions' do
+            expect(event.editions.count).to eq(0)
+         end
+
+         it "doesn't delete not relative editions" do
+            expect(another_event.editions.count).not_to eq(0)
+         end
+      end
+
+      context 'destroying dependency of edition' do
+         let(:event) { create(:model_event, :latest_edition) }
+         before(:each) do
+            event.destroy
+         end
+
+         it "doesn't delete relative original" do
+            expect(event.original).to be_truthy
+         end
+      end
    end
 
    describe '#validation' do
       let(:event) { build(:model_event) }
+      let(:event_program) { build(:model_event_program, event: event) }
+      let(:event_performer) { build(:model_event_performer, event_program: event_program) }
+      let(:ticket) { build(:model_ticket, event: event) }
+
+      before(:each) do
+         event.save
+         event_program.save
+         event_performer.save
+         ticket.save
+      end
 
       it 'is valid with title, start_date, information, official_url, and published' do
          expect(event).to be_valid
@@ -128,26 +200,11 @@ RSpec.describe Event, type: :model do
          end
       end
 
-      # REVIEW: boolean型の特徴としてなにかしら値があればtrueになるが、
-      # =>      falseの場合は直接falseを入力しないといけない
-      context 'published' do
-         it 'is convert from any words to true value' do
-            words = ['a', 12, true]
-            words.each do |word|
-               event.published = word
-               expect(event.published).to eq(true)
-            end
-         end
-
-         it 'returns false if false is inserted' do
-            event.published = false
-            expect(event.published).to eq(false)
-         end
-
-         it 'is invalid with nil' do
-            event.published = nil
-            event.valid?
-            expect(event.errors[:published]).to include('is not included in the list')
+      context 'place_id' do
+         it 'is invalid with empty place_id when send_request' do
+            event.place_id = nil
+            event.valid?(:send_request)
+            expect(event.errors[:place_id]).to include("can't be blank")
          end
       end
 
@@ -156,6 +213,39 @@ RSpec.describe Event, type: :model do
             event.open_date = event.start_date + 2
             event.valid?
             expect(event.errors[:open_date]).to include('should be earlier than start_date')
+         end
+
+         it 'is invalid to define with empty start_date' do
+            event.start_date = nil
+            event.valid?
+            expect(event.errors[:open_date]).to include('should be valid after start_date is defined')
+         end
+      end
+
+      context 'start_date' do
+         it 'is invalid with empty start_date when send_request' do
+            event.start_date = nil
+            event.valid?(:send_request)
+            expect(event.errors[:start_date]).to include("can't be blank")
+         end
+      end
+
+      context 'official_url' do
+         it 'is invalid with empty official_url when send_request' do
+            event.official_url = nil
+            event.valid?(:send_request)
+            expect(event.errors[:official_url]).to include("can't be blank")
+         end
+
+         it 'is invalid with improper formatted url when send_request' do
+            invalid_urls = ['htps://',
+                            'ahttps://eventsite.com',
+                            'https:/eventsite.com']
+            invalid_urls.each do |invalid_url|
+               event.official_url = invalid_url
+               event.valid?(:send_request)
+               expect(event.errors[:official_url]).to include('is invalid')
+            end
          end
       end
 
@@ -181,6 +271,49 @@ RSpec.describe Event, type: :model do
                event.valid?
                expect(event.errors[:category]).to include('is not included in the list')
             end
+         end
+      end
+
+      context 'publishing_status' do
+         it 'is valid with proper values' do
+            valid_status = [0, 1, 2, 3, 4]
+            valid_status.each do |status|
+               event.publishing_status = status
+               expect(event).to be_valid
+            end
+         end
+
+         it 'is invalid with improper values' do
+            invalid_status = [12, nil]
+            invalid_status.each do |status|
+               event.publishing_status = status
+               event.valid?
+               expect(event.errors[:publishing_status]).to include('is not included in the list')
+            end
+         end
+      end
+
+      context 'event_programs' do
+         it 'is invalid without any event_program when send_request' do
+            event.event_programs.delete_all
+            event.valid?(:send_request)
+            expect(event.errors[:event_programs]).to include('should have at least one event_program')
+         end
+      end
+
+      context 'event_performers' do
+         it 'is invalid without any event_performer when send_request' do
+            event_program.event_performers.delete_all
+            event.valid?(:send_request)
+            expect(event.errors[:event_performers]).to include('should have at least one event_performer in each event_program')
+         end
+      end
+
+      context 'tickets' do
+         it 'is invalid without any event_program when send_request' do
+            event.tickets.delete_all
+            event.valid?(:send_request)
+            expect(event.errors[:tickets]).to include('should have at least one ticket')
          end
       end
    end
