@@ -5,7 +5,6 @@
 
    <div class="section">
       <h1 class="section-header">登録した公演情報</h1>
-         <!-- TODO:　主催、編集としての参加、終了した公演という種類分けをする -->
       <% @events.where(id: @organizer_ids).each do |event| %>
       <div class="article">
          <h2 class="article-header"><%= event.title %></h2>
@@ -23,7 +22,6 @@
 
             <ul class="item-icons">
                <li class="icon-edit"><%= link_to edit_event_port_path(event), class: 'btn' do %><span>編集</span><% end %></li>
-               <!-- TODO: confirmオプションが作動しない -->
                <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
             </ul>
          </div>
@@ -46,15 +44,11 @@
             <% else %>
             <span class="btn unpublish">未公開</span>
             <% end %>
-
             <ul class="item-icons">
                <li class="icon-edit"><%= link_to edit_event_port_path(event), class: 'btn' do %><span>編集</span><% end %></li>
-               <!-- FIXME: confirmオプションが作動しない -->
                <li class="icon-destroy"><%= button_to event_path(event), method: :delete, data: {confirm: '一度削除した公演は元に戻りません。よろしいですか？'}, class: 'btn' do %><span>削除</span><% end %></li>
             </ul>
          </div>
-
-
       </div>
       <% end %>
    </div>

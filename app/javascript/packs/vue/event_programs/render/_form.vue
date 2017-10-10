@@ -4,7 +4,6 @@
       <input v-bind:name="getColumn(tag_id, 'id')" type="hidden" v-bind:value="id">
       <input v-bind:name="getColumn(tag_id, 'event_id')" type="hidden" v-bind:value="event_id">
       <div class="lg-form">
-      <!-- FIXME: わかりやすいデザインにしたい(ボタンによる入力項目の拡張が行えるが、一目見ただけでは何を編集しているのかがわかりづらい) -->
          <label>演目</label>
          <input v-bind:id="getColumn(tag_id, 'title')" v-bind:name="getColumn(tag_id, 'title')" type="text" v-model:value="search_query.word">
 
