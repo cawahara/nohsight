@@ -9359,3 +9359,155 @@ Performer.seed do |s|
 	s.last_name = 'もり'
 	s.first_name = 'ひろかず'
 end
+
+Performer.seed do |s|
+	s.id = 11712
+	s.style_id = 42
+	s.full_name = '向井 弘記'
+	s.last_name = 'むかい'
+	s.first_name = 'ひろき'
+end
+
+Performer.seed do |s|
+	s.id = 11722
+	s.style_id = 42
+	s.full_name = '惣明 貞助'
+	s.last_name = 'そうみょう'
+	s.first_name = 'さだすけ'
+end
+
+Performer.seed do |s|
+	s.id = 11732
+	s.style_id = 92
+	s.full_name = '茂山 慶和'
+	s.last_name = 'しげやま'
+	s.first_name = 'よしかず'
+end
+
+Performer.seed do |s|
+	s.id = 11742
+	s.style_id = 22
+	s.full_name = '山崎 健'
+	s.last_name = 'やまざき'
+	s.first_name = 'たけし'
+end
+
+Performer.seed do |s|
+	s.id = 11752
+	s.style_id = 12
+	s.full_name = '渡邉 瑞子'
+	s.last_name = 'わたなべ'
+	s.first_name = 'みずこ'
+end
+
+Performer.seed do |s|
+	s.id = 11762
+	s.style_id = 12
+	s.full_name = '武田 祥照'
+	s.last_name = 'たけだ'
+	s.first_name = 'よしてる'
+end
+
+Performer.seed do |s|
+	s.id = 11772
+	s.style_id = 12
+	s.full_name = '井上 裕之真'
+	s.last_name = 'たけだ'
+	s.first_name = 'ひろのしん'
+end
+
+Performer.seed do |s|
+	s.id = 11782
+	s.style_id = 12
+	s.full_name = '樹下 千慧'
+	s.last_name = 'じゅげ'
+	s.first_name = 'ちさと'
+end
+
+Performer.seed do |s|
+	s.id = 11792
+	s.style_id = 12
+	s.full_name = '浦田 親良'
+	s.last_name = 'うらた'
+	s.first_name = 'ちから'
+end
+
+Performer.seed do |s|
+	s.id = 11802
+	s.style_id = 12
+	s.full_name = '小野 朗'
+	s.last_name = 'おの'
+	s.first_name = 'あきら'
+end
+
+Performer.seed do |s|
+	s.id = 11812
+	s.style_id = 12
+	s.full_name = '山崎 浩之'
+	s.last_name = 'やまざき'
+	s.first_name = 'ひろゆき'
+end
+
+Performer.seed do |s|
+	s.id = 11822
+	s.style_id = 12
+	s.full_name = '梅若 雄一郎'
+	s.last_name = 'うめわか'
+	s.first_name = 'ゆういちろう'
+end
+
+Performer.seed do |s|
+	s.id = 11832
+	s.style_id = 12
+	s.full_name = '片山 清愛'
+	s.last_name = 'かたやま'
+	s.first_name = 'きよあい'
+end
+
+Performer.seed do |s|
+	s.id = 11842
+	s.style_id = 42
+	s.full_name = '村瀬 堤'
+	s.last_name = 'むらせ'
+	s.first_name = 'つつみ'
+end
+
+Performer.seed do |s|
+	s.id = 11852
+	s.style_id = 42
+	s.full_name = '村瀬 慧'
+	s.last_name = 'むらせ'
+	s.first_name = 'けい'
+end
+
+Performer.seed do |s|
+	s.id = 11862
+	s.style_id = 12
+	s.full_name = '大槻 裕一'
+	s.last_name = 'おおつき'
+	s.first_name = 'ゆういち'
+end
+
+Performer.seed do |s|
+	s.id = 11872
+	s.style_id = 12
+	s.full_name = '山本 麗晃'
+	s.last_name = 'やまもと'
+	s.first_name = 'よしあき'
+end
+
+Performer.seed do |s|
+	s.id = 11882
+	s.style_id = 142
+	s.full_name = '成田 奏'
+	s.last_name = 'なりた'
+	s.first_name = 'かな'
+end
+
+Performer.seed do |s|
+	s.id = 11892
+	s.style_id = 102
+	s.full_name = '大塚 出'
+	s.last_name = 'おおつか'
+	s.first_name = 'いずる'
+end
