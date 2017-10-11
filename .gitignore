@@ -32,3 +32,6 @@
 
 # Ignore visual testing references
 /test/visual_regression
+
+# Ignore the spec progress log
+/coverage
