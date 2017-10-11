@@ -22,6 +22,10 @@ class User < ApplicationRecord
                                        allow_nil: false,
                                        on: :create
 
+   def points
+      return self.point_records.pluck(:point).inject(0) { |sum, p| sum + p }
+   end
+
    def self.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                           BCrypt::Engine.cost
