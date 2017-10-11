@@ -87,6 +87,17 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to point_record' do
+         it "is 'has one' attribute" do
+            association = described_class.reflect_on_association(:point_record)
+            expect(association.macro).to eq(:has_one)
+         end
+
+         it 'shows that event has one point_record' do
+            expect{ create(:model_event, :start_from_this) }.to change(PointRecord, :count).by(1)
+         end
+      end
+
       context 'related to editions(itself)' do
          it "is 'has many' attribute" do
             association = described_class.reflect_on_association(:editions)

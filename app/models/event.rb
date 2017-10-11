@@ -8,6 +8,7 @@ class Event < ApplicationRecord
    has_many   :user_events,      dependent: :destroy
    has_many   :users,            through:   :user_events
    has_one    :comment,          dependent: :destroy
+   has_one    :point_record,     dependent: :destroy
 
    has_many   :editions,         class_name: 'Event',
                                  foreign_key: 'original_event_id',
