@@ -222,6 +222,22 @@ RSpec.describe RequestsController, type: :controller do
          it_behaves_like('returning redirection response', '/requests')
       end
 
+      context 'when approving edited event by a user who has also edited the original one', :edition_approval do
+         let(:original_event) { create(:controller_event, :start_from_this) }
+         let(:edited_event) { create(:different_event, :start_from_this, original: original_event) }
+
+         before(:each) do |example|
+            edited_event.user_events.first.update_attributes!(user_id: original_event.users.first.id)
+            login_as(admin_user)
+            @response_params = { id: edited_event, approval: { approved: 3, comment: nil } }
+            patch :update, @response_params unless example.metadata[:skip_before]
+         end
+
+         it "doesn't create a user_event", :skip_before do
+            expect{ patch :update, @response_params }.to change(UserEvent, :count).by(0)
+         end
+      end
+
       context 'without comment along rejected params' do
          before(:each) do |example|
             login_as(admin_user)

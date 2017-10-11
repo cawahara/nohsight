@@ -81,7 +81,7 @@ class Event < ApplicationRecord
 
    def approve_edition_event
       PointRecord.create_edition_point_record(self)
-      UserEvent.create_edition_user_event(self)
+      UserEvent.create_edition_user_event(self, self.original)
       self.update_attributes!(publishing_status: 4)
    end
 
