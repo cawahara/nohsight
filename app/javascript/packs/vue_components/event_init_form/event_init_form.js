@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                error_msgs: parsed_data.error_msgs.event
             }
          })
-
+         console.log(parsed_data.error_msgs)
          // Datas for event's place information
          let form_place_vue = new Vue({
             el: '#form-place-vue',
