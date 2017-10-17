@@ -504,7 +504,7 @@ RSpec.describe EventsController, type: :controller do
       context 'with original_event_id' do
          let(:diff_event) { create(:different_event, :start_from_this) }
          before(:each) do |example|
-            @request_params[:id] = diff_event.id
+            @request_params[:event][:id] = diff_event.id
             login_as(user)
             post :create, @request_params unless example.metadata[:skip_before]
          end
@@ -732,9 +732,9 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             login_as(user)
             @request_params[:event_programs][:'0'][:mode] = 'update'
-            @request_params[:event_programs][:'0'][:program_id] = diff_program.id
+            @request_params[:event_programs][:'0'][:title] = diff_program.title
             @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'update'
-            @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = diff_performer.id
+            @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = diff_performer.full_name
             @request_params[:tickets][:'0'][:mode] = 'update'
             @request_params[:tickets][:'0'][:grade] = diff_ticket[:grade]
             patch :update, @request_params
