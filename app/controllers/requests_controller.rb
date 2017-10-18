@@ -19,7 +19,6 @@ class RequestsController < ApplicationController
       response_params
       begin
          ActiveRecord::Base.transaction do
-
             if @response_params[:approved] == '2'
                update_comment
                @event.update_attributes!(publishing_status: 2)
@@ -71,11 +70,10 @@ class RequestsController < ApplicationController
          original_event.update_attributes({ id: @event.original_event_id, original_event_id: nil, publishing_status: 3 })
          original_event.save
          re_create_associations(original_event)
-         @event.update_attributes!(publishing_status: 4)
+         @event.approve_edition_event
       else
-         @event.update_attributes!(publishing_status: 3)
+         @event.approve_original_event
       end
-      return true
    end
 
    def re_create_associations(original_event)

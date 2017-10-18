@@ -7,4 +7,11 @@ class UserEvent < ApplicationRecord
    validates :user_id,     presence: true
    validates :event_id,    presence: true
    validates :organizer,   inclusion: { in: [true, false] }
+
+   def self.create_edition_user_event(event, original)
+      unless original.users.exists?(event.editor)
+         original.user_events.create!(user_id:   event.editor.id,
+                                      organizer: false)
+      end
+   end
 end

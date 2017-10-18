@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170924062440) do
 
   create_table "point_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
+    t.integer  "event_id"
     t.integer  "point"
     t.text     "action",     limit: 65535
     t.datetime "created_at",               null: false

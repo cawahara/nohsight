@@ -105,15 +105,19 @@ RSpec.describe RequestsController, type: :controller do
       end
 
       context 'with approved params' do
-         before(:each) do
+         before(:each) do |example|
             login_as(admin_user)
             @response_params[:approval][:approved] = 3
-            patch :update, @response_params
+            patch :update, @response_params unless example.metadata[:skip_before]
          end
 
          it "updates event's publishing status as published" do
             requested_event.reload
             expect(requested_event.publishing_status).to eq(3)
+         end
+
+         it 'create a new point_record into a database', :skip_before do
+            expect{ patch :update, @response_params }.to change(PointRecord, :count).by(1)
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -170,12 +174,14 @@ RSpec.describe RequestsController, type: :controller do
          let(:original_event) { create(:controller_event, :start_from_this) }
          let(:edited_event) { create(:different_event, :start_from_this, original: original_event) }
 
-         before(:each) do
+         before(:each) do |example|
             login_as(admin_user)
             @response_params = { id: edited_event, approval: { approved: 3, comment: nil } }
-            patch :update, @response_params
-            @original_event_program = original_event.event_programs.first
-            @edited_event_program = edited_event.event_programs.first
+            unless example.metadata[:skip_before]
+               patch :update, @response_params
+               @original_event_program = original_event.event_programs.first
+               @edited_event_program = edited_event.event_programs.first
+            end
          end
 
          it "updates event's publishing status as merged" do
@@ -205,7 +211,31 @@ RSpec.describe RequestsController, type: :controller do
             expect(original_event.publishing_status).to eq(3)
          end
 
+         it 'creates a new user_event into a database', :skip_before do
+            expect{ patch :update, @response_params }.to change(UserEvent, :count).by(1)
+         end
+
+         it 'creates a new point_record into a database', :skip_before do
+            expect{ patch :update, @response_params }.to change(PointRecord, :count).by(1)
+         end
+
          it_behaves_like('returning redirection response', '/requests')
+      end
+
+      context 'when approving edited event by a user who has also edited the original one', :edition_approval do
+         let(:original_event) { create(:controller_event, :start_from_this) }
+         let(:edited_event) { create(:different_event, :start_from_this, original: original_event) }
+
+         before(:each) do |example|
+            edited_event.user_events.first.update_attributes!(user_id: original_event.users.first.id)
+            login_as(admin_user)
+            @response_params = { id: edited_event, approval: { approved: 3, comment: nil } }
+            patch :update, @response_params unless example.metadata[:skip_before]
+         end
+
+         it "doesn't create a user_event", :skip_before do
+            expect{ patch :update, @response_params }.to change(UserEvent, :count).by(0)
+         end
       end
 
       context 'without comment along rejected params' do

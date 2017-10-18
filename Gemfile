@@ -34,6 +34,7 @@ gem 'deep_cloneable', '~> 2.3', '>= 2.3.1'                  # nestedしたassoci
 # gem 'redis', '~> 3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'spring-commands-rspec'
+gem 'simplecov', '~> 0.15.1'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do

@@ -16,6 +16,18 @@ RSpec.describe PointRecord, type: :model do
          end
       end
 
+      context 'related to event' do
+         it "is 'belongs to' attribute" do
+            association = described_class.reflect_on_association(:event)
+            expect(association.macro).to eq(:belongs_to)
+         end
+
+         it 'shows that point_record belongs to event' do
+            point_record = create(:model_point_record)
+            expect(point_record.event).to be_truthy
+         end
+      end
+
       context 'destroying dependency' do
          let(:point_record) { create(:model_point_record) }
          before(:each) do
@@ -24,6 +36,10 @@ RSpec.describe PointRecord, type: :model do
 
          it "doesn't delete relative user" do
             expect(point_record.user).to be_truthy
+         end
+
+         it "doesn't delete relative event" do
+            expect(point_record.event).to be_truthy
          end
       end
    end
@@ -40,6 +56,14 @@ RSpec.describe PointRecord, type: :model do
             point_record.user_id = nil
             point_record.valid?
             expect(point_record.errors[:user_id]).to include("can't be blank")
+         end
+      end
+
+      context 'user_id' do
+         it 'is invalid with empty event_id' do
+            point_record.event_id = nil
+            point_record.valid?
+            expect(point_record.errors[:event_id]).to include("can't be blank")
          end
       end
 

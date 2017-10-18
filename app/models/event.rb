@@ -8,6 +8,7 @@ class Event < ApplicationRecord
    has_many   :user_events,      dependent: :destroy
    has_many   :users,            through:   :user_events
    has_one    :comment,          dependent: :destroy
+   has_one    :point_record,     dependent: :destroy
 
    has_many   :editions,         class_name: 'Event',
                                  foreign_key: 'original_event_id',
@@ -32,6 +33,8 @@ class Event < ApplicationRecord
    validate  :own_event_performer,  on: :send_request
    validate  :own_ticket,           on: :send_request
 
+
+   # validations
    def open_date_earlier_than_start_date
       if start_date
          if open_date && open_date > start_date
@@ -66,6 +69,21 @@ class Event < ApplicationRecord
       end
    end
 
+   # 特殊アソシエーション用
+   def editor
+      self.users.first
+   end
+
+   def approve_original_event
+      PointRecord.create_original_point_record(self)
+      self.update_attributes!(publishing_status: 3)
+   end
+
+   def approve_edition_event
+      PointRecord.create_edition_point_record(self)
+      UserEvent.create_edition_user_event(self, self.original)
+      self.update_attributes!(publishing_status: 4)
+   end
 
    # view用helper
    def current_publishing_status

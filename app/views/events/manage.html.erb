@@ -1,4 +1,3 @@
-
 <div id="events-manage">
    <div id="event-tabs">
       <div class="event-tab passive"><%= fa_icon('heart') %>お気に入り</div>
@@ -24,8 +23,8 @@
          <tbody>
             <% @events.each do |event| %>
             <tr>
-               <td class="point-record">10pt</td>
-               <td class="point-record"></td>
+               <td class="point-record"><%= "#{event.point_record&.point}pts" if event.publishing_status == 3 %></td>
+               <td class="point-record"><%= "#{event.point_record&.point}pts" if event.publishing_status == 4 %></td>
 
                <td class="title">
                   <% if event.publishing_status >= 3 %>
