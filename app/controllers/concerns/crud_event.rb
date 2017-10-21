@@ -164,5 +164,6 @@ module CRUDEvent
             return nil
          end
       end
+      return record
    end
 end
