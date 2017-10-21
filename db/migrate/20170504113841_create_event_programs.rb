@@ -3,7 +3,7 @@ class CreateEventPrograms < ActiveRecord::Migration[5.0]
     create_table :event_programs do |t|
       t.integer :event_id
       t.integer :program_id
-      t.string :style
+      t.string  :genre
 
       t.timestamps
     end
