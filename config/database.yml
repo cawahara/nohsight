@@ -50,8 +50,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: mysql2
+  adapter:  postgresql
   encoding: utf8
-  database: noh-eventDB_dev
-  username: sample
-  password: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>
+  database: noh-sightDB
+  username: nohsight
+  password: <%= ENV['DATABASE_PASSWORD'] %>
