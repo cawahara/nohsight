@@ -35,3 +35,9 @@
 
 # Ignore the spec progress log
 /coverage
+
+# Ignore yarn error log
+/yarn-error.log
+
+# Ignore report data from backstop.js
+/backstop_data
