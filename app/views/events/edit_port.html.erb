@@ -25,7 +25,7 @@
       <div class="port-info">
          <p>公演名：<%= @event.title %></p>
          <p>公演の種類：<%= @event.category %></p>
-         <p>開催日程：<%= @event&.start_date&.format_with_weekday %></p>
+         <p>開催日程：<%= @event&.start_date&.with_formats('date', 'time', 'weekday') %></p>
       </div>
       <%= link_to edit_event_path(@event), class: 'port-link' do %>編集する<%= fa_icon('angle-right') %><% end %>
    </div>

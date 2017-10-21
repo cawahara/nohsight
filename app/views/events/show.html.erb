@@ -5,7 +5,7 @@
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title if @event.place %></li>
-         <li><%= @event&.start_date&.format_with_weekday %></li>
+         <li><%= @event&.start_date&.with_formats('date', 'time', 'weekday') %></li>
       </ul>
       <div class="organizer">
          <% @event.users.each do |user| %>
@@ -48,9 +48,9 @@
 
       <div class="article">
          <h2 class="article-header">開催日程</h2>
-         <p class="start-date"><%= @event&.start_date&.format_with_weekday %></p>
-         <p><%= "開場：#{@event&.open_date&.format_with_hours}" if @event.open_date %></p>
-         <p><%= "開始：#{@event&.start_date&.format_with_hours}" %></p>
+         <p class="start-date"><%= @event&.start_date&.with_formats('date', 'time', 'weekday') %></p>
+         <p><%= "開場：#{@event&.open_date&.with_formats('time')}" if @event.open_date %></p>
+         <p><%= "開始：#{@event&.start_date&.with_formats('time')}" %></p>
       </div>
 
       <div class="article">
