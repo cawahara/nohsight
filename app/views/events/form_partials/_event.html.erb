@@ -25,9 +25,9 @@
    <div class="md-form" id="category">
       <div class="init-area">
          <label>公演の種類</label><span class="required">必須</span>
-         <select name="event[category]" id="event_category" v-model="values.category">
-            <option v-for="value in ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他']" v-bind:value="value">
-               {{ value }}
+         <select name="event[category]" id="event_category" v-bind:value="values.category">
+            <option v-for="category in ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他']">
+               {{ category }}
             </option>
          </select>
       </div>
