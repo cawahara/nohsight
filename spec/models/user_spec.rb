@@ -197,5 +197,11 @@ RSpec.describe User, type: :model do
             expect(User.digest(user.password)).not_to be_empty
          end
       end
+
+      context 'default on is_admin' do
+         it 'returns false' do
+            expect(user.is_admin).to eq(false)
+         end
+      end
    end
 end

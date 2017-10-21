@@ -9,7 +9,6 @@ FactoryGirl.define do
       information           'Nice to be with you.'
       password              'password'
       password_confirmation 'password'
-      is_admin              false
       agreement             true
 
       trait :start_from_this do
