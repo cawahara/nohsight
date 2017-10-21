@@ -111,9 +111,9 @@ ActiveRecord::Schema.define(version: 20170924062440) do
     t.string   "email"
     t.text     "information",     limit: 65535
     t.string   "password_digest"
-    t.boolean  "is_admin"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "is_admin",                      default: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
 end
