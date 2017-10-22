@@ -597,21 +597,21 @@ RSpec.describe EventsController, type: :controller do
 
          context 'event_program params' do
             before(:each) do
-               @request_params[:event_programs] = {}
+               @request_params.delete(:event_programs)
             end
             it_behaves_like('not creating a new event', Event)
          end
 
          context 'event_performer params' do
             before(:each) do
-               @request_params[:event_programs][:'0'][:event_performers] = {}
+               @request_params[:event_programs][:'0'].delete(:event_performers)
             end
             it_behaves_like('not creating a new event', Event)
          end
 
          context 'ticket params' do
             before(:each) do
-               @request_params[:tickets] = {}
+               @request_params.delete(:tickets)
             end
             it_behaves_like('not creating a new event', Event)
          end
