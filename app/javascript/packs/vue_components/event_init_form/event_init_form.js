@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {DataAttributes} from './event_data_attributes.js'
+import {EventPerformer, EventProgram, Ticket} from './event_data_attributes.js'
 
 document.addEventListener('DOMContentLoaded', () => {
    const node = document.querySelector('#event-init-form-vue')
@@ -44,7 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
          }
       }
 
-      const parsed_data = JSON.parse(node.getAttribute('data'))
+      let parsed_data = JSON.parse(node.getAttribute('data'))
+      if(parsed_data.event.publishing_status == null){
+         parsed_data.event.publishing_status = 0
+      }
 
          // Datas for event basical information
          let form_event_vue = new Vue({
@@ -54,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                error_msgs: parsed_data.error_msgs.event
             }
          })
-         console.log(parsed_data.error_msgs)
+
          // Datas for event's place information
          let form_place_vue = new Vue({
             el: '#form-place-vue',
@@ -64,15 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
          })
 
-         let event_programs_data = Object.values(parsed_data.event_programs)
-         let event_programs_error_msgs = parsed_data.error_msgs.event_programs
+         let event_programs_data = Object.values( parsed_data.event_programs)
          // Datas for evetn_programs information
          let form_event_programs_vue = new Vue({
             el: '#form-event-programs-vue',
             data: function(){
                return {
                   values:     event_programs_data,
-                  error_msgs: event_programs_error_msgs
+                  error_msgs: parsed_data.error_msgs.event_programs
                }
             },
             methods: {
@@ -81,10 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
                },
                createNewComponent: function(){
                   let last_idx = this.values.length
-                  event_programs_data.push(DataAttributes.event_program)
+                  this.values.push(new EventProgram())
                   this.$nextTick(function(){
-                     newEventPerformerVue(last_idx)
+                     newEventPerformerVue(last_idx.toString())
                   })
+
                },
                deleteNewComponent: function(key){
                   this.$delete(this.values, key)
@@ -99,13 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
          })
 
          function newEventPerformerVue(key){
+            let event_performers_data = Object.values(event_programs_data[key].event_performers)
             new Vue({
                el: '#form-event-performers-vue-' + key,
                data: function(){
                   return {
                      program_key:  key,
-                     values:       Object.values(event_programs_data[key].event_performers),
-                     error_msgs:   event_programs_error_msgs
+                     values:       event_performers_data,
+                     error_msgs:   parsed_data.error_msgs.event_programs
                   }
                },
                methods: {
@@ -113,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                      changeMode(this.values, 'event_program_' + this.program_key + '_event_performer', key, mode)
                   },
                   createNewComponent: function(){
-                     this.values.push(DataAttributes.event_performer)
+                     this.values.push(new EventPerformer())
                   },
                   deleteNewComponent: function(key){
                      this.$delete(this.values, key)
@@ -134,14 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
          }
 
          for(let key in event_programs_data){
+            console.log()
             newEventPerformerVue(key.toString())
          }
 
+         let tickets_data = Object.values(parsed_data.tickets)
          let form_tickets_vue = new Vue({
             el: '#form-tickets-vue',
             data: function(){
                return {
-                  values:     Object.values(parsed_data.tickets),
+                  values:     tickets_data,
                   error_msgs: parsed_data.error_msgs.tickets
                }
             },
@@ -150,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   changeMode(this.values, 'ticket', key, mode)
                },
                createNewComponent: function(){
-                  this.values.push(DataAttributes.ticket)
+                  this.values.push(new Ticket())
                },
                deleteNewComponent: function(key){
                   this.$delete(this.values, key)
