@@ -1,18 +1,30 @@
-# Noh Event
+# Nohsihgt.com
 Mobile Web App for organize Noh events (and search them)
 
-## Get started
+## Requirements
+- PostgreSQL
 
+## Get started
+```
 $ git clone https://github.com/Shantti-Y/Noh-event
 $ cd Noh-app
 $ bundle install --path vendor/bundle
-$ bin/rails db:migrate
-$ bin/rails server
-
+$ yarn install
+```
 ## Database & Data
+```
+$ bin/rails db:create
+$ bin/rails db:migrate
+$ bin/rails db:seed_fu
+```
 
-to be described...
+##  Run Rails
+```
+$ bin/rails server
+```
 
 ## Test
 
+```
 $ bin/rails test
+```
