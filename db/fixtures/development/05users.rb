@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
-names = ['good example', 'gen uchida', 'yasu takagi', 'ai ouchi', 'fumihisa taguchi',
-         'goro yoshida', 'johny honda', 'eiji ito', 'junta tanaka', 'maruko okamoto',
-         'shinichiro higashihara', 'sota otuska', 'shun kaito', 'junta nakata', 'hidekazu mukai']
+User.seed do |s|
+   s.id              = 12
+   s.name            = 'tester'
+   s.email           = 'test@gmail.com'
+   s.password_digest = User.digest('password')
+   s.is_admin        = false
+end
 
-i = 1
-names.each do |name|
-   User.seed do |s|
-      s.id              = i
-      s.name            = name
-      s.email           = "#{name.split(/\s/)[1]}@gmail.com"
-      s.password_digest = User.digest('password')
-   end
-   i += 1
+User.seed do |s|
+   s.id              = 22
+   s.name            = 'admin_tester'
+   s.email           = 'admin@gmail.com'
+   s.password_digest = User.digest('password')
+   s.is_admin        = true
 end
