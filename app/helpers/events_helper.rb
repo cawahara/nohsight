@@ -27,17 +27,21 @@ module EventsHelper
    class ActiveSupport::TimeWithZone
       WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土']
 
-      def format_with_date
-         self.strftime("%Y/%m/%d")
-      end
-
-      def format_with_hours
-         self.strftime("%H:%M")
-      end
-
-      def format_with_weekday
-         weekday = WEEKDAYS[self.wday]
-         self.strftime("%Y/%m/%d %H:%M (#{weekday}曜日)")
+      def with_formats(*units)
+         datetime_format = ''
+         units.each do |unit|
+            case unit
+            when 'date'
+               datetime_format += "%Y/%m/%d "
+            when 'time'
+               datetime_format += "%H:%M "
+            when 'weekday'
+               datetime_format += "(#{WEEKDAYS[self.wday]}曜日) "
+            else
+               datetime_format += ""
+            end
+         end
+         return self.strftime(datetime_format)
       end
    end
 

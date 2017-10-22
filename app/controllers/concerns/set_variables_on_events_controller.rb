@@ -10,8 +10,8 @@ module SetVariablesOnEventsController
    def values_on_edit(mode)
       @event_params ||= { id:              @event&.id,
                         title:             @event&.title,
-                        open_date:           @event&.open_date,
-                        start_date:          @event&.start_date,
+                        open_date:           @event&.open_date&.with_formats('date', 'time'),
+                        start_date:          @event&.start_date&.with_formats('date', 'time'),
                         category:            @event&.category,
                         information:         @event&.information,
                         official_url:        @event&.official_url,

@@ -5,7 +5,7 @@
    </div>
    <ul class="info">
       <li class="place"><%= event.place.title %></li>
-      <li class="date"><%= event&.start_date&.format_with_weekday %></li>
+      <li class="date"><%= event&.start_date&.with_formats('date', 'time', 'weekday') %></li>
    </ul>
    <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
    <table class="event-programs-info">

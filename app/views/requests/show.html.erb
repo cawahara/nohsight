@@ -18,11 +18,11 @@
                </tr>
                <tr>
                   <td class="field">開場時間</td>
-                  <td class="item"><%= @event&.open_date&.format_with_weekday %></td>
+                  <td class="item"><%= @event&.open_date&.with_formats('date', 'time', 'weekday') %></td>
                </tr>
                <tr>
                   <td class="field">開催時間</td>
-                  <td class="item"><%= @event.start_date.format_with_weekday %></td>
+                  <td class="item"><%= @event.start_date.with_formats('date', 'time', 'weekday') %></td>
                </tr>
                <tr>
                   <td class="field">公演の種類</td>

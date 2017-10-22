@@ -17,7 +17,7 @@
          <tbody>
             <% @events.each do |event| %>
             <tr>
-               <td class="start-date"><%= event.start_date.format_with_date %></th>
+               <td class="start-date"><%= event.start_date.with_formats('date') %></th>
 
                <td class="title">
                   <%= event.title %>
