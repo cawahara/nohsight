@@ -8,7 +8,6 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'https://www.firstevent.com'
-      category       '能楽協会主催'
       publishing_status     3
 
       open_date      Date.today - 1
