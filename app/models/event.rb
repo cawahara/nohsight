@@ -7,6 +7,10 @@ class Event < ApplicationRecord
    has_many   :tickets,          dependent: :destroy
    has_many   :user_events,      dependent: :destroy
    has_many   :users,            through:   :user_events
+   has_many   :bookmarks,        dependent: :destroy
+   has_many   :bookmark_users,   class_name: 'User',
+                                 foreign_key: 'user_id',
+                                 through:    :bookmarks
    has_one    :comment,          dependent: :destroy
    has_one    :point_record,     dependent: :destroy
 

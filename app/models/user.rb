@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-   has_many :user_events, dependent: :destroy
-   has_many :events, through: :user_events
-   has_many :point_records, dependent: :destroy
-   has_many :comments,      dependent: :destroy
+   has_many    :user_events,      dependent: :destroy
+   has_many    :events,           through: :user_events
+   has_many    :point_records,    dependent: :destroy
+   has_many    :comments,         dependent: :destroy
+   has_many    :bookmarks,        dependent: :destroy
+   has_many    :bookmark_events,   class_name: 'Event',
+                                  foreign_key: 'event_id',
+                                  through:    :bookmarks
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
