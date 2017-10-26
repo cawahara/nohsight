@@ -30,6 +30,19 @@ class User < ApplicationRecord
       return self.point_records.pluck(:point).inject(0) { |sum, p| sum + p }
    end
 
+   def assign_bookmark(event)
+      self.bookmarks.create(event_id: event.id)
+   end
+
+   def cancel_bookmark(event)
+      bookmark = self.bookmarks.find_by(event_id: event.id)
+      bookmark.destroy
+   end
+
+   def bookmarked?(event)
+      return self.bookmark_events.include?(event)
+   end
+
    def self.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                           BCrypt::Engine.cost

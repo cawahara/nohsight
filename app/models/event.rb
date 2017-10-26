@@ -37,7 +37,6 @@ class Event < ApplicationRecord
    validate  :own_event_performer,  on: :send_request
    validate  :own_ticket,           on: :send_request
 
-
    # validations
    def open_date_earlier_than_start_date
       if start_date
