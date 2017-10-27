@@ -100,22 +100,18 @@
 
    <div class="user-command">
       <% if logged? %>
-      <div class="bookmark">
-         <button class="bookmark-btn" v-if="bookmarked == true" v-on:click="cancelBookmark">
-            <span>お気に入り数</span>
-            <%= fa_icon('star', class: 'cancel') %>
-         </button>
-         <button class="bookmark-btn" v-else v-on:click="assignBookmark">
-            <span>お気に入り数</span>
-            <%= fa_icon('star-o', class: 'assign') %>
-         </button>
-         <div class="bookmark-count">
-            {{ count }}
-         </div>
+      <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
+      <button class="bookmark" v-if="bookmarked == true" v-on:click="cancelBookmark">
+         <span>お気に入り</span>
+         <%= fa_icon('star', class: 'cancel') %>
+      </button>
+      <button class="bookmark" v-else v-on:click="assignBookmark">
+         <span>お気に入り</span>
+         <%= fa_icon('star-o', class: 'assign') %>
+      </button>
+      <div class="bookmark-count">
+         {{ count }}
       </div>
-      <% end %>
-      <% if logged? %>
-         <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
       <% end %>
    </div>
    </div>

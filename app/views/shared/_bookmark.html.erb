@@ -1,19 +1,17 @@
 <% if logged? %>
-<div class="bookmark">
-   <button class="bookmark-btn" v-if="bookmarked == true" v-on:click="cancelBookmark">
-      <span>お気に入り済</span>
-      <%= fa_icon('star', class: 'cancel') %>
-   </button>
-   <button class="bookmark-btn" v-else v-on:click="assignBookmark">
-      <span>お気に入りに登録</span>
-      <%= fa_icon('star-o', class: 'assign') %>
-   </button>
-   <%= content_tag :div,
-      class: "event-article-vue",
-      id: "event-#{event.id}-bookmark",
-      data: { id: event.id,
-              user: current_user.id,
-              bookmarked: current_user.bookmarked?(event),
-              count: event.bookmarks.count }.to_json do %><% end %>
-</div>
+<button class="bookmark" v-if="bookmarked == true" v-on:click="cancelBookmark">
+   <span>お気に入り済</span>
+   <%= fa_icon('star', class: 'cancel') %>
+</button>
+<button class="bookmark" v-else v-on:click="assignBookmark">
+   <span>お気に入りに登録</span>
+   <%= fa_icon('star-o', class: 'assign') %>
+</button>
+<%= content_tag :div,
+   class: "event-article-vue",
+   id: "event-#{event.id}-bookmark",
+   data: { id: event.id,
+           user: current_user.id,
+           bookmarked: current_user.bookmarked?(event),
+           count: event.bookmarks.count }.to_json do %><% end %>
 <% end %>
