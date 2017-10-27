@@ -52,19 +52,6 @@
          p.category-2 { background-color: #ccfff5; }
          p.category-3 { background-color: #e6f2ff; }
          p.category-4 { background-color: #dcdcdc; }
-
-         button.bookmark {
-            width: auto;
-            background-color: inherit;
-            border: 1px solid #9b9b9b;
-            border-radius: 3px;
-            padding: 3px 6px;
-            display: inline-block;
-                  span { font-size: 12px; }
-                  i { font-size: 15px; }
-                  i.assign { color: gray; }
-                  i.cancel { color: #daa520; }
-         }
       }
 
       ul.tickets {

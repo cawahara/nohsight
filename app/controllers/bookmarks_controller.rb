@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
    def update
       respond_to do |format|
          if current_user.assign_bookmark(@event)
-            format.json { render json: current_user.bookmarked?(@event) }
+            format.json { render json: bookmark_json }
          end
       end
    end
@@ -15,9 +15,9 @@ class BookmarksController < ApplicationController
    def destroy
       respond_to do |format|
          if current_user.cancel_bookmark(@event)
-            format.json { render json: current_user.bookmarked?(@event) }
+            format.json { render json: bookmark_json }
          else
-            format.json { render json: current_user.bookmarked?(@event) }
+            format.json { render json: bookmark_json }
          end
       end
    end
@@ -26,5 +26,10 @@ class BookmarksController < ApplicationController
 
    def set_event
       @event = Event.find(params[:id])
+   end
+
+   def bookmark_json
+      return { bookmarked: current_user.bookmarked?(@event),
+               count: @event.bookmarks.count }
    end
 end

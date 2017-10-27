@@ -53,8 +53,9 @@
 }
 
 .user-command {
-   margin: 12px 0;
+   margin: 15px 0;
    a, input {
+      margin-top: 13px;
       width: auto;
       background-color: #208000;
       color: #ffffff;
@@ -62,6 +63,36 @@
       border: 1px solid #dedede;
       display: inline-block;
       padding: 7px 9px;
+   }
+   div.bookmark-count {
+      position: relative;
+   	display: inline-block;
+    	margin-left: 10px;
+   	padding: 4px 7px;
+   	min-width: 30px;
+    	color: #555;
+      text-align: center;
+   	font-size: 14px;
+      border: 2px solid #787878;
+   	border-radius: 4px;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 3px;
+         left: -11px;
+         border-top: 10px solid transparent;
+         border-bottom: 10px solid transparent;
+         border-right: 10px solid #787878;
+      }
+      &::after {
+         content: "";
+         position: absolute;
+         top: 3px;
+         left: -8px;
+         border-top: 10px solid transparent;
+         border-bottom: 10px solid transparent;
+         border-right: 10px solid white;
+      }
    }
 }
 
