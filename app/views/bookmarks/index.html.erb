@@ -1,0 +1,20 @@
+<div id="bookmark-index">
+   <div id="event-tabs">
+      <div class="event-tab"><%= fa_icon('heart') %>お気に入り</div>
+      <div class="event-tab passive"><%= fa_icon('file-text-o')%>イベント管理</div>
+   </div>
+   <div id="bookmarks">
+      <% @events.each do |event| %>
+      <div class="article">
+         <div class="header">
+            <h1><%= link_to event.title, event_path(event) %></h1>
+         </div>
+         <ul class="info">
+            <li class="place"><%= event.place.title %></li>
+            <li class="date"><%= event&.start_date&.with_formats('date', 'time') %></li>
+            <li class="category category-<%= category_number(event.category) %>"><%= event.category %></li>
+         </ul>
+      </div>
+      <% end %>
+   </div>
+</div>

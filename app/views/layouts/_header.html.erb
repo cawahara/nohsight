@@ -20,7 +20,7 @@
         <% if admin_user? %>
         <li><%= link_to requests_path do %><%= fa_icon('file-text-o') %><span>リクエスト一覧</span><% end %></li>
         <% else %>
-        <li><a href="#"><%= fa_icon('heart') %>お気に入りイベント</a></li>
+        <li><%= link_to bookmarks_path do %><%= fa_icon('heart') %><span>お気に入りイベント</span><% end %></li>
         <li><%= link_to event_manage_path do %><%= fa_icon('file-text-o') %><span>イベント管理</span><% end %></li>
         <% end %>
         <li><%= link_to logout_path(current_user) do %><span>ログアウト</span><% end %></li>

@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class BookmarksController < ApplicationController
-   before_action :login_by_ajax
-   before_action :set_event
+   before_action :logged_in?,    only: [:index]
+   before_action :login_by_ajax, only: [:update, :destroy]
+   before_action :set_event,     only: [:update, :destroy]
+
+   def index
+      @events = current_user.bookmark_events
+   end
 
    def update
       respond_to do |format|
