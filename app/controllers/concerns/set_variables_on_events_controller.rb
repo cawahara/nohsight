@@ -53,4 +53,30 @@ module SetVariablesOnEventsController
       @tickets_params = { '0': { id: nil, grade: nil, price: nil, mode: mode } } if @event.tickets.count == 0
       @error_msgs ||= {}
    end
+
+   def set_empty_event_program_params
+      if params.key?('event_programs')
+         ev_programs =  params&.require(:event_programs).permit!
+         ev_programs.each { |key, val| ev_programs[key].merge!(event_performers: set_empty_event_performer_params(ev_programs[key])) }
+         return ev_programs
+      else
+         return {'0': {'mode': 'create', 'event_performers': { '0': {'mode': 'create'}}}}
+      end
+   end
+
+   def set_empty_event_performer_params(params)
+      if params.key?('event_performers')
+         return params[:event_performers]
+      else
+         return {'0': {'mode': 'create'}}
+      end
+   end
+
+   def set_empty_ticket_params
+      if params.key?('tickets')
+         return params&.require(:tickets).permit!
+      else
+         return {'0': {'mode': 'create'}}
+      end
+   end
 end

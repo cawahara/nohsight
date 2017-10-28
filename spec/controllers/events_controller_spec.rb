@@ -427,7 +427,6 @@ RSpec.describe EventsController, type: :controller do
       shared_examples 'not creating a new event' do |model|
          it { expect { post :create, @request_params }.to change(model, :count).by(0) }
          it { expect { post :create, @request_params }.to change(model, :count).by(0) } if model
-         # it_behaves_like('returning success response', true, 'new')
       end
 
       context 'with valid params' do
@@ -597,21 +596,21 @@ RSpec.describe EventsController, type: :controller do
 
          context 'event_program params' do
             before(:each) do
-               @request_params[:event_programs] = {}
+               @request_params.delete(:event_programs)
             end
             it_behaves_like('not creating a new event', Event)
          end
 
          context 'event_performer params' do
             before(:each) do
-               @request_params[:event_programs][:'0'][:event_performers] = {}
+               @request_params[:event_programs][:'0'].delete(:event_performers)
             end
             it_behaves_like('not creating a new event', Event)
          end
 
          context 'ticket params' do
             before(:each) do
-               @request_params[:tickets] = {}
+               @request_params.delete(:tickets)
             end
             it_behaves_like('not creating a new event', Event)
          end
@@ -780,6 +779,10 @@ RSpec.describe EventsController, type: :controller do
       context 'in destroying action' do
          before(:each) do
             login_as(user)
+            @ev_program = event.event_programs.create!(ev_program.dup.attributes)
+            @ev_program.event_performers.create!(ev_performer.dup.attributes)
+            event.tickets.create!(ticket.dup.attributes)
+
             @request_params[:event_programs][:'0'][:mode] = 'destroy'
             @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'destroy'
             @request_params[:tickets][:'0'][:mode] = 'destroy'
@@ -795,7 +798,6 @@ RSpec.describe EventsController, type: :controller do
 
          context 'with empty params' do
             before(:each) do
-               login_as(user)
                @request_params[:event_programs][:'0'][:title] = nil
                @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = nil
                @request_params[:tickets][:'0'][:grade] = nil
@@ -866,6 +868,39 @@ RSpec.describe EventsController, type: :controller do
                ticket.reload
                expect(ticket.grade).not_to eq(@request_params[:tickets][:'0'][:grade])
             end
+         end
+      end
+
+      context 'invalid destroying' do
+         # The action that would result event without program, performer, and ticket.
+
+         shared_examples 'not destroying event items' do |model|
+            it { expect{ patch :update, @request_params }.to change(model, :count).by(0) }
+         end
+
+         context 'all event_programs' do
+            before(:each) do
+               login_as(user)
+               @request_params[:event_programs][:'0'][:mode] = 'destroy'
+            end
+
+            it_behaves_like('not destroying event items', EventProgram)
+         end
+
+         context 'all event_performers' do
+            before(:each) do
+               @request_params[:event_programs][:'0'][:event_performers][:'0'][:mode] = 'destroy'
+            end
+
+            it_behaves_like('not destroying event items', EventPerformer)
+         end
+
+         context 'all tickets' do
+            before(:each) do
+               @request_params[:tickets][:'0'][:mode] = 'destroy'
+            end
+
+            it_behaves_like('not destroying event items', Ticket)
          end
       end
 

@@ -25,6 +25,7 @@ module CRUDEvent
             event = initialize_event(event, 'update')
             update_event_programs(event)
             update_tickets(event)
+            count_relative_datas(event)
          end
          return event
       rescue ActiveRecord::RecordInvalid
@@ -165,5 +166,12 @@ module CRUDEvent
          end
       end
       return record
+   end
+
+   def count_relative_datas(event)
+      raise ActiveRecord::RecordInvalid if event.has_event_program? == false
+      raise ActiveRecord::RecordInvalid if event.has_event_performer? == false
+      raise ActiveRecord::RecordInvalid if event.has_ticket? == false
+      return true
    end
 end

@@ -127,8 +127,8 @@ class EventsController < ApplicationController
    def request_params
       @event_params = params&.require(:event).permit!
       @place_params = params&.require(:place).permit!
-      @event_programs_params = params&.require(:event_programs).permit!
-      @tickets_params = params&.require(:tickets).permit!
+      @event_programs_params = set_empty_event_program_params
+      @tickets_params = set_empty_ticket_params
       @error_msgs ||= {}
    end
 

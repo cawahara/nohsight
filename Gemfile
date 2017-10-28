@@ -19,7 +19,6 @@ gem 'font-awesome-rails', '~> 4.7' # font-awesomeを扱うヘルパー
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'kaminari'                                              # paginateヘルパー
-gem 'mysql2',                  '~> 0.4.4'                   # 管理データベースをMySQLに移行
 gem 'puma',                    '~> 3.0'
 gem 'rails',                   '~> 5.0.2'
 gem 'ransack',                 '~> 1.8'                     # ActiveRecordのレコード検索用ヘルパー
@@ -31,6 +30,7 @@ gem 'turbolinks',              '~> 5'
 gem 'uglifier',                '~> 2.6.1'
 gem 'webpacker',               '~> 2.0'                     # WebPackをRailsで
 gem 'deep_cloneable', '~> 2.3', '>= 2.3.1'                  # nestedしたassociationsもまとめてrecordをdup
+gem 'pg'                                                    # sql環境をpostgresqlに変更
 # gem 'redis', '~> 3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'spring-commands-rspec'
@@ -68,7 +68,6 @@ end
 
 group :production do
    gem 'rails_12factor'
-   gem 'pg'
 end
 
 # デフォルトで配備
