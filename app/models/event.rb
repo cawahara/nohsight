@@ -29,10 +29,6 @@ class Event < ApplicationRecord
                                     format: { with: VALID_URL_REGEX }
    validates :category,             inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
    validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
-   validate  :own_event_program,    on: :send_request
-   validate  :own_event_performer,  on: :send_request
-   validate  :own_ticket,           on: :send_request
-
 
    # validations
    def open_date_earlier_than_start_date
@@ -47,26 +43,22 @@ class Event < ApplicationRecord
       end
    end
 
-   def own_event_program
-      if event_programs.count == 0
-         errors.add(:event_programs, 'should have at least one event_program')
-      end
+   def has_event_program?
+      return event_programs.count > 0 ? true : false
    end
 
-   def own_event_performer
+   def has_event_performer?
       if event_programs.count > 0
          event_programs.each do |event_program|
-            if event_program.event_performers.count == 0
-               errors.add(:event_performers, 'should have at least one event_performer in each event_program')
-            end
+            return event_program.event_performers.count > 0 ? true : false
          end
+      else
+         return false
       end
    end
 
-   def own_ticket
-      if tickets.count == 0
-         errors.add(:tickets, 'should have at least one ticket')
-      end
+   def has_ticket?
+      return tickets.count > 0 ? true : false
    end
 
    # 特殊アソシエーション用
