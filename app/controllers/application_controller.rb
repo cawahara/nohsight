@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
    def login_by_ajax
       if params[:user_id]
          login(User.find(params[:user_id]))
+      else
+         redirect_to(login_url)
       end
    end
 

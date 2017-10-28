@@ -50,6 +50,30 @@ RSpec.describe User, type: :model do
          end
       end
 
+      context 'related to bookmarks' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:bookmarks)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that user has many bookmarks' do
+            expect{ create(:model_user, :start_from_this) }.to change(Bookmark, :count).by(1)
+         end
+      end
+
+      context 'related to events through bookmarks' do
+         let(:user) { create(:model_user, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:events)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated event from user' do
+            expect(user.bookmark_events.first).to eq(user.bookmarks.first.event)
+         end
+      end
+
       context 'destroying dependency' do
          let(:user) { create(:model_user, :start_from_this) }
          let(:another_user) { create(:another_user, :start_from_this) }
@@ -71,6 +95,14 @@ RSpec.describe User, type: :model do
 
          it "doesn't delete not relative comments" do
             expect(another_user.comments.count).not_to eq(0)
+         end
+
+         it 'deletes relative bookmarks' do
+            expect(user.bookmarks.count).to eq(0)
+         end
+
+         it "doesn't delete not relative bookmarks" do
+            expect(another_user.bookmarks.count).not_to eq(0)
          end
       end
    end
