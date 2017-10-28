@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924062440) do
+ActiveRecord::Schema.define(version: 20171025114921) do
+
+  create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -37,16 +44,16 @@ ActiveRecord::Schema.define(version: 20170924062440) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "place_id"
-    t.string   "title",                           null: false
+    t.string   "title"
     t.datetime "open_date"
     t.datetime "start_date"
     t.text     "information",       limit: 65535
     t.string   "official_url"
-    t.string   "category",          limit: 45
+    t.string   "category",                        default: "その他"
     t.integer  "publishing_status"
     t.integer  "original_event_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "performers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

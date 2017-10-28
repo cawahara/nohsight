@@ -1,7 +1,7 @@
 <div id="events-show">
+   <div id="event-<%= @event.id %>">
       <!-- イベント概要 -->
    <div class="headline">
-
       <h1><%= @event.title %></h1>
       <ul>
          <li><%= @event.place.title if @event.place %></li>
@@ -16,7 +16,12 @@
             <% end %>
          <% end %>
       </div>
-      <p class="category-<%= category_number(@event.category) %>"><%= @event.category %></p>
+      <div class="tags">
+         <p class="category-<%= category_number(@event.category) %>"><%= @event.category %></p>
+
+         <%= render('shared/bookmark', event: @event) %>
+      </div>
+
    </div>
 
    <!-- イベント基本情報 -->
@@ -95,7 +100,20 @@
 
    <div class="user-command">
       <% if logged? %>
-         <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
+      <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
+      <button class="bookmark" v-if="bookmarked == true" v-on:click="cancelBookmark">
+         <span>お気に入り</span>
+         <%= fa_icon('star', class: 'cancel') %>
+      </button>
+      <button class="bookmark" v-else v-on:click="assignBookmark">
+         <span>お気に入り</span>
+         <%= fa_icon('star-o', class: 'assign') %>
+      </button>
+      <div class="bookmark-count">
+         {{ count }}
+      </div>
       <% end %>
    </div>
+   </div>
+
 </div>

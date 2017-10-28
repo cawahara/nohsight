@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-
    describe '#association' do
       context 'related to place' do
          it "is 'belongs to' attribute" do
@@ -11,7 +10,7 @@ RSpec.describe Event, type: :model do
             expect(association.macro).to eq(:belongs_to)
          end
 
-         it 'shows that performer belongs to place' do
+         it 'shows that event belongs to place' do
             event = create(:model_event)
             expect(event.place).to be_truthy
          end
@@ -98,6 +97,30 @@ RSpec.describe Event, type: :model do
          end
       end
 
+      context 'related to bookmarks' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:bookmarks)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that event has many bookmarks' do
+            expect{ create(:model_event, :start_from_this) }.to change(Bookmark, :count).by(1)
+         end
+      end
+
+      context 'related to users through bookmarks' do
+         let(:event) { create(:model_event, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:users)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated user from event' do
+            expect(event.bookmark_users.first).to eq(event.bookmarks.first.user)
+         end
+      end
+
       context 'related to editions(itself)' do
          it "is 'has many' attribute" do
             association = described_class.reflect_on_association(:editions)
@@ -155,6 +178,14 @@ RSpec.describe Event, type: :model do
 
          it "doesn't delete not relative user_events" do
             expect(another_event.user_events.count).not_to eq(0)
+         end
+
+         it 'deletes relative bookmarks' do
+            expect(event.bookmarks.count).to eq(0)
+         end
+
+         it "doesn't delete not relative bookmarks" do
+            expect(another_event.bookmarks.count).not_to eq(0)
          end
       end
 

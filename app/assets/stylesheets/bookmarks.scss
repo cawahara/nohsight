@@ -1,0 +1,43 @@
+
+/********************************************
+
+                  Libraries
+
+********************************************/
+@import './layout';
+
+/********************************************
+
+                  Contents
+
+********************************************/
+#bookmarks {
+   .article {
+      padding: 10px 14px;
+      border-bottom: 1px solid #9d9d9d;
+
+      div.header {
+         margin-bottom: 3px;
+         a { font-size: 16px; }
+      }
+      ul.info {
+         li {
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 3px;
+         }
+         li.category {
+               display: inline-block;
+               padding: 4px 7px;
+               margin: 0 7px;
+               color: #343434;
+
+         }
+         li.category-0 { background-color: #e5e5cc; }
+         li.category-1 { background-color: #ffddcc; }
+         li.category-2 { background-color: #ccfff5; }
+         li.category-3 { background-color: #e6f2ff; }
+         li.category-4 { background-color: #dcdcdc; }
+      }
+   }
+}

@@ -134,6 +134,20 @@ div.organizer {
    }
 }
 .published { color: #ffffff !important; }
+
+button.bookmark {
+   display: inline-block;
+   background-color: inherit;
+   border: 1px solid #9b9b9b;
+   border-radius: 3px;
+   padding: 3px 6px;
+   display: inline-block;
+         span { font-size: 12px; }
+         i { font-size: 15px; }
+         i.assign { color: gray; }
+         i.cancel { color: #daa520; }
+}
+
 /********************************************
 
                   Forms

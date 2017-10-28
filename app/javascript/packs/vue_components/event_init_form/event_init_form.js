@@ -138,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
          }
 
          for(let key in event_programs_data){
-            console.log()
             newEventPerformerVue(key.toString())
          }
 

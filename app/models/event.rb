@@ -7,6 +7,10 @@ class Event < ApplicationRecord
    has_many   :tickets,          dependent: :destroy
    has_many   :user_events,      dependent: :destroy
    has_many   :users,            through:   :user_events
+   has_many   :bookmarks,        dependent: :destroy
+   has_many   :bookmark_users,   class_name: 'User',
+                                 foreign_key: 'user_id',
+                                 through:    :bookmarks
    has_one    :comment,          dependent: :destroy
    has_one    :point_record,     dependent: :destroy
 
@@ -29,6 +33,9 @@ class Event < ApplicationRecord
                                     format: { with: VALID_URL_REGEX }
    validates :category,             inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
    validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
+   validate  :own_event_program,    on: :send_request
+   validate  :own_event_performer,  on: :send_request
+   validate  :own_ticket,           on: :send_request
 
    # validations
    def open_date_earlier_than_start_date

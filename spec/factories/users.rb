@@ -16,6 +16,7 @@ FactoryGirl.define do
             event = FactoryGirl.create(:model_user_event, user: user).event
             FactoryGirl.create_list :model_point_record, user.events.count, user: user
             FactoryGirl.create(:model_comment, user: user, event: event)
+            FactoryGirl.create(:model_bookmark, user: user, event: event)
          end
       end
    end
@@ -34,6 +35,7 @@ FactoryGirl.define do
             event = FactoryGirl.create(:another_user_event, user: user).event
             FactoryGirl.create_list :another_point_record, user.events.count, user: user
             FactoryGirl.create(:another_comment, user: user, event: event)
+            FactoryGirl.create(:another_bookmark, user: user, event: event)
          end
       end
    end

@@ -1,6 +1,6 @@
 <div id="events-manage">
    <div id="event-tabs">
-      <div class="event-tab passive"><%= fa_icon('heart') %>お気に入り</div>
+      <%= link_to bookmarks_path, class: 'event-tab passive' do %><%= fa_icon('heart') %>お気に入り<% end %>
       <div class="event-tab"><%= fa_icon('file-text-o')%>イベント管理</div>
    </div>
    <div class="contents">

@@ -1,27 +1,33 @@
-<% @events.each do |event| %>
-<div id="event-<%= event.id %>" class="article event-summary">
-   <div class="header">
-      <h1><%= link_to event.title, event_path(event) %></h1><br>
-   </div>
-   <ul class="info">
-      <li class="place"><%= event.place.title %></li>
-      <li class="date"><%= event&.start_date&.with_formats('date', 'time', 'weekday') %></li>
-   </ul>
-   <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
-   <table class="event-programs-info">
-      <% event.event_programs.each do |ev_program| %>
-      <tr class="event-program">
-         <td><%= ev_program.genre %></td>
-         <td>「<%= ev_program.program.title %>」</td>
-         <td class="event-performer"><%= ev_program&.performers&.first&.full_name %></td>
-      </tr>
-      <% end %>
-   </table>
+<div id="events">
+   <% @events.each do |event| %>
+   <div id="event-<%= event.id %>" class="article event-summary">
+      <div class="header">
+         <h1><%= link_to event.title, event_path(event) %></h1><br>
+      </div>
+      <ul class="info">
+         <li class="place"><%= event.place.title %></li>
+         <li class="date"><%= event&.start_date&.with_formats('date', 'time', 'weekday') %></li>
+      </ul>
+      <div class="tags">
+         <p class="category-<%= category_number(event.category) %>"><%= event.category %></p>
+         <%= render('shared/bookmark', event: event) %>
+      </div>
 
-   <ul class="tickets">
-      <% event.tickets.each do |ticket| %>
-      <li class="ticket"><%= ticket.grade %>：<%= ticket.price %>円</li>
-      <% end %>
-   </ul>
+      <table class="event-programs-info">
+         <% event.event_programs.each do |ev_program| %>
+         <tr class="event-program">
+            <td><%= ev_program.genre %></td>
+            <td>「<%= ev_program.program.title %>」</td>
+            <td class="event-performer"><%= ev_program&.performers&.first&.full_name %></td>
+         </tr>
+         <% end %>
+      </table>
+
+      <ul class="tickets">
+         <% event.tickets.each do |ticket| %>
+         <li class="ticket"><%= ticket.grade %>：<%= ticket.price %>円</li>
+         <% end %>
+      </ul>
+   </div>
+   <% end %>
 </div>
-<% end %>

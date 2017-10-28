@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-   has_many :user_events, dependent: :destroy
-   has_many :events, through: :user_events
-   has_many :point_records, dependent: :destroy
-   has_many :comments,      dependent: :destroy
+   has_many    :user_events,      dependent: :destroy
+   has_many    :events,           through: :user_events
+   has_many    :point_records,    dependent: :destroy
+   has_many    :comments,         dependent: :destroy
+   has_many    :bookmarks,        dependent: :destroy
+   has_many    :bookmark_events,   class_name: 'Event',
+                                  foreign_key: 'event_id',
+                                  through:    :bookmarks
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
@@ -24,6 +28,19 @@ class User < ApplicationRecord
 
    def points
       return self.point_records.pluck(:point).inject(0) { |sum, p| sum + p }
+   end
+
+   def assign_bookmark(event)
+      self.bookmarks.create(event_id: event.id)
+   end
+
+   def cancel_bookmark(event)
+      bookmark = self.bookmarks.find_by(event_id: event.id)
+      bookmark.destroy
+   end
+
+   def bookmarked?(event)
+      return self.bookmark_events.include?(event)
    end
 
    def self.digest(string)
