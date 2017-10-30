@@ -2,8 +2,18 @@ import Vue from 'vue'
 import {EventPerformer, EventProgram, Ticket} from './event_data_attributes.js'
 
 document.addEventListener('DOMContentLoaded', () => {
+   // REVIEW: Androidはじめ、スマホ環境下では下記エラーが発生してしまう
+   //         Uncaught TypeError: Object.values is not a function
    const node = document.querySelector('#event-init-form-vue')
    if(node != null){
+
+      function objectToValues(objs) {
+         let arr = new Array()
+         for(let key in objs){
+            arr.push(objs[key])
+         }
+         return arr
+      }
 
       function readOnlyonDestroy(data, type){
          for(let key in data){
@@ -67,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
          })
 
-         let event_programs_data = Object.values( parsed_data.event_programs)
+         let event_programs_data = objectToValues(parsed_data.event_programs)
          // Datas for evetn_programs information
          let form_event_programs_vue = new Vue({
             el: '#form-event-programs-vue',
@@ -102,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
          })
 
          function newEventPerformerVue(key){
-            let event_performers_data = Object.values(event_programs_data[key].event_performers)
+            let event_performers_data = objectToValues(event_programs_data[key].event_performers)
             new Vue({
                el: '#form-event-performers-vue-' + key,
                data: function(){
@@ -141,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             newEventPerformerVue(key.toString())
          }
 
-         let tickets_data = Object.values(parsed_data.tickets)
+         let tickets_data = objectToValues(parsed_data.tickets)
          let form_tickets_vue = new Vue({
             el: '#form-tickets-vue',
             data: function(){
