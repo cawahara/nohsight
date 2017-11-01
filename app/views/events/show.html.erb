@@ -109,10 +109,15 @@
          <span>お気に入り</span>
          <%= fa_icon('star-o', class: 'assign') %>
       </button>
+      <% else %>
+      <%= link_to bookmarks_path, class: 'bookmark' do %>
+         <span>お気に入り</span>
+         <%= fa_icon('star-o', class: 'assign') %>
+      <% end %>
+      <% end %>
       <div class="bookmark-count">
          {{ count }}
       </div>
-      <% end %>
    </div>
    </div>
 
