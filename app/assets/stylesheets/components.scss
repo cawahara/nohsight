@@ -134,18 +134,21 @@ div.organizer {
    }
 }
 .published { color: #ffffff !important; }
-
-button.bookmark {
-   display: inline-block;
+.bookmark {
+   color: #333333;
    background-color: inherit;
    border: 1px solid #9b9b9b;
    border-radius: 3px;
    padding: 3px 6px;
    display: inline-block;
-         span { font-size: 12px; }
-         i { font-size: 15px; }
-         i.assign { color: gray; }
-         i.cancel { color: #daa520; }
+   span { font-size: 12px; }
+   i { font-size: 15px; }
+   i.assign { color: gray; }
+   i.cancel { color: #daa520; }
+   &:active {
+      color: #333333;
+      text-decoration: none;
+   }
 }
 
 /********************************************
