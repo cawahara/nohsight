@@ -34,9 +34,6 @@ class Event < ApplicationRecord
                                     format: { with: VALID_URL_REGEX }
    validates :category,             inclusion: { in: [0, 1, 2, 3, 4] }
    validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
-   validate  :own_event_program,    on: :send_request
-   validate  :own_event_performer,  on: :send_request
-   validate  :own_ticket,           on: :send_request
 
    # validations
    def open_date_earlier_than_start_date
@@ -96,5 +93,9 @@ class Event < ApplicationRecord
 
    def is_original?
       return self.original.nil?
+   end
+
+   def set_value_on_category
+      self.category = 0 if self.category.nil?
    end
 end
