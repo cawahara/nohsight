@@ -17,7 +17,7 @@
          <% end %>
       </div>
       <div class="tags">
-         <p class="category-<%= category_number(@event.category) %>"><%= @event.category %></p>
+         <p class="category-<%= @event.category %>"><%= @event.category_name %></p>
 
          <%= render('shared/bookmark', event: @event) %>
       </div>
