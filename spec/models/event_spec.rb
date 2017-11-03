@@ -293,11 +293,7 @@ RSpec.describe Event, type: :model do
 
       context 'category' do
          it 'is valid with proper values' do
-            valid_categories = ['能楽協会主催',
-                                '能楽堂主催',
-                                '能楽協会員出演',
-                                '教室、セミナー',
-                                'その他']
+            valid_categories = [0, 1, 2, 3, 4]
             valid_categories.each do |valid_category|
                event.category = valid_category
                expect(event).to be_valid
@@ -305,9 +301,7 @@ RSpec.describe Event, type: :model do
          end
 
          it 'is invalid with improper values' do
-            invalid_categories = ['のうがくきょうかいしゅさい',
-                                  'Noh-gakudo Shusai',
-                                  '$3hg7`@']
+            invalid_categories = [12, nil]
             invalid_categories.each do |invalid_category|
                event.category = invalid_category
                event.valid?
@@ -364,7 +358,7 @@ RSpec.describe Event, type: :model do
       context 'set_value_on_category' do
          let(:event) { create(:model_event) }
          it 'gets specified value on category field as default' do
-            expect(event.category).to eq('その他')
+            expect(event.category).to eq(0)
          end
       end
    end
