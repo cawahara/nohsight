@@ -12,7 +12,10 @@ class ApplicationController < ActionController::Base
    include SessionsHelper
 
    def logged_in?
-      redirect_to(login_url) unless logged?
+      unless logged?
+         flash[:danger] = 'ログインが必要です'
+         redirect_to(login_url)
+      end
    end
 
    def logged_user?
@@ -29,6 +32,7 @@ class ApplicationController < ActionController::Base
       if params[:user_id]
          login(User.find(params[:user_id]))
       else
+         flash[:danger] = 'ログインが必要です'
          redirect_to(login_url)
       end
    end

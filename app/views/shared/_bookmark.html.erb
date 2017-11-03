@@ -14,4 +14,14 @@
            user: current_user.id,
            bookmarked: current_user.bookmarked?(event),
            count: event.bookmarks.count }.to_json do %><% end %>
+<% else %>
+<%= link_to bookmarks_path, class: 'bookmark' do %>
+   <span>お気に入りに登録</span>
+   <%= fa_icon('star-o', class: 'assign') %>
+<% end %>
+<%= content_tag :div,
+   class: "event-article-vue",
+   id: "event-#{event.id}-bookmark",
+   data: { id: event.id,
+           count: event.bookmarks.count }.to_json do %><% end %>
 <% end %>
