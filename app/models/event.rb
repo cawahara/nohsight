@@ -23,6 +23,7 @@ class Event < ApplicationRecord
    before_validation :set_value_on_category
 
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
+   CATEGORIES = ['本公演', 'イベント', 'セミナー・教室', '社中会', 'その他']
    PUBLISHING_STATUS = ['下書き', '承認中', '却下', '公開', '訂正']
 
    validates :title,                presence: true
@@ -31,7 +32,7 @@ class Event < ApplicationRecord
    validates :start_date,           presence: true
    validates :official_url,         presence: true,
                                     format: { with: VALID_URL_REGEX }
-   validates :category,             inclusion: { in: ['能楽協会主催', '能楽堂主催', '能楽協会員出演', '教室、セミナー', 'その他'] }
+   validates :category,             inclusion: { in: [0, 1, 2, 3, 4] }
    validates :publishing_status,    inclusion: { in: [0, 1, 2, 3, 4] }
    validate  :own_event_program,    on: :send_request
    validate  :own_event_performer,  on: :send_request
@@ -89,13 +90,11 @@ class Event < ApplicationRecord
       return PUBLISHING_STATUS[self.publishing_status]
    end
 
-   def is_original?
-      return self.original.nil?
+   def category_name
+      return CATEGORIES[self.category]
    end
 
-   private
-
-   def set_value_on_category
-      self.category = 'その他' if category.nil?
+   def is_original?
+      return self.original.nil?
    end
 end
