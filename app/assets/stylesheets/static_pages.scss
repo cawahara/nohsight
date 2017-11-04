@@ -15,25 +15,18 @@
       span { margin-right: 9px; }
    }
 
-   div.event-summary {
-      div.header {
-         overflow: hidden;
-         margin-bottom: 5px;
+   a.event-summary {
+      display: block;
+      height: 100%;
 
-         h1 {
-            width: calc(100% - 46px);
-            a {
-               font-size: 19px;
-               color: #464646;
-               &:hover { text-decoration: underline; }
-            }
-         }
-      }
+      * { color: #464646; }
+      &:hover { text-decoration: none; }
+      &:active { text-decoration: none; }
+
+      h1.header { font-size: 19px; }
 
       ul {
-         li {
-            margin-top: 5px;
-         }
+         li { margin-top: 5px; }
       }
 
       ul.info {

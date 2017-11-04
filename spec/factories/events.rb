@@ -8,6 +8,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'https://www.firstevent.com'
+      category       0
       publishing_status     3
 
       open_date      Date.today - 1
@@ -41,7 +42,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http://www.anotherevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       trait :start_from_this do
@@ -68,7 +69,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http://www.controllerevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       open_date      Date.today - 1
@@ -97,7 +98,7 @@ FactoryGirl.define do
       start_date     Date.today
       information    'It will be the best event for you!'
       official_url   'http://www.differentevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       trait :start_from_this do
@@ -115,7 +116,7 @@ FactoryGirl.define do
       title          '能楽堂公演その一'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
@@ -129,7 +130,7 @@ FactoryGirl.define do
       title          '能楽堂公演その二'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
@@ -143,7 +144,7 @@ FactoryGirl.define do
       title          '能楽堂公演その三'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
@@ -157,7 +158,7 @@ FactoryGirl.define do
       title          '舞台センター公演その一'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
@@ -171,7 +172,7 @@ FactoryGirl.define do
       title          '舞台センター公演その二'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
@@ -185,7 +186,7 @@ FactoryGirl.define do
       title          '某公民館公演その一'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       '能楽協会主催'
+      category       0
       publishing_status      3
 
       after(:create) do |event|
