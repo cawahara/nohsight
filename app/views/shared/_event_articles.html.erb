@@ -1,16 +1,14 @@
 <div id="events">
    <% @events.each do |event| %>
-   <div id="event-<%= event.id %>" class="article event-summary">
-      <div class="header">
-         <h1><%= link_to event.title, event_path(event) %></h1><br>
-      </div>
+   <div id="event-<%= event.id %>" class="article">
+   <%= link_to event_path(event), class: 'event-summary' do %>
+      <h1 class="header"><%= event.title %></h1>
       <ul class="info">
          <li class="place"><%= event.place.title %></li>
          <li class="date"><%= event&.start_date&.with_formats('date', 'time', 'weekday') %></li>
       </ul>
       <div class="tags">
          <p class="category-<%= event.category %>"><%= event.category_name %></p>
-         <%= render('shared/bookmark', event: event) %>
       </div>
 
       <table class="event-programs-info">
@@ -28,6 +26,8 @@
          <li class="ticket"><%= ticket.grade %>：<%= ticket.price %>円</li>
          <% end %>
       </ul>
+   <% end %>
+   <%= render('shared/bookmark', event: event) %>
    </div>
    <% end %>
 </div>
