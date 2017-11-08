@@ -22,7 +22,6 @@
     "geckodriver": "^1.8.1",
     "glob": "^7.1.2",
     "jquery": "^3.2.1",
-    "jquery-datetimepicker": "^2.5.4",
     "jquery-ui": "^1.12.1",
     "jquery-ujs": "^1.2.2",
     "js-yaml": "^3.8.4",
