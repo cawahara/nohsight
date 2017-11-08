@@ -1,5 +1,4 @@
 <div id="form-event-vue">
-
    <div class="md-form" id="title">
       <div class="init-area">
          <label>公演名</label><span class="required">必須</span>
@@ -11,14 +10,14 @@
    <div class="md-form" id="open_date">
       <div class="init-area">
          <label>開場時間</label>
-         <input type="text" name="event[open_date]" id="event_open_date" v-bind:value="values.open_date" class="datepicker-for-edit">
+         <input type="datetime-local" name="event[open_date]" id="event_open_date" v-bind:value="values.open_date">
       </div>
       <div class="error-msgs"><span v-if="typeof error_msgs !== 'undefined'">{{ error_msgs.open_date }}</span></div>
    </div>
    <div class="md-form" id="start_date">
       <div class="init-area">
          <label>開始時間</label><span class="required">必須</span>
-         <input type="text" name="event[start_date]" id="event_start_datee" v-bind:value="values.start_date" class="datepicker-for-edit">
+         <input type="datetime-local" name="event[start_date]" id="event_start_date" v-bind:value="values.start_date">
       </div>
       <div class="error-msgs"><span v-if="typeof error_msgs !== 'undefined'">{{ error_msgs.start_date }}</span></div>
    </div>
