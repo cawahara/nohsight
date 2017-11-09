@@ -12,7 +12,7 @@ ruby '2.4.1'
 # デフォルトで配備してあるgem群
 gem 'bcrypt', '~> 3.1.7' # 文字列(主にパスワード)のハッシュ化
 gem 'bootstrap-sass' # bootstrap
-gem 'carrierwave', '~> 0.11.2' # 画像アップロード用ヘルパー
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git' # 画像アップロード用ヘルパー
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails', '>= 2.2.1' # rails内に環境変数導入
 gem 'font-awesome-rails', '~> 4.7' # font-awesomeを扱うヘルパー
