@@ -47,3 +47,6 @@
 
 # Ignore uploaded images
 /public/uploads
+
+# Ignore master image data
+/db/fixtures/images
