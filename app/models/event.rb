@@ -22,6 +22,8 @@ class Event < ApplicationRecord
 
    before_validation :set_value_on_category
 
+   mount_uploaders :flyers, FlyersUploader
+
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
    CATEGORIES = ['本公演', 'イベント', 'セミナー・教室', '社中会', 'その他']
    PUBLISHING_STATUS = ['下書き', '承認中', '却下', '公開', '訂正']

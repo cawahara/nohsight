@@ -45,7 +45,20 @@
       </div>
       <div class="error-msgs"><span v-if="typeof error_msgs !== 'undefined'">{{ error_msgs.official_url }}</span></div>
    </div>
+   <div class="md-form" id="flyers">
+      <div class="init-area">
+         <label>フライヤー</label>
+         <div class="uploader">
+            <input type="file" name="event[flyers][]" id="event_flyers" multiple="multiple">
+            <ul>
+               <li v-for="(flyer, idx) in values.flyers"><img v-bind:src="flyer.url" v-bind:alt="flyer.url"></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <input type="hidden" name="event[flyers_cache]" id="event_flyers_cache" v-bind:value="values.flyers_cache">
    <input type="hidden" name="event[publishing_status]" id="event_publishing_status" v-bind:value="values.publishing_status">
    <input type="hidden" name="event[place_id]" id="event_place_id" v-bind:value="values.place_id">
-   <input type="hidden" name="event[id]" id="event_id" v-bind:value="values.id">
+   <input type="hidden" name="event[original_event_id]" id="original_event_id" v-bind:value="values.id">
+   <input type="hidden" name="id" id="id" v-bind:value="values.id">
 </div>

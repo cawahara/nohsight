@@ -67,7 +67,10 @@ class RequestsController < ApplicationController
       if @event.original
          original_event = @event.original
          original_event.attributes = @event.attributes
+
          original_event.update_attributes({ id: @event.original_event_id, original_event_id: nil, publishing_status: 3 })
+         original_event.remove_flyers!
+         original_event.flyers = @event.flyers
          original_event.save
          re_create_associations(original_event)
          @event.approve_edition_event

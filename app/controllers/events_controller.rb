@@ -59,10 +59,16 @@ class EventsController < ApplicationController
 
    def create
       request_params
-      @event = create_event
-      if @event != false
+      tmp_result = create_event
+      if tmp_result != false
+         @event = tmp_result
          send_request
       else
+         if params[:id].present?
+            @event = Event.find(params[:id].to_i)
+            @event_params[:id] ||= @event&.id
+            @event_params[:flyers] ||= @event&.flyers
+         end
          flash.now[:danger] = '入力情報に不備があります。'
          render 'events/new'
       end
@@ -125,7 +131,11 @@ class EventsController < ApplicationController
    end
 
    def request_params
-      @event_params = params&.require(:event).permit!
+      @event_params = params&.require(:event).permit(
+         :title, :open_date, :start_date, :information, :official_url,
+         :publishing_status, :original_event_id, :category, { flyers: [] },
+         :flyers_cache
+      )
       @place_params = params&.require(:place).permit!
       @event_programs_params = set_empty_event_program_params
       @tickets_params = set_empty_ticket_params

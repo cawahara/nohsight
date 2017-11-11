@@ -62,18 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
          // Datas for event basical information
          let form_event_vue = new Vue({
             el: '#form-event-vue',
-            data: {
-               values:     parsed_data.event,
-               error_msgs: parsed_data.error_msgs.event
+            data: function(){
+               return {
+                  values:     parsed_data.event,
+                  error_msgs: parsed_data.error_msgs.event
+               }
             }
          })
 
          // Datas for event's place information
          let form_place_vue = new Vue({
             el: '#form-place-vue',
-            data: {
-               values:     parsed_data.place,
-               error_msgs: parsed_data.error_msgs.place
+            data: function(){
+               return {
+                  values:     parsed_data.place,
+                  error_msgs: parsed_data.error_msgs.place
+               }
             }
          })
 
