@@ -35,6 +35,7 @@ gem 'pg'                                                    # sql環境をpostgr
 gem 'therubyracer', platforms: :ruby
 gem 'spring-commands-rspec'
 gem 'simplecov', '~> 0.15.1'
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
