@@ -293,11 +293,7 @@ RSpec.describe Event, type: :model do
 
       context 'category' do
          it 'is valid with proper values' do
-            valid_categories = ['能楽協会主催',
-                                '能楽堂主催',
-                                '能楽協会員出演',
-                                '教室、セミナー',
-                                'その他']
+            valid_categories = [0, 1, 2, 3, 4]
             valid_categories.each do |valid_category|
                event.category = valid_category
                expect(event).to be_valid
@@ -305,9 +301,7 @@ RSpec.describe Event, type: :model do
          end
 
          it 'is invalid with improper values' do
-            invalid_categories = ['のうがくきょうかいしゅさい',
-                                  'Noh-gakudo Shusai',
-                                  '$3hg7`@']
+            invalid_categories = [12, 103]
             invalid_categories.each do |invalid_category|
                event.category = invalid_category
                event.valid?
@@ -334,37 +328,121 @@ RSpec.describe Event, type: :model do
             end
          end
       end
-
-      context 'event_programs' do
-         it 'is invalid without any event_program when send_request' do
-            event.event_programs.delete_all
-            event.valid?(:send_request)
-            expect(event.errors[:event_programs]).to include('should have at least one event_program')
-         end
-      end
-
-      context 'event_performers' do
-         it 'is invalid without any event_performer when send_request' do
-            event_program.event_performers.delete_all
-            event.valid?(:send_request)
-            expect(event.errors[:event_performers]).to include('should have at least one event_performer in each event_program')
-         end
-      end
-
-      context 'tickets' do
-         it 'is invalid without any event_program when send_request' do
-            event.tickets.delete_all
-            event.valid?(:send_request)
-            expect(event.errors[:tickets]).to include('should have at least one ticket')
-         end
-      end
    end
 
    describe '#method' do
+      let(:event) { create(:model_event, :start_from_this) }
+
+      context 'has_event_program?' do
+         it 'defines that event is invalid without any event_program' do
+            event.event_programs.delete_all
+            expect(event.has_event_program?).to eq(false)
+         end
+      end
+
+      context 'has_event_performer?' do
+         it 'defines that event is invalid without any event_performer' do
+            event.event_programs.first.event_performers.delete_all
+            expect(event.has_event_performer?).to eq(false)
+         end
+      end
+
+      context 'has_ticket?' do
+         it 'defines that event is invalid without any event_program' do
+            event.tickets.delete_all
+            expect(event.has_ticket?).to eq(false)
+         end
+      end
+
+      context 'editor' do
+         it "shows first number of event's user" do
+            expect(event.editor).to eq(event.users.first)
+         end
+      end
+
+      context 'approve_original_event' do
+         let(:original) { create(:model_event, :start_from_this, :original_edition) }
+         before(:each) do |example|
+            original.approve_original_event unless example.metadata[:skip_before]
+         end
+
+         it 'creates point_record into a database', :skip_before do
+            original.point_record.destroy
+            expect{ original.approve_original_event }.to change(PointRecord, :count).by(1)
+         end
+
+         it 'adds 10 point_record' do
+            expect(original.point_record.point).to eq(10)
+         end
+
+         it 'updates event publishing_status to 3' do
+            original.reload
+            expect(original.publishing_status).to eq(3)
+         end
+      end
+
+      context 'approve_edition_event' do
+         let(:edition) { create(:model_event, :start_from_this, :latest_edition) }
+         before(:each) do |example|
+            edition.approve_edition_event unless example.metadata[:skip_before]
+         end
+
+         it 'creates point_record into a database', :skip_before do
+            edition.point_record.destroy
+            expect{ edition.approve_edition_event }.to change(PointRecord, :count).by(1)
+         end
+
+         it 'creates user_event into a database', :skip_before do
+            edition
+            expect{ edition.approve_edition_event }.to change(UserEvent, :count).by(1)
+         end
+
+         it 'adds 1 point_record' do
+            expect(edition.point_record.point).to eq(1)
+         end
+
+         it 'updates event publishing_status to 4' do
+            edition.reload
+            expect(edition.publishing_status).to eq(4)
+         end
+      end
+
+      context 'current_publishing_status' do
+         it 'shows values in publishing_status constant in Event model' do
+            publishing_status = [0, 1, 2, 3, 4]
+            publishing_status.each do |status|
+               event.publishing_status = status
+               expect(event.current_publishing_status).to eq(Event::PUBLISHING_STATUS[status])
+            end
+         end
+      end
+
+      context 'category_name' do
+         it 'shows values in category constant in Event model' do
+            categories = [0, 1, 2, 3, 4]
+            categories.each do |category|
+               event.category = category
+               expect(event.category_name).to eq(Event::CATEGORIES[category])
+            end
+         end
+      end
+
+      context 'is_original?' do
+         let(:original) { create(:model_event, :original_edition) }
+         let(:edition) { create(:model_event, :latest_edition) }
+
+         it 'returns true when the event is original' do
+            expect(original.is_original?).to eq(true)
+         end
+
+         it 'returns false when the event is edition' do
+            expect(edition.is_original?).to eq(false)
+         end
+      end
+
       context 'set_value_on_category' do
-         let(:event) { create(:model_event) }
          it 'gets specified value on category field as default' do
-            expect(event.category).to eq('その他')
+            expect(event.category).to eq(0)
          end
       end
    end
