@@ -2,6 +2,7 @@
 
 module CRUDEvent
    extend ActiveSupport::Concern
+   include SetVariablesOnEventsController
 
    def create_event
       begin
@@ -91,7 +92,10 @@ module CRUDEvent
             @invalid_occured = true
          end
       end
-      raise ActiveRecord::RecordInvalid if @invalid_occured == true
+      if @invalid_occured == true
+         set_flyers_cache(event) if event.flyers_cache
+         raise ActiveRecord::RecordInvalid
+      end
    end
 
    def get_error_msgs(record)
@@ -120,9 +124,10 @@ module CRUDEvent
    def initialize_event(event, mode)
       if mode == 'create'
          begin
-            original_ev = Event.find(@event_params[:id])
+            original_ev = Event.find(params[:id])
             @event_params[:id] = nil
             event = original_ev.editions.create!(@event_params)
+            event.update_attributes!(flyers: original_ev.flyers) if @event_params[:flyers].nil? && @event_params[:flyers_cache].empty?
          rescue ActiveRecord::RecordNotFound
             event = Event.create!(@event_params)
          end

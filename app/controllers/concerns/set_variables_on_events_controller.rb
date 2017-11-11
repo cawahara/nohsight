@@ -8,19 +8,19 @@ module SetVariablesOnEventsController
    # they are failed to update relative datas and render an action with get request)
 
    def values_on_edit(mode)
-      @event_params ||= { id:              @event&.id,
-                        title:             @event&.title,
-                        open_date:           @event&.open_date&.with_formats('date', 'time'),
-                        start_date:          @event&.start_date&.with_formats('date', 'time'),
-                        category:            @event&.category,
-                        information:         @event&.information,
-                        official_url:        @event&.official_url,
-                        publishing_status:   @event&.publishing_status,
-                        place_id:            @event&.place_id }
+      @event_params ||= { id:                  @event&.id,
+                          title:               @event&.title,
+                          open_date:           @event&.open_date&.with_formats('date', 'time'),
+                          start_date:          @event&.start_date&.with_formats('date', 'time'),
+                          category:            @event&.category,
+                          information:         @event&.information,
+                          official_url:        @event&.official_url,
+                          publishing_status:   @event&.publishing_status,
+                          place_id:            @event&.place_id,
+                          flyers:              @event&.flyers }
       @place_params ||= { title:        @event.place&.title,
-                        address:      @event.place&.address,
-                        official_url: @event.place&.official_url }
-
+                          address:      @event.place&.address,
+                          official_url: @event.place&.official_url }
       @event_programs_params = {}
       @event.event_programs.each_with_index do |ev_program, program_idx|
          @event_performers_params = {}
@@ -77,6 +77,15 @@ module SetVariablesOnEventsController
          return params&.require(:tickets).permit!
       else
          return {'0': {'mode': 'create'}}
+      end
+   end
+
+   def set_flyers_cache(event)
+      caches = event.flyers_cache.split(',').map { |item| item.gsub(/["\[\]]/, '') }
+      @event_params[:flyers_cache] = event.flyers_cache
+      @event_params[:flyers] = Array.new(caches.count)
+      @event_params[:flyers].count.times do |i|
+         @event_params[:flyers][i] = { url: "#{event.flyers[i].cache_dir}/#{caches[i]}" }
       end
    end
 end
