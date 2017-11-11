@@ -18,8 +18,15 @@
       </div>
       <div class="tags">
          <p class="category-<%= @event.category %>"><%= @event.category_name %></p>
-
          <%= render('shared/bookmark', event: @event) %>
+      </div>
+
+      <div class="flyers">
+         <% @event.flyers.each do |flyer| %>
+            <%= link_to flyer.url do %>
+               <%= image_tag flyer.url %>
+            <% end  %>
+         <% end %>
       </div>
 
    </div>

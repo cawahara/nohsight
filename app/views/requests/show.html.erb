@@ -36,6 +36,15 @@
                   <td class="field">サイトURL</td>
                   <td class="item"><%= link_to @event.official_url, @event.official_url %></td>
                </tr>
+               <tr>
+                  <td class="field">フライヤー</td>
+                  <td class="item">
+                     <% @event.flyers.each do |flyer| %>
+                        <%= image_tag flyer.url %>
+                     <% end %>
+                     <%= 'なし' if @event.flyers.count == 0 %>
+                  </td>
+               </tr>
                <tr class="border"><td colspan="2"></td></tr>
                <tr>
                   <td class="field">開催地</td>

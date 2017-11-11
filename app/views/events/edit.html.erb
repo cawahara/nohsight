@@ -7,7 +7,7 @@
       <h1>イベントの編集</h1>
       <%= link_to 'イベント一覧に戻る >', event_manage_path, class: 'port-link' %>
    </div>
-   <%= form_for(:info, url: event_path(@event), method: :patch) do |f| %>
+   <%= form_for(:info, url: event_path(@event), method: :patch, html: { multipart: true }) do |f| %>
       <%= render('events/form') %>
    <% end %>
 </div>
