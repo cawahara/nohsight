@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import * as $ from 'jquery'
-import SearchAddress from './search_address_tag.vue'
-import SelectorStorage from './search_selectors.js'
+import SearchAddress from './search_forms/search_address_tag.vue'
+import SelectorStorage from './search_forms/search_selectors.js'
+import SearchCategory from './search_forms/search_category_tag.vue'
 import AboutSections from './about_sections.js'
 import AboutDescriptions from './about_descriptions.vue'
 
@@ -11,27 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
    if(target_content == document.getElementById('search') ||
       target_content == document.getElementById('dashboard')){
 
-      var search_type
-      if(target_content == document.getElementById('search')){
-         search_type = 'search'
-      }else{
-         search_type = 'easy_search'
-      }
-
       var areas = SelectorStorage.areas
       var prefs = SelectorStorage.prefs
 
-      const node = document.getElementById('search-address-vue')
       var search_values = { areas:       areas,
-                            prefectures: prefs,
-                            search_type: search_type
-                           }
-      var seatch_address_item = new Vue({
+                            prefectures: prefs }
+      var search_address_item = new Vue({
          el: '#search-address-vue',
          render(h){
             return h(SearchAddress, { props: { values: search_values }})
          }
       })
+      const category_tag = document.getElementById('search-category-vue')
+      if(category_tag != null){
+         const categories = JSON.parse(category_tag.getAttribute('data'))
+         var seatch_categories = new Vue({
+            el: '#search-category-vue',
+            render(h){
+               return h(SearchCategory, { props: { values: categories }})
+            }
+         })
+      }
+
    }else if(target_content == document.getElementById('about')){
       var articles = AboutSections.articles
       var about_descriptions_item = new Vue({
