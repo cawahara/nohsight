@@ -82,10 +82,10 @@ module SetVariablesOnEventsController
 
    def set_flyers_cache(event)
       caches = event.flyers_cache.split(',').map { |item| item.gsub(/["\[\]]/, '') }
-      @event_params[:flyers_cache] = event.flyers_cache
-      @event_params[:flyers] = Array.new(caches.count)
-      @event_params[:flyers].count.times do |i|
-         @event_params[:flyers][i] = { url: "#{event.flyers[i].cache_dir}/#{caches[i]}" }
+      @flyers_cache[:flyers_cache] = event.flyers_cache
+      @flyers_cache[:images] = Array.new(caches.count)
+      @flyers_cache[:images].count.times do |i|
+         @flyers_cache[:images][i] = { url: "#{event.flyers[i].cache_dir}/#{caches[i]}" }
       end
    end
 end

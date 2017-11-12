@@ -131,11 +131,8 @@ class EventsController < ApplicationController
    end
 
    def request_params
-      @event_params = params&.require(:event).permit(
-         :title, :open_date, :start_date, :information, :official_url,
-         :publishing_status, :original_event_id, :category, { flyers: [] },
-         :flyers_cache
-      )
+      @event_params = params&.require(:event).permit!
+      @flyers_params = params&.require(:flyer).permit({ images: [] })
       @place_params = params&.require(:place).permit!
       @event_programs_params = set_empty_event_program_params
       @tickets_params = set_empty_ticket_params

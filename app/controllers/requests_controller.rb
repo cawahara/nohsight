@@ -67,10 +67,7 @@ class RequestsController < ApplicationController
       if @event.original
          original_event = @event.original
          original_event.attributes = @event.attributes
-
          original_event.update_attributes({ id: @event.original_event_id, original_event_id: nil, publishing_status: 3 })
-         original_event.remove_flyers!
-         original_event.flyers = @event.flyers
          original_event.save
          re_create_associations(original_event)
          @event.approve_edition_event
@@ -82,6 +79,7 @@ class RequestsController < ApplicationController
    def re_create_associations(original_event)
       original_event.event_programs.delete_all
       original_event.tickets.delete_all
+      original_event.flyers.delete_all
       @event.event_programs.each do |ev_program|
          new_ev_program = original_event.event_programs.create!(program: ev_program.program, genre: ev_program.genre)
          ev_program.event_performers.each do |ev_performer|
@@ -91,6 +89,12 @@ class RequestsController < ApplicationController
 
       @event.tickets.each do |ticket|
          original_event.tickets.create!(grade: ticket.grade, price: ticket.price)
+      end
+
+      @event.flyers.each do |flyer|
+         new_flyer = original_event.flyers.build()
+         new_flyer.remote_image_url = flyer.image_url
+         new_flyer.save
       end
    end
 end

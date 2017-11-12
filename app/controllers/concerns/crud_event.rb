@@ -11,6 +11,7 @@ module CRUDEvent
             event = initialize_event(false, 'create')
             update_event_programs(event)
             update_tickets(event)
+            update_flyers(event)
             event.user_events.create!(user: current_user, organizer: true)
             return event
          end
@@ -26,6 +27,7 @@ module CRUDEvent
             event = initialize_event(event, 'update')
             update_event_programs(event)
             update_tickets(event)
+            update_flyers(event)
             count_relative_datas(event)
          end
          return event
@@ -43,6 +45,9 @@ module CRUDEvent
       unless event.valid?
          @error_msgs[:event] = get_error_msgs(event)
          @invalid_occured = true
+      end
+      @flyers_params[:images].each do |flyer|
+         @invalid_occured = true unless Flyer.new(image: flyer).valid_extension?
       end
       @error_msgs[:event_programs] = {}
       @event_programs_params.values.each.with_index do |ev_program_params, ev_program_idx|
@@ -92,10 +97,7 @@ module CRUDEvent
             @invalid_occured = true
          end
       end
-      if @invalid_occured == true
-         set_flyers_cache(event) if event.flyers_cache
-         raise ActiveRecord::RecordInvalid
-      end
+      raise ActiveRecord::RecordInvalid if @invalid_occured == true
    end
 
    def get_error_msgs(record)
@@ -127,7 +129,6 @@ module CRUDEvent
             original_ev = Event.find(params[:id])
             @event_params[:id] = nil
             event = original_ev.editions.create!(@event_params)
-            event.update_attributes!(flyers: original_ev.flyers) if @event_params[:flyers].nil? && @event_params[:flyers_cache].empty?
          rescue ActiveRecord::RecordNotFound
             event = Event.create!(@event_params)
          end
@@ -153,6 +154,12 @@ module CRUDEvent
    def update_tickets(event)
       @tickets_params.values.each do |ticket_params|
          ticket = update_relative_data_attributes(ticket_params, Ticket, event)
+      end
+   end
+
+   def update_flyers(event)
+      @flyers_params[:images].each do |flyer|
+         event.flyers.create!(image: flyer)
       end
    end
 
