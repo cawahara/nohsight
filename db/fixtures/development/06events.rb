@@ -34,7 +34,6 @@ Event.seed do |s|
 	s.official_url = 'http://junseikai.or.tv/future/222/'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/032.jpg")]
 end
 
 Event.seed do |s|
@@ -71,7 +70,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.kanazawanohgakukai.jp/pdf/teirei2017_10.pdf'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/062.jpg")]
 end
 
 Event.seed do |s|
@@ -84,10 +82,6 @@ Event.seed do |s|
 	s.official_url = 'http://kanze.net/publics/index/79/'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/072_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/072_2.jpg")
-	]
 end
 
 Event.seed do |s|
@@ -100,7 +94,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.kyoto-kanze.jp/performanceguide/urata_teikinoh_front.jpg'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/082.jpg")]
 end
 
 Event.seed do |s|
@@ -113,7 +106,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.kyoto-kanze.jp/reikai/reikai9-2_front.jpg'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/092.jpg")]
 end
 
 Event.seed do |s|
@@ -126,7 +118,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.welcome.city.yokohama.jp/ja/tourism/eventinfo/ev_detail.php?bid=yw3664'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/102.jpg")]
 end
 
 Event.seed do |s|
@@ -139,7 +130,6 @@ Event.seed do |s|
 	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2144'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")]
 end
 
 Event.seed do |s|
@@ -152,7 +142,6 @@ Event.seed do |s|
 	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2149'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")]
 end
 
 Event.seed do |s|
@@ -165,7 +154,6 @@ Event.seed do |s|
 	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2155'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")]
 end
 
 Event.seed do |s|
@@ -178,7 +166,6 @@ Event.seed do |s|
 	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2158'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")]
 end
 
 Event.seed do |s|
@@ -191,7 +178,6 @@ Event.seed do |s|
 	s.official_url = 'http://ynt.yafjp.org/schedule/?p=2161'
 	s.category = 1
 	s.publishing_status = 3
-	s.flyers = [File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")]
 end
 
 Event.seed do |s|
@@ -204,10 +190,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.noh-theater.com/nfblog/?p=541'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/162_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/162_2.jpg")
-	]
 end
 
 Event.seed do |s|
@@ -220,10 +202,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.noh-theater.com/nfblog/?p=595'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/172_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/172_2.jpg")
-	]
 end
 
 Event.seed do |s|
@@ -236,10 +214,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.ntj.jac.go.jp/schedule/nou/2017/10197.html?lan=j'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
-	]
 end
 
 Event.seed do |s|
@@ -252,10 +226,6 @@ Event.seed do |s|
 	s.official_url = 'http://www.ntj.jac.go.jp/schedule/nou/2017/10198.html?lan=j'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
-	]
 end
 
 Event.seed do |s|
@@ -268,8 +238,4 @@ Event.seed do |s|
 	s.official_url = 'http://www.ntj.jac.go.jp/schedule/nou/2017/10199.html?lan=j'
 	s.category = 0
 	s.publishing_status = 3
-	s.flyers = [
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg"),
-		File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
-	]
 end
