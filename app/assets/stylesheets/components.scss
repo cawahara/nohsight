@@ -296,6 +296,7 @@ div.form-section {
       div.uploader {
          float: right;
          width: 55%;
+         input[type=file] { width: 100%; }
          ul{
             li {
                margin-top: 7px;

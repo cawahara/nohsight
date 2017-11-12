@@ -23,9 +23,9 @@
 
       <div class="flyers">
          <% @event.flyers.each do |flyer| %>
-            <%= link_to flyer.url do %>
-               <%= image_tag flyer.url %>
-            <% end  %>
+            <%= link_to flyer.image.url do %>
+               <%= image_tag flyer.image.url %>
+            <% end %>
          <% end %>
       </div>
 

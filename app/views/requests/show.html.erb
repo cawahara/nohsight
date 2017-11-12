@@ -40,7 +40,9 @@
                   <td class="field">フライヤー</td>
                   <td class="item">
                      <% @event.flyers.each do |flyer| %>
-                        <%= image_tag flyer.url %>
+                        <%= link_to flyer.image.url do %>
+                           <%= image_tag flyer.image.url %>
+                        <% end %>
                      <% end %>
                      <%= 'なし' if @event.flyers.count == 0 %>
                   </td>
