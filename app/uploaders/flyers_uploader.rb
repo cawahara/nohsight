@@ -1,16 +1,24 @@
 # encoding: utf-8
 
 class FlyersUploader < CarrierWave::Uploader::Base
-  include CarrierWave::RMagick
+   include CarrierWave::RMagick
 
-  storage :file
+   if Rails.env.production?
+      include Cloudinary::CarrierWave
+   else
+      storage :file
+   end
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{model.id}"
-  end
+   def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{model.id}"
+   end
 
-  def extension_white_list
-     %w(jpg jpeg gif png)
-  end
+   def public_id
+      return model.id
+   end
+
+   def extension_white_list
+      %w(jpg jpeg gif png)
+   end
 
 end
