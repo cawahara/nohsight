@@ -36,6 +36,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'spring-commands-rspec'
 gem 'simplecov', '~> 0.15.1'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
+gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
