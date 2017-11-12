@@ -13,6 +13,7 @@ class Event < ApplicationRecord
                                  through:    :bookmarks
    has_one    :comment,          dependent: :destroy
    has_one    :point_record,     dependent: :destroy
+   has_many   :flyers,           dependent: :destroy
 
    has_many   :editions,         class_name: 'Event',
                                  foreign_key: 'original_event_id',
@@ -21,8 +22,6 @@ class Event < ApplicationRecord
                                  foreign_key: 'original_event_id'
 
    before_validation :set_value_on_category
-
-   mount_uploaders :flyers, FlyersUploader
 
    VALID_URL_REGEX = /\Ahttps?:\/\/.*/
    CATEGORIES = ['本公演', 'イベント', 'セミナー・教室', '社中会', 'その他']
