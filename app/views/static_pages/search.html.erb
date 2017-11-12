@@ -3,44 +3,44 @@
       <h1>公演検索</h1>
    </div>
    <div class="form-section">
-      <h1 class="form-header">検索条件の設定</h1>
       <%= form_for(:search, url: events_path, method: :get) do |f| %>
-         <dl>
-            <dt>開催日</dt>
-            <dd>
-               <ul>
-                  <li><%= f.date_field :start_date %><span>から</span></li>
-                  <li><%= f.date_field :end_date %><span>まで</span></li>
-               </ul>
-            </dd>
-         </dl>
-         <dl>
-            <dt>エリア</dt>
-            <dd id="search-address-vue"></dd>
-         </dl>
-         <dl id="event-relatives">
+         <h1 class="form-header">開催日程</h1>
             <dl>
-               <dt>演目</dt>
-               <dd><%= f.text_field :program, id: 'program' %></dd>
+               <dt>From</dt>
+               <dd><input type="date" name="search[start_date]" id="search-start-date"></dd>
             </dl>
             <dl>
-               <dt>演者</dt>
-               <dd><%= f.text_field :performer, id: 'performer' %></dd>
+               <dt>To</dt>
+               <dd><input type="date" name="search[end_date]" id="search-end-date"></dd>
             </dl>
+         <h1 class="form-header">開催地</h1>
+            <dl>
+               <dt><label>エリア(地域)</label></dt>
+               <dd id="search-address-vue"></dd>
+            </dl>
+            <dl>
+               <dt><label>会場名</label></dt>
+               <dd><input type="text" name="search[venue]" id="search-venue"></dd>
+            </dl>
+         <h1 class="form-header">演目</h1>
+         <dl>
+            <dt><label>演目名</label></dt>
+            <dd><input type="text" name="search[program]" id="search-program"></dd>
+         </dl>
+         <h1 class="form-header">演者</h1>
+         <dl>
+            <dt><label>出演者</label></dt>
+            <dd><input type="text" name="search[performer]" id="search-performer"></dd>
          </dl>
          <dl>
-            <dt>キーワード</dt>
-            <dd><%= f.text_field :keywd, id: 'keywd' %></dd>
+            <dt><label>囃子方</label></dt>
+            <dd><input type="text" name="search[accompanist]" id="search-accompanist"></dd>
          </dl>
+         <h1 class="form-header">カテゴリ</h1>
          <dl>
-            <dt>カテゴリ</dt>
-            <dd>
-               <label><%= f.check_box :category_0, {}, '能楽協会主催' %>能楽協会主催</label>
-               <label><%= f.check_box :category_1, {}, '能楽堂主催' %>能楽堂主催</label>
-               <label><%= f.check_box :category_2, {}, '能楽協会員出演' %>能楽協会員出演</label>
-               <label><%= f.check_box :category_3, {}, '教室、セミナー' %>教室、セミナー</label>
-               <label><%= f.check_box :category_4, {}, 'その他' %>その他</label>
-            </dd>
+            <%= content_tag :div,
+               id: 'search-category-vue',
+               data: { categories: Event::CATEGORIES }.to_json do %><% end %>
          </dl>
          <%= f.submit('検索する', class: 'form-submit') %>
       <% end %>
