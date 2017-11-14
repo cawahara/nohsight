@@ -132,7 +132,7 @@ class EventsController < ApplicationController
 
    def request_params
       @event_params = params&.require(:event).permit!
-      @flyers_params = params&.require(:flyer).permit({ images: [] })
+      @flyers_params = params.include?(:flyer) ? params&.require(:flyer).permit({ images: [] }) : { images: [] }
       @place_params = params&.require(:place).permit!
       @event_programs_params = set_empty_event_program_params
       @tickets_params = set_empty_ticket_params
