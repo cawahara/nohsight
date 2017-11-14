@@ -12,7 +12,7 @@
          <ul class="info">
             <li class="place"><%= event.place.title %></li>
             <li class="date"><%= event&.start_date&.with_formats('date', 'time') %></li>
-            <li class="category category-<%= category_number(event.category) %>"><%= event.category %></li>
+            <li class="category category-<%= event.category %>"><%= event.category_name %></li>
          </ul>
       </div>
       <% end %>
