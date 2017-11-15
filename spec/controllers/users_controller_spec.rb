@@ -119,6 +119,14 @@ RSpec.describe UsersController, type: :controller do
             expect{ post :create, user: user_params }.to change(User, :count).by(1)
          end
 
+         it 'sets a user confirmed field with false' do
+            expect(assigns(:user).confirmed).to eq(false)
+         end
+
+         it 'sends a confirmation email', :skip_before do
+            expect{ post :create, user: user_params }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+         end
+
          it_behaves_like('returning redirection response', '/')
       end
 
