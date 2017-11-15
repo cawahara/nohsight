@@ -10,6 +10,8 @@ FactoryGirl.define do
       password              'password'
       password_confirmation 'password'
       agreement             true
+      confirmed             true
+      confirmed_at          Time.zone.now
 
       trait :start_from_this do
          after(:create) do |user|
@@ -29,6 +31,8 @@ FactoryGirl.define do
       password_confirmation 'password'
       is_admin              false
       agreement             true
+      confirmed             true
+      confirmed_at          Time.zone.now
 
       trait :start_from_this do
          after(:create) do |user|
@@ -48,6 +52,8 @@ FactoryGirl.define do
       password_confirmation 'password'
       is_admin              false
       agreement              '1'       # post時のagreementパラムの値
+      confirmed             true
+      confirmed_at          Time.zone.now
 
       trait :start_from_this do
          after(:create) do |user|
@@ -81,6 +87,8 @@ FactoryGirl.define do
       password_confirmation 'password'
       is_admin              false
       agreement             true
+      confirmed             true
+      confirmed_at          Time.zone.now
 
       trait :start_from_this do
          after(:create) do |user|
@@ -97,6 +105,8 @@ FactoryGirl.define do
       password_confirmation 'password'
       is_admin              true
       agreement             true
+      confirmed             true
+      confirmed_at          Time.zone.now
    end
 
    factory :search_user, class: User do
@@ -107,6 +117,8 @@ FactoryGirl.define do
       password_confirmation 'password'
       is_admin              false
       agreement             true
+      confirmed             true
+      confirmed_at          Time.zone.now
 
       after(:create) do |user|
          FactoryGirl.create(:first_search_user_event, user: user)

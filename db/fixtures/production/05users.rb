@@ -6,6 +6,8 @@ User.seed do |s|
    s.email           = 'test@gmail.com'
    s.password_digest = User.digest('password')
    s.is_admin        = false
+   s.confirmed       = true
+   s.confirmed_at    = Time.zone.now
 end
 
 User.seed do |s|
@@ -14,4 +16,6 @@ User.seed do |s|
    s.email           = 'admin@gmail.com'
    s.password_digest = User.digest('password')
    s.is_admin        = true
+   s.confirmed       = true
+   s.confirmed_at    = Time.zone.now
 end
