@@ -12,5 +12,6 @@ class AccountConfirmationsController < ApplicationController
       elsif user.confirmed?
          flash[:danger] = "メールアドレス「#{user.email}」はすでに登録完了されています"
       end
+      redirect_to new_user_url
    end
 end
