@@ -227,6 +227,7 @@ div.form-section {
    }
 
    input, textarea {
+      font-size: 16px;
       box-sizing: border-box;
       border: 1px solid #989898;
       padding: 4px 6px;
@@ -234,6 +235,10 @@ div.form-section {
       border-radius: 4px;
    }
    textarea { height: calc((14px * 7) + (3px * 6)); }
+   input[type=file] { font-size: 16px; }
+   select {
+      font-size: 16px;
+   }
 
    div.lg-form, div.md-form, div.sm-form {
       position: relative;
