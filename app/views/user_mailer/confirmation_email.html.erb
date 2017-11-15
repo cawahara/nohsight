@@ -1,0 +1,10 @@
+<%= @user.name %>様
+
+<p>この度は、Noh Sightにご登録いただき誠にありがとうございます。</p>
+
+<p>現在、アカウントは仮登録中です。<br>
+以下のURLをクリックしていただくことで、登録完了となります。</p>
+
+<%= link_to '本登録を行う', confirmation_url(token: @user.confirmation_token, email: @user.email) %>
+
+<p>※このメールにお心当たりのない場合は、お手数ですがURLにアクセスせずにメールを破棄してください。</p>

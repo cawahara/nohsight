@@ -8,6 +8,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="mailer">
+       <div id="contents">
+          <%= yield %>
+       </div>
+       <div id="footer">
+          <h5 id="copyright"><%= DateTime.now.year %> © Shantti-Y All rights reserved</h5>
+       </div>
+    </div>
   </body>
 </html>
