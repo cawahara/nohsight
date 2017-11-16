@@ -64,6 +64,20 @@ RSpec.describe SessionsController, type: :controller do
 
          it_behaves_like('returning success response', true, 'new')
       end
+
+      context 'by not confirmed user' do
+         before(:each) do
+            user.confirmed = false
+            user.save
+            post :create, params: { session: { email: user.email, password: 'password' } }
+         end
+
+         it "doesn't give any session id" do
+            expect(controller.session[:user_id]).to be_falsey
+         end
+
+         it_behaves_like('returning redirection response', '/dashboard')
+      end
    end
 
    describe 'GET #destroy' do

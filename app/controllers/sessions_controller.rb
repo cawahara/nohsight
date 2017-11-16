@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
    def create
       user = User.find_by(email: params[:session][:email])
       if user && user.authenticate(params[:session][:password])
-         flash['info'] = 'Noh-Event(仮)へようこそ！'
          login(user)
          redirect_to(dashboard_url)
       else
