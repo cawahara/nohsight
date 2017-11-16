@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+   attr_accessor :confirmation_token
+   before_create :create_activation_digest
+
    has_many    :user_events,      dependent: :destroy
    has_many    :events,           through: :user_events
    has_many    :point_records,    dependent: :destroy
@@ -47,5 +50,24 @@ class User < ApplicationRecord
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                           BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)
+   end
+
+   def self.create_token
+      SecureRandom.urlsafe_base64
+   end
+
+   def authenticated?(attribute, token)
+      digest = send("#{attribute}_digest")
+      if digest
+         return BCrypt::Password.new(digest).is_password?(token)
+      else
+         return false
+      end
+   end
+
+   private
+   def create_activation_digest
+      self.confirmation_token = User.create_token
+      self.confirmation_digest = User.digest(self.confirmation_token)
    end
 end

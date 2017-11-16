@@ -56,5 +56,8 @@ Rails.application.routes.draw do
    # Bookmark用ルーティング
    resources 'bookmarks', only: [:index, :update, :destroy]
 
+   # AccountConfirmation用ルーティング
+   get      '/confirmation', to: 'account_confirmations#new'
+
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
