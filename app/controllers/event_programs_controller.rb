@@ -15,7 +15,7 @@ class EventProgramsController < ApplicationController
          flash[:success] = '演目を変更しました'
          redirect_to(edit_event_port_url(@event))
       else
-         flash['danger'] = '赤枠の項目が未入力です'
+         flash.now['danger'] = '赤枠の項目が未入力です'
          render 'event_programs/edit'
       end
    end

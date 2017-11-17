@@ -28,7 +28,7 @@ class PlacesController < ApplicationController
          flash['success'] = 'エリアを登録しました'
          redirect_to(place_url(@place))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'places/new'
       end
    end
@@ -39,7 +39,7 @@ class PlacesController < ApplicationController
          flash['success'] = 'エリア情報を更新しました'
          redirect_to(place_url(@place))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'places/edit'
       end
    end
