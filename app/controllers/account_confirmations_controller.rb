@@ -7,11 +7,13 @@ class AccountConfirmationsController < ApplicationController
          login(user)
          flash[:success] = 'ユーザー登録が完了しました！NohSightへようこそ！'
          redirect_to user_url(user)
-      elsif user.nil? || !user.authenticated?('confirmation', params[:token])
-         flash[:danger] = "無効なリンクURLです"
-      elsif user.confirmed?
-         flash[:danger] = "メールアドレス「#{user.email}」はすでに登録完了されています"
+      else
+         if user && user.confirmed?
+            flash[:danger] = "メールアドレス「#{user.email}」はすでに登録完了されています"
+         else
+            flash[:danger] = "無効なリンクURLです"
+         end
+         redirect_to root_url
       end
-      redirect_to new_user_url
    end
 end

@@ -49,6 +49,8 @@ RSpec.describe AccountConfirmationsController, type: :controller do
                user.reload
                expect(user.confirmed).to eq(false)
             end
+
+            it_behaves_like('returning redirection response', '/')
          end
 
          context 'token params' do
@@ -60,6 +62,8 @@ RSpec.describe AccountConfirmationsController, type: :controller do
                user.reload
                expect(user.confirmed).to eq(false)
             end
+
+            it_behaves_like('returning redirection response', '/')
          end
 
       end
@@ -70,9 +74,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
             get :new, email: user.email, token: user.confirmation_token
          end
 
-         it "doesn't redirect_to user action" do
-            expect(response).to have_http_status(200)
-         end
+         it_behaves_like('returning redirection response', '/')
       end
    end
 end
