@@ -5,6 +5,7 @@ class AccountConfirmationsController < ApplicationController
       if user && !user.confirmed? && user.authenticated?('confirmation', params[:token])
          user.update_attributes!(confirmed: true, confirmed_at: Time.zone.now)
          login(user)
+         flash.delete(:info)
          flash[:success] = 'ユーザー登録が完了しました！NohSightへようこそ！'
          redirect_to user_url(user)
       else
