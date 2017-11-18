@@ -59,5 +59,9 @@ Rails.application.routes.draw do
    # AccountConfirmation用ルーティング
    get      '/confirmation', to: 'account_confirmations#new'
 
+   # Feedback用ルーティング
+   get      '/feedback', to: 'feedbacks#new'
+   post     '/feedback', to: 'feedbacks#create'
+
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
