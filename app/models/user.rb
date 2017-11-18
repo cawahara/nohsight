@@ -65,7 +65,6 @@ class User < ApplicationRecord
       end
    end
 
-   private
    def create_activation_digest
       self.confirmation_token = User.create_token
       self.confirmation_digest = User.digest(self.confirmation_token)
