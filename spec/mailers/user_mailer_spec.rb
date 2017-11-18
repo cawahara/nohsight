@@ -12,7 +12,7 @@ RSpec.describe UserMailer, type: :mailer do
      end
 
      it 'renders the body' do
-        expect(mail.parts[0].body).to include(confirmation_url(email: user.email, token: user.confirmation_token))
+        expect(mail.parts[0].body).to include(edit_confirmation_url(email: user.email, token: user.confirmation_token))
      end
   end
 end

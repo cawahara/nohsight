@@ -15,13 +15,13 @@ RSpec.describe AccountConfirmationsController, type: :controller do
       it { expect(response).to redirect_to(path) }
    end
 
-   describe 'GET #new' do
+   describe 'GET #edit' do
       let(:user) { create(:controller_user, confirmed: false, confirmed_at: nil) }
       let(:wrong_user) { attributes_for(:different_user) }
 
       context 'with valid params' do
          before(:each) do
-            get :new, email: user.email, token: user.confirmation_token
+            get :edit, email: user.email, token: user.confirmation_token
          end
 
          it 'confirms user' do
@@ -42,7 +42,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
 
          context 'email params' do
             before(:each) do
-               get :new, email: wrong_user[:email], token: user.confirmation_token
+               get :edit, email: wrong_user[:email], token: user.confirmation_token
             end
 
             it "doesn't confirms user" do
@@ -55,7 +55,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
 
          context 'token params' do
             before(:each) do
-               get :new, email: wrong_user[:email], token: user.confirmation_token
+               get :edit, email: wrong_user[:email], token: user.confirmation_token
             end
 
             it "doesn't confirms user" do
@@ -71,7 +71,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
       context 'by a user who has already been confirmed' do
          before(:each) do
             user.update_attributes!(confirmed: true)
-            get :new, email: user.email, token: user.confirmation_token
+            get :edit, email: user.email, token: user.confirmation_token
          end
 
          it_behaves_like('returning redirection response', '/')
