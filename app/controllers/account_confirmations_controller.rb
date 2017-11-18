@@ -1,6 +1,6 @@
 class AccountConfirmationsController < ApplicationController
 
-   def new
+   def edit
       user = User.find_by(email: params[:email])
       if user && !user.confirmed? && user.authenticated?('confirmation', params[:token])
          user.update_attributes!(confirmed: true, confirmed_at: Time.zone.now)
@@ -15,5 +15,11 @@ class AccountConfirmationsController < ApplicationController
          end
          redirect_to root_url
       end
+   end
+
+   def new
+   end
+
+   def create
    end
 end
