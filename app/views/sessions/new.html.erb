@@ -23,7 +23,10 @@
 
    <div class="form-section">
       <h1 class="form-header">初めての方へ</h1>
-      <%= link_to '会員登録はこちら', new_user_path %>
+      <ul>
+         <li>・<%= link_to '会員登録はこちら', new_user_path %></li>
+         <li>・<%= link_to '本登録メールを再送信する場合はこちら', new_confirmation_path %></li>
+      </ul>
    </div>
 
 </div>

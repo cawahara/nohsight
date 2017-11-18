@@ -1,0 +1,19 @@
+<div id="account-confirmation-new">
+    <div class="headline">
+       <h1>本登録メール再送信</h1>
+    </div>
+
+    <%= form_for(:confirmation, url: confirmation_path, method: :post) do |f| %>
+    <div class="form-section">
+       <h1 class="form-header">Eメールアドレスを入力してください</h1>
+
+       <div class="md-form">
+          <label>本登録の案内メールを送信します。</label>
+          <%= f.text_field :email, id: 'email' %>
+       </div>
+    </div>
+    <div class="form-submit">
+       <%= f.submit 'メールを再送信' %>
+    </div>
+    <% end %>
+</div>
