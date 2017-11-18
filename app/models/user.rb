@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-   attr_accessor :confirmation_token
+   attr_accessor :confirmation_token, :password_reset_token
    before_create :create_activation_digest
 
    has_many    :user_events,      dependent: :destroy
@@ -63,6 +63,11 @@ class User < ApplicationRecord
       else
          return false
       end
+   end
+
+   def create_password_reset_token
+      self.password_reset_token = User.create_token
+      self.update_attributes!(password_reset_digest: User.digest(self.password_reset_token))
    end
 
    private
