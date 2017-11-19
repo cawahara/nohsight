@@ -23,7 +23,7 @@ class UsersController < ApplicationController
          UserMailer.confirmation_email(@user).deliver
          redirect_to(root_url)
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'users/new'
       end
    end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
          flash['success'] = 'ユーザー情報を更新しました'
          redirect_to(user_url(current_user))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'users/edit'
       end
    end

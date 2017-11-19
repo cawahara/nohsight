@@ -27,7 +27,7 @@ class ProgramsController < ApplicationController
          flash['success'] = '演目を登録しました'
          redirect_to(program_url(@program))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'programs/new'
       end
    end
@@ -38,7 +38,7 @@ class ProgramsController < ApplicationController
          flash['success'] = '演目情報を更新しました'
          redirect_to(program_url(@program))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'programs/edit'
       end
    end
