@@ -13,7 +13,7 @@ module SessionsHelper
    def login(user)
       # TODO: session有効期間の設定
       if user.confirmed?
-         flash.now['info'] = 'Noh-Event(仮)へようこそ！'
+         flash['info'] = 'Noh Sightへようこそ！'
          session[:user_id] = user.id
       else
          flash.now[:danger] = '本登録が完了しておりません。ご案内のメールを確認し、添付されたURLをクリックしてください。'
