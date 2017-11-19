@@ -9,9 +9,13 @@ class User < ApplicationRecord
    has_many    :point_records,    dependent: :destroy
    has_many    :comments,         dependent: :destroy
    has_many    :bookmarks,        dependent: :destroy
-   has_many    :bookmark_events,   class_name: 'Event',
+   has_many    :bookmark_events,  class_name: 'Event',
                                   foreign_key: 'event_id',
                                   through:    :bookmarks
+   has_many   :join_histories,    dependent: :destroy
+   has_many   :join_events,       class_name: 'Event',
+                                  foreign_key: 'event_id',
+                                  through:    :join_histories
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\d\-.]+\.[A-z]+\z/
 
