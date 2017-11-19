@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
 
    def show
       if @event.publishing_status != 1
-         flash.now[:danger] = 'この公演情報は承認リクエストされておりません。'
+         flash[:danger] = 'この公演情報は承認リクエストされておりません。'
          redirect_to requests_url
       end
       @comment = Comment.new
@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
             redirect_to requests_url
          end
       rescue ActiveRecord::RecordInvalid
-         flash[:danger] = '入力情報に不備があります。'
+         flash.now[:danger] = '入力情報に不備があります。'
          render 'requests/show'
       end
    end

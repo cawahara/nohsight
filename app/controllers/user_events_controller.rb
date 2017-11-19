@@ -7,7 +7,7 @@ class UserEventsController < ApplicationController
 
    def create
       @event = Event.find(params[:id])
-      flash[:success] = '公演に新しく情報を追加して更新しましょう'
+      flash.now[:success] = '公演に新しく情報を追加して更新しましょう'
       values_on_edit('create')
       render 'events/new'
    end

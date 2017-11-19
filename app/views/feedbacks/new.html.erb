@@ -1,0 +1,23 @@
+<div id="feedback-new">
+      <div class="headline">
+         <h1>ご意見、お問い合わせ</h1>
+      </div>
+
+      <%= form_for(:feedback, url: feedback_path, method: :post) do |f| %>
+      <div class="form-section">
+         <h1 class="form-header">入力フォーム</h1>
+
+         <div class="lg-form">
+            <label>Eメールアドレス</label><span class="required">必須</span>
+            <%= f.text_field :email, id: 'email' %>
+         </div>
+         <div class="lg-form">
+            <label>ご意見、お問い合わせ内容</label><span class="required">必須</span>
+            <%= f.text_area :content, id: 'content' %>
+         </div>
+      </div>
+
+      <%= f.submit "送信", class: 'form-submit' %>
+      <% end %>
+
+</div>

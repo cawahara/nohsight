@@ -14,6 +14,7 @@
       <div class="md-form">
          <label>パスワード</label>
          <%= f.password_field :password, id: 'password' %>
+         <%= link_to 'パスワードをお忘れの方はこちらへ', new_password_reset_path %>
       </div>
    </div>
    <div class="form-submit">

@@ -61,5 +61,20 @@ Rails.application.routes.draw do
    get      '/confirmation/edit', to: 'account_confirmations#edit', as: 'edit_confirmation'
    post     '/confirmation',      to: 'account_confirmations#create'
 
+   # AccountConfirmation用ルーティング
+   get      '/confirmation/new',  to: 'account_confirmations#new', as: 'new_confirmation'
+   get      '/confirmation/edit', to: 'account_confirmations#edit', as: 'edit_confirmation'
+   post     '/confirmation',      to: 'account_confirmations#create'
+
+   # PasswordReset用ルーティング
+   get      '/password_resets/new', to: 'password_resets#new',    as: 'new_password_reset'
+   get      '/password_resets/edit', to: 'password_resets#edit',  as: 'edit_password_reset'
+   post     '/password_resets',      to: 'password_resets#create'
+   patch    '/password_resets',      to: 'password_resets#update'
+
+  # Feedback用ルーティング
+   get      '/feedback', to: 'feedbacks#new'
+   post     '/feedback', to: 'feedbacks#create'
+
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

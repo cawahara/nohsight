@@ -30,7 +30,7 @@ class PerformersController < ApplicationController
          flash['success'] = '演者を登録しました'
          redirect_to(performer_url(@performer))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'performers/new'
       end
    end
@@ -41,7 +41,7 @@ class PerformersController < ApplicationController
          flash['success'] = '演者情報を更新しました'
          redirect_to(performer_url(@performer))
       else
-         flash['danger'] = '入力情報に不備があります'
+         flash.now['danger'] = '入力情報に不備があります'
          render 'performers/edit'
       end
    end
@@ -52,7 +52,7 @@ class PerformersController < ApplicationController
          flash['info'] = '演者を削除しました'
          redirect_to(performers_url)
       else
-         flash['danger'] = '演者を削除できません'
+         flash.now['danger'] = '演者を削除できません'
          redirect_to(performer_url(@performer))
       end
    end

@@ -4,6 +4,7 @@
    <li><%= link_to "Noh Sightとは", about_path %></li>
    <li><%= link_to "よくある質問", help_path %></li>
    <li><%= link_to "利用規約", convention_path %></li>
+   <li class="feedback"><%= link_to feedback_path do %><%= fa_icon('comments-o') %>ご意見、お問い合わせ<% end %></li>
 </ul>
 <p id="copyright"><%= DateTime.now.year %> © Shantti-Y All rights reserved</p>
 </footer>
