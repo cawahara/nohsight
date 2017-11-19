@@ -19,7 +19,7 @@ class UsersController < ApplicationController
    def create
       @user = User.new(user_params)
       if @user.save
-         flash['success'] = '本登録のご案内メールを送信しました。URLをクリックしてユーザー登録を完了してくださいしてください'
+         flash['success'] = '本登録のご案内メールを送信しました。URLをクリックしてユーザー登録を完了してください'
          UserMailer.confirmation_email(@user).deliver
          redirect_to(root_url)
       else
