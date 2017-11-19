@@ -24,12 +24,13 @@ class EventsController < ApplicationController
       end
 
       @event_count = events.count
-      if @event_count.positive?
-         flash.now[:info] = "#{@event_count}件の公演が見つかりました。"
-      else
-         flash.now[:warning] = '公演は見つかりませんでした。'
+      if !request.env['HTTP_REFERER'].match?( /events\?/)
+         if @event_count.positive?
+            flash.now[:info] = "#{@event_count}件の公演が見つかりました。"
+         else
+            flash.now[:warning] = '公演は見つかりませんでした。'
+         end
       end
-
       @events = events.page(params[:page]).per(5)
    end
 

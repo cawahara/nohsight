@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
          flash[:success] = '演目を変更しました'
          redirect_to(edit_event_port_url(@event))
       else
-         flash['danger'] = '赤枠の項目内の入力情報に不備があります'
+         flash.now['danger'] = '赤枠の項目内の入力情報に不備があります'
          render 'tickets/edit'
       end
    end

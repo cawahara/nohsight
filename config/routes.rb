@@ -65,5 +65,9 @@ Rails.application.routes.draw do
    post     '/password_resets',      to: 'password_resets#create'
    patch    '/password_resets',      to: 'password_resets#update'
 
+  # Feedback用ルーティング
+   get      '/feedback', to: 'feedbacks#new'
+   post     '/feedback', to: 'feedbacks#create'
+
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
