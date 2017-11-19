@@ -57,7 +57,14 @@ Rails.application.routes.draw do
    resources 'bookmarks', only: [:index, :update, :destroy]
 
    # AccountConfirmation用ルーティング
-   get      '/confirmation', to: 'account_confirmations#new'
+   get      '/confirmation/new',  to: 'account_confirmations#new', as: 'new_confirmation'
+   get      '/confirmation/edit', to: 'account_confirmations#edit', as: 'edit_confirmation'
+   post     '/confirmation',      to: 'account_confirmations#create'
+
+   # AccountConfirmation用ルーティング
+   get      '/confirmation/new',  to: 'account_confirmations#new', as: 'new_confirmation'
+   get      '/confirmation/edit', to: 'account_confirmations#edit', as: 'edit_confirmation'
+   post     '/confirmation',      to: 'account_confirmations#create'
 
    # PasswordReset用ルーティング
    get      '/password_resets/new', to: 'password_resets#new',    as: 'new_password_reset'
