@@ -59,7 +59,13 @@ Rails.application.routes.draw do
    # AccountConfirmation用ルーティング
    get      '/confirmation', to: 'account_confirmations#new'
 
-   # Feedback用ルーティング
+   # PasswordReset用ルーティング
+   get      '/password_resets/new', to: 'password_resets#new',    as: 'new_password_reset'
+   get      '/password_resets/edit', to: 'password_resets#edit',  as: 'edit_password_reset'
+   post     '/password_resets',      to: 'password_resets#create'
+   patch    '/password_resets',      to: 'password_resets#update'
+
+  # Feedback用ルーティング
    get      '/feedback', to: 'feedbacks#new'
    post     '/feedback', to: 'feedbacks#create'
 

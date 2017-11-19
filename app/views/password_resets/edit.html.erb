@@ -1,0 +1,26 @@
+<div id="password-reset-edit">
+   <div class="headline">
+      <h1>パスワード再設定</h1>
+   </div>
+
+   <%= form_for(:reset, url: password_resets_path, method: :patch) do |f| %>
+   <div class="form-section">
+      <h1 class="form-header">新しくパスワードを設定できます</h1>
+      <div class="lg-form">
+         <label>ユーザ名： <%= @user.name %></label>
+         <%= f.hidden_field :email, value: @user.email %>
+      </div>
+      <div class="lg-form">
+         <label>パスワード</label>
+         <%= f.password_field :password, id: 'password' %>
+      </div>
+      <div class="lg-form">
+         <label>パスワード(確認)</label>
+         <%= f.password_field :password_confirmation, id: 'password_confirmation' %>
+      </div>
+   </div>
+   <div class="form-submit">
+      <%= f.submit '登録する' %>
+   </div>
+   <% end %>
+</div>
