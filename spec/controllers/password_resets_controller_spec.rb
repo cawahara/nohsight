@@ -35,6 +35,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       before(:each) do
          user.create_password_reset_token
+         user.save
       end
 
       context 'with valid params' do

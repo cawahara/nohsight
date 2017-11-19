@@ -67,10 +67,9 @@ class User < ApplicationRecord
 
    def create_password_reset_token
       self.password_reset_token = User.create_token
-      self.update_attributes!(password_reset_digest: User.digest(self.password_reset_token))
+      self.password_reset_digest = User.digest(self.password_reset_token)
    end
 
-   private
    def create_activation_digest
       self.confirmation_token = User.create_token
       self.confirmation_digest = User.digest(self.confirmation_token)

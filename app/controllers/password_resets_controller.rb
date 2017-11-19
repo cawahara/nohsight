@@ -25,6 +25,7 @@ class PasswordResetsController < ApplicationController
       user = User.find_by(email: params[:reset][:email])
       if user && user.confirmed?
          user.create_password_reset_token
+         user.save
          flash['success'] = 'パスワード再設定のご案内メールを送信しました。URLをクリックしてパスワードの再設定を行ってください'
          UserMailer.password_reset_email(user).deliver
          redirect_to(root_url)
