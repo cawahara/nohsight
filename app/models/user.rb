@@ -46,8 +46,26 @@ class User < ApplicationRecord
       bookmark.destroy
    end
 
+   def assign_join_history(event)
+      status = event.start_date >= (Time.zone.now + 1) ? 0 : 1
+      self.join_histories.create(event_id: event.id, status: status)
+   end
+
+   def cancel_join_history(event)
+      join_history = self.join_histories.find_by(event_id: event.id)
+      join_history.destroy
+   end
+
    def bookmarked?(event)
       return self.bookmark_events.include?(event)
+   end
+
+   def join_status(event)
+      if self.join_events.include?(event)
+         return self.join_histories.find_by(event_id: event.id).status
+      else
+         return false
+      end
    end
 
    def self.digest(string)
