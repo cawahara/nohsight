@@ -1,0 +1,15 @@
+<div id="join-histories-index">
+   <%= render('shared/globalnav', object: { path: 'join_histories#index', type: 'general' }) %>
+
+   <div id="join-history-selector">
+      <span>履歴の種類</span>
+      <select name="" id="">
+         <option value="">参加済み</option>
+         <option value="">参加予定</option>
+      </select>
+   </div>
+
+   <div class="section">
+      <%= render 'shared/event_articles' %>
+   </div>
+</div>

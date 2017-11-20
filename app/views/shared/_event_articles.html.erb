@@ -27,7 +27,10 @@
          <% end %>
       </ul>
    <% end %>
-   <%= render('shared/bookmark', event: event) %>
+      <div class="article-commands">
+         <%= render('shared/bookmark', event: event) %>
+         <%= render('shared/join_history_status', event: event) %>
+      </div>
    </div>
    <% end %>
 </div>

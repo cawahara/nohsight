@@ -18,7 +18,6 @@
       </div>
       <div class="tags">
          <p class="category-<%= @event.category %>"><%= @event.category_name %></p>
-         <%= render('shared/bookmark', event: @event) %>
       </div>
 
       <div class="flyers">
@@ -29,6 +28,10 @@
          <% end %>
       </div>
 
+      <div class="article-commands">
+         <%= render('shared/bookmark', event: @event) %>
+         <%= render('shared/join_history_status', event: @event) %>
+      </div>
    </div>
 
    <!-- イベント基本情報 -->
@@ -105,7 +108,7 @@
       <% end %>
    </div>
 
-   <div class="user-command">
+   <div id="bookmark-<%= @event.id %>-1" class="user-command bookmark-<%= @event.id %>">
       <% if logged? %>
       <%= button_to '公演を編集する', user_events_path(@event), method: :post %>
       <button class="bookmark" v-if="bookmarked == true" v-on:click="cancelBookmark">

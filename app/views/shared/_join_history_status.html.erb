@@ -1,0 +1,15 @@
+<div id="join-history-<%= event.id %>">
+<% if logged? %>
+   <button class="join-history-status" v-if="status.code == true" v-on:click="cancelJoinHistroy">
+      <span v-bind:class="status.class">{{ status.text }}</span>
+   </button>
+   <button class="join-history-status" v-else v-on:click="assignJoinHistroy">
+      <span v-bind:class="status.class">{{ status.text }}</span>
+   </button>
+   <%= content_tag :div,
+      class: 'event-join-histories-vue',
+      data: { id: event.id,
+              user: current_user.id,
+              status: current_user.join_status(event) }.to_json do %><% end %>
+<% end %>
+</div>
