@@ -12,4 +12,18 @@ FactoryGirl.define do
 
      status    0
   end
+
+  factory :controller_join_history, class: JoinHistory do
+     association :user, factory: :controller_user
+     association :event, factory: :controller_event
+
+     status    0
+  end
+
+  factory :different_join_history, class: JoinHistory do
+     association :user, factory: :different_user
+     association :event, factory: :different_event
+
+     status    0
+  end
 end
