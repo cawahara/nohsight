@@ -1,0 +1,2 @@
+module JoinHistoriesHelper
+end
