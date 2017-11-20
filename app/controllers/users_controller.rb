@@ -4,6 +4,7 @@ class UsersController < ApplicationController
    before_action :set_user,     only: [:show, :edit, :update, :destroy]
    before_action :logged_in?,   only: [:edit, :update, :destroy]
    before_action :logged_user?, only: [:edit, :update, :destroy]
+   before_action :change_finished_join_status, only: [:show]
 
    def new
       @user = User.new

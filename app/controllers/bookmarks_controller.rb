@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
    before_action :logged_in?,    only: [:index]
    before_action :login_by_ajax, only: [:update, :destroy]
    before_action :set_event,     only: [:update, :destroy]
+   before_action :change_finished_join_status, only: [:index]
 
    def index
       @events = current_user.bookmark_events

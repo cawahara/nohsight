@@ -45,4 +45,11 @@ class ApplicationController < ActionController::Base
       end
       return true
    end
+
+   def change_finished_join_status
+      if logged?
+         events = current_user.join_events.where("start_date < #{Time.zone.now + 1}")
+         events.update_all(status: 1)
+      end
+   end
 end
