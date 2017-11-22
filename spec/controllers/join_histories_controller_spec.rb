@@ -23,10 +23,10 @@ RSpec.describe JoinHistoriesController, type: :controller do
       it { expect(response).to have_http_status(302) }
       it { expect(response).to redirect_to(path) }
    end
-=begin
+
    describe 'GET #index' do
-      let(:user) { create(:controller_user) }
-      let!(:bookmark) { create(:controller_bookmark, user: user) }
+      let(:user) { create(:controller_user, :start_from_this) }
+      let!(:join_history) { create(:controller_join_history, user: user) }
 
       context 'accessing normally' do
          before(:each) do
@@ -34,8 +34,27 @@ RSpec.describe JoinHistoriesController, type: :controller do
             get :index
          end
 
-         it "assigns user's bookmarks" do
-            expect(assigns(:events)).to eq(user.bookmark_events)
+         it 'assigns @join_history_status as 0' do
+            expect(assigns(:join_history_status)).to eq(0)
+         end
+
+         it "assigns user's join_events filtered by join_history status 0" do
+            expect(assigns(:events)).to eq(Event.where(id: user.join_histories.where(status: 0).pluck(:event_id)))
+         end
+      end
+
+      context 'with status params' do
+         before(:each) do
+            login_as(user)
+            get :index, status: 1
+         end
+
+         it 'assigns @join_history_status as 1' do
+            expect(assigns(:join_history_status)).to eq("1")
+         end
+
+         it "assigns user's join_events filtered by join_history status 1" do
+            expect(assigns(:events)).to eq(Event.where(id: user.join_histories.where(status: 1).pluck(:event_id)))
          end
       end
 
@@ -47,7 +66,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          it_behaves_like('returning redirection response', '/login')
       end
    end
-=end
+
    describe 'PATCH #update' do
       let(:user) { create(:controller_user) }
       let(:diff_event) { create(:different_event, :start_from_this) }
