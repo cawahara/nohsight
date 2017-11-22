@@ -3,10 +3,10 @@
 
    <div id="join-history-selector">
       <span>履歴の種類</span>
-      <select name="" id="">
-         <option value="">参加済み</option>
-         <option value="">参加予定</option>
-      </select>
+      
+      <%= form_tag('join_histories', method: :get) do %>
+      <%= select_tag(:status, options_for_select(JoinHistory::STATUS.collect { |t| [t, JoinHistory::STATUS.find_index(t)] }, @join_history_status)) %>
+      <% end %>
    </div>
 
    <div class="section">
