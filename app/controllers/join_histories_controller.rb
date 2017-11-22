@@ -7,7 +7,8 @@ class JoinHistoriesController < ApplicationController
    before_action :change_finished_join_status, only: [:index]
 
    def index
-      @events = current_user.bookmark_events
+      @join_history_status = params[:status] ? params[:status] : 0
+      @events = Event.where(id: current_user.join_histories.where(status: @join_history_status).pluck(:event_id))
    end
 
    def update
