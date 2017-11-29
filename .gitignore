@@ -51,3 +51,6 @@
 # Ignore uploaded images
 /public/uploads
 /public/tmp
+
+# Ignore scraped data json file
+/db/fixtures/scraped_datas/*.json
