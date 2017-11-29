@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 User.seed do |s|
-   s.id              = 12
+   s.id              = 1
    s.name            = 'tester'
    s.email           = 'test@gmail.com'
    s.password_digest = User.digest('password')
@@ -11,7 +11,7 @@ User.seed do |s|
 end
 
 User.seed do |s|
-   s.id              = 22
+   s.id              = 2
    s.name            = 'admin_tester'
    s.email           = 'admin@gmail.com'
    s.password_digest = User.digest('password')

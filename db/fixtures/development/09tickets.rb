@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-id = 12
-event_id = 12
+id = 1
+event_id = 1
 idxs = [id, event_id]
 
 def insert_ticket_to_event(idxs, tickets)
@@ -17,9 +17,9 @@ def insert_ticket_to_event(idxs, tickets)
         s.grade = grade
         s.price = price
      end
-      id += 10
+      id += 1
    end
-   event_id += 10
+   event_id += 1
 
    idxs[0] = id
    idxs[1] = event_id
