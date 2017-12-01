@@ -79,14 +79,21 @@ RSpec.describe UserEventsController, type: :controller do
       context 'without event params' do
          before(:each) do
             login_as(user)
-            post :create
          end
 
-         it_behaves_like('occurs an error')
+         it 'occurs ActionController::UrlGenerationError' do
+            expect{ post :create }.to raise_error(ActionController::UrlGenerationError)
+         end
+
+         it 'returns status code 404' do
+            pending "it needs to get response status 404 from its controller and relative view"
+            post :create
+            expect(response).to have_http_status(404)
+         end
       end
    end
 
    describe 'DELETE #destroy' do
-      # TODO: 機能未実装の為コーディング未定
+      # REVIEW: 機能未実装の為コーディング未定
    end
 end
