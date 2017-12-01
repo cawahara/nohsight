@@ -1,133 +1,133 @@
 # frozen_string_literal: true
 
 Flyer.seed do |s|
+	s.id = 1
+   s.event_id = 3
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/03.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 2
+   s.event_id = 6
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/06.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 3
+   s.event_id = 7
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/07_1.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 4
+   s.event_id = 7
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/07_2.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 5
+   s.event_id = 8
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/08.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 6
+   s.event_id = 9
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/09.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 7
+   s.event_id = 9
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/10.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 8
+   s.event_id = 11
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/11_15.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 9
+   s.event_id = 12
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/11_15.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 10
+   s.event_id = 13
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/11_15.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 11
+   s.event_id = 14
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/11_15.jpg")
+end
+
+Flyer.seed do |s|
 	s.id = 12
-   s.event_id = 32
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/032.jpg")
+   s.event_id = 15
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/11_15.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 13
+   s.event_id = 16
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/16_1.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 14
+   s.event_id = 16
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/16_2.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 15
+   s.event_id = 17
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/17_1.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 16
+   s.event_id = 17
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/17_2.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 17
+   s.event_id = 18
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_1.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 18
+   s.event_id = 18
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_2.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 19
+   s.event_id = 19
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_1.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 20
+   s.event_id = 19
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_2.jpg")
+end
+
+Flyer.seed do |s|
+	s.id = 21
+   s.event_id = 20
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_1.jpg")
 end
 
 Flyer.seed do |s|
 	s.id = 22
-   s.event_id = 62
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/062.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 32
-   s.event_id = 72
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/072_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 42
-   s.event_id = 72
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/072_2.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 52
-   s.event_id = 82
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/082.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 62
-   s.event_id = 92
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/092.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 72
-   s.event_id = 92
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/102.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 82
-   s.event_id = 112
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 92
-   s.event_id = 122
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 102
-   s.event_id = 132
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 112
-   s.event_id = 142
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 122
-   s.event_id = 152
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/112_152.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 132
-   s.event_id = 162
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/162_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 142
-   s.event_id = 162
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/162_2.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 152
-   s.event_id = 172
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/172_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 162
-   s.event_id = 172
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/172_2.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 172
-   s.event_id = 182
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 182
-   s.event_id = 182
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 192
-   s.event_id = 192
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 202
-   s.event_id = 192
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 212
-   s.event_id = 202
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_1.jpg")
-end
-
-Flyer.seed do |s|
-	s.id = 222
-   s.event_id = 202
-   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/182_202_2.jpg")
+   s.event_id = 20
+   s.image = File.open("#{Rails.root}/db/fixtures/images/flyers/18_20_2.jpg")
 end

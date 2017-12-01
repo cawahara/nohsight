@@ -1,9513 +1,9513 @@
 # frozen_string_literal: true
 
 Performer.seed do |s|
-	s.id = 12
-	s.style_id = 12
-	s.full_name = '田茂井 廣和'
+	s.id = 1
+	s.style_id = 1
+	s.full_name = '田茂井廣和'
 	s.last_name = 'たもい'
 	s.first_name = 'ひろかず'
 end
 
 Performer.seed do |s|
-	s.id = 22
-	s.style_id = 12
-	s.full_name = '橋本 磯道'
+	s.id = 2
+	s.style_id = 1
+	s.full_name = '橋本磯道'
 	s.last_name = 'はしもと'
 	s.first_name = 'いそみち'
 end
 
 Performer.seed do |s|
-	s.id = 32
-	s.style_id = 12
-	s.full_name = '林 喜右衛門'
+	s.id = 3
+	s.style_id = 1
+	s.full_name = '林喜右衛門'
 	s.last_name = 'はやし'
 	s.first_name = 'きうえもん'
 end
 
 Performer.seed do |s|
-	s.id = 42
-	s.style_id = 12
-	s.full_name = '山田 芙紗子'
+	s.id = 4
+	s.style_id = 1
+	s.full_name = '山田芙紗子'
 	s.last_name = 'やまだ'
 	s.first_name = 'ふさこ'
 end
 
 Performer.seed do |s|
-	s.id = 52
-	s.style_id = 42
-	s.full_name = '嶋崎 暢久'
+	s.id = 5
+	s.style_id = 4
+	s.full_name = '嶋崎暢久'
 	s.last_name = 'しまざき'
 	s.first_name = 'のぶひさ'
 end
 
 Performer.seed do |s|
-	s.id = 62
-	s.style_id = 42
-	s.full_name = '豊島 晃嗣'
+	s.id = 6
+	s.style_id = 4
+	s.full_name = '豊島晃嗣'
 	s.last_name = 'てしま'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 72
-	s.style_id = 42
-	s.full_name = '豊島 幸洋'
+	s.id = 7
+	s.style_id = 4
+	s.full_name = '豊島幸洋'
 	s.last_name = 'てしま'
 	s.first_name = 'ゆきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 82
-	s.style_id = 122
-	s.full_name = '森田 光廣'
+	s.id = 8
+	s.style_id = 12
+	s.full_name = '森田光廣'
 	s.last_name = 'もりた'
 	s.first_name = 'みつひろ'
 end
 
 Performer.seed do |s|
-	s.id = 92
-	s.style_id = 142
-	s.full_name = '伊吹 吉博'
+	s.id = 9
+	s.style_id = 14
+	s.full_name = '伊吹吉博'
 	s.last_name = 'いぶき'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 102
-	s.style_id = 202
-	s.full_name = '武重 正律'
+	s.id = 10
+	s.style_id = 20
+	s.full_name = '武重正律'
 	s.last_name = 'たけしげ'
 	s.first_name = 'まさのり'
 end
 
 Performer.seed do |s|
-	s.id = 112
-	s.style_id = 92
-	s.full_name = '茂山 良暢'
+	s.id = 11
+	s.style_id = 9
+	s.full_name = '茂山良暢'
 	s.last_name = 'しげやま'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 122
-	s.style_id = 92
-	s.full_name = '田賀屋 夙'
+	s.id = 12
+	s.style_id = 9
+	s.full_name = '田賀屋夙'
 	s.last_name = 'たがや'
 	s.first_name = 'はやお'
 end
 
 Performer.seed do |s|
-	s.id = 132
-	s.style_id = 12
-	s.full_name = '会田 昇'
+	s.id = 13
+	s.style_id = 1
+	s.full_name = '会田昇'
 	s.last_name = 'あいだ'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 142
-	s.style_id = 12
-	s.full_name = '青木 一郎'
+	s.id = 14
+	s.style_id = 1
+	s.full_name = '青木一郎'
 	s.last_name = 'あおき'
 	s.first_name = 'いちろう'
 end
 
 Performer.seed do |s|
-	s.id = 152
-	s.style_id = 12
-	s.full_name = '青木 健一'
+	s.id = 15
+	s.style_id = 1
+	s.full_name = '青木健一'
 	s.last_name = 'あおき'
 	s.first_name = 'けんいち'
 end
 
 Performer.seed do |s|
-	s.id = 162
-	s.style_id = 12
-	s.full_name = '浅見 重好'
+	s.id = 16
+	s.style_id = 1
+	s.full_name = '浅見重好'
 	s.last_name = 'あさみ'
 	s.first_name = 'しげよし'
 end
 
 Performer.seed do |s|
-	s.id = 172
-	s.style_id = 12
-	s.full_name = '浅見 慈一'
+	s.id = 17
+	s.style_id = 1
+	s.full_name = '浅見慈一'
 	s.last_name = 'あさみ'
 	s.first_name = 'じいち'
 end
 
 Performer.seed do |s|
-	s.id = 182
-	s.style_id = 12
-	s.full_name = '浅見 真州'
+	s.id = 18
+	s.style_id = 1
+	s.full_name = '浅見真州'
 	s.last_name = 'あさみ'
 	s.first_name = 'まさくに'
 end
 
 Performer.seed do |s|
-	s.id = 192
-	s.style_id = 12
-	s.full_name = '阿部 信之'
+	s.id = 19
+	s.style_id = 1
+	s.full_name = '阿部信之'
 	s.last_name = 'あべ'
 	s.first_name = 'のぶゆき'
 end
 
 Performer.seed do |s|
-	s.id = 202
-	s.style_id = 12
-	s.full_name = '新井 和明'
+	s.id = 20
+	s.style_id = 1
+	s.full_name = '新井和明'
 	s.last_name = 'あらい'
 	s.first_name = 'かずあき'
 end
 
 Performer.seed do |s|
-	s.id = 212
-	s.style_id = 12
-	s.full_name = '新井 麻衣子'
+	s.id = 21
+	s.style_id = 1
+	s.full_name = '新井麻衣子'
 	s.last_name = 'あらい'
 	s.first_name = 'まいこ'
 end
 
 Performer.seed do |s|
-	s.id = 222
-	s.style_id = 12
-	s.full_name = '新江 和人'
+	s.id = 22
+	s.style_id = 1
+	s.full_name = '新江和人'
 	s.last_name = 'あらえ'
 	s.first_name = 'かずと'
 end
 
 Performer.seed do |s|
-	s.id = 232
-	s.style_id = 12
-	s.full_name = '荒木 亮'
+	s.id = 23
+	s.style_id = 1
+	s.full_name = '荒木亮'
 	s.last_name = 'あらき'
 	s.first_name = 'りょう'
 end
 
 Performer.seed do |s|
-	s.id = 242
-	s.style_id = 12
-	s.full_name = '安藤 貴康'
+	s.id = 24
+	s.style_id = 1
+	s.full_name = '安藤貴康'
 	s.last_name = 'あんどう'
 	s.first_name = 'たかやす'
 end
 
 Performer.seed do |s|
-	s.id = 252
-	s.style_id = 12
-	s.full_name = '泉 雅一郎'
+	s.id = 25
+	s.style_id = 1
+	s.full_name = '泉雅一郎'
 	s.last_name = 'いずみ'
 	s.first_name = 'まさいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 262
-	s.style_id = 12
-	s.full_name = '伊藤 嘉章'
+	s.id = 26
+	s.style_id = 1
+	s.full_name = '伊藤嘉章'
 	s.last_name = 'いとう'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 272
-	s.style_id = 12
-	s.full_name = '井上 卓夫'
+	s.id = 27
+	s.style_id = 1
+	s.full_name = '井上卓夫'
 	s.last_name = 'いのうえ'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 282
-	s.style_id = 12
-	s.full_name = '井上 燎治'
+	s.id = 28
+	s.style_id = 1
+	s.full_name = '井上燎治'
 	s.last_name = 'いのうえ'
 	s.first_name = 'りょうじ'
 end
 
 Performer.seed do |s|
-	s.id = 292
-	s.style_id = 12
-	s.full_name = '今井 泰介'
+	s.id = 29
+	s.style_id = 1
+	s.full_name = '今井泰介'
 	s.last_name = 'いまい'
 	s.first_name = 'たいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 302
-	s.style_id = 12
-	s.full_name = '岩屋 稚沙子'
+	s.id = 30
+	s.style_id = 1
+	s.full_name = '岩屋稚沙子'
 	s.last_name = 'いわや'
 	s.first_name = 'ちさこ'
 end
 
 Performer.seed do |s|
-	s.id = 312
-	s.style_id = 12
-	s.full_name = '上田 公威'
+	s.id = 31
+	s.style_id = 1
+	s.full_name = '上田公威'
 	s.last_name = 'うえだ'
 	s.first_name = 'きみたけ'
 end
 
 Performer.seed do |s|
-	s.id = 322
-	s.style_id = 12
-	s.full_name = '鵜澤 光'
+	s.id = 32
+	s.style_id = 1
+	s.full_name = '鵜澤光'
 	s.last_name = 'うざわ'
 	s.first_name = 'ひかる'
 end
 
 Performer.seed do |s|
-	s.id = 332
-	s.style_id = 12
-	s.full_name = '鵜澤 久'
+	s.id = 33
+	s.style_id = 1
+	s.full_name = '鵜澤久'
 	s.last_name = 'うざわ'
 	s.first_name = 'ひさ'
 end
 
 Performer.seed do |s|
-	s.id = 342
-	s.style_id = 12
-	s.full_name = '宇都宮 公'
+	s.id = 34
+	s.style_id = 1
+	s.full_name = '宇都宮公'
 	s.last_name = 'うつのみや'
 	s.first_name = 'ただし'
 end
 
 Performer.seed do |s|
-	s.id = 352
-	s.style_id = 12
-	s.full_name = '馬野 正基'
+	s.id = 35
+	s.style_id = 1
+	s.full_name = '馬野正基'
 	s.last_name = 'うまの'
 	s.first_name = 'まさき'
 end
 
 Performer.seed do |s|
-	s.id = 362
-	s.style_id = 12
-	s.full_name = '梅若 紀彰'
+	s.id = 36
+	s.style_id = 1
+	s.full_name = '梅若紀彰'
 	s.last_name = 'うめわか'
 	s.first_name = 'きしょう'
 end
 
 Performer.seed do |s|
-	s.id = 372
-	s.style_id = 12
-	s.full_name = '梅若 玄祥'
+	s.id = 37
+	s.style_id = 1
+	s.full_name = '梅若玄祥'
 	s.last_name = 'うめわか'
 	s.first_name = 'げんしょう'
 end
 
 Performer.seed do |s|
-	s.id = 382
-	s.style_id = 12
-	s.full_name = '梅若 修一'
+	s.id = 38
+	s.style_id = 1
+	s.full_name = '梅若修一'
 	s.last_name = 'うめわか'
 	s.first_name = 'しゅういち'
 end
 
 Performer.seed do |s|
-	s.id = 392
-	s.style_id = 12
-	s.full_name = '梅若 長左衛門'
+	s.id = 39
+	s.style_id = 1
+	s.full_name = '梅若長左衛門'
 	s.last_name = 'うめわか'
 	s.first_name = 'ちょうざえもん'
 end
 
 Performer.seed do |s|
-	s.id = 402
-	s.style_id = 12
-	s.full_name = '梅若 猶彦'
+	s.id = 40
+	s.style_id = 1
+	s.full_name = '梅若猶彦'
 	s.last_name = 'うめわか'
 	s.first_name = 'なおひこ'
 end
 
 Performer.seed do |s|
-	s.id = 412
-	s.style_id = 12
-	s.full_name = '梅若 紀長'
+	s.id = 41
+	s.style_id = 1
+	s.full_name = '梅若紀長'
 	s.last_name = 'うめわか'
 	s.first_name = 'のりなが'
 end
 
 Performer.seed do |s|
-	s.id = 422
-	s.style_id = 12
-	s.full_name = '梅若 久紀'
+	s.id = 42
+	s.style_id = 1
+	s.full_name = '梅若久紀'
 	s.last_name = 'うめわか'
 	s.first_name = 'ひさき'
 end
 
 Performer.seed do |s|
-	s.id = 432
-	s.style_id = 12
-	s.full_name = '梅若 雅一'
+	s.id = 43
+	s.style_id = 1
+	s.full_name = '梅若雅一'
 	s.last_name = 'うめわか'
 	s.first_name = 'まさかず'
 end
 
 Performer.seed do |s|
-	s.id = 442
-	s.style_id = 12
-	s.full_name = '梅若 万佐晴'
+	s.id = 44
+	s.style_id = 1
+	s.full_name = '梅若万佐晴'
 	s.last_name = 'うめわか'
 	s.first_name = 'まさはる'
 end
 
 Performer.seed do |s|
-	s.id = 452
-	s.style_id = 12
-	s.full_name = '梅若 万三郎'
+	s.id = 45
+	s.style_id = 1
+	s.full_name = '梅若万三郎'
 	s.last_name = 'うめわか'
 	s.first_name = 'まんざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 462
-	s.style_id = 12
-	s.full_name = '梅若 泰志'
+	s.id = 46
+	s.style_id = 1
+	s.full_name = '梅若泰志'
 	s.last_name = 'うめわか'
 	s.first_name = 'やすし'
 end
 
 Performer.seed do |s|
-	s.id = 472
-	s.style_id = 12
-	s.full_name = '遠藤 和久'
+	s.id = 47
+	s.style_id = 1
+	s.full_name = '遠藤和久'
 	s.last_name = 'えんどう'
 	s.first_name = 'かずひさ'
 end
 
 Performer.seed do |s|
-	s.id = 482
-	s.style_id = 12
-	s.full_name = '遠藤 喜久'
+	s.id = 48
+	s.style_id = 1
+	s.full_name = '遠藤喜久'
 	s.last_name = 'えんどう'
 	s.first_name = 'よしひさ'
 end
 
 Performer.seed do |s|
-	s.id = 492
-	s.style_id = 12
-	s.full_name = '大槻 崇充'
+	s.id = 49
+	s.style_id = 1
+	s.full_name = '大槻崇充'
 	s.last_name = 'おおつき'
 	s.first_name = 'たかみつ'
 end
 
 Performer.seed do |s|
-	s.id = 502
-	s.style_id = 12
-	s.full_name = '岡 久広'
+	s.id = 50
+	s.style_id = 1
+	s.full_name = '岡久広'
 	s.last_name = 'おか'
 	s.first_name = 'ひさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 512
-	s.style_id = 12
-	s.full_name = '岡田 晃一'
+	s.id = 51
+	s.style_id = 1
+	s.full_name = '岡田晃一'
 	s.last_name = 'おかだ'
 	s.first_name = 'こういち'
 end
 
 Performer.seed do |s|
-	s.id = 522
-	s.style_id = 12
-	s.full_name = '岡田 麗史'
+	s.id = 52
+	s.style_id = 1
+	s.full_name = '岡田麗史'
 	s.last_name = 'おかだ'
 	s.first_name = 'れいじ'
 end
 
 Performer.seed do |s|
-	s.id = 532
-	s.style_id = 12
-	s.full_name = '岡庭 祥大'
+	s.id = 53
+	s.style_id = 1
+	s.full_name = '岡庭祥大'
 	s.last_name = 'おかにわ'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 542
-	s.style_id = 12
-	s.full_name = '岡庭 善昭'
+	s.id = 54
+	s.style_id = 1
+	s.full_name = '岡庭善昭'
 	s.last_name = 'おかにわ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 552
-	s.style_id = 12
-	s.full_name = '岡本 房雄'
+	s.id = 55
+	s.style_id = 1
+	s.full_name = '岡本房雄'
 	s.last_name = 'おかもと'
 	s.first_name = 'ふさお'
 end
 
 Performer.seed do |s|
-	s.id = 562
-	s.style_id = 12
-	s.full_name = '岡本 九十九'
+	s.id = 56
+	s.style_id = 1
+	s.full_name = '岡本九十九'
 	s.last_name = 'おかもと'
 	s.first_name = 'むつむ'
 end
 
 Performer.seed do |s|
-	s.id = 572
-	s.style_id = 12
-	s.full_name = '小川 明宏'
+	s.id = 57
+	s.style_id = 1
+	s.full_name = '小川明宏'
 	s.last_name = 'おがわ'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 582
-	s.style_id = 12
-	s.full_name = '小川 博久'
+	s.id = 58
+	s.style_id = 1
+	s.full_name = '小川博久'
 	s.last_name = 'おがわ'
 	s.first_name = 'ひろひさ'
 end
 
 Performer.seed do |s|
-	s.id = 592
-	s.style_id = 12
-	s.full_name = '奥川 恒治'
+	s.id = 59
+	s.style_id = 1
+	s.full_name = '奥川恒治'
 	s.last_name = 'おくかわ'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 602
-	s.style_id = 12
-	s.full_name = '小田切 康陽'
+	s.id = 60
+	s.style_id = 1
+	s.full_name = '小田切康陽'
 	s.last_name = 'おだぎり'
 	s.first_name = 'やすはる'
 end
 
 Performer.seed do |s|
-	s.id = 612
-	s.style_id = 12
-	s.full_name = '小野 栄二'
+	s.id = 61
+	s.style_id = 1
+	s.full_name = '小野栄二'
 	s.last_name = 'おの'
 	s.first_name = 'えいじ'
 end
 
 Performer.seed do |s|
-	s.id = 622
-	s.style_id = 12
-	s.full_name = '小野寺 弘'
+	s.id = 62
+	s.style_id = 1
+	s.full_name = '小野寺弘'
 	s.last_name = 'おのでら'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 632
-	s.style_id = 12
-	s.full_name = '角当 直隆'
+	s.id = 63
+	s.style_id = 1
+	s.full_name = '角当直隆'
 	s.last_name = 'かくとう'
 	s.first_name = 'なおたか'
 end
 
 Performer.seed do |s|
-	s.id = 642
-	s.style_id = 12
-	s.full_name = '角当 行雄'
+	s.id = 64
+	s.style_id = 1
+	s.full_name = '角当行雄'
 	s.last_name = 'かくとう'
 	s.first_name = 'ゆくお'
 end
 
 Performer.seed do |s|
-	s.id = 652
-	s.style_id = 12
-	s.full_name = '河西 暁子'
+	s.id = 65
+	s.style_id = 1
+	s.full_name = '河西暁子'
 	s.last_name = 'かさい'
 	s.first_name = 'あきこ'
 end
 
 Performer.seed do |s|
-	s.id = 662
-	s.style_id = 12
-	s.full_name = '勝海 登'
+	s.id = 66
+	s.style_id = 1
+	s.full_name = '勝海登'
 	s.last_name = 'かつみ'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 672
-	s.style_id = 12
-	s.full_name = '加藤 眞悟'
+	s.id = 67
+	s.style_id = 1
+	s.full_name = '加藤眞悟'
 	s.last_name = 'かとう'
 	s.first_name = 'しんご'
 end
 
 Performer.seed do |s|
-	s.id = 682
-	s.style_id = 12
-	s.full_name = '金子 聡哉'
+	s.id = 68
+	s.style_id = 1
+	s.full_name = '金子聡哉'
 	s.last_name = 'かねこ'
 	s.first_name = 'としや'
 end
 
 Performer.seed do |s|
-	s.id = 692
-	s.style_id = 12
-	s.full_name = '河井 美紀'
+	s.id = 69
+	s.style_id = 1
+	s.full_name = '河井美紀'
 	s.last_name = 'かわい'
 	s.first_name = 'みき'
 end
 
 Performer.seed do |s|
-	s.id = 702
-	s.style_id = 12
-	s.full_name = '川口 晃平'
+	s.id = 70
+	s.style_id = 1
+	s.full_name = '川口晃平'
 	s.last_name = 'かわぐち'
 	s.first_name = 'こうへい'
 end
 
 Performer.seed do |s|
-	s.id = 712
-	s.style_id = 12
-	s.full_name = '川原 恵三'
+	s.id = 71
+	s.style_id = 1
+	s.full_name = '川原恵三'
 	s.last_name = 'かわはら'
 	s.first_name = 'けいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 722
-	s.style_id = 12
-	s.full_name = '観世 淳夫'
+	s.id = 72
+	s.style_id = 1
+	s.full_name = '観世淳夫'
 	s.last_name = 'かんぜ'
 	s.first_name = 'あつお'
 end
 
 Performer.seed do |s|
-	s.id = 732
-	s.style_id = 12
-	s.full_name = '観世 清和'
+	s.id = 73
+	s.style_id = 1
+	s.full_name = '観世清和'
 	s.last_name = 'かんぜ'
 	s.first_name = 'きよかず'
 end
 
 Performer.seed do |s|
-	s.id = 742
-	s.style_id = 12
-	s.full_name = '観世 銕之丞'
+	s.id = 74
+	s.style_id = 1
+	s.full_name = '観世銕之丞'
 	s.last_name = 'かんぜ'
 	s.first_name = 'てつのじょう'
 end
 
 Performer.seed do |s|
-	s.id = 752
-	s.style_id = 12
-	s.full_name = '観世 恭秀'
+	s.id = 75
+	s.style_id = 1
+	s.full_name = '観世恭秀'
 	s.last_name = 'かんぜ'
 	s.first_name = 'やすひで'
 end
 
 Performer.seed do |s|
-	s.id = 762
-	s.style_id = 12
-	s.full_name = '観世 芳伸'
+	s.id = 76
+	s.style_id = 1
+	s.full_name = '観世芳伸'
 	s.last_name = 'かんぜ'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 772
-	s.style_id = 12
-	s.full_name = '観世 喜正'
+	s.id = 77
+	s.style_id = 1
+	s.full_name = '観世喜正'
 	s.last_name = 'かんぜ'
 	s.first_name = 'よしまさ'
 end
 
 Performer.seed do |s|
-	s.id = 782
-	s.style_id = 12
-	s.full_name = '観世 喜之'
+	s.id = 78
+	s.style_id = 1
+	s.full_name = '観世喜之'
 	s.last_name = 'かんぜ'
 	s.first_name = 'よしゆき'
 end
 
 Performer.seed do |s|
-	s.id = 792
-	s.style_id = 12
-	s.full_name = '北浪 昭雄'
+	s.id = 79
+	s.style_id = 1
+	s.full_name = '北浪昭雄'
 	s.last_name = 'きたなみ'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 802
-	s.style_id = 12
-	s.full_name = '北浪 貴裕'
+	s.id = 80
+	s.style_id = 1
+	s.full_name = '北浪貴裕'
 	s.last_name = 'きたなみ'
 	s.first_name = 'たかひろ'
 end
 
 Performer.seed do |s|
-	s.id = 812
-	s.style_id = 12
-	s.full_name = '木月 孚行'
+	s.id = 81
+	s.style_id = 1
+	s.full_name = '木月孚行'
 	s.last_name = 'きづき'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 822
-	s.style_id = 12
-	s.full_name = '木月 章行'
+	s.id = 82
+	s.style_id = 1
+	s.full_name = '木月章行'
 	s.last_name = 'きづき'
 	s.first_name = 'としゆき'
 end
 
 Performer.seed do |s|
-	s.id = 832
-	s.style_id = 12
-	s.full_name = '木月 宣行'
+	s.id = 83
+	s.style_id = 1
+	s.full_name = '木月宣行'
 	s.last_name = 'きづき'
 	s.first_name = 'のぶゆき'
 end
 
 Performer.seed do |s|
-	s.id = 842
-	s.style_id = 12
-	s.full_name = '木原 康之'
+	s.id = 84
+	s.style_id = 1
+	s.full_name = '木原康之'
 	s.last_name = 'きはら'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 852
-	s.style_id = 12
-	s.full_name = '久保田 宏二'
+	s.id = 85
+	s.style_id = 1
+	s.full_name = '久保田宏二'
 	s.last_name = 'くぼた'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 862
-	s.style_id = 12
-	s.full_name = '熊谷 眞太郎'
+	s.id = 86
+	s.style_id = 1
+	s.full_name = '熊谷眞太郎'
 	s.last_name = 'くまがい'
 	s.first_name = 'しんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 872
-	s.style_id = 12
-	s.full_name = '桑田 貴志'
+	s.id = 87
+	s.style_id = 1
+	s.full_name = '桑田貴志'
 	s.last_name = 'くわた'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 882
-	s.style_id = 12
-	s.full_name = '小島 英明'
+	s.id = 88
+	s.style_id = 1
+	s.full_name = '小島英明'
 	s.last_name = 'こじま'
 	s.first_name = 'ひであき'
 end
 
 Performer.seed do |s|
-	s.id = 892
-	s.style_id = 12
-	s.full_name = '児玉 久治'
+	s.id = 89
+	s.style_id = 1
+	s.full_name = '児玉久治'
 	s.last_name = 'こだま'
 	s.first_name = 'きゅうじ'
 end
 
 Performer.seed do |s|
-	s.id = 902
-	s.style_id = 12
-	s.full_name = '小玉 三郎'
+	s.id = 90
+	s.style_id = 1
+	s.full_name = '小玉三郎'
 	s.last_name = 'こだま'
 	s.first_name = 'さぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 912
-	s.style_id = 12
-	s.full_name = '小早川 修'
+	s.id = 91
+	s.style_id = 1
+	s.full_name = '小早川修'
 	s.last_name = 'こばやかわ'
 	s.first_name = 'おさむ'
 end
 
 Performer.seed do |s|
-	s.id = 922
-	s.style_id = 12
-	s.full_name = '小林 恆生'
+	s.id = 92
+	s.style_id = 1
+	s.full_name = '小林恆生'
 	s.last_name = 'こばやし'
 	s.first_name = 'つねお'
 end
 
 Performer.seed do |s|
-	s.id = 932
-	s.style_id = 12
-	s.full_name = '小檜山 浩二'
+	s.id = 93
+	s.style_id = 1
+	s.full_name = '小檜山浩二'
 	s.last_name = 'こびやま'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 942
-	s.style_id = 12
-	s.full_name = '駒瀬 直也'
+	s.id = 94
+	s.style_id = 1
+	s.full_name = '駒瀬直也'
 	s.last_name = 'こませ'
 	s.first_name = 'なおや'
 end
 
 Performer.seed do |s|
-	s.id = 952
-	s.style_id = 12
-	s.full_name = '古室 知也'
+	s.id = 95
+	s.style_id = 1
+	s.full_name = '古室知也'
 	s.last_name = 'こむろ'
 	s.first_name = 'ともや'
 end
 
 Performer.seed do |s|
-	s.id = 962
-	s.style_id = 12
-	s.full_name = '郷 三枝子'
+	s.id = 96
+	s.style_id = 1
+	s.full_name = '郷三枝子'
 	s.last_name = 'ごう'
 	s.first_name = 'みえこ'
 end
 
 Performer.seed do |s|
-	s.id = 972
-	s.style_id = 12
-	s.full_name = '斎藤 比佐晃'
+	s.id = 97
+	s.style_id = 1
+	s.full_name = '斎藤比佐晃'
 	s.last_name = 'さいとう'
 	s.first_name = 'ひさてる'
 end
 
 Performer.seed do |s|
-	s.id = 982
-	s.style_id = 12
-	s.full_name = '坂井 音重'
+	s.id = 98
+	s.style_id = 1
+	s.full_name = '坂井音重'
 	s.last_name = 'さかい'
 	s.first_name = 'おとしげ'
 end
 
 Performer.seed do |s|
-	s.id = 992
-	s.style_id = 12
-	s.full_name = '坂井 音隆'
+	s.id = 99
+	s.style_id = 1
+	s.full_name = '坂井音隆'
 	s.last_name = 'さかい'
 	s.first_name = 'おとたか'
 end
 
 Performer.seed do |s|
-	s.id = 1002
-	s.style_id = 12
-	s.full_name = '坂井 音晴'
+	s.id = 100
+	s.style_id = 1
+	s.full_name = '坂井音晴'
 	s.last_name = 'さかい'
 	s.first_name = 'おとはる'
 end
 
 Performer.seed do |s|
-	s.id = 1012
-	s.style_id = 12
-	s.full_name = '坂井 音雅'
+	s.id = 101
+	s.style_id = 1
+	s.full_name = '坂井音雅'
 	s.last_name = 'さかい'
 	s.first_name = 'おとまさ'
 end
 
 Performer.seed do |s|
-	s.id = 1022
-	s.style_id = 12
-	s.full_name = '坂口 貴信'
+	s.id = 102
+	s.style_id = 1
+	s.full_name = '坂口貴信'
 	s.last_name = 'さかぐち'
 	s.first_name = 'たかのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 1032
-	s.style_id = 12
-	s.full_name = '坂本 進'
+	s.id = 103
+	s.style_id = 1
+	s.full_name = '坂本進'
 	s.last_name = 'さかもと'
 	s.first_name = 'すすむ'
 end
 
 Performer.seed do |s|
-	s.id = 1042
-	s.style_id = 12
-	s.full_name = '佐川 勝貴'
+	s.id = 104
+	s.style_id = 1
+	s.full_name = '佐川勝貴'
 	s.last_name = 'さがわ'
 	s.first_name = 'まさたか'
 end
 
 Performer.seed do |s|
-	s.id = 1052
-	s.style_id = 12
-	s.full_name = '佐久間 二郎'
+	s.id = 105
+	s.style_id = 1
+	s.full_name = '佐久間二郎'
 	s.last_name = 'さくま'
 	s.first_name = 'じろう'
 end
 
 Performer.seed do |s|
-	s.id = 1062
-	s.style_id = 12
-	s.full_name = '柴田 孝昭'
+	s.id = 106
+	s.style_id = 1
+	s.full_name = '柴田孝昭'
 	s.last_name = 'しばた'
 	s.first_name = 'たかあき'
 end
 
 Performer.seed do |s|
-	s.id = 1072
-	s.style_id = 12
-	s.full_name = '柴田 稔'
+	s.id = 107
+	s.style_id = 1
+	s.full_name = '柴田稔'
 	s.last_name = 'しばた'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 1082
-	s.style_id = 12
-	s.full_name = '清水 寛二'
+	s.id = 108
+	s.style_id = 1
+	s.full_name = '清水寛二'
 	s.last_name = 'しみず'
 	s.first_name = 'かんじ'
 end
 
 Performer.seed do |s|
-	s.id = 1092
-	s.style_id = 12
-	s.full_name = '清水 義也'
+	s.id = 109
+	s.style_id = 1
+	s.full_name = '清水義也'
 	s.last_name = 'しみず'
 	s.first_name = 'よしなり'
 end
 
 Performer.seed do |s|
-	s.id = 1102
-	s.style_id = 12
-	s.full_name = '下平 克宏'
+	s.id = 110
+	s.style_id = 1
+	s.full_name = '下平克宏'
 	s.last_name = 'しもだいら'
 	s.first_name = 'かつひろ'
 end
 
 Performer.seed do |s|
-	s.id = 1112
-	s.style_id = 12
-	s.full_name = '杉澤 陽子'
+	s.id = 111
+	s.style_id = 1
+	s.full_name = '杉澤陽子'
 	s.last_name = 'すぎさわ'
 	s.first_name = 'はるこ'
 end
 
 Performer.seed do |s|
-	s.id = 1122
-	s.style_id = 12
-	s.full_name = '鈴木 矜子'
+	s.id = 112
+	s.style_id = 1
+	s.full_name = '鈴木矜子'
 	s.last_name = 'すずき'
 	s.first_name = 'きょうこ'
 end
 
 Performer.seed do |s|
-	s.id = 1132
-	s.style_id = 12
-	s.full_name = '鈴木 啓吾'
+	s.id = 113
+	s.style_id = 1
+	s.full_name = '鈴木啓吾'
 	s.last_name = 'すずき'
 	s.first_name = 'けいご'
 end
 
 Performer.seed do |s|
-	s.id = 1142
-	s.style_id = 12
-	s.full_name = '鷲見 敦子'
+	s.id = 114
+	s.style_id = 1
+	s.full_name = '鷲見敦子'
 	s.last_name = 'すみ'
 	s.first_name = 'あつこ'
 end
 
 Performer.seed do |s|
-	s.id = 1152
-	s.style_id = 12
-	s.full_name = '墨 敬子'
+	s.id = 115
+	s.style_id = 1
+	s.full_name = '墨敬子'
 	s.last_name = 'すみ'
 	s.first_name = 'けいこ'
 end
 
 Performer.seed do |s|
-	s.id = 1162
-	s.style_id = 12
-	s.full_name = '角 幸二郎'
+	s.id = 116
+	s.style_id = 1
+	s.full_name = '角幸二郎'
 	s.last_name = 'すみ'
 	s.first_name = 'こうじろう'
 end
 
 Performer.seed do |s|
-	s.id = 1172
-	s.style_id = 12
-	s.full_name = '角 寛次朗'
+	s.id = 117
+	s.style_id = 1
+	s.full_name = '角寛次朗'
 	s.last_name = 'すみ'
 	s.first_name = 'ひろじろう'
 end
 
 Performer.seed do |s|
-	s.id = 1182
-	s.style_id = 12
-	s.full_name = '関根 知孝'
+	s.id = 118
+	s.style_id = 1
+	s.full_name = '関根知孝'
 	s.last_name = 'せきね'
 	s.first_name = 'ともたか'
 end
 
 Performer.seed do |s|
-	s.id = 1192
-	s.style_id = 12
-	s.full_name = '髙梨 万里'
+	s.id = 119
+	s.style_id = 1
+	s.full_name = '髙梨万里'
 	s.last_name = 'たかなし'
 	s.first_name = 'ばんり'
 end
 
 Performer.seed do |s|
-	s.id = 1202
-	s.style_id = 12
-	s.full_name = '髙梨 良一'
+	s.id = 120
+	s.style_id = 1
+	s.full_name = '髙梨良一'
 	s.last_name = 'たかなし'
 	s.first_name = 'りょういち'
 end
 
 Performer.seed do |s|
-	s.id = 1212
-	s.style_id = 12
-	s.full_name = '髙橋 栄子'
+	s.id = 121
+	s.style_id = 1
+	s.full_name = '髙橋栄子'
 	s.last_name = 'たかはし'
 	s.first_name = 'えいこ'
 end
 
 Performer.seed do |s|
-	s.id = 1222
-	s.style_id = 12
-	s.full_name = '武田 友志'
+	s.id = 122
+	s.style_id = 1
+	s.full_name = '武田友志'
 	s.last_name = 'たけだ'
 	s.first_name = 'ともゆき'
 end
 
 Performer.seed do |s|
-	s.id = 1232
-	s.style_id = 12
-	s.full_name = '武田 尚浩'
+	s.id = 123
+	s.style_id = 1
+	s.full_name = '武田尚浩'
 	s.last_name = 'たけだ'
 	s.first_name = 'なおひろ'
 end
 
 Performer.seed do |s|
-	s.id = 1242
-	s.style_id = 12
-	s.full_name = '武田 文志'
+	s.id = 124
+	s.style_id = 1
+	s.full_name = '武田文志'
 	s.last_name = 'たけだ'
 	s.first_name = 'ふみゆき'
 end
 
 Performer.seed do |s|
-	s.id = 1252
-	s.style_id = 12
-	s.full_name = '武田 宗和'
+	s.id = 125
+	s.style_id = 1
+	s.full_name = '武田宗和'
 	s.last_name = 'たけだ'
 	s.first_name = 'むねかず'
 end
 
 Performer.seed do |s|
-	s.id = 1262
-	s.style_id = 12
-	s.full_name = '武田 宗典'
+	s.id = 126
+	s.style_id = 1
+	s.full_name = '武田宗典'
 	s.last_name = 'たけだ'
 	s.first_name = 'むねのり'
 end
 
 Performer.seed do |s|
-	s.id = 1272
-	s.style_id = 12
-	s.full_name = '武田 志房'
+	s.id = 127
+	s.style_id = 1
+	s.full_name = '武田志房'
 	s.last_name = 'たけだ'
 	s.first_name = 'ゆきふさ'
 end
 
 Performer.seed do |s|
-	s.id = 1282
-	s.style_id = 12
-	s.full_name = '竹前 治房'
+	s.id = 128
+	s.style_id = 1
+	s.full_name = '竹前治房'
 	s.last_name = 'たけまえ'
 	s.first_name = 'はるふさ'
 end
 
 Performer.seed do |s|
-	s.id = 1292
-	s.style_id = 12
-	s.full_name = '田邉 哲久'
+	s.id = 129
+	s.style_id = 1
+	s.full_name = '田邉哲久'
 	s.last_name = 'たなべ'
 	s.first_name = 'てつひさ'
 end
 
 Performer.seed do |s|
-	s.id = 1302
-	s.style_id = 12
-	s.full_name = '谷村 一太郎'
+	s.id = 130
+	s.style_id = 1
+	s.full_name = '谷村一太郎'
 	s.last_name = 'たにむら'
 	s.first_name = 'いちたろう'
 end
 
 Performer.seed do |s|
-	s.id = 1312
-	s.style_id = 12
-	s.full_name = '谷本 健吾'
+	s.id = 131
+	s.style_id = 1
+	s.full_name = '谷本健吾'
 	s.last_name = 'たにもと'
 	s.first_name = 'けんご'
 end
 
 Performer.seed do |s|
-	s.id = 1322
-	s.style_id = 12
-	s.full_name = '大松 洋一'
+	s.id = 132
+	s.style_id = 1
+	s.full_name = '大松洋一'
 	s.last_name = 'だいまつ'
 	s.first_name = 'よういち'
 end
 
 Performer.seed do |s|
-	s.id = 1332
-	s.style_id = 12
-	s.full_name = '塚田 章'
+	s.id = 133
+	s.style_id = 1
+	s.full_name = '塚田章'
 	s.last_name = 'つかだ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 1342
-	s.style_id = 12
-	s.full_name = '津田 和忠'
+	s.id = 134
+	s.style_id = 1
+	s.full_name = '津田和忠'
 	s.last_name = 'つだ'
 	s.first_name = 'かずただ'
 end
 
 Performer.seed do |s|
-	s.id = 1352
-	s.style_id = 12
-	s.full_name = '津田 和佳'
+	s.id = 135
+	s.style_id = 1
+	s.full_name = '津田和佳'
 	s.last_name = 'つだ'
 	s.first_name = 'かずよし'
 end
 
 Performer.seed do |s|
-	s.id = 1362
-	s.style_id = 12
-	s.full_name = '土田 英貴'
+	s.id = 136
+	s.style_id = 1
+	s.full_name = '土田英貴'
 	s.last_name = 'つちだ'
 	s.first_name = 'ひでたか'
 end
 
 Performer.seed do |s|
-	s.id = 1372
-	s.style_id = 12
-	s.full_name = '坪内 芘路之'
+	s.id = 137
+	s.style_id = 1
+	s.full_name = '坪内芘路之'
 	s.last_name = 'つぼうち'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 1382
-	s.style_id = 12
-	s.full_name = '津村 聡子'
+	s.id = 138
+	s.style_id = 1
+	s.full_name = '津村聡子'
 	s.last_name = 'つむら'
 	s.first_name = 'さとこ'
 end
 
 Performer.seed do |s|
-	s.id = 1392
-	s.style_id = 12
-	s.full_name = '津村 禮次郎'
+	s.id = 139
+	s.style_id = 1
+	s.full_name = '津村禮次郎'
 	s.last_name = 'つむら'
 	s.first_name = 'れいじろう'
 end
 
 Performer.seed do |s|
-	s.id = 1402
-	s.style_id = 12
-	s.full_name = '寺井 榮'
+	s.id = 140
+	s.style_id = 1
+	s.full_name = '寺井榮'
 	s.last_name = 'てらい'
 	s.first_name = 'さかえ'
 end
 
 Performer.seed do |s|
-	s.id = 1412
-	s.style_id = 12
-	s.full_name = '寺井 千景'
+	s.id = 141
+	s.style_id = 1
+	s.full_name = '寺井千景'
 	s.last_name = 'てらい'
 	s.first_name = 'ちかげ'
 end
 
 Performer.seed do |s|
-	s.id = 1422
-	s.style_id = 12
-	s.full_name = '遠田 修'
+	s.id = 142
+	s.style_id = 1
+	s.full_name = '遠田修'
 	s.last_name = 'とおだ'
 	s.first_name = 'おさむ'
 end
 
 Performer.seed do |s|
-	s.id = 1432
-	s.style_id = 12
-	s.full_name = '富田 雅子'
+	s.id = 143
+	s.style_id = 1
+	s.full_name = '富田雅子'
 	s.last_name = 'とみた'
 	s.first_name = 'まさこ'
 end
 
 Performer.seed do |s|
-	s.id = 1442
-	s.style_id = 12
-	s.full_name = '内藤 幸雄'
+	s.id = 144
+	s.style_id = 1
+	s.full_name = '内藤幸雄'
 	s.last_name = 'ないとう'
 	s.first_name = 'ゆきお'
 end
 
 Performer.seed do |s|
-	s.id = 1452
-	s.style_id = 12
-	s.full_name = '中島 志津夫'
+	s.id = 145
+	s.style_id = 1
+	s.full_name = '中島志津夫'
 	s.last_name = 'なかしま'
 	s.first_name = 'しずお'
 end
 
 Performer.seed do |s|
-	s.id = 1462
-	s.style_id = 12
-	s.full_name = '中所 宜夫'
+	s.id = 146
+	s.style_id = 1
+	s.full_name = '中所宜夫'
 	s.last_name = 'なかしょ'
 	s.first_name = 'のぶお'
 end
 
 Performer.seed do |s|
-	s.id = 1472
-	s.style_id = 12
-	s.full_name = '中森 貫太'
+	s.id = 147
+	s.style_id = 1
+	s.full_name = '中森貫太'
 	s.last_name = 'なかもり'
 	s.first_name = 'かんた'
 end
 
 Performer.seed do |s|
-	s.id = 1482
-	s.style_id = 12
-	s.full_name = '中家 実'
+	s.id = 148
+	s.style_id = 1
+	s.full_name = '中家実'
 	s.last_name = 'なかや'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 1492
-	s.style_id = 12
-	s.full_name = '中山 清野'
+	s.id = 149
+	s.style_id = 1
+	s.full_name = '中山清野'
 	s.last_name = 'なかやま'
 	s.first_name = 'きよの'
 end
 
 Performer.seed do |s|
-	s.id = 1502
-	s.style_id = 12
-	s.full_name = '永島 忠侈'
+	s.id = 150
+	s.style_id = 1
+	s.full_name = '永島忠侈'
 	s.last_name = 'ながしま'
 	s.first_name = 'ただし'
 end
 
 Performer.seed do |s|
-	s.id = 1512
-	s.style_id = 12
-	s.full_name = '永島 充'
+	s.id = 151
+	s.style_id = 1
+	s.full_name = '永島充'
 	s.last_name = 'ながしま'
 	s.first_name = 'みつる'
 end
 
 Performer.seed do |s|
-	s.id = 1522
-	s.style_id = 12
-	s.full_name = '長宗 敦子'
+	s.id = 152
+	s.style_id = 1
+	s.full_name = '長宗敦子'
 	s.last_name = 'ながむね'
 	s.first_name = 'あつこ'
 end
 
 Performer.seed do |s|
-	s.id = 1532
-	s.style_id = 12
-	s.full_name = '長山 桂三'
+	s.id = 153
+	s.style_id = 1
+	s.full_name = '長山桂三'
 	s.last_name = 'ながやま'
 	s.first_name = 'けいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 1542
-	s.style_id = 12
-	s.full_name = '西村 高夫'
+	s.id = 154
+	s.style_id = 1
+	s.full_name = '西村高夫'
 	s.last_name = 'にしむら'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 1552
-	s.style_id = 12
-	s.full_name = '野崎 美歩'
+	s.id = 155
+	s.style_id = 1
+	s.full_name = '野崎美歩'
 	s.last_name = 'のざき'
 	s.first_name = 'みほ'
 end
 
 Performer.seed do |s|
-	s.id = 1562
-	s.style_id = 12
-	s.full_name = '野村 四郎'
+	s.id = 156
+	s.style_id = 1
+	s.full_name = '野村四郎'
 	s.last_name = 'のむら'
 	s.first_name = 'しろう'
 end
 
 Performer.seed do |s|
-	s.id = 1572
-	s.style_id = 12
-	s.full_name = '野村 昌司'
+	s.id = 157
+	s.style_id = 1
+	s.full_name = '野村昌司'
 	s.last_name = 'のむら'
 	s.first_name = 'まさし'
 end
 
 Performer.seed do |s|
-	s.id = 1582
-	s.style_id = 12
-	s.full_name = '萩原 義雄'
+	s.id = 158
+	s.style_id = 1
+	s.full_name = '萩原義雄'
 	s.last_name = 'はぎわら'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 1592
-	s.style_id = 12
-	s.full_name = '橋岡 久太郎'
+	s.id = 159
+	s.style_id = 1
+	s.full_name = '橋岡久太郎'
 	s.last_name = 'はしおか'
 	s.first_name = 'きゅうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 1602
-	s.style_id = 12
-	s.full_name = '橋岡 伸明'
+	s.id = 160
+	s.style_id = 1
+	s.full_name = '橋岡伸明'
 	s.last_name = 'はしおか'
 	s.first_name = 'のぶあき'
 end
 
 Performer.seed do |s|
-	s.id = 1612
-	s.style_id = 12
-	s.full_name = '長谷川 晴彦'
+	s.id = 161
+	s.style_id = 1
+	s.full_name = '長谷川晴彦'
 	s.last_name = 'はせがわ'
 	s.first_name = 'はるひこ'
 end
 
 Performer.seed do |s|
-	s.id = 1622
-	s.style_id = 12
-	s.full_name = '八田 達弥'
+	s.id = 162
+	s.style_id = 1
+	s.full_name = '八田達弥'
 	s.last_name = 'はった'
 	s.first_name = 'たつや'
 end
 
 Performer.seed do |s|
-	s.id = 1632
-	s.style_id = 12
-	s.full_name = '坂 真太郎'
+	s.id = 163
+	s.style_id = 1
+	s.full_name = '坂真太郎'
 	s.last_name = 'ばん'
 	s.first_name = 'しんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 1642
-	s.style_id = 12
-	s.full_name = '坂東 愛子'
+	s.id = 164
+	s.style_id = 1
+	s.full_name = '坂東愛子'
 	s.last_name = 'ばんどう'
 	s.first_name = 'あいこ'
 end
 
 Performer.seed do |s|
-	s.id = 1652
-	s.style_id = 12
-	s.full_name = '弘田 裕一'
+	s.id = 165
+	s.style_id = 1
+	s.full_name = '弘田裕一'
 	s.last_name = 'ひろた'
 	s.first_name = 'ゆういち'
 end
 
 Performer.seed do |s|
-	s.id = 1662
-	s.style_id = 12
-	s.full_name = '福代 綏子'
+	s.id = 166
+	s.style_id = 1
+	s.full_name = '福代綏子'
 	s.last_name = 'ふくしろ'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 1672
-	s.style_id = 12
-	s.full_name = '藤田 智子'
+	s.id = 167
+	s.style_id = 1
+	s.full_name = '藤田智子'
 	s.last_name = 'ふじた'
 	s.first_name = 'ともこ'
 end
 
 Performer.seed do |s|
-	s.id = 1682
-	s.style_id = 12
-	s.full_name = '藤波 重和'
+	s.id = 168
+	s.style_id = 1
+	s.full_name = '藤波重和'
 	s.last_name = 'ふじなみ'
 	s.first_name = 'しげかず'
 end
 
 Performer.seed do |s|
-	s.id = 1692
-	s.style_id = 12
-	s.full_name = '藤波 重孝'
+	s.id = 169
+	s.style_id = 1
+	s.full_name = '藤波重孝'
 	s.last_name = 'ふじなみ'
 	s.first_name = 'しげたか'
 end
 
 Performer.seed do |s|
-	s.id = 1702
-	s.style_id = 12
-	s.full_name = '藤波 重彦'
+	s.id = 170
+	s.style_id = 1
+	s.full_name = '藤波重彦'
 	s.last_name = 'ふじなみ'
 	s.first_name = 'しげひこ'
 end
 
 Performer.seed do |s|
-	s.id = 1712
-	s.style_id = 12
-	s.full_name = '藤村 答'
+	s.id = 171
+	s.style_id = 1
+	s.full_name = '藤村答'
 	s.last_name = 'ふじむら'
 	s.first_name = 'あつし'
 end
 
 Performer.seed do |s|
-	s.id = 1722
-	s.style_id = 12
-	s.full_name = '古枝 良子'
+	s.id = 172
+	s.style_id = 1
+	s.full_name = '古枝良子'
 	s.last_name = 'ふるえだ'
 	s.first_name = 'りょうこ'
 end
 
 Performer.seed do |s|
-	s.id = 1732
-	s.style_id = 12
-	s.full_name = '古澤 幸正'
+	s.id = 173
+	s.style_id = 1
+	s.full_name = '古澤幸正'
 	s.last_name = 'ふるさわ'
 	s.first_name = 'ゆきまさ'
 end
 
 Performer.seed do |s|
-	s.id = 1742
-	s.style_id = 12
-	s.full_name = '古橋 美香'
+	s.id = 174
+	s.style_id = 1
+	s.full_name = '古橋美香'
 	s.last_name = 'ふるはし'
 	s.first_name = 'みか'
 end
 
 Performer.seed do |s|
-	s.id = 1752
-	s.style_id = 12
-	s.full_name = '本田 博保'
+	s.id = 175
+	s.style_id = 1
+	s.full_name = '本田博保'
 	s.last_name = 'ほんだ'
 	s.first_name = 'ひろやす'
 end
 
 Performer.seed do |s|
-	s.id = 1762
-	s.style_id = 12
-	s.full_name = '松木 千俊'
+	s.id = 176
+	s.style_id = 1
+	s.full_name = '松木千俊'
 	s.last_name = 'まつき'
 	s.first_name = 'ちとし'
 end
 
 Performer.seed do |s|
-	s.id = 1772
-	s.style_id = 12
-	s.full_name = '松田 憲二'
+	s.id = 177
+	s.style_id = 1
+	s.full_name = '松田憲二'
 	s.last_name = 'まつだ'
 	s.first_name = 'けんじ'
 end
 
 Performer.seed do |s|
-	s.id = 1782
-	s.style_id = 12
-	s.full_name = '松本 尚之'
+	s.id = 178
+	s.style_id = 1
+	s.full_name = '松本尚之'
 	s.last_name = 'まつもと'
 	s.first_name = 'なおゆき'
 end
 
 Performer.seed do |s|
-	s.id = 1792
-	s.style_id = 12
-	s.full_name = '松山 隆雄'
+	s.id = 179
+	s.style_id = 1
+	s.full_name = '松山隆雄'
 	s.last_name = 'まつやま'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 1802
-	s.style_id = 12
-	s.full_name = '松山 隆之'
+	s.id = 180
+	s.style_id = 1
+	s.full_name = '松山隆之'
 	s.last_name = 'まつやま'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 1812
-	s.style_id = 12
-	s.full_name = '光岡 良典'
+	s.id = 181
+	s.style_id = 1
+	s.full_name = '光岡良典'
 	s.last_name = 'みつおか'
 	s.first_name = 'よしのり'
 end
 
 Performer.seed do |s|
-	s.id = 1822
-	s.style_id = 12
-	s.full_name = '宮内 美樹'
+	s.id = 182
+	s.style_id = 1
+	s.full_name = '宮内美樹'
 	s.last_name = 'みやうち'
 	s.first_name = 'みき'
 end
 
 Performer.seed do |s|
-	s.id = 1832
-	s.style_id = 12
-	s.full_name = '三吉 徹子'
+	s.id = 183
+	s.style_id = 1
+	s.full_name = '三吉徹子'
 	s.last_name = 'みよし'
 	s.first_name = 'てつこ'
 end
 
 Performer.seed do |s|
-	s.id = 1842
-	s.style_id = 12
-	s.full_name = '山内 貞一'
+	s.id = 184
+	s.style_id = 1
+	s.full_name = '山内貞一'
 	s.last_name = 'やまうち'
 	s.first_name = 'さだいち'
 end
 
 Performer.seed do |s|
-	s.id = 1852
-	s.style_id = 12
-	s.full_name = '山崎 正道'
+	s.id = 185
+	s.style_id = 1
+	s.full_name = '山崎正道'
 	s.last_name = 'やまざき'
 	s.first_name = 'まさみち'
 end
 
 Performer.seed do |s|
-	s.id = 1862
-	s.style_id = 12
+	s.id = 186
+	s.style_id = 1
 	s.full_name = '山﨑 佑司'
 	s.last_name = 'やまざき'
 	s.first_name = 'ゆうじ'
 end
 
 Performer.seed do |s|
-	s.id = 1872
-	s.style_id = 12
-	s.full_name = '山階 彌右衛門'
+	s.id = 187
+	s.style_id = 1
+	s.full_name = '山階彌右衛門'
 	s.last_name = 'やましな'
 	s.first_name = 'やえもん'
 end
 
 Performer.seed do |s|
-	s.id = 1882
-	s.style_id = 12
-	s.full_name = '山階 弥次'
+	s.id = 188
+	s.style_id = 1
+	s.full_name = '山階弥次'
 	s.last_name = 'やましな'
 	s.first_name = 'やじ'
 end
 
 Performer.seed do |s|
-	s.id = 1892
-	s.style_id = 12
-	s.full_name = '山中 迓晶'
+	s.id = 189
+	s.style_id = 1
+	s.full_name = '山中迓晶'
 	s.last_name = 'やまなか'
 	s.first_name = 'がしょう'
 end
 
 Performer.seed do |s|
-	s.id = 1902
-	s.style_id = 12
-	s.full_name = '山村 庸子'
+	s.id = 190
+	s.style_id = 1
+	s.full_name = '山村庸子'
 	s.last_name = 'やまむら'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 1912
-	s.style_id = 12
-	s.full_name = '山本 順之'
+	s.id = 191
+	s.style_id = 1
+	s.full_name = '山本順之'
 	s.last_name = 'やまもと'
 	s.first_name = 'のぶゆき'
 end
 
 Performer.seed do |s|
-	s.id = 1922
-	s.style_id = 12
-	s.full_name = '吉留 敬高'
+	s.id = 192
+	s.style_id = 1
+	s.full_name = '吉留敬高'
 	s.last_name = 'よしとめ'
 	s.first_name = 'ひろたか'
 end
 
 Performer.seed do |s|
-	s.id = 1932
-	s.style_id = 12
-	s.full_name = '依田 明子'
+	s.id = 193
+	s.style_id = 1
+	s.full_name = '依田明子'
 	s.last_name = 'よだ'
 	s.first_name = 'あきこ'
 end
 
 Performer.seed do |s|
-	s.id = 1942
-	s.style_id = 12
-	s.full_name = '伶以野 陽子'
+	s.id = 194
+	s.style_id = 1
+	s.full_name = '伶以野陽子'
 	s.last_name = 'れいや'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 1952
-	s.style_id = 12
-	s.full_name = '渡邊 洋子'
+	s.id = 195
+	s.style_id = 1
+	s.full_name = '渡邊洋子'
 	s.last_name = 'わたなべ'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 1962
-	s.style_id = 32
-	s.full_name = '青木 伸夫'
+	s.id = 196
+	s.style_id = 3
+	s.full_name = '青木伸夫'
 	s.last_name = 'あおき'
 	s.first_name = 'のぶお'
 end
 
 Performer.seed do |s|
-	s.id = 1972
-	s.style_id = 32
-	s.full_name = '畦上 恭彦'
+	s.id = 197
+	s.style_id = 3
+	s.full_name = '畦上恭彦'
 	s.last_name = 'あぜがみ'
 	s.first_name = 'やすひこ'
 end
 
 Performer.seed do |s|
-	s.id = 1982
-	s.style_id = 32
-	s.full_name = '安達 裕香'
+	s.id = 198
+	s.style_id = 3
+	s.full_name = '安達裕香'
 	s.last_name = 'あだち'
 	s.first_name = 'ゆうか'
 end
 
 Performer.seed do |s|
-	s.id = 1992
-	s.style_id = 32
-	s.full_name = '飯田 芳伸'
+	s.id = 199
+	s.style_id = 3
+	s.full_name = '飯田芳伸'
 	s.last_name = 'いいだ'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 2002
-	s.style_id = 32
-	s.full_name = '伊藤 眞也'
+	s.id = 200
+	s.style_id = 3
+	s.full_name = '伊藤眞也'
 	s.last_name = 'いとう'
 	s.first_name = 'しんや'
 end
 
 Performer.seed do |s|
-	s.id = 2012
-	s.style_id = 32
-	s.full_name = '井上 貴覚'
+	s.id = 201
+	s.style_id = 3
+	s.full_name = '井上貴覚'
 	s.last_name = 'いのうえ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 2022
-	s.style_id = 32
-	s.full_name = '今井 節子'
+	s.id = 202
+	s.style_id = 3
+	s.full_name = '今井節子'
 	s.last_name = 'いまい'
 	s.first_name = 'せつこ'
 end
 
 Performer.seed do |s|
-	s.id = 2032
-	s.style_id = 32
-	s.full_name = '岩松 由実'
+	s.id = 203
+	s.style_id = 3
+	s.full_name = '岩松由実'
 	s.last_name = 'いわまつ'
 	s.first_name = 'ゆみ'
 end
 
 Performer.seed do |s|
-	s.id = 2042
-	s.style_id = 32
-	s.full_name = '岩谷 捷代'
+	s.id = 204
+	s.style_id = 3
+	s.full_name = '岩谷捷代'
 	s.last_name = 'いわや'
 	s.first_name = 'かつよ'
 end
 
 Performer.seed do |s|
-	s.id = 2052
-	s.style_id = 32
-	s.full_name = '上野 寧子'
+	s.id = 205
+	s.style_id = 3
+	s.full_name = '上野寧子'
 	s.last_name = 'うえの'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 2062
-	s.style_id = 32
-	s.full_name = '内田 善昭'
+	s.id = 206
+	s.style_id = 3
+	s.full_name = '内田善昭'
 	s.last_name = 'うちだ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 2072
-	s.style_id = 32
-	s.full_name = '梅井 みつ子'
+	s.id = 207
+	s.style_id = 3
+	s.full_name = '梅井みつ子'
 	s.last_name = 'うめい'
 	s.first_name = 'みつこ'
 end
 
 Performer.seed do |s|
-	s.id = 2082
-	s.style_id = 32
-	s.full_name = '大澤 久美子'
+	s.id = 208
+	s.style_id = 3
+	s.full_name = '大澤久美子'
 	s.last_name = 'おおさわ'
 	s.first_name = 'くみこ'
 end
 
 Performer.seed do |s|
-	s.id = 2092
-	s.style_id = 32
-	s.full_name = '太田 直道'
+	s.id = 209
+	s.style_id = 3
+	s.full_name = '太田直道'
 	s.last_name = 'おおた'
 	s.first_name = 'なおみち'
 end
 
 Performer.seed do |s|
-	s.id = 2102
-	s.style_id = 32
-	s.full_name = '大塚 龍一郎'
+	s.id = 210
+	s.style_id = 3
+	s.full_name = '大塚龍一郎'
 	s.last_name = 'おおつか'
 	s.first_name = 'りゅういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 2112
-	s.style_id = 32
-	s.full_name = '荻野 将盛'
+	s.id = 211
+	s.style_id = 3
+	s.full_name = '荻野将盛'
 	s.last_name = 'おぎの'
 	s.first_name = 'まさもり'
 end
 
 Performer.seed do |s|
-	s.id = 2122
-	s.style_id = 32
-	s.full_name = '柿沼 義孝'
+	s.id = 212
+	s.style_id = 3
+	s.full_name = '柿沼義孝'
 	s.last_name = 'かきぬま'
 	s.first_name = 'よしたか'
 end
 
 Performer.seed do |s|
-	s.id = 2132
-	s.style_id = 32
-	s.full_name = '柏崎 真由子'
+	s.id = 213
+	s.style_id = 3
+	s.full_name = '柏崎真由子'
 	s.last_name = 'かしわざき'
 	s.first_name = 'まゆこ'
 end
 
 Performer.seed do |s|
-	s.id = 2142
-	s.style_id = 32
-	s.full_name = '金崎 史子'
+	s.id = 214
+	s.style_id = 3
+	s.full_name = '金崎史子'
 	s.last_name = 'かねざき'
 	s.first_name = 'ふみこ'
 end
 
 Performer.seed do |s|
-	s.id = 2152
-	s.style_id = 32
-	s.full_name = '鎌田 氏勝'
+	s.id = 215
+	s.style_id = 3
+	s.full_name = '鎌田氏勝'
 	s.last_name = 'かまた'
 	s.first_name = 'うじかつ'
 end
 
 Performer.seed do |s|
-	s.id = 2162
-	s.style_id = 32
-	s.full_name = '河田 玲之'
+	s.id = 216
+	s.style_id = 3
+	s.full_name = '河田玲之'
 	s.last_name = 'かわた'
 	s.first_name = 'れいじ'
 end
 
 Performer.seed do |s|
-	s.id = 2172
-	s.style_id = 32
-	s.full_name = '北山 春彦'
+	s.id = 217
+	s.style_id = 3
+	s.full_name = '北山春彦'
 	s.last_name = 'きたやま'
 	s.first_name = 'はるひこ'
 end
 
 Performer.seed do |s|
-	s.id = 2182
-	s.style_id = 32
-	s.full_name = '久保田 葵美'
+	s.id = 218
+	s.style_id = 3
+	s.full_name = '久保田葵美'
 	s.last_name = 'くぼた'
 	s.first_name = 'きみ'
 end
 
 Performer.seed do |s|
-	s.id = 2192
-	s.style_id = 32
-	s.full_name = '桑原 朗'
+	s.id = 219
+	s.style_id = 3
+	s.full_name = '桑原朗'
 	s.last_name = 'くわばら'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 2202
-	s.style_id = 32
-	s.full_name = '金春 欣三'
+	s.id = 220
+	s.style_id = 3
+	s.full_name = '金春欣三'
 	s.last_name = 'こんぱる'
 	s.first_name = 'きんぞう'
 end
 
 Performer.seed do |s|
-	s.id = 2212
-	s.style_id = 32
-	s.full_name = '金春 憲和'
+	s.id = 221
+	s.style_id = 3
+	s.full_name = '金春憲和'
 	s.last_name = 'こんぱる'
 	s.first_name = 'のりかず'
 end
 
 Performer.seed do |s|
-	s.id = 2222
-	s.style_id = 32
-	s.full_name = '金春 安明'
+	s.id = 222
+	s.style_id = 3
+	s.full_name = '金春安明'
 	s.last_name = 'こんぱる'
 	s.first_name = 'やすあき'
 end
 
 Performer.seed do |s|
-	s.id = 2232
-	s.style_id = 32
-	s.full_name = '後藤 和也'
+	s.id = 223
+	s.style_id = 3
+	s.full_name = '後藤和也'
 	s.last_name = 'ごとう'
 	s.first_name = 'かずや'
 end
 
 Performer.seed do |s|
-	s.id = 2242
-	s.style_id = 32
-	s.full_name = '櫻間 右陣'
+	s.id = 224
+	s.style_id = 3
+	s.full_name = '櫻間右陣'
 	s.last_name = 'さくらま'
 	s.first_name = 'うじん'
 end
 
 Performer.seed do |s|
-	s.id = 2252
-	s.style_id = 32
-	s.full_name = '櫻間 金記'
+	s.id = 225
+	s.style_id = 3
+	s.full_name = '櫻間金記'
 	s.last_name = 'さくらま'
 	s.first_name = 'きんき'
 end
 
 Performer.seed do |s|
-	s.id = 2262
-	s.style_id = 32
-	s.full_name = '櫻間 宣行'
+	s.id = 226
+	s.style_id = 3
+	s.full_name = '櫻間宣行'
 	s.last_name = 'さくらま'
 	s.first_name = 'のりゆき'
 end
 
 Performer.seed do |s|
-	s.id = 2272
-	s.style_id = 32
-	s.full_name = '志賀 朝男'
+	s.id = 227
+	s.style_id = 3
+	s.full_name = '志賀朝男'
 	s.last_name = 'しが'
 	s.first_name = 'あさお'
 end
 
 Performer.seed do |s|
-	s.id = 2282
-	s.style_id = 32
+	s.id = 228
+	s.style_id = 3
 	s.full_name = '芝﨑 眞理'
 	s.last_name = 'しばさき'
 	s.first_name = 'しんり'
 end
 
 Performer.seed do |s|
-	s.id = 2292
-	s.style_id = 32
-	s.full_name = '柴田 健一'
+	s.id = 229
+	s.style_id = 3
+	s.full_name = '柴田健一'
 	s.last_name = 'しばた'
 	s.first_name = 'けんいち'
 end
 
 Performer.seed do |s|
-	s.id = 2302
-	s.style_id = 32
-	s.full_name = '柴山 暁'
+	s.id = 230
+	s.style_id = 3
+	s.full_name = '柴山暁'
 	s.last_name = 'しばやま'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 2312
-	s.style_id = 32
-	s.full_name = '庄司 友芳'
+	s.id = 231
+	s.style_id = 3
+	s.full_name = '庄司友芳'
 	s.last_name = 'しょうじ'
 	s.first_name = 'ともよし'
 end
 
 Performer.seed do |s|
-	s.id = 2322
-	s.style_id = 32
-	s.full_name = '杉井 久信'
+	s.id = 232
+	s.style_id = 3
+	s.full_name = '杉井久信'
 	s.last_name = 'すぎい'
 	s.first_name = 'ひさのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 2332
-	s.style_id = 32
-	s.full_name = '杉田 浩庸'
+	s.id = 233
+	s.style_id = 3
+	s.full_name = '杉田浩庸'
 	s.last_name = 'すぎた'
 	s.first_name = 'ひろのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 2342
-	s.style_id = 32
-	s.full_name = '鈴木 圭介'
+	s.id = 234
+	s.style_id = 3
+	s.full_name = '鈴木圭介'
 	s.last_name = 'すずき'
 	s.first_name = 'けいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 2352
-	s.style_id = 32
-	s.full_name = '平 友恵'
+	s.id = 235
+	s.style_id = 3
+	s.full_name = '平友恵'
 	s.last_name = 'たいら'
 	s.first_name = 'ともえ'
 end
 
 Performer.seed do |s|
-	s.id = 2362
-	s.style_id = 32
-	s.full_name = '高田 富夫'
+	s.id = 236
+	s.style_id = 3
+	s.full_name = '高田富夫'
 	s.last_name = 'たかだ'
 	s.first_name = 'とみお'
 end
 
 Performer.seed do |s|
-	s.id = 2372
-	s.style_id = 32
-	s.full_name = '高取 玲子'
+	s.id = 237
+	s.style_id = 3
+	s.full_name = '高取玲子'
 	s.last_name = 'たかとり'
 	s.first_name = 'れいこ'
 end
 
 Performer.seed do |s|
-	s.id = 2382
-	s.style_id = 32
-	s.full_name = '髙橋 忍'
+	s.id = 238
+	s.style_id = 3
+	s.full_name = '髙橋忍'
 	s.last_name = 'たかはし'
 	s.first_name = 'しのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 2392
-	s.style_id = 32
-	s.full_name = '髙橋 汎'
+	s.id = 239
+	s.style_id = 3
+	s.full_name = '髙橋汎'
 	s.last_name = 'たかはし'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 2402
-	s.style_id = 32
-	s.full_name = '高橋 万紗'
+	s.id = 240
+	s.style_id = 3
+	s.full_name = '高橋万紗'
 	s.last_name = 'たかはし'
 	s.first_name = 'まさ'
 end
 
 Performer.seed do |s|
-	s.id = 2412
-	s.style_id = 32
-	s.full_name = '塚原 明'
+	s.id = 241
+	s.style_id = 3
+	s.full_name = '塚原明'
 	s.last_name = 'つかはら'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 2422
-	s.style_id = 32
-	s.full_name = '月雫 黎'
+	s.id = 242
+	s.style_id = 3
+	s.full_name = '月雫黎'
 	s.last_name = 'つきのしずく'
 	s.first_name = 'れい'
 end
 
 Performer.seed do |s|
-	s.id = 2432
-	s.style_id = 32
-	s.full_name = '辻井 八郎'
+	s.id = 243
+	s.style_id = 3
+	s.full_name = '辻井八郎'
 	s.last_name = 'つじい'
 	s.first_name = 'はちろう'
 end
 
 Performer.seed do |s|
-	s.id = 2442
-	s.style_id = 32
-	s.full_name = '富山 禮子'
+	s.id = 244
+	s.style_id = 3
+	s.full_name = '富山禮子'
 	s.last_name = 'とみやま'
 	s.first_name = 'のりこ'
 end
 
 Performer.seed do |s|
-	s.id = 2452
-	s.style_id = 32
-	s.full_name = '中市 篤志'
+	s.id = 245
+	s.style_id = 3
+	s.full_name = '中市篤志'
 	s.last_name = 'なかいち'
 	s.first_name = 'あつし'
 end
 
 Performer.seed do |s|
-	s.id = 2462
-	s.style_id = 32
-	s.full_name = '中田 智久'
+	s.id = 246
+	s.style_id = 3
+	s.full_name = '中田智久'
 	s.last_name = 'なかた'
 	s.first_name = 'ともひさ'
 end
 
 Performer.seed do |s|
-	s.id = 2472
-	s.style_id = 32
-	s.full_name = '中野 由佳子'
+	s.id = 247
+	s.style_id = 3
+	s.full_name = '中野由佳子'
 	s.last_name = 'なかの'
 	s.first_name = 'ゆかこ'
 end
 
 Performer.seed do |s|
-	s.id = 2482
-	s.style_id = 32
-	s.full_name = '中村 一路'
+	s.id = 248
+	s.style_id = 3
+	s.full_name = '中村一路'
 	s.last_name = 'なかむら'
 	s.first_name = 'いちろ'
 end
 
 Performer.seed do |s|
-	s.id = 2492
-	s.style_id = 32
-	s.full_name = '中村 昌弘'
+	s.id = 249
+	s.style_id = 3
+	s.full_name = '中村昌弘'
 	s.last_name = 'なかむら'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 2502
-	s.style_id = 32
-	s.full_name = '野村 あやめ'
+	s.id = 250
+	s.style_id = 3
+	s.full_name = '野村あやめ'
 	s.last_name = 'のむら'
 	s.first_name = 'あやめ'
 end
 
 Performer.seed do |s|
-	s.id = 2512
-	s.style_id = 32
-	s.full_name = '野村 雅'
+	s.id = 251
+	s.style_id = 3
+	s.full_name = '野村雅'
 	s.last_name = 'のむら'
 	s.first_name = 'まさし'
 end
 
 Performer.seed do |s|
-	s.id = 2522
-	s.style_id = 32
-	s.full_name = '長谷 猪一郎'
+	s.id = 252
+	s.style_id = 3
+	s.full_name = '長谷猪一郎'
 	s.last_name = 'はせ'
 	s.first_name = 'いいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 2532
-	s.style_id = 32
-	s.full_name = '長谷川 純子'
+	s.id = 253
+	s.style_id = 3
+	s.full_name = '長谷川純子'
 	s.last_name = 'はせがわ'
 	s.first_name = 'じゅんこ'
 end
 
 Performer.seed do |s|
-	s.id = 2542
-	s.style_id = 32
-	s.full_name = '羽石 誠'
+	s.id = 254
+	s.style_id = 3
+	s.full_name = '羽石誠'
 	s.last_name = 'はねいし'
 	s.first_name = 'まこと'
 end
 
 Performer.seed do |s|
-	s.id = 2552
-	s.style_id = 32
-	s.full_name = '林 美佐'
+	s.id = 255
+	s.style_id = 3
+	s.full_name = '林美佐'
 	s.last_name = 'はやし'
 	s.first_name = 'みさ'
 end
 
 Performer.seed do |s|
-	s.id = 2562
-	s.style_id = 32
-	s.full_name = '廣瀬 順子'
+	s.id = 256
+	s.style_id = 3
+	s.full_name = '廣瀬順子'
 	s.last_name = 'ひろせ'
 	s.first_name = 'じゅんこ'
 end
 
 Performer.seed do |s|
-	s.id = 2572
-	s.style_id = 32
-	s.full_name = '深津 洋子'
+	s.id = 257
+	s.style_id = 3
+	s.full_name = '深津洋子'
 	s.last_name = 'ふかつ'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 2582
-	s.style_id = 32
-	s.full_name = '藤田 安彦'
+	s.id = 258
+	s.style_id = 3
+	s.full_name = '藤田安彦'
 	s.last_name = 'ふじた'
 	s.first_name = 'やすひこ'
 end
 
 Performer.seed do |s|
-	s.id = 2592
-	s.style_id = 32
-	s.full_name = '古澤 政則'
+	s.id = 259
+	s.style_id = 3
+	s.full_name = '古澤政則'
 	s.last_name = 'ふるさわ'
 	s.first_name = 'まさのり'
 end
 
 Performer.seed do |s|
-	s.id = 2602
-	s.style_id = 32
-	s.full_name = '本田 光洋'
+	s.id = 260
+	s.style_id = 3
+	s.full_name = '本田光洋'
 	s.last_name = 'ほんだ'
 	s.first_name = 'みつひろ'
 end
 
 Performer.seed do |s|
-	s.id = 2612
-	s.style_id = 32
-	s.full_name = '本田 芳樹'
+	s.id = 261
+	s.style_id = 3
+	s.full_name = '本田芳樹'
 	s.last_name = 'ほんだ'
 	s.first_name = 'よしき'
 end
 
 Performer.seed do |s|
-	s.id = 2622
-	s.style_id = 32
-	s.full_name = '政木 哲司'
+	s.id = 262
+	s.style_id = 3
+	s.full_name = '政木哲司'
 	s.last_name = 'まさき'
 	s.first_name = 'てつじ'
 end
 
 Performer.seed do |s|
-	s.id = 2632
-	s.style_id = 32
-	s.full_name = '舛岡 武雄'
+	s.id = 263
+	s.style_id = 3
+	s.full_name = '舛岡武雄'
 	s.last_name = 'ますおか'
 	s.first_name = 'たけお'
 end
 
 Performer.seed do |s|
-	s.id = 2642
-	s.style_id = 32
-	s.full_name = '村岡 聖美'
+	s.id = 264
+	s.style_id = 3
+	s.full_name = '村岡聖美'
 	s.last_name = 'むらおか'
 	s.first_name = 'きよみ'
 end
 
 Performer.seed do |s|
-	s.id = 2652
-	s.style_id = 32
-	s.full_name = '本屋 禎子'
+	s.id = 265
+	s.style_id = 3
+	s.full_name = '本屋禎子'
 	s.last_name = 'もとや'
 	s.first_name = 'よしこ'
 end
 
 Performer.seed do |s|
-	s.id = 2662
-	s.style_id = 32
-	s.full_name = '森 瑞枝'
+	s.id = 266
+	s.style_id = 3
+	s.full_name = '森瑞枝'
 	s.last_name = 'もり'
 	s.first_name = 'みずえ'
 end
 
 Performer.seed do |s|
-	s.id = 2672
-	s.style_id = 32
-	s.full_name = '山井 綱雄'
+	s.id = 267
+	s.style_id = 3
+	s.full_name = '山井綱雄'
 	s.last_name = 'やまい'
 	s.first_name = 'つなお'
 end
 
 Performer.seed do |s|
-	s.id = 2682
-	s.style_id = 32
-	s.full_name = '山中 一馬'
+	s.id = 268
+	s.style_id = 3
+	s.full_name = '山中一馬'
 	s.last_name = 'やまなか'
 	s.first_name = 'かずま'
 end
 
 Performer.seed do |s|
-	s.id = 2692
-	s.style_id = 32
-	s.full_name = '横山 紳一'
+	s.id = 269
+	s.style_id = 3
+	s.full_name = '横山紳一'
 	s.last_name = 'よこやま'
 	s.first_name = 'しんいち'
 end
 
 Performer.seed do |s|
-	s.id = 2702
-	s.style_id = 32
-	s.full_name = '吉場 廣明'
+	s.id = 270
+	s.style_id = 3
+	s.full_name = '吉場廣明'
 	s.last_name = 'よしば'
 	s.first_name = 'ひろあき'
 end
 
 Performer.seed do |s|
-	s.id = 2712
-	s.style_id = 32
-	s.full_name = '渡辺 慎一'
+	s.id = 271
+	s.style_id = 3
+	s.full_name = '渡辺慎一'
 	s.last_name = 'わたなべ'
 	s.first_name = 'しんいち'
 end
 
 Performer.seed do |s|
-	s.id = 2722
-	s.style_id = 22
-	s.full_name = '安久都 和夫'
+	s.id = 272
+	s.style_id = 2
+	s.full_name = '安久都和夫'
 	s.last_name = 'あくつ'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 2732
-	s.style_id = 22
-	s.full_name = '朝倉 大輔'
+	s.id = 273
+	s.style_id = 2
+	s.full_name = '朝倉大輔'
 	s.last_name = 'あさくら'
 	s.first_name = 'だいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 2742
-	s.style_id = 22
-	s.full_name = '朝倉 俊樹'
+	s.id = 274
+	s.style_id = 2
+	s.full_name = '朝倉俊樹'
 	s.last_name = 'あさくら'
 	s.first_name = 'としき'
 end
 
 Performer.seed do |s|
-	s.id = 2752
-	s.style_id = 22
-	s.full_name = '石山 勝秋'
+	s.id = 275
+	s.style_id = 2
+	s.full_name = '石山勝秋'
 	s.last_name = 'いしやま'
 	s.first_name = 'かつあき'
 end
 
 Performer.seed do |s|
-	s.id = 2762
-	s.style_id = 22
-	s.full_name = '今井 基'
+	s.id = 276
+	s.style_id = 2
+	s.full_name = '今井基'
 	s.last_name = 'いまい'
 	s.first_name = 'もとい'
 end
 
 Performer.seed do |s|
-	s.id = 2772
-	s.style_id = 22
-	s.full_name = '今井 泰行'
+	s.id = 277
+	s.style_id = 2
+	s.full_name = '今井泰行'
 	s.last_name = 'いまい'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 2782
-	s.style_id = 22
-	s.full_name = '上野 能寛'
+	s.id = 278
+	s.style_id = 2
+	s.full_name = '上野能寛'
 	s.last_name = 'うえの'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 2792
-	s.style_id = 22
-	s.full_name = '内田 朝陽'
+	s.id = 279
+	s.style_id = 2
+	s.full_name = '内田朝陽'
 	s.last_name = 'うちだ'
 	s.first_name = 'あさひ'
 end
 
 Performer.seed do |s|
-	s.id = 2802
-	s.style_id = 22
-	s.full_name = '内田 芳子'
+	s.id = 280
+	s.style_id = 2
+	s.full_name = '内田芳子'
 	s.last_name = 'うちだ'
 	s.first_name = 'よしこ'
 end
 
 Performer.seed do |s|
-	s.id = 2812
-	s.style_id = 22
-	s.full_name = '大坪 喜美雄'
+	s.id = 281
+	s.style_id = 2
+	s.full_name = '大坪喜美雄'
 	s.last_name = 'おおつぼ'
 	s.first_name = 'きみお'
 end
 
 Performer.seed do |s|
-	s.id = 2822
-	s.style_id = 22
-	s.full_name = '大友 順'
+	s.id = 282
+	s.style_id = 2
+	s.full_name = '大友順'
 	s.last_name = 'おおとも'
 	s.first_name = 'じゅん'
 end
 
 Performer.seed do |s|
-	s.id = 2832
-	s.style_id = 22
-	s.full_name = '小倉 健太郎'
+	s.id = 283
+	s.style_id = 2
+	s.full_name = '小倉健太郎'
 	s.last_name = 'おぐら'
 	s.first_name = 'けんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 2842
-	s.style_id = 22
-	s.full_name = '小倉 伸二郎'
+	s.id = 284
+	s.style_id = 2
+	s.full_name = '小倉伸二郎'
 	s.last_name = 'おぐら'
 	s.first_name = 'しんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 2852
-	s.style_id = 22
-	s.full_name = '小倉 敏克'
+	s.id = 285
+	s.style_id = 2
+	s.full_name = '小倉敏克'
 	s.last_name = 'おぐら'
 	s.first_name = 'としかつ'
 end
 
 Performer.seed do |s|
-	s.id = 2862
-	s.style_id = 22
-	s.full_name = '小倉 正久'
+	s.id = 286
+	s.style_id = 2
+	s.full_name = '小倉正久'
 	s.last_name = 'おぐら'
 	s.first_name = 'まさひさ'
 end
 
 Performer.seed do |s|
-	s.id = 2872
-	s.style_id = 22
-	s.full_name = '小倉 道子'
+	s.id = 287
+	s.style_id = 2
+	s.full_name = '小倉道子'
 	s.last_name = 'おぐら'
 	s.first_name = 'みちこ'
 end
 
 Performer.seed do |s|
-	s.id = 2882
-	s.style_id = 22
-	s.full_name = '影山 三池子'
+	s.id = 288
+	s.style_id = 2
+	s.full_name = '影山三池子'
 	s.last_name = 'かげやま'
 	s.first_name = 'みちこ'
 end
 
 Performer.seed do |s|
-	s.id = 2892
-	s.style_id = 22
-	s.full_name = '柏山 聡子'
+	s.id = 289
+	s.style_id = 2
+	s.full_name = '柏山聡子'
 	s.last_name = 'かしわやま'
 	s.first_name = 'さとこ'
 end
 
 Performer.seed do |s|
-	s.id = 2902
-	s.style_id = 22
-	s.full_name = '春日 初江'
+	s.id = 290
+	s.style_id = 2
+	s.full_name = '春日初江'
 	s.last_name = 'かすが'
 	s.first_name = 'はつえ'
 end
 
 Performer.seed do |s|
-	s.id = 2912
-	s.style_id = 22
-	s.full_name = '片桐 千百合'
+	s.id = 291
+	s.style_id = 2
+	s.full_name = '片桐千百合'
 	s.last_name = 'かたぎり'
 	s.first_name = 'ちゆり'
 end
 
 Performer.seed do |s|
-	s.id = 2922
-	s.style_id = 22
-	s.full_name = '葛野 りさ'
+	s.id = 292
+	s.style_id = 2
+	s.full_name = '葛野りさ'
 	s.last_name = 'かどの'
 	s.first_name = 'りさ'
 end
 
 Performer.seed do |s|
-	s.id = 2932
-	s.style_id = 22
-	s.full_name = '金井 賢郎'
+	s.id = 293
+	s.style_id = 2
+	s.full_name = '金井賢郎'
 	s.last_name = 'かない'
 	s.first_name = 'けんろう'
 end
 
 Performer.seed do |s|
-	s.id = 2942
-	s.style_id = 22
-	s.full_name = '金井 雄資'
+	s.id = 294
+	s.style_id = 2
+	s.full_name = '金井雄資'
 	s.last_name = 'かない'
 	s.first_name = 'ゆうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 2952
-	s.style_id = 22
-	s.full_name = '金森 隆晋'
+	s.id = 295
+	s.style_id = 2
+	s.full_name = '金森隆晋'
 	s.last_name = 'かなもり'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 2962
-	s.style_id = 22
-	s.full_name = '金森 秀祥'
+	s.id = 296
+	s.style_id = 2
+	s.full_name = '金森秀祥'
 	s.last_name = 'かなもり'
 	s.first_name = 'ひでとし'
 end
 
 Performer.seed do |s|
-	s.id = 2972
-	s.style_id = 22
-	s.full_name = '金森 良充'
+	s.id = 297
+	s.style_id = 2
+	s.full_name = '金森良充'
 	s.last_name = 'かなもり'
 	s.first_name = 'よしみつ'
 end
 
 Performer.seed do |s|
-	s.id = 2982
-	s.style_id = 22
-	s.full_name = '亀井 保雄'
+	s.id = 298
+	s.style_id = 2
+	s.full_name = '亀井保雄'
 	s.last_name = 'かめい'
 	s.first_name = 'やすお'
 end
 
 Performer.seed do |s|
-	s.id = 2992
-	s.style_id = 22
-	s.full_name = '亀井 雄二'
+	s.id = 299
+	s.style_id = 2
+	s.full_name = '亀井雄二'
 	s.last_name = 'かめい'
 	s.first_name = 'ゆうじ'
 end
 
 Performer.seed do |s|
-	s.id = 3002
-	s.style_id = 22
-	s.full_name = '川瀬 隆士'
+	s.id = 300
+	s.style_id = 2
+	s.full_name = '川瀬隆士'
 	s.last_name = 'かわせ'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 3012
-	s.style_id = 22
-	s.full_name = '木谷 哲也'
+	s.id = 301
+	s.style_id = 2
+	s.full_name = '木谷哲也'
 	s.last_name = 'きだに'
 	s.first_name = 'てつや'
 end
 
 Performer.seed do |s|
-	s.id = 3022
-	s.style_id = 22
-	s.full_name = '栗城 幸子'
+	s.id = 302
+	s.style_id = 2
+	s.full_name = '栗城幸子'
 	s.last_name = 'くりき'
 	s.first_name = 'さちこ'
 end
 
 Performer.seed do |s|
-	s.id = 3032
-	s.style_id = 22
-	s.full_name = '神主 弌二'
+	s.id = 303
+	s.style_id = 2
+	s.full_name = '神主弌二'
 	s.last_name = 'こうず'
 	s.first_name = 'いちじ'
 end
 
 Performer.seed do |s|
-	s.id = 3042
-	s.style_id = 22
-	s.full_name = '小林 晋也'
+	s.id = 304
+	s.style_id = 2
+	s.full_name = '小林晋也'
 	s.last_name = 'こばやし'
 	s.first_name = 'しんや'
 end
 
 Performer.seed do |s|
-	s.id = 3052
-	s.style_id = 22
-	s.full_name = '小林 与志郎'
+	s.id = 305
+	s.style_id = 2
+	s.full_name = '小林与志郎'
 	s.last_name = 'こばやし'
 	s.first_name = 'よしろう'
 end
 
 Performer.seed do |s|
-	s.id = 3062
-	s.style_id = 22
-	s.full_name = '小山 博子'
+	s.id = 306
+	s.style_id = 2
+	s.full_name = '小山博子'
 	s.last_name = 'こやま'
 	s.first_name = 'ひろこ'
 end
 
 Performer.seed do |s|
-	s.id = 3072
-	s.style_id = 22
-	s.full_name = '金野 泰大'
+	s.id = 307
+	s.style_id = 2
+	s.full_name = '金野泰大'
 	s.last_name = 'こんの'
 	s.first_name = 'よしまさ'
 end
 
 Performer.seed do |s|
-	s.id = 3082
-	s.style_id = 22
-	s.full_name = '後藤 裕子'
+	s.id = 308
+	s.style_id = 2
+	s.full_name = '後藤裕子'
 	s.last_name = 'ごとう'
 	s.first_name = 'ひろこ'
 end
 
 Performer.seed do |s|
-	s.id = 3092
-	s.style_id = 22
-	s.full_name = '齋藤 美千枝'
+	s.id = 309
+	s.style_id = 2
+	s.full_name = '齋藤美千枝'
 	s.last_name = 'さいとう'
 	s.first_name = 'みちえ'
 end
 
 Performer.seed do |s|
-	s.id = 3102
-	s.style_id = 22
-	s.full_name = '佐藤 ヨシカ'
+	s.id = 310
+	s.style_id = 2
+	s.full_name = '佐藤ヨシカ'
 	s.last_name = 'さとう'
 	s.first_name = 'よしか'
 end
 
 Performer.seed do |s|
-	s.id = 3112
-	s.style_id = 22
-	s.full_name = '佐野 玄宜'
+	s.id = 311
+	s.style_id = 2
+	s.full_name = '佐野玄宜'
 	s.last_name = 'さの'
 	s.first_name = 'げんき'
 end
 
 Performer.seed do |s|
-	s.id = 3122
-	s.style_id = 22
-	s.full_name = '佐野 弘宜'
+	s.id = 312
+	s.style_id = 2
+	s.full_name = '佐野弘宜'
 	s.last_name = 'さの'
 	s.first_name = 'こうき'
 end
 
 Performer.seed do |s|
-	s.id = 3132
-	s.style_id = 22
-	s.full_name = '佐野 登'
+	s.id = 313
+	s.style_id = 2
+	s.full_name = '佐野登'
 	s.last_name = 'さの'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 3142
-	s.style_id = 22
-	s.full_name = '澤田 郁代'
+	s.id = 314
+	s.style_id = 2
+	s.full_name = '澤田郁代'
 	s.last_name = 'さわだ'
 	s.first_name = 'いくよ'
 end
 
 Performer.seed do |s|
-	s.id = 3152
-	s.style_id = 22
-	s.full_name = '澤田 宏司'
+	s.id = 315
+	s.style_id = 2
+	s.full_name = '澤田宏司'
 	s.last_name = 'さわだ'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 3162
-	s.style_id = 22
-	s.full_name = '関 直美'
+	s.id = 316
+	s.style_id = 2
+	s.full_name = '関直美'
 	s.last_name = 'せき'
 	s.first_name = 'なおみ'
 end
 
 Performer.seed do |s|
-	s.id = 3172
-	s.style_id = 22
-	s.full_name = '髙橋 章'
+	s.id = 317
+	s.style_id = 2
+	s.full_name = '髙橋章'
 	s.last_name = 'たかはし'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 3182
-	s.style_id = 22
-	s.full_name = '髙橋 憲正'
+	s.id = 318
+	s.style_id = 2
+	s.full_name = '髙橋憲正'
 	s.last_name = 'たかはし'
 	s.first_name = 'のりまさ'
 end
 
 Performer.seed do |s|
-	s.id = 3192
-	s.style_id = 22
-	s.full_name = '高橋 美恵子'
+	s.id = 319
+	s.style_id = 2
+	s.full_name = '高橋美恵子'
 	s.last_name = 'たかはし'
 	s.first_name = 'みえこ'
 end
 
 Performer.seed do |s|
-	s.id = 3202
-	s.style_id = 22
-	s.full_name = '髙橋 亘'
+	s.id = 320
+	s.style_id = 2
+	s.full_name = '髙橋亘'
 	s.last_name = 'たかはし'
 	s.first_name = 'わたる'
 end
 
 Performer.seed do |s|
-	s.id = 3212
-	s.style_id = 22
-	s.full_name = '武田 伊左'
+	s.id = 321
+	s.style_id = 2
+	s.full_name = '武田伊左'
 	s.last_name = 'たけだ'
 	s.first_name = 'いさ'
 end
 
 Performer.seed do |s|
-	s.id = 3222
-	s.style_id = 22
-	s.full_name = '武田 孝史'
+	s.id = 322
+	s.style_id = 2
+	s.full_name = '武田孝史'
 	s.last_name = 'たけだ'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 3232
-	s.style_id = 22
-	s.full_name = '田崎 甫'
+	s.id = 323
+	s.style_id = 2
+	s.full_name = '田崎甫'
 	s.last_name = 'たざき'
 	s.first_name = 'はじめ'
 end
 
 Performer.seed do |s|
-	s.id = 3242
-	s.style_id = 22
-	s.full_name = '田崎 隆三'
+	s.id = 324
+	s.style_id = 2
+	s.full_name = '田崎隆三'
 	s.last_name = 'たざき'
 	s.first_name = 'りゅうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 3252
-	s.style_id = 22
-	s.full_name = '辰巳 和磨'
+	s.id = 325
+	s.style_id = 2
+	s.full_name = '辰巳和磨'
 	s.last_name = 'たつみ'
 	s.first_name = 'かずま'
 end
 
 Performer.seed do |s|
-	s.id = 3262
-	s.style_id = 22
-	s.full_name = '辰巳 大二郎'
+	s.id = 326
+	s.style_id = 2
+	s.full_name = '辰巳大二郎'
 	s.last_name = 'たつみ'
 	s.first_name = 'だいじろう'
 end
 
 Performer.seed do |s|
-	s.id = 3272
-	s.style_id = 22
-	s.full_name = '辰巳 満次郎'
+	s.id = 327
+	s.style_id = 2
+	s.full_name = '辰巳満次郎'
 	s.last_name = 'たつみ'
 	s.first_name = 'まんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 3282
-	s.style_id = 22
-	s.full_name = '土屋 周子'
+	s.id = 328
+	s.style_id = 2
+	s.full_name = '土屋周子'
 	s.last_name = 'つちや'
 	s.first_name = 'しゅうこ'
 end
 
 Performer.seed do |s|
-	s.id = 3292
-	s.style_id = 22
-	s.full_name = '堤 由美子'
+	s.id = 329
+	s.style_id = 2
+	s.full_name = '堤由美子'
 	s.last_name = 'つつみ'
 	s.first_name = 'ゆみこ'
 end
 
 Performer.seed do |s|
-	s.id = 3302
-	s.style_id = 22
-	s.full_name = '鶴間 真美子'
+	s.id = 330
+	s.style_id = 2
+	s.full_name = '鶴間真美子'
 	s.last_name = 'つるま'
 	s.first_name = 'まみこ'
 end
 
 Performer.seed do |s|
-	s.id = 3312
-	s.style_id = 22
-	s.full_name = '當山 淳司'
+	s.id = 331
+	s.style_id = 2
+	s.full_name = '當山淳司'
 	s.last_name = 'とうやま'
 	s.first_name = 'じゅんじ'
 end
 
 Performer.seed do |s|
-	s.id = 3322
-	s.style_id = 22
-	s.full_name = '當山 孝道'
+	s.id = 332
+	s.style_id = 2
+	s.full_name = '當山孝道'
 	s.last_name = 'とうやま'
 	s.first_name = 'たかみち'
 end
 
 Performer.seed do |s|
-	s.id = 3332
-	s.style_id = 22
-	s.full_name = '登坂 武雄'
+	s.id = 333
+	s.style_id = 2
+	s.full_name = '登坂武雄'
 	s.last_name = 'とさか'
 	s.first_name = 'たけお'
 end
 
 Performer.seed do |s|
-	s.id = 3342
-	s.style_id = 22
-	s.full_name = '内藤 飛能'
+	s.id = 334
+	s.style_id = 2
+	s.full_name = '内藤飛能'
 	s.last_name = 'ないとう'
 	s.first_name = 'とびよし'
 end
 
 Performer.seed do |s|
-	s.id = 3352
-	s.style_id = 22
-	s.full_name = '中村 孝太郎'
+	s.id = 335
+	s.style_id = 2
+	s.full_name = '中村孝太郎'
 	s.last_name = 'なかむら'
 	s.first_name = 'こうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 3362
-	s.style_id = 22
-	s.full_name = '野月 聡'
+	s.id = 336
+	s.style_id = 2
+	s.full_name = '野月聡'
 	s.last_name = 'のづき'
 	s.first_name = 'さとし'
 end
 
 Performer.seed do |s|
-	s.id = 3372
-	s.style_id = 22
-	s.full_name = '半田 晴久'
+	s.id = 337
+	s.style_id = 2
+	s.full_name = '半田晴久'
 	s.last_name = 'はんだ'
 	s.first_name = 'はるひさ'
 end
 
 Performer.seed do |s|
-	s.id = 3382
-	s.style_id = 22
-	s.full_name = '東川 尚史'
+	s.id = 338
+	s.style_id = 2
+	s.full_name = '東川尚史'
 	s.last_name = 'ひがしかわ'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 3392
-	s.style_id = 22
-	s.full_name = '広島 栄里子'
+	s.id = 339
+	s.style_id = 2
+	s.full_name = '広島栄里子'
 	s.last_name = 'ひろしま'
 	s.first_name = 'えりこ'
 end
 
 Performer.seed do |s|
-	s.id = 3402
-	s.style_id = 22
-	s.full_name = '藤井 秋雅'
+	s.id = 340
+	s.style_id = 2
+	s.full_name = '藤井秋雅'
 	s.last_name = 'ふじい'
 	s.first_name = 'しゅうが'
 end
 
 Performer.seed do |s|
-	s.id = 3412
-	s.style_id = 22
-	s.full_name = '藤井 雅之'
+	s.id = 341
+	s.style_id = 2
+	s.full_name = '藤井雅之'
 	s.last_name = 'ふじい'
 	s.first_name = 'まさゆき'
 end
 
 Performer.seed do |s|
-	s.id = 3422
-	s.style_id = 22
-	s.full_name = '宝生 和英'
+	s.id = 342
+	s.style_id = 2
+	s.full_name = '宝生和英'
 	s.last_name = 'ほうしょう'
 	s.first_name = 'かずふさ'
 end
 
 Performer.seed do |s|
-	s.id = 3432
-	s.style_id = 22
-	s.full_name = '祝 忠生'
+	s.id = 343
+	s.style_id = 2
+	s.full_name = '祝忠生'
 	s.last_name = 'ほうり'
 	s.first_name = 'ただお'
 end
 
 Performer.seed do |s|
-	s.id = 3442
-	s.style_id = 22
-	s.full_name = '本間 かつ子'
+	s.id = 344
+	s.style_id = 2
+	s.full_name = '本間かつ子'
 	s.last_name = 'ほんま'
 	s.first_name = 'かつこ'
 end
 
 Performer.seed do |s|
-	s.id = 3452
-	s.style_id = 22
-	s.full_name = '前田 親子'
+	s.id = 345
+	s.style_id = 2
+	s.full_name = '前田親子'
 	s.last_name = 'まえだ'
 	s.first_name = 'ちかこ'
 end
 
 Performer.seed do |s|
-	s.id = 3462
-	s.style_id = 22
-	s.full_name = '前田 晴啓'
+	s.id = 346
+	s.style_id = 2
+	s.full_name = '前田晴啓'
 	s.last_name = 'まえだ'
 	s.first_name = 'はるひろ'
 end
 
 Performer.seed do |s|
-	s.id = 3472
-	s.style_id = 22
-	s.full_name = '松永 政雄'
+	s.id = 347
+	s.style_id = 2
+	s.full_name = '松永政雄'
 	s.last_name = 'まつなが'
 	s.first_name = 'まさお'
 end
 
 Performer.seed do |s|
-	s.id = 3482
-	s.style_id = 22
-	s.full_name = '三川 淳雄'
+	s.id = 348
+	s.style_id = 2
+	s.full_name = '三川淳雄'
 	s.last_name = 'みかわ'
 	s.first_name = 'あつお'
 end
 
 Performer.seed do |s|
-	s.id = 3492
-	s.style_id = 22
-	s.full_name = '水上 優'
+	s.id = 349
+	s.style_id = 2
+	s.full_name = '水上優'
 	s.last_name = 'みずかみ'
 	s.first_name = 'ゆたか'
 end
 
 Performer.seed do |s|
-	s.id = 3502
-	s.style_id = 22
-	s.full_name = '藪 克徳'
+	s.id = 350
+	s.style_id = 2
+	s.full_name = '藪克徳'
 	s.last_name = 'やぶ'
 	s.first_name = 'かつのり'
 end
 
 Performer.seed do |s|
-	s.id = 3512
-	s.style_id = 22
-	s.full_name = '山内 崇生'
+	s.id = 351
+	s.style_id = 2
+	s.full_name = '山内崇生'
 	s.last_name = 'やまうち'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 3522
-	s.style_id = 22
-	s.full_name = '横井 徹'
+	s.id = 352
+	s.style_id = 2
+	s.full_name = '横井徹'
 	s.last_name = 'よこい'
 	s.first_name = 'てつ'
 end
 
 Performer.seed do |s|
-	s.id = 3532
-	s.style_id = 22
-	s.full_name = '和久 荘太郎'
+	s.id = 353
+	s.style_id = 2
+	s.full_name = '和久荘太郎'
 	s.last_name = 'わく'
 	s.first_name = 'そうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 3542
-	s.style_id = 42
-	s.full_name = '赤星 惠美'
+	s.id = 354
+	s.style_id = 4
+	s.full_name = '赤星惠美'
 	s.last_name = 'あかほし'
 	s.first_name = 'えみ'
 end
 
 Performer.seed do |s|
-	s.id = 3552
-	s.style_id = 42
-	s.full_name = '遠藤 勝實'
+	s.id = 355
+	s.style_id = 4
+	s.full_name = '遠藤勝實'
 	s.last_name = 'えんどう'
 	s.first_name = 'かつみ'
 end
 
 Performer.seed do |s|
-	s.id = 3562
-	s.style_id = 42
-	s.full_name = '大川 隆雄'
+	s.id = 356
+	s.style_id = 4
+	s.full_name = '大川隆雄'
 	s.last_name = 'おおかわ'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 3572
-	s.style_id = 42
-	s.full_name = '笠原 秀人'
+	s.id = 357
+	s.style_id = 4
+	s.full_name = '笠原秀人'
 	s.last_name = 'かさはら'
 	s.first_name = 'ひでと'
 end
 
 Performer.seed do |s|
-	s.id = 3582
-	s.style_id = 42
-	s.full_name = '片山 峯秀'
+	s.id = 358
+	s.style_id = 4
+	s.full_name = '片山峯秀'
 	s.last_name = 'かたやま'
 	s.first_name = 'みねひで'
 end
 
 Performer.seed do |s|
-	s.id = 3592
-	s.style_id = 42
-	s.full_name = '金子 晃'
+	s.id = 359
+	s.style_id = 4
+	s.full_name = '金子晃'
 	s.last_name = 'かねこ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 3602
-	s.style_id = 42
-	s.full_name = '工藤 寛'
+	s.id = 360
+	s.style_id = 4
+	s.full_name = '工藤寛'
 	s.last_name = 'くどう'
 	s.first_name = 'かん'
 end
 
 Performer.seed do |s|
-	s.id = 3612
-	s.style_id = 42
-	s.full_name = '熊谷 伸一'
+	s.id = 361
+	s.style_id = 4
+	s.full_name = '熊谷伸一'
 	s.last_name = 'くまがい'
 	s.first_name = 'しんいち'
 end
 
 Performer.seed do |s|
-	s.id = 3622
-	s.style_id = 42
-	s.full_name = '金剛 永謹'
+	s.id = 362
+	s.style_id = 4
+	s.full_name = '金剛永謹'
 	s.last_name = 'こんごう'
 	s.first_name = 'ひさのり'
 end
 
 Performer.seed do |s|
-	s.id = 3632
-	s.style_id = 42
-	s.full_name = '齋藤 忠'
+	s.id = 363
+	s.style_id = 4
+	s.full_name = '齋藤忠'
 	s.last_name = 'さいとう'
 	s.first_name = 'ただし'
 end
 
 Performer.seed do |s|
-	s.id = 3642
-	s.style_id = 42
-	s.full_name = '酒井 鴻風'
+	s.id = 364
+	s.style_id = 4
+	s.full_name = '酒井鴻風'
 	s.last_name = 'さかい'
 	s.first_name = 'こうふう'
 end
 
 Performer.seed do |s|
-	s.id = 3652
-	s.style_id = 42
-	s.full_name = '坂本 立津朗'
+	s.id = 365
+	s.style_id = 4
+	s.full_name = '坂本立津朗'
 	s.last_name = 'さかもと'
 	s.first_name = 'たつろう'
 end
 
 Performer.seed do |s|
-	s.id = 3662
-	s.style_id = 42
-	s.full_name = '佐藤 定祐'
+	s.id = 366
+	s.style_id = 4
+	s.full_name = '佐藤定祐'
 	s.last_name = 'さとう'
 	s.first_name = 'さだすけ'
 end
 
 Performer.seed do |s|
-	s.id = 3672
-	s.style_id = 42
-	s.full_name = '鈴木 栄一'
+	s.id = 367
+	s.style_id = 4
+	s.full_name = '鈴木栄一'
 	s.last_name = 'すずき'
 	s.first_name = 'えいいち'
 end
 
 Performer.seed do |s|
-	s.id = 3682
-	s.style_id = 42
-	s.full_name = '髙木 貞次'
+	s.id = 368
+	s.style_id = 4
+	s.full_name = '髙木貞次'
 	s.last_name = 'たかき'
 	s.first_name = 'ていじ'
 end
 
 Performer.seed do |s|
-	s.id = 3692
-	s.style_id = 42
-	s.full_name = '高橋 雪絵'
+	s.id = 369
+	s.style_id = 4
+	s.full_name = '高橋雪絵'
 	s.last_name = 'たかはし'
 	s.first_name = 'ゆきえ'
 end
 
 Performer.seed do |s|
-	s.id = 3702
-	s.style_id = 42
-	s.full_name = '田村 修'
+	s.id = 370
+	s.style_id = 4
+	s.full_name = '田村修'
 	s.last_name = 'たむら'
 	s.first_name = 'おさむ'
 end
 
 Performer.seed do |s|
-	s.id = 3712
-	s.style_id = 42
-	s.full_name = '恒元 志郎'
+	s.id = 371
+	s.style_id = 4
+	s.full_name = '恒元志郎'
 	s.last_name = 'つねもと'
 	s.first_name = 'しろう'
 end
 
 Performer.seed do |s|
-	s.id = 3722
-	s.style_id = 42
-	s.full_name = '中村 裕'
+	s.id = 372
+	s.style_id = 4
+	s.full_name = '中村裕'
 	s.last_name = 'なかむら'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 3732
-	s.style_id = 42
-	s.full_name = '蓮元 早苗'
+	s.id = 373
+	s.style_id = 4
+	s.full_name = '蓮元早苗'
 	s.last_name = 'はすもと'
 	s.first_name = 'さなえ'
 end
 
 Performer.seed do |s|
-	s.id = 3742
-	s.style_id = 42
-	s.full_name = '見越 英明'
+	s.id = 374
+	s.style_id = 4
+	s.full_name = '見越英明'
 	s.last_name = 'みこし'
 	s.first_name = 'ひであき'
 end
 
 Performer.seed do |s|
-	s.id = 3752
-	s.style_id = 42
-	s.full_name = '見越 文夫'
+	s.id = 375
+	s.style_id = 4
+	s.full_name = '見越文夫'
 	s.last_name = 'みこし'
 	s.first_name = 'ふみを'
 end
 
 Performer.seed do |s|
-	s.id = 3762
-	s.style_id = 42
-	s.full_name = '元吉 正巳'
+	s.id = 376
+	s.style_id = 4
+	s.full_name = '元吉正巳'
 	s.last_name = 'もとよし'
 	s.first_name = 'まさみ'
 end
 
 Performer.seed do |s|
-	s.id = 3772
-	s.style_id = 42
-	s.full_name = '山田 純夫'
+	s.id = 377
+	s.style_id = 4
+	s.full_name = '山田純夫'
 	s.last_name = 'やまだ'
 	s.first_name = 'すみお'
 end
 
 Performer.seed do |s|
-	s.id = 3782
-	s.style_id = 52
-	s.full_name = '粟谷 明生'
+	s.id = 378
+	s.style_id = 5
+	s.full_name = '粟谷明生'
 	s.last_name = 'あわや'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 3792
-	s.style_id = 52
-	s.full_name = '粟谷 浩之'
+	s.id = 379
+	s.style_id = 5
+	s.full_name = '粟谷浩之'
 	s.last_name = 'あわや'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 3802
-	s.style_id = 52
-	s.full_name = '粟谷 充雄'
+	s.id = 380
+	s.style_id = 5
+	s.full_name = '粟谷充雄'
 	s.last_name = 'あわや'
 	s.first_name = 'みつお'
 end
 
 Performer.seed do |s|
-	s.id = 3812
-	s.style_id = 52
-	s.full_name = '粟谷 能夫'
+	s.id = 381
+	s.style_id = 5
+	s.full_name = '粟谷能夫'
 	s.last_name = 'あわや'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 3822
-	s.style_id = 52
-	s.full_name = '出雲 康雅'
+	s.id = 382
+	s.style_id = 5
+	s.full_name = '出雲康雅'
 	s.last_name = 'いずも'
 	s.first_name = 'やすまさ'
 end
 
 Performer.seed do |s|
-	s.id = 3832
-	s.style_id = 52
-	s.full_name = '内田 安信'
+	s.id = 383
+	s.style_id = 5
+	s.full_name = '内田安信'
 	s.last_name = 'うちだ'
 	s.first_name = 'あんしん'
 end
 
 Performer.seed do |s|
-	s.id = 3842
-	s.style_id = 52
-	s.full_name = '内田 成信'
+	s.id = 384
+	s.style_id = 5
+	s.full_name = '内田成信'
 	s.last_name = 'うちだ'
 	s.first_name = 'しげのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 3852
-	s.style_id = 52
-	s.full_name = '大島 輝久'
+	s.id = 385
+	s.style_id = 5
+	s.full_name = '大島輝久'
 	s.last_name = 'おおしま'
 	s.first_name = 'てるひさ'
 end
 
 Performer.seed do |s|
-	s.id = 3862
-	s.style_id = 52
-	s.full_name = '大村 定'
+	s.id = 386
+	s.style_id = 5
+	s.full_name = '大村定'
 	s.last_name = 'おおむら'
 	s.first_name = 'さだむ'
 end
 
 Performer.seed do |s|
-	s.id = 3872
-	s.style_id = 52
-	s.full_name = '香川 靖嗣'
+	s.id = 387
+	s.style_id = 5
+	s.full_name = '香川靖嗣'
 	s.last_name = 'かがわ'
 	s.first_name = 'せいじ'
 end
 
 Performer.seed do |s|
-	s.id = 3882
-	s.style_id = 52
-	s.full_name = '金子 敬一郎'
+	s.id = 388
+	s.style_id = 5
+	s.full_name = '金子敬一郎'
 	s.last_name = 'かねこ'
 	s.first_name = 'けいいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 3892
-	s.style_id = 52
-	s.full_name = '狩野 祐一'
+	s.id = 389
+	s.style_id = 5
+	s.full_name = '狩野祐一'
 	s.last_name = 'かの'
 	s.first_name = 'ゆういち'
 end
 
 Performer.seed do |s|
-	s.id = 3902
-	s.style_id = 52
-	s.full_name = '狩野 了一'
+	s.id = 390
+	s.style_id = 5
+	s.full_name = '狩野了一'
 	s.last_name = 'かの'
 	s.first_name = 'りょういち'
 end
 
 Performer.seed do |s|
-	s.id = 3912
-	s.style_id = 52
-	s.full_name = '佐々木 多門'
+	s.id = 391
+	s.style_id = 5
+	s.full_name = '佐々木多門'
 	s.last_name = 'ささき'
 	s.first_name = 'たもん'
 end
 
 Performer.seed do |s|
-	s.id = 3922
-	s.style_id = 52
-	s.full_name = '佐々木 宗生'
+	s.id = 392
+	s.style_id = 5
+	s.full_name = '佐々木宗生'
 	s.last_name = 'ささき'
 	s.first_name = 'むねお'
 end
 
 Performer.seed do |s|
-	s.id = 3932
-	s.style_id = 52
-	s.full_name = '佐藤 章雄'
+	s.id = 393
+	s.style_id = 5
+	s.full_name = '佐藤章雄'
 	s.last_name = 'さとう'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 3942
-	s.style_id = 52
-	s.full_name = '佐藤 寛泰'
+	s.id = 394
+	s.style_id = 5
+	s.full_name = '佐藤寛泰'
 	s.last_name = 'さとう'
 	s.first_name = 'ひろやす'
 end
 
 Performer.seed do |s|
-	s.id = 3952
-	s.style_id = 52
-	s.full_name = '佐藤 陽'
+	s.id = 395
+	s.style_id = 5
+	s.full_name = '佐藤陽'
 	s.last_name = 'さとう'
 	s.first_name = 'よう'
 end
 
 Performer.seed do |s|
-	s.id = 3962
-	s.style_id = 52
-	s.full_name = '塩津 哲生'
+	s.id = 396
+	s.style_id = 5
+	s.full_name = '塩津哲生'
 	s.last_name = 'しおつ'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 3972
-	s.style_id = 52
-	s.full_name = '塩津 圭介'
+	s.id = 397
+	s.style_id = 5
+	s.full_name = '塩津圭介'
 	s.last_name = 'しおつ'
 	s.first_name = 'けいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 3982
-	s.style_id = 52
-	s.full_name = '谷 大作'
+	s.id = 398
+	s.style_id = 5
+	s.full_name = '谷大作'
 	s.last_name = 'たに'
 	s.first_name = 'だいさく'
 end
 
 Performer.seed do |s|
-	s.id = 3992
-	s.style_id = 52
-	s.full_name = '谷 友矩'
+	s.id = 399
+	s.style_id = 5
+	s.full_name = '谷友矩'
 	s.last_name = 'たに'
 	s.first_name = 'とものり'
 end
 
 Performer.seed do |s|
-	s.id = 4002
-	s.style_id = 52
-	s.full_name = '友枝 昭世'
+	s.id = 400
+	s.style_id = 5
+	s.full_name = '友枝昭世'
 	s.last_name = 'ともえだ'
 	s.first_name = 'あきよ'
 end
 
 Performer.seed do |s|
-	s.id = 4012
-	s.style_id = 52
-	s.full_name = '友枝 真也'
+	s.id = 401
+	s.style_id = 5
+	s.full_name = '友枝真也'
 	s.last_name = 'ともえだ'
 	s.first_name = 'しんや'
 end
 
 Performer.seed do |s|
-	s.id = 4022
-	s.style_id = 52
-	s.full_name = '友枝 雄人'
+	s.id = 402
+	s.style_id = 5
+	s.full_name = '友枝雄人'
 	s.last_name = 'ともえだ'
 	s.first_name = 'たけひと'
 end
 
 Performer.seed do |s|
-	s.id = 4032
-	s.style_id = 52
-	s.full_name = '友枝 雄太郎'
+	s.id = 403
+	s.style_id = 5
+	s.full_name = '友枝雄太郎'
 	s.last_name = 'ともえだ'
 	s.first_name = 'ゆうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4042
-	s.style_id = 52
-	s.full_name = '中村 邦生'
+	s.id = 404
+	s.style_id = 5
+	s.full_name = '中村邦生'
 	s.last_name = 'なかむら'
 	s.first_name = 'くにお'
 end
 
 Performer.seed do |s|
-	s.id = 4052
-	s.style_id = 52
-	s.full_name = '長島 茂'
+	s.id = 405
+	s.style_id = 5
+	s.full_name = '長島茂'
 	s.last_name = 'ながしま'
 	s.first_name = 'しげる'
 end
 
 Performer.seed do |s|
-	s.id = 4062
-	s.style_id = 62
-	s.full_name = '藤野 藤作'
+	s.id = 406
+	s.style_id = 6
+	s.full_name = '藤野藤作'
 	s.last_name = 'ふじの'
 	s.first_name = 'とうさく'
 end
 
 Performer.seed do |s|
-	s.id = 4072
-	s.style_id = 72
-	s.full_name = '福王 和幸'
+	s.id = 407
+	s.style_id = 7
+	s.full_name = '福王和幸'
 	s.last_name = 'ふくおう'
 	s.first_name = 'かずゆき'
 end
 
 Performer.seed do |s|
-	s.id = 4082
-	s.style_id = 72
-	s.full_name = '村瀨 慧'
+	s.id = 408
+	s.style_id = 7
+	s.full_name = '村瀨慧'
 	s.last_name = 'むらせ'
 	s.first_name = 'けい'
 end
 
 Performer.seed do |s|
-	s.id = 4092
-	s.style_id = 72
-	s.full_name = '村瀨 提'
+	s.id = 409
+	s.style_id = 7
+	s.full_name = '村瀨提'
 	s.last_name = 'むらせ'
 	s.first_name = 'だい'
 end
 
 Performer.seed do |s|
-	s.id = 4102
-	s.style_id = 72
-	s.full_name = '矢野 昌平'
+	s.id = 410
+	s.style_id = 7
+	s.full_name = '矢野昌平'
 	s.last_name = 'やの'
 	s.first_name = 'しょうへい'
 end
 
 Performer.seed do |s|
-	s.id = 4112
-	s.style_id = 82
-	s.full_name = '梅村 昌功'
+	s.id = 411
+	s.style_id = 8
+	s.full_name = '梅村昌功'
 	s.last_name = 'うめむら'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 4122
-	s.style_id = 82
-	s.full_name = '大日方 寛'
+	s.id = 412
+	s.style_id = 8
+	s.full_name = '大日方寛'
 	s.last_name = 'おびなた'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 4132
-	s.style_id = 82
-	s.full_name = '工藤 和哉'
+	s.id = 413
+	s.style_id = 8
+	s.full_name = '工藤和哉'
 	s.last_name = 'くどう'
 	s.first_name = 'かずや'
 end
 
 Performer.seed do |s|
-	s.id = 4142
-	s.style_id = 82
-	s.full_name = '髙井 松男'
+	s.id = 414
+	s.style_id = 8
+	s.full_name = '髙井松男'
 	s.last_name = 'たかい'
 	s.first_name = 'まつお'
 end
 
 Performer.seed do |s|
-	s.id = 4152
-	s.style_id = 82
-	s.full_name = '高橋 正光'
+	s.id = 415
+	s.style_id = 8
+	s.full_name = '高橋正光'
 	s.last_name = 'たかはし'
 	s.first_name = 'まさみつ'
 end
 
 Performer.seed do |s|
-	s.id = 4162
-	s.style_id = 82
-	s.full_name = '舘田 善博'
+	s.id = 416
+	s.style_id = 8
+	s.full_name = '舘田善博'
 	s.last_name = 'たてだ'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4172
-	s.style_id = 82
-	s.full_name = '殿田 謙吉'
+	s.id = 417
+	s.style_id = 8
+	s.full_name = '殿田謙吉'
 	s.last_name = 'とのだ'
 	s.first_name = 'けんきち'
 end
 
 Performer.seed do |s|
-	s.id = 4182
-	s.style_id = 82
-	s.full_name = '野口 敦弘'
+	s.id = 418
+	s.style_id = 8
+	s.full_name = '野口敦弘'
 	s.last_name = 'のぐち'
 	s.first_name = 'あつひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4192
-	s.style_id = 82
-	s.full_name = '野口 琢弘'
+	s.id = 419
+	s.style_id = 8
+	s.full_name = '野口琢弘'
 	s.last_name = 'のぐち'
 	s.first_name = 'たくひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4202
-	s.style_id = 82
-	s.full_name = '野口 能弘'
+	s.id = 420
+	s.style_id = 8
+	s.full_name = '野口能弘'
 	s.last_name = 'のぐち'
 	s.first_name = 'やすひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4212
-	s.style_id = 82
-	s.full_name = '則久 英志'
+	s.id = 421
+	s.style_id = 8
+	s.full_name = '則久英志'
 	s.last_name = 'のりひさ'
 	s.first_name = 'ひでし'
 end
 
 Performer.seed do |s|
-	s.id = 4222
-	s.style_id = 82
-	s.full_name = '宝生 欣哉'
+	s.id = 422
+	s.style_id = 8
+	s.full_name = '宝生欣哉'
 	s.last_name = 'ほうしょう'
 	s.first_name = 'きんや'
 end
 
 Performer.seed do |s|
-	s.id = 4232
-	s.style_id = 82
-	s.full_name = '森 常太郎'
+	s.id = 423
+	s.style_id = 8
+	s.full_name = '森常太郎'
 	s.last_name = 'もり'
 	s.first_name = 'じょうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4242
-	s.style_id = 82
-	s.full_name = '森 常好'
+	s.id = 424
+	s.style_id = 8
+	s.full_name = '森常好'
 	s.last_name = 'もり'
 	s.first_name = 'つねよし'
 end
 
 Performer.seed do |s|
-	s.id = 4252
-	s.style_id = 82
-	s.full_name = '安田 登'
+	s.id = 425
+	s.style_id = 8
+	s.full_name = '安田登'
 	s.last_name = 'やすだ'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 4262
-	s.style_id = 82
-	s.full_name = '吉田 祐一'
+	s.id = 426
+	s.style_id = 8
+	s.full_name = '吉田祐一'
 	s.last_name = 'よしだ'
 	s.first_name = 'ゆういち'
 end
 
 Performer.seed do |s|
-	s.id = 4272
-	s.style_id = 112
-	s.full_name = '一噌 隆之'
+	s.id = 427
+	s.style_id = 11
+	s.full_name = '一噌隆之'
 	s.last_name = 'いっそう'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 4282
-	s.style_id = 112
-	s.full_name = '一噌 仙幸'
+	s.id = 428
+	s.style_id = 11
+	s.full_name = '一噌仙幸'
 	s.last_name = 'いっそう'
 	s.first_name = 'ひさゆき'
 end
 
 Performer.seed do |s|
-	s.id = 4292
-	s.style_id = 112
-	s.full_name = '一噌 幸弘'
+	s.id = 429
+	s.style_id = 11
+	s.full_name = '一噌幸弘'
 	s.last_name = 'いっそう'
 	s.first_name = 'ゆきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4302
-	s.style_id = 112
-	s.full_name = '一噌 庸二'
+	s.id = 430
+	s.style_id = 11
+	s.full_name = '一噌庸二'
 	s.last_name = 'いっそう'
 	s.first_name = 'ようじ'
 end
 
 Performer.seed do |s|
-	s.id = 4312
-	s.style_id = 112
-	s.full_name = '小野寺 竜一'
+	s.id = 431
+	s.style_id = 11
+	s.full_name = '小野寺竜一'
 	s.last_name = 'おのでら'
 	s.first_name = 'りゅういち'
 end
 
 Performer.seed do |s|
-	s.id = 4322
-	s.style_id = 112
-	s.full_name = '成田 寛人'
+	s.id = 432
+	s.style_id = 11
+	s.full_name = '成田寛人'
 	s.last_name = 'なりた'
 	s.first_name = 'ひろひと'
 end
 
 Performer.seed do |s|
-	s.id = 4332
-	s.style_id = 112
-	s.full_name = '八反田 智子'
+	s.id = 433
+	s.style_id = 11
+	s.full_name = '八反田智子'
 	s.last_name = 'はったんだ'
 	s.first_name = 'ともこ'
 end
 
 Performer.seed do |s|
-	s.id = 4342
-	s.style_id = 112
-	s.full_name = '藤田 朝太郎'
+	s.id = 434
+	s.style_id = 11
+	s.full_name = '藤田朝太郎'
 	s.last_name = 'ふじた'
 	s.first_name = 'あさたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4352
-	s.style_id = 112
-	s.full_name = '藤田 次郎'
+	s.id = 435
+	s.style_id = 11
+	s.full_name = '藤田次郎'
 	s.last_name = 'ふじた'
 	s.first_name = 'じろう'
 end
 
 Performer.seed do |s|
-	s.id = 4362
-	s.style_id = 112
-	s.full_name = '藤田 貴寛'
+	s.id = 436
+	s.style_id = 11
+	s.full_name = '藤田貴寛'
 	s.last_name = 'ふじた'
 	s.first_name = 'たかひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4372
-	s.style_id = 112
-	s.full_name = '藤田 太郎'
+	s.id = 437
+	s.style_id = 11
+	s.full_name = '藤田太郎'
 	s.last_name = 'ふじた'
 	s.first_name = 'たろう'
 end
 
 Performer.seed do |s|
-	s.id = 4382
-	s.style_id = 122
-	s.full_name = '内潟 慶三'
+	s.id = 438
+	s.style_id = 12
+	s.full_name = '内潟慶三'
 	s.last_name = 'うちがた'
 	s.first_name = 'けいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 4392
-	s.style_id = 122
-	s.full_name = '熊本 俊太郎'
+	s.id = 439
+	s.style_id = 12
+	s.full_name = '熊本俊太郎'
 	s.last_name = 'くまもと'
 	s.first_name = 'しゅんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4402
-	s.style_id = 122
-	s.full_name = '栗林 祐輔'
+	s.id = 440
+	s.style_id = 12
+	s.full_name = '栗林祐輔'
 	s.last_name = 'くりばやし'
 	s.first_name = 'ゆうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 4412
-	s.style_id = 122
-	s.full_name = '関川 順一郎'
+	s.id = 441
+	s.style_id = 12
+	s.full_name = '関川順一郎'
 	s.last_name = 'せきかわ'
 	s.first_name = 'じゅんいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 4422
-	s.style_id = 122
-	s.full_name = '槻宅 聡'
+	s.id = 442
+	s.style_id = 12
+	s.full_name = '槻宅聡'
 	s.last_name = 'つきたく'
 	s.first_name = 'さとし'
 end
 
 Performer.seed do |s|
-	s.id = 4432
-	s.style_id = 122
-	s.full_name = '寺井 久八郎'
+	s.id = 443
+	s.style_id = 12
+	s.full_name = '寺井久八郎'
 	s.last_name = 'てらい'
 	s.first_name = 'きゅうはちろう'
 end
 
 Performer.seed do |s|
-	s.id = 4442
-	s.style_id = 122
-	s.full_name = '寺井 宏明'
+	s.id = 444
+	s.style_id = 12
+	s.full_name = '寺井宏明'
 	s.last_name = 'てらい'
 	s.first_name = 'ひろあき'
 end
 
 Performer.seed do |s|
-	s.id = 4452
-	s.style_id = 122
-	s.full_name = '寺井 義明'
+	s.id = 445
+	s.style_id = 12
+	s.full_name = '寺井義明'
 	s.last_name = 'てらい'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 4462
-	s.style_id = 122
-	s.full_name = '中谷 明'
+	s.id = 446
+	s.style_id = 12
+	s.full_name = '中谷明'
 	s.last_name = 'なかたに'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 4472
-	s.style_id = 122
-	s.full_name = '松田 弘之'
+	s.id = 447
+	s.style_id = 12
+	s.full_name = '松田弘之'
 	s.last_name = 'まつだ'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 4482
-	s.style_id = 142
-	s.full_name = '大村 華由'
+	s.id = 448
+	s.style_id = 14
+	s.full_name = '大村華由'
 	s.last_name = 'おおむら'
 	s.first_name = 'かゆ'
 end
 
 Performer.seed do |s|
-	s.id = 4492
-	s.style_id = 142
-	s.full_name = '亀井 俊一'
+	s.id = 449
+	s.style_id = 14
+	s.full_name = '亀井俊一'
 	s.last_name = 'かめい'
 	s.first_name = 'しゅんいち'
 end
 
 Performer.seed do |s|
-	s.id = 4502
-	s.style_id = 142
-	s.full_name = '幸 信吾'
+	s.id = 450
+	s.style_id = 14
+	s.full_name = '幸信吾'
 	s.last_name = 'こう'
 	s.first_name = 'しんご'
 end
 
 Performer.seed do |s|
-	s.id = 4512
-	s.style_id = 142
-	s.full_name = '幸 泰平'
+	s.id = 451
+	s.style_id = 14
+	s.full_name = '幸泰平'
 	s.last_name = 'こう'
 	s.first_name = 'たいへい'
 end
 
 Performer.seed do |s|
-	s.id = 4522
-	s.style_id = 142
-	s.full_name = '住駒 匡彦'
+	s.id = 452
+	s.style_id = 14
+	s.full_name = '住駒匡彦'
 	s.last_name = 'すみこま'
 	s.first_name = 'まさひこ'
 end
 
 Performer.seed do |s|
-	s.id = 4532
-	s.style_id = 142
-	s.full_name = '住駒 充彦'
+	s.id = 453
+	s.style_id = 14
+	s.full_name = '住駒充彦'
 	s.last_name = 'すみこま'
 	s.first_name = 'みつひこ'
 end
 
 Performer.seed do |s|
-	s.id = 4542
-	s.style_id = 142
-	s.full_name = '曽和 正博'
+	s.id = 454
+	s.style_id = 14
+	s.full_name = '曽和正博'
 	s.last_name = 'そわ'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4552
-	s.style_id = 142
-	s.full_name = '森 貴史'
+	s.id = 455
+	s.style_id = 14
+	s.full_name = '森貴史'
 	s.last_name = 'もり'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 4562
-	s.style_id = 152
-	s.full_name = '幸 清次郎'
+	s.id = 456
+	s.style_id = 15
+	s.full_name = '幸清次郎'
 	s.last_name = 'こう'
 	s.first_name = 'せいじろう'
 end
 
 Performer.seed do |s|
-	s.id = 4572
-	s.style_id = 152
-	s.full_name = '幸 正昭'
+	s.id = 457
+	s.style_id = 15
+	s.full_name = '幸正昭'
 	s.last_name = 'こう'
 	s.first_name = 'まさあき'
 end
 
 Performer.seed do |s|
-	s.id = 4582
-	s.style_id = 152
-	s.full_name = '野中 正和'
+	s.id = 458
+	s.style_id = 15
+	s.full_name = '野中正和'
 	s.last_name = 'のなか'
 	s.first_name = 'まさかず'
 end
 
 Performer.seed do |s|
-	s.id = 4592
-	s.style_id = 152
-	s.full_name = '森澤 勇司'
+	s.id = 459
+	s.style_id = 15
+	s.full_name = '森澤勇司'
 	s.last_name = 'もりさわ'
 	s.first_name = 'ゆうじ'
 end
 
 Performer.seed do |s|
-	s.id = 4602
-	s.style_id = 162
-	s.full_name = '飯冨 孔明'
+	s.id = 460
+	s.style_id = 16
+	s.full_name = '飯冨孔明'
 	s.last_name = 'いいとみ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 4612
-	s.style_id = 162
-	s.full_name = '鵜澤 洋太郎'
+	s.id = 461
+	s.style_id = 16
+	s.full_name = '鵜澤洋太郎'
 	s.last_name = 'うざわ'
 	s.first_name = 'ようたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4622
-	s.style_id = 162
-	s.full_name = '大倉 源次郎'
+	s.id = 462
+	s.style_id = 16
+	s.full_name = '大倉源次郎'
 	s.last_name = 'おおくら'
 	s.first_name = 'げんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 4632
-	s.style_id = 162
-	s.full_name = '大山 容子'
+	s.id = 463
+	s.style_id = 16
+	s.full_name = '大山容子'
 	s.last_name = 'おおやま'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 4642
-	s.style_id = 162
-	s.full_name = '古賀 裕己'
+	s.id = 464
+	s.style_id = 16
+	s.full_name = '古賀裕己'
 	s.last_name = 'こが'
 	s.first_name = 'ひろみ'
 end
 
 Performer.seed do |s|
-	s.id = 4652
-	s.style_id = 162
-	s.full_name = '坂田 正博'
+	s.id = 465
+	s.style_id = 16
+	s.full_name = '坂田正博'
 	s.last_name = 'さかた'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4662
-	s.style_id = 162
-	s.full_name = '清水 和音'
+	s.id = 466
+	s.style_id = 16
+	s.full_name = '清水和音'
 	s.last_name = 'しみず'
 	s.first_name = 'かずと'
 end
 
 Performer.seed do |s|
-	s.id = 4672
-	s.style_id = 162
-	s.full_name = '田邊 恭資'
+	s.id = 467
+	s.style_id = 16
+	s.full_name = '田邊恭資'
 	s.last_name = 'たなべ'
 	s.first_name = 'きょうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 4682
-	s.style_id = 172
-	s.full_name = '岡本 はる奈'
+	s.id = 468
+	s.style_id = 17
+	s.full_name = '岡本はる奈'
 	s.last_name = 'おかもと'
 	s.first_name = 'はるな'
 end
 
 Performer.seed do |s|
-	s.id = 4692
-	s.style_id = 172
-	s.full_name = '観世 新九郎'
+	s.id = 469
+	s.style_id = 17
+	s.full_name = '観世新九郎'
 	s.last_name = 'かんぜ'
 	s.first_name = 'しんくろう'
 end
 
 Performer.seed do |s|
-	s.id = 4702
-	s.style_id = 172
-	s.full_name = '神保 通世'
+	s.id = 470
+	s.style_id = 17
+	s.full_name = '神保通世'
 	s.last_name = 'じんぼ'
 	s.first_name = 'みちよ'
 end
 
 Performer.seed do |s|
-	s.id = 4712
-	s.style_id = 172
-	s.full_name = '鳥山 直也'
+	s.id = 471
+	s.style_id = 17
+	s.full_name = '鳥山直也'
 	s.last_name = 'とりやま'
 	s.first_name = 'なおや'
 end
 
 Performer.seed do |s|
-	s.id = 4722
-	s.style_id = 182
-	s.full_name = '内田 輝幸'
+	s.id = 472
+	s.style_id = 18
+	s.full_name = '内田輝幸'
 	s.last_name = 'うちだ'
 	s.first_name = 'てるゆき'
 end
 
 Performer.seed do |s|
-	s.id = 4732
-	s.style_id = 182
-	s.full_name = '亀井 忠雄'
+	s.id = 473
+	s.style_id = 18
+	s.full_name = '亀井忠雄'
 	s.last_name = 'かめい'
 	s.first_name = 'ただお'
 end
 
 Performer.seed do |s|
-	s.id = 4742
-	s.style_id = 182
-	s.full_name = '亀井 広忠'
+	s.id = 474
+	s.style_id = 18
+	s.full_name = '亀井広忠'
 	s.last_name = 'かめい'
 	s.first_name = 'ひろただ'
 end
 
 Performer.seed do |s|
-	s.id = 4752
-	s.style_id = 182
-	s.full_name = '亀井 実'
+	s.id = 475
+	s.style_id = 18
+	s.full_name = '亀井実'
 	s.last_name = 'かめい'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 4762
-	s.style_id = 182
-	s.full_name = '亀井 洋佑'
+	s.id = 476
+	s.style_id = 18
+	s.full_name = '亀井洋佑'
 	s.last_name = 'かめい'
 	s.first_name = 'ようすけ'
 end
 
 Performer.seed do |s|
-	s.id = 4772
-	s.style_id = 192
-	s.full_name = '柿原 崇志'
+	s.id = 477
+	s.style_id = 19
+	s.full_name = '柿原崇志'
 	s.last_name = 'かきはら'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 4782
-	s.style_id = 192
-	s.full_name = '柿原 孝則'
+	s.id = 478
+	s.style_id = 19
+	s.full_name = '柿原孝則'
 	s.last_name = 'かきはら'
 	s.first_name = 'たかのり'
 end
 
 Performer.seed do |s|
-	s.id = 4792
-	s.style_id = 192
-	s.full_name = '柿原 弘和'
+	s.id = 479
+	s.style_id = 19
+	s.full_name = '柿原弘和'
 	s.last_name = 'かきはら'
 	s.first_name = 'ひろかず'
 end
 
 Performer.seed do |s|
-	s.id = 4802
-	s.style_id = 192
-	s.full_name = '柿原 光博'
+	s.id = 480
+	s.style_id = 19
+	s.full_name = '柿原光博'
 	s.last_name = 'かきはら'
 	s.first_name = 'みつひろ'
 end
 
 Performer.seed do |s|
-	s.id = 4812
-	s.style_id = 192
-	s.full_name = '國川 純'
+	s.id = 481
+	s.style_id = 19
+	s.full_name = '國川純'
 	s.last_name = 'くにかわ'
 	s.first_name = 'じゅん'
 end
 
 Performer.seed do |s|
-	s.id = 4822
-	s.style_id = 192
-	s.full_name = '髙野 彰'
+	s.id = 482
+	s.style_id = 19
+	s.full_name = '髙野彰'
 	s.last_name = 'たかの'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 4832
-	s.style_id = 192
-	s.full_name = '佃 良勝'
+	s.id = 483
+	s.style_id = 19
+	s.full_name = '佃良勝'
 	s.last_name = 'つくだ'
 	s.first_name = 'よしかつ'
 end
 
 Performer.seed do |s|
-	s.id = 4842
-	s.style_id = 192
-	s.full_name = '佃 良太郎'
+	s.id = 484
+	s.style_id = 19
+	s.full_name = '佃良太郎'
 	s.last_name = 'つくだ'
 	s.first_name = 'よしたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4852
-	s.style_id = 192
-	s.full_name = '安福 光雄'
+	s.id = 485
+	s.style_id = 19
+	s.full_name = '安福光雄'
 	s.last_name = 'やすふく'
 	s.first_name = 'みつお'
 end
 
 Performer.seed do |s|
-	s.id = 4862
-	s.style_id = 212
-	s.full_name = '大倉 栄太郎'
+	s.id = 486
+	s.style_id = 21
+	s.full_name = '大倉栄太郎'
 	s.last_name = 'おおくら'
 	s.first_name = 'えいたろう'
 end
 
 Performer.seed do |s|
-	s.id = 4872
-	s.style_id = 212
-	s.full_name = '大倉 慶乃助'
+	s.id = 487
+	s.style_id = 21
+	s.full_name = '大倉慶乃助'
 	s.last_name = 'おおくら'
 	s.first_name = 'けいのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 4882
-	s.style_id = 212
-	s.full_name = '大倉 正之助'
+	s.id = 488
+	s.style_id = 21
+	s.full_name = '大倉正之助'
 	s.last_name = 'おおくら'
 	s.first_name = 'しょうのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 4892
-	s.style_id = 212
-	s.full_name = '大倉 三忠'
+	s.id = 489
+	s.style_id = 21
+	s.full_name = '大倉三忠'
 	s.last_name = 'おおくら'
 	s.first_name = 'みつただ'
 end
 
 Performer.seed do |s|
-	s.id = 4902
-	s.style_id = 232
-	s.full_name = '観世 元信'
+	s.id = 490
+	s.style_id = 23
+	s.full_name = '観世元信'
 	s.last_name = 'かんぜ'
 	s.first_name = 'もとのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 4912
-	s.style_id = 232
-	s.full_name = '観世 元伯'
+	s.id = 491
+	s.style_id = 23
+	s.full_name = '観世元伯'
 	s.last_name = 'かんぜ'
 	s.first_name = 'もとのり'
 end
 
 Performer.seed do |s|
-	s.id = 4922
-	s.style_id = 232
-	s.full_name = '小寺 佐七'
+	s.id = 492
+	s.style_id = 23
+	s.full_name = '小寺佐七'
 	s.last_name = 'こてら'
 	s.first_name = 'さしち'
 end
 
 Performer.seed do |s|
-	s.id = 4932
-	s.style_id = 232
-	s.full_name = '小寺 真佐人'
+	s.id = 493
+	s.style_id = 23
+	s.full_name = '小寺真佐人'
 	s.last_name = 'こてら'
 	s.first_name = 'まさと'
 end
 
 Performer.seed do |s|
-	s.id = 4942
-	s.style_id = 232
-	s.full_name = '澤田 晃良'
+	s.id = 494
+	s.style_id = 23
+	s.full_name = '澤田晃良'
 	s.last_name = 'さわだ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 4952
-	s.style_id = 232
-	s.full_name = '助川 治'
+	s.id = 495
+	s.style_id = 23
+	s.full_name = '助川治'
 	s.last_name = 'すけかわ'
 	s.first_name = 'おさむ'
 end
 
 Performer.seed do |s|
-	s.id = 4962
-	s.style_id = 232
-	s.full_name = '徳田 宗久'
+	s.id = 496
+	s.style_id = 23
+	s.full_name = '徳田宗久'
 	s.last_name = 'とくだ'
 	s.first_name = 'むねひさ'
 end
 
 Performer.seed do |s|
-	s.id = 4972
-	s.style_id = 232
-	s.full_name = '林 雄一郎'
+	s.id = 497
+	s.style_id = 23
+	s.full_name = '林雄一郎'
 	s.last_name = 'はやし'
 	s.first_name = 'ゆういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 4982
-	s.style_id = 232
-	s.full_name = '松本 和子'
+	s.id = 498
+	s.style_id = 23
+	s.full_name = '松本和子'
 	s.last_name = 'まつもと'
 	s.first_name = 'かずこ'
 end
 
 Performer.seed do |s|
-	s.id = 4992
-	s.style_id = 242
-	s.full_name = '姥浦 理紗'
+	s.id = 499
+	s.style_id = 24
+	s.full_name = '姥浦理紗'
 	s.last_name = 'うばうら'
 	s.first_name = 'りさ'
 end
 
 Performer.seed do |s|
-	s.id = 5002
-	s.style_id = 242
-	s.full_name = '大川 典良'
+	s.id = 500
+	s.style_id = 24
+	s.full_name = '大川典良'
 	s.last_name = 'おおかわ'
 	s.first_name = 'のりよし'
 end
 
 Performer.seed do |s|
-	s.id = 5012
-	s.style_id = 242
-	s.full_name = '梶谷 英樹'
+	s.id = 501
+	s.style_id = 24
+	s.full_name = '梶谷英樹'
 	s.last_name = 'かじたに'
 	s.first_name = 'ひでき'
 end
 
 Performer.seed do |s|
-	s.id = 5022
-	s.style_id = 242
-	s.full_name = '金春 國直'
+	s.id = 502
+	s.style_id = 24
+	s.full_name = '金春國直'
 	s.last_name = 'こんぱる'
 	s.first_name = 'くになお'
 end
 
 Performer.seed do |s|
-	s.id = 5032
-	s.style_id = 242
-	s.full_name = '桜井 均'
+	s.id = 503
+	s.style_id = 24
+	s.full_name = '桜井均'
 	s.last_name = 'さくらい'
 	s.first_name = 'ひとし'
 end
 
 Performer.seed do |s|
-	s.id = 5042
-	s.style_id = 242
-	s.full_name = '三島 元太郎'
+	s.id = 504
+	s.style_id = 24
+	s.full_name = '三島元太郎'
 	s.last_name = 'みしま'
 	s.first_name = 'げんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 5052
-	s.style_id = 92
-	s.full_name = '梓 岳夫'
+	s.id = 505
+	s.style_id = 9
+	s.full_name = '梓岳夫'
 	s.last_name = 'あずさ'
 	s.first_name = 'たけお'
 end
 
 Performer.seed do |s|
-	s.id = 5062
-	s.style_id = 92
-	s.full_name = '榎本 元'
+	s.id = 506
+	s.style_id = 9
+	s.full_name = '榎本元'
 	s.last_name = 'えのもと'
 	s.first_name = 'げん'
 end
 
 Performer.seed do |s|
-	s.id = 5072
-	s.style_id = 92
-	s.full_name = '大藏 吉次郎'
+	s.id = 507
+	s.style_id = 9
+	s.full_name = '大藏吉次郎'
 	s.last_name = 'おおくら'
 	s.first_name = 'きちじろう'
 end
 
 Performer.seed do |s|
-	s.id = 5082
-	s.style_id = 92
-	s.full_name = '大藏 教義'
+	s.id = 508
+	s.style_id = 9
+	s.full_name = '大藏教義'
 	s.last_name = 'おおくら'
 	s.first_name = 'のりよし'
 end
 
 Performer.seed do |s|
-	s.id = 5092
-	s.style_id = 92
-	s.full_name = '大藏 基誠'
+	s.id = 509
+	s.style_id = 9
+	s.full_name = '大藏基誠'
 	s.last_name = 'おおくら'
 	s.first_name = 'もとなり'
 end
 
 Performer.seed do |s|
-	s.id = 5102
-	s.style_id = 92
-	s.full_name = '大藏 彌右衛門'
+	s.id = 510
+	s.style_id = 9
+	s.full_name = '大藏彌右衛門'
 	s.last_name = 'おおくら'
 	s.first_name = 'やえもん'
 end
 
 Performer.seed do |s|
-	s.id = 5112
-	s.style_id = 92
-	s.full_name = '大藏 彌太郎'
+	s.id = 511
+	s.style_id = 9
+	s.full_name = '大藏彌太郎'
 	s.last_name = 'おおくら'
 	s.first_name = 'やたろう'
 end
 
 Performer.seed do |s|
-	s.id = 5122
-	s.style_id = 92
-	s.full_name = '小澤 孝博'
+	s.id = 512
+	s.style_id = 9
+	s.full_name = '小澤孝博'
 	s.last_name = 'おざわ'
 	s.first_name = 'たかひろ'
 end
 
 Performer.seed do |s|
-	s.id = 5132
-	s.style_id = 92
-	s.full_name = '加藤 元'
+	s.id = 513
+	s.style_id = 9
+	s.full_name = '加藤元'
 	s.last_name = 'かとう'
 	s.first_name = 'はじめ'
 end
 
 Performer.seed do |s|
-	s.id = 5142
-	s.style_id = 92
-	s.full_name = '小梶 直人'
+	s.id = 514
+	s.style_id = 9
+	s.full_name = '小梶直人'
 	s.last_name = 'こかじ'
 	s.first_name = 'なおと'
 end
 
 Performer.seed do |s|
-	s.id = 5152
-	s.style_id = 92
-	s.full_name = '善竹 十郎'
+	s.id = 515
+	s.style_id = 9
+	s.full_name = '善竹十郎'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'じゅうろう'
 end
 
 Performer.seed do |s|
-	s.id = 5162
-	s.style_id = 92
-	s.full_name = '善竹 大二郎'
+	s.id = 516
+	s.style_id = 9
+	s.full_name = '善竹大二郎'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'だいじろう'
 end
 
 Performer.seed do |s|
-	s.id = 5172
-	s.style_id = 92
-	s.full_name = '善竹 富太郎'
+	s.id = 517
+	s.style_id = 9
+	s.full_name = '善竹富太郎'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'とみたろう'
 end
 
 Performer.seed do |s|
-	s.id = 5182
-	s.style_id = 92
-	s.full_name = '田熊 力也'
+	s.id = 518
+	s.style_id = 9
+	s.full_name = '田熊力也'
 	s.last_name = 'たぐま'
 	s.first_name = 'りきや'
 end
 
 Performer.seed do |s|
-	s.id = 5192
-	s.style_id = 92
-	s.full_name = '野島 伸仁'
+	s.id = 519
+	s.style_id = 9
+	s.full_name = '野島伸仁'
 	s.last_name = 'のじま'
 	s.first_name = 'のぶひと'
 end
 
 Performer.seed do |s|
-	s.id = 5202
-	s.style_id = 92
-	s.full_name = '星 廣介'
+	s.id = 520
+	s.style_id = 9
+	s.full_name = '星廣介'
 	s.last_name = 'ほし'
 	s.first_name = 'ひろすけ'
 end
 
 Performer.seed do |s|
-	s.id = 5212
-	s.style_id = 92
-	s.full_name = '宮本 昇'
+	s.id = 521
+	s.style_id = 9
+	s.full_name = '宮本昇'
 	s.last_name = 'みやもと'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 5222
-	s.style_id = 92
-	s.full_name = '山本 修三郎'
+	s.id = 522
+	s.style_id = 9
+	s.full_name = '山本修三郎'
 	s.last_name = 'やまもと'
 	s.first_name = 'しゅうざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 5232
-	s.style_id = 92
-	s.full_name = '山本 東次郎'
+	s.id = 523
+	s.style_id = 9
+	s.full_name = '山本東次郎'
 	s.last_name = 'やまもと'
 	s.first_name = 'とうじろう'
 end
 
 Performer.seed do |s|
-	s.id = 5242
-	s.style_id = 92
-	s.full_name = '山本 則重'
+	s.id = 524
+	s.style_id = 9
+	s.full_name = '山本則重'
 	s.last_name = 'やまもと'
 	s.first_name = 'のりしげ'
 end
 
 Performer.seed do |s|
-	s.id = 5252
-	s.style_id = 92
-	s.full_name = '山本 則孝'
+	s.id = 525
+	s.style_id = 9
+	s.full_name = '山本則孝'
 	s.last_name = 'やまもと'
 	s.first_name = 'のりたか'
 end
 
 Performer.seed do |s|
-	s.id = 5262
-	s.style_id = 92
-	s.full_name = '山本 則俊'
+	s.id = 526
+	s.style_id = 9
+	s.full_name = '山本則俊'
 	s.last_name = 'やまもと'
 	s.first_name = 'のりとし'
 end
 
 Performer.seed do |s|
-	s.id = 5272
-	s.style_id = 92
-	s.full_name = '山本 則秀'
+	s.id = 527
+	s.style_id = 9
+	s.full_name = '山本則秀'
 	s.last_name = 'やまもと'
 	s.first_name = 'のりひで'
 end
 
 Performer.seed do |s|
-	s.id = 5282
-	s.style_id = 92
-	s.full_name = '山本 泰太郎'
+	s.id = 528
+	s.style_id = 9
+	s.full_name = '山本泰太郎'
 	s.last_name = 'やまもと'
 	s.first_name = 'やすたろう'
 end
 
 Performer.seed do |s|
-	s.id = 5292
-	s.style_id = 92
-	s.full_name = '山本 凜太郎'
+	s.id = 529
+	s.style_id = 9
+	s.full_name = '山本凜太郎'
 	s.last_name = 'やまもと'
 	s.first_name = 'りんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 5302
-	s.style_id = 92
-	s.full_name = '吉田 信海'
+	s.id = 530
+	s.style_id = 9
+	s.full_name = '吉田信海'
 	s.last_name = 'よしだ'
 	s.first_name = 'しんかい'
 end
 
 Performer.seed do |s|
-	s.id = 5312
-	s.style_id = 92
-	s.full_name = '若松 隆'
+	s.id = 531
+	s.style_id = 9
+	s.full_name = '若松隆'
 	s.last_name = 'わかまつ'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 5322
-	s.style_id = 102
-	s.full_name = '飯田 豪'
+	s.id = 532
+	s.style_id = 10
+	s.full_name = '飯田豪'
 	s.last_name = 'いいだ'
 	s.first_name = 'ごう'
 end
 
 Performer.seed do |s|
-	s.id = 5332
-	s.style_id = 102
-	s.full_name = '石田 幸雄'
+	s.id = 533
+	s.style_id = 10
+	s.full_name = '石田幸雄'
 	s.last_name = 'いしだ'
 	s.first_name = 'ゆきお'
 end
 
 Performer.seed do |s|
-	s.id = 5342
-	s.style_id = 102
-	s.full_name = '和泉 淳子'
+	s.id = 534
+	s.style_id = 10
+	s.full_name = '和泉淳子'
 	s.last_name = 'いずみ'
 	s.first_name = 'じゅんこ'
 end
 
 Performer.seed do |s|
-	s.id = 5352
-	s.style_id = 102
-	s.full_name = '上杉 啓太'
+	s.id = 535
+	s.style_id = 10
+	s.full_name = '上杉啓太'
 	s.last_name = 'うえすぎ'
 	s.first_name = 'けいた'
 end
 
 Performer.seed do |s|
-	s.id = 5362
-	s.style_id = 102
-	s.full_name = '岡 聡史'
+	s.id = 536
+	s.style_id = 10
+	s.full_name = '岡聡史'
 	s.last_name = 'おか'
 	s.first_name = 'さとし'
 end
 
 Performer.seed do |s|
-	s.id = 5372
-	s.style_id = 102
-	s.full_name = '金田 弘明'
+	s.id = 537
+	s.style_id = 10
+	s.full_name = '金田弘明'
 	s.last_name = 'かねだ'
 	s.first_name = 'ひろあき'
 end
 
 Performer.seed do |s|
-	s.id = 5382
-	s.style_id = 102
-	s.full_name = '河路 雅義'
+	s.id = 538
+	s.style_id = 10
+	s.full_name = '河路雅義'
 	s.last_name = 'かわじ'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 5392
-	s.style_id = 102
-	s.full_name = '河野 佑紀'
+	s.id = 539
+	s.style_id = 10
+	s.full_name = '河野佑紀'
 	s.last_name = 'かわの'
 	s.first_name = 'ゆうき'
 end
 
 Performer.seed do |s|
-	s.id = 5402
-	s.style_id = 102
-	s.full_name = '髙澤 祐介'
+	s.id = 540
+	s.style_id = 10
+	s.full_name = '髙澤祐介'
 	s.last_name = 'たかざわ'
 	s.first_name = 'ゆうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 5412
-	s.style_id = 102
-	s.full_name = '高野 和憲'
+	s.id = 541
+	s.style_id = 10
+	s.full_name = '高野和憲'
 	s.last_name = 'たかの'
 	s.first_name = 'かずのり'
 end
 
 Performer.seed do |s|
-	s.id = 5422
-	s.style_id = 102
-	s.full_name = '竹山 悠樹'
+	s.id = 542
+	s.style_id = 10
+	s.full_name = '竹山悠樹'
 	s.last_name = 'たけやま'
 	s.first_name = 'ゆうき'
 end
 
 Performer.seed do |s|
-	s.id = 5432
-	s.style_id = 102
-	s.full_name = '月崎 晴夫'
+	s.id = 543
+	s.style_id = 10
+	s.full_name = '月崎晴夫'
 	s.last_name = 'つきざき'
 	s.first_name = 'はるお'
 end
 
 Performer.seed do |s|
-	s.id = 5442
-	s.style_id = 102
-	s.full_name = '内藤 連'
+	s.id = 544
+	s.style_id = 10
+	s.full_name = '内藤連'
 	s.last_name = 'ないとう'
 	s.first_name = 'れん'
 end
 
 Performer.seed do |s|
-	s.id = 5452
-	s.style_id = 102
-	s.full_name = '中村 修一'
+	s.id = 545
+	s.style_id = 10
+	s.full_name = '中村修一'
 	s.last_name = 'なかむら'
 	s.first_name = 'しゅういち'
 end
 
 Performer.seed do |s|
-	s.id = 5462
-	s.style_id = 102
-	s.full_name = '能村 晶人'
+	s.id = 546
+	s.style_id = 10
+	s.full_name = '能村晶人'
 	s.last_name = 'のむら'
 	s.first_name = 'あきひと'
 end
 
 Performer.seed do |s|
-	s.id = 5472
-	s.style_id = 102
-	s.full_name = '野村 太一郎'
+	s.id = 547
+	s.style_id = 10
+	s.full_name = '野村太一郎'
 	s.last_name = 'のむら'
 	s.first_name = 'たいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 5482
-	s.style_id = 102
-	s.full_name = '野村 萬'
+	s.id = 548
+	s.style_id = 10
+	s.full_name = '野村萬'
 	s.last_name = 'のむら'
 	s.first_name = 'まん'
 end
 
 Performer.seed do |s|
-	s.id = 5492
-	s.style_id = 102
-	s.full_name = '野村 萬斎'
+	s.id = 549
+	s.style_id = 10
+	s.full_name = '野村萬斎'
 	s.last_name = 'のむら'
 	s.first_name = 'まんさい'
 end
 
 Performer.seed do |s|
-	s.id = 5502
-	s.style_id = 102
-	s.full_name = '野村 万作'
+	s.id = 550
+	s.style_id = 10
+	s.full_name = '野村万作'
 	s.last_name = 'のむら'
 	s.first_name = 'まんさく'
 end
 
 Performer.seed do |s|
-	s.id = 5512
-	s.style_id = 102
-	s.full_name = '野村 万蔵'
+	s.id = 551
+	s.style_id = 10
+	s.full_name = '野村万蔵'
 	s.last_name = 'のむら'
 	s.first_name = 'まんぞう'
 end
 
 Performer.seed do |s|
-	s.id = 5522
-	s.style_id = 102
-	s.full_name = '野村 万之丞'
+	s.id = 552
+	s.style_id = 10
+	s.full_name = '野村万之丞'
 	s.last_name = 'のむら'
 	s.first_name = 'まんのじょう'
 end
 
 Performer.seed do |s|
-	s.id = 5532
-	s.style_id = 102
-	s.full_name = '野村 遼太'
+	s.id = 553
+	s.style_id = 10
+	s.full_name = '野村遼太'
 	s.last_name = 'のむら'
 	s.first_name = 'りょうた'
 end
 
 Performer.seed do |s|
-	s.id = 5542
-	s.style_id = 102
-	s.full_name = '破石 晋照'
+	s.id = 554
+	s.style_id = 10
+	s.full_name = '破石晋照'
 	s.last_name = 'はせき'
 	s.first_name = 'くにあき'
 end
 
 Performer.seed do |s|
-	s.id = 5552
-	s.style_id = 102
-	s.full_name = '破石 澄元'
+	s.id = 555
+	s.style_id = 10
+	s.full_name = '破石澄元'
 	s.last_name = 'はせき'
 	s.first_name = 'ちょうげん'
 end
 
 Performer.seed do |s|
-	s.id = 5562
-	s.style_id = 102
-	s.full_name = '深田 博治'
+	s.id = 556
+	s.style_id = 10
+	s.full_name = '深田博治'
 	s.last_name = 'ふかた'
 	s.first_name = 'ひろはる'
 end
 
 Performer.seed do |s|
-	s.id = 5572
-	s.style_id = 102
-	s.full_name = '前田 晃一'
+	s.id = 557
+	s.style_id = 10
+	s.full_name = '前田晃一'
 	s.last_name = 'まえだ'
 	s.first_name = 'こういち'
 end
 
 Performer.seed do |s|
-	s.id = 5582
-	s.style_id = 102
-	s.full_name = '三宅 右近'
+	s.id = 558
+	s.style_id = 10
+	s.full_name = '三宅右近'
 	s.last_name = 'みやけ'
 	s.first_name = 'うこん'
 end
 
 Performer.seed do |s|
-	s.id = 5592
-	s.style_id = 102
-	s.full_name = '三宅 右矩'
+	s.id = 559
+	s.style_id = 10
+	s.full_name = '三宅右矩'
 	s.last_name = 'みやけ'
 	s.first_name = 'すけのり'
 end
 
 Performer.seed do |s|
-	s.id = 5602
-	s.style_id = 102
-	s.full_name = '三宅 近成'
+	s.id = 560
+	s.style_id = 10
+	s.full_name = '三宅近成'
 	s.last_name = 'みやけ'
 	s.first_name = 'ちかなり'
 end
 
 Performer.seed do |s|
-	s.id = 5612
-	s.style_id = 102
-	s.full_name = '三宅 藤九郎'
+	s.id = 561
+	s.style_id = 10
+	s.full_name = '三宅藤九郎'
 	s.last_name = 'みやけ'
 	s.first_name = 'とうくろう'
 end
 
 Performer.seed do |s|
-	s.id = 5622
-	s.style_id = 102
-	s.full_name = '山下 浩一郎'
+	s.id = 562
+	s.style_id = 10
+	s.full_name = '山下浩一郎'
 	s.last_name = 'やました'
 	s.first_name = 'こういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 5632
-	s.style_id = 102
-	s.full_name = '吉川 秀樹'
+	s.id = 563
+	s.style_id = 10
+	s.full_name = '吉川秀樹'
 	s.last_name = 'よしかわ'
 	s.first_name = 'ひでき'
 end
 
 Performer.seed do |s|
-	s.id = 5642
-	s.style_id = 102
-	s.full_name = '吉浪 洋一郎'
+	s.id = 564
+	s.style_id = 10
+	s.full_name = '吉浪洋一郎'
 	s.last_name = 'よしなみ'
 	s.first_name = 'よういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 5652
-	s.style_id = 12
-	s.full_name = '泉 嘉夫'
+	s.id = 565
+	s.style_id = 1
+	s.full_name = '泉嘉夫'
 	s.last_name = 'いずみ'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 5662
-	s.style_id = 12
-	s.full_name = '伊藤 裕貴'
+	s.id = 566
+	s.style_id = 1
+	s.full_name = '伊藤裕貴'
 	s.last_name = 'いとう'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 5672
-	s.style_id = 12
-	s.full_name = '今澤 美和'
+	s.id = 567
+	s.style_id = 1
+	s.full_name = '今澤美和'
 	s.last_name = 'いまさわ'
 	s.first_name = 'みわ'
 end
 
 Performer.seed do |s|
-	s.id = 5682
-	s.style_id = 12
-	s.full_name = '梅田 邦久'
+	s.id = 568
+	s.style_id = 1
+	s.full_name = '梅田邦久'
 	s.last_name = 'うめだ'
 	s.first_name = 'くにひさ'
 end
 
 Performer.seed do |s|
-	s.id = 5692
-	s.style_id = 12
-	s.full_name = '加賀 敏彦'
+	s.id = 569
+	s.style_id = 1
+	s.full_name = '加賀敏彦'
 	s.last_name = 'かが'
 	s.first_name = 'としひこ'
 end
 
 Performer.seed do |s|
-	s.id = 5702
-	s.style_id = 12
-	s.full_name = '清沢 一政'
+	s.id = 570
+	s.style_id = 1
+	s.full_name = '清沢一政'
 	s.last_name = 'きよさわ'
 	s.first_name = 'かずまさ'
 end
 
 Performer.seed do |s|
-	s.id = 5712
-	s.style_id = 12
-	s.full_name = '久保 信一朗'
+	s.id = 571
+	s.style_id = 1
+	s.full_name = '久保信一朗'
 	s.last_name = 'くぼ'
 	s.first_name = 'しんいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 5722
-	s.style_id = 12
-	s.full_name = '近藤 幸江'
+	s.id = 572
+	s.style_id = 1
+	s.full_name = '近藤幸江'
 	s.last_name = 'こんどう'
 	s.first_name = 'ゆきえ'
 end
 
 Performer.seed do |s|
-	s.id = 5732
-	s.style_id = 12
-	s.full_name = '瀬戸 洋子'
+	s.id = 573
+	s.style_id = 1
+	s.full_name = '瀬戸洋子'
 	s.last_name = 'せと'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 5742
-	s.style_id = 12
-	s.full_name = '祖父江 修一'
+	s.id = 574
+	s.style_id = 1
+	s.full_name = '祖父江修一'
 	s.last_name = 'そぶえ'
 	s.first_name = 'しゅういち'
 end
 
 Performer.seed do |s|
-	s.id = 5752
-	s.style_id = 12
-	s.full_name = '角田 尚香'
+	s.id = 575
+	s.style_id = 1
+	s.full_name = '角田尚香'
 	s.last_name = 'つのだ'
 	s.first_name = 'なおこ'
 end
 
 Performer.seed do |s|
-	s.id = 5762
-	s.style_id = 12
-	s.full_name = '久田 勘鷗'
+	s.id = 576
+	s.style_id = 1
+	s.full_name = '久田勘鷗'
 	s.last_name = 'ひさだ'
 	s.first_name = 'かんおう'
 end
 
 Performer.seed do |s|
-	s.id = 5772
-	s.style_id = 12
-	s.full_name = '久田 三津子'
+	s.id = 577
+	s.style_id = 1
+	s.full_name = '久田三津子'
 	s.last_name = 'ひさだ'
 	s.first_name = 'みつこ'
 end
 
 Performer.seed do |s|
-	s.id = 5782
-	s.style_id = 12
-	s.full_name = '星野 路子'
+	s.id = 578
+	s.style_id = 1
+	s.full_name = '星野路子'
 	s.last_name = 'ほしの'
 	s.first_name = 'みちこ'
 end
 
 Performer.seed do |s|
-	s.id = 5792
-	s.style_id = 12
-	s.full_name = '本田 勲'
+	s.id = 579
+	s.style_id = 1
+	s.full_name = '本田勲'
 	s.last_name = 'ほんだ'
 	s.first_name = 'いさお'
 end
 
 Performer.seed do |s|
-	s.id = 5802
-	s.style_id = 12
-	s.full_name = '前野 郁子'
+	s.id = 580
+	s.style_id = 1
+	s.full_name = '前野郁子'
 	s.last_name = 'まえの'
 	s.first_name = 'いくこ'
 end
 
 Performer.seed do |s|
-	s.id = 5812
-	s.style_id = 12
-	s.full_name = '松山 幸親'
+	s.id = 581
+	s.style_id = 1
+	s.full_name = '松山幸親'
 	s.last_name = 'まつやま'
 	s.first_name = 'ゆきちか'
 end
 
 Performer.seed do |s|
-	s.id = 5822
-	s.style_id = 12
-	s.full_name = '村井 邦子'
+	s.id = 582
+	s.style_id = 1
+	s.full_name = '村井邦子'
 	s.last_name = 'むらい'
 	s.first_name = 'くにこ'
 end
 
 Performer.seed do |s|
-	s.id = 5832
-	s.style_id = 12
-	s.full_name = '八神 孝充'
+	s.id = 583
+	s.style_id = 1
+	s.full_name = '八神孝充'
 	s.last_name = 'やがみ'
 	s.first_name = 'たかみつ'
 end
 
 Performer.seed do |s|
-	s.id = 5842
-	s.style_id = 12
-	s.full_name = '吉沢 旭'
+	s.id = 584
+	s.style_id = 1
+	s.full_name = '吉沢旭'
 	s.last_name = 'よしざわ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 5852
-	s.style_id = 32
-	s.full_name = '小野瀬 荘樹'
+	s.id = 585
+	s.style_id = 3
+	s.full_name = '小野瀬荘樹'
 	s.last_name = 'おのせ'
 	s.first_name = 'そうじゅ'
 end
 
 Performer.seed do |s|
-	s.id = 5862
-	s.style_id = 32
-	s.full_name = '加藤 富貴子'
+	s.id = 586
+	s.style_id = 3
+	s.full_name = '加藤富貴子'
 	s.last_name = 'かとう'
 	s.first_name = 'ふきこ'
 end
 
 Performer.seed do |s|
-	s.id = 5872
-	s.style_id = 32
-	s.full_name = '加藤 正嗣'
+	s.id = 587
+	s.style_id = 3
+	s.full_name = '加藤正嗣'
 	s.last_name = 'かとう'
 	s.first_name = 'まさし'
 end
 
 Performer.seed do |s|
-	s.id = 5882
-	s.style_id = 32
-	s.full_name = '鬼頭 尚久'
+	s.id = 588
+	s.style_id = 3
+	s.full_name = '鬼頭尚久'
 	s.last_name = 'きとう'
 	s.first_name = 'なおひさ'
 end
 
 Performer.seed do |s|
-	s.id = 5892
-	s.style_id = 32
-	s.full_name = '小島 芳樹'
+	s.id = 589
+	s.style_id = 3
+	s.full_name = '小島芳樹'
 	s.last_name = 'こじま'
 	s.first_name = 'よしき'
 end
 
 Performer.seed do |s|
-	s.id = 5902
-	s.style_id = 32
-	s.full_name = '廣瀬 雅弘'
+	s.id = 590
+	s.style_id = 3
+	s.full_name = '廣瀬雅弘'
 	s.last_name = 'ひろせ'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 5912
-	s.style_id = 32
-	s.full_name = '本田 布由樹'
+	s.id = 591
+	s.style_id = 3
+	s.full_name = '本田布由樹'
 	s.last_name = 'ほんだ'
 	s.first_name = 'ふゆき'
 end
 
 Performer.seed do |s|
-	s.id = 5922
-	s.style_id = 32
-	s.full_name = '前田 登'
+	s.id = 592
+	s.style_id = 3
+	s.full_name = '前田登'
 	s.last_name = 'まえだ'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 5932
-	s.style_id = 22
-	s.full_name = '石原 勝成'
+	s.id = 593
+	s.style_id = 2
+	s.full_name = '石原勝成'
 	s.last_name = 'いしはら'
 	s.first_name = 'かつしげ'
 end
 
 Performer.seed do |s|
-	s.id = 5942
-	s.style_id = 22
-	s.full_name = '石森 智幸'
+	s.id = 594
+	s.style_id = 2
+	s.full_name = '石森智幸'
 	s.last_name = 'いしもり'
 	s.first_name = 'ともゆき'
 end
 
 Performer.seed do |s|
-	s.id = 5952
-	s.style_id = 22
-	s.full_name = '犬塚 惠'
+	s.id = 595
+	s.style_id = 2
+	s.full_name = '犬塚惠'
 	s.last_name = 'いぬづか'
 	s.first_name = 'けい'
 end
 
 Performer.seed do |s|
-	s.id = 5962
-	s.style_id = 22
-	s.full_name = '衣斐 愛'
+	s.id = 596
+	s.style_id = 2
+	s.full_name = '衣斐愛'
 	s.last_name = 'いび'
 	s.first_name = 'あい'
 end
 
 Performer.seed do |s|
-	s.id = 5972
-	s.style_id = 22
-	s.full_name = '衣斐 正宜'
+	s.id = 597
+	s.style_id = 2
+	s.full_name = '衣斐正宜'
 	s.last_name = 'いび'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 5982
-	s.style_id = 22
-	s.full_name = '大森 尚人'
+	s.id = 598
+	s.style_id = 2
+	s.full_name = '大森尚人'
 	s.last_name = 'おおもり'
 	s.first_name = 'なおと'
 end
 
 Performer.seed do |s|
-	s.id = 5992
-	s.style_id = 22
-	s.full_name = '片桐 真'
+	s.id = 599
+	s.style_id = 2
+	s.full_name = '片桐真'
 	s.last_name = 'かたぎり'
 	s.first_name = 'まこと'
 end
 
 Performer.seed do |s|
-	s.id = 6002
-	s.style_id = 22
-	s.full_name = '阪口 泰子'
+	s.id = 600
+	s.style_id = 2
+	s.full_name = '阪口泰子'
 	s.last_name = 'さかぐち'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 6012
-	s.style_id = 22
-	s.full_name = '佐藤 耕司'
+	s.id = 601
+	s.style_id = 2
+	s.full_name = '佐藤耕司'
 	s.last_name = 'さとう'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 6022
-	s.style_id = 22
-	s.full_name = '柴田 勲'
+	s.id = 602
+	s.style_id = 2
+	s.full_name = '柴田勲'
 	s.last_name = 'しばた'
 	s.first_name = 'いさお'
 end
 
 Performer.seed do |s|
-	s.id = 6032
-	s.style_id = 22
-	s.full_name = '竹内 孝成'
+	s.id = 603
+	s.style_id = 2
+	s.full_name = '竹内孝成'
 	s.last_name = 'たけうち'
 	s.first_name = 'こうせい'
 end
 
 Performer.seed do |s|
-	s.id = 6042
-	s.style_id = 22
-	s.full_name = '竹内 澄子'
+	s.id = 604
+	s.style_id = 2
+	s.full_name = '竹内澄子'
 	s.last_name = 'たけうち'
 	s.first_name = 'すみこ'
 end
 
 Performer.seed do |s|
-	s.id = 6052
-	s.style_id = 22
-	s.full_name = '玉井 博祜'
+	s.id = 605
+	s.style_id = 2
+	s.full_name = '玉井博祜'
 	s.last_name = 'たまい'
 	s.first_name = 'ひろこ'
 end
 
 Performer.seed do |s|
-	s.id = 6062
-	s.style_id = 22
-	s.full_name = '玉井 道夫'
+	s.id = 606
+	s.style_id = 2
+	s.full_name = '玉井道夫'
 	s.last_name = 'たまい'
 	s.first_name = 'みちお'
 end
 
 Performer.seed do |s|
-	s.id = 6072
-	s.style_id = 22
-	s.full_name = '津田 節哉'
+	s.id = 607
+	s.style_id = 2
+	s.full_name = '津田節哉'
 	s.last_name = 'つだ'
 	s.first_name = 'せつや'
 end
 
 Performer.seed do |s|
-	s.id = 6082
-	s.style_id = 22
-	s.full_name = '能勢 渉'
+	s.id = 608
+	s.style_id = 2
+	s.full_name = '能勢渉'
 	s.last_name = 'のせ'
 	s.first_name = 'わたる'
 end
 
 Performer.seed do |s|
-	s.id = 6092
-	s.style_id = 22
-	s.full_name = '芳賀 カズ子'
+	s.id = 609
+	s.style_id = 2
+	s.full_name = '芳賀カズ子'
 	s.last_name = 'はが'
 	s.first_name = 'かずこ'
 end
 
 Performer.seed do |s|
-	s.id = 6102
-	s.style_id = 22
-	s.full_name = '平田 正文'
+	s.id = 610
+	s.style_id = 2
+	s.full_name = '平田正文'
 	s.last_name = 'ひらた'
 	s.first_name = 'まさふみ'
 end
 
 Performer.seed do |s|
-	s.id = 6112
-	s.style_id = 22
-	s.full_name = '藤田 光子'
+	s.id = 611
+	s.style_id = 2
+	s.full_name = '藤田光子'
 	s.last_name = 'ふじた'
 	s.first_name = 'みつこ'
 end
 
 Performer.seed do |s|
-	s.id = 6122
-	s.style_id = 22
-	s.full_name = '松浦 祥子'
+	s.id = 612
+	s.style_id = 2
+	s.full_name = '松浦祥子'
 	s.last_name = 'まつうら'
 	s.first_name = 'しょうこ'
 end
 
 Performer.seed do |s|
-	s.id = 6132
-	s.style_id = 42
-	s.full_name = '伊藤 雅子'
+	s.id = 613
+	s.style_id = 4
+	s.full_name = '伊藤雅子'
 	s.last_name = 'いとう'
 	s.first_name = 'まさこ'
 end
 
 Performer.seed do |s|
-	s.id = 6142
-	s.style_id = 42
-	s.full_name = '大川 磨美'
+	s.id = 614
+	s.style_id = 4
+	s.full_name = '大川磨美'
 	s.last_name = 'おおかわ'
 	s.first_name = 'まみ'
 end
 
 Performer.seed do |s|
-	s.id = 6152
-	s.style_id = 42
-	s.full_name = '加藤 かおる'
+	s.id = 615
+	s.style_id = 4
+	s.full_name = '加藤かおる'
 	s.last_name = 'かとう'
 	s.first_name = 'かおる'
 end
 
 Performer.seed do |s|
-	s.id = 6162
-	s.style_id = 42
-	s.full_name = '熊谷 眞知子'
+	s.id = 616
+	s.style_id = 4
+	s.full_name = '熊谷眞知子'
 	s.last_name = 'くまがい'
 	s.first_name = 'まちこ'
 end
 
 Performer.seed do |s|
-	s.id = 6172
-	s.style_id = 42
-	s.full_name = '鈴村 昌美'
+	s.id = 617
+	s.style_id = 4
+	s.full_name = '鈴村昌美'
 	s.last_name = 'すずむら'
 	s.first_name = 'まさみ'
 end
 
 Performer.seed do |s|
-	s.id = 6182
-	s.style_id = 42
-	s.full_name = '竹市 幸司'
+	s.id = 618
+	s.style_id = 4
+	s.full_name = '竹市幸司'
 	s.last_name = 'たけいち'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 6192
-	s.style_id = 42
-	s.full_name = '田中 春奈'
+	s.id = 619
+	s.style_id = 4
+	s.full_name = '田中春奈'
 	s.last_name = 'たなか'
 	s.first_name = 'はるな'
 end
 
 Performer.seed do |s|
-	s.id = 6202
-	s.style_id = 42
-	s.full_name = '百々 康治'
+	s.id = 620
+	s.style_id = 4
+	s.full_name = '百々康治'
 	s.last_name = 'どど'
 	s.first_name = 'やすはる'
 end
 
 Performer.seed do |s|
-	s.id = 6212
-	s.style_id = 42
-	s.full_name = '羽多野 良子'
+	s.id = 621
+	s.style_id = 4
+	s.full_name = '羽多野良子'
 	s.last_name = 'はたの'
 	s.first_name = 'よしこ'
 end
 
 Performer.seed do |s|
-	s.id = 6222
-	s.style_id = 42
-	s.full_name = '牧野 元子'
+	s.id = 622
+	s.style_id = 4
+	s.full_name = '牧野元子'
 	s.last_name = 'まきの'
 	s.first_name = 'もとこ'
 end
 
 Performer.seed do |s|
-	s.id = 6232
-	s.style_id = 52
-	s.full_name = '伊藤 英毅'
+	s.id = 623
+	s.style_id = 5
+	s.full_name = '伊藤英毅'
 	s.last_name = 'いとう'
 	s.first_name = 'ひでき'
 end
 
 Performer.seed do |s|
-	s.id = 6242
-	s.style_id = 52
-	s.full_name = '長田 郷'
+	s.id = 624
+	s.style_id = 5
+	s.full_name = '長田郷'
 	s.last_name = 'おさだ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 6252
-	s.style_id = 52
-	s.full_name = '長田 驍'
+	s.id = 625
+	s.style_id = 5
+	s.full_name = '長田驍'
 	s.last_name = 'おさだ'
 	s.first_name = 'たけし'
 end
 
 Performer.seed do |s|
-	s.id = 6262
-	s.style_id = 52
-	s.full_name = '平塚 昭子'
+	s.id = 626
+	s.style_id = 5
+	s.full_name = '平塚昭子'
 	s.last_name = 'ひらつか'
 	s.first_name = 'あきこ'
 end
 
 Performer.seed do |s|
-	s.id = 6272
-	s.style_id = 52
-	s.full_name = '松井 彬'
+	s.id = 627
+	s.style_id = 5
+	s.full_name = '松井彬'
 	s.last_name = 'まつい'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 6282
-	s.style_id = 52
-	s.full_name = '松井 俊介'
+	s.id = 628
+	s.style_id = 5
+	s.full_name = '松井俊介'
 	s.last_name = 'まつい'
 	s.first_name = 'しゅんすけ'
 end
 
 Performer.seed do |s|
-	s.id = 6292
-	s.style_id = 62
-	s.full_name = '飯冨 雅介'
+	s.id = 629
+	s.style_id = 6
+	s.full_name = '飯冨雅介'
 	s.last_name = 'いいとみ'
 	s.first_name = 'ただすけ'
 end
 
 Performer.seed do |s|
-	s.id = 6302
-	s.style_id = 62
-	s.full_name = '椙元 正樹'
+	s.id = 630
+	s.style_id = 6
+	s.full_name = '椙元正樹'
 	s.last_name = 'すぎもと'
 	s.first_name = 'まさき'
 end
 
 Performer.seed do |s|
-	s.id = 6312
-	s.style_id = 62
-	s.full_name = '高安 勝久'
+	s.id = 631
+	s.style_id = 6
+	s.full_name = '高安勝久'
 	s.last_name = 'たかやす'
 	s.first_name = 'かつひさ'
 end
 
 Performer.seed do |s|
-	s.id = 6322
-	s.style_id = 62
-	s.full_name = '橋本 宰'
+	s.id = 632
+	s.style_id = 6
+	s.full_name = '橋本宰'
 	s.last_name = 'はしもと'
 	s.first_name = 'つかさ'
 end
 
 Performer.seed do |s|
-	s.id = 6332
-	s.style_id = 132
-	s.full_name = '大野 誠'
+	s.id = 633
+	s.style_id = 13
+	s.full_name = '大野誠'
 	s.last_name = 'おおの'
 	s.first_name = 'まこと'
 end
 
 Performer.seed do |s|
-	s.id = 6342
-	s.style_id = 132
-	s.full_name = '鹿取 希世'
+	s.id = 634
+	s.style_id = 13
+	s.full_name = '鹿取希世'
 	s.last_name = 'かとり'
 	s.first_name = 'きよ'
 end
 
 Performer.seed do |s|
-	s.id = 6352
-	s.style_id = 132
-	s.full_name = '竹市 学'
+	s.id = 635
+	s.style_id = 13
+	s.full_name = '竹市学'
 	s.last_name = 'たけいち'
 	s.first_name = 'まなぶ'
 end
 
 Performer.seed do |s|
-	s.id = 6362
-	s.style_id = 132
-	s.full_name = '藤田 六郎兵衛'
+	s.id = 636
+	s.style_id = 13
+	s.full_name = '藤田六郎兵衛'
 	s.last_name = 'ふじた'
 	s.first_name = 'ろくろびょうえ'
 end
 
 Performer.seed do |s|
-	s.id = 6372
-	s.style_id = 152
-	s.full_name = '後藤 嘉津幸'
+	s.id = 637
+	s.style_id = 15
+	s.full_name = '後藤嘉津幸'
 	s.last_name = 'ごとう'
 	s.first_name = 'かつゆき'
 end
 
 Performer.seed do |s|
-	s.id = 6382
-	s.style_id = 152
-	s.full_name = '後藤 孝一郎'
+	s.id = 638
+	s.style_id = 15
+	s.full_name = '後藤孝一郎'
 	s.last_name = 'ごとう'
 	s.first_name = 'こういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 6392
-	s.style_id = 152
-	s.full_name = '福井 四郎兵衛'
+	s.id = 639
+	s.style_id = 15
+	s.full_name = '福井四郎兵衛'
 	s.last_name = 'ふくい'
 	s.first_name = 'しろべえ'
 end
 
 Performer.seed do |s|
-	s.id = 6402
-	s.style_id = 152
-	s.full_name = '福井 聡介'
+	s.id = 640
+	s.style_id = 15
+	s.full_name = '福井聡介'
 	s.last_name = 'ふくい'
 	s.first_name = 'そうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 6412
-	s.style_id = 152
-	s.full_name = '船戸 昭弘'
+	s.id = 641
+	s.style_id = 15
+	s.full_name = '船戸昭弘'
 	s.last_name = 'ふなと'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 6422
-	s.style_id = 202
-	s.full_name = '河村 眞之介'
+	s.id = 642
+	s.style_id = 20
+	s.full_name = '河村眞之介'
 	s.last_name = 'かわむら'
 	s.first_name = 'しんのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 6432
-	s.style_id = 202
-	s.full_name = '河村 総一郎'
+	s.id = 643
+	s.style_id = 20
+	s.full_name = '河村総一郎'
 	s.last_name = 'かわむら'
 	s.first_name = 'そういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 6442
-	s.style_id = 202
-	s.full_name = '河村 裕一郎'
+	s.id = 644
+	s.style_id = 20
+	s.full_name = '河村裕一郎'
 	s.last_name = 'かわむら'
 	s.first_name = 'ゆういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 6452
-	s.style_id = 232
-	s.full_name = '加藤 洋輝'
+	s.id = 645
+	s.style_id = 23
+	s.full_name = '加藤洋輝'
 	s.last_name = 'かとう'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 6462
-	s.style_id = 232
-	s.full_name = '鬼頭 義命'
+	s.id = 646
+	s.style_id = 23
+	s.full_name = '鬼頭義命'
 	s.last_name = 'きとう'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 6472
-	s.style_id = 102
-	s.full_name = '伊藤 泰'
+	s.id = 647
+	s.style_id = 10
+	s.full_name = '伊藤泰'
 	s.last_name = 'いとう'
 	s.first_name = 'たい'
 end
 
 Performer.seed do |s|
-	s.id = 6482
-	s.style_id = 102
-	s.full_name = '井上 菊次郎'
+	s.id = 648
+	s.style_id = 10
+	s.full_name = '井上菊次郎'
 	s.last_name = 'いのうえ'
 	s.first_name = 'きくじろう'
 end
 
 Performer.seed do |s|
-	s.id = 6492
-	s.style_id = 102
-	s.full_name = '井上 松次郎'
+	s.id = 649
+	s.style_id = 10
+	s.full_name = '井上松次郎'
 	s.last_name = 'いのうえ'
 	s.first_name = 'まつじろう'
 end
 
 Performer.seed do |s|
-	s.id = 6502
-	s.style_id = 102
-	s.full_name = '今枝 郁雄'
+	s.id = 650
+	s.style_id = 10
+	s.full_name = '今枝郁雄'
 	s.last_name = 'いまえだ'
 	s.first_name = 'いくお'
 end
 
 Performer.seed do |s|
-	s.id = 6512
-	s.style_id = 102
-	s.full_name = '大野 弘之'
+	s.id = 651
+	s.style_id = 10
+	s.full_name = '大野弘之'
 	s.last_name = 'おおの'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 6522
-	s.style_id = 102
-	s.full_name = '奥津 健太郎'
+	s.id = 652
+	s.style_id = 10
+	s.full_name = '奥津健太郎'
 	s.last_name = 'おくつ'
 	s.first_name = 'けんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 6532
-	s.style_id = 102
-	s.full_name = '鹿島 俊裕'
+	s.id = 653
+	s.style_id = 10
+	s.full_name = '鹿島俊裕'
 	s.last_name = 'かしま'
 	s.first_name = 'としひろ'
 end
 
 Performer.seed do |s|
-	s.id = 6542
-	s.style_id = 102
-	s.full_name = '佐藤 融'
+	s.id = 654
+	s.style_id = 10
+	s.full_name = '佐藤融'
 	s.last_name = 'さとう'
 	s.first_name = 'とおる'
 end
 
 Performer.seed do |s|
-	s.id = 6552
-	s.style_id = 102
-	s.full_name = '佐藤 友彦'
+	s.id = 655
+	s.style_id = 10
+	s.full_name = '佐藤友彦'
 	s.last_name = 'さとう'
 	s.first_name = 'ともひこ'
 end
 
 Performer.seed do |s|
-	s.id = 6562
-	s.style_id = 102
-	s.full_name = '野口 隆行'
+	s.id = 656
+	s.style_id = 10
+	s.full_name = '野口隆行'
 	s.last_name = 'のぐち'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 6572
-	s.style_id = 102
-	s.full_name = '野村 又三郎'
+	s.id = 657
+	s.style_id = 10
+	s.full_name = '野村又三郎'
 	s.last_name = 'のむら'
 	s.first_name = 'またさぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 6582
-	s.style_id = 102
-	s.full_name = '伴野 俊彦'
+	s.id = 658
+	s.style_id = 10
+	s.full_name = '伴野俊彦'
 	s.last_name = 'ばんの'
 	s.first_name = 'としひこ'
 end
 
 Performer.seed do |s|
-	s.id = 6592
-	s.style_id = 102
-	s.full_name = '藤波 徹'
+	s.id = 659
+	s.style_id = 10
+	s.full_name = '藤波徹'
 	s.last_name = 'ふじなみ'
 	s.first_name = 'とおる'
 end
 
 Performer.seed do |s|
-	s.id = 6602
-	s.style_id = 102
-	s.full_name = '松田 高義'
+	s.id = 660
+	s.style_id = 10
+	s.full_name = '松田高義'
 	s.last_name = 'まつだ'
 	s.first_name = 'たかよし'
 end
 
 Performer.seed do |s|
-	s.id = 6612
-	s.style_id = 22
-	s.full_name = '浅谷 之信'
+	s.id = 661
+	s.style_id = 2
+	s.full_name = '浅谷之信'
 	s.last_name = 'あさたに'
 	s.first_name = 'ゆきのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 6622
-	s.style_id = 22
-	s.full_name = '芦田 嘉和'
+	s.id = 662
+	s.style_id = 2
+	s.full_name = '芦田嘉和'
 	s.last_name = 'あしだ'
 	s.first_name = 'よしかず'
 end
 
 Performer.seed do |s|
-	s.id = 6632
-	s.style_id = 22
-	s.full_name = '池田 安紀子'
+	s.id = 663
+	s.style_id = 2
+	s.full_name = '池田安紀子'
 	s.last_name = 'いけだ'
 	s.first_name = 'あきこ'
 end
 
 Performer.seed do |s|
-	s.id = 6642
-	s.style_id = 22
-	s.full_name = '岩井 嘉樹'
+	s.id = 664
+	s.style_id = 2
+	s.full_name = '岩井嘉樹'
 	s.last_name = 'いわい'
 	s.first_name = 'よしき'
 end
 
 Performer.seed do |s|
-	s.id = 6652
-	s.style_id = 22
-	s.full_name = '大澤 永靖'
+	s.id = 665
+	s.style_id = 2
+	s.full_name = '大澤永靖'
 	s.last_name = 'おおさわ'
 	s.first_name = 'ひさやす'
 end
 
 Performer.seed do |s|
-	s.id = 6662
-	s.style_id = 22
-	s.full_name = '笠間 啓'
+	s.id = 666
+	s.style_id = 2
+	s.full_name = '笠間啓'
 	s.last_name = 'かさま'
 	s.first_name = 'けい'
 end
 
 Performer.seed do |s|
-	s.id = 6672
-	s.style_id = 22
-	s.full_name = '加藤 敬一'
+	s.id = 667
+	s.style_id = 2
+	s.full_name = '加藤敬一'
 	s.last_name = 'かとう'
 	s.first_name = 'けいいち'
 end
 
 Performer.seed do |s|
-	s.id = 6682
-	s.style_id = 22
-	s.full_name = '亀田 肇'
+	s.id = 668
+	s.style_id = 2
+	s.full_name = '亀田肇'
 	s.last_name = 'かめだ'
 	s.first_name = 'はじめ'
 end
 
 Performer.seed do |s|
-	s.id = 6692
-	s.style_id = 22
-	s.full_name = '川上 政平'
+	s.id = 669
+	s.style_id = 2
+	s.full_name = '川上政平'
 	s.last_name = 'かわかみ'
 	s.first_name = 'まさひら'
 end
 
 Performer.seed do |s|
-	s.id = 6702
-	s.style_id = 22
-	s.full_name = '川島 英治'
+	s.id = 670
+	s.style_id = 2
+	s.full_name = '川島英治'
 	s.last_name = 'かわしま'
 	s.first_name = 'えいじ'
 end
 
 Performer.seed do |s|
-	s.id = 6712
-	s.style_id = 22
-	s.full_name = '北村 修吉'
+	s.id = 671
+	s.style_id = 2
+	s.full_name = '北村修吉'
 	s.last_name = 'きたむら'
 	s.first_name = 'しゅうきち'
 end
 
 Performer.seed do |s|
-	s.id = 6722
-	s.style_id = 22
-	s.full_name = '木戸 玲子'
+	s.id = 672
+	s.style_id = 2
+	s.full_name = '木戸玲子'
 	s.last_name = 'きど'
 	s.first_name = 'れいこ'
 end
 
 Performer.seed do |s|
-	s.id = 6732
-	s.style_id = 22
-	s.full_name = '酒井 章'
+	s.id = 673
+	s.style_id = 2
+	s.full_name = '酒井章'
 	s.last_name = 'さかい'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 6742
-	s.style_id = 22
-	s.full_name = '佐野 由於'
+	s.id = 674
+	s.style_id = 2
+	s.full_name = '佐野由於'
 	s.last_name = 'さの'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 6752
-	s.style_id = 22
-	s.full_name = '島村 明宏'
+	s.id = 675
+	s.style_id = 2
+	s.full_name = '島村明宏'
 	s.last_name = 'しまむら'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 6762
-	s.style_id = 22
-	s.full_name = '杉田 八榮子'
+	s.id = 676
+	s.style_id = 2
+	s.full_name = '杉田八榮子'
 	s.last_name = 'すぎた'
 	s.first_name = 'やえこ'
 end
 
 Performer.seed do |s|
-	s.id = 6772
-	s.style_id = 22
-	s.full_name = '鈴木 重寛'
+	s.id = 677
+	s.style_id = 2
+	s.full_name = '鈴木重寛'
 	s.last_name = 'すずき'
 	s.first_name = 'しげひろ'
 end
 
 Performer.seed do |s|
-	s.id = 6782
-	s.style_id = 22
-	s.full_name = '砂田 洋子'
+	s.id = 678
+	s.style_id = 2
+	s.full_name = '砂田洋子'
 	s.last_name = 'すなだ'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 6792
-	s.style_id = 22
-	s.full_name = '髙野 秀幸'
+	s.id = 679
+	s.style_id = 2
+	s.full_name = '髙野秀幸'
 	s.last_name = 'たかの'
 	s.first_name = 'ひでゆき'
 end
 
 Performer.seed do |s|
-	s.id = 6802
-	s.style_id = 22
-	s.full_name = '髙橋 右任'
+	s.id = 680
+	s.style_id = 2
+	s.full_name = '髙橋右任'
 	s.last_name = 'たかはし'
 	s.first_name = 'ゆたか'
 end
 
 Performer.seed do |s|
-	s.id = 6812
-	s.style_id = 22
-	s.full_name = '舘 聖'
+	s.id = 681
+	s.style_id = 2
+	s.full_name = '舘聖'
 	s.last_name = 'たち'
 	s.first_name = 'さとし'
 end
 
 Performer.seed do |s|
-	s.id = 6822
-	s.style_id = 22
-	s.full_name = '谷 清士'
+	s.id = 682
+	s.style_id = 2
+	s.full_name = '谷清士'
 	s.last_name = 'たに'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 6832
-	s.style_id = 22
-	s.full_name = '玉川 博'
+	s.id = 683
+	s.style_id = 2
+	s.full_name = '玉川博'
 	s.last_name = 'たまがわ'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 6842
-	s.style_id = 22
-	s.full_name = '田屋 邦夫'
+	s.id = 684
+	s.style_id = 2
+	s.full_name = '田屋邦夫'
 	s.last_name = 'たや'
 	s.first_name = 'くにお'
 end
 
 Performer.seed do |s|
-	s.id = 6852
-	s.style_id = 22
-	s.full_name = '土川 喜枝'
+	s.id = 685
+	s.style_id = 2
+	s.full_name = '土川喜枝'
 	s.last_name = 'つちかわ'
 	s.first_name = 'きえ'
 end
 
 Performer.seed do |s|
-	s.id = 6862
-	s.style_id = 22
+	s.id = 686
+	s.style_id = 2
 	s.full_name = '寺﨑 徳雄'
 	s.last_name = 'てらさき'
 	s.first_name = 'とくお'
 end
 
 Performer.seed do |s|
-	s.id = 6872
-	s.style_id = 22
-	s.full_name = '寺田 茂'
+	s.id = 687
+	s.style_id = 2
+	s.full_name = '寺田茂'
 	s.last_name = 'てらだ'
 	s.first_name = 'しげる'
 end
 
 Performer.seed do |s|
-	s.id = 6882
-	s.style_id = 22
-	s.full_name = '寺田 成秀'
+	s.id = 688
+	s.style_id = 2
+	s.full_name = '寺田成秀'
 	s.last_name = 'てらだ'
 	s.first_name = 'なりひで'
 end
 
 Performer.seed do |s|
-	s.id = 6892
-	s.style_id = 22
-	s.full_name = '中村 清'
+	s.id = 689
+	s.style_id = 2
+	s.full_name = '中村清'
 	s.last_name = 'なかむら'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 6902
-	s.style_id = 22
-	s.full_name = '長野 裕'
+	s.id = 690
+	s.style_id = 2
+	s.full_name = '長野裕'
 	s.last_name = 'ながの'
 	s.first_name = 'ゆたか'
 end
 
 Performer.seed do |s|
-	s.id = 6912
-	s.style_id = 22
-	s.full_name = '西村 若子'
+	s.id = 691
+	s.style_id = 2
+	s.full_name = '西村若子'
 	s.last_name = 'にしむら'
 	s.first_name = 'わかこ'
 end
 
 Performer.seed do |s|
-	s.id = 6922
-	s.style_id = 22
-	s.full_name = '平澤 佳芽子'
+	s.id = 692
+	s.style_id = 2
+	s.full_name = '平澤佳芽子'
 	s.last_name = 'ひらさわ'
 	s.first_name = 'かめこ'
 end
 
 Performer.seed do |s|
-	s.id = 6932
-	s.style_id = 22
-	s.full_name = '広島 克栄'
+	s.id = 693
+	s.style_id = 2
+	s.full_name = '広島克栄'
 	s.last_name = 'ひろしま'
 	s.first_name = 'かつえい'
 end
 
 Performer.seed do |s|
-	s.id = 6942
-	s.style_id = 22
-	s.full_name = '福岡 聡子'
+	s.id = 694
+	s.style_id = 2
+	s.full_name = '福岡聡子'
 	s.last_name = 'ふくおか'
 	s.first_name = 'そうこ'
 end
 
 Performer.seed do |s|
-	s.id = 6952
-	s.style_id = 22
-	s.full_name = '船本 嘉人'
+	s.id = 695
+	s.style_id = 2
+	s.full_name = '船本嘉人'
 	s.last_name = 'ふなもと'
 	s.first_name = 'よしひと'
 end
 
 Performer.seed do |s|
-	s.id = 6962
-	s.style_id = 22
-	s.full_name = '前田 繁'
+	s.id = 696
+	s.style_id = 2
+	s.full_name = '前田繁'
 	s.last_name = 'まえだ'
 	s.first_name = 'しげる'
 end
 
 Performer.seed do |s|
-	s.id = 6972
-	s.style_id = 22
-	s.full_name = '前田 長孝'
+	s.id = 697
+	s.style_id = 2
+	s.full_name = '前田長孝'
 	s.last_name = 'まえだ'
 	s.first_name = 'ながたか'
 end
 
 Performer.seed do |s|
-	s.id = 6982
-	s.style_id = 22
-	s.full_name = '松田 若子'
+	s.id = 698
+	s.style_id = 2
+	s.full_name = '松田若子'
 	s.last_name = 'まつだ'
 	s.first_name = 'わかこ'
 end
 
 Performer.seed do |s|
-	s.id = 6992
-	s.style_id = 22
-	s.full_name = '松本 博'
+	s.id = 699
+	s.style_id = 2
+	s.full_name = '松本博'
 	s.last_name = 'まつもと'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 7002
-	s.style_id = 22
-	s.full_name = '水口 純治'
+	s.id = 700
+	s.style_id = 2
+	s.full_name = '水口純治'
 	s.last_name = 'みずぐち'
 	s.first_name = 'じゅんじ'
 end
 
 Performer.seed do |s|
-	s.id = 7012
-	s.style_id = 22
-	s.full_name = '藪 俊彦'
+	s.id = 701
+	s.style_id = 2
+	s.full_name = '藪俊彦'
 	s.last_name = 'やぶ'
 	s.first_name = 'としひこ'
 end
 
 Performer.seed do |s|
-	s.id = 7022
-	s.style_id = 22
+	s.id = 702
+	s.style_id = 2
 	s.full_name = '山﨑 健'
 	s.last_name = 'やまざき'
 	s.first_name = 'たけし'
 end
 
 Performer.seed do |s|
-	s.id = 7032
-	s.style_id = 22
-	s.full_name = '山本 貢伸'
+	s.id = 703
+	s.style_id = 2
+	s.full_name = '山本貢伸'
 	s.last_name = 'やまもと'
 	s.first_name = 'こうしん'
 end
 
 Performer.seed do |s|
-	s.id = 7042
-	s.style_id = 22
-	s.full_name = '米島 和秋'
+	s.id = 704
+	s.style_id = 2
+	s.full_name = '米島和秋'
 	s.last_name = 'よねしま'
 	s.first_name = 'かずあき'
 end
 
 Performer.seed do |s|
-	s.id = 7052
-	s.style_id = 22
-	s.full_name = '渡邊 茂人'
+	s.id = 705
+	s.style_id = 2
+	s.full_name = '渡邊茂人'
 	s.last_name = 'わたなべ'
 	s.first_name = 'しげと'
 end
 
 Performer.seed do |s|
-	s.id = 7062
-	s.style_id = 22
-	s.full_name = '渡邊 荀之助'
+	s.id = 706
+	s.style_id = 2
+	s.full_name = '渡邊荀之助'
 	s.last_name = 'わたなべ'
 	s.first_name = 'じゅんのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 7072
-	s.style_id = 82
-	s.full_name = '北島 公之'
+	s.id = 707
+	s.style_id = 8
+	s.full_name = '北島公之'
 	s.last_name = 'きたじま'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7082
-	s.style_id = 82
-	s.full_name = '苗加 登久治'
+	s.id = 708
+	s.style_id = 8
+	s.full_name = '苗加登久治'
 	s.last_name = 'のうか'
 	s.first_name = 'とくじ'
 end
 
 Performer.seed do |s|
-	s.id = 7092
-	s.style_id = 82
-	s.full_name = '平木 豊男'
+	s.id = 709
+	s.style_id = 8
+	s.full_name = '平木豊男'
 	s.last_name = 'ひらき'
 	s.first_name = 'とよお'
 end
 
 Performer.seed do |s|
-	s.id = 7102
-	s.style_id = 122
-	s.full_name = '江野 泉'
+	s.id = 710
+	s.style_id = 12
+	s.full_name = '江野泉'
 	s.last_name = 'えの'
 	s.first_name = 'いずみ'
 end
 
 Performer.seed do |s|
-	s.id = 7112
-	s.style_id = 122
-	s.full_name = '片岡 憲太郎'
+	s.id = 711
+	s.style_id = 12
+	s.full_name = '片岡憲太郎'
 	s.last_name = 'かたおか'
 	s.first_name = 'けんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 7122
-	s.style_id = 122
-	s.full_name = '瀬賀 尚義'
+	s.id = 712
+	s.style_id = 12
+	s.full_name = '瀬賀尚義'
 	s.last_name = 'せが'
 	s.first_name = 'なおよし'
 end
 
 Performer.seed do |s|
-	s.id = 7132
-	s.style_id = 122
-	s.full_name = '高島 敏彦'
+	s.id = 713
+	s.style_id = 12
+	s.full_name = '高島敏彦'
 	s.last_name = 'たかしま'
 	s.first_name = 'としひこ'
 end
 
 Performer.seed do |s|
-	s.id = 7142
-	s.style_id = 122
-	s.full_name = '桧垣 勇'
+	s.id = 714
+	s.style_id = 12
+	s.full_name = '桧垣勇'
 	s.last_name = 'ひがき'
 	s.first_name = 'いさむ'
 end
 
 Performer.seed do |s|
-	s.id = 7152
-	s.style_id = 122
-	s.full_name = '室石 和夫'
+	s.id = 715
+	s.style_id = 12
+	s.full_name = '室石和夫'
 	s.last_name = 'むろいし'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 7162
-	s.style_id = 122
-	s.full_name = '矢郷 由香子'
+	s.id = 716
+	s.style_id = 12
+	s.full_name = '矢郷由香子'
 	s.last_name = 'やごう'
 	s.first_name = 'ゆかこ'
 end
 
 Performer.seed do |s|
-	s.id = 7172
-	s.style_id = 122
-	s.full_name = '吉野 晴夫'
+	s.id = 717
+	s.style_id = 12
+	s.full_name = '吉野晴夫'
 	s.last_name = 'よしの'
 	s.first_name = 'はるお'
 end
 
 Performer.seed do |s|
-	s.id = 7182
-	s.style_id = 142
-	s.full_name = '河原 淸'
+	s.id = 718
+	s.style_id = 14
+	s.full_name = '河原淸'
 	s.last_name = 'かわら'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 7192
-	s.style_id = 142
-	s.full_name = '住駒 俊介'
+	s.id = 719
+	s.style_id = 14
+	s.full_name = '住駒俊介'
 	s.last_name = 'すみこま'
 	s.first_name = 'しゅんすけ'
 end
 
 Performer.seed do |s|
-	s.id = 7202
-	s.style_id = 142
-	s.full_name = '住駒 幸英'
+	s.id = 720
+	s.style_id = 14
+	s.full_name = '住駒幸英'
 	s.last_name = 'すみこま'
 	s.first_name = 'ゆきひで'
 end
 
 Performer.seed do |s|
-	s.id = 7212
-	s.style_id = 142
-	s.full_name = '多田 順子'
+	s.id = 721
+	s.style_id = 14
+	s.full_name = '多田順子'
 	s.last_name = 'ただ'
 	s.first_name = 'じゅんこ'
 end
 
 Performer.seed do |s|
-	s.id = 7222
-	s.style_id = 182
-	s.full_name = '飯嶋 六之佐'
+	s.id = 722
+	s.style_id = 18
+	s.full_name = '飯嶋六之佐'
 	s.last_name = 'いいじま'
 	s.first_name = 'ろくのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 7232
-	s.style_id = 182
-	s.full_name = '田中 一義'
+	s.id = 723
+	s.style_id = 18
+	s.full_name = '田中一義'
 	s.last_name = 'たなか'
 	s.first_name = 'かずよし'
 end
 
 Performer.seed do |s|
-	s.id = 7242
-	s.style_id = 182
-	s.full_name = '野尻 哲雄'
+	s.id = 724
+	s.style_id = 18
+	s.full_name = '野尻哲雄'
 	s.last_name = 'のじり'
 	s.first_name = 'てつお'
 end
 
 Performer.seed do |s|
-	s.id = 7252
-	s.style_id = 232
-	s.full_name = '飯森 友春'
+	s.id = 725
+	s.style_id = 23
+	s.full_name = '飯森友春'
 	s.last_name = 'いいもり'
 	s.first_name = 'ともはる'
 end
 
 Performer.seed do |s|
-	s.id = 7262
-	s.style_id = 232
-	s.full_name = '大橋 紀美'
+	s.id = 726
+	s.style_id = 23
+	s.full_name = '大橋紀美'
 	s.last_name = 'おおはし'
 	s.first_name = 'きみ'
 end
 
 Performer.seed do |s|
-	s.id = 7272
-	s.style_id = 232
-	s.full_name = '麦谷 暁夫'
+	s.id = 727
+	s.style_id = 23
+	s.full_name = '麦谷暁夫'
 	s.last_name = 'むぎや'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 7282
-	s.style_id = 232
-	s.full_name = '麦谷 清一郎'
+	s.id = 728
+	s.style_id = 23
+	s.full_name = '麦谷清一郎'
 	s.last_name = 'むぎや'
 	s.first_name = 'せいいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 7292
-	s.style_id = 242
-	s.full_name = '前田 孝雄'
+	s.id = 729
+	s.style_id = 24
+	s.full_name = '前田孝雄'
 	s.last_name = 'まえだ'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 7302
-	s.style_id = 102
-	s.full_name = '荒井 亮吉'
+	s.id = 730
+	s.style_id = 10
+	s.full_name = '荒井亮吉'
 	s.last_name = 'あらい'
 	s.first_name = 'りょうきち'
 end
 
 Performer.seed do |s|
-	s.id = 7312
-	s.style_id = 102
-	s.full_name = '清水 宗治'
+	s.id = 731
+	s.style_id = 10
+	s.full_name = '清水宗治'
 	s.last_name = 'しみず'
 	s.first_name = 'むねはる'
 end
 
 Performer.seed do |s|
-	s.id = 7322
-	s.style_id = 102
-	s.full_name = '炭 光太郎'
+	s.id = 732
+	s.style_id = 10
+	s.full_name = '炭光太郎'
 	s.last_name = 'すみ'
 	s.first_name = 'こうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 7332
-	s.style_id = 102
-	s.full_name = '炭 哲男'
+	s.id = 733
+	s.style_id = 10
+	s.full_name = '炭哲男'
 	s.last_name = 'すみ'
 	s.first_name = 'てつお'
 end
 
 Performer.seed do |s|
-	s.id = 7342
-	s.style_id = 102
-	s.full_name = '中尾 史生'
+	s.id = 734
+	s.style_id = 10
+	s.full_name = '中尾史生'
 	s.last_name = 'なかお'
 	s.first_name = 'ふみお'
 end
 
 Performer.seed do |s|
-	s.id = 7352
-	s.style_id = 102
-	s.full_name = '鍋島 憲'
+	s.id = 735
+	s.style_id = 10
+	s.full_name = '鍋島憲'
 	s.last_name = 'なべしま'
 	s.first_name = 'のり'
 end
 
 Performer.seed do |s|
-	s.id = 7362
-	s.style_id = 102
-	s.full_name = '能村 祐丞'
+	s.id = 736
+	s.style_id = 10
+	s.full_name = '能村祐丞'
 	s.last_name = 'のむら'
 	s.first_name = 'ゆうじょう'
 end
 
 Performer.seed do |s|
-	s.id = 7372
-	s.style_id = 102
-	s.full_name = '増田 秋雄'
+	s.id = 737
+	s.style_id = 10
+	s.full_name = '増田秋雄'
 	s.last_name = 'ますた'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 7382
-	s.style_id = 102
-	s.full_name = '山田 譲二'
+	s.id = 738
+	s.style_id = 10
+	s.full_name = '山田譲二'
 	s.last_name = 'やまだ'
 	s.first_name = 'じょうじ'
 end
 
 Performer.seed do |s|
-	s.id = 7392
-	s.style_id = 102
-	s.full_name = '若生 敏郎'
+	s.id = 739
+	s.style_id = 10
+	s.full_name = '若生敏郎'
 	s.last_name = 'わこう'
 	s.first_name = 'としろう'
 end
 
 Performer.seed do |s|
-	s.id = 7402
-	s.style_id = 12
-	s.full_name = '青木 道喜'
+	s.id = 740
+	s.style_id = 1
+	s.full_name = '青木道喜'
 	s.last_name = 'あおき'
 	s.first_name = 'みちよし'
 end
 
 Performer.seed do |s|
-	s.id = 7412
-	s.style_id = 12
-	s.full_name = '浅井 通昭'
+	s.id = 741
+	s.style_id = 1
+	s.full_name = '浅井通昭'
 	s.last_name = 'あさい'
 	s.first_name = 'みちあき'
 end
 
 Performer.seed do |s|
-	s.id = 7422
-	s.style_id = 12
-	s.full_name = '浅野 篤義'
+	s.id = 742
+	s.style_id = 1
+	s.full_name = '浅野篤義'
 	s.last_name = 'あさの'
 	s.first_name = 'あつよし'
 end
 
 Performer.seed do |s|
-	s.id = 7432
-	s.style_id = 12
-	s.full_name = '井上 和幸'
+	s.id = 743
+	s.style_id = 1
+	s.full_name = '井上和幸'
 	s.last_name = 'いのうえ'
 	s.first_name = 'かずゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7442
-	s.style_id = 12
-	s.full_name = '井上 貴美子'
+	s.id = 744
+	s.style_id = 1
+	s.full_name = '井上貴美子'
 	s.last_name = 'いのうえ'
 	s.first_name = 'きみこ'
 end
 
 Performer.seed do |s|
-	s.id = 7452
-	s.style_id = 12
-	s.full_name = '井上 裕久'
+	s.id = 745
+	s.style_id = 1
+	s.full_name = '井上裕久'
 	s.last_name = 'いのうえ'
 	s.first_name = 'ひろひさ'
 end
 
 Performer.seed do |s|
-	s.id = 7462
-	s.style_id = 12
-	s.full_name = '梅田 嘉宏'
+	s.id = 746
+	s.style_id = 1
+	s.full_name = '梅田嘉宏'
 	s.last_name = 'うめだ'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 7472
-	s.style_id = 12
-	s.full_name = '浦田 保親'
+	s.id = 747
+	s.style_id = 1
+	s.full_name = '浦田保親'
 	s.last_name = 'うらた'
 	s.first_name = 'やすちか'
 end
 
 Performer.seed do |s|
-	s.id = 7482
-	s.style_id = 12
-	s.full_name = '浦田 保浩'
+	s.id = 748
+	s.style_id = 1
+	s.full_name = '浦田保浩'
 	s.last_name = 'うらた'
 	s.first_name = 'やすひろ'
 end
 
 Performer.seed do |s|
-	s.id = 7492
-	s.style_id = 12
-	s.full_name = '浦部 幸裕'
+	s.id = 749
+	s.style_id = 1
+	s.full_name = '浦部幸裕'
 	s.last_name = 'うらべ'
 	s.first_name = 'ゆきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 7502
-	s.style_id = 12
-	s.full_name = '浦部 好弘'
+	s.id = 750
+	s.style_id = 1
+	s.full_name = '浦部好弘'
 	s.last_name = 'うらべ'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 7512
-	s.style_id = 12
-	s.full_name = '大江 広祐'
+	s.id = 751
+	s.style_id = 1
+	s.full_name = '大江広祐'
 	s.last_name = 'おおえ'
 	s.first_name = 'こうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 7522
-	s.style_id = 12
-	s.full_name = '大江 信行'
+	s.id = 752
+	s.style_id = 1
+	s.full_name = '大江信行'
 	s.last_name = 'おおえ'
 	s.first_name = 'のぶゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7532
-	s.style_id = 12
-	s.full_name = '大江 又三郎'
+	s.id = 753
+	s.style_id = 1
+	s.full_name = '大江又三郎'
 	s.last_name = 'おおえ'
 	s.first_name = 'またさぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 7542
-	s.style_id = 12
-	s.full_name = '大江 泰正'
+	s.id = 754
+	s.style_id = 1
+	s.full_name = '大江泰正'
 	s.last_name = 'おおえ'
 	s.first_name = 'やすまさ'
 end
 
 Performer.seed do |s|
-	s.id = 7552
-	s.style_id = 12
-	s.full_name = '大塚 嘉則'
+	s.id = 755
+	s.style_id = 1
+	s.full_name = '大塚嘉則'
 	s.last_name = 'おおつか'
 	s.first_name = 'よしのり'
 end
 
 Performer.seed do |s|
-	s.id = 7562
-	s.style_id = 12
-	s.full_name = '岡田 すみ子'
+	s.id = 756
+	s.style_id = 1
+	s.full_name = '岡田すみ子'
 	s.last_name = 'おかだ'
 	s.first_name = 'すみこ'
 end
 
 Performer.seed do |s|
-	s.id = 7572
-	s.style_id = 12
-	s.full_name = '片山 九郎右衛門'
+	s.id = 757
+	s.style_id = 1
+	s.full_name = '片山九郎右衛門'
 	s.last_name = 'かたやま'
 	s.first_name = 'くろうえもん'
 end
 
 Performer.seed do |s|
-	s.id = 7582
-	s.style_id = 12
-	s.full_name = '片山 伸吾'
+	s.id = 758
+	s.style_id = 1
+	s.full_name = '片山伸吾'
 	s.last_name = 'かたやま'
 	s.first_name = 'しんご'
 end
 
 Performer.seed do |s|
-	s.id = 7592
-	s.style_id = 12
-	s.full_name = '河村 和晃'
+	s.id = 759
+	s.style_id = 1
+	s.full_name = '河村和晃'
 	s.last_name = 'かわむら'
 	s.first_name = 'かずあき'
 end
 
 Performer.seed do |s|
-	s.id = 7602
-	s.style_id = 12
-	s.full_name = '河村 和重'
+	s.id = 760
+	s.style_id = 1
+	s.full_name = '河村和重'
 	s.last_name = 'かわむら'
 	s.first_name = 'かずしげ'
 end
 
 Performer.seed do |s|
-	s.id = 7612
-	s.style_id = 12
-	s.full_name = '河村 和貴'
+	s.id = 761
+	s.style_id = 1
+	s.full_name = '河村和貴'
 	s.last_name = 'かわむら'
 	s.first_name = 'かずたか'
 end
 
 Performer.seed do |s|
-	s.id = 7622
-	s.style_id = 12
-	s.full_name = '河村 浩太郎'
+	s.id = 762
+	s.style_id = 1
+	s.full_name = '河村浩太郎'
 	s.last_name = 'かわむら'
 	s.first_name = 'こうたろう'
 end
 
 Performer.seed do |s|
-	s.id = 7632
-	s.style_id = 12
-	s.full_name = '河村 晴久'
+	s.id = 763
+	s.style_id = 1
+	s.full_name = '河村晴久'
 	s.last_name = 'かわむら'
 	s.first_name = 'はるひさ'
 end
 
 Performer.seed do |s|
-	s.id = 7642
-	s.style_id = 12
-	s.full_name = '河村 晴道'
+	s.id = 764
+	s.style_id = 1
+	s.full_name = '河村晴道'
 	s.last_name = 'かわむら'
 	s.first_name = 'はるみち'
 end
 
 Performer.seed do |s|
-	s.id = 7652
-	s.style_id = 12
-	s.full_name = '河村 博重'
+	s.id = 765
+	s.style_id = 1
+	s.full_name = '河村博重'
 	s.last_name = 'かわむら'
 	s.first_name = 'ひろしげ'
 end
 
 Performer.seed do |s|
-	s.id = 7662
-	s.style_id = 12
-	s.full_name = '河本 望'
+	s.id = 766
+	s.style_id = 1
+	s.full_name = '河本望'
 	s.last_name = 'かわもと'
 	s.first_name = 'のぞむ'
 end
 
 Performer.seed do |s|
-	s.id = 7672
-	s.style_id = 12
-	s.full_name = '越賀 隆之'
+	s.id = 767
+	s.style_id = 1
+	s.full_name = '越賀隆之'
 	s.last_name = 'こしか'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7682
-	s.style_id = 12
-	s.full_name = '小林 慶三'
+	s.id = 768
+	s.style_id = 1
+	s.full_name = '小林慶三'
 	s.last_name = 'こばやし'
 	s.first_name = 'けいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 7692
-	s.style_id = 12
-	s.full_name = '實川 紀'
+	s.id = 769
+	s.style_id = 1
+	s.full_name = '實川紀'
 	s.last_name = 'じつかわ'
 	s.first_name = 'おさむ'
 end
 
 Performer.seed do |s|
-	s.id = 7702
-	s.style_id = 12
-	s.full_name = '杉浦 豊彦'
+	s.id = 770
+	s.style_id = 1
+	s.full_name = '杉浦豊彦'
 	s.last_name = 'すぎうら'
 	s.first_name = 'とよひこ'
 end
 
 Performer.seed do |s|
-	s.id = 7712
-	s.style_id = 12
-	s.full_name = '武田 欣司'
+	s.id = 771
+	s.style_id = 1
+	s.full_name = '武田欣司'
 	s.last_name = 'たけだ'
 	s.first_name = 'きんじ'
 end
 
 Performer.seed do |s|
-	s.id = 7722
-	s.style_id = 12
-	s.full_name = '武田 邦弘'
+	s.id = 772
+	s.style_id = 1
+	s.full_name = '武田邦弘'
 	s.last_name = 'たけだ'
 	s.first_name = 'くにひろ'
 end
 
 Performer.seed do |s|
-	s.id = 7732
-	s.style_id = 12
-	s.full_name = '武田 大志'
+	s.id = 773
+	s.style_id = 1
+	s.full_name = '武田大志'
 	s.last_name = 'たけだ'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 7742
-	s.style_id = 12
-	s.full_name = '田中 隆夫'
+	s.id = 774
+	s.style_id = 1
+	s.full_name = '田中隆夫'
 	s.last_name = 'たなか'
 	s.first_name = 'たかお'
 end
 
 Performer.seed do |s|
-	s.id = 7752
-	s.style_id = 12
-	s.full_name = '田茂井 廣道'
+	s.id = 775
+	s.style_id = 1
+	s.full_name = '田茂井廣道'
 	s.last_name = 'たもい'
 	s.first_name = 'ひろみち'
 end
 
 Performer.seed do |s|
-	s.id = 7762
-	s.style_id = 12
-	s.full_name = '塚本 和雄'
+	s.id = 776
+	s.style_id = 1
+	s.full_name = '塚本和雄'
 	s.last_name = 'つかもと'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 7772
-	s.style_id = 12
-	s.full_name = '橋本 礒道'
+	s.id = 777
+	s.style_id = 1
+	s.full_name = '橋本礒道'
 	s.last_name = 'はしもと'
 	s.first_name = 'いそみち'
 end
 
 Performer.seed do |s|
-	s.id = 7782
-	s.style_id = 12
-	s.full_name = '橋本 擴三郎'
+	s.id = 778
+	s.style_id = 1
+	s.full_name = '橋本擴三郎'
 	s.last_name = 'はしもと'
 	s.first_name = 'こうざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 7792
-	s.style_id = 12
-	s.full_name = '橋本 光史'
+	s.id = 779
+	s.style_id = 1
+	s.full_name = '橋本光史'
 	s.last_name = 'はしもと'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 7802
-	s.style_id = 12
-	s.full_name = '橋本 忠樹'
+	s.id = 780
+	s.style_id = 1
+	s.full_name = '橋本忠樹'
 	s.last_name = 'はしもと'
 	s.first_name = 'ただき'
 end
 
 Performer.seed do |s|
-	s.id = 7812
-	s.style_id = 12
-	s.full_name = '橋本 雅夫'
+	s.id = 781
+	s.style_id = 1
+	s.full_name = '橋本雅夫'
 	s.last_name = 'はしもと'
 	s.first_name = 'まさお'
 end
 
 Performer.seed do |s|
-	s.id = 7822
-	s.style_id = 12
-	s.full_name = '林 宗一郎'
+	s.id = 782
+	s.style_id = 1
+	s.full_name = '林宗一郎'
 	s.last_name = 'はやし'
 	s.first_name = 'そういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 7832
-	s.style_id = 12
-	s.full_name = '深野 新次郎'
+	s.id = 783
+	s.style_id = 1
+	s.full_name = '深野新次郎'
 	s.last_name = 'ふかの'
 	s.first_name = 'しんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 7842
-	s.style_id = 12
-	s.full_name = '深野 貴彦'
+	s.id = 784
+	s.style_id = 1
+	s.full_name = '深野貴彦'
 	s.last_name = 'ふかの'
 	s.first_name = 'たかひこ'
 end
 
 Performer.seed do |s|
-	s.id = 7852
-	s.style_id = 12
-	s.full_name = '藤井 千鶴子'
+	s.id = 785
+	s.style_id = 1
+	s.full_name = '藤井千鶴子'
 	s.last_name = 'ふじい'
 	s.first_name = 'ちずこ'
 end
 
 Performer.seed do |s|
-	s.id = 7862
-	s.style_id = 12
-	s.full_name = '古橋 正邦'
+	s.id = 786
+	s.style_id = 1
+	s.full_name = '古橋正邦'
 	s.last_name = 'ふるはし'
 	s.first_name = 'まさくに'
 end
 
 Performer.seed do |s|
-	s.id = 7872
-	s.style_id = 12
-	s.full_name = '牧野 和夫'
+	s.id = 787
+	s.style_id = 1
+	s.full_name = '牧野和夫'
 	s.last_name = 'まきの'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 7882
-	s.style_id = 12
-	s.full_name = '松井 美樹'
+	s.id = 788
+	s.style_id = 1
+	s.full_name = '松井美樹'
 	s.last_name = 'まつい'
 	s.first_name = 'みき'
 end
 
 Performer.seed do |s|
-	s.id = 7892
-	s.style_id = 12
-	s.full_name = '松野 浩行'
+	s.id = 789
+	s.style_id = 1
+	s.full_name = '松野浩行'
 	s.last_name = 'まつの'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7902
-	s.style_id = 12
-	s.full_name = '味方 健'
+	s.id = 790
+	s.style_id = 1
+	s.full_name = '味方健'
 	s.last_name = 'みかた'
 	s.first_name = 'けん'
 end
 
 Performer.seed do |s|
-	s.id = 7912
-	s.style_id = 12
-	s.full_name = '味方 玄'
+	s.id = 791
+	s.style_id = 1
+	s.full_name = '味方玄'
 	s.last_name = 'みかた'
 	s.first_name = 'しずか'
 end
 
 Performer.seed do |s|
-	s.id = 7922
-	s.style_id = 12
-	s.full_name = '味方 團'
+	s.id = 792
+	s.style_id = 1
+	s.full_name = '味方團'
 	s.last_name = 'みかた'
 	s.first_name = 'まどか'
 end
 
 Performer.seed do |s|
-	s.id = 7932
-	s.style_id = 12
-	s.full_name = '宮田 宏之'
+	s.id = 793
+	s.style_id = 1
+	s.full_name = '宮田宏之'
 	s.last_name = 'みやた'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 7942
-	s.style_id = 12
-	s.full_name = '宮本 茂樹'
+	s.id = 794
+	s.style_id = 1
+	s.full_name = '宮本茂樹'
 	s.last_name = 'みやもと'
 	s.first_name = 'しげき'
 end
 
 Performer.seed do |s|
-	s.id = 7952
-	s.style_id = 12
+	s.id = 795
+	s.style_id = 1
 	s.full_name = '山﨑 芙紗子'
 	s.last_name = 'やまざき'
 	s.first_name = 'ふさこ'
 end
 
 Performer.seed do |s|
-	s.id = 7962
-	s.style_id = 12
-	s.full_name = '山田 修司'
+	s.id = 796
+	s.style_id = 1
+	s.full_name = '山田修司'
 	s.last_name = 'やまだ'
 	s.first_name = 'しゅうじ'
 end
 
 Performer.seed do |s|
-	s.id = 7972
-	s.style_id = 12
-	s.full_name = '吉田 篤史'
+	s.id = 797
+	s.style_id = 1
+	s.full_name = '吉田篤史'
 	s.last_name = 'よしだ'
 	s.first_name = 'あつし'
 end
 
 Performer.seed do |s|
-	s.id = 7982
-	s.style_id = 12
-	s.full_name = '吉田 潔司'
+	s.id = 798
+	s.style_id = 1
+	s.full_name = '吉田潔司'
 	s.last_name = 'よしだ'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 7992
-	s.style_id = 12
-	s.full_name = '吉浪 壽晃'
+	s.id = 799
+	s.style_id = 1
+	s.full_name = '吉浪壽晃'
 	s.last_name = 'よしなみ'
 	s.first_name = 'としあき'
 end
 
 Performer.seed do |s|
-	s.id = 8002
-	s.style_id = 12
-	s.full_name = '分林 道治'
+	s.id = 800
+	s.style_id = 1
+	s.full_name = '分林道治'
 	s.last_name = 'わけばやし'
 	s.first_name = 'みちはる'
 end
 
 Performer.seed do |s|
-	s.id = 8012
-	s.style_id = 12
-	s.full_name = '鷲尾 周三'
+	s.id = 801
+	s.style_id = 1
+	s.full_name = '鷲尾周三'
 	s.last_name = 'わしお'
 	s.first_name = 'しゅうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 8022
-	s.style_id = 12
-	s.full_name = '鷲尾 世志子'
+	s.id = 802
+	s.style_id = 1
+	s.full_name = '鷲尾世志子'
 	s.last_name = 'わしお'
 	s.first_name = 'よしこ'
 end
 
 Performer.seed do |s|
-	s.id = 8032
-	s.style_id = 32
-	s.full_name = '石原 昌和'
+	s.id = 803
+	s.style_id = 3
+	s.full_name = '石原昌和'
 	s.last_name = 'いしはら'
 	s.first_name = 'まさかず'
 end
 
 Performer.seed do |s|
-	s.id = 8042
-	s.style_id = 32
-	s.full_name = '上浦 一道'
+	s.id = 804
+	s.style_id = 3
+	s.full_name = '上浦一道'
 	s.last_name = 'うえうら'
 	s.first_name = 'かずみち'
 end
 
 Performer.seed do |s|
-	s.id = 8052
-	s.style_id = 32
-	s.full_name = '植松 洋'
+	s.id = 805
+	s.style_id = 3
+	s.full_name = '植松洋'
 	s.last_name = 'うえまつ'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 8062
-	s.style_id = 32
-	s.full_name = '岸田 善三郎'
+	s.id = 806
+	s.style_id = 3
+	s.full_name = '岸田善三郎'
 	s.last_name = 'きしだ'
 	s.first_name = 'ぜんざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 8072
-	s.style_id = 32
-	s.full_name = '金春 康之'
+	s.id = 807
+	s.style_id = 3
+	s.full_name = '金春康之'
 	s.last_name = 'こんぱる'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 8082
-	s.style_id = 32
-	s.full_name = '辻本 實'
+	s.id = 808
+	s.style_id = 3
+	s.full_name = '辻本實'
 	s.last_name = 'つじもと'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 8092
-	s.style_id = 32
-	s.full_name = '南浦 潔'
+	s.id = 809
+	s.style_id = 3
+	s.full_name = '南浦潔'
 	s.last_name = 'みなみうら'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 8102
-	s.style_id = 42
-	s.full_name = '今井 克紀'
+	s.id = 810
+	s.style_id = 4
+	s.full_name = '今井克紀'
 	s.last_name = 'いまい'
 	s.first_name = 'かつのり'
 end
 
 Performer.seed do |s|
-	s.id = 8112
-	s.style_id = 42
-	s.full_name = '今井 清隆'
+	s.id = 811
+	s.style_id = 4
+	s.full_name = '今井清隆'
 	s.last_name = 'いまい'
 	s.first_name = 'きよたか'
 end
 
 Performer.seed do |s|
-	s.id = 8122
-	s.style_id = 42
-	s.full_name = '宇髙 竜成'
+	s.id = 812
+	s.style_id = 4
+	s.full_name = '宇髙竜成'
 	s.last_name = 'うだか'
 	s.first_name = 'たつしげ'
 end
 
 Performer.seed do |s|
-	s.id = 8132
-	s.style_id = 42
-	s.full_name = '宇髙 徳成'
+	s.id = 813
+	s.style_id = 4
+	s.full_name = '宇髙徳成'
 	s.last_name = 'うだか'
 	s.first_name = 'のりしげ'
 end
 
 Performer.seed do |s|
-	s.id = 8142
-	s.style_id = 42
-	s.full_name = '宇髙 通成'
+	s.id = 814
+	s.style_id = 4
+	s.full_name = '宇髙通成'
 	s.last_name = 'うだか'
 	s.first_name = 'みちしげ'
 end
 
 Performer.seed do |s|
-	s.id = 8152
-	s.style_id = 42
-	s.full_name = '漆垣 謙次'
+	s.id = 815
+	s.style_id = 4
+	s.full_name = '漆垣謙次'
 	s.last_name = 'うるしがき'
 	s.first_name = 'けんじ'
 end
 
 Performer.seed do |s|
-	s.id = 8162
-	s.style_id = 42
-	s.full_name = '小鴨 梨辺華'
+	s.id = 816
+	s.style_id = 4
+	s.full_name = '小鴨梨辺華'
 	s.last_name = 'おがも'
 	s.first_name = 'りべか'
 end
 
 Performer.seed do |s|
-	s.id = 8172
-	s.style_id = 42
-	s.full_name = '小野 芳朗'
+	s.id = 817
+	s.style_id = 4
+	s.full_name = '小野芳朗'
 	s.last_name = 'おの'
 	s.first_name = 'よしろう'
 end
 
 Performer.seed do |s|
-	s.id = 8182
-	s.style_id = 42
-	s.full_name = '金剛 龍謹'
+	s.id = 818
+	s.style_id = 4
+	s.full_name = '金剛龍謹'
 	s.last_name = 'こんごう'
 	s.first_name = 'たつのり'
 end
 
 Performer.seed do |s|
-	s.id = 8192
-	s.style_id = 42
-	s.full_name = '重本 昌也'
+	s.id = 819
+	s.style_id = 4
+	s.full_name = '重本昌也'
 	s.last_name = 'しげもと'
 	s.first_name = 'まさや'
 end
 
 Performer.seed do |s|
-	s.id = 8202
-	s.style_id = 42
+	s.id = 820
+	s.style_id = 4
 	s.full_name = '嶋﨑 暢久'
 	s.last_name = 'しまざき'
 	s.first_name = 'のぶひさ'
 end
 
 Performer.seed do |s|
-	s.id = 8212
-	s.style_id = 42
-	s.full_name = '種田 道一'
+	s.id = 821
+	s.style_id = 4
+	s.full_name = '種田道一'
 	s.last_name = 'たねだ'
 	s.first_name = 'みちかず'
 end
 
 Performer.seed do |s|
-	s.id = 8222
-	s.style_id = 42
-	s.full_name = '豊嶋 晃嗣'
+	s.id = 822
+	s.style_id = 4
+	s.full_name = '豊嶋晃嗣'
 	s.last_name = 'てしま'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 8232
-	s.style_id = 42
-	s.full_name = '豊嶋 幸洋'
+	s.id = 823
+	s.style_id = 4
+	s.full_name = '豊嶋幸洋'
 	s.last_name = 'てしま'
 	s.first_name = 'ゆきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 8242
-	s.style_id = 42
-	s.full_name = '廣田 泰三'
+	s.id = 824
+	s.style_id = 4
+	s.full_name = '廣田泰三'
 	s.last_name = 'ひろた'
 	s.first_name = 'たいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 8252
-	s.style_id = 42
-	s.full_name = '廣田 泰能'
+	s.id = 825
+	s.style_id = 4
+	s.full_name = '廣田泰能'
 	s.last_name = 'ひろた'
 	s.first_name = 'やすよし'
 end
 
 Performer.seed do |s|
-	s.id = 8262
-	s.style_id = 42
-	s.full_name = '廣田 幸稔'
+	s.id = 826
+	s.style_id = 4
+	s.full_name = '廣田幸稔'
 	s.last_name = 'ひろた'
 	s.first_name = 'ゆきとし'
 end
 
 Performer.seed do |s|
-	s.id = 8272
-	s.style_id = 42
-	s.full_name = '松野 恭憲'
+	s.id = 827
+	s.style_id = 4
+	s.full_name = '松野恭憲'
 	s.last_name = 'まつの'
 	s.first_name = 'やすのり'
 end
 
 Performer.seed do |s|
-	s.id = 8282
-	s.style_id = 42
-	s.full_name = '山田 伊純'
+	s.id = 828
+	s.style_id = 4
+	s.full_name = '山田伊純'
 	s.last_name = 'やまだ'
 	s.first_name = 'いすみ'
 end
 
 Performer.seed do |s|
-	s.id = 8292
-	s.style_id = 42
-	s.full_name = '山田 安造'
+	s.id = 829
+	s.style_id = 4
+	s.full_name = '山田安造'
 	s.last_name = 'やまだ'
 	s.first_name = 'やすぞう'
 end
 
 Performer.seed do |s|
-	s.id = 8302
-	s.style_id = 42
-	s.full_name = '和田 次夫'
+	s.id = 830
+	s.style_id = 4
+	s.full_name = '和田次夫'
 	s.last_name = 'わだ'
 	s.first_name = 'つぎお'
 end
 
 Performer.seed do |s|
-	s.id = 8312
-	s.style_id = 62
-	s.full_name = '有松 遼一'
+	s.id = 831
+	s.style_id = 6
+	s.full_name = '有松遼一'
 	s.last_name = 'ありまつ'
 	s.first_name = 'りょういち'
 end
 
 Performer.seed do |s|
-	s.id = 8322
-	s.style_id = 62
-	s.full_name = '岡 充'
+	s.id = 832
+	s.style_id = 6
+	s.full_name = '岡充'
 	s.last_name = 'おか'
 	s.first_name = 'みつる'
 end
 
 Performer.seed do |s|
-	s.id = 8332
-	s.style_id = 62
-	s.full_name = '久馬 治彦'
+	s.id = 833
+	s.style_id = 6
+	s.full_name = '久馬治彦'
 	s.last_name = 'きゅうま'
 	s.first_name = 'はるひこ'
 end
 
 Performer.seed do |s|
-	s.id = 8342
-	s.style_id = 62
-	s.full_name = '小林 努'
+	s.id = 834
+	s.style_id = 6
+	s.full_name = '小林努'
 	s.last_name = 'こばやし'
 	s.first_name = 'つとむ'
 end
 
 Performer.seed do |s|
-	s.id = 8352
-	s.style_id = 62
-	s.full_name = '原 大'
+	s.id = 835
+	s.style_id = 6
+	s.full_name = '原大'
 	s.last_name = 'はら'
 	s.first_name = 'まさる'
 end
 
 Performer.seed do |s|
-	s.id = 8362
-	s.style_id = 62
-	s.full_name = '村山 弘'
+	s.id = 836
+	s.style_id = 6
+	s.full_name = '村山弘'
 	s.last_name = 'むらやま'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 8372
-	s.style_id = 122
-	s.full_name = '左鴻 泰弘'
+	s.id = 837
+	s.style_id = 12
+	s.full_name = '左鴻泰弘'
 	s.last_name = 'さこう'
 	s.first_name = 'やすひろ'
 end
 
 Performer.seed do |s|
-	s.id = 8382
-	s.style_id = 122
-	s.full_name = '杉 市和'
+	s.id = 838
+	s.style_id = 12
+	s.full_name = '杉市和'
 	s.last_name = 'すぎ'
 	s.first_name = 'いちかず'
 end
 
 Performer.seed do |s|
-	s.id = 8392
-	s.style_id = 122
-	s.full_name = '杉 信太朗'
+	s.id = 839
+	s.style_id = 12
+	s.full_name = '杉信太朗'
 	s.last_name = 'すぎ'
 	s.first_name = 'しんたろう'
 end
 
 Performer.seed do |s|
-	s.id = 8402
-	s.style_id = 122
-	s.full_name = '光田 洋一'
+	s.id = 840
+	s.style_id = 12
+	s.full_name = '光田洋一'
 	s.last_name = 'みつだ'
 	s.first_name = 'よういち'
 end
 
 Performer.seed do |s|
-	s.id = 8412
-	s.style_id = 122
-	s.full_name = '森田 保美'
+	s.id = 841
+	s.style_id = 12
+	s.full_name = '森田保美'
 	s.last_name = 'もりた'
 	s.first_name = 'やすよし'
 end
 
 Performer.seed do |s|
-	s.id = 8422
-	s.style_id = 142
-	s.full_name = '菅 啓好'
+	s.id = 842
+	s.style_id = 14
+	s.full_name = '菅啓好'
 	s.last_name = 'かん'
 	s.first_name = 'けいこう'
 end
 
 Performer.seed do |s|
-	s.id = 8432
-	s.style_id = 142
-	s.full_name = '曽和 鼓堂'
+	s.id = 843
+	s.style_id = 14
+	s.full_name = '曽和鼓堂'
 	s.last_name = 'そわ'
 	s.first_name = 'こどう'
 end
 
 Performer.seed do |s|
-	s.id = 8442
-	s.style_id = 142
-	s.full_name = '竹村 英雄'
+	s.id = 844
+	s.style_id = 14
+	s.full_name = '竹村英雄'
 	s.last_name = 'たけむら'
 	s.first_name = 'ひでお'
 end
 
 Performer.seed do |s|
-	s.id = 8452
-	s.style_id = 142
-	s.full_name = '竹村 英敏'
+	s.id = 845
+	s.style_id = 14
+	s.full_name = '竹村英敏'
 	s.last_name = 'たけむら'
 	s.first_name = 'ひでとし'
 end
 
 Performer.seed do |s|
-	s.id = 8462
-	s.style_id = 142
-	s.full_name = '丹下 紀香'
+	s.id = 846
+	s.style_id = 14
+	s.full_name = '丹下紀香'
 	s.last_name = 'たんげ'
 	s.first_name = 'きこう'
 end
 
 Performer.seed do |s|
-	s.id = 8472
-	s.style_id = 142
-	s.full_name = '林 吉兵衛'
+	s.id = 847
+	s.style_id = 14
+	s.full_name = '林吉兵衛'
 	s.last_name = 'はやし'
 	s.first_name = 'きちべえ'
 end
 
 Performer.seed do |s|
-	s.id = 8482
-	s.style_id = 142
-	s.full_name = '林 大輝'
+	s.id = 848
+	s.style_id = 14
+	s.full_name = '林大輝'
 	s.last_name = 'はやし'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 8492
-	s.style_id = 142
-	s.full_name = '林 大和'
+	s.id = 849
+	s.style_id = 14
+	s.full_name = '林大和'
 	s.last_name = 'はやし'
 	s.first_name = 'やまと'
 end
 
 Performer.seed do |s|
-	s.id = 8502
-	s.style_id = 162
-	s.full_name = '吉阪 一郎'
+	s.id = 850
+	s.style_id = 16
+	s.full_name = '吉阪一郎'
 	s.last_name = 'きちさか'
 	s.first_name = 'いちろう'
 end
 
 Performer.seed do |s|
-	s.id = 8512
-	s.style_id = 202
-	s.full_name = '石井 保彦'
+	s.id = 851
+	s.style_id = 20
+	s.full_name = '石井保彦'
 	s.last_name = 'いしい'
 	s.first_name = 'やすひこ'
 end
 
 Performer.seed do |s|
-	s.id = 8522
-	s.style_id = 202
-	s.full_name = '井林 清一'
+	s.id = 852
+	s.style_id = 20
+	s.full_name = '井林清一'
 	s.last_name = 'いばやし'
 	s.first_name = 'せいいち'
 end
 
 Performer.seed do |s|
-	s.id = 8532
-	s.style_id = 202
-	s.full_name = '井林 久登'
+	s.id = 853
+	s.style_id = 20
+	s.full_name = '井林久登'
 	s.last_name = 'いばやし'
 	s.first_name = 'ひさと'
 end
 
 Performer.seed do |s|
-	s.id = 8542
-	s.style_id = 202
-	s.full_name = '河村 大'
+	s.id = 854
+	s.style_id = 20
+	s.full_name = '河村大'
 	s.last_name = 'かわむら'
 	s.first_name = 'まさる'
 end
 
 Performer.seed do |s|
-	s.id = 8552
-	s.style_id = 202
-	s.full_name = '谷口 正壽'
+	s.id = 855
+	s.style_id = 20
+	s.full_name = '谷口正壽'
 	s.last_name = 'たにぐち'
 	s.first_name = 'まさとし'
 end
 
 Performer.seed do |s|
-	s.id = 8562
-	s.style_id = 202
-	s.full_name = '渡部 諭'
+	s.id = 856
+	s.style_id = 20
+	s.full_name = '渡部諭'
 	s.last_name = 'わたなべ'
 	s.first_name = 'さとし'
 end
 
 Performer.seed do |s|
-	s.id = 8572
-	s.style_id = 232
-	s.full_name = '井上 敬介'
+	s.id = 857
+	s.style_id = 23
+	s.full_name = '井上敬介'
 	s.last_name = 'いのうえ'
 	s.first_name = 'けいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 8582
-	s.style_id = 242
-	s.full_name = '前川 雪'
+	s.id = 858
+	s.style_id = 24
+	s.full_name = '前川雪'
 	s.last_name = 'まえかわ'
 	s.first_name = 'すすぐ'
 end
 
 Performer.seed do |s|
-	s.id = 8592
-	s.style_id = 242
-	s.full_name = '前川 光長'
+	s.id = 859
+	s.style_id = 24
+	s.full_name = '前川光長'
 	s.last_name = 'まえかわ'
 	s.first_name = 'みつなが'
 end
 
 Performer.seed do |s|
-	s.id = 8602
-	s.style_id = 242
-	s.full_name = '前川 光範'
+	s.id = 860
+	s.style_id = 24
+	s.full_name = '前川光範'
 	s.last_name = 'まえかわ'
 	s.first_name = 'みつのり'
 end
 
 Performer.seed do |s|
-	s.id = 8612
-	s.style_id = 92
-	s.full_name = '網谷 正美'
+	s.id = 861
+	s.style_id = 9
+	s.full_name = '網谷正美'
 	s.last_name = 'あみたに'
 	s.first_name = 'まさみ'
 end
 
 Performer.seed do |s|
-	s.id = 8622
-	s.style_id = 92
-	s.full_name = '安東 伸元'
+	s.id = 862
+	s.style_id = 9
+	s.full_name = '安東伸元'
 	s.last_name = 'あんどう'
 	s.first_name = 'のぶもと'
 end
 
 Performer.seed do |s|
-	s.id = 8632
-	s.style_id = 92
-	s.full_name = '井口 竜也'
+	s.id = 863
+	s.style_id = 9
+	s.full_name = '井口竜也'
 	s.last_name = 'いぐち'
 	s.first_name = 'たつや'
 end
 
 Performer.seed do |s|
-	s.id = 8642
-	s.style_id = 92
-	s.full_name = '木村 正雄'
+	s.id = 864
+	s.style_id = 9
+	s.full_name = '木村正雄'
 	s.last_name = 'きむら'
 	s.first_name = 'まさお'
 end
 
 Performer.seed do |s|
-	s.id = 8652
-	s.style_id = 92
-	s.full_name = '茂山 あきら'
+	s.id = 865
+	s.style_id = 9
+	s.full_name = '茂山あきら'
 	s.last_name = 'しげやま'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 8662
-	s.style_id = 92
-	s.full_name = '茂山 逸平'
+	s.id = 866
+	s.style_id = 9
+	s.full_name = '茂山逸平'
 	s.last_name = 'しげやま'
 	s.first_name = 'いっぺい'
 end
 
 Performer.seed do |s|
-	s.id = 8672
-	s.style_id = 92
-	s.full_name = '茂山 茂'
+	s.id = 867
+	s.style_id = 9
+	s.full_name = '茂山茂'
 	s.last_name = 'しげやま'
 	s.first_name = 'しげる'
 end
 
 Performer.seed do |s|
-	s.id = 8682
-	s.style_id = 92
-	s.full_name = '茂山 七五三'
+	s.id = 868
+	s.style_id = 9
+	s.full_name = '茂山七五三'
 	s.last_name = 'しげやま'
 	s.first_name = 'しめ'
 end
 
 Performer.seed do |s|
-	s.id = 8692
-	s.style_id = 92
-	s.full_name = '茂山 千五郎'
+	s.id = 869
+	s.style_id = 9
+	s.full_name = '茂山千五郎'
 	s.last_name = 'しげやま'
 	s.first_name = 'せんごろう'
 end
 
 Performer.seed do |s|
-	s.id = 8702
-	s.style_id = 92
-	s.full_name = '茂山 千作'
+	s.id = 870
+	s.style_id = 9
+	s.full_name = '茂山千作'
 	s.last_name = 'しげやま'
 	s.first_name = 'せんさく'
 end
 
 Performer.seed do |s|
-	s.id = 8712
-	s.style_id = 92
-	s.full_name = '茂山 千三郎'
+	s.id = 871
+	s.style_id = 9
+	s.full_name = '茂山千三郎'
 	s.last_name = 'しげやま'
 	s.first_name = 'せんざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 8722
-	s.style_id = 92
-	s.full_name = '茂山 忠三郎'
+	s.id = 872
+	s.style_id = 9
+	s.full_name = '茂山忠三郎'
 	s.last_name = 'しげやま'
 	s.first_name = 'ちゅうざぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 8732
-	s.style_id = 92
-	s.full_name = '茂山 宗彦'
+	s.id = 873
+	s.style_id = 9
+	s.full_name = '茂山宗彦'
 	s.last_name = 'しげやま'
 	s.first_name = 'もとひこ'
 end
 
 Performer.seed do |s|
-	s.id = 8742
-	s.style_id = 92
-	s.full_name = '島田 洋海'
+	s.id = 874
+	s.style_id = 9
+	s.full_name = '島田洋海'
 	s.last_name = 'しまだ'
 	s.first_name = 'ひろみ'
 end
 
 Performer.seed do |s|
-	s.id = 8752
-	s.style_id = 92
-	s.full_name = '鈴木 実'
+	s.id = 875
+	s.style_id = 9
+	s.full_name = '鈴木実'
 	s.last_name = 'すずき'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 8762
-	s.style_id = 92
-	s.full_name = '田賀屋 夙生'
+	s.id = 876
+	s.style_id = 9
+	s.full_name = '田賀屋夙生'
 	s.last_name = 'たがや'
 	s.first_name = 'はやお'
 end
 
 Performer.seed do |s|
-	s.id = 8772
-	s.style_id = 92
-	s.full_name = '古川 道郎'
+	s.id = 877
+	s.style_id = 9
+	s.full_name = '古川道郎'
 	s.last_name = 'ふるかわ'
 	s.first_name = 'みちお'
 end
 
 Performer.seed do |s|
-	s.id = 8782
-	s.style_id = 92
-	s.full_name = '増田 浩紀'
+	s.id = 878
+	s.style_id = 9
+	s.full_name = '増田浩紀'
 	s.last_name = 'ますだ'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 8792
-	s.style_id = 92
-	s.full_name = '松本 薫'
+	s.id = 879
+	s.style_id = 9
+	s.full_name = '松本薫'
 	s.last_name = 'まつもと'
 	s.first_name = 'かおる'
 end
 
 Performer.seed do |s|
-	s.id = 8802
-	s.style_id = 92
-	s.full_name = '丸石 やすし'
+	s.id = 880
+	s.style_id = 9
+	s.full_name = '丸石やすし'
 	s.last_name = 'まるいし'
 	s.first_name = 'やすし'
 end
 
 Performer.seed do |s|
-	s.id = 8812
-	s.style_id = 92
-	s.full_name = '山口 耕道'
+	s.id = 881
+	s.style_id = 9
+	s.full_name = '山口耕道'
 	s.last_name = 'やまぐち'
 	s.first_name = 'こうどう'
 end
 
 Performer.seed do |s|
-	s.id = 8822
-	s.style_id = 92
-	s.full_name = '山下 守之'
+	s.id = 882
+	s.style_id = 9
+	s.full_name = '山下守之'
 	s.last_name = 'やました'
 	s.first_name = 'もりゆき'
 end
 
 Performer.seed do |s|
-	s.id = 8832
-	s.style_id = 102
-	s.full_name = '泉 愼也'
+	s.id = 883
+	s.style_id = 10
+	s.full_name = '泉愼也'
 	s.last_name = 'いずみ'
 	s.first_name = 'しんや'
 end
 
 Performer.seed do |s|
-	s.id = 8842
-	s.style_id = 102
-	s.full_name = '小笠原 匡'
+	s.id = 884
+	s.style_id = 10
+	s.full_name = '小笠原匡'
 	s.last_name = 'おがさわら'
 	s.first_name = 'ただし'
 end
 
 Performer.seed do |s|
-	s.id = 8852
-	s.style_id = 102
-	s.full_name = '山本 豪一'
+	s.id = 885
+	s.style_id = 10
+	s.full_name = '山本豪一'
 	s.last_name = 'やまもと'
 	s.first_name = 'ひでかず'
 end
 
 Performer.seed do |s|
-	s.id = 8862
-	s.style_id = 12
-	s.full_name = '赤井 きよ子'
+	s.id = 886
+	s.style_id = 1
+	s.full_name = '赤井きよ子'
 	s.last_name = 'あかい'
 	s.first_name = 'きよこ'
 end
 
 Performer.seed do |s|
-	s.id = 8872
-	s.style_id = 12
-	s.full_name = '赤瀬 雅則'
+	s.id = 887
+	s.style_id = 1
+	s.full_name = '赤瀬雅則'
 	s.last_name = 'あかせ'
 	s.first_name = 'まさのり'
 end
 
 Performer.seed do |s|
-	s.id = 8882
-	s.style_id = 12
-	s.full_name = '赤松 禎友'
+	s.id = 888
+	s.style_id = 1
+	s.full_name = '赤松禎友'
 	s.last_name = 'あかまつ'
 	s.first_name = 'よしとも'
 end
 
 Performer.seed do |s|
-	s.id = 8892
-	s.style_id = 12
-	s.full_name = '浅井 文義'
+	s.id = 889
+	s.style_id = 1
+	s.full_name = '浅井文義'
 	s.last_name = 'あさい'
 	s.first_name = 'ふみよし'
 end
 
 Performer.seed do |s|
-	s.id = 8902
-	s.style_id = 12
-	s.full_name = '池内 光之助'
+	s.id = 890
+	s.style_id = 1
+	s.full_name = '池内光之助'
 	s.last_name = 'いけうち'
 	s.first_name = 'みつのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 8912
-	s.style_id = 12
-	s.full_name = '出本 勝範'
+	s.id = 891
+	s.style_id = 1
+	s.full_name = '出本勝範'
 	s.last_name = 'いでもと'
 	s.first_name = 'かつのり'
 end
 
 Performer.seed do |s|
-	s.id = 8922
-	s.style_id = 12
-	s.full_name = '井戸 和男'
+	s.id = 892
+	s.style_id = 1
+	s.full_name = '井戸和男'
 	s.last_name = 'いど'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 8932
-	s.style_id = 12
-	s.full_name = '井戸 良祐'
+	s.id = 893
+	s.style_id = 1
+	s.full_name = '井戸良祐'
 	s.last_name = 'いど'
 	s.first_name = 'りょうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 8942
-	s.style_id = 12
-	s.full_name = '伊原 昇'
+	s.id = 894
+	s.style_id = 1
+	s.full_name = '伊原昇'
 	s.last_name = 'いはら'
 	s.first_name = 'のぼる'
 end
 
 Performer.seed do |s|
-	s.id = 8952
-	s.style_id = 12
-	s.full_name = '今村 哲朗'
+	s.id = 895
+	s.style_id = 1
+	s.full_name = '今村哲朗'
 	s.last_name = 'いまむら'
 	s.first_name = 'てつろう'
 end
 
 Performer.seed do |s|
-	s.id = 8962
-	s.style_id = 12
-	s.full_name = '上野 朝義'
+	s.id = 896
+	s.style_id = 1
+	s.full_name = '上野朝義'
 	s.last_name = 'うえの'
 	s.first_name = 'ともよし'
 end
 
 Performer.seed do |s|
-	s.id = 8972
-	s.style_id = 12
-	s.full_name = '上野 雄三'
+	s.id = 897
+	s.style_id = 1
+	s.full_name = '上野雄三'
 	s.last_name = 'うえの'
 	s.first_name = 'ゆうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 8982
-	s.style_id = 12
-	s.full_name = '梅若 堯之'
+	s.id = 898
+	s.style_id = 1
+	s.full_name = '梅若堯之'
 	s.last_name = 'うめわか'
 	s.first_name = 'たかゆき'
 end
 
 Performer.seed do |s|
-	s.id = 8992
-	s.style_id = 12
-	s.full_name = '梅若 猶義'
+	s.id = 899
+	s.style_id = 1
+	s.full_name = '梅若猶義'
 	s.last_name = 'うめわか'
 	s.first_name = 'なおよし'
 end
 
 Performer.seed do |s|
-	s.id = 9002
-	s.style_id = 12
-	s.full_name = '梅若 基徳'
+	s.id = 900
+	s.style_id = 1
+	s.full_name = '梅若基徳'
 	s.last_name = 'うめわか'
 	s.first_name = 'もとのり'
 end
 
 Performer.seed do |s|
-	s.id = 9012
-	s.style_id = 12
-	s.full_name = '梅若 善高'
+	s.id = 901
+	s.style_id = 1
+	s.full_name = '梅若善高'
 	s.last_name = 'うめわか'
 	s.first_name = 'よしたか'
 end
 
 Performer.seed do |s|
-	s.id = 9022
-	s.style_id = 12
-	s.full_name = '大槻 文藏'
+	s.id = 902
+	s.style_id = 1
+	s.full_name = '大槻文藏'
 	s.last_name = 'おおつき'
 	s.first_name = 'ぶんぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9032
-	s.style_id = 12
-	s.full_name = '大西 智久'
+	s.id = 903
+	s.style_id = 1
+	s.full_name = '大西智久'
 	s.last_name = 'おおにし'
 	s.first_name = 'ともひさ'
 end
 
 Performer.seed do |s|
-	s.id = 9042
-	s.style_id = 12
-	s.full_name = '大西 礼久'
+	s.id = 904
+	s.style_id = 1
+	s.full_name = '大西礼久'
 	s.last_name = 'おおにし'
 	s.first_name = 'ふみひさ'
 end
 
 Performer.seed do |s|
-	s.id = 9052
-	s.style_id = 12
-	s.full_name = '小川 晴子'
+	s.id = 905
+	s.style_id = 1
+	s.full_name = '小川晴子'
 	s.last_name = 'おがわ'
 	s.first_name = 'はるこ'
 end
 
 Performer.seed do |s|
-	s.id = 9062
-	s.style_id = 12
-	s.full_name = '勝部 延和'
+	s.id = 906
+	s.style_id = 1
+	s.full_name = '勝部延和'
 	s.last_name = 'かつべ'
 	s.first_name = 'のぶやす'
 end
 
 Performer.seed do |s|
-	s.id = 9072
-	s.style_id = 12
-	s.full_name = '金子 昭'
+	s.id = 907
+	s.style_id = 1
+	s.full_name = '金子昭'
 	s.last_name = 'かねこ'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 9082
-	s.style_id = 12
-	s.full_name = '川中 治作'
+	s.id = 908
+	s.style_id = 1
+	s.full_name = '川中治作'
 	s.last_name = 'かわなか'
 	s.first_name = 'じさく'
 end
 
 Performer.seed do |s|
-	s.id = 9092
-	s.style_id = 12
-	s.full_name = '河村 栄重'
+	s.id = 909
+	s.style_id = 1
+	s.full_name = '河村栄重'
 	s.last_name = 'かわむら'
 	s.first_name = 'ひでしげ'
 end
 
 Performer.seed do |s|
-	s.id = 9102
-	s.style_id = 12
-	s.full_name = '生一 知哉'
+	s.id = 910
+	s.style_id = 1
+	s.full_name = '生一知哉'
 	s.last_name = 'きいち'
 	s.first_name = 'かずや'
 end
 
 Performer.seed do |s|
-	s.id = 9112
-	s.style_id = 12
-	s.full_name = '小寺 一郎'
+	s.id = 911
+	s.style_id = 1
+	s.full_name = '小寺一郎'
 	s.last_name = 'こてら'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 9122
-	s.style_id = 12
-	s.full_name = '小西 弘通'
+	s.id = 912
+	s.style_id = 1
+	s.full_name = '小西弘通'
 	s.last_name = 'こにし'
 	s.first_name = 'ひろみち'
 end
 
 Performer.seed do |s|
-	s.id = 9132
-	s.style_id = 12
-	s.full_name = '小林 喜久'
+	s.id = 913
+	s.style_id = 1
+	s.full_name = '小林喜久'
 	s.last_name = 'こばやし'
 	s.first_name = 'よしひさ'
 end
 
 Performer.seed do |s|
-	s.id = 9142
-	s.style_id = 12
-	s.full_name = '小松 勝憲'
+	s.id = 914
+	s.style_id = 1
+	s.full_name = '小松勝憲'
 	s.last_name = 'こまつ'
 	s.first_name = 'かつのり'
 end
 
 Performer.seed do |s|
-	s.id = 9152
-	s.style_id = 12
-	s.full_name = '齊藤 信輔'
+	s.id = 915
+	s.style_id = 1
+	s.full_name = '齊藤信輔'
 	s.last_name = 'さいとう'
 	s.first_name = 'しんすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9162
-	s.style_id = 12
-	s.full_name = '齊藤 信隆'
+	s.id = 916
+	s.style_id = 1
+	s.full_name = '齊藤信隆'
 	s.last_name = 'さいとう'
 	s.first_name = 'のぶたか'
 end
 
 Performer.seed do |s|
-	s.id = 9172
-	s.style_id = 12
-	s.full_name = '阪本 昭三'
+	s.id = 917
+	s.style_id = 1
+	s.full_name = '阪本昭三'
 	s.last_name = 'さかもと'
 	s.first_name = 'しょうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9182
-	s.style_id = 12
-	s.full_name = '佐野 和之'
+	s.id = 918
+	s.style_id = 1
+	s.full_name = '佐野和之'
 	s.last_name = 'さの'
 	s.first_name = 'かずゆき'
 end
 
 Performer.seed do |s|
-	s.id = 9192
-	s.style_id = 12
-	s.full_name = '塩谷 恵'
+	s.id = 919
+	s.style_id = 1
+	s.full_name = '塩谷恵'
 	s.last_name = 'しおたに'
 	s.first_name = 'けい'
 end
 
 Performer.seed do |s|
-	s.id = 9202
-	s.style_id = 12
-	s.full_name = '武富 康之'
+	s.id = 920
+	s.style_id = 1
+	s.full_name = '武富康之'
 	s.last_name = 'たけとみ'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 9212
-	s.style_id = 12
-	s.full_name = '立花 香寿子'
+	s.id = 921
+	s.style_id = 1
+	s.full_name = '立花香寿子'
 	s.last_name = 'たちばな'
 	s.first_name = 'かずこ'
 end
 
 Performer.seed do |s|
-	s.id = 9222
-	s.style_id = 12
-	s.full_name = '鶴 克彦'
+	s.id = 922
+	s.style_id = 1
+	s.full_name = '鶴克彦'
 	s.last_name = 'つる'
 	s.first_name = 'かつひこ'
 end
 
 Performer.seed do |s|
-	s.id = 9232
-	s.style_id = 12
-	s.full_name = '寺澤 幸祐'
+	s.id = 923
+	s.style_id = 1
+	s.full_name = '寺澤幸祐'
 	s.last_name = 'てらさわ'
 	s.first_name = 'こうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9242
-	s.style_id = 12
-	s.full_name = '寺澤 忠芳'
+	s.id = 924
+	s.style_id = 1
+	s.full_name = '寺澤忠芳'
 	s.last_name = 'てらさわ'
 	s.first_name = 'ただよし'
 end
 
 Performer.seed do |s|
-	s.id = 9252
-	s.style_id = 12
-	s.full_name = '戸川 瑞穂'
+	s.id = 925
+	s.style_id = 1
+	s.full_name = '戸川瑞穂'
 	s.last_name = 'とがわ'
 	s.first_name = 'みずほ'
 end
 
 Performer.seed do |s|
-	s.id = 9262
-	s.style_id = 12
-	s.full_name = '永田 克壬'
+	s.id = 926
+	s.style_id = 1
+	s.full_name = '永田克壬'
 	s.last_name = 'ながた'
 	s.first_name = 'かつみ'
 end
 
 Performer.seed do |s|
-	s.id = 9272
-	s.style_id = 12
-	s.full_name = '長山 耕三'
+	s.id = 927
+	s.style_id = 1
+	s.full_name = '長山耕三'
 	s.last_name = 'ながやま'
 	s.first_name = 'こうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9282
-	s.style_id = 12
-	s.full_name = '長山 禮三郎'
+	s.id = 928
+	s.style_id = 1
+	s.full_name = '長山禮三郎'
 	s.last_name = 'ながやま'
 	s.first_name = 'れいさぶろう'
 end
 
 Performer.seed do |s|
-	s.id = 9292
-	s.style_id = 12
-	s.full_name = '波多野 晋'
+	s.id = 929
+	s.style_id = 1
+	s.full_name = '波多野晋'
 	s.last_name = 'はたの'
 	s.first_name = 'すすむ'
 end
 
 Performer.seed do |s|
-	s.id = 9302
-	s.style_id = 12
-	s.full_name = '林本 大'
+	s.id = 930
+	s.style_id = 1
+	s.full_name = '林本大'
 	s.last_name = 'はやしもと'
 	s.first_name = 'だい'
 end
 
 Performer.seed do |s|
-	s.id = 9312
-	s.style_id = 12
-	s.full_name = '藤村 昌子'
+	s.id = 931
+	s.style_id = 1
+	s.full_name = '藤村昌子'
 	s.last_name = 'ふじむら'
 	s.first_name = 'まさこ'
 end
 
 Performer.seed do |s|
-	s.id = 9322
-	s.style_id = 12
-	s.full_name = '前田 和子'
+	s.id = 932
+	s.style_id = 1
+	s.full_name = '前田和子'
 	s.last_name = 'まえだ'
 	s.first_name = 'かずこ'
 end
 
 Performer.seed do |s|
-	s.id = 9332
-	s.style_id = 12
-	s.full_name = '前田 飛南子'
+	s.id = 933
+	s.style_id = 1
+	s.full_name = '前田飛南子'
 	s.last_name = 'まえだ'
 	s.first_name = 'ひなこ'
 end
 
 Performer.seed do |s|
-	s.id = 9342
-	s.style_id = 12
-	s.full_name = '松浦 信一郎'
+	s.id = 934
+	s.style_id = 1
+	s.full_name = '松浦信一郎'
 	s.last_name = 'まつうら'
 	s.first_name = 'しんいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 9352
-	s.style_id = 12
-	s.full_name = '松上 公英'
+	s.id = 935
+	s.style_id = 1
+	s.full_name = '松上公英'
 	s.last_name = 'まつがみ'
 	s.first_name = 'きみえ'
 end
 
 Performer.seed do |s|
-	s.id = 9362
-	s.style_id = 12
-	s.full_name = '三浦 信夫'
+	s.id = 936
+	s.style_id = 1
+	s.full_name = '三浦信夫'
 	s.last_name = 'みうら'
 	s.first_name = 'のぶお'
 end
 
 Performer.seed do |s|
-	s.id = 9372
-	s.style_id = 12
-	s.full_name = '水田 雄晤'
+	s.id = 937
+	s.style_id = 1
+	s.full_name = '水田雄晤'
 	s.last_name = 'みずた'
 	s.first_name = 'ゆうご'
 end
 
 Performer.seed do |s|
-	s.id = 9382
-	s.style_id = 12
-	s.full_name = '宮下 昌子'
+	s.id = 938
+	s.style_id = 1
+	s.full_name = '宮下昌子'
 	s.last_name = 'みやした'
 	s.first_name = 'まさこ'
 end
 
 Performer.seed do |s|
-	s.id = 9392
-	s.style_id = 12
-	s.full_name = '山下 麻乃'
+	s.id = 939
+	s.style_id = 1
+	s.full_name = '山下麻乃'
 	s.last_name = 'やました'
 	s.first_name = 'あさの'
 end
 
 Performer.seed do |s|
-	s.id = 9402
-	s.style_id = 12
-	s.full_name = '山中 雅志'
+	s.id = 940
+	s.style_id = 1
+	s.full_name = '山中雅志'
 	s.last_name = 'やまなか'
 	s.first_name = 'まさゆき'
 end
 
 Performer.seed do |s|
-	s.id = 9412
-	s.style_id = 12
-	s.full_name = '山本 章弘'
+	s.id = 941
+	s.style_id = 1
+	s.full_name = '山本章弘'
 	s.last_name = 'やまもと'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 9422
-	s.style_id = 12
-	s.full_name = '山本 博通'
+	s.id = 942
+	s.style_id = 1
+	s.full_name = '山本博通'
 	s.last_name = 'やまもと'
 	s.first_name = 'ひろみち'
 end
 
 Performer.seed do |s|
-	s.id = 9432
-	s.style_id = 12
-	s.full_name = '山本 勝一'
+	s.id = 943
+	s.style_id = 1
+	s.full_name = '山本勝一'
 	s.last_name = 'やまもと'
 	s.first_name = 'まさかず'
 end
 
 Performer.seed do |s|
-	s.id = 9442
-	s.style_id = 12
-	s.full_name = '山本 正人'
+	s.id = 944
+	s.style_id = 1
+	s.full_name = '山本正人'
 	s.last_name = 'やまもと'
 	s.first_name = 'まさと'
 end
 
 Performer.seed do |s|
-	s.id = 9452
-	s.style_id = 12
-	s.full_name = '綿田 富美枝'
+	s.id = 945
+	s.style_id = 1
+	s.full_name = '綿田富美枝'
 	s.last_name = 'わただ'
 	s.first_name = 'ふみえ'
 end
 
 Performer.seed do |s|
-	s.id = 9462
-	s.style_id = 32
-	s.full_name = '金春 穂高'
+	s.id = 946
+	s.style_id = 3
+	s.full_name = '金春穂高'
 	s.last_name = 'こんぱる'
 	s.first_name = 'ほだか'
 end
 
 Performer.seed do |s|
-	s.id = 9472
-	s.style_id = 32
-	s.full_name = '酒井 賢一'
+	s.id = 947
+	s.style_id = 3
+	s.full_name = '酒井賢一'
 	s.last_name = 'さかい'
 	s.first_name = 'けんいち'
 end
 
 Performer.seed do |s|
-	s.id = 9482
-	s.style_id = 32
-	s.full_name = '佐藤 俊之'
+	s.id = 948
+	s.style_id = 3
+	s.full_name = '佐藤俊之'
 	s.last_name = 'さとう'
 	s.first_name = 'としゆき'
 end
 
 Performer.seed do |s|
-	s.id = 9492
-	s.style_id = 32
-	s.full_name = '田中 直樹'
+	s.id = 949
+	s.style_id = 3
+	s.full_name = '田中直樹'
 	s.last_name = 'たなか'
 	s.first_name = 'なおき'
 end
 
 Performer.seed do |s|
-	s.id = 9502
-	s.style_id = 32
-	s.full_name = '中田 能光'
+	s.id = 950
+	s.style_id = 3
+	s.full_name = '中田能光'
 	s.last_name = 'なかた'
 	s.first_name = 'よしみつ'
 end
 
 Performer.seed do |s|
-	s.id = 9512
-	s.style_id = 32
-	s.full_name = '山田 友久'
+	s.id = 951
+	s.style_id = 3
+	s.full_name = '山田友久'
 	s.last_name = 'やまだ'
 	s.first_name = 'ともひさ'
 end
 
 Performer.seed do |s|
-	s.id = 9522
-	s.style_id = 32
-	s.full_name = '湯本 哲明'
+	s.id = 952
+	s.style_id = 3
+	s.full_name = '湯本哲明'
 	s.last_name = 'ゆもと'
 	s.first_name = 'てつあき'
 end
 
 Performer.seed do |s|
-	s.id = 9532
-	s.style_id = 32
-	s.full_name = '吉川 恵宥'
+	s.id = 953
+	s.style_id = 3
+	s.full_name = '吉川恵宥'
 	s.last_name = 'よしかわ'
 	s.first_name = 'よしひろ'
 end
 
 Performer.seed do |s|
-	s.id = 9542
-	s.style_id = 22
-	s.full_name = '石黒 実都'
+	s.id = 954
+	s.style_id = 2
+	s.full_name = '石黒実都'
 	s.last_name = 'いしぐろ'
 	s.first_name = 'みと'
 end
 
 Performer.seed do |s|
-	s.id = 9552
-	s.style_id = 22
-	s.full_name = '植田 竜二'
+	s.id = 955
+	s.style_id = 2
+	s.full_name = '植田竜二'
 	s.last_name = 'うえだ'
 	s.first_name = 'りゅうじ'
 end
 
 Performer.seed do |s|
-	s.id = 9562
-	s.style_id = 22
-	s.full_name = '岡本 知子'
+	s.id = 956
+	s.style_id = 2
+	s.full_name = '岡本知子'
 	s.last_name = 'おかもと'
 	s.first_name = 'ともこ'
 end
 
 Performer.seed do |s|
-	s.id = 9572
-	s.style_id = 22
-	s.full_name = '辰巳 孝門'
+	s.id = 957
+	s.style_id = 2
+	s.full_name = '辰巳孝門'
 	s.last_name = 'たつみ'
 	s.first_name = 'たかと'
 end
 
 Performer.seed do |s|
-	s.id = 9582
-	s.style_id = 22
-	s.full_name = '辰巳 孝弥'
+	s.id = 958
+	s.style_id = 2
+	s.full_name = '辰巳孝弥'
 	s.last_name = 'たつみ'
 	s.first_name = 'たかや'
 end
 
 Performer.seed do |s|
-	s.id = 9592
-	s.style_id = 22
-	s.full_name = '徳永 力雄'
+	s.id = 959
+	s.style_id = 2
+	s.full_name = '徳永力雄'
 	s.last_name = 'とくなが'
 	s.first_name = 'りきお'
 end
 
 Performer.seed do |s|
-	s.id = 9602
-	s.style_id = 22
-	s.full_name = '長本 喜夫'
+	s.id = 960
+	s.style_id = 2
+	s.full_name = '長本喜夫'
 	s.last_name = 'ながもと'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 9612
-	s.style_id = 22
-	s.full_name = '畑 宏隆'
+	s.id = 961
+	s.style_id = 2
+	s.full_name = '畑宏隆'
 	s.last_name = 'はた'
 	s.first_name = 'ひろたか'
 end
 
 Performer.seed do |s|
-	s.id = 9622
-	s.style_id = 22
-	s.full_name = '北條 洋子'
+	s.id = 962
+	s.style_id = 2
+	s.full_name = '北條洋子'
 	s.last_name = 'ほうじょう'
 	s.first_name = 'ようこ'
 end
 
 Performer.seed do |s|
-	s.id = 9632
-	s.style_id = 22
-	s.full_name = '前田 正人'
+	s.id = 963
+	s.style_id = 2
+	s.full_name = '前田正人'
 	s.last_name = 'まえだ'
 	s.first_name = 'まさと'
 end
 
 Performer.seed do |s|
-	s.id = 9642
-	s.style_id = 22
-	s.full_name = '渡邉 珪助'
+	s.id = 964
+	s.style_id = 2
+	s.full_name = '渡邉珪助'
 	s.last_name = 'わたなべ'
 	s.first_name = 'けいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9652
-	s.style_id = 42
-	s.full_name = '岩切 直次'
+	s.id = 965
+	s.style_id = 4
+	s.full_name = '岩切直次'
 	s.last_name = 'いわきり'
 	s.first_name = 'なおじ'
 end
 
 Performer.seed do |s|
-	s.id = 9662
-	s.style_id = 42
-	s.full_name = '植田 恭三'
+	s.id = 966
+	s.style_id = 4
+	s.full_name = '植田恭三'
 	s.last_name = 'うえだ'
 	s.first_name = 'きょうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9672
-	s.style_id = 42
-	s.full_name = '上村 雅義'
+	s.id = 967
+	s.style_id = 4
+	s.full_name = '上村雅義'
 	s.last_name = 'うえむら'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 9682
-	s.style_id = 42
-	s.full_name = '大菅 義信'
+	s.id = 968
+	s.style_id = 4
+	s.full_name = '大菅義信'
 	s.last_name = 'おおすが'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 9692
-	s.style_id = 42
-	s.full_name = '北川 米喜'
+	s.id = 969
+	s.style_id = 4
+	s.full_name = '北川米喜'
 	s.last_name = 'きたがわ'
 	s.first_name = 'よねよし'
 end
 
 Performer.seed do |s|
-	s.id = 9702
-	s.style_id = 42
-	s.full_name = '田中 敏文'
+	s.id = 970
+	s.style_id = 4
+	s.full_name = '田中敏文'
 	s.last_name = 'たなか'
 	s.first_name = 'としふみ'
 end
 
 Performer.seed do |s|
-	s.id = 9712
-	s.style_id = 42
-	s.full_name = '谷口 雅彦'
+	s.id = 971
+	s.style_id = 4
+	s.full_name = '谷口雅彦'
 	s.last_name = 'たにぐち'
 	s.first_name = 'まさひこ'
 end
 
 Performer.seed do |s|
-	s.id = 9722
-	s.style_id = 42
-	s.full_name = '豊嶋 三千春'
+	s.id = 972
+	s.style_id = 4
+	s.full_name = '豊嶋三千春'
 	s.last_name = 'てしま'
 	s.first_name = 'みちはる'
 end
 
 Performer.seed do |s|
-	s.id = 9732
-	s.style_id = 42
-	s.full_name = '都丸 勇'
+	s.id = 973
+	s.style_id = 4
+	s.full_name = '都丸勇'
 	s.last_name = 'とまる'
 	s.first_name = 'いさむ'
 end
 
 Performer.seed do |s|
-	s.id = 9742
-	s.style_id = 42
-	s.full_name = '中嶋 謙昌'
+	s.id = 974
+	s.style_id = 4
+	s.full_name = '中嶋謙昌'
 	s.last_name = 'なかしま'
 	s.first_name = 'けんすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9752
-	s.style_id = 42
-	s.full_name = '藤田 章三'
+	s.id = 975
+	s.style_id = 4
+	s.full_name = '藤田章三'
 	s.last_name = 'ふじた'
 	s.first_name = 'しょうぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9762
-	s.style_id = 42
-	s.full_name = '山口 尚志'
+	s.id = 976
+	s.style_id = 4
+	s.full_name = '山口尚志'
 	s.last_name = 'やまぐち'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 9772
-	s.style_id = 42
-	s.full_name = '山根 泰子'
+	s.id = 977
+	s.style_id = 4
+	s.full_name = '山根泰子'
 	s.last_name = 'やまね'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 9782
-	s.style_id = 42
-	s.full_name = '四ツ井 つや子'
+	s.id = 978
+	s.style_id = 4
+	s.full_name = '四ツ井つや子'
 	s.last_name = 'よつい'
 	s.first_name = 'つやこ'
 end
 
 Performer.seed do |s|
-	s.id = 9792
-	s.style_id = 52
-	s.full_name = '高林 白牛口二'
+	s.id = 979
+	s.style_id = 5
+	s.full_name = '高林白牛口二'
 	s.last_name = 'たかばやし'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 9802
-	s.style_id = 52
-	s.full_name = '高林 昌司'
+	s.id = 980
+	s.style_id = 5
+	s.full_name = '高林昌司'
 	s.last_name = 'たかばやし'
 	s.first_name = 'しょうじ'
 end
 
 Performer.seed do |s|
-	s.id = 9812
-	s.style_id = 52
-	s.full_name = '高林 呻二'
+	s.id = 981
+	s.style_id = 5
+	s.full_name = '高林呻二'
 	s.last_name = 'たかばやし'
 	s.first_name = 'しんじ'
 end
 
 Performer.seed do |s|
-	s.id = 9822
-	s.style_id = 72
-	s.full_name = '喜多 雅人'
+	s.id = 982
+	s.style_id = 7
+	s.full_name = '喜多雅人'
 	s.last_name = 'きた'
 	s.first_name = 'まさと'
 end
 
 Performer.seed do |s|
-	s.id = 9832
-	s.style_id = 72
-	s.full_name = '中村 宜成'
+	s.id = 983
+	s.style_id = 7
+	s.full_name = '中村宜成'
 	s.last_name = 'なかむら'
 	s.first_name = 'ぎじょう'
 end
 
 Performer.seed do |s|
-	s.id = 9842
-	s.style_id = 72
-	s.full_name = '永留 浩史'
+	s.id = 984
+	s.style_id = 7
+	s.full_name = '永留浩史'
 	s.last_name = 'ながとめ'
 	s.first_name = 'ひろふみ'
 end
 
 Performer.seed do |s|
-	s.id = 9852
-	s.style_id = 72
-	s.full_name = '廣谷 和夫'
+	s.id = 985
+	s.style_id = 7
+	s.full_name = '廣谷和夫'
 	s.last_name = 'ひろたに'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 9862
-	s.style_id = 72
-	s.full_name = '福王 茂十郎'
+	s.id = 986
+	s.style_id = 7
+	s.full_name = '福王茂十郎'
 	s.last_name = 'ふくおう'
 	s.first_name = 'しげじゅうろう'
 end
 
 Performer.seed do |s|
-	s.id = 9872
-	s.style_id = 72
-	s.full_name = '福王 知登'
+	s.id = 987
+	s.style_id = 7
+	s.full_name = '福王知登'
 	s.last_name = 'ふくおう'
 	s.first_name = 'ともたか'
 end
 
 Performer.seed do |s|
-	s.id = 9882
-	s.style_id = 72
-	s.full_name = '森本 幸冶'
+	s.id = 988
+	s.style_id = 7
+	s.full_name = '森本幸冶'
 	s.last_name = 'もりもと'
 	s.first_name = 'たかよし'
 end
 
 Performer.seed do |s|
-	s.id = 9892
-	s.style_id = 122
-	s.full_name = '赤井 啓三'
+	s.id = 989
+	s.style_id = 12
+	s.full_name = '赤井啓三'
 	s.last_name = 'あかい'
 	s.first_name = 'けいぞう'
 end
 
 Performer.seed do |s|
-	s.id = 9902
-	s.style_id = 122
-	s.full_name = '赤井 要佑'
+	s.id = 990
+	s.style_id = 12
+	s.full_name = '赤井要佑'
 	s.last_name = 'あかい'
 	s.first_name = 'ようすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9912
-	s.style_id = 122
-	s.full_name = '斉藤 敦'
+	s.id = 991
+	s.style_id = 12
+	s.full_name = '斉藤敦'
 	s.last_name = 'さいとう'
 	s.first_name = 'あつし'
 end
 
 Performer.seed do |s|
-	s.id = 9922
-	s.style_id = 122
-	s.full_name = '左鴻 雅義'
+	s.id = 992
+	s.style_id = 12
+	s.full_name = '左鴻雅義'
 	s.last_name = 'さこう'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 9932
-	s.style_id = 122
-	s.full_name = '貞光 卓生'
+	s.id = 993
+	s.style_id = 12
+	s.full_name = '貞光卓生'
 	s.last_name = 'さだみつ'
 	s.first_name = 'たくお'
 end
 
 Performer.seed do |s|
-	s.id = 9942
-	s.style_id = 122
-	s.full_name = '貞光 智宣'
+	s.id = 994
+	s.style_id = 12
+	s.full_name = '貞光智宣'
 	s.last_name = 'さだみつ'
 	s.first_name = 'とものり'
 end
 
 Performer.seed do |s|
-	s.id = 9952
-	s.style_id = 122
-	s.full_name = '貞光 訓義'
+	s.id = 995
+	s.style_id = 12
+	s.full_name = '貞光訓義'
 	s.last_name = 'さだみつ'
 	s.first_name = 'のりよし'
 end
 
 Performer.seed do |s|
-	s.id = 9962
-	s.style_id = 122
-	s.full_name = '貞光 義明'
+	s.id = 996
+	s.style_id = 12
+	s.full_name = '貞光義明'
 	s.last_name = 'さだみつ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 9972
-	s.style_id = 122
-	s.full_name = '野口 傳之輔'
+	s.id = 997
+	s.style_id = 12
+	s.full_name = '野口傳之輔'
 	s.last_name = 'のぐち'
 	s.first_name = 'でんのすけ'
 end
 
 Performer.seed do |s|
-	s.id = 9982
-	s.style_id = 122
-	s.full_name = '野口 亮'
+	s.id = 998
+	s.style_id = 12
+	s.full_name = '野口亮'
 	s.last_name = 'のぐち'
 	s.first_name = 'りょう'
 end
 
 Performer.seed do |s|
-	s.id = 9992
-	s.style_id = 122
-	s.full_name = '森田 啓子'
+	s.id = 999
+	s.style_id = 12
+	s.full_name = '森田啓子'
 	s.last_name = 'もりた'
 	s.first_name = 'けいこ'
 end
 
 Performer.seed do |s|
-	s.id = 10002
-	s.style_id = 142
-	s.full_name = '成田 達志'
+	s.id = 1000
+	s.style_id = 14
+	s.full_name = '成田達志'
 	s.last_name = 'なりた'
 	s.first_name = 'たつし'
 end
 
 Performer.seed do |s|
-	s.id = 10012
-	s.style_id = 162
-	s.full_name = '荒木 賀光'
+	s.id = 1001
+	s.style_id = 16
+	s.full_name = '荒木賀光'
 	s.last_name = 'あらき'
 	s.first_name = 'がこう'
 end
 
 Performer.seed do |s|
-	s.id = 10022
-	s.style_id = 162
-	s.full_name = '荒木 建作'
+	s.id = 1002
+	s.style_id = 16
+	s.full_name = '荒木建作'
 	s.last_name = 'あらき'
 	s.first_name = 'けんさく'
 end
 
 Performer.seed do |s|
-	s.id = 10032
-	s.style_id = 162
-	s.full_name = '上田 敦史'
+	s.id = 1003
+	s.style_id = 16
+	s.full_name = '上田敦史'
 	s.last_name = 'うえだ'
 	s.first_name = 'あつし'
 end
 
 Performer.seed do |s|
-	s.id = 10042
-	s.style_id = 162
-	s.full_name = '清水 晧祐'
+	s.id = 1004
+	s.style_id = 16
+	s.full_name = '清水晧祐'
 	s.last_name = 'しみず'
 	s.first_name = 'こうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 10052
-	s.style_id = 162
-	s.full_name = '久田 舜一郎'
+	s.id = 1005
+	s.style_id = 16
+	s.full_name = '久田舜一郎'
 	s.last_name = 'ひさだ'
 	s.first_name = 'しゅんいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 10062
-	s.style_id = 162
-	s.full_name = '久田 陽春子'
+	s.id = 1006
+	s.style_id = 16
+	s.full_name = '久田陽春子'
 	s.last_name = 'ひさだ'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 10072
-	s.style_id = 212
-	s.full_name = '上野 義雄'
+	s.id = 1007
+	s.style_id = 21
+	s.full_name = '上野義雄'
 	s.last_name = 'うえの'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 10082
-	s.style_id = 212
-	s.full_name = '辻 雅之'
+	s.id = 1008
+	s.style_id = 21
+	s.full_name = '辻雅之'
 	s.last_name = 'つじ'
 	s.first_name = 'まさゆき'
 end
 
 Performer.seed do |s|
-	s.id = 10092
-	s.style_id = 212
-	s.full_name = '辻 芳昭'
+	s.id = 1009
+	s.style_id = 21
+	s.full_name = '辻芳昭'
 	s.last_name = 'つじ'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 10102
-	s.style_id = 212
-	s.full_name = '山本 哲也'
+	s.id = 1010
+	s.style_id = 21
+	s.full_name = '山本哲也'
 	s.last_name = 'やまもと'
 	s.first_name = 'てつや'
 end
 
 Performer.seed do |s|
-	s.id = 10112
-	s.style_id = 212
-	s.full_name = '山本 寿弥'
+	s.id = 1011
+	s.style_id = 21
+	s.full_name = '山本寿弥'
 	s.last_name = 'やまもと'
 	s.first_name = 'としや'
 end
 
 Performer.seed do |s|
-	s.id = 10122
-	s.style_id = 222
-	s.full_name = '守家 由訓'
+	s.id = 1012
+	s.style_id = 22
+	s.full_name = '守家由訓'
 	s.last_name = 'もりや'
 	s.first_name = 'よしのり'
 end
 
 Performer.seed do |s|
-	s.id = 10132
-	s.style_id = 222
-	s.full_name = '森山 泰幸'
+	s.id = 1013
+	s.style_id = 22
+	s.full_name = '森山泰幸'
 	s.last_name = 'もりやま'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 10142
-	s.style_id = 242
-	s.full_name = '上田 悟'
+	s.id = 1014
+	s.style_id = 24
+	s.full_name = '上田悟'
 	s.last_name = 'うえだ'
 	s.first_name = 'さとる'
 end
 
 Performer.seed do |s|
-	s.id = 10152
-	s.style_id = 242
-	s.full_name = '上田 慎也'
+	s.id = 1015
+	s.style_id = 24
+	s.full_name = '上田慎也'
 	s.last_name = 'うえだ'
 	s.first_name = 'しんや'
 end
 
 Performer.seed do |s|
-	s.id = 10162
-	s.style_id = 242
-	s.full_name = '中田 一葉'
+	s.id = 1016
+	s.style_id = 24
+	s.full_name = '中田一葉'
 	s.last_name = 'なかた'
 	s.first_name = 'かずは'
 end
 
 Performer.seed do |s|
-	s.id = 10172
-	s.style_id = 242
-	s.full_name = '中田 弘美'
+	s.id = 1017
+	s.style_id = 24
+	s.full_name = '中田弘美'
 	s.last_name = 'なかた'
 	s.first_name = 'ひろみ'
 end
 
 Performer.seed do |s|
-	s.id = 10182
-	s.style_id = 92
-	s.full_name = '上西 良介'
+	s.id = 1018
+	s.style_id = 9
+	s.full_name = '上西良介'
 	s.last_name = 'うえにし'
 	s.first_name = 'りょうすけ'
 end
 
 Performer.seed do |s|
-	s.id = 10192
-	s.style_id = 92
-	s.full_name = '上吉川 徹'
+	s.id = 1019
+	s.style_id = 9
+	s.full_name = '上吉川徹'
 	s.last_name = 'かみよしかわ'
 	s.first_name = 'とおる'
 end
 
 Performer.seed do |s|
-	s.id = 10202
-	s.style_id = 92
-	s.full_name = '善竹 隆司'
+	s.id = 1020
+	s.style_id = 9
+	s.full_name = '善竹隆司'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 10212
-	s.style_id = 92
-	s.full_name = '善竹 忠一郎'
+	s.id = 1021
+	s.style_id = 9
+	s.full_name = '善竹忠一郎'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'ちゅういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 10222
-	s.style_id = 92
-	s.full_name = '善竹 徳一郎'
+	s.id = 1022
+	s.style_id = 9
+	s.full_name = '善竹徳一郎'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'とくいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 10232
-	s.style_id = 92
-	s.full_name = '善竹 長徳'
+	s.id = 1023
+	s.style_id = 9
+	s.full_name = '善竹長徳'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'ながのり'
 end
 
 Performer.seed do |s|
-	s.id = 10242
-	s.style_id = 92
-	s.full_name = '善竹 隆平'
+	s.id = 1024
+	s.style_id = 9
+	s.full_name = '善竹隆平'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'りゅうへい'
 end
 
 Performer.seed do |s|
-	s.id = 10252
-	s.style_id = 92
-	s.full_name = '竹内 寬'
+	s.id = 1025
+	s.style_id = 9
+	s.full_name = '竹内寬'
 	s.last_name = 'たけうち'
 	s.first_name = 'ゆたか'
 end
 
 Performer.seed do |s|
-	s.id = 10262
-	s.style_id = 92
-	s.full_name = '増田 健'
+	s.id = 1026
+	s.style_id = 9
+	s.full_name = '増田健'
 	s.last_name = 'ますだ'
 	s.first_name = 'たけし'
 end
 
 Performer.seed do |s|
-	s.id = 10272
-	s.style_id = 92
-	s.full_name = '松下 孝輔'
+	s.id = 1027
+	s.style_id = 9
+	s.full_name = '松下孝輔'
 	s.last_name = 'まつした'
 	s.first_name = 'たかすけ'
 end
 
 Performer.seed do |s|
-	s.id = 10282
-	s.style_id = 92
-	s.full_name = '道下 正裕'
+	s.id = 1028
+	s.style_id = 9
+	s.full_name = '道下正裕'
 	s.last_name = 'みちした'
 	s.first_name = 'まさひろ'
 end
 
 Performer.seed do |s|
-	s.id = 10292
-	s.style_id = 12
-	s.full_name = '池内 賴子'
+	s.id = 1029
+	s.style_id = 1
+	s.full_name = '池内賴子'
 	s.last_name = 'いけうち'
 	s.first_name = 'よりこ'
 end
 
 Performer.seed do |s|
-	s.id = 10302
-	s.style_id = 12
-	s.full_name = '上田 貴弘'
+	s.id = 1030
+	s.style_id = 1
+	s.full_name = '上田貴弘'
 	s.last_name = 'うえだ'
 	s.first_name = 'たかひろ'
 end
 
 Performer.seed do |s|
-	s.id = 10312
-	s.style_id = 12
-	s.full_name = '上田 拓司'
+	s.id = 1031
+	s.style_id = 1
+	s.full_name = '上田拓司'
 	s.last_name = 'うえだ'
 	s.first_name = 'たくじ'
 end
 
 Performer.seed do |s|
-	s.id = 10322
-	s.style_id = 12
-	s.full_name = '上田 大介'
+	s.id = 1032
+	s.style_id = 1
+	s.full_name = '上田大介'
 	s.last_name = 'うえだ'
 	s.first_name = 'だいすけ'
 end
 
 Performer.seed do |s|
-	s.id = 10332
-	s.style_id = 12
-	s.full_name = '梅谷 宏'
+	s.id = 1033
+	s.style_id = 1
+	s.full_name = '梅谷宏'
 	s.last_name = 'うめたに'
 	s.first_name = 'ひろし'
 end
 
 Performer.seed do |s|
-	s.id = 10342
-	s.style_id = 12
-	s.full_name = '大亀 藤英'
+	s.id = 1034
+	s.style_id = 1
+	s.full_name = '大亀藤英'
 	s.last_name = 'おおかめ'
 	s.first_name = 'ふじえ'
 end
 
 Performer.seed do |s|
-	s.id = 10352
-	s.style_id = 12
-	s.full_name = '岡野 八重子'
+	s.id = 1035
+	s.style_id = 1
+	s.full_name = '岡野八重子'
 	s.last_name = 'おかの'
 	s.first_name = 'やえこ'
 end
 
 Performer.seed do |s|
-	s.id = 10362
-	s.style_id = 12
-	s.full_name = '笠田 昭雄'
+	s.id = 1036
+	s.style_id = 1
+	s.full_name = '笠田昭雄'
 	s.last_name = 'かさだ'
 	s.first_name = 'あきお'
 end
 
 Performer.seed do |s|
-	s.id = 10372
-	s.style_id = 12
-	s.full_name = '笠田 稔'
+	s.id = 1037
+	s.style_id = 1
+	s.full_name = '笠田稔'
 	s.last_name = 'かさだ'
 	s.first_name = 'みのる'
 end
 
 Performer.seed do |s|
-	s.id = 10382
-	s.style_id = 12
-	s.full_name = '佐伯 紀久子'
+	s.id = 1038
+	s.style_id = 1
+	s.full_name = '佐伯紀久子'
 	s.last_name = 'さえき'
 	s.first_name = 'きくこ'
 end
 
 Performer.seed do |s|
-	s.id = 10392
-	s.style_id = 12
-	s.full_name = '下川 宜長'
+	s.id = 1039
+	s.style_id = 1
+	s.full_name = '下川宜長'
 	s.last_name = 'しもかわ'
 	s.first_name = 'よしなが'
 end
 
 Performer.seed do |s|
-	s.id = 10402
-	s.style_id = 12
-	s.full_name = '橘 保向'
+	s.id = 1040
+	s.style_id = 1
+	s.full_name = '橘保向'
 	s.last_name = 'たちばな'
 	s.first_name = 'やすひさ'
 end
 
 Performer.seed do |s|
-	s.id = 10412
-	s.style_id = 12
-	s.full_name = '田中 章文'
+	s.id = 1041
+	s.style_id = 1
+	s.full_name = '田中章文'
 	s.last_name = 'たなか'
 	s.first_name = 'あきふみ'
 end
 
 Performer.seed do |s|
-	s.id = 10422
-	s.style_id = 12
-	s.full_name = '馳川 慶二'
+	s.id = 1042
+	s.style_id = 1
+	s.full_name = '馳川慶二'
 	s.last_name = 'はせかわ'
 	s.first_name = 'けいじ'
 end
 
 Performer.seed do |s|
-	s.id = 10432
-	s.style_id = 12
-	s.full_name = '藤井 完治'
+	s.id = 1043
+	s.style_id = 1
+	s.full_name = '藤井完治'
 	s.last_name = 'ふじい'
 	s.first_name = 'かんじ'
 end
 
 Performer.seed do |s|
-	s.id = 10442
-	s.style_id = 12
-	s.full_name = '藤井 丈雄'
+	s.id = 1044
+	s.style_id = 1
+	s.full_name = '藤井丈雄'
 	s.last_name = 'ふじい'
 	s.first_name = 'たけお'
 end
 
 Performer.seed do |s|
-	s.id = 10452
-	s.style_id = 12
-	s.full_name = '藤井 徳三'
+	s.id = 1045
+	s.style_id = 1
+	s.full_name = '藤井徳三'
 	s.last_name = 'ふじい'
 	s.first_name = 'とくぞう'
 end
 
 Performer.seed do |s|
-	s.id = 10462
-	s.style_id = 12
-	s.full_name = '藤谷 音彌'
+	s.id = 1046
+	s.style_id = 1
+	s.full_name = '藤谷音彌'
 	s.last_name = 'ふじたに'
 	s.first_name = 'おとや'
 end
 
 Performer.seed do |s|
-	s.id = 10472
-	s.style_id = 12
-	s.full_name = '宮明 敏博'
+	s.id = 1047
+	s.style_id = 1
+	s.full_name = '宮明敏博'
 	s.last_name = 'みやあき'
 	s.first_name = 'としひろ'
 end
 
 Performer.seed do |s|
-	s.id = 10482
-	s.style_id = 12
-	s.full_name = '森 壽子'
+	s.id = 1048
+	s.style_id = 1
+	s.full_name = '森壽子'
 	s.last_name = 'もり'
 	s.first_name = 'ひさこ'
 end
 
 Performer.seed do |s|
-	s.id = 10492
-	s.style_id = 12
-	s.full_name = '森田 彩子'
+	s.id = 1049
+	s.style_id = 1
+	s.full_name = '森田彩子'
 	s.last_name = 'もりた'
 	s.first_name = 'あやこ'
 end
 
 Performer.seed do |s|
-	s.id = 10502
-	s.style_id = 12
-	s.full_name = '山田 義高'
+	s.id = 1050
+	s.style_id = 1
+	s.full_name = '山田義高'
 	s.last_name = 'やまだ'
 	s.first_name = 'よしたか'
 end
 
 Performer.seed do |s|
-	s.id = 10512
-	s.style_id = 12
-	s.full_name = '山村 啓雄'
+	s.id = 1051
+	s.style_id = 1
+	s.full_name = '山村啓雄'
 	s.last_name = 'やまむら'
 	s.first_name = 'ひろお'
 end
 
 Performer.seed do |s|
-	s.id = 10522
-	s.style_id = 12
-	s.full_name = '吉井 基晴'
+	s.id = 1052
+	s.style_id = 1
+	s.full_name = '吉井基晴'
 	s.last_name = 'よしい'
 	s.first_name = 'もとはる'
 end
 
 Performer.seed do |s|
-	s.id = 10532
-	s.style_id = 72
-	s.full_name = '江崎 欽次朗'
+	s.id = 1053
+	s.style_id = 7
+	s.full_name = '江崎欽次朗'
 	s.last_name = 'えさき'
 	s.first_name = 'きんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 10542
-	s.style_id = 72
-	s.full_name = '江崎 正左衛門'
+	s.id = 1054
+	s.style_id = 7
+	s.full_name = '江崎正左衛門'
 	s.last_name = 'えさき'
 	s.first_name = 'しょうざえもん'
 end
 
 Performer.seed do |s|
-	s.id = 10552
-	s.style_id = 72
-	s.full_name = '是川 正彦'
+	s.id = 1055
+	s.style_id = 7
+	s.full_name = '是川正彦'
 	s.last_name = 'これかわ'
 	s.first_name = 'まさひこ'
 end
 
 Performer.seed do |s|
-	s.id = 10562
-	s.style_id = 72
-	s.full_name = '松本 義昭'
+	s.id = 1056
+	s.style_id = 7
+	s.full_name = '松本義昭'
 	s.last_name = 'まつもと'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 10572
-	s.style_id = 72
-	s.full_name = '和田 英基'
+	s.id = 1057
+	s.style_id = 7
+	s.full_name = '和田英基'
 	s.last_name = 'わだ'
 	s.first_name = 'ひでき'
 end
 
 Performer.seed do |s|
-	s.id = 10582
-	s.style_id = 122
-	s.full_name = '八木原 周平'
+	s.id = 1058
+	s.style_id = 12
+	s.full_name = '八木原周平'
 	s.last_name = 'やぎはら'
 	s.first_name = 'しゅうへい'
 end
 
 Performer.seed do |s|
-	s.id = 10592
-	s.style_id = 142
-	s.full_name = '古田 知英'
+	s.id = 1059
+	s.style_id = 14
+	s.full_name = '古田知英'
 	s.last_name = 'ふるた'
 	s.first_name = 'ともひで'
 end
 
 Performer.seed do |s|
-	s.id = 10602
-	s.style_id = 162
-	s.full_name = '髙橋 奈王子'
+	s.id = 1060
+	s.style_id = 16
+	s.full_name = '髙橋奈王子'
 	s.last_name = 'たかはし'
 	s.first_name = 'なおこ'
 end
 
 Performer.seed do |s|
-	s.id = 10612
-	s.style_id = 212
-	s.full_name = '大村 滋二'
+	s.id = 1061
+	s.style_id = 21
+	s.full_name = '大村滋二'
 	s.last_name = 'おおむら'
 	s.first_name = 'しげじ'
 end
 
 Performer.seed do |s|
-	s.id = 10622
-	s.style_id = 242
-	s.full_name = '梶谷 義男'
+	s.id = 1062
+	s.style_id = 24
+	s.full_name = '梶谷義男'
 	s.last_name = 'かじたに'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 10632
-	s.style_id = 92
-	s.full_name = '阿草 一徳'
+	s.id = 1063
+	s.style_id = 9
+	s.full_name = '阿草一徳'
 	s.last_name = 'あぐさ'
 	s.first_name = 'かずのり'
 end
 
 Performer.seed do |s|
-	s.id = 10642
-	s.style_id = 92
-	s.full_name = '稲田 裕'
+	s.id = 1064
+	s.style_id = 9
+	s.full_name = '稲田裕'
 	s.last_name = 'いなだ'
 	s.first_name = 'ゆたか'
 end
 
 Performer.seed do |s|
-	s.id = 10652
-	s.style_id = 92
-	s.full_name = '岡村 和彦'
+	s.id = 1065
+	s.style_id = 9
+	s.full_name = '岡村和彦'
 	s.last_name = 'おかむら'
 	s.first_name = 'かずひこ'
 end
 
 Performer.seed do |s|
-	s.id = 10662
-	s.style_id = 92
-	s.full_name = '尾鍋 智史'
+	s.id = 1066
+	s.style_id = 9
+	s.full_name = '尾鍋智史'
 	s.last_name = 'おなべ'
 	s.first_name = 'ともふみ'
 end
 
 Performer.seed do |s|
-	s.id = 10672
-	s.style_id = 92
-	s.full_name = '小林 維毅'
+	s.id = 1067
+	s.style_id = 9
+	s.full_name = '小林維毅'
 	s.last_name = 'こばやし'
 	s.first_name = 'これき'
 end
 
 Performer.seed do |s|
-	s.id = 10682
-	s.style_id = 92
-	s.full_name = '善竹 忠亮'
+	s.id = 1068
+	s.style_id = 9
+	s.full_name = '善竹忠亮'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'ただあき'
 end
 
 Performer.seed do |s|
-	s.id = 10692
-	s.style_id = 92
-	s.full_name = '善竹 忠重'
+	s.id = 1069
+	s.style_id = 9
+	s.full_name = '善竹忠重'
 	s.last_name = 'ぜんちく'
 	s.first_name = 'ただしげ'
 end
 
 Performer.seed do |s|
-	s.id = 10702
-	s.style_id = 92
-	s.full_name = '前川 吉也'
+	s.id = 1070
+	s.style_id = 9
+	s.full_name = '前川吉也'
 	s.last_name = 'まえかわ'
 	s.first_name = 'よしや'
 end
 
 Performer.seed do |s|
-	s.id = 10712
-	s.style_id = 92
-	s.full_name = '牟田 素之'
+	s.id = 1071
+	s.style_id = 9
+	s.full_name = '牟田素之'
 	s.last_name = 'むた'
 	s.first_name = 'もとゆき'
 end
 
 Performer.seed do |s|
-	s.id = 10722
-	s.style_id = 12
-	s.full_name = '井内 政徳'
+	s.id = 1072
+	s.style_id = 1
+	s.full_name = '井内政徳'
 	s.last_name = 'いのうち'
 	s.first_name = 'まさのり'
 end
 
 Performer.seed do |s|
-	s.id = 10732
-	s.style_id = 12
-	s.full_name = '今村 一夫'
+	s.id = 1073
+	s.style_id = 1
+	s.full_name = '今村一夫'
 	s.last_name = 'いまむら'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 10742
-	s.style_id = 12
-	s.full_name = '今村 宮子'
+	s.id = 1074
+	s.style_id = 1
+	s.full_name = '今村宮子'
 	s.last_name = 'いまむら'
 	s.first_name = 'みやこ'
 end
 
 Performer.seed do |s|
-	s.id = 10752
-	s.style_id = 12
-	s.full_name = '今村 嘉太郎'
+	s.id = 1075
+	s.style_id = 1
+	s.full_name = '今村嘉太郎'
 	s.last_name = 'いまむら'
 	s.first_name = 'よしたろう'
 end
 
 Performer.seed do |s|
-	s.id = 10762
-	s.style_id = 12
-	s.full_name = '今村 嘉伸'
+	s.id = 1076
+	s.style_id = 1
+	s.full_name = '今村嘉伸'
 	s.last_name = 'いまむら'
 	s.first_name = 'よしのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 10772
-	s.style_id = 12
-	s.full_name = '川副 憲一'
+	s.id = 1077
+	s.style_id = 1
+	s.full_name = '川副憲一'
 	s.last_name = 'かわそえ'
 	s.first_name = 'けんいち'
 end
 
 Performer.seed do |s|
-	s.id = 10782
-	s.style_id = 12
-	s.full_name = '菊本 澄代'
+	s.id = 1078
+	s.style_id = 1
+	s.full_name = '菊本澄代'
 	s.last_name = 'きくもと'
 	s.first_name = 'すみよ'
 end
 
 Performer.seed do |s|
-	s.id = 10792
-	s.style_id = 12
-	s.full_name = '菊本 美貴'
+	s.id = 1079
+	s.style_id = 1
+	s.full_name = '菊本美貴'
 	s.last_name = 'きくもと'
 	s.first_name = 'みき'
 end
 
 Performer.seed do |s|
-	s.id = 10802
-	s.style_id = 12
-	s.full_name = '木月 晶子'
+	s.id = 1080
+	s.style_id = 1
+	s.full_name = '木月晶子'
 	s.last_name = 'きづき'
 	s.first_name = 'あきこ'
 end
 
 Performer.seed do |s|
-	s.id = 10812
-	s.style_id = 12
-	s.full_name = '久保 誠一郎'
+	s.id = 1081
+	s.style_id = 1
+	s.full_name = '久保誠一郎'
 	s.last_name = 'くぼ'
 	s.first_name = 'せいいちろう'
 end
 
 Performer.seed do |s|
-	s.id = 10822
-	s.style_id = 12
-	s.full_name = '坂口 信男'
+	s.id = 1082
+	s.style_id = 1
+	s.full_name = '坂口信男'
 	s.last_name = 'さかぐち'
 	s.first_name = 'のぶお'
 end
 
 Performer.seed do |s|
-	s.id = 10832
-	s.style_id = 12
-	s.full_name = '鷹尾 章弘'
+	s.id = 1083
+	s.style_id = 1
+	s.full_name = '鷹尾章弘'
 	s.last_name = 'たかお'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 10842
-	s.style_id = 12
-	s.full_name = '鷹尾 維教'
+	s.id = 1084
+	s.style_id = 1
+	s.full_name = '鷹尾維教'
 	s.last_name = 'たかお'
 	s.first_name = 'ゆきのり'
 end
 
 Performer.seed do |s|
-	s.id = 10852
-	s.style_id = 12
-	s.full_name = '鷹尾 祥史'
+	s.id = 1085
+	s.style_id = 1
+	s.full_name = '鷹尾祥史'
 	s.last_name = 'たかお'
 	s.first_name = 'よしひと'
 end
 
 Performer.seed do |s|
-	s.id = 10862
-	s.style_id = 12
-	s.full_name = '多久島 利之'
+	s.id = 1086
+	s.style_id = 1
+	s.full_name = '多久島利之'
 	s.last_name = 'たくしま'
 	s.first_name = 'としゆき'
 end
 
 Performer.seed do |s|
-	s.id = 10872
-	s.style_id = 12
-	s.full_name = '多久島 法子'
+	s.id = 1087
+	s.style_id = 1
+	s.full_name = '多久島法子'
 	s.last_name = 'たくしま'
 	s.first_name = 'のりこ'
 end
 
 Performer.seed do |s|
-	s.id = 10882
-	s.style_id = 12
-	s.full_name = '谷村 育子'
+	s.id = 1088
+	s.style_id = 1
+	s.full_name = '谷村育子'
 	s.last_name = 'たにむら'
 	s.first_name = 'いくこ'
 end
 
 Performer.seed do |s|
-	s.id = 10892
-	s.style_id = 12
-	s.full_name = '谷村 由三子'
+	s.id = 1089
+	s.style_id = 1
+	s.full_name = '谷村由三子'
 	s.last_name = 'たにむら'
 	s.first_name = 'ゆみこ'
 end
 
 Performer.seed do |s|
-	s.id = 10902
-	s.style_id = 12
-	s.full_name = '本土 靖久'
+	s.id = 1090
+	s.style_id = 1
+	s.full_name = '本土靖久'
 	s.last_name = 'ほんど'
 	s.first_name = 'やすひさ'
 end
 
 Performer.seed do |s|
-	s.id = 10912
-	s.style_id = 12
-	s.full_name = '松田 美栄子'
+	s.id = 1091
+	s.style_id = 1
+	s.full_name = '松田美栄子'
 	s.last_name = 'まつだ'
 	s.first_name = 'みえこ'
 end
 
 Performer.seed do |s|
-	s.id = 10922
-	s.style_id = 12
-	s.full_name = '宮田 嘉之'
+	s.id = 1092
+	s.style_id = 1
+	s.full_name = '宮田嘉之'
 	s.last_name = 'みやた'
 	s.first_name = 'よしゆき'
 end
 
 Performer.seed do |s|
-	s.id = 10932
-	s.style_id = 12
-	s.full_name = '森本 哲郎'
+	s.id = 1093
+	s.style_id = 1
+	s.full_name = '森本哲郎'
 	s.last_name = 'もりもと'
 	s.first_name = 'てつろう'
 end
 
 Performer.seed do |s|
-	s.id = 10942
-	s.style_id = 12
-	s.full_name = '山口 剛一郎'
+	s.id = 1094
+	s.style_id = 1
+	s.full_name = '山口剛一郎'
 	s.last_name = 'やまぐち'
 	s.first_name = 'ごういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 10952
-	s.style_id = 12
-	s.full_name = '山口 敏弘'
+	s.id = 1095
+	s.style_id = 1
+	s.full_name = '山口敏弘'
 	s.last_name = 'やまぐち'
 	s.first_name = 'としひろ'
 end
 
 Performer.seed do |s|
-	s.id = 10962
-	s.style_id = 12
-	s.full_name = '吉原 幸夫'
+	s.id = 1096
+	s.style_id = 1
+	s.full_name = '吉原幸夫'
 	s.last_name = 'よしはら'
 	s.first_name = 'ゆきお'
 end
 
 Performer.seed do |s|
-	s.id = 10972
-	s.style_id = 32
-	s.full_name = '田中 寿男'
+	s.id = 1097
+	s.style_id = 3
+	s.full_name = '田中寿男'
 	s.last_name = 'たなか'
 	s.first_name = 'ひさお'
 end
 
 Performer.seed do |s|
-	s.id = 10982
-	s.style_id = 32
-	s.full_name = '名和 長承'
+	s.id = 1098
+	s.style_id = 3
+	s.full_name = '名和長承'
 	s.last_name = 'なわ'
 	s.first_name = 'ちょうしょう'
 end
 
 Performer.seed do |s|
-	s.id = 10992
-	s.style_id = 32
-	s.full_name = '東 軍三'
+	s.id = 1099
+	s.style_id = 3
+	s.full_name = '東軍三'
 	s.last_name = 'ひがし'
 	s.first_name = 'ぐんぞう'
 end
 
 Performer.seed do |s|
-	s.id = 11002
-	s.style_id = 32
-	s.full_name = '松井 笙子'
+	s.id = 1100
+	s.style_id = 3
+	s.full_name = '松井笙子'
 	s.last_name = 'まつい'
 	s.first_name = 'しょうこ'
 end
 
 Performer.seed do |s|
-	s.id = 11012
-	s.style_id = 22
-	s.full_name = '久貫 弘能'
+	s.id = 1101
+	s.style_id = 2
+	s.full_name = '久貫弘能'
 	s.last_name = 'くぬき'
 	s.first_name = 'ひろの'
 end
 
 Performer.seed do |s|
-	s.id = 11022
-	s.style_id = 22
-	s.full_name = '杉岡 敏英'
+	s.id = 1102
+	s.style_id = 2
+	s.full_name = '杉岡敏英'
 	s.last_name = 'すぎおか'
 	s.first_name = 'としひで'
 end
 
 Performer.seed do |s|
-	s.id = 11032
-	s.style_id = 22
-	s.full_name = '田中 トシヱ'
+	s.id = 1103
+	s.style_id = 2
+	s.full_name = '田中トシヱ'
 	s.last_name = 'たなか'
 	s.first_name = 'としえ'
 end
 
 Performer.seed do |s|
-	s.id = 11042
-	s.style_id = 22
-	s.full_name = '田村 恭'
+	s.id = 1104
+	s.style_id = 2
+	s.full_name = '田村恭'
 	s.last_name = 'たむら'
 	s.first_name = 'きょう'
 end
 
 Performer.seed do |s|
-	s.id = 11052
-	s.style_id = 22
-	s.full_name = '中西 和夫'
+	s.id = 1105
+	s.style_id = 2
+	s.full_name = '中西和夫'
 	s.last_name = 'なかにし'
 	s.first_name = 'かずお'
 end
 
 Performer.seed do |s|
-	s.id = 11062
-	s.style_id = 22
-	s.full_name = '東川 光夫'
+	s.id = 1106
+	s.style_id = 2
+	s.full_name = '東川光夫'
 	s.last_name = 'ひがしかわ'
 	s.first_name = 'みつお'
 end
 
 Performer.seed do |s|
-	s.id = 11072
-	s.style_id = 22
-	s.full_name = '福田 清道'
+	s.id = 1107
+	s.style_id = 2
+	s.full_name = '福田清道'
 	s.last_name = 'ふくだ'
 	s.first_name = 'きよみち'
 end
 
 Performer.seed do |s|
-	s.id = 11082
-	s.style_id = 22
-	s.full_name = '三澤 栄子'
+	s.id = 1108
+	s.style_id = 2
+	s.full_name = '三澤栄子'
 	s.last_name = 'みさわ'
 	s.first_name = 'えいこ'
 end
 
 Performer.seed do |s|
-	s.id = 11092
-	s.style_id = 22
-	s.full_name = '山岡 晴美'
+	s.id = 1109
+	s.style_id = 2
+	s.full_name = '山岡晴美'
 	s.last_name = 'やまおか'
 	s.first_name = 'はるみ'
 end
 
 Performer.seed do |s|
-	s.id = 11102
-	s.style_id = 42
-	s.full_name = '吉田 雅子'
+	s.id = 1110
+	s.style_id = 4
+	s.full_name = '吉田雅子'
 	s.last_name = 'よしだ'
 	s.first_name = 'まさこ'
 end
 
 Performer.seed do |s|
-	s.id = 11112
-	s.style_id = 52
-	s.full_name = '粟谷 幸雄'
+	s.id = 1111
+	s.style_id = 5
+	s.full_name = '粟谷幸雄'
 	s.last_name = 'あわや'
 	s.first_name = 'ゆきお'
 end
 
 Performer.seed do |s|
-	s.id = 11122
-	s.style_id = 52
-	s.full_name = '笠井 陸'
+	s.id = 1112
+	s.style_id = 5
+	s.full_name = '笠井陸'
 	s.last_name = 'かさい'
 	s.first_name = 'たかし'
 end
 
 Performer.seed do |s|
-	s.id = 11132
-	s.style_id = 52
-	s.full_name = '工藤 義彦'
+	s.id = 1113
+	s.style_id = 5
+	s.full_name = '工藤義彦'
 	s.last_name = 'くどう'
 	s.first_name = 'よしひこ'
 end
 
 Performer.seed do |s|
-	s.id = 11142
-	s.style_id = 52
-	s.full_name = '塩山 良一'
+	s.id = 1114
+	s.style_id = 5
+	s.full_name = '塩山良一'
 	s.last_name = 'しおやま'
 	s.first_name = 'りょういち'
 end
 
 Performer.seed do |s|
-	s.id = 11152
-	s.style_id = 52
-	s.full_name = '末武 有二'
+	s.id = 1115
+	s.style_id = 5
+	s.full_name = '末武有二'
 	s.last_name = 'すえたけ'
 	s.first_name = 'ゆうじ'
 end
 
 Performer.seed do |s|
-	s.id = 11162
-	s.style_id = 52
-	s.full_name = '角 明弘'
+	s.id = 1116
+	s.style_id = 5
+	s.full_name = '角明弘'
 	s.last_name = 'すみ'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 11172
-	s.style_id = 52
-	s.full_name = '渡辺 康喜'
+	s.id = 1117
+	s.style_id = 5
+	s.full_name = '渡辺康喜'
 	s.last_name = 'わたなべ'
 	s.first_name = 'やすき'
 end
 
 Performer.seed do |s|
-	s.id = 11182
-	s.style_id = 62
-	s.full_name = '塩田 耕三'
+	s.id = 1118
+	s.style_id = 6
+	s.full_name = '塩田耕三'
 	s.last_name = 'しおた'
 	s.first_name = 'こうそう'
 end
 
 Performer.seed do |s|
-	s.id = 11192
-	s.style_id = 82
-	s.full_name = '坂苗 功'
+	s.id = 1119
+	s.style_id = 8
+	s.full_name = '坂苗功'
 	s.last_name = 'さかなえ'
 	s.first_name = 'いさお'
 end
 
 Performer.seed do |s|
-	s.id = 11202
-	s.style_id = 82
-	s.full_name = '坂苗 融'
+	s.id = 1120
+	s.style_id = 8
+	s.full_name = '坂苗融'
 	s.last_name = 'さかなえ'
 	s.first_name = 'とおる'
 end
 
 Performer.seed do |s|
-	s.id = 11212
-	s.style_id = 82
-	s.full_name = '松本 義生'
+	s.id = 1121
+	s.style_id = 8
+	s.full_name = '松本義生'
 	s.last_name = 'まつもと'
 	s.first_name = 'よしお'
 end
 
 Performer.seed do |s|
-	s.id = 11222
-	s.style_id = 82
-	s.full_name = '御厨 誠吾'
+	s.id = 1122
+	s.style_id = 8
+	s.full_name = '御厨誠吾'
 	s.last_name = 'みくりや'
 	s.first_name = 'せいご'
 end
 
 Performer.seed do |s|
-	s.id = 11232
-	s.style_id = 122
-	s.full_name = '相原 一彦'
+	s.id = 1123
+	s.style_id = 12
+	s.full_name = '相原一彦'
 	s.last_name = 'あいはら'
 	s.first_name = 'かずひこ'
 end
 
 Performer.seed do |s|
-	s.id = 11242
-	s.style_id = 122
-	s.full_name = '出雲 敏弘'
+	s.id = 1124
+	s.style_id = 12
+	s.full_name = '出雲敏弘'
 	s.last_name = 'いずも'
 	s.first_name = 'としひろ'
 end
 
 Performer.seed do |s|
-	s.id = 11252
-	s.style_id = 122
-	s.full_name = '浦 政徳'
+	s.id = 1125
+	s.style_id = 12
+	s.full_name = '浦政徳'
 	s.last_name = 'うら'
 	s.first_name = 'まさのり'
 end
 
 Performer.seed do |s|
-	s.id = 11262
-	s.style_id = 122
-	s.full_name = '森田 徳和'
+	s.id = 1126
+	s.style_id = 12
+	s.full_name = '森田徳和'
 	s.last_name = 'もりた'
 	s.first_name = 'のりかず'
 end
 
 Performer.seed do |s|
-	s.id = 11272
-	s.style_id = 142
-	s.full_name = '飯田 清一'
+	s.id = 1127
+	s.style_id = 14
+	s.full_name = '飯田清一'
 	s.last_name = 'いいだ'
 	s.first_name = 'せいいち'
 end
 
 Performer.seed do |s|
-	s.id = 11282
-	s.style_id = 142
-	s.full_name = '幸 正佳'
+	s.id = 1128
+	s.style_id = 14
+	s.full_name = '幸正佳'
 	s.last_name = 'こう'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 11292
-	s.style_id = 142
-	s.full_name = '古田 寛二郎'
+	s.id = 1129
+	s.style_id = 14
+	s.full_name = '古田寛二郎'
 	s.last_name = 'ふるた'
 	s.first_name = 'かんじろう'
 end
 
 Performer.seed do |s|
-	s.id = 11302
-	s.style_id = 142
-	s.full_name = '横山 晴明'
+	s.id = 1130
+	s.style_id = 14
+	s.full_name = '横山晴明'
 	s.last_name = 'よこやま'
 	s.first_name = 'はるあき'
 end
 
 Performer.seed do |s|
-	s.id = 11312
-	s.style_id = 142
-	s.full_name = '横山 幸彦'
+	s.id = 1131
+	s.style_id = 14
+	s.full_name = '横山幸彦'
 	s.last_name = 'よこやま'
 	s.first_name = 'ゆきひこ'
 end
 
 Performer.seed do |s|
-	s.id = 11322
-	s.style_id = 162
-	s.full_name = '飯冨 章宏'
+	s.id = 1132
+	s.style_id = 16
+	s.full_name = '飯冨章宏'
 	s.last_name = 'いいとみ'
 	s.first_name = 'あきひろ'
 end
 
 Performer.seed do |s|
-	s.id = 11332
-	s.style_id = 182
-	s.full_name = '三王 清'
+	s.id = 1133
+	s.style_id = 18
+	s.full_name = '三王清'
 	s.last_name = 'さんおう'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 11342
-	s.style_id = 182
-	s.full_name = '原岡 一之'
+	s.id = 1134
+	s.style_id = 18
+	s.full_name = '原岡一之'
 	s.last_name = 'はらおか'
 	s.first_name = 'かずゆき'
 end
 
 Performer.seed do |s|
-	s.id = 11352
-	s.style_id = 192
-	s.full_name = '白坂 信行'
+	s.id = 1135
+	s.style_id = 19
+	s.full_name = '白坂信行'
 	s.last_name = 'しらさか'
 	s.first_name = 'のぶゆき'
 end
 
 Performer.seed do |s|
-	s.id = 11362
-	s.style_id = 192
-	s.full_name = '白坂 保行'
+	s.id = 1136
+	s.style_id = 19
+	s.full_name = '白坂保行'
 	s.last_name = 'しらさか'
 	s.first_name = 'やすゆき'
 end
 
 Performer.seed do |s|
-	s.id = 11372
-	s.style_id = 232
-	s.full_name = '田中 達'
+	s.id = 1137
+	s.style_id = 23
+	s.full_name = '田中達'
 	s.last_name = 'たなか'
 	s.first_name = 'とおる'
 end
 
 Performer.seed do |s|
-	s.id = 11382
-	s.style_id = 242
-	s.full_name = '笹本 親男'
+	s.id = 1138
+	s.style_id = 24
+	s.full_name = '笹本親男'
 	s.last_name = 'ささもと'
 	s.first_name = 'ちかお'
 end
 
 Performer.seed do |s|
-	s.id = 11392
-	s.style_id = 242
-	s.full_name = '西嶋 淳子'
+	s.id = 1139
+	s.style_id = 24
+	s.full_name = '西嶋淳子'
 	s.last_name = 'にしじま'
 	s.first_name = 'じゅんこ'
 end
 
 Performer.seed do |s|
-	s.id = 11402
-	s.style_id = 242
-	s.full_name = '吉谷 潔'
+	s.id = 1140
+	s.style_id = 24
+	s.full_name = '吉谷潔'
 	s.last_name = 'よしたに'
 	s.first_name = 'きよし'
 end
 
 Performer.seed do |s|
-	s.id = 11412
-	s.style_id = 92
-	s.full_name = '秋吉 英二'
+	s.id = 1141
+	s.style_id = 9
+	s.full_name = '秋吉英二'
 	s.last_name = 'あきよし'
 	s.first_name = 'えいじ'
 end
 
 Performer.seed do |s|
-	s.id = 11422
-	s.style_id = 92
-	s.full_name = '河原 康生'
+	s.id = 1142
+	s.style_id = 9
+	s.full_name = '河原康生'
 	s.last_name = 'かわはら'
 	s.first_name = 'やすお'
 end
 
 Performer.seed do |s|
-	s.id = 11432
-	s.style_id = 92
-	s.full_name = '川邉 宏貴'
+	s.id = 1143
+	s.style_id = 9
+	s.full_name = '川邉宏貴'
 	s.last_name = 'かわべ'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 11442
-	s.style_id = 92
-	s.full_name = '篠原 太一'
+	s.id = 1144
+	s.style_id = 9
+	s.full_name = '篠原太一'
 	s.last_name = 'しのはら'
 	s.first_name = 'たいち'
 end
 
 Performer.seed do |s|
-	s.id = 11452
-	s.style_id = 92
-	s.full_name = '渋田 昭典'
+	s.id = 1145
+	s.style_id = 9
+	s.full_name = '渋田昭典'
 	s.last_name = 'しぶた'
 	s.first_name = 'あきのり'
 end
 
 Performer.seed do |s|
-	s.id = 11462
-	s.style_id = 92
-	s.full_name = '田口 俊英'
+	s.id = 1146
+	s.style_id = 9
+	s.full_name = '田口俊英'
 	s.last_name = 'たぐち'
 	s.first_name = 'としひで'
 end
 
 Performer.seed do |s|
-	s.id = 11472
-	s.style_id = 92
-	s.full_name = '中島 清幸'
+	s.id = 1147
+	s.style_id = 9
+	s.full_name = '中島清幸'
 	s.last_name = 'なかしま'
 	s.first_name = 'きよゆき'
 end
 
 Performer.seed do |s|
-	s.id = 11482
-	s.style_id = 102
-	s.full_name = '吉良 博靖'
+	s.id = 1148
+	s.style_id = 10
+	s.full_name = '吉良博靖'
 	s.last_name = 'きら'
 	s.first_name = 'ひろやす'
 end
 
 Performer.seed do |s|
-	s.id = 11492
-	s.style_id = 102
-	s.full_name = '野村 万禄'
+	s.id = 1149
+	s.style_id = 10
+	s.full_name = '野村万禄'
 	s.last_name = 'のむら'
 	s.first_name = 'まんろく'
 end
 
 Performer.seed do |s|
-	s.id = 11502
-	s.style_id = 102
-	s.full_name = '吉住 講'
+	s.id = 1150
+	s.style_id = 10
+	s.full_name = '吉住講'
 	s.last_name = 'よしずみ'
 	s.first_name = 'こう'
 end
 
 Performer.seed do |s|
-	s.id = 11512
-	s.style_id = 12
-	s.full_name = '生駒 里翠'
+	s.id = 1151
+	s.style_id = 1
+	s.full_name = '生駒里翠'
 	s.last_name = 'いこま'
 	s.first_name = 'りすい'
 end
 
 Performer.seed do |s|
-	s.id = 11522
-	s.style_id = 12
-	s.full_name = '菅野 卓夫'
+	s.id = 1152
+	s.style_id = 1
+	s.full_name = '菅野卓夫'
 	s.last_name = 'かんの'
 	s.first_name = 'たくお'
 end
 
 Performer.seed do |s|
-	s.id = 11532
-	s.style_id = 12
-	s.full_name = '高橋 康子'
+	s.id = 1153
+	s.style_id = 1
+	s.full_name = '高橋康子'
 	s.last_name = 'たかはし'
 	s.first_name = 'やすこ'
 end
 
 Performer.seed do |s|
-	s.id = 11542
-	s.style_id = 12
-	s.full_name = '宮下 功'
+	s.id = 1154
+	s.style_id = 1
+	s.full_name = '宮下功'
 	s.last_name = 'みやした'
 	s.first_name = 'いさお'
 end
 
 Performer.seed do |s|
-	s.id = 11552
-	s.style_id = 12
-	s.full_name = '吉澤 晃一'
+	s.id = 1155
+	s.style_id = 1
+	s.full_name = '吉澤晃一'
 	s.last_name = 'よしざわ'
 	s.first_name = 'こういち'
 end
 
 Performer.seed do |s|
-	s.id = 11562
-	s.style_id = 22
-	s.full_name = '植田 次雄'
+	s.id = 1156
+	s.style_id = 2
+	s.full_name = '植田次雄'
 	s.last_name = 'うえだ'
 	s.first_name = 'つぎお'
 end
 
 Performer.seed do |s|
-	s.id = 11572
-	s.style_id = 22
-	s.full_name = '表 美智子'
+	s.id = 1157
+	s.style_id = 2
+	s.full_name = '表美智子'
 	s.last_name = 'おもて'
 	s.first_name = 'みちこ'
 end
 
 Performer.seed do |s|
-	s.id = 11582
-	s.style_id = 22
-	s.full_name = '菅田 昌義'
+	s.id = 1158
+	s.style_id = 2
+	s.full_name = '菅田昌義'
 	s.last_name = 'すがた'
 	s.first_name = 'まさよし'
 end
 
 Performer.seed do |s|
-	s.id = 11592
-	s.style_id = 22
-	s.full_name = '竹浪 恭二郎'
+	s.id = 1159
+	s.style_id = 2
+	s.full_name = '竹浪恭二郎'
 	s.last_name = 'たけなみ'
 	s.first_name = 'きょうじろう'
 end
 
 Performer.seed do |s|
-	s.id = 11602
-	s.style_id = 22
-	s.full_name = '玉川 おくに'
+	s.id = 1160
+	s.style_id = 2
+	s.full_name = '玉川おくに'
 	s.last_name = 'たまがわ'
 	s.first_name = 'おくに'
 end
 
 Performer.seed do |s|
-	s.id = 11612
-	s.style_id = 22
-	s.full_name = '長谷川 士希子'
+	s.id = 1161
+	s.style_id = 2
+	s.full_name = '長谷川士希子'
 	s.last_name = 'はせがわ'
 	s.first_name = 'しげこ'
 end
 
 Performer.seed do |s|
-	s.id = 11622
-	s.style_id = 42
-	s.full_name = '桧垣 孝文'
+	s.id = 1162
+	s.style_id = 4
+	s.full_name = '桧垣孝文'
 	s.last_name = 'ひがき'
 	s.first_name = 'たかふみ'
 end
 
 Performer.seed do |s|
-	s.id = 11632
-	s.style_id = 52
-	s.full_name = '大島 衣恵'
+	s.id = 1163
+	s.style_id = 5
+	s.full_name = '大島衣恵'
 	s.last_name = 'おおしま'
 	s.first_name = 'きぬえ'
 end
 
 Performer.seed do |s|
-	s.id = 11642
-	s.style_id = 52
-	s.full_name = '大島 政允'
+	s.id = 1164
+	s.style_id = 5
+	s.full_name = '大島政允'
 	s.last_name = 'おおしま'
 	s.first_name = 'まさのぶ'
 end
 
 Performer.seed do |s|
-	s.id = 11652
-	s.style_id = 52
-	s.full_name = '奥田 康二'
+	s.id = 1165
+	s.style_id = 5
+	s.full_name = '奥田康二'
 	s.last_name = 'おくだ'
 	s.first_name = 'こうじ'
 end
 
 Performer.seed do |s|
-	s.id = 11662
-	s.style_id = 52
-	s.full_name = '金子 匡一'
+	s.id = 1166
+	s.style_id = 5
+	s.full_name = '金子匡一'
 	s.last_name = 'かねこ'
 	s.first_name = 'きょういち'
 end
 
 Performer.seed do |s|
-	s.id = 11672
-	s.style_id = 122
-	s.full_name = '石原 俊時'
+	s.id = 1167
+	s.style_id = 12
+	s.full_name = '石原俊時'
 	s.last_name = 'いしはら'
 	s.first_name = 'しゅんじ'
 end
 
 Performer.seed do |s|
-	s.id = 11682
-	s.style_id = 122
-	s.full_name = '森田 勝瀧'
+	s.id = 1168
+	s.style_id = 12
+	s.full_name = '森田勝瀧'
 	s.last_name = 'もりた'
 	s.first_name = 'かつたき'
 end
 
 Performer.seed do |s|
-	s.id = 11692
-	s.style_id = 172
-	s.full_name = '新井 久子'
+	s.id = 1169
+	s.style_id = 17
+	s.full_name = '新井久子'
 	s.last_name = 'あらい'
 	s.first_name = 'ひさこ'
 end
 
 Performer.seed do |s|
-	s.id = 11702
-	s.style_id = 92
-	s.full_name = '森 浩一'
+	s.id = 1170
+	s.style_id = 9
+	s.full_name = '森浩一'
 	s.last_name = 'もり'
 	s.first_name = 'ひろかず'
 end
 
 Performer.seed do |s|
-	s.id = 11712
-	s.style_id = 42
-	s.full_name = '向井 弘記'
+	s.id = 1171
+	s.style_id = 4
+	s.full_name = '向井弘記'
 	s.last_name = 'むかい'
 	s.first_name = 'ひろき'
 end
 
 Performer.seed do |s|
-	s.id = 11722
-	s.style_id = 42
-	s.full_name = '惣明 貞助'
+	s.id = 1172
+	s.style_id = 4
+	s.full_name = '惣明貞助'
 	s.last_name = 'そうみょう'
 	s.first_name = 'さだすけ'
 end
 
 Performer.seed do |s|
-	s.id = 11732
-	s.style_id = 92
-	s.full_name = '茂山 慶和'
+	s.id = 1173
+	s.style_id = 9
+	s.full_name = '茂山慶和'
 	s.last_name = 'しげやま'
 	s.first_name = 'よしかず'
 end
 
 Performer.seed do |s|
-	s.id = 11742
-	s.style_id = 22
-	s.full_name = '山崎 健'
+	s.id = 1174
+	s.style_id = 2
+	s.full_name = '山崎健'
 	s.last_name = 'やまざき'
 	s.first_name = 'たけし'
 end
 
 Performer.seed do |s|
-	s.id = 11752
-	s.style_id = 12
-	s.full_name = '渡邉 瑞子'
+	s.id = 1175
+	s.style_id = 1
+	s.full_name = '渡邉瑞子'
 	s.last_name = 'わたなべ'
 	s.first_name = 'みずこ'
 end
 
 Performer.seed do |s|
-	s.id = 11762
-	s.style_id = 12
-	s.full_name = '武田 祥照'
+	s.id = 1176
+	s.style_id = 1
+	s.full_name = '武田祥照'
 	s.last_name = 'たけだ'
 	s.first_name = 'よしてる'
 end
 
 Performer.seed do |s|
-	s.id = 11772
-	s.style_id = 12
-	s.full_name = '井上 裕之真'
+	s.id = 1177
+	s.style_id = 1
+	s.full_name = '井上裕之真'
 	s.last_name = 'たけだ'
 	s.first_name = 'ひろのしん'
 end
 
 Performer.seed do |s|
-	s.id = 11782
-	s.style_id = 12
-	s.full_name = '樹下 千慧'
+	s.id = 1178
+	s.style_id = 1
+	s.full_name = '樹下千慧'
 	s.last_name = 'じゅげ'
 	s.first_name = 'ちさと'
 end
 
 Performer.seed do |s|
-	s.id = 11792
-	s.style_id = 12
-	s.full_name = '浦田 親良'
+	s.id = 1179
+	s.style_id = 1
+	s.full_name = '浦田親良'
 	s.last_name = 'うらた'
 	s.first_name = 'ちから'
 end
 
 Performer.seed do |s|
-	s.id = 11802
-	s.style_id = 12
-	s.full_name = '小野 朗'
+	s.id = 1180
+	s.style_id = 1
+	s.full_name = '小野朗'
 	s.last_name = 'おの'
 	s.first_name = 'あきら'
 end
 
 Performer.seed do |s|
-	s.id = 11812
-	s.style_id = 12
-	s.full_name = '山崎 浩之'
+	s.id = 1181
+	s.style_id = 1
+	s.full_name = '山崎浩之'
 	s.last_name = 'やまざき'
 	s.first_name = 'ひろゆき'
 end
 
 Performer.seed do |s|
-	s.id = 11822
-	s.style_id = 12
-	s.full_name = '梅若 雄一郎'
+	s.id = 1182
+	s.style_id = 1
+	s.full_name = '梅若雄一郎'
 	s.last_name = 'うめわか'
 	s.first_name = 'ゆういちろう'
 end
 
 Performer.seed do |s|
-	s.id = 11832
-	s.style_id = 12
-	s.full_name = '片山 清愛'
+	s.id = 1183
+	s.style_id = 1
+	s.full_name = '片山清愛'
 	s.last_name = 'かたやま'
 	s.first_name = 'きよあい'
 end
 
 Performer.seed do |s|
-	s.id = 11842
-	s.style_id = 42
-	s.full_name = '村瀬 堤'
+	s.id = 1184
+	s.style_id = 4
+	s.full_name = '村瀬堤'
 	s.last_name = 'むらせ'
 	s.first_name = 'つつみ'
 end
 
 Performer.seed do |s|
-	s.id = 11852
-	s.style_id = 42
-	s.full_name = '村瀬 慧'
+	s.id = 1185
+	s.style_id = 4
+	s.full_name = '村瀬慧'
 	s.last_name = 'むらせ'
 	s.first_name = 'けい'
 end
 
 Performer.seed do |s|
-	s.id = 11862
-	s.style_id = 12
-	s.full_name = '大槻 裕一'
+	s.id = 1186
+	s.style_id = 1
+	s.full_name = '大槻裕一'
 	s.last_name = 'おおつき'
 	s.first_name = 'ゆういち'
 end
 
 Performer.seed do |s|
-	s.id = 11872
-	s.style_id = 12
-	s.full_name = '山本 麗晃'
+	s.id = 1187
+	s.style_id = 1
+	s.full_name = '山本麗晃'
 	s.last_name = 'やまもと'
 	s.first_name = 'よしあき'
 end
 
 Performer.seed do |s|
-	s.id = 11882
-	s.style_id = 142
-	s.full_name = '成田 奏'
+	s.id = 1188
+	s.style_id = 14
+	s.full_name = '成田奏'
 	s.last_name = 'なりた'
 	s.first_name = 'かな'
 end
 
 Performer.seed do |s|
-	s.id = 11892
-	s.style_id = 102
-	s.full_name = '大塚 出'
+	s.id = 1189
+	s.style_id = 10
+	s.full_name = '大塚出'
 	s.last_name = 'おおつか'
 	s.first_name = 'いずる'
 end
