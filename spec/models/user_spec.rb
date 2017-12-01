@@ -74,6 +74,30 @@ RSpec.describe User, type: :model do
          end
       end
 
+      context 'related to join_histories' do
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:join_histories)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'shows that user has many join_histories' do
+            expect{ create(:model_user, :start_from_this) }.to change(JoinHistory, :count).by(1)
+         end
+      end
+
+      context 'related to events through join_histories' do
+         let(:user) { create(:model_user, :start_from_this) }
+
+         it "is 'has many' attribute" do
+            association = described_class.reflect_on_association(:events)
+            expect(association.macro).to eq(:has_many)
+         end
+
+         it 'is able to refer associated event from user' do
+            expect(user.join_events.first).to eq(user.join_histories.first.event)
+         end
+      end
+
       context 'destroying dependency' do
          let(:user) { create(:model_user, :start_from_this) }
          let(:another_user) { create(:another_user, :start_from_this) }
@@ -103,6 +127,14 @@ RSpec.describe User, type: :model do
 
          it "doesn't delete not relative bookmarks" do
             expect(another_user.bookmarks.count).not_to eq(0)
+         end
+
+         it 'deletes relative join_histories' do
+            expect(user.join_histories.count).to eq(0)
+         end
+
+         it "doesn't delete not relative join_histories" do
+            expect(another_user.join_histories.count).not_to eq(0)
          end
       end
    end

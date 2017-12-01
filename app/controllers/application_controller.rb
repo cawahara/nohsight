@@ -45,4 +45,12 @@ class ApplicationController < ActionController::Base
       end
       return true
    end
+
+   def change_finished_join_status
+      if logged?
+         join_event_ids = current_user.join_events.where("start_date < ? ", Time.zone.now).ids
+         join_histories = current_user.join_histories.where('event_id IN (?)', join_event_ids)
+         join_histories.update_all(status: 1)
+      end
+   end
 end

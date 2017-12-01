@@ -11,6 +11,7 @@ class EventsController < ApplicationController
    before_action :set_variables_for_event_place, only: [:edit_place, :update_place]
    before_action :logged_in?, except: [:index, :show]
    before_action :event_editor?, except: [:index, :new, :show, :create, :manage, :validation]
+   before_action :change_finished_join_status, only: [:index, :show]
 
    def index
       events = []

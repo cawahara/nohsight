@@ -1,0 +1,47 @@
+
+/********************************************
+
+                  Libraries
+
+********************************************/
+@import './layout';
+
+
+/********************************************
+
+               JoinHistories
+
+********************************************/
+
+button.join-history-status {
+   padding: 0 !important;
+   margin: 12px 0 0 7px;
+   border: 1px solid #aeaeae;
+   border-radius: 3px;
+   width: 120px;
+   span {
+      margin: 0 !important;
+      display: block;
+      text-align: center;
+      padding: 3px 0;
+   }
+   span.planned { background-color: #b3d9ff; }
+   span.cancelled { background-color: #ffcc99; }
+   span.joined { background-color: #aaff80; }
+}
+
+// TODO: merge後にevents.scssに移す
+ul.relations {
+   overflow: hidden;
+   li {
+      float: left;
+      display: inlnine-block;
+   }
+}
+
+div#join-history-selector {
+   padding: 9px 12px;
+   border-bottom: 1px solid #a6a6a6;
+   * { display: inline-block; }
+   form { margin-left: 6px; }
+}

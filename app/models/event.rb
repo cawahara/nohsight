@@ -14,6 +14,10 @@ class Event < ApplicationRecord
    has_one    :comment,          dependent: :destroy
    has_one    :point_record,     dependent: :destroy
    has_many   :flyers,           dependent: :destroy
+   has_many   :join_histories,   dependent: :destroy
+   has_many   :join_users,       class_name: 'User',
+                                 foreign_key: 'user_id',
+                                 through:    :join_histories
 
    has_many   :editions,         class_name: 'Event',
                                  foreign_key: 'original_event_id',

@@ -1,8 +1,6 @@
 <div id="bookmark-index">
-   <div id="event-tabs">
-      <div class="event-tab"><%= fa_icon('heart') %>お気に入り</div>
-      <%= link_to event_manage_path, class: 'event-tab passive' do %><%= fa_icon('file-text-o')%>イベント管理<% end %>
-   </div>
+   <%= render('shared/globalnav', object: { type: 'general', path: 'bookmarks#index' }) %>
+
    <div id="bookmarks">
       <% @events.each do |event| %>
       <div class="article">

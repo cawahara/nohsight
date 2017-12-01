@@ -1,0 +1,13 @@
+<ul id="global-nav">
+   <% if object[:type] == 'general' %>
+   <li class="nav-item passive" data='{"path": "bookmarks#index"}'><%= link_to bookmarks_path do %><%= fa_icon('heart') %><span>お気に入り</span><% end %></li>
+   <li class="nav-item passive" data='{"path": "join_histories#index"}'><%= link_to join_histories_path do %><%= fa_icon('calendar-o') %><span>参加履歴</span><% end %></li>
+   <li class="nav-item passive" data='{"path": "events#manage"}'><%= link_to event_manage_path do %><%= fa_icon('file-text-o') %><span>イベント管理</span><% end %></li>
+   <% elsif object[:type] = 'admin' %>
+
+   <% end %>
+</ul>
+<%= content_tag :div,
+   id: 'global-nav-vue',
+   data: { type: object[:type],
+           path: object[:path] }.to_json do %><% end %>
