@@ -17,7 +17,8 @@ module SetVariablesOnEventsController
                           official_url:        @event&.official_url,
                           publishing_status:   @event&.publishing_status,
                           place_id:            @event&.place_id,
-                          flyers:              @event&.flyers }
+                          flyers:              @event&.flyers,
+                          original_event_id:   @event&.original_event_id }
       @place_params ||= { title:        @event.place&.title,
                           address:      @event.place&.address,
                           official_url: @event.place&.official_url }

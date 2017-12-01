@@ -504,6 +504,7 @@ RSpec.describe EventsController, type: :controller do
          let(:diff_event) { create(:different_event, :start_from_this) }
          before(:each) do |example|
             @request_params[:event][:id] = diff_event.id
+            @request_params[:event][:original_event_id] = diff_event.id
             login_as(user)
             post :create, @request_params unless example.metadata[:skip_before]
          end
