@@ -41,7 +41,15 @@ FactoryGirl.define do
       end
    end
 
-   factory :search_style, class: Style do
+   factory :first_search_style, class: Style do
       title   'シテ方大蔵流'
+   end
+
+   factory :second_search_style, class: Style do
+      title   'ワキ方大蔵流'
+   end
+
+   factory :third_search_style, class: Style do
+      title   '小鼓方大蔵流'
    end
 end

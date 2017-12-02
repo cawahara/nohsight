@@ -1,8 +1,8 @@
 require 'rails_helper'
-# TODO: updateアクションに各パラメータが変更できたかのテストも追加
 
 RSpec.describe EventsController, type: :controller do
    include SpecTesthelper
+   include SearchEngine
 
    shared_examples 'occurs an error' do |action|
       before(:each) do
@@ -31,19 +31,21 @@ RSpec.describe EventsController, type: :controller do
 
       shared_examples 'returning number of results' do
          before(:each) do
-            @event_count = @events.count
-            @events = @events.limit(5)
+            get :index, @params
          end
-         it { expect(assigns(:event_count)).to eq(@event_count) }
-         it { expect(assigns(:events).count).to eq(@events.count) }
+         it { expect(assigns(:event_count)).to eq(@events.count) }
+         it { expect(assigns(:events).limit(5).count).to eq(@events.limit(5).count) }
          it { expect(response).to have_http_status(200) }
+      end
+
+      before(:each) do
+         request.env["HTTP_REFERER"] = "http://localhost"
       end
 
       context 'without params' do
          before(:each) do
-            # FIXME: userからリレーションする以外の方法でテストをパスしたい
-            get :index
             @events = Event.where(publishing_status: 3)
+            @params = { search: {} }
          end
 
          it_behaves_like('returning number of results')
@@ -51,19 +53,16 @@ RSpec.describe EventsController, type: :controller do
 
       context 'with easy search params' do
          before(:each) do
-            @search_params = { start_date: '',
-                               end_date: '',
-                               locations: '',
-                               keywd:  '' }
+            @params = { search: { start_date: '',
+                                  end_date: '',
+                                  locations: '' } }
          end
 
          context 'with valid start_date params' do
             let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
-               start_date = event_params[:start_date]
-               @events = Event.where(start_date: start_date)
-               @search_params[:start_date] = start_date
-               get :index, easy_search: @search_params
+               @params[:search][:start_date] = event_params[:start_date]
+               @events = Event.where("start_date >= '#{@params[:search][:start_date]}'")
             end
 
             it_behaves_like('returning number of results')
@@ -72,10 +71,8 @@ RSpec.describe EventsController, type: :controller do
          context 'with valid end_date params' do
             let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
-               end_date = event_params[:start_date]
-               @events = Event.where(start_date: end_date)
-               @search_params[:end_date] = end_date
-               get :index, easy_search: @search_params
+               @params[:search][:end_date] = event_params[:start_date]
+               @events = Event.where("start_date <= '#{@params[:search][:end_date]}'")
             end
 
             it_behaves_like('returning number of results')
@@ -84,165 +81,103 @@ RSpec.describe EventsController, type: :controller do
          context 'with valid locations params' do
             let(:place_params) { attributes_for(:first_search_place) }
             before(:each) do
-               location_address = place_params[:address]
-               locations = Place.where(address: location_address)
+               @params[:search][:locations] = place_params[:address]
+               locations = Place.where("address LIKE '%#{@params[:search][:locations]}%'")
                @events = Event.where(place_id: locations.ids)
-               @search_params[:locations] = location_address
-               get :index, easy_search: @search_params
-            end
-
-            it_behaves_like('returning number of results')
-         end
-
-         context 'with valid keywd params for programs' do
-            let(:program_params) { attributes_for(:first_search_program) }
-            before(:each) do
-               program_title = program_params[:title]
-               programs = Program.where(title: program_title)
-               ev_programs = EventProgram.where(program_id: programs.ids)
-               @events = Event.where(id: ev_programs.pluck(:event_id))
-               @search_params[:keywd] = program_title
-               get :index, easy_search: @search_params
-            end
-
-            it_behaves_like('returning number of results')
-         end
-
-         context 'with valid keywd params for performers' do
-            let(:performer_params) { attributes_for(:first_search_performer) }
-            before(:each) do
-               performer_full_name = performer_params[:full_name]
-               performers = Performer.where(full_name: performer_full_name)
-               ev_performers = EventPerformer.where(performer_id: performers.ids)
-               ev_programs = EventProgram.where(id: ev_performers.pluck(:event_program_id))
-               @events = Event.where(id: ev_programs.pluck(:event_id))
-               @search_params[:keywd] = performer_full_name
-               get :index, easy_search: @search_params
-            end
-
-            it_behaves_like('returning number of results')
-         end
-
-         context 'with valid keywd params for events' do
-            let(:event_params) { attributes_for(:first_search_event) }
-            before(:each) do
-               event_title = event_params[:title][0..2]
-               @events = Event.where("title LIKE '%#{event_title}%'")
-               @search_params[:keywd] = event_title
-               get :index, easy_search: @search_params
-            end
-
-            it_behaves_like('returning number of results')
-         end
-
-         context 'with unmatched keywd params' do
-            before(:each) do
-               get :index, easy_search: { keywd: '???????' }
-               @events = Event.where("title LIKE '%???????%'")
             end
 
             it_behaves_like('returning number of results')
          end
       end
 
-      context 'with detailed search params' do
+      context 'in detailed search engine' do
+         let(:event_params) { attributes_for(:first_search_event) }
+         let(:place_params) { attributes_for(:first_search_place) }
          before(:each) do
-            @search_params = { start_date: '',
-                               end_date: '',
-                               program: '',
-                               performer: '',
-                               category_0: "0",
-                               category_1: "0",
-                               category_2: "0",
-                               category_3: "0",
-                               category_4: "0",
-                               keywd:  '',
-                               locations: '' }
+            @params = { search: { start_date: '',
+                                  end_date: '',
+                                  locations: '',
+                                  venue: '',
+                                  performer: '',
+                                  accompanist: '',
+                                  program: '',
+                                  category: '' } }
          end
 
          context 'with valid start_date params' do
-            let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
-               start_date = event_params[:start_date]
-               @events = Event.where(start_date: start_date)
-               @search_params[:start_date] = start_date
-               get :index, search: @search_params
+               @params[:search][:start_date] = event_params[:start_date]
+               @events = Event.where("start_date >= '#{@params[:search][:start_date]}'")
             end
 
             it_behaves_like('returning number of results')
          end
 
          context 'with valid end_date params' do
-            let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
-               end_date = event_params[:start_date]
-               @events = Event.where(start_date: end_date)
-               @search_params[:end_date] = end_date
-               get :index, search: @search_params
+               @params[:search][:end_date] = event_params[:start_date]
+               @events = Event.where("start_date <= '#{@params[:search][:end_date]}'")
             end
 
             it_behaves_like('returning number of results')
          end
 
          context 'with valid locations params' do
-            let(:place_params) { attributes_for(:first_search_place) }
             before(:each) do
-               location_address = place_params[:address]
-               locations = Place.where(address: location_address)
+               @params[:search][:locations] = place_params[:address]
+               locations = Place.where("address LIKE '%#{@params[:search][:locations]}%'")
                @events = Event.where(place_id: locations.ids)
-               @search_params[:locations] = location_address
-               get :index, search: @search_params
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with valid keywd params for programs' do
-            let(:program_params) { attributes_for(:first_search_program) }
+         context 'with valid venue params' do
             before(:each) do
-               program_title = program_params[:title]
-               programs = Program.where(title: program_title)
-               ev_programs = EventProgram.where(program_id: programs.ids)
-               @events = Event.where(id: ev_programs.pluck(:event_id))
-               @search_params[:keywd] = program_title
-               get :index, search: @search_params
+               @params[:search][:venue] = place_params[:title]
+               locations = Place.where("title LIKE '%#{@params[:search][:venue]}%'")
+               @events = Event.where(place_id: locations.ids)
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with valid keywd params for performers' do
+         context 'with valid performer params' do
             let(:performer_params) { attributes_for(:first_search_performer) }
             before(:each) do
-               performer_full_name = performer_params[:full_name]
-               performers = Performer.where(full_name: performer_full_name)
-               ev_performers = EventPerformer.where(performer_id: performers.ids)
-               ev_programs = EventProgram.where(id: ev_performers.pluck(:event_program_id))
-               @events = Event.where(id: ev_programs.pluck(:event_id))
-               @search_params[:keywd] = performer_full_name
-               get :index, search: @search_params
+               @params[:search][:performer] = performer_params[:full_name]
+               @events = Event.all.search_roles(@params[:search], Event::PERFORMER_ROLES, 'performer')
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with valid keywd params for events' do
-            let(:event_params) { attributes_for(:first_search_event) }
+         context 'with valid accompanist params' do
+            let(:performer_params) { attributes_for(:first_search_performer) }
             before(:each) do
-               event_title = event_params[:title][0..2]
-               @events = Event.where("title LIKE '%#{event_title}%'")
-               @search_params[:keywd] = event_title
-               get :index, search: @search_params
+               @params[:search][:accompanist] = performer_params[:full_name]
+               @events = Event.all.search_roles(@params[:search], Event::ACCOMPANIST_ROLES, 'accompanist')
+
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with unmatched keywd params' do
+         context 'with valid program params' do
+            let(:program_params) { attributes_for(:first_search_program) }
             before(:each) do
-               @search_params[:keywd] = '???????'
-               get :index, search: @search_params
-               @events = Event.where("title LIKE '%#{@search_params[:keywd]}%'")
+               @params[:search][:program] = program_params[:title]
+               @events = Event.all.search_by_programs(@params[:search])
+            end
+
+            it_behaves_like('returning number of results')
+         end
+
+         context 'with valid category params' do
+            before(:each) do
+               @params[:search][:category] = event_params[:category].to_s
+               categories = @params[:search][:category].split(/,/).create_or_query('category')
+               @events = Event.where("category = #{categories}")
             end
 
             it_behaves_like('returning number of results')
@@ -253,7 +188,7 @@ RSpec.describe EventsController, type: :controller do
          context 'with valid params' do
             before(:each) do
                @events = user.events
-               get :index, user: user
+               @params = { user: user }
             end
 
             it_behaves_like('returning number of results')

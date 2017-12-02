@@ -70,7 +70,7 @@ FactoryGirl.define do
    end
 
    factory :first_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :first_search_style
 
       full_name   '田中 勇気'
       last_name   'たなか'
@@ -78,7 +78,7 @@ FactoryGirl.define do
    end
 
    factory :second_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :second_search_style
 
       full_name   '鈴木 まさし'
       last_name   'すずき'
@@ -86,7 +86,7 @@ FactoryGirl.define do
    end
 
    factory :third_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :third_search_style
 
       full_name   '石川 権兵衛'
       last_name   'いしかわ'

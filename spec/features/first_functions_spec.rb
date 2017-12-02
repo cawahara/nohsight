@@ -6,6 +6,10 @@ RSpec.feature "FirstFunctions", type: :feature do
    feature 'User creation' do
       given(:user_params) { attributes_for(:controller_user) }
 
+      background do
+         pending 'If I learn enough how to use Capybara effectively, I would write feature specs.'
+      end
+
       scenario 'New user is submitted' do
          visit('/')
          click_link('ログイン')
@@ -58,6 +62,7 @@ RSpec.feature "FirstFunctions", type: :feature do
       let(:event_params) { create(:first_search_event) }
 
       background do
+         pending 'If I learn enough how to use Capybara effectively, I would write feature specs.'
          @user = create(:search_user)
          visit '/login'
          fill_in('email',     with: @user.email)
@@ -120,6 +125,7 @@ RSpec.feature "FirstFunctions", type: :feature do
       given(:performer) { create(:controller_performer) }
 
       background do
+         pending 'If I learn enough how to use Capybara effectively, I would write feature specs.'
          @user = create(:controller_user)
          @event = create(:controller_event)
          create(:controller_user_event, user: @user, event: @event)
@@ -194,5 +200,8 @@ RSpec.feature "FirstFunctions", type: :feature do
    end
 
    feature 'Creating events' do
+      background do
+         pending 'If I learn enough how to use Capybara effectively, I would write feature specs.'
+      end
    end
 end

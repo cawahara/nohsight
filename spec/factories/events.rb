@@ -146,7 +146,7 @@ FactoryGirl.define do
       title          '能楽堂公演その三'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       0
+      category       1
       publishing_status      3
 
       after(:create) do |event|
@@ -188,7 +188,7 @@ FactoryGirl.define do
       title          '某公民館公演その一'
       start_date     Date.today
       official_url   'http://www.searchevent.com'
-      category       0
+      category       1
       publishing_status      3
 
       after(:create) do |event|
