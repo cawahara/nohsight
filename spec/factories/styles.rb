@@ -1,12 +1,14 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_style, class: Style do
       title   'シテ方観世流'
 
       trait :start_from_this do
          after(:create) do |style|
-            FactoryGirl.create(:model_performer, style: style)
+            FactoryBot.create(:model_performer, style: style)
          end
       end
    end
@@ -16,7 +18,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |style|
-            FactoryGirl.create(:another_performer, style: style)
+            FactoryBot.create(:another_performer, style: style)
          end
       end
    end
@@ -26,7 +28,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |style|
-            FactoryGirl.create(:controller_performer, style: style)
+            FactoryBot.create(:controller_performer, style: style)
          end
       end
    end
@@ -36,7 +38,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |style|
-            FactoryGirl.create(:different_performer, style: style)
+            FactoryBot.create(:different_performer, style: style)
          end
       end
    end

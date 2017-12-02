@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_ticket, class: Ticket do
       association :event, factory: :model_event
 

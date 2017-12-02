@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'factory_girl'
+require 'factory_bot'
 
-FactoryGirl.define do
+FactoryBot.define do
    factory :model_user, class: User do
       name                  'Paul'
       email                 'paul@gmail.com'
@@ -15,11 +15,11 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |user|
-            event = FactoryGirl.create(:model_user_event, user: user).event
-            FactoryGirl.create_list :model_point_record, user.events.count, user: user
-            FactoryGirl.create(:model_comment, user: user, event: event)
-            FactoryGirl.create(:model_bookmark, user: user, event: event)
-            FactoryGirl.create(:model_join_history, user: user, event: event)
+            event = FactoryBot.create(:model_user_event, user: user).event
+            FactoryBot.create_list :model_point_record, user.events.count, user: user
+            FactoryBot.create(:model_comment, user: user, event: event)
+            FactoryBot.create(:model_bookmark, user: user, event: event)
+            FactoryBot.create(:model_join_history, user: user, event: event)
          end
       end
    end
@@ -37,11 +37,11 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |user|
-            event = FactoryGirl.create(:another_user_event, user: user).event
-            FactoryGirl.create_list :another_point_record, user.events.count, user: user
-            FactoryGirl.create(:another_comment, user: user, event: event)
-            FactoryGirl.create(:another_bookmark, user: user, event: event)
-            FactoryGirl.create(:another_join_history, event: event, user: user)
+            event = FactoryBot.create(:another_user_event, user: user).event
+            FactoryBot.create_list :another_point_record, user.events.count, user: user
+            FactoryBot.create(:another_comment, user: user, event: event)
+            FactoryBot.create(:another_bookmark, user: user, event: event)
+            FactoryBot.create(:another_join_history, event: event, user: user)
          end
       end
    end
@@ -59,7 +59,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |user|
-            FactoryGirl.create(:controller_user_event, user: user)
+            FactoryBot.create(:controller_user_event, user: user)
          end
       end
 
@@ -75,7 +75,7 @@ FactoryGirl.define do
          after(:create) do |user|
             # TODO: 関連イベントを5個分つくる(create_listでね)
             5.times do |n|
-               FactoryGirl.create(:controller_user_event, user: user)
+               FactoryBot.create(:controller_user_event, user: user)
             end
          end
       end
@@ -94,7 +94,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |user|
-            FactoryGirl.create(:different_user_event, user: user)
+            FactoryBot.create(:different_user_event, user: user)
          end
       end
    end
@@ -123,12 +123,12 @@ FactoryGirl.define do
       confirmed_at          Time.zone.now
 
       after(:create) do |user|
-         FactoryGirl.create(:first_search_user_event, user: user)
-         FactoryGirl.create(:second_search_user_event, user: user)
-         FactoryGirl.create(:third_search_user_event, user: user)
-         FactoryGirl.create(:fourth_search_user_event, user: user)
-         FactoryGirl.create(:fifth_search_user_event, user: user)
-         FactoryGirl.create(:sixth_search_user_event, user: user)
+         FactoryBot.create(:first_search_user_event, user: user)
+         FactoryBot.create(:second_search_user_event, user: user)
+         FactoryBot.create(:third_search_user_event, user: user)
+         FactoryBot.create(:fourth_search_user_event, user: user)
+         FactoryBot.create(:fifth_search_user_event, user: user)
+         FactoryBot.create(:sixth_search_user_event, user: user)
       end
    end
 end

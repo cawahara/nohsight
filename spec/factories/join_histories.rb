@@ -1,4 +1,8 @@
-FactoryGirl.define do
+# frozen_string_literal: true
+
+require 'factory_bot'
+
+FactoryBot.define do
   factory :model_join_history, class: JoinHistory do
      association :user, factory: :model_user
      association :event, factory: :model_event

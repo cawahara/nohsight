@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'factory_girl'
+require 'factory_bot'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :model_comment, class: Comment do
      association :user, factory: :model_user
      association :event, factory: :model_event

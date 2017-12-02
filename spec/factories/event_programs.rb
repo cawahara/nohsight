@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_event_program, class: EventProgram do
       association :event, factory: :model_event
       association :program, factory: :model_program
@@ -9,7 +11,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event_program|
-            FactoryGirl.create(:model_event_performer, event_program: event_program)
+            FactoryBot.create(:model_event_performer, event_program: event_program)
          end
       end
    end
@@ -22,7 +24,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event_program|
-            FactoryGirl.create(:another_event_performer, event_program: event_program)
+            FactoryBot.create(:another_event_performer, event_program: event_program)
          end
       end
    end
@@ -35,7 +37,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event_program|
-            FactoryGirl.create(:controller_event_performer, event_program: event_program)
+            FactoryBot.create(:controller_event_performer, event_program: event_program)
          end
       end
    end
@@ -48,7 +50,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event_program|
-            FactoryGirl.create(:different_event_performer, event_program: event_program)
+            FactoryBot.create(:different_event_performer, event_program: event_program)
          end
       end
    end
@@ -60,7 +62,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:first_search_event_performer, event_program: event_program)
+         FactoryBot.create(:first_search_event_performer, event_program: event_program)
       end
    end
 
@@ -71,7 +73,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:second_search_event_performer, event_program: event_program)
+         FactoryBot.create(:second_search_event_performer, event_program: event_program)
       end
    end
 
@@ -82,7 +84,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:third_search_event_performer, event_program: event_program)
+         FactoryBot.create(:third_search_event_performer, event_program: event_program)
       end
    end
 
@@ -93,7 +95,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:fourth_search_event_performer, event_program: event_program)
+         FactoryBot.create(:fourth_search_event_performer, event_program: event_program)
       end
    end
 
@@ -104,7 +106,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:fifth_search_event_performer, event_program: event_program)
+         FactoryBot.create(:fifth_search_event_performer, event_program: event_program)
       end
    end
 
@@ -115,7 +117,7 @@ FactoryGirl.define do
       genre 'Sample'
 
       after(:create) do |event_program|
-         FactoryGirl.create(:sixth_search_event_performer, event_program: event_program)
+         FactoryBot.create(:sixth_search_event_performer, event_program: event_program)
       end
    end
 end

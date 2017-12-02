@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_event, class: Event do
       association :place, factory: :model_place
 
@@ -15,19 +17,19 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event|
-            FactoryGirl.create(:model_event_program, event: event)
-            FactoryGirl.create(:model_ticket, event: event)
-            user = FactoryGirl.create(:model_user_event, event: event).user
-            FactoryGirl.create(:model_comment, event: event, user: user)
-            FactoryGirl.create(:model_point_record, event: event, user: user)
-            FactoryGirl.create(:model_bookmark, event: event, user: user)
-            FactoryGirl.create(:model_join_history, event: event, user: user)
+            FactoryBot.create(:model_event_program, event: event)
+            FactoryBot.create(:model_ticket, event: event)
+            user = FactoryBot.create(:model_user_event, event: event).user
+            FactoryBot.create(:model_comment, event: event, user: user)
+            FactoryBot.create(:model_point_record, event: event, user: user)
+            FactoryBot.create(:model_bookmark, event: event, user: user)
+            FactoryBot.create(:model_join_history, event: event, user: user)
          end
       end
 
       trait :original_edition do
          after(:create) do |event|
-            FactoryGirl.create(:model_event, original: event)
+            FactoryBot.create(:model_event, original: event)
          end
       end
 
@@ -48,18 +50,18 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event|
-            FactoryGirl.create(:another_event_program, event: event)
-            FactoryGirl.create(:another_ticket, event: event)
-            user = FactoryGirl.create(:another_user_event, event: event).user
-            FactoryGirl.create(:another_comment, event: event, user: user)
-            FactoryGirl.create(:another_bookmark, event: event, user: user)
-            FactoryGirl.create(:another_join_history, event: event, user: user)
+            FactoryBot.create(:another_event_program, event: event)
+            FactoryBot.create(:another_ticket, event: event)
+            user = FactoryBot.create(:another_user_event, event: event).user
+            FactoryBot.create(:another_comment, event: event, user: user)
+            FactoryBot.create(:another_bookmark, event: event, user: user)
+            FactoryBot.create(:another_join_history, event: event, user: user)
          end
       end
 
       trait :original_edition do
          after(:create) do |event|
-            FactoryGirl.create(:another_event, original: event)
+            FactoryBot.create(:another_event, original: event)
          end
       end
    end
@@ -82,9 +84,9 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event|
-            FactoryGirl.create(:controller_event_program, :start_from_this, event: event)
-            FactoryGirl.create(:controller_ticket, event: event)
-            FactoryGirl.create(:controller_user_event, event: event)
+            FactoryBot.create(:controller_event_program, :start_from_this, event: event)
+            FactoryBot.create(:controller_ticket, event: event)
+            FactoryBot.create(:controller_user_event, event: event)
          end
       end
 
@@ -105,9 +107,9 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |event|
-            FactoryGirl.create(:different_event_program, :start_from_this, event: event)
-            FactoryGirl.create(:different_ticket, event: event)
-            FactoryGirl.create(:different_user_event, event: event)
+            FactoryBot.create(:different_event_program, :start_from_this, event: event)
+            FactoryBot.create(:different_ticket, event: event)
+            FactoryBot.create(:different_user_event, event: event)
          end
       end
    end
@@ -122,7 +124,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:first_search_event_program, event: event)
+         FactoryBot.create(:first_search_event_program, event: event)
       end
    end
 
@@ -136,7 +138,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:second_search_event_program, event: event)
+         FactoryBot.create(:second_search_event_program, event: event)
       end
    end
 
@@ -150,7 +152,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:third_search_event_program, event: event)
+         FactoryBot.create(:third_search_event_program, event: event)
       end
    end
 
@@ -164,7 +166,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:fourth_search_event_program, event: event)
+         FactoryBot.create(:fourth_search_event_program, event: event)
       end
    end
 
@@ -178,7 +180,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:fifth_search_event_program, event: event)
+         FactoryBot.create(:fifth_search_event_program, event: event)
       end
    end
 
@@ -192,7 +194,7 @@ FactoryGirl.define do
       publishing_status      3
 
       after(:create) do |event|
-         FactoryGirl.create(:sixth_search_event_program, event: event)
+         FactoryBot.create(:sixth_search_event_program, event: event)
       end
    end
 end

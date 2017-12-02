@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_program, class: Program do
       title       'Sample Program'
       category    '能'
@@ -9,7 +11,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |program|
-            FactoryGirl.create(:model_event_program, program: program)
+            FactoryBot.create(:model_event_program, program: program)
          end
       end
    end
@@ -22,7 +24,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |program|
-            FactoryGirl.create(:another_event_program, program: program)
+            FactoryBot.create(:another_event_program, program: program)
          end
       end
    end
@@ -35,7 +37,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |program|
-            FactoryGirl.create(:controller_event_program, program: program)
+            FactoryBot.create(:controller_event_program, program: program)
          end
       end
 
@@ -46,7 +48,7 @@ FactoryGirl.define do
       trait :program_show_action do
          after(:create) do |program|
             5.times do |n|
-               FactoryGirl.create(:controller_event_program, program: program)
+               FactoryBot.create(:controller_event_program, program: program)
             end
          end
       end
@@ -60,7 +62,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |program|
-            FactoryGirl.create(:different_event_program, program: program)
+            FactoryBot.create(:different_event_program, program: program)
          end
       end
    end
