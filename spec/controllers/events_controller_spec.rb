@@ -39,12 +39,12 @@ RSpec.describe EventsController, type: :controller do
       end
 
       before(:each) do
+         @events = Event.where(publishing_status: 3)
          request.env["HTTP_REFERER"] = "http://localhost"
       end
 
       context 'without params' do
          before(:each) do
-            @events = Event.where(publishing_status: 3)
             @params = { search: {} }
          end
 
@@ -62,7 +62,7 @@ RSpec.describe EventsController, type: :controller do
             let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
                @params[:search][:start_date] = event_params[:start_date]
-               @events = Event.where("start_date >= '#{@params[:search][:start_date]}'")
+               @events = @events.search_by_date(@params[:search])
             end
 
             it_behaves_like('returning number of results')
@@ -72,21 +72,33 @@ RSpec.describe EventsController, type: :controller do
             let(:event_params) { attributes_for(:first_search_event) }
             before(:each) do
                @params[:search][:end_date] = event_params[:start_date]
-               @events = Event.where("start_date <= '#{@params[:search][:end_date]}'")
+               @events = @events.search_by_date(@params[:search])
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with valid locations params' do
+         context 'with valid' do
             let(:place_params) { attributes_for(:first_search_place) }
-            before(:each) do
-               @params[:search][:locations] = place_params[:address]
-               locations = Place.where("address LIKE '%#{@params[:search][:locations]}%'")
-               @events = Event.where(place_id: locations.ids)
+
+            context 'single locations param' do
+               before(:each) do
+                  @params[:search][:locations] = place_params[:address]
+                  @events = @events.search_by_place(@params[:search], 'locations', 'address')
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple locations params' do
+               let(:another_place_params) { attributes_for(:second_search_place) }
+               before(:each) do
+                  @params[:search][:locations] = "#{place_params[:address]}, #{another_place_params[:address]}"
+                  @events = @events.search_by_place(@params[:search], 'locations', 'address')
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
       end
 
@@ -107,7 +119,7 @@ RSpec.describe EventsController, type: :controller do
          context 'with valid start_date params' do
             before(:each) do
                @params[:search][:start_date] = event_params[:start_date]
-               @events = Event.where("start_date >= '#{@params[:search][:start_date]}'")
+               @events = @events.search_by_date(@params[:search])
             end
 
             it_behaves_like('returning number of results')
@@ -116,71 +128,146 @@ RSpec.describe EventsController, type: :controller do
          context 'with valid end_date params' do
             before(:each) do
                @params[:search][:end_date] = event_params[:start_date]
-               @events = Event.where("start_date <= '#{@params[:search][:end_date]}'")
+               @events = @events.search_by_date(@params[:search])
             end
 
             it_behaves_like('returning number of results')
          end
 
-         context 'with valid locations params' do
-            before(:each) do
-               @params[:search][:locations] = place_params[:address]
-               locations = Place.where("address LIKE '%#{@params[:search][:locations]}%'")
-               @events = Event.where(place_id: locations.ids)
+         context 'with valid' do
+            let(:place_params) { attributes_for(:first_search_place) }
+
+            context 'single locations param' do
+               before(:each) do
+                  @params[:search][:locations] = place_params[:address]
+                  @events = @events.search_by_place(@params[:search], 'locations', 'address')
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple locations params' do
+               let(:another_place_params) { attributes_for(:second_search_place) }
+               before(:each) do
+                  @params[:search][:locations] = "#{place_params[:address]}, #{another_place_params[:address]}"
+                  @events = @events.search_by_place(@params[:search], 'locations', 'address')
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
 
-         context 'with valid venue params' do
-            before(:each) do
-               @params[:search][:venue] = place_params[:title]
-               locations = Place.where("title LIKE '%#{@params[:search][:venue]}%'")
-               @events = Event.where(place_id: locations.ids)
+         context 'with valid' do
+            let(:place_params) { attributes_for(:first_search_place) }
+
+            context 'single venue param' do
+               before(:each) do
+                  @params[:search][:venue] = place_params[:title]
+                  @events = @events.search_by_place(@params[:search], 'venue', 'title')
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple venue params' do
+               let(:another_place_params) { attributes_for(:second_search_place) }
+               before(:each) do
+                  @params[:search][:venue] = "#{place_params[:title]}, #{another_place_params[:title]}"
+                  @events = @events.search_by_place(@params[:search], 'venue', 'title')
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
 
-         context 'with valid performer params' do
+         context 'with valid' do
             let(:performer_params) { attributes_for(:first_search_performer) }
-            before(:each) do
-               @params[:search][:performer] = performer_params[:full_name]
-               @events = Event.all.search_roles(@params[:search], Event::PERFORMER_ROLES, 'performer')
+
+            context 'single performer param' do
+               before(:each) do
+                  @params[:search][:performer] = performer_params[:full_name]
+                  @events = @events.search_roles(@params[:search], Event::PERFORMER_ROLES, 'performer')
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple performer params' do
+               let(:another_performer_params) { attributes_for(:second_search_performer) }
+               before(:each) do
+                  @params[:search][:performer] = "#{performer_params[:full_name]}, #{another_performer_params[:full_name]}"
+                  @events = @events.search_roles(@params[:search], Event::PERFORMER_ROLES, 'performer')
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
 
-         context 'with valid accompanist params' do
+         context 'with valid' do
             let(:performer_params) { attributes_for(:first_search_performer) }
-            before(:each) do
-               @params[:search][:accompanist] = performer_params[:full_name]
-               @events = Event.all.search_roles(@params[:search], Event::ACCOMPANIST_ROLES, 'accompanist')
 
+            context 'single accompanist param' do
+               before(:each) do
+                  @params[:search][:accompanist] = performer_params[:full_name]
+                  @events = @events.search_roles(@params[:search], Event::ACCOMPANIST_ROLES, 'accompanist')
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple accompanist params' do
+               let(:another_performer_params) { attributes_for(:second_search_performer) }
+               before(:each) do
+                  @params[:search][:accompanist] = "#{performer_params[:full_name]}, #{another_performer_params[:full_name]}"
+                  @events = @events.search_roles(@params[:search], Event::ACCOMPANIST_ROLES, 'accompanist')
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
 
-         context 'with valid program params' do
+         context 'with valid' do
             let(:program_params) { attributes_for(:first_search_program) }
-            before(:each) do
-               @params[:search][:program] = program_params[:title]
-               @events = Event.all.search_by_programs(@params[:search])
+
+            context 'single program param' do
+               before(:each) do
+                  @params[:search][:program] = program_params[:title]
+                  @events = @events.search_by_programs(@params[:search])
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple program params' do
+               let(:another_program_params) { attributes_for(:second_search_program) }
+               before(:each) do
+                  @params[:search][:program] = "#{program_params[:title]}, #{another_program_params[:title]}"
+                  @events = @events.search_by_programs(@params[:search])
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
 
-         context 'with valid category params' do
-            before(:each) do
-               @params[:search][:category] = event_params[:category].to_s
-               categories = @params[:search][:category].split(/,/).create_or_query('category')
-               @events = Event.where("category = #{categories}")
+         context 'with valid' do
+            context 'single category param' do
+               before(:each) do
+                  @params[:search][:category] = event_params[:category].to_s
+                  @events = @events.search_by_categories(@params[:search])
+               end
+
+               it_behaves_like('returning number of results')
             end
 
-            it_behaves_like('returning number of results')
+            context 'multiple category params' do
+               let(:another_event_params) { attributes_for(:second_search_event) }
+               before(:each) do
+                  @params[:search][:category] = "#{event_params[:category]}, #{another_event_params[:category]}"
+                  @events = @events.search_by_categories(@params[:search])
+               end
+
+               it_behaves_like('returning number of results')
+            end
          end
       end
 
