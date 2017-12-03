@@ -16,7 +16,7 @@ class EventsController < ApplicationController
    def index
       events = []
       if params[:search] || params[:easy_search]
-         events = search_results
+         events = Event.search_results(params[:search])
       elsif params[:user]
          user = User.find(params[:user])
          events = public_events(user.events)

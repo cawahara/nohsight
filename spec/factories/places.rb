@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_place, class: Place do
       title        'Temple'
       address      'kyoto'
@@ -8,7 +10,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |place|
-            FactoryGirl.create(:model_event, place: place)
+            FactoryBot.create(:model_event, place: place)
          end
       end
    end
@@ -20,7 +22,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |place|
-            FactoryGirl.create(:another_event, place: place)
+            FactoryBot.create(:another_event, place: place)
          end
       end
    end
@@ -32,7 +34,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |place|
-            FactoryGirl.create(:controller_event, place: place)
+            FactoryBot.create(:controller_event, place: place)
          end
       end
 
@@ -43,7 +45,7 @@ FactoryGirl.define do
       trait :place_show_action do
          after(:create) do |place|
             5.times do |n|
-               FactoryGirl.create(:controller_event, place: place)
+               FactoryBot.create(:controller_event, place: place)
             end
          end
       end
@@ -56,7 +58,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |place|
-            FactoryGirl.create(:different_event, place: place)
+            FactoryBot.create(:different_event, place: place)
          end
       end
    end

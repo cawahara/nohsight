@@ -42,7 +42,7 @@ gem 'mechanize', '~> 2.7', '>= 2.7.5'                       # スクレイピン
 
 group :development, :test do
    # Add for debug (change from default gem: byebug)
-   gem 'factory_girl_rails', '~> 4.5'
+   gem 'factory_bot_rails'
    gem 'pry-byebug'
    gem 'pry-rails'
    gem 'rack-cors', require: 'rack/cors'

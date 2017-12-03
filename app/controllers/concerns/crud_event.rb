@@ -126,7 +126,7 @@ module CRUDEvent
    def initialize_event(event, mode)
       if mode == 'create'
          begin
-            original_ev = Event.find(params[:id])
+            original_ev = Event.find(@event_params[:id])
             @event_params[:id] = nil
             event = original_ev.editions.create!(@event_params)
          rescue ActiveRecord::RecordNotFound

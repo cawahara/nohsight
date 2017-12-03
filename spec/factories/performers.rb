@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_performer, class: Performer do
       association :style, factory: :model_style
 
@@ -10,7 +12,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |performer|
-            FactoryGirl.create(:model_event_performer, performer: performer)
+            FactoryBot.create(:model_event_performer, performer: performer)
          end
       end
    end
@@ -24,7 +26,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |performer|
-            FactoryGirl.create(:another_event_performer, performer: performer)
+            FactoryBot.create(:another_event_performer, performer: performer)
          end
       end
    end
@@ -38,7 +40,7 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |performer|
-            FactoryGirl.create(:controller_event_performer, performer: performer)
+            FactoryBot.create(:controller_event_performer, performer: performer)
          end
       end
 
@@ -49,7 +51,7 @@ FactoryGirl.define do
       trait :performer_show_action do
          after(:create) do |performer|
             5.times do |n|
-               FactoryGirl.create(:controller_event_performer, performer: performer)
+               FactoryBot.create(:controller_event_performer, performer: performer)
             end
          end
       end
@@ -64,13 +66,13 @@ FactoryGirl.define do
 
       trait :start_from_this do
          after(:create) do |performer|
-            FactoryGirl.create(:different_event_performer, performer: performer)
+            FactoryBot.create(:different_event_performer, performer: performer)
          end
       end
    end
 
    factory :first_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :first_search_style
 
       full_name   '田中 勇気'
       last_name   'たなか'
@@ -78,7 +80,7 @@ FactoryGirl.define do
    end
 
    factory :second_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :second_search_style
 
       full_name   '鈴木 まさし'
       last_name   'すずき'
@@ -86,7 +88,7 @@ FactoryGirl.define do
    end
 
    factory :third_search_performer, class: Performer do
-      association :style, factory: :search_style
+      association :style, factory: :third_search_style
 
       full_name   '石川 権兵衛'
       last_name   'いしかわ'

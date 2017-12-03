@@ -1,6 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+require 'factory_bot'
+
+FactoryBot.define do
    factory :model_event_performer, class: EventPerformer do
       association :performer, factory: :model_performer
       association :event_program, factory: :model_event_program
