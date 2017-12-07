@@ -5,7 +5,7 @@ require 'json'
 
 namespace :scrape do
    desc 'Scrape event informations roughly from http://www.nohgaku.or.jp/playinginfo/index.html'
-   task events: :environment do
+   task :events, [:date] => :environment do |t, args|
 
       FILE_PATH = Rails.root.join('db/fixtures').to_s
 
@@ -218,6 +218,9 @@ namespace :scrape do
 
       include SeedAttribute
 
+      # 第一引数に指定した日付にしかscrapeが起動しない
+      next if Date.today.day != args[:date].to_i
+
       agent = Mechanize.new
       tr_elements = agent.get('http://www.nohgaku.or.jp/playinginfo/index.html').search('#playing-table tr')
       # 先頭の要素がテーブルのヘッダーであるため不要
@@ -226,7 +229,7 @@ namespace :scrape do
          #各要素を取り出してみる
          tds = tr.css('td')
 
-         # 「・」から文字列が始まる演目はこのrakeでは処理できない(現状)では
+         # 「・」から文字列が始まる演目はこのrakeでは処理できない(現状では)
          # なのでスルー
          next if !tds[3].children[0].text.match?(/[[:punct:]]/) || tds[4].children[0].text.match?(/料金未定/)
 
@@ -246,7 +249,7 @@ namespace :scrape do
                program_txts << val.text.gsub(/\r|\n|\t/, '')
             end
          end
-         # programs Arrayは奇数idxをEventProgram、偶数idxをEventPerformerとして認識させて
+         # programs(Arrayクラス)は奇数idxをEventProgram、偶数idxをEventPerformerとして認識させて
          # ペアとして後に組み合わせるのでペアからあぶれた(余った)要素がある場合、
          # 必要のない要素だと認識
          program_txts.pop if program_txts.count % 2 == 1
