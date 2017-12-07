@@ -1,4 +1,4 @@
-# Nohsihgt.com
+# Nohsight.com
 Mobile Web App for organize Noh events (and search them)
 
 ## Requirements
@@ -26,5 +26,5 @@ $ bin/rails server
 ## Test
 
 ```
-$ bin/rails test
+$ rspec
 ```
