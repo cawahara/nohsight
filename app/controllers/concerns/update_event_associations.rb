@@ -6,7 +6,7 @@ module UpdateEventAssociations
    def get_params(model)
       formed_params = params.require(model).permit!
       array_params = []
-      formed_params.each_value do |value|
+      formed_params.values.each do |value|
          array_params << value
       end
       return array_params
