@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'kaminari'                                              # paginateヘルパー
 gem 'puma',                    '~> 3.0'
-gem 'rails',                   '~> 5.0.2'
+gem 'rails',                   '~> 5.1.4'
 gem 'ransack',                 '~> 1.8'                     # ActiveRecordのレコード検索用ヘルパー
 gem 'sass-rails',              '~> 5.0'
 gem 'seed-fu',                 '~> 2.3'                     # seed.rbをより扱いやすく(主にidの割り振りによる管理？)
