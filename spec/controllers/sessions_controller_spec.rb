@@ -85,7 +85,7 @@ RSpec.describe SessionsController, type: :controller do
       context 'with logged user' do
          before(:each) do
             login_as(user)
-            get :destroy, id: user
+            get :destroy, params: { id: user }
          end
 
          it 'makes a session id empty' do
@@ -97,7 +97,7 @@ RSpec.describe SessionsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :destroy, id: user
+            get :destroy, params: { id: user }
          end
 
          it_behaves_like('returning redirection response', '/login')

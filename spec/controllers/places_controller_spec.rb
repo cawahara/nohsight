@@ -40,7 +40,7 @@ RSpec.describe PlacesController, type: :controller do
             before(:each) do
                login_as(user)
                @events = place.events.limit(3)
-               get :show, id: place
+               get :show, params: { id: place }
             end
 
             it 'assigns @place' do
@@ -56,7 +56,7 @@ RSpec.describe PlacesController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               get :show, id: place
+               get :show, params: { id: place }
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -100,7 +100,7 @@ RSpec.describe PlacesController, type: :controller do
          context 'with place params' do
             before(:each) do
                login_as(user)
-               get :edit, id: place
+               get :edit, params: { id: place }
             end
 
             it 'assigns @place' do
@@ -112,7 +112,9 @@ RSpec.describe PlacesController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               get :edit, id: place
+               get :edit, params: {
+id: place
+}
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -132,7 +134,7 @@ RSpec.describe PlacesController, type: :controller do
             let(:place_params) { attributes_for(:controller_place) }
             before(:each) do |example|
                login_as(user)
-               post :create, place: place_params unless example.metadata[:skip_before]
+               post :create, params: { place: place_params } unless example.metadata[:skip_before]
             end
 
             it 'assigns @place as a created one' do
@@ -140,7 +142,9 @@ RSpec.describe PlacesController, type: :controller do
             end
 
             it 'creates a new place into the database', :skip_before do
-               expect{ post :create, place: place_params }.to change(Place, :count).by(1)
+               expect{ post :create, params: {
+place: place_params
+} }.to change(Place, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -154,11 +158,13 @@ RSpec.describe PlacesController, type: :controller do
          context 'without login' do
             let(:place_params) { attributes_for(:controller_place) }
             before(:each) do |example|
-               post :create, place: place_params unless example.metadata[:skip_before]
+               post :create, params: {
+place: place_params
+} unless example.metadata[:skip_before]
             end
 
             it "doesn't create a place", :skip_before do
-               expect{ post :create, place: place_params }.to change(Place, :count).by(0)
+               expect{ post :create, params: { place: place_params } }.to change(Place, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -168,11 +174,11 @@ RSpec.describe PlacesController, type: :controller do
             let(:place_params) { attributes_for(:controller_place, :invalid_params) }
             before(:each) do |example|
                login_as(user)
-               post :create, place: place_params unless example.metadata[:skip_before]
+               post :create, params: { place: place_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a place", :skip_before do
-               expect{ post :create, place: place_params }.to change(Place, :count).by(0)
+               expect{ post :create, params: { place: place_params } }.to change(Place, :count).by(0)
             end
 
             it_behaves_like('returning success response', true, 'new')
@@ -185,7 +191,7 @@ RSpec.describe PlacesController, type: :controller do
          context 'with valid params' do
             before(:each) do
                login_as(user)
-               patch :update, id: place, place: attributes_for(:controller_place, title: 'Changed Place')
+               patch :update, params: { id: place, place: attributes_for(:controller_place, title: 'Changed Place') }
             end
 
             it 'changes place attributes' do
@@ -204,7 +210,7 @@ RSpec.describe PlacesController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               patch :update, id: place, place: attributes_for(:controller_place, title: 'Changed Place')
+               patch :update, params: { id: place, place: attributes_for(:controller_place, title: 'Changed Place') }
             end
 
             it "doesn't change place attributes" do
@@ -218,7 +224,7 @@ RSpec.describe PlacesController, type: :controller do
          context 'with invalid param' do
             before(:each) do
                login_as(user)
-               patch :update, id: place, place: attributes_for(:controller_place, title: '')
+               patch :update, params: { id: place, place: attributes_for(:controller_place, title: '') }
             end
 
             it "doesn't change place attributes" do
@@ -236,11 +242,11 @@ RSpec.describe PlacesController, type: :controller do
          context 'with valid place params' do
             before(:each) do |example|
                login_as(user)
-               delete :destroy, id: place unless example.metadata[:skip_before]
+               delete :destroy, params: { id: place } unless example.metadata[:skip_before]
             end
 
             it 'destroys place', :skip_before do
-               expect{ delete :destroy, id: place }.to change(Place, :count).by(-1)
+               expect{ delete :destroy, params: { id: place } }.to change(Place, :count).by(-1)
             end
 
             it_behaves_like('returning redirection response', '/places')
@@ -248,11 +254,11 @@ RSpec.describe PlacesController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-                delete :destroy, id: place unless example.metadata[:skip_before]
+                delete :destroy, params: { id: place } unless example.metadata[:skip_before]
             end
 
             it "doesn't destroy place", :skip_before do
-               expect{ delete :destroy, id: place }.to change(Place, :count).by(0)
+               expect{ delete :destroy, params: { id: place } }.to change(Place, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')

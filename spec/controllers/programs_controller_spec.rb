@@ -40,7 +40,7 @@ RSpec.describe ProgramsController, type: :controller do
          before(:each) do
             login_as(user)
             @events = program.events.limit(3)
-            get :show, id: program
+            get :show, params: { id: program }
          end
 
          it 'assigns @program' do
@@ -56,7 +56,9 @@ RSpec.describe ProgramsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :show, id: program
+            get :show, params: {
+id: program
+}
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -100,7 +102,7 @@ RSpec.describe ProgramsController, type: :controller do
       context 'with program params' do
          before(:each) do
             login_as(user)
-            get :edit, id: program
+            get :edit, params: { id: program }
          end
 
          it 'assigns @program' do
@@ -112,7 +114,7 @@ RSpec.describe ProgramsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: program
+            get :edit, params: { id: program }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -132,7 +134,7 @@ RSpec.describe ProgramsController, type: :controller do
          let(:program_params) { attributes_for(:controller_program) }
          before(:each) do |example|
             login_as(user)
-            post :create, program: program_params unless example.metadata[:skip_before]
+            post :create, params: { program: program_params } unless example.metadata[:skip_before]
          end
 
          it 'assigns @program as a created one' do
@@ -140,7 +142,9 @@ RSpec.describe ProgramsController, type: :controller do
          end
 
          it 'creates a new program into the database', :skip_before do
-            expect{ post :create, program: program_params }.to change(Program, :count).by(1)
+            expect{ post :create, params: {
+program: program_params
+} }.to change(Program, :count).by(1)
          end
 
          it "returns response status 302" do
@@ -154,11 +158,13 @@ RSpec.describe ProgramsController, type: :controller do
       context 'without login' do
          let(:program_params) { attributes_for(:controller_program) }
          before(:each) do |example|
-            post :create, program: program_params unless example.metadata[:skip_before]
+            post :create, params: {
+program: program_params
+} unless example.metadata[:skip_before]
          end
 
          it "doesn't create a program", :skip_before do
-            expect{ post :create, program: program_params }.to change(Program, :count).by(0)
+            expect{ post :create, params: { program: program_params } }.to change(Program, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -168,11 +174,11 @@ RSpec.describe ProgramsController, type: :controller do
          let(:program_params) { attributes_for(:controller_program, :invalid_params) }
          before(:each) do |example|
             login_as(user)
-            post :create, program: program_params unless example.metadata[:skip_before]
+            post :create, params: { program: program_params } unless example.metadata[:skip_before]
          end
 
          it "doesn't create a program", :skip_before do
-            expect{ post :create, program: program_params }.to change(Program, :count).by(0)
+            expect{ post :create, params: { program: program_params } }.to change(Program, :count).by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -185,7 +191,7 @@ RSpec.describe ProgramsController, type: :controller do
       context 'with valid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: program, program: attributes_for(:controller_program, title: 'Changed Title')
+            patch :update, params: { id: program, program: attributes_for(:controller_program, title: 'Changed Title') }
          end
 
          it 'changes program attributes' do
@@ -204,7 +210,7 @@ RSpec.describe ProgramsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            patch :update, id: program, program: attributes_for(:controller_program, title: 'Changed Title')
+            patch :update, params: { id: program, program: attributes_for(:controller_program, title: 'Changed Title') }
          end
 
          it "doesn't change program attributes" do
@@ -218,7 +224,10 @@ RSpec.describe ProgramsController, type: :controller do
       context 'with invalid param' do
          before(:each) do
             login_as(user)
-            patch :update, id: program, program: attributes_for(:controller_program, title: '')
+            patch :update, params: {
+  id: program,
+  program: attributes_for(:controller_program, title: '')
+}
          end
 
          it "doesn't change program attributes" do
@@ -236,11 +245,13 @@ RSpec.describe ProgramsController, type: :controller do
       context 'with valid program params' do
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: program unless example.metadata[:skip_before]
+            delete :destroy, params: {
+id: program
+} unless example.metadata[:skip_before]
          end
 
          it 'destroys program', :skip_before do
-            expect{ delete :destroy, id: program }.to change(Program, :count).by(-1)
+            expect{ delete :destroy, params: { id: program } }.to change(Program, :count).by(-1)
          end
 
          it_behaves_like('returning redirection response', '/programs')
@@ -248,11 +259,11 @@ RSpec.describe ProgramsController, type: :controller do
 
       context 'without login' do
          before(:each) do |example|
-             delete :destroy, id: program unless example.metadata[:skip_before]
+             delete :destroy, params: { id: program } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy program", :skip_before do
-            expect{ delete :destroy, id: program }.to change(Program, :count).by(0)
+            expect{ delete :destroy, params: { id: program } }.to change(Program, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')

@@ -56,7 +56,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json unless example.metadata[:skip_before]
+            patch :update, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -64,7 +64,7 @@ RSpec.describe BookmarksController, type: :controller do
          end
 
          it 'creates a new bookmark into a database', :skip_before do
-            expect{ patch :update, @params, format: :json }.to change(Bookmark, :count).by(1)
+            expect{ patch :update, params: @params, session: { format: :json } }.to change(Bookmark, :count).by(1)
          end
 
          it 'returns json format' do
@@ -77,7 +77,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json unless example.metadata[:skip_before]
+            patch :update, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -85,7 +85,7 @@ RSpec.describe BookmarksController, type: :controller do
          end
 
          it 'creates a new bookmark into a database', :skip_before do
-            expect{ patch :update, @params, format: :json }.to change(Bookmark, :count).by(0)
+            expect{ patch :update, params: @params, session: { format: :json } }.to change(Bookmark, :count).by(0)
          end
 
          it 'returns json format' do
@@ -97,7 +97,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do
             @params = { id: diff_event.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json
+            patch :update, params: @params, session: { format: :json }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -113,7 +113,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do |example|
             @params = { id: event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json unless example.metadata[:skip_before]
+            delete :destroy, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -121,7 +121,7 @@ RSpec.describe BookmarksController, type: :controller do
          end
 
          it 'creates a new bookmark into a database', :skip_before do
-            expect{ patch :destroy, @params, format: :json }.to change(Bookmark, :count).by(-1)
+            expect{ patch :destroy, params: @params, session: { format: :json } }.to change(Bookmark, :count).by(-1)
          end
 
          it 'returns json format' do
@@ -134,7 +134,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json unless example.metadata[:skip_before]
+            delete :destroy, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -142,7 +142,7 @@ RSpec.describe BookmarksController, type: :controller do
          end
 
          it 'creates a new bookmark into a database', :skip_before do
-            expect{ patch :destroy, @params, format: :json }.to change(Bookmark, :count).by(0)
+            expect{ patch :destroy, params: @params, session: { format: :json } }.to change(Bookmark, :count).by(0)
          end
 
          it 'returns json format' do
@@ -154,7 +154,7 @@ RSpec.describe BookmarksController, type: :controller do
          before(:each) do
             @params = { id: event.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json
+            delete :destroy, params: @params, session: { format: :json }
          end
 
          it_behaves_like('returning redirection response', '/login')

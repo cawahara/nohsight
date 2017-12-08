@@ -43,7 +43,7 @@ RSpec.describe UsersController, type: :controller do
          let(:user) { create(:controller_user, :user_show_action) }
          before(:each) do
             @events = user.events.where(published: true).limit(3)
-            get :show, id: user
+            get :show, params: { id: user }
          end
 
          it 'assigns @user' do
@@ -67,7 +67,7 @@ RSpec.describe UsersController, type: :controller do
       context 'with user params' do
          before(:each) do
             login_as(user)
-            get :edit, id: user
+            get :edit, params: { id: user }
          end
 
          it 'assigns @user' do
@@ -79,7 +79,7 @@ RSpec.describe UsersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: user
+            get :edit, params: { id: user }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: :controller do
          let(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
-            get :edit, id: diff_user
+            get :edit, params: { id: diff_user }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -108,7 +108,7 @@ RSpec.describe UsersController, type: :controller do
       context 'with valid params' do
          let(:user_params) { attributes_for(:controller_user) }
          before(:each) do |example|
-            post :create, user: user_params unless example.metadata[:skip_before]
+            post :create, params: { user: user_params } unless example.metadata[:skip_before]
          end
 
          it 'assigns @user as a created one' do
@@ -116,7 +116,7 @@ RSpec.describe UsersController, type: :controller do
          end
 
          it 'creates a new user into the database', :skip_before do
-            expect{ post :create, user: user_params }.to change(User, :count).by(1)
+            expect{ post :create, params: { user: user_params } }.to change(User, :count).by(1)
          end
 
          it 'sets a user confirmed field with false' do
@@ -124,7 +124,7 @@ RSpec.describe UsersController, type: :controller do
          end
 
          it 'sends a confirmation email', :skip_before do
-            expect{ post :create, user: user_params }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+            expect{ post :create, params: { user: user_params } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -133,11 +133,11 @@ RSpec.describe UsersController, type: :controller do
       context 'with invalid params' do
          let(:user_params) { attributes_for(:controller_user, :invalid_params) }
          before(:each) do |example|
-            post :create, user: user_params unless example.metadata[:skip_before]
+            post :create, params: { user: user_params } unless example.metadata[:skip_before]
          end
 
          it "doesn't create a user", :skip_before do
-            expect{ post :create, user: user_params }.to change(User, :count).by(0)
+            expect{ post :create, params: { user: user_params } }.to change(User, :count).by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -146,11 +146,11 @@ RSpec.describe UsersController, type: :controller do
       context 'without agreed the convention' do
          let(:user_params) { attributes_for(:controller_user, :not_agreed) }
          before(:each) do
-            post :create, user: user_params
+            post :create, params: { user: user_params }
          end
 
          it "doesn't create a user", :skip_before do
-            expect{ post :create, user: user_params }.to change(User, :count).by(0)
+            expect{ post :create, params: { user: user_params } }.to change(User, :count).by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -163,7 +163,7 @@ RSpec.describe UsersController, type: :controller do
       context 'with valid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: user, user: attributes_for(:controller_user, name: 'Jackson')
+            patch :update, params: { id: user, user: attributes_for(:controller_user, name: 'Jackson') }
          end
 
          it 'changes user attributes' do
@@ -175,7 +175,7 @@ RSpec.describe UsersController, type: :controller do
       context 'with invalid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: user, user: attributes_for(:controller_user, :invalid_params)
+            patch :update, params: { id: user, user: attributes_for(:controller_user, :invalid_params) }
          end
 
          it "doesn't change user attributes" do
@@ -188,7 +188,7 @@ RSpec.describe UsersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            patch :update, id: user, user: attributes_for(:controller_user, name: 'Jackson')
+            patch :update, params: { id: user, user: attributes_for(:controller_user, name: 'Jackson') }
          end
 
          it "doesn't change user attributes" do
@@ -203,7 +203,7 @@ RSpec.describe UsersController, type: :controller do
          let(:diff_user) { create(:different_user) }
          before(:each) do
             login_as(user)
-            patch :update, id: diff_user, user: attributes_for(:different_user, name: 'Jackson')
+            patch :update, params: { id: diff_user, user: attributes_for(:different_user, name: 'Jackson') }
          end
 
          it "doesn't change user attributes" do
@@ -221,11 +221,11 @@ RSpec.describe UsersController, type: :controller do
       context 'with valid user params' do
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: user unless example.metadata[:skip_before]
+            delete :destroy, params: { id: user } unless example.metadata[:skip_before]
          end
 
          it "destroys the logged user", :skip_before do
-            expect{ delete :destroy, id: user }.to change(User, :count).by(-1)
+            expect{ delete :destroy, params: { id: user } }.to change(User, :count).by(-1)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -233,11 +233,11 @@ RSpec.describe UsersController, type: :controller do
 
       context 'without login' do
          before(:each) do |example|
-            delete :destroy, id: user unless example.metadata[:skip_before]
+            delete :destroy, params: { id: user } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy user", :skip_before do
-            expect{ delete :destroy, id: user }.to change(User, :count).by(0)
+            expect{ delete :destroy, params: { id: user } }.to change(User, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -247,11 +247,11 @@ RSpec.describe UsersController, type: :controller do
          let!(:diff_user) { create(:different_user) }
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: diff_user unless example.metadata[:skip_before]
+            delete :destroy, params: { id: diff_user } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy user", :skip_before do
-            expect{ delete :destroy, id: diff_user }.to change(User, :count).by(0)
+            expect{ delete :destroy, params: { id: diff_user } }.to change(User, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/')

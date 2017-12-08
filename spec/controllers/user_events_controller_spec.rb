@@ -31,7 +31,7 @@ RSpec.describe UserEventsController, type: :controller do
       context 'with event params' do
          before(:each) do
             login_as(user)
-            post :create, id: diff_event
+            post :create, params: { id: diff_event }
             @event = diff_event
             @place = diff_event.place
             @event_program = diff_event.event_programs.first
@@ -70,7 +70,7 @@ RSpec.describe UserEventsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            post :create, id: diff_event
+            post :create, params: { id: diff_event }
          end
 
          it_behaves_like('returning redirection response', '/login')

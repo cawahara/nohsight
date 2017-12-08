@@ -32,7 +32,7 @@ RSpec.describe TicketsController, type: :controller do
       context 'with event params' do
          before(:each) do
             login_as(user)
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it 'assigns edit action' do
@@ -44,7 +44,7 @@ RSpec.describe TicketsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -76,13 +76,15 @@ RSpec.describe TicketsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, ticket: @ticket_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, ticket: @ticket_params } unless example.metadata[:skip_before]
             end
 
             it 'creates a new ticket', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       ticket: @ticket_params }.to change(Ticket, :count).by(1)
+                       params: {
+                         id: event,
+                         ticket: @ticket_params
+                       } }.to change(Ticket, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -96,13 +98,15 @@ RSpec.describe TicketsController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, ticket: @ticket_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, ticket: @ticket_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new ticket", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       ticket: @ticket_params }.to change(Ticket, :count).by(0)
+                       params: {
+                         id: event,
+                         ticket: @ticket_params
+                       } }.to change(Ticket, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -112,13 +116,15 @@ RSpec.describe TicketsController, type: :controller do
             before(:each) do |example|
                login_as(user)
                @ticket_params[:'0'][:grade] = nil
-               patch :update, id: event, ticket: @ticket_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, ticket: @ticket_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new ticket", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       ticket: @ticket_params }.to change(Ticket, :count).by(0)
+                       params: {
+                         id: event,
+                         ticket: @ticket_params
+                       } }.to change(Ticket, :count).by(0)
             end
 
             it_behaves_like('returning success response', true, 'edit')
@@ -139,7 +145,7 @@ RSpec.describe TicketsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, ticket: @ticket_params
+               patch :update, params: { id: event, ticket: @ticket_params }
             end
 
             it 'changes the ticket attributes' do
@@ -158,7 +164,7 @@ RSpec.describe TicketsController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               patch :update, id: event, ticket: @ticket_params
+               patch :update, params: { id: event, ticket: @ticket_params }
             end
 
             it "doesn't change the ticket attributes" do
@@ -173,7 +179,7 @@ RSpec.describe TicketsController, type: :controller do
             before(:each) do
                login_as(user)
                @ticket_params[:'0'][:grade] = nil
-               patch :update, id: event, ticket: @ticket_params
+               patch :update, params: { id: event, ticket: @ticket_params }
             end
 
             it "doesn't change the ticket attributes" do
@@ -195,13 +201,15 @@ RSpec.describe TicketsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, ticket: @ticket_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, ticket: @ticket_params } unless example.metadata[:skip_before]
             end
 
             it 'destroys the ticket', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       ticket: @ticket_params }.to change(Ticket, :count).by(-1)
+                       params: {
+                         id: event,
+                         ticket: @ticket_params
+                       } }.to change(Ticket, :count).by(-1)
             end
 
             it "returns response status 302" do
@@ -215,13 +223,15 @@ RSpec.describe TicketsController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, ticket: @ticket_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, ticket: @ticket_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't destroy the ticket", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       ticket: @ticket_params }.to change(Ticket, :count).by(0)
+                       params: {
+                         id: event,
+                         ticket: @ticket_params
+                       } }.to change(Ticket, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -232,7 +242,7 @@ RSpec.describe TicketsController, type: :controller do
                pending 'trying to build 404 page for activerecord error exception'
                login_as(user)
                @ticket_params[:'0'][:id] = nil
-               patch :update, id: event, ticket: @ticket_params
+               patch :update, params: { id: event, ticket: @ticket_params }
             end
          end
       end

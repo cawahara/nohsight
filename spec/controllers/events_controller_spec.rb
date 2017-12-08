@@ -31,7 +31,7 @@ RSpec.describe EventsController, type: :controller do
 
       shared_examples 'returning number of results' do
          before(:each) do
-            get :index, @params
+            get :index, params: @params
          end
          it { expect(assigns(:event_count)).to eq(@events.count) }
          it { expect(assigns(:events).limit(5).count).to eq(@events.limit(5).count) }
@@ -283,12 +283,12 @@ RSpec.describe EventsController, type: :controller do
 
          context 'with invalid params' do
             it 'occurs an error' do
-               expect{ get :index, user: '???????' }.to raise_error(ActiveRecord::RecordNotFound)
+               expect{ get :index, params: { user: '???????' } }.to raise_error(ActiveRecord::RecordNotFound)
             end
 
             it "returns response status 404" do
                pending "it needs to get response status 404 from its controller and relative view"
-               get :index, user: '???????'
+               get :index, params: { user: '???????' }
                expect(response).to have_http_status(404)
             end
          end
@@ -325,7 +325,7 @@ RSpec.describe EventsController, type: :controller do
 
       context 'with params' do
          before(:each) do
-            get :show, id: event
+            get :show, params: { id: event }
          end
 
          it 'assigns @event as published' do
@@ -338,7 +338,7 @@ RSpec.describe EventsController, type: :controller do
       context 'with event params that is not published' do
          let(:draft) { create(:controller_event, :draft) }
          before(:each) do
-            get :show, id: draft
+            get :show, params: { id: draft }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -356,7 +356,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             user = event.users.first
             login_as(user)
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it 'assigns @event' do
@@ -371,7 +371,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             user = published_event.users.first
             login_as(user)
-            get :edit, id: published_event
+            get :edit, params: { id: published_event }
          end
 
          it_behaves_like('returning redirection response', '/manage')
@@ -379,7 +379,7 @@ RSpec.describe EventsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -399,7 +399,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             user = event.users.first
             login_as(user)
-            get :edit, id: diff_event
+            get :edit, params: { id: diff_event }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -447,14 +447,14 @@ RSpec.describe EventsController, type: :controller do
       end
 
       shared_examples 'not creating a new event' do |model|
-         it { expect { post :create, @request_params }.to change(model, :count).by(0) }
-         it { expect { post :create, @request_params }.to change(model, :count).by(0) } if model
+         it { expect { post :create, params: @request_params }.to change(model, :count).by(0) }
+         it { expect { post :create, params: @request_params }.to change(model, :count).by(0) } if model
       end
 
       context 'with valid params' do
          before(:each) do |example|
             login_as(user)
-            post :create, @request_params unless example.metadata[:skip_before]
+            post :create, params: @request_params unless example.metadata[:skip_before]
          end
 
          it 'assigns @event as a created one' do
@@ -462,23 +462,23 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new event into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Event, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Event, :count).by(1)
          end
 
          it 'creates a new event_program into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(EventProgram, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(EventProgram, :count).by(1)
          end
 
          it 'creates a new event_performer into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(EventPerformer, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(EventPerformer, :count).by(1)
          end
 
          it 'creates a new ticket into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Ticket, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Ticket, :count).by(1)
          end
 
          it 'creates a new user_event into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(UserEvent, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(UserEvent, :count).by(1)
          end
 
          it "returns response status 302" do
@@ -510,15 +510,15 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new place into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Place, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Place, :count).by(1)
          end
 
          it 'creates a new program into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Program, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Program, :count).by(1)
          end
 
          it 'creates a new performer into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Performer, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Performer, :count).by(1)
          end
       end
 
@@ -528,7 +528,7 @@ RSpec.describe EventsController, type: :controller do
             @request_params[:event][:id] = diff_event.id
             @request_params[:event][:original_event_id] = diff_event.id
             login_as(user)
-            post :create, @request_params unless example.metadata[:skip_before]
+            post :create, params: @request_params unless example.metadata[:skip_before]
          end
 
          it 'assigns @event as a created one' do
@@ -536,7 +536,7 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new event into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Event, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Event, :count).by(1)
          end
 
          it 'associates a new event as the edition of original one' do
@@ -544,7 +544,7 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it "creates a new event as an original's association", :skip_before do
-            expect{ post :create, @request_params }.to change(diff_event.editions, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(diff_event.editions, :count).by(1)
          end
       end
 
@@ -552,7 +552,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do |example|
             login_as(user)
             @request_params[:event_programs][:'2'] = @ev_programs_params[:'0']
-            post :create, @request_params unless example.metadata[:skip_before]
+            post :create, params: @request_params unless example.metadata[:skip_before]
          end
 
          it 'assigns @event as a created one' do
@@ -560,11 +560,11 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new event into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(Event, :count).by(1)
+            expect{ post :create, params: @request_params }.to change(Event, :count).by(1)
          end
 
          it 'creates two new event_programs into a database', :skip_before do
-            expect{ post :create, @request_params }.to change(EventProgram, :count).by(2)
+            expect{ post :create, params: @request_params }.to change(EventProgram, :count).by(2)
          end
       end
 
@@ -641,15 +641,15 @@ RSpec.describe EventsController, type: :controller do
 
       context 'without login' do
          before(:each) do |example|
-            post :create, @request_params unless example.metadata[:skip_before]
+            post :create, params: @request_params unless example.metadata[:skip_before]
          end
 
          it "doesn't create an event", :skip_before do
-            expect{ post :create, @request_params }.to change(Event, :count).by(0)
+            expect{ post :create, params: @request_params }.to change(Event, :count).by(0)
          end
 
          it "doesn't create a user_event", :skip_before do
-            expect{ post :create, @request_params }.to change(UserEvent, :count).by(0)
+            expect{ post :create, params: @request_params }.to change(UserEvent, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -702,7 +702,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             login_as(user)
             @request_params[:event][:title] = diff_event[:title]
-            patch :update, @request_params
+            patch :update, params: @request_params
          end
 
          it 'changes event attributes' do
@@ -735,15 +735,15 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new place into a database' do
-            expect{ patch :update, @request_params }.to change(Place, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(Place, :count).by(1)
          end
 
          it 'creates a new program into a database' do
-            expect{ patch :update, @request_params }.to change(Program, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(Program, :count).by(1)
          end
 
          it 'creates a new performer into a database' do
-            expect{ patch :update, @request_params }.to change(Performer, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(Performer, :count).by(1)
          end
       end
 
@@ -759,7 +759,7 @@ RSpec.describe EventsController, type: :controller do
             @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = diff_performer.full_name
             @request_params[:tickets][:'0'][:mode] = 'update'
             @request_params[:tickets][:'0'][:grade] = diff_ticket[:grade]
-            patch :update, @request_params
+            patch :update, params: @request_params
          end
 
          it 'changes event_program attributes' do
@@ -787,15 +787,15 @@ RSpec.describe EventsController, type: :controller do
          end
 
          it 'creates a new event_program into a database' do
-            expect{ patch :update, @request_params }.to change(EventProgram, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(EventProgram, :count).by(1)
          end
 
          it 'creates a new event_performer into a database' do
-            expect{ patch :update, @request_params }.to change(EventPerformer, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(EventPerformer, :count).by(1)
          end
 
          it 'creates a new ticket into a database' do
-            expect{ patch :update, @request_params }.to change(Ticket, :count).by(1)
+            expect{ patch :update, params: @request_params }.to change(Ticket, :count).by(1)
          end
       end
 
@@ -812,9 +812,9 @@ RSpec.describe EventsController, type: :controller do
          end
 
          shared_examples 'destroying associated event items' do
-            it { expect{ patch :update, @request_params }.to change(EventProgram, :count).by(-1) }
-            it { expect{ patch :update, @request_params }.to change(EventPerformer, :count).by(-1) }
-            it { expect{ patch :update, @request_params }.to change(Ticket, :count).by(-1) }
+            it { expect{ patch :update, params: @request_params }.to change(EventProgram, :count).by(-1) }
+            it { expect{ patch :update, params: @request_params }.to change(EventPerformer, :count).by(-1) }
+            it { expect{ patch :update, params: @request_params }.to change(Ticket, :count).by(-1) }
          end
 
          it_behaves_like('destroying associated event items')
@@ -838,7 +838,7 @@ RSpec.describe EventsController, type: :controller do
          context 'event params' do
             before(:each) do
                @request_params[:event][:title] = nil
-               patch :update, @request_params
+               patch :update, params: @request_params
             end
             it "doesn't change the event attributes" do
                event.reload
@@ -850,7 +850,7 @@ RSpec.describe EventsController, type: :controller do
             before(:each) do
                @request_params[:event][:place_id] = 0
                @request_params[:place][:title] = nil
-               patch :update, @request_params
+               patch :update, params: @request_params
             end
             it "doesn't change the place_id" do
                event.reload
@@ -862,7 +862,7 @@ RSpec.describe EventsController, type: :controller do
             before(:each) do
                @request_params[:event_programs][:'0'][:program_id] = 0
                @request_params[:event_programs][:'0'][:title] = nil
-               patch :update, @request_params
+               patch :update, params: @request_params
             end
             it "doesn't change the event_program attributes" do
                ev_program.reload
@@ -874,7 +874,7 @@ RSpec.describe EventsController, type: :controller do
             before(:each) do
                @request_params[:event_programs][:'0'][:event_performers][:'0'][:performer_id] = 0
                @request_params[:event_programs][:'0'][:event_performers][:'0'][:full_name] = nil
-               patch :update, @request_params
+               patch :update, params: @request_params
             end
             it "doesn't change the event_performer attributes" do
                ev_performer.reload
@@ -885,7 +885,7 @@ RSpec.describe EventsController, type: :controller do
          context 'ticket params' do
             before(:each) do
                @request_params[:tickets][:'0'][:grade] = nil
-               patch :update, @request_params
+               patch :update, params: @request_params
             end
             it "doesn't change the ticket attributes" do
                ticket.reload
@@ -898,7 +898,7 @@ RSpec.describe EventsController, type: :controller do
          # The action that would result event without program, performer, and ticket.
 
          shared_examples 'not destroying event items' do |model|
-            it { expect{ patch :update, @request_params }.to change(model, :count).by(0) }
+            it { expect{ patch :update, params: @request_params }.to change(model, :count).by(0) }
          end
 
          context 'all event_programs' do
@@ -931,7 +931,7 @@ RSpec.describe EventsController, type: :controller do
          let(:diff_event) { attributes_for(:different_event) }
          before(:each) do
             @request_params[:event][:title] = diff_event[:title]
-            patch :update, @request_params
+            patch :update, params: @request_params
          end
 
          it "doesn't change event attributes" do
@@ -947,7 +947,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             login_as(user)
             @request_params[:id] = diff_event
-            patch :update, @request_params
+            patch :update, params: @request_params
          end
 
          it "doesn't change event attributes" do
@@ -968,11 +968,11 @@ RSpec.describe EventsController, type: :controller do
       context 'with valid event params' do
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: @event unless example.metadata[:skip_before]
+            delete :destroy, params: { id: @event } unless example.metadata[:skip_before]
          end
 
          it 'destroys event', :skip_before do
-            expect{ delete :destroy, id: @event }.to change(Event, :count).by(-1)
+            expect{ delete :destroy, params: { id: @event } }.to change(Event, :count).by(-1)
          end
 
          it_behaves_like('returning redirection response', '/manage')
@@ -980,11 +980,11 @@ RSpec.describe EventsController, type: :controller do
 
       context 'without login' do
          before(:each) do |example|
-             delete :destroy, id: @event unless example.metadata[:skip_before]
+             delete :destroy, params: { id: @event } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy event", :skip_before do
-            expect{ delete :destroy, id: @event }.to change(Event, :count).by(0)
+            expect{ delete :destroy, params: { id: @event } }.to change(Event, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -994,11 +994,11 @@ RSpec.describe EventsController, type: :controller do
          let!(:diff_event) { create(:different_event) }
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: diff_event unless example.metadata[:skip_before]
+            delete :destroy, params: { id: diff_event } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy event", :skip_before do
-            expect{ delete :destroy, id: diff_event }.to change(Event, :count).by(0)
+            expect{ delete :destroy, params: { id: diff_event } }.to change(Event, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -1042,7 +1042,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             @event = user.events.first
             login_as(user)
-            get :edit_port, id: @event
+            get :edit_port, params: { id: @event }
          end
 
          it 'assigns @event' do
@@ -1063,7 +1063,7 @@ RSpec.describe EventsController, type: :controller do
       context 'without login' do
          before(:each) do
             @event = user.events.first
-            get :edit_port, id: @event
+            get :edit_port, params: { id: @event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -1073,7 +1073,7 @@ RSpec.describe EventsController, type: :controller do
          let(:diff_event) { create(:different_event) }
          before(:each) do
             login_as(user)
-            get :edit_port, id: diff_event
+            get :edit_port, params: { id: diff_event }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -1089,7 +1089,7 @@ RSpec.describe EventsController, type: :controller do
             @place = @event.place
             @places = Place.all
             login_as(user)
-            get :edit_place, id: @event
+            get :edit_place, params: { id: @event }
          end
 
          it 'assigns @event' do
@@ -1118,7 +1118,7 @@ RSpec.describe EventsController, type: :controller do
       context 'without login' do
          before(:each) do
             @event = user.events.first
-            get :edit_place, id: @event
+            get :edit_place, params: { id: @event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -1128,7 +1128,7 @@ RSpec.describe EventsController, type: :controller do
          let(:diff_event) { create(:different_event) }
          before(:each) do
             login_as(user)
-            get :edit_place, id: diff_event
+            get :edit_place, params: { id: diff_event }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -1143,7 +1143,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             @event = user.events.first
             login_as(user)
-            patch :update_place, id: @event, event_place: { title: diff_place.title, mode: 'update' }
+            patch :update_place, params: { id: @event, event_place: { title: diff_place.title, mode: 'update' } }
          end
 
          it 'changes event location' do
@@ -1166,11 +1166,11 @@ RSpec.describe EventsController, type: :controller do
             @event = user.events.first
             diff_place_params[:mode] = 'update'
             login_as(user)
-            patch :update_place, id: @event, event_place: diff_place_params unless example.metadata[:skip_before]
+            patch :update_place, params: { id: @event, event_place: diff_place_params } unless example.metadata[:skip_before]
          end
 
          it 'creates a new place into a database', :skip_before do
-            expect{ patch :update_place, id: @event, event_place: diff_place_params }.to change(Place, :count).by(1)
+            expect{ patch :update_place, params: { id: @event, event_place: diff_place_params } }.to change(Place, :count).by(1)
          end
 
          it 'changes event location' do
@@ -1187,7 +1187,7 @@ RSpec.describe EventsController, type: :controller do
          let(:diff_place) { create(:different_place) }
          before(:each) do
             @event = user.events.first
-            patch :update_place, id: @event, event_place: { title: diff_place.title, mode: 'update' }
+            patch :update_place, params: { id: @event, event_place: { title: diff_place.title, mode: 'update' } }
          end
 
          it "doesn't change event attributes" do
@@ -1203,7 +1203,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             @event = user.events.first
             login_as(user)
-            patch :update_place, id: @event, event_place: { title: '', mode: 'update' }
+            patch :update_place, params: { id: @event, event_place: { title: '', mode: 'update' } }
          end
 
          it "doesn't change event attributes" do
@@ -1221,7 +1221,7 @@ RSpec.describe EventsController, type: :controller do
          before(:each) do
             @place = diff_event.place
             login_as(user)
-            patch :update_place, id: diff_event, event_place: { title: place_params[:title], mode: 'update' }
+            patch :update_place, params: { id: diff_event, event_place: { title: place_params[:title], mode: 'update' } }
          end
 
          it "doesn't change event attributes" do

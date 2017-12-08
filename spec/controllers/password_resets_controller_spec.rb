@@ -40,7 +40,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       context 'with valid params' do
          before(:each) do
-            get :edit, id: user, email: user.email, token: user.password_reset_token
+            get :edit, params: { id: user, email: user.email, token: user.password_reset_token }
          end
 
          it 'assigns @user' do
@@ -53,7 +53,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       context 'with invalid email params' do
          let(:user_params) { attributes_for(:different_user) }
          before(:each) do
-            get :edit, id: user, email: user_params[:email], token: user.password_reset_token
+            get :edit, params: { id: user, email: user_params[:email], token: user.password_reset_token }
          end
 
          it "doesn't assign @user" do
@@ -66,7 +66,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       context 'with invalid token params' do
 
          before(:each) do
-            get :edit, id: user, email: user.email, token: 'not confirmed'
+            get :edit, params: { id: user, email: user.email, token: 'not confirmed' }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -76,7 +76,7 @@ RSpec.describe PasswordResetsController, type: :controller do
          before(:each) do
             user.confirmed = false
             user.save
-            get :edit, id: user, email: user.email, token: user.password_reset_token
+            get :edit, params: { id: user, email: user.email, token: user.password_reset_token }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -88,7 +88,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       context 'with valid params' do
          before(:each) do |example|
-            post :create, reset: { email: user.email } unless example.metadata[:skip_before]
+            post :create, params: { reset: { email: user.email } } unless example.metadata[:skip_before]
          end
 
          it 'assigns user' do
@@ -96,7 +96,7 @@ RSpec.describe PasswordResetsController, type: :controller do
          end
 
          it 'sends a password_reset email', :skip_before do
-            expect{ post :create, reset: { email: user.email } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+            expect{ post :create, params: { reset: { email: user.email } } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -105,7 +105,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       context 'with invalid params' do
          let(:user_params) { attributes_for(:different_user) }
          before(:each) do |example|
-            post :create, reset: { email: user_params[:email] } unless example.metadata[:skip_before]
+            post :create, params: { reset: { email: user_params[:email] } } unless example.metadata[:skip_before]
          end
 
          it "doesn't assign user" do
@@ -113,7 +113,7 @@ RSpec.describe PasswordResetsController, type: :controller do
          end
 
          it "doesn't send a password_reset email", :skip_before do
-            expect{ post :create, reset: { email: user_params[:email] } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { reset: { email: user_params[:email] } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -123,11 +123,11 @@ RSpec.describe PasswordResetsController, type: :controller do
          before(:each) do |example|
             user.confirmed = false
             user.save
-            post :create, reset: { email: user.email } unless example.metadata[:skip_before]
+            post :create, params: { reset: { email: user.email } } unless example.metadata[:skip_before]
          end
 
          it "doesn't send a password_reset email", :skip_before do
-            expect{ post :create, reset: { email: user.email } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { reset: { email: user.email } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -142,7 +142,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       context 'with valid params' do
          before(:each) do
-            patch :update, reset: { email: user.email, password: 'changed_pass', password_confirmation: 'changed_pass' }
+            patch :update, params: { reset: { email: user.email, password: 'changed_pass', password_confirmation: 'changed_pass' } }
          end
 
          it 'assigns user' do
@@ -159,7 +159,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
       context 'with invalid params' do
          before(:each) do
-            patch :update, reset: { email: user.email, password: 'changed_pass', password_confirmation: 'password' }
+            patch :update, params: { reset: { email: user.email, password: 'changed_pass', password_confirmation: 'password' } }
          end
 
          it 'assigns user' do
@@ -176,7 +176,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       context "with unsubmitted user's email" do
          let(:user_params) { attributes_for(:different_user) }
          before(:each) do
-            patch :update, reset: { email: user_params[:email], password: 'changed_pass', password_confirmation: 'password' }
+            patch :update, params: { reset: { email: user_params[:email], password: 'changed_pass', password_confirmation: 'password' } }
          end
 
          it "doesn't assign user" do
