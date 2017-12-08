@@ -2,7 +2,7 @@
 
 class Flyer < ApplicationRecord
    require 'carrierwave/orm/activerecord'
-   belongs_to :event
+   belongs_to :event,      optional: true
    mount_uploader :image, FlyersUploader
 
    EXTENSIONS = /.*\.(jpg|jpeg|gif|png)/

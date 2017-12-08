@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EventProgram < ApplicationRecord
-   belongs_to :event
-   belongs_to :program
+   belongs_to :event,            optional: true
+   belongs_to :program,          optional: true
    has_many   :event_performers, dependent: :destroy
    has_many   :performers,       through:   :event_performers
 

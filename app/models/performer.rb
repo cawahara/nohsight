@@ -2,7 +2,7 @@
 
 class Performer < ApplicationRecord
 
-   belongs_to  :style
+   belongs_to  :style,              optional: true
    has_many    :event_performers,   dependent: :destroy
    has_many    :event_programs,     through:   :event_performers
    # REVIEW: Performerレコードが消えた時の関連EventPerformerの処置(同時に消すべきでしょうか？)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class JoinHistory < ApplicationRecord
-   belongs_to :user
-   belongs_to :event
+   belongs_to :user,         optional: true
+   belongs_to :event,        optional: true
    belongs_to :join_users,   class_name: 'User', foreign_key: 'user_id'
    belongs_to :join_events,  class_name: 'Event', foreign_key: 'event_id'
 
