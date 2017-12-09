@@ -13,7 +13,7 @@ default: &default
   adapter: postgresql
   encoding: utf8
   pool: 5
-  username: nohsight
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost
 
