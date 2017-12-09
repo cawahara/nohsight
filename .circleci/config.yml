@@ -1,58 +1,58 @@
 version: 2
 jobs:
-   build:
-      parallelism: 3
-      docker:
-         - image: circleci/ruby:2.4.1-node
-         working_directory: ~/nohsight
-         environment:
-            PGHOST: 127.0.0.1
-            PGUSER: circleci-demo-ruby
-            RAILS_ENV: test
-      steps:
-         - checkout
+  build:
+    parallelism: 1
+    docker:
+      - image: circleci/ruby:2.4.1-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: root
+          RAILS_ENV: test
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: noh_sightdb_test
+    working_directory: ~/nohsight
+    steps:
+      - checkout
 
-         # Restore bundle cache
-         - type: cache-restore
-           name: Restore bundle cache
-           key: rails-demo-bundle-{{ checksum "Gemfile.lock" }}
+      # Restore bundle cache
+      - restore_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
 
-         - run:
-            name: Bundle Install
-            command: bundle install --path vendor/bundle
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
 
-         # Store bundle cache
-         - type: cache-restore
-           name: Store bundle cache
-           key: rails-demo-bundle-{{ checksum 'Gemfile.lock' }}
-           paths: vendor/bundle
+      # Store bundle cache
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
-          # Only necessary if app uses webpacker or yarn in some other way
-          - type: cache-restore
-            name: Restore yarn cache
-            key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+      # Yarn install dependencies
+      - run: yarn install
 
-         - run:
-            name: Yarn Install
-            command: yarn Install
+      # Store bundle cache
+      - save_cache:
+         key: rails-demo-yarn{{ checksum "yarn.lock" }}
+         paths:
+            - .yarn-cache
 
-         # Store yarn/webpacker cache
-         - type: cache-save
-           name: Store yarn cache
-           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-           paths: ~/.yarn-cache
+      # Database setup
+      - run:
+         name: Database setup
+         command: |
+            bundle exec bin/rails db:create
+            bundle exec rails db:migrate
 
-         - run:
-            name: Wait for DB
-            command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      # Run rspec in parallel
+      - type: shell
+        command: |
+          bundle exec rspec --profile 10 \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-         - run:
-            name: Database setup
-            command: RAILS_ENV=test bin/rails db:migrate
-
-         # Run rspec in parallel
-         - type: shell
-            command: |
-             bundle exec rspec --profile 10 \
-                               --format progress \
-                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results
