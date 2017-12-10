@@ -27,8 +27,6 @@ RSpec.feature 'UserRegistration', type: :system do
 
       expect(User.last.confirmed).to eq(false)
 
-      expect(page).to have_selector('.flash-success', text: '本登録のご案内メールを送信しました。URLをクリックしてユーザー登録を完了してください')
-
       # rootにredirectしたか確認
       expect(page).to have_selector('div#dashboard')
 
@@ -41,7 +39,6 @@ RSpec.feature 'UserRegistration', type: :system do
       visit link
 
       expect(User.last.confirmed).to eq(true)
-      expect(page).to have_selector('.flash-success', text: 'ユーザー登録が完了しました！NohSightへようこそ！')
 
       # Userページにredirectしたか確認
       expect(page).to have_selector('div#users-show')
@@ -66,7 +63,7 @@ RSpec.feature 'UserRegistration', type: :system do
         click_button('submit-user')
       }.to change(User, :count).by(0)
 
-      expect(page).to have_selector('.flash-danger', text: '入力情報に不備があります')
+      # 入力情報に不備があるので入力画面に戻される
       expect(page).to have_selector('div#users-new')
 
       expect(page).to have_field('name', with: '')
