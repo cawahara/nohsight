@@ -46,7 +46,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
       context 'with status params' do
          before(:each) do
             login_as(user)
-            get :index, status: 1
+            get :index, params: { status: 1 }
          end
 
          it 'assigns @join_history_status as 1' do
@@ -75,7 +75,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json unless example.metadata[:skip_before]
+            patch :update, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -83,7 +83,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          end
 
          it 'creates a new join_history into a database', :skip_before do
-            expect{ patch :update, @params, format: :json }.to change(JoinHistory, :count).by(1)
+            expect{ patch :update, params: @params, session: { format: :json } }.to change(JoinHistory, :count).by(1)
          end
 
          it 'returns json format' do
@@ -96,7 +96,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json unless example.metadata[:skip_before]
+            patch :update, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -104,7 +104,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          end
 
          it "doesn't create a new join_history", :skip_before do
-            expect{ patch :update, @params, format: :json }.to change(JoinHistory, :count).by(0)
+            expect{ patch :update, params: @params, session: { format: :json } }.to change(JoinHistory, :count).by(0)
          end
 
          it 'returns json format' do
@@ -116,7 +116,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do
             @params = { id: diff_event.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            patch :update, @params, format: :json
+            patch :update, params: @params, session: { format: :json }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -132,7 +132,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do |example|
             @params = { id: event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json unless example.metadata[:skip_before]
+            delete :destroy, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -140,7 +140,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          end
 
          it 'destroys the join_history', :skip_before do
-            expect{ patch :destroy, @params, format: :json }.to change(JoinHistory, :count).by(-1)
+            expect{ patch :destroy, params: @params, session: { format: :json } }.to change(JoinHistory, :count).by(-1)
          end
 
          it 'returns json format' do
@@ -153,7 +153,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do |example|
             @params = { id: diff_event.id, user_id: user.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json unless example.metadata[:skip_before]
+            delete :destroy, params: @params, session: { format: :json } unless example.metadata[:skip_before]
          end
 
          it 'assigns @event' do
@@ -161,7 +161,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          end
 
          it "doesn't destroy the join_history", :skip_before do
-            expect{ patch :destroy, @params, format: :json }.to change(JoinHistory, :count).by(0)
+            expect{ patch :destroy, params: @params, session: { format: :json } }.to change(JoinHistory, :count).by(0)
          end
 
          it 'returns json format' do
@@ -173,7 +173,7 @@ RSpec.describe JoinHistoriesController, type: :controller do
          before(:each) do
             @params = { id: event.id }
             request.env["HTTP_ACCEPT"] = 'application/json; charset=utf-8'
-            delete :destroy, @params, format: :json
+            delete :destroy, params: @params, session: { format: :json }
          end
 
          it_behaves_like('returning redirection response', '/login')

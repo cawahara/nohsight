@@ -32,7 +32,7 @@ RSpec.describe EventProgramsController, type: :controller do
       context 'with event params' do
          before(:each) do
             login_as(user)
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it 'assigns edit action' do
@@ -44,7 +44,7 @@ RSpec.describe EventProgramsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -75,19 +75,23 @@ RSpec.describe EventProgramsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it 'creates a new event_program', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(EventProgram, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(EventProgram, :count).by(1)
             end
 
             it 'creates a new program when program title is not in a database', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(Program, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(Program, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -101,13 +105,15 @@ RSpec.describe EventProgramsController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new event_program", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(EventProgram, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -117,13 +123,15 @@ RSpec.describe EventProgramsController, type: :controller do
             before(:each) do |example|
                login_as(user)
                @ev_program_params[:'0'][:title] = nil
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new event_program", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(EventProgram, :count).by(0)
             end
 
             it_behaves_like('returning success response', true, 'edit')
@@ -145,7 +153,7 @@ RSpec.describe EventProgramsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it 'changes the event_program attributes' do
@@ -155,8 +163,10 @@ RSpec.describe EventProgramsController, type: :controller do
 
             it 'creates a new program when program title is not in a database', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(Program, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(Program, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -170,7 +180,7 @@ RSpec.describe EventProgramsController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               patch :update, id: event, event_program: @ev_program_params
+               patch :update, params: { id: event, event_program: @ev_program_params }
             end
 
             it "doesn't change the event_program attributes" do
@@ -185,7 +195,7 @@ RSpec.describe EventProgramsController, type: :controller do
             before(:each) do
                login_as(user)
                @ev_program_params[:'0'][:title] = nil
-               patch :update, id: event, event_program: @ev_program_params
+               patch :update, params: { id: event, event_program: @ev_program_params }
             end
 
             it "doesn't change the event_program attributes" do
@@ -208,13 +218,15 @@ RSpec.describe EventProgramsController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it 'destroys the event_program', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(EventProgram, :count).by(-1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(EventProgram, :count).by(-1)
             end
 
             it "returns response status 302" do
@@ -228,13 +240,15 @@ RSpec.describe EventProgramsController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't destroy the event_program", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params }.to change(EventProgram, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params
+                       } }.to change(EventProgram, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -245,7 +259,7 @@ RSpec.describe EventProgramsController, type: :controller do
                pending 'trying to build 404 page for activerecord error exception'
                login_as(user)
                @ev_program_params[:'0'][:id] = nil
-               patch :update, id: event, event_program: @ev_program_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params } unless example.metadata[:skip_before]
             end
          end
       end

@@ -41,7 +41,7 @@ RSpec.describe PerformersController, type: :controller do
             login_as(user)
             ev_programs = performer.event_programs
             @events = Event.where(id: ev_programs.pluck(:event_id)).limit(3)
-            get :show, id: performer
+            get :show, params: { id: performer }
          end
 
          it 'assigns @performer' do
@@ -57,7 +57,7 @@ RSpec.describe PerformersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :show, id: performer
+            get :show, params: { id: performer }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -101,7 +101,7 @@ RSpec.describe PerformersController, type: :controller do
       context 'with performer params' do
          before(:each) do
             login_as(user)
-            get :edit, id: performer
+            get :edit, params: { id: performer }
          end
 
          it 'assigns @performer' do
@@ -113,7 +113,7 @@ RSpec.describe PerformersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: performer
+            get :edit, params: { id: performer }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -133,7 +133,7 @@ RSpec.describe PerformersController, type: :controller do
          let(:performer_params) { attributes_for(:controller_performer) }
          before(:each) do |example|
             login_as(user)
-            post :create, performer: performer_params unless example.metadata[:skip_before]
+            post :create, params: { performer: performer_params } unless example.metadata[:skip_before]
          end
 
          it 'assigns @performer as a created one' do
@@ -141,7 +141,7 @@ RSpec.describe PerformersController, type: :controller do
          end
 
          it 'creates a new performer into the database', :skip_before do
-            expect{ post :create, performer: performer_params }.to change(Performer, :count).by(1)
+            expect{ post :create, params: { performer: performer_params } }.to change(Performer, :count).by(1)
          end
 
          it "returns response status 302" do
@@ -155,11 +155,11 @@ RSpec.describe PerformersController, type: :controller do
       context 'without login' do
          let(:performer_params) { attributes_for(:controller_performer) }
          before(:each) do |example|
-            post :create, performer: performer_params unless example.metadata[:skip_before]
+            post :create, params: { performer: performer_params } unless example.metadata[:skip_before]
          end
 
          it "doesn't create a performer", :skip_before do
-            expect{ post :create, performer: performer_params }.to change(Performer, :count).by(0)
+            expect{ post :create, params: { performer: performer_params } }.to change(Performer, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -169,11 +169,11 @@ RSpec.describe PerformersController, type: :controller do
          let(:performer_params) { attributes_for(:controller_performer, :invalid_params) }
          before(:each) do |example|
             login_as(user)
-            post :create, performer: performer_params unless example.metadata[:skip_before]
+            post :create, params: { performer: performer_params } unless example.metadata[:skip_before]
          end
 
          it "doesn't create a performer", :skip_before do
-            expect{ post :create, performer: performer_params }.to change(Performer, :count).by(0)
+            expect{ post :create, params: { performer: performer_params } }.to change(Performer, :count).by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -186,7 +186,7 @@ RSpec.describe PerformersController, type: :controller do
       context 'with valid params' do
          before(:each) do
             login_as(user)
-            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後')
+            patch :update, params: { id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後') }
          end
 
          it 'changes performer attributes' do
@@ -205,7 +205,7 @@ RSpec.describe PerformersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後')
+            patch :update, params: { id: performer, performer: attributes_for(:controller_performer, full_name: '変化 後') }
          end
 
          it "doesn't change performer attributes" do
@@ -219,7 +219,7 @@ RSpec.describe PerformersController, type: :controller do
       context 'with invalid param' do
          before(:each) do
             login_as(user)
-            patch :update, id: performer, performer: attributes_for(:controller_performer, full_name: '')
+            patch :update, params: { id: performer, performer: attributes_for(:controller_performer, full_name: '') }
          end
 
          it "doesn't change performer attributes" do
@@ -237,11 +237,11 @@ RSpec.describe PerformersController, type: :controller do
       context 'with valid performer params' do
          before(:each) do |example|
             login_as(user)
-            delete :destroy, id: performer unless example.metadata[:skip_before]
+            delete :destroy, params: { id: performer } unless example.metadata[:skip_before]
          end
 
          it 'destroys performer', :skip_before do
-            expect{ delete :destroy, id: performer }.to change(Performer, :count).by(-1)
+            expect{ delete :destroy, params: { id: performer } }.to change(Performer, :count).by(-1)
          end
 
          it_behaves_like('returning redirection response', '/performers')
@@ -249,11 +249,11 @@ RSpec.describe PerformersController, type: :controller do
 
       context 'without login' do
          before(:each) do |example|
-             delete :destroy, id: performer unless example.metadata[:skip_before]
+             delete :destroy, params: { id: performer } unless example.metadata[:skip_before]
          end
 
          it "doesn't destroy performer", :skip_before do
-            expect{ delete :destroy, id: performer }.to change(Performer, :count).by(0)
+            expect{ delete :destroy, params: { id: performer } }.to change(Performer, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/login')

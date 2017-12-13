@@ -34,7 +34,7 @@ RSpec.describe FeedbacksController, type: :controller do
 
       context 'with valid params' do
          before(:each) do |example|
-            post :create, feedback: { email: user_params[:email], content: 'feedback comment' } unless example.metadata[:skip_before]
+            post :create, params: { feedback: { email: user_params[:email], content: 'feedback comment' } } unless example.metadata[:skip_before]
          end
 
          it 'assigns @email' do
@@ -46,7 +46,7 @@ RSpec.describe FeedbacksController, type: :controller do
          end
 
          it 'send feedback email', :skip_before do
-            expect{ post :create, feedback: { email: user_params[:email], content: 'feedback comment' } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+            expect{ post :create, params: { feedback: { email: user_params[:email], content: 'feedback comment' } } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -54,11 +54,11 @@ RSpec.describe FeedbacksController, type: :controller do
 
       context 'with invalid email params' do
          before(:each) do |example|
-            post :create, feedback: { email: '', content: 'feedback comment' } unless example.metadata[:skip_before]
+            post :create, params: { feedback: { email: '', content: 'feedback comment' } } unless example.metadata[:skip_before]
          end
 
          it "doesn't send feedback email", :skip_before do
-            expect{ post :create, feedback: { email: '', content: 'feedback comment' } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { feedback: { email: '', content: 'feedback comment' } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -66,11 +66,11 @@ RSpec.describe FeedbacksController, type: :controller do
 
       context 'with empty content params' do
          before(:each) do |example|
-            post :create, feedback: { email: user_params[:email], content: '' } unless example.metadata[:skip_before]
+            post :create, params: { feedback: { email: user_params[:email], content: '' } } unless example.metadata[:skip_before]
          end
 
          it "doesn't send feedback email", :skip_before do
-            expect{ post :create, feedback: { email: user_params[:email], content: '' } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { feedback: { email: user_params[:email], content: '' } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')

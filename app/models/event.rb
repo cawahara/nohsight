@@ -23,7 +23,8 @@ class Event < ApplicationRecord
                                  foreign_key: 'original_event_id',
                                  dependent:  :destroy
    belongs_to :original,         class_name: 'Event',
-                                 foreign_key: 'original_event_id'
+                                 foreign_key: 'original_event_id',
+                                 optional: true
 
    before_validation :set_value_on_category
 

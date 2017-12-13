@@ -60,7 +60,7 @@ RSpec.describe RequestsController, type: :controller do
       context 'with event params' do
          before(:each) do
             login_as(admin_user)
-            get :show, id: requested_event
+            get :show, params: { id: requested_event }
          end
 
          it 'assigns @event as requested' do
@@ -78,7 +78,7 @@ RSpec.describe RequestsController, type: :controller do
          let(:published_event) { create(:controller_event) }
          before(:each) do
             login_as(admin_user)
-            get :show, id: published_event
+            get :show, params: { id: published_event }
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -86,7 +86,7 @@ RSpec.describe RequestsController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :show, id: requested_event
+            get :show, params: { id: requested_event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -108,7 +108,7 @@ RSpec.describe RequestsController, type: :controller do
          before(:each) do |example|
             login_as(admin_user)
             @response_params[:approval][:approved] = 3
-            patch :update, @response_params unless example.metadata[:skip_before]
+            patch :update, params: @response_params unless example.metadata[:skip_before]
          end
 
          it "updates event's publishing status as published" do
@@ -117,7 +117,7 @@ RSpec.describe RequestsController, type: :controller do
          end
 
          it 'create a new point_record into a database', :skip_before do
-            expect{ patch :update, @response_params }.to change(PointRecord, :count).by(1)
+            expect{ patch :update, params: @response_params }.to change(PointRecord, :count).by(1)
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -128,7 +128,7 @@ RSpec.describe RequestsController, type: :controller do
          before(:each) do |example|
             login_as(admin_user)
             @response_params[:approval][:comment] = comment[:content]
-            patch :update, @response_params unless example.metadata[:skip_before]
+            patch :update, params: @response_params unless example.metadata[:skip_before]
          end
 
          it "updates event's publishing status as rejected" do
@@ -137,7 +137,7 @@ RSpec.describe RequestsController, type: :controller do
          end
 
          it 'creates a new comment into a database', :skip_before do
-            expect{ patch :update, @response_params }.to change(Comment, :count).by(1)
+            expect{ patch :update, params: @response_params }.to change(Comment, :count).by(1)
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -150,7 +150,7 @@ RSpec.describe RequestsController, type: :controller do
             comment
             login_as(admin_user)
             @response_params[:approval][:comment] = diff_comment[:content]
-            patch :update, @response_params unless example.metadata[:skip_before]
+            patch :update, params: @response_params unless example.metadata[:skip_before]
          end
 
          it "updates event's publishing status as rejected" do
@@ -164,7 +164,7 @@ RSpec.describe RequestsController, type: :controller do
          end
 
          it "doesn't create a new comment", :skip_before do
-            expect{ patch :update, @response_params }.to change(Comment, :count).by(0)
+            expect{ patch :update, params: @response_params }.to change(Comment, :count).by(0)
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -178,7 +178,7 @@ RSpec.describe RequestsController, type: :controller do
             login_as(admin_user)
             @response_params = { id: edited_event, approval: { approved: 3, comment: nil } }
             unless example.metadata[:skip_before]
-               patch :update, @response_params
+               patch :update, params: @response_params
                @original_event_program = original_event.event_programs.first
                @edited_event_program = edited_event.event_programs.first
             end
@@ -212,11 +212,11 @@ RSpec.describe RequestsController, type: :controller do
          end
 
          it 'creates a new user_event into a database', :skip_before do
-            expect{ patch :update, @response_params }.to change(UserEvent, :count).by(1)
+            expect{ patch :update, params: @response_params }.to change(UserEvent, :count).by(1)
          end
 
          it 'creates a new point_record into a database', :skip_before do
-            expect{ patch :update, @response_params }.to change(PointRecord, :count).by(1)
+            expect{ patch :update, params: @response_params }.to change(PointRecord, :count).by(1)
          end
 
          it_behaves_like('returning redirection response', '/requests')
@@ -230,18 +230,18 @@ RSpec.describe RequestsController, type: :controller do
             edited_event.user_events.first.update_attributes!(user_id: original_event.users.first.id)
             login_as(admin_user)
             @response_params = { id: edited_event, approval: { approved: 3, comment: nil } }
-            patch :update, @response_params unless example.metadata[:skip_before]
+            patch :update, params: @response_params unless example.metadata[:skip_before]
          end
 
          it "doesn't create a user_event", :skip_before do
-            expect{ patch :update, @response_params }.to change(UserEvent, :count).by(0)
+            expect{ patch :update, params: @response_params }.to change(UserEvent, :count).by(0)
          end
       end
 
       context 'without comment along rejected params' do
          before(:each) do |example|
             login_as(admin_user)
-            patch :update, @response_params unless example.metadata[:skip_before]
+            patch :update, params: @response_params unless example.metadata[:skip_before]
          end
 
          it "doesn't update event's publishing status" do
@@ -250,7 +250,7 @@ RSpec.describe RequestsController, type: :controller do
          end
 
          it "doesn't create a new comment", :skip_before do
-            expect{ patch :update, @response_params }.to change(Comment, :count).by(0)
+            expect{ patch :update, params: @response_params }.to change(Comment, :count).by(0)
          end
 
          it_behaves_like('returning success response', true, 'show')
@@ -260,7 +260,7 @@ RSpec.describe RequestsController, type: :controller do
          let(:comment) { attributes_for(:controller_comment) }
          before(:each) do
             @response_params[:approval][:comment] = comment[:content]
-            patch :update, @response_params
+            patch :update, params: @response_params
          end
 
          it_behaves_like('returning redirection response', '/login')

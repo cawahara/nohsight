@@ -35,7 +35,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
 
       context 'with valid params' do
          before(:each) do
-            get :edit, email: user.email, token: user.confirmation_token
+            get :edit, params: { email: user.email, token: user.confirmation_token }
          end
 
          it 'confirms user' do
@@ -55,7 +55,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
       context 'with invalid' do
          context 'email params' do
             before(:each) do
-               get :edit, email: wrong_user[:email], token: user.confirmation_token
+               get :edit, params: { email: wrong_user[:email], token: user.confirmation_token }
             end
 
             it "doesn't confirms user" do
@@ -68,7 +68,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
 
          context 'token params' do
             before(:each) do
-               get :edit, email: wrong_user[:email], token: user.confirmation_token
+               get :edit, params: { email: wrong_user[:email], token: user.confirmation_token }
             end
 
             it "doesn't confirms user" do
@@ -84,7 +84,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
       context 'by a user who has already been confirmed' do
          before(:each) do
             user.update_attributes!(confirmed: true)
-            get :edit, email: user.email, token: user.confirmation_token
+            get :edit, params: { email: user.email, token: user.confirmation_token }
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -99,7 +99,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
 
       context 'with valid params' do
          before(:each) do |example|
-            post :create, confirmation: { email: user.email } unless example.metadata[:skip_before]
+            post :create, params: { confirmation: { email: user.email } } unless example.metadata[:skip_before]
          end
 
          it 'assigns @email' do
@@ -112,7 +112,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
          end
 
          it 'sends confirmation_email', :skip_before do
-            expect{ post :create, confirmation: { email: user.email } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+            expect{ post :create, params: { confirmation: { email: user.email } } }.to change{ ActionMailer::Base.deliveries.size }.by(1)
          end
 
          it_behaves_like('returning redirection response', '/')
@@ -122,7 +122,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
          let(:user_params) { attributes_for(:different_user) }
 
          before(:each) do |example|
-            post :create, confirmation: { email: user_params[:email] } unless example.metadata[:skip_before]
+            post :create, params: { confirmation: { email: user_params[:email] } } unless example.metadata[:skip_before]
          end
 
          it 'assigns @email' do
@@ -135,7 +135,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
          end
 
          it "doesn't send confirmation_email", :skip_before do
-            expect{ post :create, confirmation: { email: user_params[:email] } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { confirmation: { email: user_params[:email] } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning success response', true, 'new')
@@ -145,7 +145,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
          before(:each) do |example|
             user.confirmed = true
             user.save
-            post :create, confirmation: { email: user.email } unless example.metadata[:skip_before]
+            post :create, params: { confirmation: { email: user.email } } unless example.metadata[:skip_before]
          end
 
          it 'assigns @email' do
@@ -158,7 +158,7 @@ RSpec.describe AccountConfirmationsController, type: :controller do
          end
 
          it "doesn't send confirmation_email", :skip_before do
-            expect{ post :create, confirmation: { email: user.email } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
+            expect{ post :create, params: { confirmation: { email: user.email } } }.to change{ ActionMailer::Base.deliveries.size }.by(0)
          end
 
          it_behaves_like('returning redirection response', '/')

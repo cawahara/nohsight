@@ -32,7 +32,7 @@ RSpec.describe EventPerformersController, type: :controller do
       context 'with event params' do
          before(:each) do
             login_as(user)
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it 'assigns edit action' do
@@ -44,7 +44,7 @@ RSpec.describe EventPerformersController, type: :controller do
 
       context 'without login' do
          before(:each) do
-            get :edit, id: event
+            get :edit, params: { id: event }
          end
 
          it_behaves_like('returning redirection response', '/login')
@@ -79,21 +79,25 @@ RSpec.describe EventPerformersController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it 'creates a new event_performer', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(EventPerformer, :count).by(1)
             end
 
             it 'creates a new performer when performer full_name is not in a database', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(Performer, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(Performer, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -107,14 +111,16 @@ RSpec.describe EventPerformersController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new event_performer", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(EventPerformer, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -124,14 +130,16 @@ RSpec.describe EventPerformersController, type: :controller do
             before(:each) do |example|
                login_as(user)
                @ev_performer_params[:'0'][:full_name] = nil
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't create a new event_performer", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(EventPerformer, :count).by(0)
             end
 
             it_behaves_like('returning success response', true, 'edit')
@@ -154,7 +162,7 @@ RSpec.describe EventPerformersController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it 'changes the event_performer attributes' do
@@ -164,9 +172,11 @@ RSpec.describe EventPerformersController, type: :controller do
 
             it 'creates a new performer when performer title is not in a database', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(Performer, :count).by(1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(Performer, :count).by(1)
             end
 
             it "returns response status 302" do
@@ -180,7 +190,7 @@ RSpec.describe EventPerformersController, type: :controller do
 
          context 'without login' do
             before(:each) do
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params }
             end
 
             it "doesn't change the event_performer attributes" do
@@ -195,7 +205,7 @@ RSpec.describe EventPerformersController, type: :controller do
             before(:each) do
                login_as(user)
                @ev_performer_params[:'0'][:full_name] = nil
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params }
             end
 
             it "doesn't change the event_performer attributes" do
@@ -220,14 +230,16 @@ RSpec.describe EventPerformersController, type: :controller do
          context 'with valid params' do
             before(:each) do |example|
                login_as(user)
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it 'destroys the event_performer', :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(-1)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(EventPerformer, :count).by(-1)
             end
 
             it "returns response status 302" do
@@ -241,14 +253,16 @@ RSpec.describe EventPerformersController, type: :controller do
 
          context 'without login' do
             before(:each) do |example|
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params unless example.metadata[:skip_before]
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params } unless example.metadata[:skip_before]
             end
 
             it "doesn't destroy the event_performer", :skip_before do
                expect{ patch :update,
-                       id: event,
-                       event_program: @ev_program_params,
-                       'event_performer-0': @ev_performer_params }.to change(EventPerformer, :count).by(0)
+                       params: {
+                         id: event,
+                         event_program: @ev_program_params,
+                         'event_performer-0': @ev_performer_params
+                       } }.to change(EventPerformer, :count).by(0)
             end
 
             it_behaves_like('returning redirection response', '/login')
@@ -259,7 +273,7 @@ RSpec.describe EventPerformersController, type: :controller do
                pending 'trying to build 404 page for activerecord error exception'
                login_as(user)
                @ev_performer_params[:'0'][:id] = nil
-               patch :update, id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params
+               patch :update, params: { id: event, event_program: @ev_program_params, 'event_performer-0': @ev_performer_params }
             end
          end
       end
