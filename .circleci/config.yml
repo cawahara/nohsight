@@ -22,6 +22,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           key: rails-demo-{{ checksum "Gemfile.lock" }}
+          # TODO: Find the way to refer cache despite of changin branch.
+          # Because everytime I build, in restore_cache, CircleCI says 'no cache is found'
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
@@ -32,6 +34,8 @@ jobs:
           paths:
             - vendor/bundle
 
+      # TODO: create resotre_cache of yarn
+
       # Yarn install dependencies
       - run: yarn install
 
@@ -40,6 +44,8 @@ jobs:
          key: rails-demo-yarn{{ checksum "yarn.lock" }}
          paths:
             - .yarn-cache
+
+      # TODO: Find the way to cache the following packages which usually takes 1 minute for being installed.
 
       # Install chrome driver for System Spec
       - run:
