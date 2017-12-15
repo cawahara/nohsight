@@ -4,12 +4,14 @@ class SessionsController < ApplicationController
    before_action :logged_in?, only: [:destroy]
 
    def new
-      current_user
-      logout
+     @email ||= ''
+     current_user
+     logout
    end
 
    def create
-      user = User.find_by(email: params[:session][:email])
+      @email = params[:session][:email]
+      user = User.find_by(email: @email)
       if user && user.authenticate(params[:session][:password])
          login(user)
          redirect_to(dashboard_url)
