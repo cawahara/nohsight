@@ -46,7 +46,6 @@ group :development, :test do
    gem 'pry-byebug'
    gem 'pry-rails'
    gem 'rack-cors', require: 'rack/cors'
-   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
    gem 'rubocop', '~> 0.47.1'
 end
 
@@ -67,6 +66,9 @@ group :test do
    gem 'capybara', '~> 2.7', '>= 2.7.1'
    gem 'database_cleaner'
    gem 'selenium-webdriver'
+   gem 'chromedriver-helper'
+   gem 'email_spec'
+   gem 'rspec-rails'
 end
 
 group :production do
